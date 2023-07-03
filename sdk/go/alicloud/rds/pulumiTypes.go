@@ -11,8 +11,10 @@ import (
 )
 
 type DbInstanceEndpointNodeItem struct {
+	// The ID of the node.
 	NodeId string `pulumi:"nodeId"`
-	Weight int    `pulumi:"weight"`
+	// The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+	Weight int `pulumi:"weight"`
 }
 
 // DbInstanceEndpointNodeItemInput is an input type that accepts DbInstanceEndpointNodeItemArgs and DbInstanceEndpointNodeItemOutput values.
@@ -27,8 +29,10 @@ type DbInstanceEndpointNodeItemInput interface {
 }
 
 type DbInstanceEndpointNodeItemArgs struct {
+	// The ID of the node.
 	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	Weight pulumi.IntInput    `pulumi:"weight"`
+	// The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (DbInstanceEndpointNodeItemArgs) ElementType() reflect.Type {
@@ -82,10 +86,12 @@ func (o DbInstanceEndpointNodeItemOutput) ToDbInstanceEndpointNodeItemOutputWith
 	return o
 }
 
+// The ID of the node.
 func (o DbInstanceEndpointNodeItemOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v DbInstanceEndpointNodeItem) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
+// The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
 func (o DbInstanceEndpointNodeItemOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v DbInstanceEndpointNodeItem) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -111,7 +117,9 @@ func (o DbInstanceEndpointNodeItemArrayOutput) Index(i pulumi.IntInput) DbInstan
 }
 
 type DdrInstanceParameter struct {
-	Name  string `pulumi:"name"`
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// The parameter value.
 	Value string `pulumi:"value"`
 }
 
@@ -127,7 +135,9 @@ type DdrInstanceParameterInput interface {
 }
 
 type DdrInstanceParameterArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The parameter value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -182,10 +192,12 @@ func (o DdrInstanceParameterOutput) ToDdrInstanceParameterOutputWithContext(ctx 
 	return o
 }
 
+// The parameter name.
 func (o DdrInstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DdrInstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The parameter value.
 func (o DdrInstanceParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v DdrInstanceParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -510,7 +522,9 @@ func (o InstanceBabelfishConfigArrayOutput) Index(i pulumi.IntInput) InstanceBab
 }
 
 type InstanceParameter struct {
-	Name  string `pulumi:"name"`
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// The parameter value.
 	Value string `pulumi:"value"`
 }
 
@@ -526,7 +540,9 @@ type InstanceParameterInput interface {
 }
 
 type InstanceParameterArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The parameter value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -581,10 +597,12 @@ func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx contex
 	return o
 }
 
+// The parameter name.
 func (o InstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The parameter value.
 func (o InstanceParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceParameter) string { return v.Value }).(pulumi.StringOutput)
 }

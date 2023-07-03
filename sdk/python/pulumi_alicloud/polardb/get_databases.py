@@ -119,11 +119,11 @@ def get_databases(db_cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:polardb/getDatabases:getDatabases', __args__, opts=opts, typ=GetDatabasesResult).value
 
     return AwaitableGetDatabasesResult(
-        databases=__ret__.databases,
-        db_cluster_id=__ret__.db_cluster_id,
-        id=__ret__.id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names)
+        databases=pulumi.get(__ret__, 'databases'),
+        db_cluster_id=pulumi.get(__ret__, 'db_cluster_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'))
 
 
 @_utilities.lift_output_func(get_databases)

@@ -106,10 +106,10 @@ def get_job_templates(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ehpc/getJobTemplates:getJobTemplates', __args__, opts=opts, typ=GetJobTemplatesResult).value
 
     return AwaitableGetJobTemplatesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        templates=__ret__.templates)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        templates=pulumi.get(__ret__, 'templates'))
 
 
 @_utilities.lift_output_func(get_job_templates)

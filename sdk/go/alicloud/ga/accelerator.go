@@ -27,30 +27,26 @@ type Accelerator struct {
 	AcceleratorName pulumi.StringPtrOutput `pulumi:"acceleratorName"`
 	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
 	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
-	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType pulumi.StringOutput `pulumi:"bandwidthBillingType"`
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntOutput `pulumi:"duration"`
-	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 	PricingCycle pulumi.StringOutput `pulumi:"pricingCycle"`
-	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
-	// The instance type of the GA instance. Specification of global acceleration instance, value:
-	// `1`: Small 1.
-	// `2`: Small 2.
-	// `3`: Small 3.
-	// `5`: Medium 1.
-	// `8`: Medium 2.
-	// `10`: Medium 3.
+	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringOutput `pulumi:"spec"`
 	// The status of the GA instance.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewAccelerator registers a new resource with the given unique name, arguments, and options.
@@ -92,30 +88,26 @@ type acceleratorState struct {
 	AcceleratorName *string `pulumi:"acceleratorName"`
 	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
-	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
-	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration *int `pulumi:"duration"`
-	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 	PricingCycle *string `pulumi:"pricingCycle"`
-	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus *string `pulumi:"renewalStatus"`
-	// The instance type of the GA instance. Specification of global acceleration instance, value:
-	// `1`: Small 1.
-	// `2`: Small 2.
-	// `3`: Small 3.
-	// `5`: Medium 1.
-	// `8`: Medium 2.
-	// `10`: Medium 3.
+	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec *string `pulumi:"spec"`
 	// The status of the GA instance.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type AcceleratorState struct {
@@ -123,30 +115,26 @@ type AcceleratorState struct {
 	AcceleratorName pulumi.StringPtrInput
 	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
 	AutoRenewDuration pulumi.IntPtrInput
-	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType pulumi.StringPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
-	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntPtrInput
-	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 	PricingCycle pulumi.StringPtrInput
-	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus pulumi.StringPtrInput
-	// The instance type of the GA instance. Specification of global acceleration instance, value:
-	// `1`: Small 1.
-	// `2`: Small 2.
-	// `3`: Small 3.
-	// `5`: Medium 1.
-	// `8`: Medium 2.
-	// `10`: Medium 3.
+	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringPtrInput
 	// The status of the GA instance.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (AcceleratorState) ElementType() reflect.Type {
@@ -158,28 +146,24 @@ type acceleratorArgs struct {
 	AcceleratorName *string `pulumi:"acceleratorName"`
 	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
-	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
-	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration int `pulumi:"duration"`
-	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 	PricingCycle *string `pulumi:"pricingCycle"`
-	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus *string `pulumi:"renewalStatus"`
-	// The instance type of the GA instance. Specification of global acceleration instance, value:
-	// `1`: Small 1.
-	// `2`: Small 2.
-	// `3`: Small 3.
-	// `5`: Medium 1.
-	// `8`: Medium 2.
-	// `10`: Medium 3.
+	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec string `pulumi:"spec"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Accelerator resource.
@@ -188,28 +172,24 @@ type AcceleratorArgs struct {
 	AcceleratorName pulumi.StringPtrInput
 	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
 	AutoRenewDuration pulumi.IntPtrInput
-	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType pulumi.StringPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
-	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntInput
-	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 	PricingCycle pulumi.StringPtrInput
-	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus pulumi.StringPtrInput
-	// The instance type of the GA instance. Specification of global acceleration instance, value:
-	// `1`: Small 1.
-	// `2`: Small 2.
-	// `3`: Small 3.
-	// `5`: Medium 1.
-	// `8`: Medium 2.
-	// `10`: Medium 3.
+	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (AcceleratorArgs) ElementType() reflect.Type {
@@ -309,7 +289,7 @@ func (o AcceleratorOutput) AutoRenewDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.IntPtrOutput { return v.AutoRenewDuration }).(pulumi.IntPtrOutput)
 }
 
-// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 func (o AcceleratorOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.BoolPtrOutput { return v.AutoUseCoupon }).(pulumi.BoolPtrOutput)
 }
@@ -324,30 +304,24 @@ func (o AcceleratorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
 // * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 // * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 func (o AcceleratorOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.IntOutput { return v.Duration }).(pulumi.IntOutput)
 }
 
-// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 func (o AcceleratorOutput) PricingCycle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.PricingCycle }).(pulumi.StringOutput)
 }
 
-// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 func (o AcceleratorOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
-// The instance type of the GA instance. Specification of global acceleration instance, value:
-// `1`: Small 1.
-// `2`: Small 2.
-// `3`: Small 3.
-// `5`: Medium 1.
-// `8`: Medium 2.
-// `10`: Medium 3.
+// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 func (o AcceleratorOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
 }
@@ -355,6 +329,11 @@ func (o AcceleratorOutput) Spec() pulumi.StringOutput {
 // The status of the GA instance.
 func (o AcceleratorOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o AcceleratorOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 type AcceleratorArrayOutput struct{ *pulumi.OutputState }

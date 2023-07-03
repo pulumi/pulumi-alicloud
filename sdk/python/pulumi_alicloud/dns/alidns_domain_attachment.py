@@ -100,7 +100,7 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         """
         Provides bind the domain name to the Alidns instance resource.
 
-        > **NOTE:** Available in v1.99.0+.
+        > **NOTE:** Available since v1.99.0.
 
         ## Example Usage
 
@@ -108,12 +108,23 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        dns = alicloud.dns.AlidnsDomainAttachment("dns",
-            domain_names=[
-                "test111.abc",
-                "test222.abc",
-            ],
-            instance_id="dns-cn-mp91lyq9xxxx")
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+            domain_name="starmove.com",
+            group_id=default_domain_group.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_alidns_instance = alicloud.dns.AlidnsInstance("defaultAlidnsInstance",
+            dns_security="basic",
+            domain_numbers="3",
+            version_code="version_personal",
+            period=1,
+            renewal_status="ManualRenewal")
+        default_alidns_domain_attachment = alicloud.dns.AlidnsDomainAttachment("defaultAlidnsDomainAttachment",
+            instance_id=default_alidns_instance.id,
+            domain_names=[default_alidns_domain.domain_name])
         ```
 
         ## Import
@@ -138,7 +149,7 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         """
         Provides bind the domain name to the Alidns instance resource.
 
-        > **NOTE:** Available in v1.99.0+.
+        > **NOTE:** Available since v1.99.0.
 
         ## Example Usage
 
@@ -146,12 +157,23 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        dns = alicloud.dns.AlidnsDomainAttachment("dns",
-            domain_names=[
-                "test111.abc",
-                "test222.abc",
-            ],
-            instance_id="dns-cn-mp91lyq9xxxx")
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+            domain_name="starmove.com",
+            group_id=default_domain_group.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_alidns_instance = alicloud.dns.AlidnsInstance("defaultAlidnsInstance",
+            dns_security="basic",
+            domain_numbers="3",
+            version_code="version_personal",
+            period=1,
+            renewal_status="ManualRenewal")
+        default_alidns_domain_attachment = alicloud.dns.AlidnsDomainAttachment("defaultAlidnsDomainAttachment",
+            instance_id=default_alidns_instance.id,
+            domain_names=[default_alidns_domain.domain_name])
         ```
 
         ## Import

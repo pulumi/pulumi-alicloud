@@ -190,9 +190,9 @@ class PrivateZone(pulumi.CustomResource):
         PrivateZone is a VPC-based resolution and management service for private domain names.
         After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
 
-        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
+        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-routeprivatezoneincentovpc).
 
-        > **NOTE:** Available in 1.83.0+
+        > **NOTE:** Available since v1.83.0.
 
         ## Example Usage
 
@@ -202,26 +202,23 @@ class PrivateZone(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a cen Private Zone resource and use it.
-        default_instance = alicloud.cen.Instance("defaultInstance")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="test_name",
-            cidr_block="172.16.0.0/12")
-        default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
-            instance_id=default_instance.id,
-            child_instance_id=default_network.id,
+        default_regions = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-hangzhou",
-            opts=pulumi.ResourceOptions(depends_on=[
-                    default_instance,
-                    default_network,
-                ]))
+            child_instance_region_id=default_regions.regions[0].id)
         default_private_zone = alicloud.cen.PrivateZone("defaultPrivateZone",
-            access_region_id="cn-hangzhou",
-            cen_id=default_instance.id,
-            host_region_id="cn-hangzhou",
-            host_vpc_id=default_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance_attachment]))
+            access_region_id=default_regions.regions[0].id,
+            cen_id=example_instance_attachment.instance_id,
+            host_region_id=default_regions.regions[0].id,
+            host_vpc_id=example_network.id)
         ```
 
         ## Import
@@ -252,9 +249,9 @@ class PrivateZone(pulumi.CustomResource):
         PrivateZone is a VPC-based resolution and management service for private domain names.
         After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
 
-        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
+        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-routeprivatezoneincentovpc).
 
-        > **NOTE:** Available in 1.83.0+
+        > **NOTE:** Available since v1.83.0.
 
         ## Example Usage
 
@@ -264,26 +261,23 @@ class PrivateZone(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a cen Private Zone resource and use it.
-        default_instance = alicloud.cen.Instance("defaultInstance")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="test_name",
-            cidr_block="172.16.0.0/12")
-        default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
-            instance_id=default_instance.id,
-            child_instance_id=default_network.id,
+        default_regions = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-hangzhou",
-            opts=pulumi.ResourceOptions(depends_on=[
-                    default_instance,
-                    default_network,
-                ]))
+            child_instance_region_id=default_regions.regions[0].id)
         default_private_zone = alicloud.cen.PrivateZone("defaultPrivateZone",
-            access_region_id="cn-hangzhou",
-            cen_id=default_instance.id,
-            host_region_id="cn-hangzhou",
-            host_vpc_id=default_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance_attachment]))
+            access_region_id=default_regions.regions[0].id,
+            cen_id=example_instance_attachment.instance_id,
+            host_region_id=default_regions.regions[0].id,
+            host_vpc_id=example_network.id)
         ```
 
         ## Import

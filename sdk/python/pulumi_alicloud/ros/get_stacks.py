@@ -197,18 +197,18 @@ def get_stacks(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ros/getStacks:getStacks', __args__, opts=opts, typ=GetStacksResult).value
 
     return AwaitableGetStacksResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        parent_stack_id=__ret__.parent_stack_id,
-        show_nested_stack=__ret__.show_nested_stack,
-        stack_name=__ret__.stack_name,
-        stacks=__ret__.stacks,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        parent_stack_id=pulumi.get(__ret__, 'parent_stack_id'),
+        show_nested_stack=pulumi.get(__ret__, 'show_nested_stack'),
+        stack_name=pulumi.get(__ret__, 'stack_name'),
+        stacks=pulumi.get(__ret__, 'stacks'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_stacks)

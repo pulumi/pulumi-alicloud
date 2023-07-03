@@ -13,9 +13,9 @@ import (
 // Provides a ALB Server Group resource.
 //
 // For information about ALB Server Group and how to use it,
-// see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
+// see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createservergroup).
 //
-// > **NOTE:** Available in v1.131.0+.
+// > **NOTE:** Available since v1.131.0.
 //
 // ## Example Usage
 //
@@ -26,137 +26,133 @@ import (
 //
 // import (
 //
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "example_value";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
-// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
-// CpuCoreCount: pulumi.IntRef(1),
-// MemorySize: pulumi.Float64Ref(2),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
-// MostRecent: pulumi.BoolRef(true),
-// Owners: pulumi.StringRef("system"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// VpcName: pulumi.String(name),
-// CidrBlock: pulumi.String("172.16.0.0/16"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID(),
-// CidrBlock: pulumi.String("172.16.0.0/16"),
-// ZoneId: *pulumi.String(defaultZones.Zones[0].Id),
-// VswitchName: pulumi.String(name),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// VpcId: defaultNetwork.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// var splat0 pulumi.StringArray
-// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
-// splat0 = append(splat0, val0.ID())
-// }
-// defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-// ImageId: *pulumi.String(defaultImages.Images[0].Id),
-// InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-// InstanceName: pulumi.String(name),
-// SecurityGroups: splat0,
-// InternetChargeType: pulumi.String("PayByTraffic"),
-// InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
-// InstanceChargeType: pulumi.String("PostPaid"),
-// SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: defaultSwitch.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil);
-// if err != nil {
-// return err
-// }
-// _, err = alb.NewServerGroup(ctx, "defaultServerGroup", &alb.ServerGroupArgs{
-// Protocol: pulumi.String("HTTP"),
-// VpcId: defaultNetwork.ID(),
-// ServerGroupName: pulumi.String(name),
-// ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
-// HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
-// HealthCheckConnectPort: pulumi.Int(46325),
-// HealthCheckEnabled: pulumi.Bool(true),
-// HealthCheckHost: pulumi.String("tf-testAcc.com"),
-// HealthCheckCodes: pulumi.StringArray{
-// pulumi.String("http_2xx"),
-// pulumi.String("http_3xx"),
-// pulumi.String("http_4xx"),
-// },
-// HealthCheckHttpVersion: pulumi.String("HTTP1.1"),
-// HealthCheckInterval: pulumi.Int(2),
-// HealthCheckMethod: pulumi.String("HEAD"),
-// HealthCheckPath: pulumi.String("/tf-testAcc"),
-// HealthCheckProtocol: pulumi.String("HTTP"),
-// HealthCheckTimeout: pulumi.Int(5),
-// HealthyThreshold: pulumi.Int(3),
-// UnhealthyThreshold: pulumi.Int(3),
-// },
-// StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
-// StickySessionEnabled: pulumi.Bool(true),
-// Cookie: pulumi.String("tf-testAcc"),
-// StickySessionType: pulumi.String("Server"),
-// },
-// Tags: pulumi.AnyMap{
-// "Created": pulumi.Any("TF"),
-// },
-// Servers: alb.ServerGroupServerArray{
-// &alb.ServerGroupServerArgs{
-// Description: pulumi.String(name),
-// Port: pulumi.Int(80),
-// ServerId: defaultInstance.ID(),
-// ServerIp: defaultInstance.PrivateIp,
-// ServerType: pulumi.String("Ecs"),
-// Weight: pulumi.Int(10),
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(exampleZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/16"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String(name),
+//				VpcId:       exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: *pulumi.String(exampleZones.Zones[0].Id),
+//				InstanceName:     pulumi.String(name),
+//				ImageId:          *pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
+//				SecurityGroups: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
+//				},
+//				VswitchId: exampleSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alb.NewServerGroup(ctx, "exampleServerGroup", &alb.ServerGroupArgs{
+//				Protocol:        pulumi.String("HTTP"),
+//				VpcId:           exampleNetwork.ID(),
+//				ServerGroupName: pulumi.String(name),
+//				ResourceGroupId: *pulumi.String(exampleResourceGroups.Groups[0].Id),
+//				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
+//					HealthCheckConnectPort: pulumi.Int(46325),
+//					HealthCheckEnabled:     pulumi.Bool(true),
+//					HealthCheckHost:        pulumi.String("tf-example.com"),
+//					HealthCheckCodes: pulumi.StringArray{
+//						pulumi.String("http_2xx"),
+//						pulumi.String("http_3xx"),
+//						pulumi.String("http_4xx"),
+//					},
+//					HealthCheckHttpVersion: pulumi.String("HTTP1.1"),
+//					HealthCheckInterval:    pulumi.Int(2),
+//					HealthCheckMethod:      pulumi.String("HEAD"),
+//					HealthCheckPath:        pulumi.String("/tf-example"),
+//					HealthCheckProtocol:    pulumi.String("HTTP"),
+//					HealthCheckTimeout:     pulumi.Int(5),
+//					HealthyThreshold:       pulumi.Int(3),
+//					UnhealthyThreshold:     pulumi.Int(3),
+//				},
+//				StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
+//					StickySessionEnabled: pulumi.Bool(true),
+//					Cookie:               pulumi.String("tf-example"),
+//					StickySessionType:    pulumi.String("Server"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//				},
+//				Servers: alb.ServerGroupServerArray{
+//					&alb.ServerGroupServerArgs{
+//						Description: pulumi.String(name),
+//						Port:        pulumi.Int(80),
+//						ServerId:    exampleInstance.ID(),
+//						ServerIp:    exampleInstance.PrivateIp,
+//						ServerType:  pulumi.String("Ecs"),
+//						Weight:      pulumi.Int(10),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -173,7 +169,7 @@ type ServerGroup struct {
 
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The configuration of health checks.
+	// The configuration of health checks. See `healthCheckConfig` below for details.
 	HealthCheckConfig ServerGroupHealthCheckConfigPtrOutput `pulumi:"healthCheckConfig"`
 	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
@@ -185,11 +181,11 @@ type ServerGroup struct {
 	ServerGroupName pulumi.StringPtrOutput `pulumi:"serverGroupName"`
 	// The type of the server group. Valid values:
 	ServerGroupType pulumi.StringOutput `pulumi:"serverGroupType"`
-	// The backend server.
+	// The backend server. See `servers` below for details.
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
-	// The status of the resource.
+	// The status of the backend server. Valid values:
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The configuration of the sticky session.
+	// The configuration of the sticky session. See `stickySessionConfig` below for details.
 	StickySessionConfig ServerGroupStickySessionConfigPtrOutput `pulumi:"stickySessionConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -228,7 +224,7 @@ func GetServerGroup(ctx *pulumi.Context,
 type serverGroupState struct {
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
-	// The configuration of health checks.
+	// The configuration of health checks. See `healthCheckConfig` below for details.
 	HealthCheckConfig *ServerGroupHealthCheckConfig `pulumi:"healthCheckConfig"`
 	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
 	Protocol *string `pulumi:"protocol"`
@@ -240,11 +236,11 @@ type serverGroupState struct {
 	ServerGroupName *string `pulumi:"serverGroupName"`
 	// The type of the server group. Valid values:
 	ServerGroupType *string `pulumi:"serverGroupType"`
-	// The backend server.
+	// The backend server. See `servers` below for details.
 	Servers []ServerGroupServer `pulumi:"servers"`
-	// The status of the resource.
+	// The status of the backend server. Valid values:
 	Status *string `pulumi:"status"`
-	// The configuration of the sticky session.
+	// The configuration of the sticky session. See `stickySessionConfig` below for details.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -255,7 +251,7 @@ type serverGroupState struct {
 type ServerGroupState struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
-	// The configuration of health checks.
+	// The configuration of health checks. See `healthCheckConfig` below for details.
 	HealthCheckConfig ServerGroupHealthCheckConfigPtrInput
 	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
 	Protocol pulumi.StringPtrInput
@@ -267,11 +263,11 @@ type ServerGroupState struct {
 	ServerGroupName pulumi.StringPtrInput
 	// The type of the server group. Valid values:
 	ServerGroupType pulumi.StringPtrInput
-	// The backend server.
+	// The backend server. See `servers` below for details.
 	Servers ServerGroupServerArrayInput
-	// The status of the resource.
+	// The status of the backend server. Valid values:
 	Status pulumi.StringPtrInput
-	// The configuration of the sticky session.
+	// The configuration of the sticky session. See `stickySessionConfig` below for details.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -286,7 +282,7 @@ func (ServerGroupState) ElementType() reflect.Type {
 type serverGroupArgs struct {
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
-	// The configuration of health checks.
+	// The configuration of health checks. See `healthCheckConfig` below for details.
 	HealthCheckConfig *ServerGroupHealthCheckConfig `pulumi:"healthCheckConfig"`
 	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
 	Protocol *string `pulumi:"protocol"`
@@ -298,9 +294,9 @@ type serverGroupArgs struct {
 	ServerGroupName *string `pulumi:"serverGroupName"`
 	// The type of the server group. Valid values:
 	ServerGroupType *string `pulumi:"serverGroupType"`
-	// The backend server.
+	// The backend server. See `servers` below for details.
 	Servers []ServerGroupServer `pulumi:"servers"`
-	// The configuration of the sticky session.
+	// The configuration of the sticky session. See `stickySessionConfig` below for details.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -312,7 +308,7 @@ type serverGroupArgs struct {
 type ServerGroupArgs struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
-	// The configuration of health checks.
+	// The configuration of health checks. See `healthCheckConfig` below for details.
 	HealthCheckConfig ServerGroupHealthCheckConfigPtrInput
 	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
 	Protocol pulumi.StringPtrInput
@@ -324,9 +320,9 @@ type ServerGroupArgs struct {
 	ServerGroupName pulumi.StringPtrInput
 	// The type of the server group. Valid values:
 	ServerGroupType pulumi.StringPtrInput
-	// The backend server.
+	// The backend server. See `servers` below for details.
 	Servers ServerGroupServerArrayInput
-	// The configuration of the sticky session.
+	// The configuration of the sticky session. See `stickySessionConfig` below for details.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -426,7 +422,7 @@ func (o ServerGroupOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of health checks.
+// The configuration of health checks. See `healthCheckConfig` below for details.
 func (o ServerGroupOutput) HealthCheckConfig() ServerGroupHealthCheckConfigPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupHealthCheckConfigPtrOutput { return v.HealthCheckConfig }).(ServerGroupHealthCheckConfigPtrOutput)
 }
@@ -456,17 +452,17 @@ func (o ServerGroupOutput) ServerGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ServerGroupType }).(pulumi.StringOutput)
 }
 
-// The backend server.
+// The backend server. See `servers` below for details.
 func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupServerArrayOutput { return v.Servers }).(ServerGroupServerArrayOutput)
 }
 
-// The status of the resource.
+// The status of the backend server. Valid values:
 func (o ServerGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The configuration of the sticky session.
+// The configuration of the sticky session. See `stickySessionConfig` below for details.
 func (o ServerGroupOutput) StickySessionConfig() ServerGroupStickySessionConfigPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupStickySessionConfigPtrOutput { return v.StickySessionConfig }).(ServerGroupStickySessionConfigPtrOutput)
 }

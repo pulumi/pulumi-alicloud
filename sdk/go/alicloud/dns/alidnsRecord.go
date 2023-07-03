@@ -13,7 +13,7 @@ import (
 
 // Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).
 //
-// > **NOTE:** Available in v1.85.0+.
+// > **NOTE:** Available since v1.85.0.
 //
 // > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 //
@@ -31,13 +31,30 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewAlidnsRecord(ctx, "record", &dns.AlidnsRecordArgs{
-//				DomainName: pulumi.String("domainname"),
-//				Remark:     pulumi.String("Test new alidns record."),
-//				Rr:         pulumi.String("@"),
+//			defaultDomainGroup, err := dns.NewDomainGroup(ctx, "defaultDomainGroup", &dns.DomainGroupArgs{
+//				DomainGroupName: pulumi.String("tf-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlidnsDomain, err := dns.NewAlidnsDomain(ctx, "defaultAlidnsDomain", &dns.AlidnsDomainArgs{
+//				DomainName: pulumi.String("starmove.com"),
+//				GroupId:    defaultDomainGroup.ID(),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewAlidnsRecord(ctx, "record", &dns.AlidnsRecordArgs{
+//				DomainName: defaultAlidnsDomain.DomainName,
+//				Rr:         pulumi.String("alimail"),
+//				Type:       pulumi.String("CNAME"),
+//				Value:      pulumi.String("mail.mxhichin.com"),
+//				Remark:     pulumi.String("tf-example"),
 //				Status:     pulumi.String("ENABLE"),
-//				Type:       pulumi.String("A"),
-//				Value:      pulumi.String("192.168.99.99"),
 //			})
 //			if err != nil {
 //				return err

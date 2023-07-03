@@ -166,15 +166,15 @@ def get_system_groups(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:videosurveillance/getSystemGroups:getSystemGroups', __args__, opts=opts, typ=GetSystemGroupsResult).value
 
     return AwaitableGetSystemGroupsResult(
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        in_protocol=__ret__.in_protocol,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        in_protocol=pulumi.get(__ret__, 'in_protocol'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_system_groups)

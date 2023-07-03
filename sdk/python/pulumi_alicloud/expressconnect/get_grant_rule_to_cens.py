@@ -141,13 +141,13 @@ def get_grant_rule_to_cens(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens', __args__, opts=opts, typ=GetGrantRuleToCensResult).value
 
     return AwaitableGetGrantRuleToCensResult(
-        cens=__ret__.cens,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        cens=pulumi.get(__ret__, 'cens'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_grant_rule_to_cens)

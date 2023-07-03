@@ -196,16 +196,16 @@ def get_route_services(access_region_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getRouteServices:getRouteServices', __args__, opts=opts, typ=GetRouteServicesResult).value
 
     return AwaitableGetRouteServicesResult(
-        access_region_id=__ret__.access_region_id,
-        cen_id=__ret__.cen_id,
-        host=__ret__.host,
-        host_region_id=__ret__.host_region_id,
-        host_vpc_id=__ret__.host_vpc_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        services=__ret__.services,
-        status=__ret__.status)
+        access_region_id=pulumi.get(__ret__, 'access_region_id'),
+        cen_id=pulumi.get(__ret__, 'cen_id'),
+        host=pulumi.get(__ret__, 'host'),
+        host_region_id=pulumi.get(__ret__, 'host_region_id'),
+        host_vpc_id=pulumi.get(__ret__, 'host_vpc_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        services=pulumi.get(__ret__, 'services'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_route_services)

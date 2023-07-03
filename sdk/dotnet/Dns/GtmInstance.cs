@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// For information about Alidns Gtm Instance and how to use it, see [What is Gtm Instance](https://www.alibabacloud.com/help/en/doc-detail/204852.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.151.0+.
+    /// &gt; **NOTE:** Available since v1.151.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,16 +28,18 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var domainName = config.Get("domainName") ?? "alicloud-provider.com";
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
     ///     {
-    ///         AlarmContactGroupName = @var.Name,
+    ///         AlarmContactGroupName = "tf_example",
     ///     });
     /// 
     ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new()
     ///     {
-    ///         InstanceName = @var.Name,
+    ///         InstanceName = "tf_example",
     ///         PaymentType = "Subscription",
     ///         Period = 1,
     ///         RenewalStatus = "ManualRenewal",
@@ -52,7 +54,7 @@ namespace Pulumi.AliCloud.Dns
     ///         {
     ///             defaultAlarmContactGroup.AlarmContactGroupName,
     ///         },
-    ///         PublicUserDomainName = @var.Domain_name,
+    ///         PublicUserDomainName = domainName,
     ///         AlertConfigs = new[]
     ///         {
     ///             new AliCloud.Dns.Inputs.GtmInstanceAlertConfigArgs
@@ -80,7 +82,7 @@ namespace Pulumi.AliCloud.Dns
     public partial class GtmInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The alert notification methods. See the following `Block alert_config`.
+        /// The alert notification methods. See `alert_config` below for details.
         /// </summary>
         [Output("alertConfigs")]
         public Output<ImmutableArray<Outputs.GtmInstanceAlertConfig>> AlertConfigs { get; private set; } = null!;
@@ -249,7 +251,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.GtmInstanceAlertConfigArgs>? _alertConfigs;
 
         /// <summary>
-        /// The alert notification methods. See the following `Block alert_config`.
+        /// The alert notification methods. See `alert_config` below for details.
         /// </summary>
         public InputList<Inputs.GtmInstanceAlertConfigArgs> AlertConfigs
         {
@@ -389,7 +391,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.GtmInstanceAlertConfigGetArgs>? _alertConfigs;
 
         /// <summary>
-        /// The alert notification methods. See the following `Block alert_config`.
+        /// The alert notification methods. See `alert_config` below for details.
         /// </summary>
         public InputList<Inputs.GtmInstanceAlertConfigGetArgs> AlertConfigs
         {

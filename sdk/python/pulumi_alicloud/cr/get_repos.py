@@ -156,14 +156,14 @@ def get_repos(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cr/getRepos:getRepos', __args__, opts=opts, typ=GetReposResult).value
 
     return AwaitableGetReposResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        namespace=__ret__.namespace,
-        output_file=__ret__.output_file,
-        repos=__ret__.repos)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        namespace=pulumi.get(__ret__, 'namespace'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        repos=pulumi.get(__ret__, 'repos'))
 
 
 @_utilities.lift_output_func(get_repos)

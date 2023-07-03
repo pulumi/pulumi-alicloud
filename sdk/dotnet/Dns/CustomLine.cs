@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// For information about Alidns Custom Line and how to use it, see [What is Custom Line](https://www.alibabacloud.com/help/en/doc-detail/145059.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.151.0+.
+    /// &gt; **NOTE:** Available since v1.151.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,8 +30,8 @@ namespace Pulumi.AliCloud.Dns
     /// {
     ///     var @default = new AliCloud.Dns.CustomLine("default", new()
     ///     {
-    ///         CustomLineName = "tf-testacc",
-    ///         DomainName = "your_domain_name",
+    ///         CustomLineName = "tf-example",
+    ///         DomainName = "alicloud-provider.com",
     ///         IpSegmentLists = new[]
     ///         {
     ///             new AliCloud.Dns.Inputs.CustomLineIpSegmentListArgs
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The IP segment list. See the following `Block ip_segment_list`.
+        /// The IP segment list. See `ip_segment_list` below for details.
         /// </summary>
         [Output("ipSegmentLists")]
         public Output<ImmutableArray<Outputs.CustomLineIpSegmentList>> IpSegmentLists { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.CustomLineIpSegmentListArgs>? _ipSegmentLists;
 
         /// <summary>
-        /// The IP segment list. See the following `Block ip_segment_list`.
+        /// The IP segment list. See `ip_segment_list` below for details.
         /// </summary>
         public InputList<Inputs.CustomLineIpSegmentListArgs> IpSegmentLists
         {
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.CustomLineIpSegmentListGetArgs>? _ipSegmentLists;
 
         /// <summary>
-        /// The IP segment list. See the following `Block ip_segment_list`.
+        /// The IP segment list. See `ip_segment_list` below for details.
         /// </summary>
         public InputList<Inputs.CustomLineIpSegmentListGetArgs> IpSegmentLists
         {

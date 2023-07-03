@@ -115,11 +115,11 @@ def get_enterprise_proxies(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dms/getEnterpriseProxies:getEnterpriseProxies', __args__, opts=opts, typ=GetEnterpriseProxiesResult).value
 
     return AwaitableGetEnterpriseProxiesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        proxies=__ret__.proxies,
-        tid=__ret__.tid)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        proxies=pulumi.get(__ret__, 'proxies'),
+        tid=pulumi.get(__ret__, 'tid'))
 
 
 @_utilities.lift_output_func(get_enterprise_proxies)

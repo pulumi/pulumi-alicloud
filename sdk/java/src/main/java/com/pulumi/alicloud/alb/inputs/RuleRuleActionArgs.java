@@ -25,14 +25,14 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     public static final RuleRuleActionArgs Empty = new RuleRuleActionArgs();
 
     /**
-     * Request forwarding based on CORS. See the following `Block cors_config`.
+     * Request forwarding based on CORS. See `cors_config` below for details.
      * 
      */
     @Import(name="corsConfig")
     private @Nullable Output<RuleRuleActionCorsConfigArgs> corsConfig;
 
     /**
-     * @return Request forwarding based on CORS. See the following `Block cors_config`.
+     * @return Request forwarding based on CORS. See `cors_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleActionCorsConfigArgs>> corsConfig() {
@@ -40,14 +40,14 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The configuration of the fixed response. See the following `Block fixed_response_config`.
+     * The configuration of the fixed response. See `fixed_response_config` below for details.
      * 
      */
     @Import(name="fixedResponseConfig")
     private @Nullable Output<RuleRuleActionFixedResponseConfigArgs> fixedResponseConfig;
 
     /**
-     * @return The configuration of the fixed response. See the following `Block fixed_response_config`.
+     * @return The configuration of the fixed response. See `fixed_response_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleActionFixedResponseConfigArgs>> fixedResponseConfig() {
@@ -55,14 +55,14 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The forward response action within ALB. See the following `Block forward_group_config`.
+     * The forward response action within ALB. See `forward_group_config` below for details.
      * 
      */
     @Import(name="forwardGroupConfig")
     private @Nullable Output<RuleRuleActionForwardGroupConfigArgs> forwardGroupConfig;
 
     /**
-     * @return The forward response action within ALB. See the following `Block forward_group_config`.
+     * @return The forward response action within ALB. See `forward_group_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleActionForwardGroupConfigArgs>> forwardGroupConfig() {
@@ -70,14 +70,14 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The configuration of the inserted header field. See the following `Block insert_header_config`.
+     * The configuration of the inserted header field. See `insert_header_config` below for details.
      * 
      */
     @Import(name="insertHeaderConfig")
     private @Nullable Output<RuleRuleActionInsertHeaderConfigArgs> insertHeaderConfig;
 
     /**
-     * @return The configuration of the inserted header field. See the following `Block insert_header_config`.
+     * @return The configuration of the inserted header field. See `insert_header_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleActionInsertHeaderConfigArgs>> insertHeaderConfig() {
@@ -100,14 +100,14 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The configuration of the external redirect action. See the following `Block redirect_config`.
+     * The configuration of the external redirect action. See `redirect_config` below for details.
      * 
      */
     @Import(name="redirectConfig")
     private @Nullable Output<RuleRuleActionRedirectConfigArgs> redirectConfig;
 
     /**
-     * @return The configuration of the external redirect action. See the following `Block redirect_config`.
+     * @return The configuration of the external redirect action. See `redirect_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleActionRedirectConfigArgs>> redirectConfig() {
@@ -115,14 +115,14 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The redirect action within ALB. See the following `Block rewrite_config`.
+     * The redirect action within ALB. See `rewrite_config` below for details.
      * 
      */
     @Import(name="rewriteConfig")
     private @Nullable Output<RuleRuleActionRewriteConfigArgs> rewriteConfig;
 
     /**
-     * @return The redirect action within ALB. See the following `Block rewrite_config`.
+     * @return The redirect action within ALB. See `rewrite_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleActionRewriteConfigArgs>> rewriteConfig() {
@@ -130,14 +130,14 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Flow speed limit. See the following `Block traffic_limit_config`.
+     * The Flow speed limit. See `traffic_limit_config` below for details.
      * 
      */
     @Import(name="trafficLimitConfig")
     private @Nullable Output<RuleRuleActionTrafficLimitConfigArgs> trafficLimitConfig;
 
     /**
-     * @return The Flow speed limit. See the following `Block traffic_limit_config`.
+     * @return The Flow speed limit. See `traffic_limit_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleActionTrafficLimitConfigArgs>> trafficLimitConfig() {
@@ -145,14 +145,14 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Traffic mirroring. See the following `Block traffic_mirror_config`.
+     * The Traffic mirroring. See `traffic_mirror_config` below for details.
      * 
      */
     @Import(name="trafficMirrorConfig")
     private @Nullable Output<RuleRuleActionTrafficMirrorConfigArgs> trafficMirrorConfig;
 
     /**
-     * @return The Traffic mirroring. See the following `Block traffic_mirror_config`.
+     * @return The Traffic mirroring. See `traffic_mirror_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleActionTrafficMirrorConfigArgs>> trafficMirrorConfig() {
@@ -160,7 +160,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
      * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
      * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
      * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
@@ -170,7 +170,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     private Output<String> type;
 
     /**
-     * @return The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * @return The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
      * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
      * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
      * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
@@ -214,7 +214,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param corsConfig Request forwarding based on CORS. See the following `Block cors_config`.
+         * @param corsConfig Request forwarding based on CORS. See `cors_config` below for details.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param corsConfig Request forwarding based on CORS. See the following `Block cors_config`.
+         * @param corsConfig Request forwarding based on CORS. See `cors_config` below for details.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param fixedResponseConfig The configuration of the fixed response. See the following `Block fixed_response_config`.
+         * @param fixedResponseConfig The configuration of the fixed response. See `fixed_response_config` below for details.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param fixedResponseConfig The configuration of the fixed response. See the following `Block fixed_response_config`.
+         * @param fixedResponseConfig The configuration of the fixed response. See `fixed_response_config` below for details.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forwardGroupConfig The forward response action within ALB. See the following `Block forward_group_config`.
+         * @param forwardGroupConfig The forward response action within ALB. See `forward_group_config` below for details.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forwardGroupConfig The forward response action within ALB. See the following `Block forward_group_config`.
+         * @param forwardGroupConfig The forward response action within ALB. See `forward_group_config` below for details.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param insertHeaderConfig The configuration of the inserted header field. See the following `Block insert_header_config`.
+         * @param insertHeaderConfig The configuration of the inserted header field. See `insert_header_config` below for details.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param insertHeaderConfig The configuration of the inserted header field. See the following `Block insert_header_config`.
+         * @param insertHeaderConfig The configuration of the inserted header field. See `insert_header_config` below for details.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param redirectConfig The configuration of the external redirect action. See the following `Block redirect_config`.
+         * @param redirectConfig The configuration of the external redirect action. See `redirect_config` below for details.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param redirectConfig The configuration of the external redirect action. See the following `Block redirect_config`.
+         * @param redirectConfig The configuration of the external redirect action. See `redirect_config` below for details.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rewriteConfig The redirect action within ALB. See the following `Block rewrite_config`.
+         * @param rewriteConfig The redirect action within ALB. See `rewrite_config` below for details.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rewriteConfig The redirect action within ALB. See the following `Block rewrite_config`.
+         * @param rewriteConfig The redirect action within ALB. See `rewrite_config` below for details.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param trafficLimitConfig The Flow speed limit. See the following `Block traffic_limit_config`.
+         * @param trafficLimitConfig The Flow speed limit. See `traffic_limit_config` below for details.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param trafficLimitConfig The Flow speed limit. See the following `Block traffic_limit_config`.
+         * @param trafficLimitConfig The Flow speed limit. See `traffic_limit_config` below for details.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param trafficMirrorConfig The Traffic mirroring. See the following `Block traffic_mirror_config`.
+         * @param trafficMirrorConfig The Traffic mirroring. See `traffic_mirror_config` below for details.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param trafficMirrorConfig The Traffic mirroring. See the following `Block traffic_mirror_config`.
+         * @param trafficMirrorConfig The Traffic mirroring. See `traffic_mirror_config` below for details.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+         * @param type The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
          * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
          * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
          * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
@@ -417,7 +417,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+         * @param type The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
          * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
          * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
          * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.

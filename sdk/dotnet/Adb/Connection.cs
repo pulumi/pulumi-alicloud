@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Adb
     /// &gt; **NOTE:** Each ADB instance will allocate a intranet connnection string automatically and its prifix is ADB instance ID.
     ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.81.0+.
+    /// &gt; **NOTE:** Available since v1.81.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,43 +28,57 @@ namespace Pulumi.AliCloud.Adb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "ADB";
-    ///     var name = config.Get("name") ?? "adbaccountmysql";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.Adb.GetZones.Invoke();
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Status = "OK",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
     ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
+    ///         CidrBlock = "10.4.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var cluster = new AliCloud.Adb.Cluster("cluster", new()
+    ///     var defaultDBCluster = new AliCloud.Adb.DBCluster("defaultDBCluster", new()
     ///     {
-    ///         DbClusterVersion = "3.0",
     ///         DbClusterCategory = "Cluster",
     ///         DbNodeClass = "C8",
-    ///         DbNodeCount = 2,
-    ///         DbNodeStorage = 200,
-    ///         PayType = "PostPaid",
+    ///         DbNodeCount = 4,
+    ///         DbNodeStorage = 400,
+    ///         Mode = "reserver",
+    ///         DbClusterVersion = "3.0",
+    ///         PaymentType = "PayAsYouGo",
     ///         VswitchId = defaultSwitch.Id,
     ///         Description = name,
+    ///         MaintainTime = "23:00Z-00:00Z",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.168.1.12",
+    ///             "10.168.1.11",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
     ///     });
     /// 
-    ///     var connection = new AliCloud.Adb.Connection("connection", new()
+    ///     var defaultConnection = new AliCloud.Adb.Connection("defaultConnection", new()
     ///     {
-    ///         DbClusterId = cluster.Id,
-    ///         ConnectionPrefix = "testabc",
+    ///         DbClusterId = defaultDBCluster.Id,
+    ///         ConnectionPrefix = "example",
     ///     });
     /// 
     /// });

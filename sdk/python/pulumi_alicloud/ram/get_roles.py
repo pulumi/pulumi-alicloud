@@ -156,14 +156,14 @@ def get_roles(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ram/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult).value
 
     return AwaitableGetRolesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        policy_name=__ret__.policy_name,
-        policy_type=__ret__.policy_type,
-        roles=__ret__.roles)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policy_name=pulumi.get(__ret__, 'policy_name'),
+        policy_type=pulumi.get(__ret__, 'policy_type'),
+        roles=pulumi.get(__ret__, 'roles'))
 
 
 @_utilities.lift_output_func(get_roles)

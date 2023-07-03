@@ -177,16 +177,16 @@ def get_web_lock_configs(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs', __args__, opts=opts, typ=GetWebLockConfigsResult).value
 
     return AwaitableGetWebLockConfigsResult(
-        configs=__ret__.configs,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lang=__ret__.lang,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        remark=__ret__.remark,
-        source_ip=__ret__.source_ip,
-        status=__ret__.status)
+        configs=pulumi.get(__ret__, 'configs'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lang=pulumi.get(__ret__, 'lang'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        remark=pulumi.get(__ret__, 'remark'),
+        source_ip=pulumi.get(__ret__, 'source_ip'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_web_lock_configs)

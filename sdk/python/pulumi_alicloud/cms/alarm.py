@@ -172,6 +172,9 @@ class AlarmArgs:
         """
         Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         """
+        warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
+        pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
+
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -208,6 +211,9 @@ class AlarmArgs:
         """
         It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         """
+        warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
+        pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+
         return pulumi.get(self, "end_time")
 
     @end_time.setter
@@ -280,6 +286,9 @@ class AlarmArgs:
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         """
+        warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
+        pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
+
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -328,6 +337,9 @@ class AlarmArgs:
         """
         It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         """
+        warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
+        pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -340,6 +352,9 @@ class AlarmArgs:
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         """
+        warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
+        pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
+
         return pulumi.get(self, "statistics")
 
     @statistics.setter
@@ -366,6 +381,9 @@ class AlarmArgs:
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         """
+        warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
+        pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
+
         return pulumi.get(self, "threshold")
 
     @threshold.setter
@@ -378,6 +396,9 @@ class AlarmArgs:
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         """
+        warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
+        pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
+
         return pulumi.get(self, "triggered_count")
 
     @triggered_count.setter
@@ -538,6 +559,9 @@ class _AlarmState:
         """
         Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         """
+        warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
+        pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
+
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -574,6 +598,9 @@ class _AlarmState:
         """
         It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         """
+        warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
+        pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+
         return pulumi.get(self, "end_time")
 
     @end_time.setter
@@ -658,6 +685,9 @@ class _AlarmState:
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         """
+        warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
+        pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
+
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -719,6 +749,9 @@ class _AlarmState:
         """
         It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         """
+        warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
+        pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -731,6 +764,9 @@ class _AlarmState:
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         """
+        warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
+        pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
+
         return pulumi.get(self, "statistics")
 
     @statistics.setter
@@ -769,6 +805,9 @@ class _AlarmState:
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         """
+        warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
+        pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
+
         return pulumi.get(self, "threshold")
 
     @threshold.setter
@@ -781,6 +820,9 @@ class _AlarmState:
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         """
+        warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
+        pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
+
         return pulumi.get(self, "triggered_count")
 
     @triggered_count.setter
@@ -1138,6 +1180,9 @@ class Alarm(pulumi.CustomResource):
         """
         Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         """
+        warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
+        pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
+
         return pulumi.get(self, "dimensions")
 
     @property
@@ -1162,6 +1207,9 @@ class Alarm(pulumi.CustomResource):
         """
         It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         """
+        warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
+        pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+
         return pulumi.get(self, "end_time")
 
     @property
@@ -1218,6 +1266,9 @@ class Alarm(pulumi.CustomResource):
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         """
+        warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
+        pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
+
         return pulumi.get(self, "operator")
 
     @property
@@ -1259,6 +1310,9 @@ class Alarm(pulumi.CustomResource):
         """
         It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         """
+        warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
+        pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+
         return pulumi.get(self, "start_time")
 
     @property
@@ -1267,6 +1321,9 @@ class Alarm(pulumi.CustomResource):
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         """
+        warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
+        pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
+
         return pulumi.get(self, "statistics")
 
     @property
@@ -1293,6 +1350,9 @@ class Alarm(pulumi.CustomResource):
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         """
+        warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
+        pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
+
         return pulumi.get(self, "threshold")
 
     @property
@@ -1301,6 +1361,9 @@ class Alarm(pulumi.CustomResource):
         """
         It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         """
+        warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
+        pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
+
         return pulumi.get(self, "triggered_count")
 
     @property

@@ -162,15 +162,15 @@ def get_alert_contacts(alert_contact_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:arms/getAlertContacts:getAlertContacts', __args__, opts=opts, typ=GetAlertContactsResult).value
 
     return AwaitableGetAlertContactsResult(
-        alert_contact_name=__ret__.alert_contact_name,
-        contacts=__ret__.contacts,
-        email=__ret__.email,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        phone_num=__ret__.phone_num)
+        alert_contact_name=pulumi.get(__ret__, 'alert_contact_name'),
+        contacts=pulumi.get(__ret__, 'contacts'),
+        email=pulumi.get(__ret__, 'email'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        phone_num=pulumi.get(__ret__, 'phone_num'))
 
 
 @_utilities.lift_output_func(get_alert_contacts)

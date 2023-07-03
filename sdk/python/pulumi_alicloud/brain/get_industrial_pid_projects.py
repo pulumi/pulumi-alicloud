@@ -149,14 +149,14 @@ def get_industrial_pid_projects(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects', __args__, opts=opts, typ=GetIndustrialPidProjectsResult).value
 
     return AwaitableGetIndustrialPidProjectsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        pid_organization_id=__ret__.pid_organization_id,
-        pid_project_name=__ret__.pid_project_name,
-        projects=__ret__.projects)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pid_organization_id=pulumi.get(__ret__, 'pid_organization_id'),
+        pid_project_name=pulumi.get(__ret__, 'pid_project_name'),
+        projects=pulumi.get(__ret__, 'projects'))
 
 
 @_utilities.lift_output_func(get_industrial_pid_projects)

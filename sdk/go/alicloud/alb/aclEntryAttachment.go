@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **NOTE:** Available in v1.166.0+.
+// > **NOTE:** Available since v1.166.0.
 //
 // For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addentriestoacl).
 //
@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraformalbaclconfig"
+//			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}

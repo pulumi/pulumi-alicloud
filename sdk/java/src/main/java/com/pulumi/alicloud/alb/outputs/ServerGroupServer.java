@@ -52,7 +52,7 @@ public final class ServerGroupServer {
      */
     private String serverType;
     /**
-     * @return The status of the resource.
+     * @return The status of the backend server. Valid values:
      * 
      */
     private @Nullable String status;
@@ -115,7 +115,7 @@ public final class ServerGroupServer {
         return this.serverType;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the backend server. Valid values:
      * 
      */
     public Optional<String> status() {

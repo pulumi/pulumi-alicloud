@@ -18,9 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://help.aliyun.com/document_detail/261169.html)
+ * Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouter)
  * 
- * &gt; **NOTE:** Available in 1.126.0+
+ * &gt; **NOTE:** Available since v1.126.0.
  * 
  * ## Example Usage
  * 
@@ -48,16 +48,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenTransitRouter&#34;);
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(name)
- *             .description(&#34;terraform01&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .transitRouterName(name)
- *             .cenId(defaultInstance.id())
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(&#34;tf_example&#34;)
+ *             .cenId(exampleInstance.id())
  *             .build());
  * 
  *     }

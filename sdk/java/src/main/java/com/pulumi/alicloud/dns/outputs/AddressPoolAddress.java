@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AddressPoolAddress {
     /**
-     * @return The address lists of the Address Pool. See the following `Block address`.
+     * @return The address that you want to add to the address pool.
      * 
      */
     private String address;
@@ -40,7 +40,7 @@ public final class AddressPoolAddress {
 
     private AddressPoolAddress() {}
     /**
-     * @return The address lists of the Address Pool. See the following `Block address`.
+     * @return The address that you want to add to the address pool.
      * 
      */
     public String address() {

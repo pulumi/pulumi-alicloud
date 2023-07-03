@@ -1070,7 +1070,7 @@ export namespace alb {
          */
         entry: string;
         /**
-         * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         * The status of the ACL entry. Valid values:
          */
         status: string;
     }
@@ -2168,7 +2168,7 @@ export namespace alb {
 
     export interface ListenerAclConfig {
         /**
-         * The ACLs that are associated with the listener.
+         * The ACLs that are associated with the listener. See `aclRelations` below for details.
          */
         aclRelations?: outputs.alb.ListenerAclConfigAclRelation[];
         /**
@@ -2197,7 +2197,7 @@ export namespace alb {
 
     export interface ListenerDefaultAction {
         /**
-         * The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+         * The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forwardGroupConfig` below for details.
          */
         forwardGroupConfig: outputs.alb.ListenerDefaultActionForwardGroupConfig;
         /**
@@ -2208,7 +2208,7 @@ export namespace alb {
 
     export interface ListenerDefaultActionForwardGroupConfig {
         /**
-         * The destination server group to which requests are forwarded.
+         * The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
          */
         serverGroupTuples: outputs.alb.ListenerDefaultActionForwardGroupConfigServerGroupTuple[];
     }
@@ -2330,19 +2330,19 @@ export namespace alb {
 
     export interface RuleRuleAction {
         /**
-         * Request forwarding based on CORS. See the following `Block corsConfig`.
+         * Request forwarding based on CORS. See `corsConfig` below for details.
          */
         corsConfig?: outputs.alb.RuleRuleActionCorsConfig;
         /**
-         * The configuration of the fixed response. See the following `Block fixedResponseConfig`.
+         * The configuration of the fixed response. See `fixedResponseConfig` below for details.
          */
         fixedResponseConfig?: outputs.alb.RuleRuleActionFixedResponseConfig;
         /**
-         * The forward response action within ALB. See the following `Block forwardGroupConfig`.
+         * The forward response action within ALB. See `forwardGroupConfig` below for details.
          */
         forwardGroupConfig: outputs.alb.RuleRuleActionForwardGroupConfig;
         /**
-         * The configuration of the inserted header field. See the following `Block insertHeaderConfig`.
+         * The configuration of the inserted header field. See `insertHeaderConfig` below for details.
          */
         insertHeaderConfig?: outputs.alb.RuleRuleActionInsertHeaderConfig;
         /**
@@ -2350,23 +2350,23 @@ export namespace alb {
          */
         order: number;
         /**
-         * The configuration of the external redirect action. See the following `Block redirectConfig`.
+         * The configuration of the external redirect action. See `redirectConfig` below for details.
          */
         redirectConfig?: outputs.alb.RuleRuleActionRedirectConfig;
         /**
-         * The redirect action within ALB. See the following `Block rewriteConfig`.
+         * The redirect action within ALB. See `rewriteConfig` below for details.
          */
         rewriteConfig?: outputs.alb.RuleRuleActionRewriteConfig;
         /**
-         * The Flow speed limit. See the following `Block trafficLimitConfig`.
+         * The Flow speed limit. See `trafficLimitConfig` below for details.
          */
         trafficLimitConfig?: outputs.alb.RuleRuleActionTrafficLimitConfig;
         /**
-         * The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+         * The Traffic mirroring. See `trafficMirrorConfig` below for details.
          */
         trafficMirrorConfig?: outputs.alb.RuleRuleActionTrafficMirrorConfig;
         /**
-         * The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
          * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
          * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
          * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
@@ -2418,11 +2418,11 @@ export namespace alb {
 
     export interface RuleRuleActionForwardGroupConfig {
         /**
-         * The configuration of session persistence for server groups.
+         * The configuration of session persistence for server groups. See `serverGroupStickySession` below for details.
          */
         serverGroupStickySession: outputs.alb.RuleRuleActionForwardGroupConfigServerGroupStickySession;
         /**
-         * The destination server group to which requests are forwarded.
+         * The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
          */
         serverGroupTuples: outputs.alb.RuleRuleActionForwardGroupConfigServerGroupTuple[];
     }
@@ -2455,7 +2455,7 @@ export namespace alb {
          */
         key?: string;
         /**
-         * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+         * The value of the values list.
          */
         value?: string;
         /**
@@ -2515,7 +2515,7 @@ export namespace alb {
 
     export interface RuleRuleActionTrafficMirrorConfig {
         /**
-         * The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+         * The Traffic is mirrored to the server group. See `mirrorGroupConfig` below for details.
          */
         mirrorGroupConfig?: outputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig;
         /**
@@ -2526,7 +2526,7 @@ export namespace alb {
 
     export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
         /**
-         * The destination server group to which requests are forwarded.
+         * The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
          */
         serverGroupTuples?: outputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple[];
     }
@@ -2540,38 +2540,35 @@ export namespace alb {
 
     export interface RuleRuleCondition {
         /**
-         * The configuration of the cookie. See the following `Block cookieConfig`.
+         * The configuration of the cookie. See See `cookieConfig` below for details.
          */
         cookieConfig?: outputs.alb.RuleRuleConditionCookieConfig;
         /**
-         * The configuration of the header field. See the following `Block headerConfig`.
+         * The configuration of the header field. See `headerConfig` below for details.
          */
         headerConfig?: outputs.alb.RuleRuleConditionHeaderConfig;
         /**
-         * The configuration of the host field. See the following `Block hostConfig`.
+         * The configuration of the host field. See `hostConfig` below for details.
          */
         hostConfig?: outputs.alb.RuleRuleConditionHostConfig;
         /**
-         * The configuration of the request method. See the following `Block methodConfig`.
+         * The configuration of the request method. See `methodConfig` below for details.
          */
         methodConfig?: outputs.alb.RuleRuleConditionMethodConfig;
         /**
-         * The configuration of the path for the request to be forwarded. See the following `Block pathConfig`.
+         * The configuration of the path for the request to be forwarded. See `pathConfig` below for details.
          */
         pathConfig?: outputs.alb.RuleRuleConditionPathConfig;
         /**
-         * The configuration of the query string. See the following `Block queryStringConfig`.
+         * The configuration of the query string. See `queryStringConfig` below for details.
          */
         queryStringConfig?: outputs.alb.RuleRuleConditionQueryStringConfig;
         /**
-         * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+         * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below for details.
          */
         sourceIpConfig?: outputs.alb.RuleRuleConditionSourceIpConfig;
         /**
          * The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-         * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-         * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-         * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
          */
         type: string;
     }
@@ -2589,7 +2586,7 @@ export namespace alb {
          */
         key?: string;
         /**
-         * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+         * The value of the values list.
          */
         value?: string;
     }
@@ -2639,7 +2636,7 @@ export namespace alb {
          */
         key?: string;
         /**
-         * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+         * The value of the values list.
          */
         value?: string;
     }
@@ -2653,19 +2650,16 @@ export namespace alb {
 
     export interface ServerGroupHealthCheckConfig {
         /**
-         * The status code for a successful health check. Multiple status codes can be specified as a
-         * list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+         * The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
          * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckCodes: string[];
         /**
-         * The port of the backend server that is used for health checks. Valid values: `0`
-         * to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+         * The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
          */
         healthCheckConnectPort: number;
         /**
-         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-         * value: `true`.
+         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
          */
         healthCheckEnabled?: boolean;
         /**
@@ -2673,23 +2667,19 @@ export namespace alb {
          */
         healthCheckHost: string;
         /**
-         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-         * . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckHttpVersion: string;
         /**
-         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-         * to `50`. Default value: `2`.
+         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
          */
         healthCheckInterval: number;
         /**
-         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-         * exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckMethod: string;
         /**
-         * The forwarding rule path of health checks. **NOTE:** This parameter exists if
-         * the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          */
         healthCheckPath: string;
         /**
@@ -2697,23 +2687,15 @@ export namespace alb {
          */
         healthCheckProtocol: string;
         /**
-         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-         * instance does not send an expected response within the specified period of time, the ECS instance is considered
-         * unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-         * parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-         * is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
          */
         healthCheckTimeout: number;
         /**
-         * The number of health checks that an unhealthy backend server must pass consecutively before it
-         * is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-         * Default value: 3.
+         * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
          */
         healthyThreshold: number;
         /**
-         * The number of consecutive health checks that a healthy backend server must consecutively fail
-         * before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-         * values: `2` to `10`. Default value: `3`.
+         * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
          */
         unhealthyThreshold: number;
     }
@@ -2752,7 +2734,7 @@ export namespace alb {
          */
         serverType: string;
         /**
-         * The status of the resource.
+         * The status of the backend server. Valid values:
          */
         status: string;
         /**
@@ -10856,6 +10838,7 @@ export namespace compute {
 
 export namespace config {
     export interface AssumeRole {
+        externalId?: string;
         policy?: string;
         roleArn: string;
         sessionExpiration?: number;
@@ -15459,11 +15442,11 @@ export namespace dms {
 export namespace dns {
     export interface AccessStrategyDefaultAddrPool {
         /**
-         * The ID of the address pool in the secondary address pool group.
+         * The ID of the address pool in the primary address pool group.
          */
         addrPoolId: string;
         /**
-         * The weight of the address pool in the secondary address pool group.
+         * The weight of the address pool in the primary address pool group.
          */
         lbaWeight?: number;
     }
@@ -15488,7 +15471,7 @@ export namespace dns {
 
     export interface AddressPoolAddress {
         /**
-         * The address lists of the Address Pool. See the following `Block address`.
+         * The address that you want to add to the address pool.
          */
         address: string;
         /**
@@ -21824,7 +21807,7 @@ export namespace edas {
          */
         name: string;
         /**
-         * The port configuration for SLB instance, which is supported for multiple configurations.
+         * The port configuration for SLB instance, which is supported for multiple configurations. See `portMappings` below.
          */
         portMappings: outputs.edas.K8sSlbAttachmentSlbConfigPortMapping[];
         /**
@@ -21855,7 +21838,7 @@ export namespace edas {
          */
         loadbalancerProtocol: string;
         /**
-         * The backend k8s service configuration for SLB instance, which is supported for multiple configurations.
+         * The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `servicePort` below.
          */
         servicePort: outputs.edas.K8sSlbAttachmentSlbConfigPortMappingServicePort;
     }
@@ -25230,38 +25213,38 @@ export namespace ess {
         /**
          * Category of data disk.
          */
-        category?: string;
+        category: string;
         /**
          * Delete_with_instance attribute of data disk.
          */
-        deleteWithInstance?: boolean;
+        deleteWithInstance: boolean;
         /**
          * Device attribute of data disk.
          */
-        device?: string;
+        device: string;
         /**
          * The performance level of the ESSD used as data disk.
          */
-        performanceLevel?: string;
+        performanceLevel: string;
         /**
          * Size of data disk.
          */
-        size?: number;
+        size: number;
         /**
          * Size of data disk.
          */
-        snapshotId?: string;
+        snapshotId: string;
     }
 
     export interface GetScalingConfigurationsConfigurationSpotPriceLimit {
         /**
          * Resource type of an ECS instance.
          */
-        instanceType?: string;
+        instanceType: string;
         /**
          * Price limit hourly of instance type.
          */
-        priceLimit?: number;
+        priceLimit: number;
     }
 
     export interface GetScalingGroupsGroup {
@@ -26986,22 +26969,23 @@ export namespace ga {
 
     export interface EndpointGroupEndpointConfiguration {
         /**
-         * Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+         * Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
          */
         enableClientipPreservation: boolean;
+        /**
+         * Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+         */
+        enableProxyProtocol?: boolean;
         /**
          * The IP address or domain name of Endpoint N in the endpoint group.
          */
         endpoint: string;
         /**
-         * The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-         *
-         * > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+         * The type of Endpoint N in the endpoint group. Valid values:
          */
         type: string;
         /**
-         * The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-         *
+         * The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
          * > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
          */
         weight: number;
@@ -36878,7 +36862,7 @@ export namespace ram {
          */
         document: string;
         /**
-         * Id of the role.
+         * ID of the role.
          */
         id: string;
         /**
@@ -36924,7 +36908,7 @@ export namespace ram {
          */
         createDate: string;
         /**
-         * The original id is user name, but it is user id in 1.37.0+.
+         * The original id is user's name, but it is user id in 1.37.0+.
          */
         id: string;
         /**
@@ -36974,12 +36958,24 @@ export namespace rdc {
 
 export namespace rds {
     export interface DbInstanceEndpointNodeItem {
+        /**
+         * The ID of the node.
+         */
         nodeId: string;
+        /**
+         * The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+         */
         weight: number;
     }
 
     export interface DdrInstanceParameter {
+        /**
+         * The parameter name.
+         */
         name: string;
+        /**
+         * The parameter value.
+         */
         value: string;
     }
 
@@ -37786,7 +37782,13 @@ export namespace rds {
     }
 
     export interface InstanceParameter {
+        /**
+         * The parameter name.
+         */
         name: string;
+        /**
+         * The parameter value.
+         */
         value: string;
     }
 

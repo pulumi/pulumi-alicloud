@@ -14,9 +14,9 @@ import (
 // This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
 // After you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.
 //
-// For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).
+// For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-enablecenvbrhealthcheck).
 //
-// > **NOTE:** Available in 1.88.0+
+// > **NOTE:** Available since v1.88.0.
 //
 // ## Example Usage
 //
@@ -27,39 +27,80 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("test_name"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(2999),
+//				Min: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
-//				InstanceId:            defaultInstance.ID(),
-//				ChildInstanceId:       pulumi.String("vbr-xxxxx"),
+//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//				LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//				PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//				PhysicalConnectionId:    *pulumi.String(defaultPhysicalConnections.Connections[0].Id),
+//				VirtualBorderRouterName: pulumi.String(name),
+//				VlanId:                  vlanId.ID(),
+//				MinRxInterval:           pulumi.Int(1000),
+//				MinTxInterval:           pulumi.Int(1000),
+//				DetectMultiplier:        pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            exampleInstance.ID(),
+//				ChildInstanceId:       exampleVirtualBorderRouter.ID(),
 //				ChildInstanceType:     pulumi.String("VBR"),
-//				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+//				ChildInstanceRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewVbrHealthCheck(ctx, "defaultVbrHealthCheck", &cen.VbrHealthCheckArgs{
-//				CenId:               defaultInstance.ID(),
+//			_, err = cen.NewVbrHealthCheck(ctx, "exampleVbrHealthCheck", &cen.VbrHealthCheckArgs{
+//				CenId:               exampleInstance.ID(),
 //				HealthCheckSourceIp: pulumi.String("192.168.1.2"),
 //				HealthCheckTargetIp: pulumi.String("10.0.0.2"),
-//				VbrInstanceId:       pulumi.String("vbr-xxxxx"),
-//				VbrInstanceRegionId: pulumi.String("cn-hangzhou"),
+//				VbrInstanceId:       exampleVirtualBorderRouter.ID(),
+//				VbrInstanceRegionId: exampleInstanceAttachment.ChildInstanceRegionId,
 //				HealthCheckInterval: pulumi.Int(2),
 //				HealthyThreshold:    pulumi.Int(8),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultInstanceAttachment,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

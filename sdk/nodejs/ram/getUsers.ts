@@ -16,11 +16,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const usersDs = alicloud.ram.getUsers({
- *     groupName: "group1",
- *     nameRegex: "^user",
  *     outputFile: "users.txt",
+ *     groupName: "group1",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
+ *     nameRegex: "^user",
  * });
  * export const firstUserId = usersDs.then(usersDs => usersDs.users?.[0]?.id);
  * ```
@@ -84,7 +84,7 @@ export interface GetUsersResult {
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of ram user names.
+     * A list of ram user's name.
      */
     readonly names: string[];
     readonly outputFile?: string;
@@ -105,11 +105,11 @@ export interface GetUsersResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const usersDs = alicloud.ram.getUsers({
- *     groupName: "group1",
- *     nameRegex: "^user",
  *     outputFile: "users.txt",
+ *     groupName: "group1",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
+ *     nameRegex: "^user",
  * });
  * export const firstUserId = usersDs.then(usersDs => usersDs.users?.[0]?.id);
  * ```

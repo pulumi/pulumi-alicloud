@@ -142,13 +142,13 @@ def get_vbr_pconn_associations(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations', __args__, opts=opts, typ=GetVbrPconnAssociationsResult).value
 
     return AwaitableGetVbrPconnAssociationsResult(
-        associations=__ret__.associations,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        vbr_id=__ret__.vbr_id)
+        associations=pulumi.get(__ret__, 'associations'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        vbr_id=pulumi.get(__ret__, 'vbr_id'))
 
 
 @_utilities.lift_output_func(get_vbr_pconn_associations)

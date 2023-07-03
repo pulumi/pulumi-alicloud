@@ -13,9 +13,9 @@ import (
 
 // Provides a ALB Security Policy resource.
 //
-// For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/doc-detail/213607.htm).
+// For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createsecuritypolicy).
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -28,25 +28,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "testAccSecurityPolicy"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
 //			_, err := alb.NewSecurityPolicy(ctx, "default", &alb.SecurityPolicyArgs{
-//				SecurityPolicyName: pulumi.String(name),
-//				TlsVersions: pulumi.StringArray{
-//					pulumi.String("TLSv1.0"),
-//				},
 //				Ciphers: pulumi.StringArray{
 //					pulumi.String("ECDHE-ECDSA-AES128-SHA"),
 //					pulumi.String("AES256-SHA"),
+//				},
+//				SecurityPolicyName: pulumi.String("tf_example"),
+//				TlsVersions: pulumi.StringArray{
+//					pulumi.String("TLSv1.0"),
 //				},
 //			})
 //			if err != nil {

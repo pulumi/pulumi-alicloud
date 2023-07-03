@@ -194,6 +194,9 @@ class OtsBackupPlanArgs:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
+        warnings.warn("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""", DeprecationWarning)
+        pulumi.log.warn("""schedule is deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")
+
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -397,6 +400,9 @@ class _OtsBackupPlanState:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
+        warnings.warn("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""", DeprecationWarning)
+        pulumi.log.warn("""schedule is deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")
+
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -830,6 +836,9 @@ class OtsBackupPlan(pulumi.CustomResource):
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
+        warnings.warn("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""", DeprecationWarning)
+        pulumi.log.warn("""schedule is deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")
+
         return pulumi.get(self, "schedule")
 
     @property

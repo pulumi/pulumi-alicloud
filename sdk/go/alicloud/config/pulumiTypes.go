@@ -11,6 +11,7 @@ import (
 )
 
 type AssumeRole struct {
+	ExternalId        *string `pulumi:"externalId"`
 	Policy            *string `pulumi:"policy"`
 	RoleArn           string  `pulumi:"roleArn"`
 	SessionExpiration *int    `pulumi:"sessionExpiration"`
@@ -29,6 +30,7 @@ type AssumeRoleInput interface {
 }
 
 type AssumeRoleArgs struct {
+	ExternalId        pulumi.StringPtrInput `pulumi:"externalId"`
 	Policy            pulumi.StringPtrInput `pulumi:"policy"`
 	RoleArn           pulumi.StringInput    `pulumi:"roleArn"`
 	SessionExpiration pulumi.IntPtrInput    `pulumi:"sessionExpiration"`
@@ -59,6 +61,10 @@ func (o AssumeRoleOutput) ToAssumeRoleOutput() AssumeRoleOutput {
 
 func (o AssumeRoleOutput) ToAssumeRoleOutputWithContext(ctx context.Context) AssumeRoleOutput {
 	return o
+}
+
+func (o AssumeRoleOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssumeRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
 func (o AssumeRoleOutput) Policy() pulumi.StringPtrOutput {

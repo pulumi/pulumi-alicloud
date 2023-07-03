@@ -38,7 +38,25 @@ import (
 //				return err
 //			}
 //			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				Document:    pulumi.String("  {\n    \"Statement\": [\n      {\n        \"Action\": [\n          \"oss:ListObjects\",\n          \"oss:GetObject\"\n        ],\n        \"Effect\": \"Allow\",\n        \"Resource\": [\n          \"acs:oss:*:*:mybucket\",\n          \"acs:oss:*:*:mybucket/*\"\n        ]\n      }\n    ],\n      \"Version\": \"1\"\n  }\n"),
+//				Document: pulumi.String(`  {
+//	    "Statement": [
+//	      {
+//	        "Action": [
+//	          "oss:ListObjects",
+//	          "oss:GetObject"
+//	        ],
+//	        "Effect": "Allow",
+//	        "Resource": [
+//	          "acs:oss:*:*:mybucket",
+//	          "acs:oss:*:*:mybucket/*"
+//	        ]
+//	      }
+//	    ],
+//	      "Version": "1"
+//	  }
+//
+// `),
+//
 //				Description: pulumi.String("this is a policy test"),
 //				Force:       pulumi.Bool(true),
 //			})

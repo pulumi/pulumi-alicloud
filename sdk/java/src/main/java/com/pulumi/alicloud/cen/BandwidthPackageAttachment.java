@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
  * 
+ * &gt; **NOTE:** Available since v1.18.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -44,20 +46,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
- *             .description(&#34;tf-testAccCenBandwidthPackageAttachmentDescription&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var bwp = new BandwidthPackage(&#34;bwp&#34;, BandwidthPackageArgs.builder()        
- *             .bandwidth(20)
- *             .geographicRegionIds(            
- *                 &#34;China&#34;,
- *                 &#34;Asia-Pacific&#34;)
+ *         var exampleBandwidthPackage = new BandwidthPackage(&#34;exampleBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(5)
+ *             .cenBandwidthPackageName(&#34;tf_example&#34;)
+ *             .geographicRegionAId(&#34;China&#34;)
+ *             .geographicRegionBId(&#34;China&#34;)
  *             .build());
  * 
- *         var foo = new BandwidthPackageAttachment(&#34;foo&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .instanceId(cen.id())
- *             .bandwidthPackageId(bwp.id())
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build());
  * 
  *     }

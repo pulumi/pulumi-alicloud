@@ -147,14 +147,14 @@ def get_cluster_credential(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getClusterCredential:getClusterCredential', __args__, opts=opts, typ=GetClusterCredentialResult).value
 
     return AwaitableGetClusterCredentialResult(
-        certificate_authority=__ret__.certificate_authority,
-        cluster_id=__ret__.cluster_id,
-        cluster_name=__ret__.cluster_name,
-        expiration=__ret__.expiration,
-        id=__ret__.id,
-        kube_config=__ret__.kube_config,
-        output_file=__ret__.output_file,
-        temporary_duration_minutes=__ret__.temporary_duration_minutes)
+        certificate_authority=pulumi.get(__ret__, 'certificate_authority'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        cluster_name=pulumi.get(__ret__, 'cluster_name'),
+        expiration=pulumi.get(__ret__, 'expiration'),
+        id=pulumi.get(__ret__, 'id'),
+        kube_config=pulumi.get(__ret__, 'kube_config'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        temporary_duration_minutes=pulumi.get(__ret__, 'temporary_duration_minutes'))
 
 
 @_utilities.lift_output_func(get_cluster_credential)

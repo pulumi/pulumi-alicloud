@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Alidns Custom Line and how to use it, see [What is Custom Line](https://www.alibabacloud.com/help/en/doc-detail/145059.html).
  *
- * > **NOTE:** Available in v1.151.0+.
+ * > **NOTE:** Available since v1.151.0.
  *
  * ## Example Usage
  *
@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.dns.CustomLine("default", {
- *     customLineName: "tf-testacc",
- *     domainName: "your_domain_name",
+ *     customLineName: "tf-example",
+ *     domainName: "alicloud-provider.com",
  *     ipSegmentLists: [{
  *         endIp: "192.0.2.125",
  *         startIp: "192.0.2.123",
@@ -76,7 +76,7 @@ export class CustomLine extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
-     * The IP segment list. See the following `Block ipSegmentList`.
+     * The IP segment list. See `ipSegmentList` below for details.
      */
     public readonly ipSegmentLists!: pulumi.Output<outputs.dns.CustomLineIpSegmentList[]>;
     /**
@@ -135,7 +135,7 @@ export interface CustomLineState {
      */
     domainName?: pulumi.Input<string>;
     /**
-     * The IP segment list. See the following `Block ipSegmentList`.
+     * The IP segment list. See `ipSegmentList` below for details.
      */
     ipSegmentLists?: pulumi.Input<pulumi.Input<inputs.dns.CustomLineIpSegmentList>[]>;
     /**
@@ -157,7 +157,7 @@ export interface CustomLineArgs {
      */
     domainName: pulumi.Input<string>;
     /**
-     * The IP segment list. See the following `Block ipSegmentList`.
+     * The IP segment list. See `ipSegmentList` below for details.
      */
     ipSegmentLists: pulumi.Input<pulumi.Input<inputs.dns.CustomLineIpSegmentList>[]>;
     /**

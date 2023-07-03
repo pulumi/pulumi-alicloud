@@ -71,6 +71,9 @@ class DhcpOptionsSetArgs:
         """
         Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         """
+        warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
+        pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
+
         return pulumi.get(self, "associate_vpcs")
 
     @associate_vpcs.setter
@@ -254,6 +257,9 @@ class _DhcpOptionsSetState:
         """
         Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         """
+        warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
+        pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
+
         return pulumi.get(self, "associate_vpcs")
 
     @associate_vpcs.setter
@@ -623,6 +629,9 @@ class DhcpOptionsSet(pulumi.CustomResource):
         """
         Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         """
+        warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
+        pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
+
         return pulumi.get(self, "associate_vpcs")
 
     @property

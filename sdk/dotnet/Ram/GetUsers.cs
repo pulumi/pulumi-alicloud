@@ -28,11 +28,11 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
-        ///         GroupName = "group1",
-        ///         NameRegex = "^user",
         ///         OutputFile = "users.txt",
+        ///         GroupName = "group1",
         ///         PolicyName = "AliyunACSDefaultAccess",
         ///         PolicyType = "Custom",
+        ///         NameRegex = "^user",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -64,11 +64,11 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
-        ///         GroupName = "group1",
-        ///         NameRegex = "^user",
         ///         OutputFile = "users.txt",
+        ///         GroupName = "group1",
         ///         PolicyName = "AliyunACSDefaultAccess",
         ///         PolicyType = "Custom",
+        ///         NameRegex = "^user",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Ram
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of ram user names.
+        /// A list of ram user's name.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

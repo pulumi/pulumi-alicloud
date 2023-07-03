@@ -130,12 +130,12 @@ def get_sasl_users(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:actiontrail/getSaslUsers:getSaslUsers', __args__, opts=opts, typ=GetSaslUsersResult).value
 
     return AwaitableGetSaslUsersResult(
-        id=__ret__.id,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        users=__ret__.users)
+        id=pulumi.get(__ret__, 'id'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_sasl_users)

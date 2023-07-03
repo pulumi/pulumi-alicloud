@@ -184,15 +184,15 @@ def get_route_maps(cen_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getRouteMaps:getRouteMaps', __args__, opts=opts, typ=GetRouteMapsResult).value
 
     return AwaitableGetRouteMapsResult(
-        cen_id=__ret__.cen_id,
-        cen_region_id=__ret__.cen_region_id,
-        description_regex=__ret__.description_regex,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        maps=__ret__.maps,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        transmit_direction=__ret__.transmit_direction)
+        cen_id=pulumi.get(__ret__, 'cen_id'),
+        cen_region_id=pulumi.get(__ret__, 'cen_region_id'),
+        description_regex=pulumi.get(__ret__, 'description_regex'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        maps=pulumi.get(__ret__, 'maps'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        transmit_direction=pulumi.get(__ret__, 'transmit_direction'))
 
 
 @_utilities.lift_output_func(get_route_maps)

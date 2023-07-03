@@ -12,11 +12,11 @@ namespace Pulumi.AliCloud.Lindorm
     /// <summary>
     /// Provides a Lindorm Instance resource.
     /// 
-    /// For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
+    /// For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/lindorm/latest/product-introduction-overview).
     /// 
     /// &gt; **NOTE:** Available since v1.132.0.
     /// 
-    /// &gt; **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+    /// &gt; **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
     /// 
     /// ## Import
     /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string?> ArchVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The cold storage capacity of the instance. Unit: GB.
+        /// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         /// </summary>
         [Output("coldStorage")]
         public Output<int> ColdStorage { get; private set; } = null!;
@@ -390,7 +390,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? ArchVersion { get; set; }
 
         /// <summary>
-        /// The cold storage capacity of the instance. Unit: GB.
+        /// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         /// </summary>
         [Input("coldStorage")]
         public Input<int>? ColdStorage { get; set; }
@@ -664,7 +664,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? ArchVersion { get; set; }
 
         /// <summary>
-        /// The cold storage capacity of the instance. Unit: GB.
+        /// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         /// </summary>
         [Input("coldStorage")]
         public Input<int>? ColdStorage { get; set; }

@@ -280,7 +280,7 @@ class AlidnsInstance(pulumi.CustomResource):
         """
         Create an Alidns Instance resource.
 
-        > **NOTE:** Available in v1.95.0+.
+        > **NOTE:** Available since v1.95.0.
 
         ## Example Usage
 
@@ -326,7 +326,7 @@ class AlidnsInstance(pulumi.CustomResource):
         """
         Create an Alidns Instance resource.
 
-        > **NOTE:** Available in v1.95.0+.
+        > **NOTE:** Available since v1.95.0.
 
         ## Example Usage
 

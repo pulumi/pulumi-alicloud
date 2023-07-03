@@ -16,7 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
  * 
- * For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
+ * For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-attachcenchildinstance).
+ * 
+ * &gt; **NOTE:** Available since v1.37.0.
  * 
  * ## Example Usage
  * 
@@ -29,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.Provider;
  * import com.pulumi.alicloud.ProviderArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -52,44 +56,54 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         var account1 = new Provider(&#34;account1&#34;, ProviderArgs.builder()        
- *             .accessKey(&#34;access123&#34;)
- *             .secretKey(&#34;secret123&#34;)
+ *         final var childAccountAk = config.get(&#34;childAccountAk&#34;).orElse(&#34;example-ak&#34;);
+ *         final var childAccountSk = config.get(&#34;childAccountSk&#34;).orElse(&#34;example-sk&#34;);
+ *         var yourAccount = new Provider(&#34;yourAccount&#34;);
+ * 
+ *         var childAccount = new Provider(&#34;childAccount&#34;, ProviderArgs.builder()        
+ *             .accessKey(childAccountAk)
+ *             .secretKey(childAccountSk)
  *             .build());
  * 
- *         var account2 = new Provider(&#34;account2&#34;, ProviderArgs.builder()        
- *             .accessKey(&#34;access456&#34;)
- *             .secretKey(&#34;secret456&#34;)
+ *         final var yourAccountAccount = AlicloudFunctions.getAccount();
+ * 
+ *         final var childAccountAccount = AlicloudFunctions.getAccount();
+ * 
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenInstanceGrantBasic&#34;);
- *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.Empty, CustomResourceOptions.builder()
- *             .provider(alicloud.account2())
- *             .build());
- * 
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.account1())
+ *                 .provider(alicloud.your_account())
  *                 .build());
  * 
- *         var fooInstanceGrant = new InstanceGrant(&#34;fooInstanceGrant&#34;, InstanceGrantArgs.builder()        
- *             .cenId(cen.id())
- *             .childInstanceId(vpc.id())
- *             .cenOwnerId(&#34;uid2&#34;)
+ *         var childAccountNetwork = new Network(&#34;childAccountNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.account1())
+ *                 .provider(alicloud.child_account())
  *                 .build());
  * 
- *         var fooInstanceAttachment = new InstanceAttachment(&#34;fooInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(cen.id())
- *             .childInstanceId(vpc.id())
+ *         var childAccountInstanceGrant = new InstanceGrant(&#34;childAccountInstanceGrant&#34;, InstanceGrantArgs.builder()        
+ *             .cenId(exampleInstance.id())
+ *             .childInstanceId(childAccountNetwork.id())
+ *             .cenOwnerId(yourAccountAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.child_account())
+ *                 .build());
+ * 
+ *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .childInstanceId(childAccountNetwork.id())
  *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(&#34;cn-qingdao&#34;)
- *             .childInstanceOwnerId(&#34;uid1&#34;)
+ *             .childInstanceRegionId(default_.regions()[0].id())
+ *             .childInstanceOwnerId(childAccountAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.account2())
- *                 .dependsOn(fooInstanceGrant)
+ *                 .provider(alicloud.your_account())
+ *                 .dependsOn(childAccountInstanceGrant)
  *                 .build());
  * 
  *     }

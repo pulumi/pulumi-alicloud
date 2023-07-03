@@ -15,7 +15,7 @@ import (
 //
 // For information about DNS Access Strategy and how to use it, see [What is Access Strategy](https://www.alibabacloud.com/help/doc-detail/189620.html).
 //
-// > **NOTE:** Available in v1.152.0+.
+// > **NOTE:** Available since v1.152.0.
 //
 // ## Import
 //
@@ -33,7 +33,7 @@ type AccessStrategy struct {
 	AccessMode pulumi.StringOutput `pulumi:"accessMode"`
 	// The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	DefaultAddrPoolType pulumi.StringOutput `pulumi:"defaultAddrPoolType"`
-	// List of primary address pool collections. See the following `Block defaultAddrPools`.
+	// List of primary address pool collections. See `defaultAddrPools` below for details.
 	DefaultAddrPools AccessStrategyDefaultAddrPoolArrayOutput `pulumi:"defaultAddrPools"`
 	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
 	DefaultLatencyOptimization pulumi.StringPtrOutput `pulumi:"defaultLatencyOptimization"`
@@ -45,7 +45,7 @@ type AccessStrategy struct {
 	DefaultMinAvailableAddrNum pulumi.IntOutput `pulumi:"defaultMinAvailableAddrNum"`
 	// The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	FailoverAddrPoolType pulumi.StringPtrOutput `pulumi:"failoverAddrPoolType"`
-	// List of backup address pool sets. See the following `Block failoverAddrPools`.
+	// List of backup address pool sets. See `failoverAddrPools` below for details.
 	FailoverAddrPools AccessStrategyFailoverAddrPoolArrayOutput `pulumi:"failoverAddrPools"`
 	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
 	FailoverLatencyOptimization pulumi.StringPtrOutput `pulumi:"failoverLatencyOptimization"`
@@ -59,7 +59,7 @@ type AccessStrategy struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The lang.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
-	// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+	// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
 	Lines AccessStrategyLineArrayOutput `pulumi:"lines"`
 	// The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
 	StrategyMode pulumi.StringOutput `pulumi:"strategyMode"`
@@ -118,7 +118,7 @@ type accessStrategyState struct {
 	AccessMode *string `pulumi:"accessMode"`
 	// The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	DefaultAddrPoolType *string `pulumi:"defaultAddrPoolType"`
-	// List of primary address pool collections. See the following `Block defaultAddrPools`.
+	// List of primary address pool collections. See `defaultAddrPools` below for details.
 	DefaultAddrPools []AccessStrategyDefaultAddrPool `pulumi:"defaultAddrPools"`
 	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
 	DefaultLatencyOptimization *string `pulumi:"defaultLatencyOptimization"`
@@ -130,7 +130,7 @@ type accessStrategyState struct {
 	DefaultMinAvailableAddrNum *int `pulumi:"defaultMinAvailableAddrNum"`
 	// The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	FailoverAddrPoolType *string `pulumi:"failoverAddrPoolType"`
-	// List of backup address pool sets. See the following `Block failoverAddrPools`.
+	// List of backup address pool sets. See `failoverAddrPools` below for details.
 	FailoverAddrPools []AccessStrategyFailoverAddrPool `pulumi:"failoverAddrPools"`
 	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
 	FailoverLatencyOptimization *string `pulumi:"failoverLatencyOptimization"`
@@ -144,7 +144,7 @@ type accessStrategyState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
-	// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+	// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
 	Lines []AccessStrategyLine `pulumi:"lines"`
 	// The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
 	StrategyMode *string `pulumi:"strategyMode"`
@@ -157,7 +157,7 @@ type AccessStrategyState struct {
 	AccessMode pulumi.StringPtrInput
 	// The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	DefaultAddrPoolType pulumi.StringPtrInput
-	// List of primary address pool collections. See the following `Block defaultAddrPools`.
+	// List of primary address pool collections. See `defaultAddrPools` below for details.
 	DefaultAddrPools AccessStrategyDefaultAddrPoolArrayInput
 	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
 	DefaultLatencyOptimization pulumi.StringPtrInput
@@ -169,7 +169,7 @@ type AccessStrategyState struct {
 	DefaultMinAvailableAddrNum pulumi.IntPtrInput
 	// The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	FailoverAddrPoolType pulumi.StringPtrInput
-	// List of backup address pool sets. See the following `Block failoverAddrPools`.
+	// List of backup address pool sets. See `failoverAddrPools` below for details.
 	FailoverAddrPools AccessStrategyFailoverAddrPoolArrayInput
 	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
 	FailoverLatencyOptimization pulumi.StringPtrInput
@@ -183,7 +183,7 @@ type AccessStrategyState struct {
 	InstanceId pulumi.StringPtrInput
 	// The lang.
 	Lang pulumi.StringPtrInput
-	// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+	// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
 	Lines AccessStrategyLineArrayInput
 	// The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
 	StrategyMode pulumi.StringPtrInput
@@ -200,7 +200,7 @@ type accessStrategyArgs struct {
 	AccessMode *string `pulumi:"accessMode"`
 	// The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	DefaultAddrPoolType string `pulumi:"defaultAddrPoolType"`
-	// List of primary address pool collections. See the following `Block defaultAddrPools`.
+	// List of primary address pool collections. See `defaultAddrPools` below for details.
 	DefaultAddrPools []AccessStrategyDefaultAddrPool `pulumi:"defaultAddrPools"`
 	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
 	DefaultLatencyOptimization *string `pulumi:"defaultLatencyOptimization"`
@@ -212,7 +212,7 @@ type accessStrategyArgs struct {
 	DefaultMinAvailableAddrNum int `pulumi:"defaultMinAvailableAddrNum"`
 	// The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	FailoverAddrPoolType *string `pulumi:"failoverAddrPoolType"`
-	// List of backup address pool sets. See the following `Block failoverAddrPools`.
+	// List of backup address pool sets. See `failoverAddrPools` below for details.
 	FailoverAddrPools []AccessStrategyFailoverAddrPool `pulumi:"failoverAddrPools"`
 	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
 	FailoverLatencyOptimization *string `pulumi:"failoverLatencyOptimization"`
@@ -226,7 +226,7 @@ type accessStrategyArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
-	// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+	// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
 	Lines []AccessStrategyLine `pulumi:"lines"`
 	// The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
 	StrategyMode string `pulumi:"strategyMode"`
@@ -240,7 +240,7 @@ type AccessStrategyArgs struct {
 	AccessMode pulumi.StringPtrInput
 	// The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	DefaultAddrPoolType pulumi.StringInput
-	// List of primary address pool collections. See the following `Block defaultAddrPools`.
+	// List of primary address pool collections. See `defaultAddrPools` below for details.
 	DefaultAddrPools AccessStrategyDefaultAddrPoolArrayInput
 	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
 	DefaultLatencyOptimization pulumi.StringPtrInput
@@ -252,7 +252,7 @@ type AccessStrategyArgs struct {
 	DefaultMinAvailableAddrNum pulumi.IntInput
 	// The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
 	FailoverAddrPoolType pulumi.StringPtrInput
-	// List of backup address pool sets. See the following `Block failoverAddrPools`.
+	// List of backup address pool sets. See `failoverAddrPools` below for details.
 	FailoverAddrPools AccessStrategyFailoverAddrPoolArrayInput
 	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
 	FailoverLatencyOptimization pulumi.StringPtrInput
@@ -266,7 +266,7 @@ type AccessStrategyArgs struct {
 	InstanceId pulumi.StringInput
 	// The lang.
 	Lang pulumi.StringPtrInput
-	// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+	// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
 	Lines AccessStrategyLineArrayInput
 	// The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
 	StrategyMode pulumi.StringInput
@@ -371,7 +371,7 @@ func (o AccessStrategyOutput) DefaultAddrPoolType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessStrategy) pulumi.StringOutput { return v.DefaultAddrPoolType }).(pulumi.StringOutput)
 }
 
-// List of primary address pool collections. See the following `Block defaultAddrPools`.
+// List of primary address pool collections. See `defaultAddrPools` below for details.
 func (o AccessStrategyOutput) DefaultAddrPools() AccessStrategyDefaultAddrPoolArrayOutput {
 	return o.ApplyT(func(v *AccessStrategy) AccessStrategyDefaultAddrPoolArrayOutput { return v.DefaultAddrPools }).(AccessStrategyDefaultAddrPoolArrayOutput)
 }
@@ -401,7 +401,7 @@ func (o AccessStrategyOutput) FailoverAddrPoolType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessStrategy) pulumi.StringPtrOutput { return v.FailoverAddrPoolType }).(pulumi.StringPtrOutput)
 }
 
-// List of backup address pool sets. See the following `Block failoverAddrPools`.
+// List of backup address pool sets. See `failoverAddrPools` below for details.
 func (o AccessStrategyOutput) FailoverAddrPools() AccessStrategyFailoverAddrPoolArrayOutput {
 	return o.ApplyT(func(v *AccessStrategy) AccessStrategyFailoverAddrPoolArrayOutput { return v.FailoverAddrPools }).(AccessStrategyFailoverAddrPoolArrayOutput)
 }
@@ -436,7 +436,7 @@ func (o AccessStrategyOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessStrategy) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
 func (o AccessStrategyOutput) Lines() AccessStrategyLineArrayOutput {
 	return o.ApplyT(func(v *AccessStrategy) AccessStrategyLineArrayOutput { return v.Lines }).(AccessStrategyLineArrayOutput)
 }

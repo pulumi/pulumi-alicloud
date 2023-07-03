@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dns
     /// <summary>
     /// Provides bind the domain name to the Alidns instance resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.99.0+.
+    /// &gt; **NOTE:** Available since v1.99.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,14 +24,38 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dns = new AliCloud.Dns.AlidnsDomainAttachment("dns", new()
+    ///     var defaultDomainGroup = new AliCloud.Dns.DomainGroup("defaultDomainGroup", new()
     ///     {
+    ///         DomainGroupName = "tf-example",
+    ///     });
+    /// 
+    ///     var defaultAlidnsDomain = new AliCloud.Dns.AlidnsDomain("defaultAlidnsDomain", new()
+    ///     {
+    ///         DomainName = "starmove.com",
+    ///         GroupId = defaultDomainGroup.Id,
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultAlidnsInstance = new AliCloud.Dns.AlidnsInstance("defaultAlidnsInstance", new()
+    ///     {
+    ///         DnsSecurity = "basic",
+    ///         DomainNumbers = "3",
+    ///         VersionCode = "version_personal",
+    ///         Period = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///     });
+    /// 
+    ///     var defaultAlidnsDomainAttachment = new AliCloud.Dns.AlidnsDomainAttachment("defaultAlidnsDomainAttachment", new()
+    ///     {
+    ///         InstanceId = defaultAlidnsInstance.Id,
     ///         DomainNames = new[]
     ///         {
-    ///             "test111.abc",
-    ///             "test222.abc",
+    ///             defaultAlidnsDomain.DomainName,
     ///         },
-    ///         InstanceId = "dns-cn-mp91lyq9xxxx",
     ///     });
     /// 
     /// });

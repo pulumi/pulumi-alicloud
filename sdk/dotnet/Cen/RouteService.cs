@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
     /// 
-    /// For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/doc-detail/106671.htm).
+    /// For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-resolveandrouteserviceincen).
     /// 
-    /// &gt; **NOTE:** Available in v1.99.0+.
+    /// &gt; **NOTE:** Available since v1.99.0.
     /// 
     /// &gt; **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
     /// 
@@ -30,29 +30,37 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-test";
-    ///     var exampleNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         IsDefault = true,
+    ///         Current = true,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance");
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = "tf_example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
     /// 
-    ///     var vpc = new AliCloud.Cen.InstanceAttachment("vpc", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
+    ///     });
+    /// 
+    ///     var exampleInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleInstanceAttachment", new()
     ///     {
     ///         InstanceId = exampleInstance.Id,
-    ///         ChildInstanceId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.Id),
+    ///         ChildInstanceId = exampleNetwork.Id,
     ///         ChildInstanceType = "VPC",
-    ///         ChildInstanceRegionId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.RegionId),
+    ///         ChildInstanceRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///     });
     /// 
-    ///     var @this = new AliCloud.Cen.RouteService("this", new()
+    ///     var exampleRouteService = new AliCloud.Cen.RouteService("exampleRouteService", new()
     ///     {
-    ///         AccessRegionId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.RegionId),
-    ///         HostRegionId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.RegionId),
-    ///         HostVpcId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.Id),
-    ///         CenId = vpc.InstanceId,
+    ///         AccessRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         HostRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         HostVpcId = exampleNetwork.Id,
+    ///         CenId = exampleInstanceAttachment.InstanceId,
     ///         Host = "100.118.28.52/32",
     ///     });
     /// 

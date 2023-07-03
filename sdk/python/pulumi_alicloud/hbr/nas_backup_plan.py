@@ -158,6 +158,9 @@ class NasBackupPlanArgs:
         """
         This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
+        warnings.warn("""Field 'create_time' has been deprecated from provider version 1.153.0.""", DeprecationWarning)
+        pulumi.log.warn("""create_time is deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.""")
+
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -309,6 +312,9 @@ class _NasBackupPlanState:
         """
         This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
+        warnings.warn("""Field 'create_time' has been deprecated from provider version 1.153.0.""", DeprecationWarning)
+        pulumi.log.warn("""create_time is deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.""")
+
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -717,6 +723,9 @@ class NasBackupPlan(pulumi.CustomResource):
         """
         This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
+        warnings.warn("""Field 'create_time' has been deprecated from provider version 1.153.0.""", DeprecationWarning)
+        pulumi.log.warn("""create_time is deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.""")
+
         return pulumi.get(self, "create_time")
 
     @property

@@ -136,13 +136,13 @@ def get_dedicated_host_groups(engine: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups', __args__, opts=opts, typ=GetDedicatedHostGroupsResult).value
 
     return AwaitableGetDedicatedHostGroupsResult(
-        engine=__ret__.engine,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        engine=pulumi.get(__ret__, 'engine'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_dedicated_host_groups)

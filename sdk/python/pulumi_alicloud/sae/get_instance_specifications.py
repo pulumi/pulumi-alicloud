@@ -103,10 +103,10 @@ def get_instance_specifications(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sae/getInstanceSpecifications:getInstanceSpecifications', __args__, opts=opts, typ=GetInstanceSpecificationsResult).value
 
     return AwaitableGetInstanceSpecificationsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        specifications=__ret__.specifications)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        specifications=pulumi.get(__ret__, 'specifications'))
 
 
 @_utilities.lift_output_func(get_instance_specifications)

@@ -30,7 +30,31 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oos.NewTemplate(ctx, "example", &oos.TemplateArgs{
-//				Content: pulumi.String("  {\n    \"FormatVersion\": \"OOS-2019-06-01\",\n    \"Description\": \"Update Describe instances of given status\",\n    \"Parameters\":{\n      \"Status\":{\n        \"Type\": \"String\",\n        \"Description\": \"(Required) The status of the Ecs instance.\"\n      }\n    },\n    \"Tasks\": [\n      {\n        \"Properties\" :{\n          \"Parameters\":{\n            \"Status\": \"{{ Status }}\"\n          },\n          \"API\": \"DescribeInstances\",\n          \"Service\": \"Ecs\"\n        },\n        \"Name\": \"foo\",\n        \"Action\": \"ACS::ExecuteApi\"\n      }]\n  }\n  \n"),
+//				Content: pulumi.String(`  {
+//	    "FormatVersion": "OOS-2019-06-01",
+//	    "Description": "Update Describe instances of given status",
+//	    "Parameters":{
+//	      "Status":{
+//	        "Type": "String",
+//	        "Description": "(Required) The status of the Ecs instance."
+//	      }
+//	    },
+//	    "Tasks": [
+//	      {
+//	        "Properties" :{
+//	          "Parameters":{
+//	            "Status": "{{ Status }}"
+//	          },
+//	          "API": "DescribeInstances",
+//	          "Service": "Ecs"
+//	        },
+//	        "Name": "foo",
+//	        "Action": "ACS::ExecuteApi"
+//	      }]
+//	  }
+//
+// `),
+//
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("acceptance Test"),

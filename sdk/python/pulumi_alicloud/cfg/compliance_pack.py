@@ -110,6 +110,9 @@ class CompliancePackArgs:
         """
         A list of Config Rules.
         """
+        warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+
         return pulumi.get(self, "config_rules")
 
     @config_rules.setter
@@ -197,6 +200,9 @@ class _CompliancePackState:
         """
         A list of Config Rules.
         """
+        warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+
         return pulumi.get(self, "config_rules")
 
     @config_rules.setter
@@ -496,6 +502,9 @@ class CompliancePack(pulumi.CustomResource):
         """
         A list of Config Rules.
         """
+        warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+
         return pulumi.get(self, "config_rules")
 
     @property

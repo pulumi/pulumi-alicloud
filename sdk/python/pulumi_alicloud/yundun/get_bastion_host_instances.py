@@ -116,13 +116,13 @@ def get_bastion_host_instances(description_regex: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:yundun/getBastionHostInstances:getBastionHostInstances', __args__, opts=opts, typ=GetBastionHostInstancesResult).value
 
     return AwaitableGetBastionHostInstancesResult(
-        description_regex=__ret__.description_regex,
-        descriptions=__ret__.descriptions,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        output_file=__ret__.output_file,
-        tags=__ret__.tags)
+        description_regex=pulumi.get(__ret__, 'description_regex'),
+        descriptions=pulumi.get(__ret__, 'descriptions'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_bastion_host_instances)

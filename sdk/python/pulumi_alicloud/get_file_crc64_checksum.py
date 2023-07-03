@@ -102,10 +102,10 @@ def get_file_crc64_checksum(filename: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum', __args__, opts=opts, typ=GetFileCrc64ChecksumResult).value
 
     return AwaitableGetFileCrc64ChecksumResult(
-        checksum=__ret__.checksum,
-        filename=__ret__.filename,
-        id=__ret__.id,
-        output_file=__ret__.output_file)
+        checksum=pulumi.get(__ret__, 'checksum'),
+        filename=pulumi.get(__ret__, 'filename'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_file_crc64_checksum)

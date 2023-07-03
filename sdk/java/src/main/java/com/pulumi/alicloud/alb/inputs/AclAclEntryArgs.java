@@ -46,14 +46,14 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * The status of the ACL entry. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * @return The status of the ACL entry. Valid values:
      * 
      */
     public Optional<Output<String>> status() {
@@ -129,7 +129,7 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         * @param status The status of the ACL entry. Valid values:
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         * @param status The status of the ACL entry. Valid values:
          * 
          * @return builder
          * 

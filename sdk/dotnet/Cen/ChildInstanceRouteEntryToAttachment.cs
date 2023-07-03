@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about Cen Child Instance Route Entry To Attachment and how to use it, see [What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,12 +28,83 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Cen.ChildInstanceRouteEntryToAttachment("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+    /// 
+    ///     var masterZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]));
+    /// 
+    ///     var slaveZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[1]));
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         CenId = "cen-3sgjn0u745c3i0o3dk",
-    ///         ChildInstanceRouteTableId = "vtb-t4nt0z5xxbti85c78nkzy",
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleMaster = new AliCloud.Vpc.Switch("exampleMaster", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = masterZone,
+    ///     });
+    /// 
+    ///     var exampleSlave = new AliCloud.Vpc.Switch("exampleSlave", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "192.168.2.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = slaveZone,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///         ProtectionLevel = "REDUCED",
+    ///     });
+    /// 
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     {
+    ///         TransitRouterName = name,
+    ///         CenId = exampleInstance.Id,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", new()
+    ///     {
+    ///         CenId = exampleInstance.Id,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///             {
+    ///                 ZoneId = masterZone,
+    ///                 VswitchId = exampleMaster.Id,
+    ///             },
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///             {
+    ///                 ZoneId = slaveZone,
+    ///                 VswitchId = exampleSlave.Id,
+    ///             },
+    ///         },
+    ///         TransitRouterAttachmentName = name,
+    ///         TransitRouterAttachmentDescription = name,
+    ///     });
+    /// 
+    ///     var exampleRouteTable = new AliCloud.Vpc.RouteTable("exampleRouteTable", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         RouteTableName = name,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var exampleChildInstanceRouteEntryToAttachment = new AliCloud.Cen.ChildInstanceRouteEntryToAttachment("exampleChildInstanceRouteEntryToAttachment", new()
+    ///     {
+    ///         TransitRouterAttachmentId = exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
+    ///         CenId = exampleInstance.Id,
     ///         DestinationCidrBlock = "10.0.0.0/24",
-    ///         TransitRouterAttachmentId = "tr-attach-f1fd1y50rql00emvej",
+    ///         ChildInstanceRouteTableId = exampleRouteTable.Id,
     ///     });
     /// 
     /// });

@@ -12,14 +12,8 @@ import (
 )
 
 // Provide RDS cluster instance endpoint connection resources.
-// > **NOTE:** Available in 1.203.0+.
 //
-// ## Block nodeItems
-//
-// The nodeItems mapping supports the following:
-//
-// * `nodeId` - (Required) The ID of the node.
-// * `weight` - (Required) The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+// > **NOTE:** Available since v1.203.0+.
 //
 // ## Import
 //
@@ -47,7 +41,7 @@ type DbInstanceEndpoint struct {
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
 	// The type of the IP address.
 	IpType pulumi.StringOutput `pulumi:"ipType"`
-	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
 	NodeItems DbInstanceEndpointNodeItemArrayOutput `pulumi:"nodeItems"`
 	// The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
 	Port pulumi.StringOutput `pulumi:"port"`
@@ -120,7 +114,7 @@ type dbInstanceEndpointState struct {
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The type of the IP address.
 	IpType *string `pulumi:"ipType"`
-	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
 	NodeItems []DbInstanceEndpointNodeItem `pulumi:"nodeItems"`
 	// The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
 	Port *string `pulumi:"port"`
@@ -147,7 +141,7 @@ type DbInstanceEndpointState struct {
 	DbInstanceId pulumi.StringPtrInput
 	// The type of the IP address.
 	IpType pulumi.StringPtrInput
-	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
 	NodeItems DbInstanceEndpointNodeItemArrayInput
 	// The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
 	Port pulumi.StringPtrInput
@@ -170,7 +164,7 @@ type dbInstanceEndpointArgs struct {
 	DbInstanceEndpointDescription *string `pulumi:"dbInstanceEndpointDescription"`
 	// The ID of the instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`
-	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
 	NodeItems []DbInstanceEndpointNodeItem `pulumi:"nodeItems"`
 	// The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
 	Port string `pulumi:"port"`
@@ -188,7 +182,7 @@ type DbInstanceEndpointArgs struct {
 	DbInstanceEndpointDescription pulumi.StringPtrInput
 	// The ID of the instance.
 	DbInstanceId pulumi.StringInput
-	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+	// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
 	NodeItems DbInstanceEndpointNodeItemArrayInput
 	// The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
 	Port pulumi.StringInput
@@ -320,7 +314,7 @@ func (o DbInstanceEndpointOutput) IpType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstanceEndpoint) pulumi.StringOutput { return v.IpType }).(pulumi.StringOutput)
 }
 
-// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
 func (o DbInstanceEndpointOutput) NodeItems() DbInstanceEndpointNodeItemArrayOutput {
 	return o.ApplyT(func(v *DbInstanceEndpoint) DbInstanceEndpointNodeItemArrayOutput { return v.NodeItems }).(DbInstanceEndpointNodeItemArrayOutput)
 }

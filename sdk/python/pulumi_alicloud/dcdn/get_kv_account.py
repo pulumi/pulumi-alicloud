@@ -81,8 +81,8 @@ def get_kv_account(status: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dcdn/getKvAccount:getKvAccount', __args__, opts=opts, typ=GetKvAccountResult).value
 
     return AwaitableGetKvAccountResult(
-        id=__ret__.id,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_kv_account)

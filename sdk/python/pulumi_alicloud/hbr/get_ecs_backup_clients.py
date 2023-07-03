@@ -130,12 +130,12 @@ def get_ecs_backup_clients(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getEcsBackupClients:getEcsBackupClients', __args__, opts=opts, typ=GetEcsBackupClientsResult).value
 
     return AwaitableGetEcsBackupClientsResult(
-        clients=__ret__.clients,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_ids=__ret__.instance_ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        clients=pulumi.get(__ret__, 'clients'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_ids=pulumi.get(__ret__, 'instance_ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_ecs_backup_clients)

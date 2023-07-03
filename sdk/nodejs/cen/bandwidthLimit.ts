@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
  *
+ * > **NOTE:** Available since v1.18.0.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -20,54 +22,60 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccCenBandwidthLimitConfig";
- * const fra = new alicloud.Provider("fra", {region: "eu-central-1"});
- * const sh = new alicloud.Provider("sh", {region: "cn-shanghai"});
+ * const region1 = config.get("region1") || "eu-central-1";
+ * const region2 = config.get("region2") || "ap-southeast-1";
+ * const ec = new alicloud.Provider("ec", {region: region1});
+ * const as = new alicloud.Provider("as", {region: region2});
  * const vpc1 = new alicloud.vpc.Network("vpc1", {
- *     vpcName: name,
+ *     vpcName: "tf-example",
  *     cidrBlock: "192.168.0.0/16",
  * }, {
- *     provider: alicloud.fra,
+ *     provider: alicloud.ec,
  * });
- * const vpc2 = new alicloud.vpc.Network("vpc2", {cidrBlock: "172.16.0.0/12"}, {
- *     provider: alicloud.sh,
+ * const vpc2 = new alicloud.vpc.Network("vpc2", {
+ *     vpcName: "tf-example",
+ *     cidrBlock: "172.16.0.0/12",
+ * }, {
+ *     provider: alicloud.as,
  * });
- * const cen = new alicloud.cen.Instance("cen", {description: "tf-testAccCenBandwidthLimitConfigDescription"});
- * const bwp = new alicloud.cen.BandwidthPackage("bwp", {
- *     bandwidth: 5,
- *     geographicRegionIds: [
- *         "Europe",
- *         "China",
- *     ],
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
  * });
- * const bwpAttach = new alicloud.cen.BandwidthPackageAttachment("bwpAttach", {
- *     instanceId: cen.id,
- *     bandwidthPackageId: bwp.id,
- * });
- * const vpcAttach1 = new alicloud.cen.InstanceAttachment("vpcAttach1", {
- *     instanceId: cen.id,
+ * const example1 = new alicloud.cen.InstanceAttachment("example1", {
+ *     instanceId: exampleInstance.id,
  *     childInstanceId: vpc1.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: "eu-central-1",
+ *     childInstanceRegionId: region1,
  * });
- * const vpcAttach2 = new alicloud.cen.InstanceAttachment("vpcAttach2", {
- *     instanceId: cen.id,
+ * const example2 = new alicloud.cen.InstanceAttachment("example2", {
+ *     instanceId: exampleInstance.id,
  *     childInstanceId: vpc2.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: "cn-shanghai",
+ *     childInstanceRegionId: region2,
  * });
- * const foo = new alicloud.cen.BandwidthLimit("foo", {
- *     instanceId: cen.id,
+ * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("exampleBandwidthPackage", {
+ *     bandwidth: 5,
+ *     cenBandwidthPackageName: "tf_example",
+ *     geographicRegionAId: "Europe",
+ *     geographicRegionBId: "Asia-Pacific",
+ * });
+ * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     bandwidthPackageId: exampleBandwidthPackage.id,
+ * });
+ * const exampleBandwidthLimit = new alicloud.cen.BandwidthLimit("exampleBandwidthLimit", {
+ *     instanceId: exampleInstance.id,
  *     regionIds: [
- *         "eu-central-1",
- *         "cn-shanghai",
+ *         region1,
+ *         region2,
  *     ],
  *     bandwidthLimit: 4,
  * }, {
  *     dependsOn: [
- *         bwpAttach,
- *         vpcAttach1,
- *         vpcAttach2,
+ *         exampleBandwidthPackageAttachment,
+ *         example2,
+ *         example1,
  *     ],
  * });
  * ```

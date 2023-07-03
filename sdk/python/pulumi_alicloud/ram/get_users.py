@@ -81,7 +81,7 @@ class GetUsersResult:
     @pulumi.getter
     def names(self) -> Sequence[str]:
         """
-        A list of ram user names.
+        A list of ram user's name.
         """
         return pulumi.get(self, "names")
 
@@ -142,11 +142,11 @@ def get_users(group_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    users_ds = alicloud.ram.get_users(group_name="group1",
-        name_regex="^user",
-        output_file="users.txt",
+    users_ds = alicloud.ram.get_users(output_file="users.txt",
+        group_name="group1",
         policy_name="AliyunACSDefaultAccess",
-        policy_type="Custom")
+        policy_type="Custom",
+        name_regex="^user")
     pulumi.export("firstUserId", users_ds.users[0].id)
     ```
 
@@ -169,15 +169,15 @@ def get_users(group_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ram/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
-        group_name=__ret__.group_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        policy_name=__ret__.policy_name,
-        policy_type=__ret__.policy_type,
-        users=__ret__.users)
+        group_name=pulumi.get(__ret__, 'group_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policy_name=pulumi.get(__ret__, 'policy_name'),
+        policy_type=pulumi.get(__ret__, 'policy_type'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_users)
@@ -197,11 +197,11 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    users_ds = alicloud.ram.get_users(group_name="group1",
-        name_regex="^user",
-        output_file="users.txt",
+    users_ds = alicloud.ram.get_users(output_file="users.txt",
+        group_name="group1",
         policy_name="AliyunACSDefaultAccess",
-        policy_type="Custom")
+        policy_type="Custom",
+        name_regex="^user")
     pulumi.export("firstUserId", users_ds.users[0].id)
     ```
 

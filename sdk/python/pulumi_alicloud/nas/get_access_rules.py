@@ -154,14 +154,14 @@ def get_access_rules(access_group_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nas/getAccessRules:getAccessRules', __args__, opts=opts, typ=GetAccessRulesResult).value
 
     return AwaitableGetAccessRulesResult(
-        access_group_name=__ret__.access_group_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules,
-        rw_access=__ret__.rw_access,
-        source_cidr_ip=__ret__.source_cidr_ip,
-        user_access=__ret__.user_access)
+        access_group_name=pulumi.get(__ret__, 'access_group_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'),
+        rw_access=pulumi.get(__ret__, 'rw_access'),
+        source_cidr_ip=pulumi.get(__ret__, 'source_cidr_ip'),
+        user_access=pulumi.get(__ret__, 'user_access'))
 
 
 @_utilities.lift_output_func(get_access_rules)

@@ -215,19 +215,19 @@ def get_users(display_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:bastionhost/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        mobile=__ret__.mobile,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        source=__ret__.source,
-        source_user_id=__ret__.source_user_id,
-        status=__ret__.status,
-        user_name=__ret__.user_name,
-        users=__ret__.users)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        mobile=pulumi.get(__ret__, 'mobile'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        source=pulumi.get(__ret__, 'source'),
+        source_user_id=pulumi.get(__ret__, 'source_user_id'),
+        status=pulumi.get(__ret__, 'status'),
+        user_name=pulumi.get(__ret__, 'user_name'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_users)

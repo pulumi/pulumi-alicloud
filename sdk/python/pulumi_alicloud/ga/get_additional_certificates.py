@@ -132,12 +132,12 @@ def get_additional_certificates(accelerator_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getAdditionalCertificates:getAdditionalCertificates', __args__, opts=opts, typ=GetAdditionalCertificatesResult).value
 
     return AwaitableGetAdditionalCertificatesResult(
-        accelerator_id=__ret__.accelerator_id,
-        certificates=__ret__.certificates,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        listener_id=__ret__.listener_id,
-        output_file=__ret__.output_file)
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
+        certificates=pulumi.get(__ret__, 'certificates'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        listener_id=pulumi.get(__ret__, 'listener_id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_additional_certificates)

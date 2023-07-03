@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListenerAclConfig {
     /**
-     * @return The ACLs that are associated with the listener.
+     * @return The ACLs that are associated with the listener. See `acl_relations` below for details.
      * 
      */
     private @Nullable List<ListenerAclConfigAclRelation> aclRelations;
@@ -26,7 +26,7 @@ public final class ListenerAclConfig {
 
     private ListenerAclConfig() {}
     /**
-     * @return The ACLs that are associated with the listener.
+     * @return The ACLs that are associated with the listener. See `acl_relations` below for details.
      * 
      */
     public List<ListenerAclConfigAclRelation> aclRelations() {

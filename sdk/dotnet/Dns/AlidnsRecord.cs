@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dns
     /// <summary>
     /// Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.85.0+.
+    /// &gt; **NOTE:** Available since v1.85.0.
     /// 
     /// &gt; **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
     /// 
@@ -26,15 +26,30 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new Domain Record
+    ///     var defaultDomainGroup = new AliCloud.Dns.DomainGroup("defaultDomainGroup", new()
+    ///     {
+    ///         DomainGroupName = "tf-example",
+    ///     });
+    /// 
+    ///     var defaultAlidnsDomain = new AliCloud.Dns.AlidnsDomain("defaultAlidnsDomain", new()
+    ///     {
+    ///         DomainName = "starmove.com",
+    ///         GroupId = defaultDomainGroup.Id,
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
     ///     var record = new AliCloud.Dns.AlidnsRecord("record", new()
     ///     {
-    ///         DomainName = "domainname",
-    ///         Remark = "Test new alidns record.",
-    ///         Rr = "@",
+    ///         DomainName = defaultAlidnsDomain.DomainName,
+    ///         Rr = "alimail",
+    ///         Type = "CNAME",
+    ///         Value = "mail.mxhichin.com",
+    ///         Remark = "tf-example",
     ///         Status = "ENABLE",
-    ///         Type = "A",
-    ///         Value = "192.168.99.99",
     ///     });
     /// 
     /// });

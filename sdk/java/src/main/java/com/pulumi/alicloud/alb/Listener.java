@@ -26,9 +26,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Application Load Balancer (ALB) Listener resource.
  * 
- * For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/doc-detail/214348.htm).
+ * For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createlistener).
  * 
- * &gt; **NOTE:** Available in v1.133.0+.
+ * &gt; **NOTE:** Available since v1.133.0.
  * 
  * ## Import
  * 
@@ -60,21 +60,21 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.accessLogRecordCustomizedHeadersEnabled;
     }
     /**
-     * Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
+     * Xtrace Configuration Information. See `access_log_tracing_config` below for details.
      * 
      */
     @Export(name="accessLogTracingConfig", type=ListenerAccessLogTracingConfig.class, parameters={})
     private Output</* @Nullable */ ListenerAccessLogTracingConfig> accessLogTracingConfig;
 
     /**
-     * @return Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
+     * @return Xtrace Configuration Information. See `access_log_tracing_config` below for details.
      * 
      */
     public Output<Optional<ListenerAccessLogTracingConfig>> accessLogTracingConfig() {
         return Codegen.optional(this.accessLogTracingConfig);
     }
     /**
-     * The configurations of the access control lists (ACLs). See the following `Block acl_config`. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+     * The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      * 
      * @deprecated
      * Field &#39;acl_config&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_listener_acl_attachment&#39;.
@@ -85,35 +85,35 @@ public class Listener extends com.pulumi.resources.CustomResource {
     private Output<ListenerAclConfig> aclConfig;
 
     /**
-     * @return The configurations of the access control lists (ACLs). See the following `Block acl_config`. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+     * @return The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      * 
      */
     public Output<ListenerAclConfig> aclConfig() {
         return this.aclConfig;
     }
     /**
-     * The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+     * The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
      * 
      */
     @Export(name="certificates", type=ListenerCertificates.class, parameters={})
     private Output</* @Nullable */ ListenerCertificates> certificates;
 
     /**
-     * @return The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+     * @return The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
      * 
      */
     public Output<Optional<ListenerCertificates>> certificates() {
         return Codegen.optional(this.certificates);
     }
     /**
-     * The Default Rule Action List. See the following `Block default_actions`.
+     * The Default Rule Action List. See `default_actions` below for details.
      * 
      */
     @Export(name="defaultActions", type=List.class, parameters={ListenerDefaultAction.class})
     private Output</* @Nullable */ List<ListenerDefaultAction>> defaultActions;
 
     /**
-     * @return The Default Rule Action List. See the following `Block default_actions`.
+     * @return The Default Rule Action List. See `default_actions` below for details.
      * 
      */
     public Output<Optional<List<ListenerDefaultAction>>> defaultActions() {
@@ -236,14 +236,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.loadBalancerId;
     }
     /**
-     * Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
+     * Configuration Associated with the QuIC Listening. See `quic_config` below for details.
      * 
      */
     @Export(name="quicConfig", type=ListenerQuicConfig.class, parameters={})
     private Output<ListenerQuicConfig> quicConfig;
 
     /**
-     * @return Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
+     * @return Configuration Associated with the QuIC Listening. See `quic_config` below for details.
      * 
      */
     public Output<ListenerQuicConfig> quicConfig() {
@@ -296,14 +296,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
     @Export(name="xForwardedForConfig", type=ListenerXForwardedForConfig.class, parameters={})
     private Output<ListenerXForwardedForConfig> xForwardedForConfig;
 
     /**
-     * @return The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * @return The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
     public Output<ListenerXForwardedForConfig> xForwardedForConfig() {

@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -48,14 +50,14 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+     * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
      * 
      */
     @Import(name="autoRenewDuration")
     private @Nullable Output<Integer> autoRenewDuration;
 
     /**
-     * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+     * @return The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
      * 
      */
     public Optional<Output<Integer>> autoRenewDuration() {
@@ -171,6 +173,21 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private BasicAcceleratorState() {}
 
     private BasicAcceleratorState(BasicAcceleratorState $) {
@@ -184,6 +201,7 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
         this.duration = $.duration;
         this.pricingCycle = $.pricingCycle;
         this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -247,7 +265,7 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
          * 
          * @return builder
          * 
@@ -258,7 +276,7 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
          * 
          * @return builder
          * 
@@ -416,6 +434,27 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public BasicAcceleratorState build() {

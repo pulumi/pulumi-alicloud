@@ -162,15 +162,15 @@ def get_ecs_image_pipeline(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline', __args__, opts=opts, typ=GetEcsImagePipelineResult).value
 
     return AwaitableGetEcsImagePipelineResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        pipelines=__ret__.pipelines,
-        resource_group_id=__ret__.resource_group_id,
-        tags=__ret__.tags)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pipelines=pulumi.get(__ret__, 'pipelines'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_ecs_image_pipeline)

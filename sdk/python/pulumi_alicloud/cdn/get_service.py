@@ -145,13 +145,13 @@ def get_service(enable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cdn/getService:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        changing_affect_time=__ret__.changing_affect_time,
-        changing_charge_type=__ret__.changing_charge_type,
-        enable=__ret__.enable,
-        id=__ret__.id,
-        internet_charge_type=__ret__.internet_charge_type,
-        opening_time=__ret__.opening_time,
-        status=__ret__.status)
+        changing_affect_time=pulumi.get(__ret__, 'changing_affect_time'),
+        changing_charge_type=pulumi.get(__ret__, 'changing_charge_type'),
+        enable=pulumi.get(__ret__, 'enable'),
+        id=pulumi.get(__ret__, 'id'),
+        internet_charge_type=pulumi.get(__ret__, 'internet_charge_type'),
+        opening_time=pulumi.get(__ret__, 'opening_time'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_service)

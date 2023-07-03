@@ -146,6 +146,9 @@ class DomainArgs:
         """
         Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
+        warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
+
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -427,6 +430,9 @@ class _DomainState:
         """
         Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
+        warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
+
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -912,6 +918,9 @@ class Domain(pulumi.CustomResource):
         """
         Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
+        warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
+
         return pulumi.get(self, "domain")
 
     @property

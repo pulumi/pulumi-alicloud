@@ -132,12 +132,12 @@ def get_folders(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dataworks/getFolders:getFolders', __args__, opts=opts, typ=GetFoldersResult).value
 
     return AwaitableGetFoldersResult(
-        folders=__ret__.folders,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        parent_folder_path=__ret__.parent_folder_path,
-        project_id=__ret__.project_id)
+        folders=pulumi.get(__ret__, 'folders'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        parent_folder_path=pulumi.get(__ret__, 'parent_folder_path'),
+        project_id=pulumi.get(__ret__, 'project_id'))
 
 
 @_utilities.lift_output_func(get_folders)

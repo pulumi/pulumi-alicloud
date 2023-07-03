@@ -395,6 +395,9 @@ class ScalingGroupArgs:
         """
         It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         """
+        warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
+        pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
+
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -800,6 +803,9 @@ class _ScalingGroupState:
         """
         It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         """
+        warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
+        pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
+
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -1430,6 +1436,9 @@ class ScalingGroup(pulumi.CustomResource):
         """
         It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         """
+        warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
+        pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
+
         return pulumi.get(self, "vswitch_id")
 
     @property

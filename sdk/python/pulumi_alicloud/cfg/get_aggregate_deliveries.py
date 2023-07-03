@@ -151,14 +151,14 @@ def get_aggregate_deliveries(aggregator_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries', __args__, opts=opts, typ=GetAggregateDeliveriesResult).value
 
     return AwaitableGetAggregateDeliveriesResult(
-        aggregator_id=__ret__.aggregator_id,
-        deliveries=__ret__.deliveries,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        aggregator_id=pulumi.get(__ret__, 'aggregator_id'),
+        deliveries=pulumi.get(__ret__, 'deliveries'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_aggregate_deliveries)

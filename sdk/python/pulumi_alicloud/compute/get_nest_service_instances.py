@@ -175,15 +175,15 @@ def get_nest_service_instances(filters: Optional[Sequence[pulumi.InputType['GetN
     __ret__ = pulumi.runtime.invoke('alicloud:compute/getNestServiceInstances:getNestServiceInstances', __args__, opts=opts, typ=GetNestServiceInstancesResult).value
 
     return AwaitableGetNestServiceInstancesResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        service_instances=__ret__.service_instances,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        service_instances=pulumi.get(__ret__, 'service_instances'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_nest_service_instances)

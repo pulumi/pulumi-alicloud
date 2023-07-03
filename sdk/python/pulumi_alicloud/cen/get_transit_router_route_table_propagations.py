@@ -137,12 +137,12 @@ def get_transit_router_route_table_propagations(ids: Optional[Sequence[str]] = N
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations', __args__, opts=opts, typ=GetTransitRouterRouteTablePropagationsResult).value
 
     return AwaitableGetTransitRouterRouteTablePropagationsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        propagations=__ret__.propagations,
-        status=__ret__.status,
-        transit_router_route_table_id=__ret__.transit_router_route_table_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        propagations=pulumi.get(__ret__, 'propagations'),
+        status=pulumi.get(__ret__, 'status'),
+        transit_router_route_table_id=pulumi.get(__ret__, 'transit_router_route_table_id'))
 
 
 @_utilities.lift_output_func(get_transit_router_route_table_propagations)

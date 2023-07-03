@@ -189,17 +189,17 @@ def get_cross_region_backups(backup_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getCrossRegionBackups:getCrossRegionBackups', __args__, opts=opts, typ=GetCrossRegionBackupsResult).value
 
     return AwaitableGetCrossRegionBackupsResult(
-        backup_id=__ret__.backup_id,
-        backups=__ret__.backups,
-        cross_backup_id=__ret__.cross_backup_id,
-        cross_backup_region=__ret__.cross_backup_region,
-        db_instance_id=__ret__.db_instance_id,
-        end_time=__ret__.end_time,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        start_time=__ret__.start_time)
+        backup_id=pulumi.get(__ret__, 'backup_id'),
+        backups=pulumi.get(__ret__, 'backups'),
+        cross_backup_id=pulumi.get(__ret__, 'cross_backup_id'),
+        cross_backup_region=pulumi.get(__ret__, 'cross_backup_region'),
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        start_time=pulumi.get(__ret__, 'start_time'))
 
 
 @_utilities.lift_output_func(get_cross_region_backups)

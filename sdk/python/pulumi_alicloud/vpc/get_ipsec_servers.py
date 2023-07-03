@@ -150,14 +150,14 @@ def get_ipsec_servers(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getIpsecServers:getIpsecServers', __args__, opts=opts, typ=GetIpsecServersResult).value
 
     return AwaitableGetIpsecServersResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        ipsec_server_name=__ret__.ipsec_server_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        servers=__ret__.servers,
-        vpn_gateway_id=__ret__.vpn_gateway_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        ipsec_server_name=pulumi.get(__ret__, 'ipsec_server_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        servers=pulumi.get(__ret__, 'servers'),
+        vpn_gateway_id=pulumi.get(__ret__, 'vpn_gateway_id'))
 
 
 @_utilities.lift_output_func(get_ipsec_servers)

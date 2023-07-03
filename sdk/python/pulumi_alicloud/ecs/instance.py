@@ -380,6 +380,9 @@ class InstanceArgs:
         """
         It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
+        warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
+        pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
+
         return pulumi.get(self, "allocate_public_ip")
 
     @allocate_public_ip.setter
@@ -655,6 +658,9 @@ class InstanceArgs:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         """
+        warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""", DeprecationWarning)
+        pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""")
+
         return pulumi.get(self, "internet_max_bandwidth_in")
 
     @internet_max_bandwidth_in.setter
@@ -679,6 +685,9 @@ class InstanceArgs:
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
+        warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
+
         return pulumi.get(self, "io_optimized")
 
     @io_optimized.setter
@@ -998,6 +1007,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
+        pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
+
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -1542,6 +1554,9 @@ class _InstanceState:
         """
         It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
+        warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
+        pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
+
         return pulumi.get(self, "allocate_public_ip")
 
     @allocate_public_ip.setter
@@ -1865,6 +1880,9 @@ class _InstanceState:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         """
+        warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""", DeprecationWarning)
+        pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""")
+
         return pulumi.get(self, "internet_max_bandwidth_in")
 
     @internet_max_bandwidth_in.setter
@@ -1889,6 +1907,9 @@ class _InstanceState:
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
+        warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
+
         return pulumi.get(self, "io_optimized")
 
     @io_optimized.setter
@@ -2280,6 +2301,9 @@ class _InstanceState:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
+        pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
+
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -3286,6 +3310,9 @@ class Instance(pulumi.CustomResource):
         """
         It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
+        warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
+        pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
+
         return pulumi.get(self, "allocate_public_ip")
 
     @property
@@ -3509,6 +3536,9 @@ class Instance(pulumi.CustomResource):
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         """
+        warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""", DeprecationWarning)
+        pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""")
+
         return pulumi.get(self, "internet_max_bandwidth_in")
 
     @property
@@ -3525,6 +3555,9 @@ class Instance(pulumi.CustomResource):
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
+        warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
+
         return pulumi.get(self, "io_optimized")
 
     @property
@@ -3788,6 +3821,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
+        warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
+        pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
+
         return pulumi.get(self, "subnet_id")
 
     @property

@@ -147,7 +147,7 @@ class AclEntryAttachment(pulumi.CustomResource):
                  entry: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **NOTE:** Available in v1.166.0+.
+        > **NOTE:** Available since v1.166.0.
 
         For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addentriestoacl).
 
@@ -160,7 +160,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformalbaclconfig"
+            name = "tf_example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_acl = alicloud.alb.Acl("defaultAcl",
             acl_name=name,
@@ -192,7 +192,7 @@ class AclEntryAttachment(pulumi.CustomResource):
                  args: AclEntryAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **NOTE:** Available in v1.166.0+.
+        > **NOTE:** Available since v1.166.0.
 
         For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addentriestoacl).
 
@@ -205,7 +205,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformalbaclconfig"
+            name = "tf_example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_acl = alicloud.alb.Acl("defaultAcl",
             acl_name=name,

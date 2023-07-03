@@ -120,11 +120,11 @@ def get_pbr_route_entries(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries', __args__, opts=opts, typ=GetPbrRouteEntriesResult).value
 
     return AwaitableGetPbrRouteEntriesResult(
-        entries=__ret__.entries,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        vpn_gateway_id=__ret__.vpn_gateway_id)
+        entries=pulumi.get(__ret__, 'entries'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        vpn_gateway_id=pulumi.get(__ret__, 'vpn_gateway_id'))
 
 
 @_utilities.lift_output_func(get_pbr_route_entries)

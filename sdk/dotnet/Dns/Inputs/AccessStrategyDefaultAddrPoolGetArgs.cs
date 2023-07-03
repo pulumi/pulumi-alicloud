@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Dns.Inputs
     public sealed class AccessStrategyDefaultAddrPoolGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the address pool in the secondary address pool group.
+        /// The ID of the address pool in the primary address pool group.
         /// </summary>
         [Input("addrPoolId", required: true)]
         public Input<string> AddrPoolId { get; set; } = null!;
 
         /// <summary>
-        /// The weight of the address pool in the secondary address pool group.
+        /// The weight of the address pool in the primary address pool group.
         /// </summary>
         [Input("lbaWeight")]
         public Input<int>? LbaWeight { get; set; }

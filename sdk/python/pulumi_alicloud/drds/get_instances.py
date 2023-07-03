@@ -40,10 +40,6 @@ class GetInstancesResult:
         pulumi.set(__self__, "instances", instances)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
-        if name_regex is not None:
-            warnings.warn("""Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name_regex is deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.""")
-
         pulumi.set(__self__, "name_regex", name_regex)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
@@ -89,6 +85,9 @@ class GetInstancesResult:
     @property
     @pulumi.getter(name="nameRegex")
     def name_regex(self) -> Optional[str]:
+        warnings.warn("""Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name_regex is deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.""")
+
         return pulumi.get(self, "name_regex")
 
     @property
@@ -137,13 +136,13 @@ def get_instances(description_regex: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:drds/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
-        description_regex=__ret__.description_regex,
-        descriptions=__ret__.descriptions,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        name_regex=__ret__.name_regex,
-        output_file=__ret__.output_file)
+        description_regex=pulumi.get(__ret__, 'description_regex'),
+        descriptions=pulumi.get(__ret__, 'descriptions'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_instances)

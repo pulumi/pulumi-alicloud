@@ -5,9 +5,56 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://help.aliyun.com/document_detail/261361.html)
+ * Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: name,
+ *     cenId: exampleInstance.id,
+ * });
+ * const nameRegex = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^preserved-NODELETING",
+ * });
+ * const vlanId = new random.RandomInteger("vlanId", {
+ *     max: 2999,
+ *     min: 1,
+ * });
+ * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
+ *     localGatewayIp: "10.0.0.1",
+ *     peerGatewayIp: "10.0.0.2",
+ *     peeringSubnetMask: "255.255.255.252",
+ *     physicalConnectionId: nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id),
+ *     virtualBorderRouterName: name,
+ *     vlanId: vlanId.id,
+ *     minRxInterval: 1000,
+ *     minTxInterval: 1000,
+ *     detectMultiplier: 10,
+ * });
+ * const exampleTransitRouterVbrAttachment = new alicloud.cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment", {
+ *     vbrId: exampleVirtualBorderRouter.id,
+ *     cenId: exampleInstance.id,
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     autoPublishRouteEnabled: true,
+ *     transitRouterAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -59,6 +106,8 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
      * The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+     *
+     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
      */
     public readonly resourceType!: pulumi.Output<string | undefined>;
     /**
@@ -99,8 +148,6 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
     public readonly vbrId!: pulumi.Output<string>;
     /**
      * The owner id of the transit router vbr attachment.
-     *
-     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
      */
     public readonly vbrOwnerId!: pulumi.Output<string>;
 
@@ -177,6 +224,8 @@ export interface TransitRouterVbrAttachmentState {
     dryRun?: pulumi.Input<boolean>;
     /**
      * The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+     *
+     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -217,8 +266,6 @@ export interface TransitRouterVbrAttachmentState {
     vbrId?: pulumi.Input<string>;
     /**
      * The owner id of the transit router vbr attachment.
-     *
-     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
      */
     vbrOwnerId?: pulumi.Input<string>;
 }
@@ -241,6 +288,8 @@ export interface TransitRouterVbrAttachmentArgs {
     dryRun?: pulumi.Input<boolean>;
     /**
      * The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+     *
+     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -273,8 +322,6 @@ export interface TransitRouterVbrAttachmentArgs {
     vbrId: pulumi.Input<string>;
     /**
      * The owner id of the transit router vbr attachment.
-     *
-     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
      */
     vbrOwnerId?: pulumi.Input<string>;
 }

@@ -275,22 +275,22 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getRouteTables:getRouteTables', __args__, opts=opts, typ=GetRouteTablesResult).value
 
     return AwaitableGetRouteTablesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        resource_group_id=__ret__.resource_group_id,
-        route_table_name=__ret__.route_table_name,
-        router_id=__ret__.router_id,
-        router_type=__ret__.router_type,
-        status=__ret__.status,
-        tables=__ret__.tables,
-        tags=__ret__.tags,
-        total_count=__ret__.total_count,
-        vpc_id=__ret__.vpc_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        route_table_name=pulumi.get(__ret__, 'route_table_name'),
+        router_id=pulumi.get(__ret__, 'router_id'),
+        router_type=pulumi.get(__ret__, 'router_type'),
+        status=pulumi.get(__ret__, 'status'),
+        tables=pulumi.get(__ret__, 'tables'),
+        tags=pulumi.get(__ret__, 'tags'),
+        total_count=pulumi.get(__ret__, 'total_count'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_route_tables)

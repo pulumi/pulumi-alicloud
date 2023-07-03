@@ -15,7 +15,7 @@ import (
 //
 // For information about Alb Load Balancer Common Bandwidth Package Attachment and how to use it, see [What is Load Balancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/attachcommonbandwidthpackagetoloadbalancer).
 //
-// > **NOTE:** Available in v1.200.0+.
+// > **NOTE:** Available since v1.200.0.
 //
 // ## Import
 //

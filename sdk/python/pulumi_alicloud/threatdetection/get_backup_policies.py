@@ -193,17 +193,17 @@ def get_backup_policies(current_page: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:threatdetection/getBackupPolicies:getBackupPolicies', __args__, opts=opts, typ=GetBackupPoliciesResult).value
 
     return AwaitableGetBackupPoliciesResult(
-        current_page=__ret__.current_page,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        machine_remark=__ret__.machine_remark,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_size=__ret__.page_size,
-        policies=__ret__.policies,
-        status=__ret__.status)
+        current_page=pulumi.get(__ret__, 'current_page'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        machine_remark=pulumi.get(__ret__, 'machine_remark'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        policies=pulumi.get(__ret__, 'policies'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_backup_policies)

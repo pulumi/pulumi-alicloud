@@ -174,14 +174,14 @@ def get_acls(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getAcls:getAcls', __args__, opts=opts, typ=GetAclsResult).value
 
     return AwaitableGetAclsResult(
-        acls=__ret__.acls,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        tags=__ret__.tags)
+        acls=pulumi.get(__ret__, 'acls'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_acls)

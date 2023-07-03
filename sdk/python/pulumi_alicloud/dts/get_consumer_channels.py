@@ -115,11 +115,11 @@ def get_consumer_channels(dts_instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dts/getConsumerChannels:getConsumerChannels', __args__, opts=opts, typ=GetConsumerChannelsResult).value
 
     return AwaitableGetConsumerChannelsResult(
-        channels=__ret__.channels,
-        dts_instance_id=__ret__.dts_instance_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file)
+        channels=pulumi.get(__ret__, 'channels'),
+        dts_instance_id=pulumi.get(__ret__, 'dts_instance_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_consumer_channels)

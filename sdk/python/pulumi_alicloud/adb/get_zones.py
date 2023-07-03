@@ -115,11 +115,11 @@ def get_zones(multi: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:adb/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        multi=__ret__.multi,
-        output_file=__ret__.output_file,
-        zones=__ret__.zones)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        multi=pulumi.get(__ret__, 'multi'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_zones)

@@ -188,6 +188,9 @@ class EipArgs:
         """
         (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
+        warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
+
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -242,6 +245,9 @@ class EipArgs:
         """
         It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -540,6 +546,9 @@ class _EipState:
         """
         (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
+        warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
+
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -606,6 +615,9 @@ class _EipState:
         """
         It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1073,6 +1085,9 @@ class Eip(pulumi.CustomResource):
         """
         (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
+        warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
+
         return pulumi.get(self, "instance_charge_type")
 
     @property
@@ -1115,6 +1130,9 @@ class Eip(pulumi.CustomResource):
         """
         It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property

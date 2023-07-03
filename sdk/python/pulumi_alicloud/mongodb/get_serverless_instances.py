@@ -235,20 +235,20 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mongodb/getServerlessInstances:getServerlessInstances', __args__, opts=opts, typ=GetServerlessInstancesResult).value
 
     return AwaitableGetServerlessInstancesResult(
-        db_instance_class=__ret__.db_instance_class,
-        db_instance_description=__ret__.db_instance_description,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        network_type=__ret__.network_type,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        vpc_id=__ret__.vpc_id,
-        vswitch_id=__ret__.vswitch_id,
-        zone_id=__ret__.zone_id)
+        db_instance_class=pulumi.get(__ret__, 'db_instance_class'),
+        db_instance_description=pulumi.get(__ret__, 'db_instance_description'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        network_type=pulumi.get(__ret__, 'network_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'),
+        vswitch_id=pulumi.get(__ret__, 'vswitch_id'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_serverless_instances)

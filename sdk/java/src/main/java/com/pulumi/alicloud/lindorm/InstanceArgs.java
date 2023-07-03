@@ -66,14 +66,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The cold storage capacity of the instance. Unit: GB.
+     * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      * 
      */
     @Import(name="coldStorage")
     private @Nullable Output<Integer> coldStorage;
 
     /**
-     * @return The cold storage capacity of the instance. Unit: GB.
+     * @return The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      * 
      */
     public Optional<Output<Integer>> coldStorage() {
@@ -791,7 +791,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coldStorage The cold storage capacity of the instance. Unit: GB.
+         * @param coldStorage The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
          * 
          * @return builder
          * 
@@ -802,7 +802,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coldStorage The cold storage capacity of the instance. Unit: GB.
+         * @param coldStorage The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
          * 
          * @return builder
          * 

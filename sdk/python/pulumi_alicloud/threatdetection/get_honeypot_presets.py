@@ -222,19 +222,19 @@ def get_honeypot_presets(current_page: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets', __args__, opts=opts, typ=GetHoneypotPresetsResult).value
 
     return AwaitableGetHoneypotPresetsResult(
-        current_page=__ret__.current_page,
-        enable_details=__ret__.enable_details,
-        honeypot_image_name=__ret__.honeypot_image_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lang=__ret__.lang,
-        node_id=__ret__.node_id,
-        node_name=__ret__.node_name,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        preset_name=__ret__.preset_name,
-        presets=__ret__.presets)
+        current_page=pulumi.get(__ret__, 'current_page'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        honeypot_image_name=pulumi.get(__ret__, 'honeypot_image_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lang=pulumi.get(__ret__, 'lang'),
+        node_id=pulumi.get(__ret__, 'node_id'),
+        node_name=pulumi.get(__ret__, 'node_name'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        preset_name=pulumi.get(__ret__, 'preset_name'),
+        presets=pulumi.get(__ret__, 'presets'))
 
 
 @_utilities.lift_output_func(get_honeypot_presets)

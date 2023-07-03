@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Alidns Gtm Instance and how to use it, see [What is Gtm Instance](https://www.alibabacloud.com/help/en/doc-detail/204852.html).
  * 
- * &gt; **NOTE:** Available in v1.151.0+.
+ * &gt; **NOTE:** Available since v1.151.0.
  * 
  * ## Example Usage
  * 
@@ -54,14 +54,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;alicloud-provider.com&#34;);
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
- *             .alarmContactGroupName(var_.name())
+ *             .alarmContactGroupName(&#34;tf_example&#34;)
  *             .build());
  * 
  *         var defaultGtmInstance = new GtmInstance(&#34;defaultGtmInstance&#34;, GtmInstanceArgs.builder()        
- *             .instanceName(var_.name())
+ *             .instanceName(&#34;tf_example&#34;)
  *             .paymentType(&#34;Subscription&#34;)
  *             .period(1)
  *             .renewalStatus(&#34;ManualRenewal&#34;)
@@ -73,7 +75,7 @@ import javax.annotation.Nullable;
  *             .cnameType(&#34;PUBLIC&#34;)
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .alertGroups(defaultAlarmContactGroup.alarmContactGroupName())
- *             .publicUserDomainName(var_.domain_name())
+ *             .publicUserDomainName(domainName)
  *             .alertConfigs(GtmInstanceAlertConfigArgs.builder()
  *                 .smsNotice(true)
  *                 .noticeType(&#34;ADDR_ALERT&#34;)
@@ -98,14 +100,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dns/gtmInstance:GtmInstance")
 public class GtmInstance extends com.pulumi.resources.CustomResource {
     /**
-     * The alert notification methods. See the following `Block alert_config`.
+     * The alert notification methods. See `alert_config` below for details.
      * 
      */
     @Export(name="alertConfigs", type=List.class, parameters={GtmInstanceAlertConfig.class})
     private Output</* @Nullable */ List<GtmInstanceAlertConfig>> alertConfigs;
 
     /**
-     * @return The alert notification methods. See the following `Block alert_config`.
+     * @return The alert notification methods. See `alert_config` below for details.
      * 
      */
     public Output<Optional<List<GtmInstanceAlertConfig>>> alertConfigs() {

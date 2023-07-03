@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  * PrivateZone is a VPC-based resolution and management service for private domain names.
  * After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
  *
- * For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
+ * For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-routeprivatezoneincentovpc).
  *
- * > **NOTE:** Available in 1.83.0+
+ * > **NOTE:** Available since v1.83.0.
  *
  * ## Example Usage
  *
@@ -21,30 +21,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a cen Private Zone resource and use it.
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "test_name",
- *     cidrBlock: "172.16.0.0/12",
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
  * });
- * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("defaultInstanceAttachment", {
- *     instanceId: defaultInstance.id,
- *     childInstanceId: defaultNetwork.id,
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "tf_example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     childInstanceId: exampleNetwork.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: "cn-hangzhou",
- * }, {
- *     dependsOn: [
- *         defaultInstance,
- *         defaultNetwork,
- *     ],
+ *     childInstanceRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
  * });
  * const defaultPrivateZone = new alicloud.cen.PrivateZone("defaultPrivateZone", {
- *     accessRegionId: "cn-hangzhou",
- *     cenId: defaultInstance.id,
- *     hostRegionId: "cn-hangzhou",
- *     hostVpcId: defaultNetwork.id,
- * }, {
- *     dependsOn: [defaultInstanceAttachment],
+ *     accessRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     cenId: exampleInstanceAttachment.instanceId,
+ *     hostRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     hostVpcId: exampleNetwork.id,
  * });
  * ```
  *

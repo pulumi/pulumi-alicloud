@@ -202,18 +202,18 @@ def get_products(category_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:marketplace/getProducts:getProducts', __args__, opts=opts, typ=GetProductsResult).value
 
     return AwaitableGetProductsResult(
-        category_id=__ret__.category_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        output_file=__ret__.output_file,
-        product_type=__ret__.product_type,
-        products=__ret__.products,
-        search_term=__ret__.search_term,
-        sort=__ret__.sort,
-        suggested_price=__ret__.suggested_price,
-        supplier_id=__ret__.supplier_id,
-        supplier_name_keyword=__ret__.supplier_name_keyword)
+        category_id=pulumi.get(__ret__, 'category_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        product_type=pulumi.get(__ret__, 'product_type'),
+        products=pulumi.get(__ret__, 'products'),
+        search_term=pulumi.get(__ret__, 'search_term'),
+        sort=pulumi.get(__ret__, 'sort'),
+        suggested_price=pulumi.get(__ret__, 'suggested_price'),
+        supplier_id=pulumi.get(__ret__, 'supplier_id'),
+        supplier_name_keyword=pulumi.get(__ret__, 'supplier_name_keyword'))
 
 
 @_utilities.lift_output_func(get_products)

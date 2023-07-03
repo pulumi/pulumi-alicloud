@@ -149,14 +149,14 @@ def get_receivers(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:directmail/getReceivers:getReceivers', __args__, opts=opts, typ=GetReceiversResult).value
 
     return AwaitableGetReceiversResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        key_word=__ret__.key_word,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        receiverses=__ret__.receiverses,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        key_word=pulumi.get(__ret__, 'key_word'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        receiverses=pulumi.get(__ret__, 'receiverses'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_receivers)

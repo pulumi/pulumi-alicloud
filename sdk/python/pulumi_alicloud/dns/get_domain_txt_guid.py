@@ -141,13 +141,13 @@ def get_domain_txt_guid(domain_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dns/getDomainTxtGuid:getDomainTxtGuid', __args__, opts=opts, typ=GetDomainTxtGuidResult).value
 
     return AwaitableGetDomainTxtGuidResult(
-        domain_name=__ret__.domain_name,
-        id=__ret__.id,
-        lang=__ret__.lang,
-        output_file=__ret__.output_file,
-        rr=__ret__.rr,
-        type=__ret__.type,
-        value=__ret__.value)
+        domain_name=pulumi.get(__ret__, 'domain_name'),
+        id=pulumi.get(__ret__, 'id'),
+        lang=pulumi.get(__ret__, 'lang'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rr=pulumi.get(__ret__, 'rr'),
+        type=pulumi.get(__ret__, 'type'),
+        value=pulumi.get(__ret__, 'value'))
 
 
 @_utilities.lift_output_func(get_domain_txt_guid)

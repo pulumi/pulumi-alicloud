@@ -217,19 +217,19 @@ def get_zones(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:pvtz/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        keyword=__ret__.keyword,
-        lang=__ret__.lang,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        query_region_id=__ret__.query_region_id,
-        query_vpc_id=__ret__.query_vpc_id,
-        resource_group_id=__ret__.resource_group_id,
-        search_mode=__ret__.search_mode,
-        zones=__ret__.zones)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        keyword=pulumi.get(__ret__, 'keyword'),
+        lang=pulumi.get(__ret__, 'lang'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        query_region_id=pulumi.get(__ret__, 'query_region_id'),
+        query_vpc_id=pulumi.get(__ret__, 'query_vpc_id'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        search_mode=pulumi.get(__ret__, 'search_mode'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_zones)

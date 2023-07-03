@@ -116,11 +116,11 @@ def get_topics(name_prefix: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mns/getTopics:getTopics', __args__, opts=opts, typ=GetTopicsResult).value
 
     return AwaitableGetTopicsResult(
-        id=__ret__.id,
-        name_prefix=__ret__.name_prefix,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        topics=__ret__.topics)
+        id=pulumi.get(__ret__, 'id'),
+        name_prefix=pulumi.get(__ret__, 'name_prefix'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        topics=pulumi.get(__ret__, 'topics'))
 
 
 @_utilities.lift_output_func(get_topics)

@@ -9,103 +9,11 @@ import * as utilities from "../utilities";
  *
  * For information about Application Load Balancer (ALB) Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/associateaclswithlistener).
  *
- * > **NOTE:** Available in v1.163.0+.
+ * > **NOTE:** Available since v1.163.0.
  *
  * > **NOTE:** You can associate at most three ACLs with a listener.
  *
  * > **NOTE:** You can only configure either a whitelist or a blacklist for listener, not at the same time.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultAcl = new alicloud.alb.Acl("defaultAcl", {
- *     aclName: "example_value",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     aclEntries: [{
- *         description: "description",
- *         entry: "10.0.0.0/24",
- *     }],
- * });
- * const defaultZones = alicloud.alb.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const default1 = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
- * const default2 = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[1]?.id,
- * }));
- * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("defaultLoadBalancer", {
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     addressType: "Internet",
- *     addressAllocatedMode: "Fixed",
- *     loadBalancerName: "example_value",
- *     loadBalancerEdition: "Standard",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     loadBalancerBillingConfig: {
- *         payType: "PayAsYouGo",
- *     },
- *     tags: {
- *         Created: "TF",
- *     },
- *     zoneMappings: [
- *         {
- *             vswitchId: default1.then(default1 => default1.ids?.[0]),
- *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *         },
- *         {
- *             vswitchId: default2.then(default2 => default2.ids?.[0]),
- *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[1]?.id),
- *         },
- *     ],
- *     modificationProtectionConfig: {
- *         status: "NonProtection",
- *     },
- * });
- * const defaultServerGroup = new alicloud.alb.ServerGroup("defaultServerGroup", {
- *     protocol: "HTTP",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.vpcs?.[0]?.id),
- *     serverGroupName: "example_value",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     healthCheckConfig: {
- *         healthCheckEnabled: false,
- *     },
- *     stickySessionConfig: {
- *         stickySessionEnabled: false,
- *     },
- *     tags: {
- *         Created: "TF",
- *     },
- * });
- * const defaultListener = new alicloud.alb.Listener("defaultListener", {
- *     loadBalancerId: defaultLoadBalancer.id,
- *     listenerProtocol: "HTTP",
- *     listenerPort: 80,
- *     listenerDescription: "example_value",
- *     defaultActions: [{
- *         type: "ForwardGroup",
- *         forwardGroupConfig: {
- *             serverGroupTuples: [{
- *                 serverGroupId: defaultServerGroup.id,
- *             }],
- *         },
- *     }],
- * });
- * const defaultListenerAclAttachment = new alicloud.alb.ListenerAclAttachment("defaultListenerAclAttachment", {
- *     aclId: defaultAcl.id,
- *     listenerId: defaultListener.id,
- *     aclType: "White",
- * });
- * ```
  *
  * ## Import
  *

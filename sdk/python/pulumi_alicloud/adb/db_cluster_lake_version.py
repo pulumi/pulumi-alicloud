@@ -559,9 +559,9 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         """
         Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
 
-        For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/what-is-analyticdb-for-mysql).
+        For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
 
-        > **NOTE:** Available in v1.190.0+.
+        > **NOTE:** Available since v1.190.0.
 
         ## Example Usage
 
@@ -571,18 +571,29 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id="example")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        zone_id = default_zones.ids[len(default_zones.ids) - 1]
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="10.4.0.0/24",
+            zone_id=zone_id,
+            vswitch_name=name)
         default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
             compute_resource="16ACU",
             db_cluster_version="5.0",
             payment_type="PayAsYouGo",
-            storage_resource="0ACU",
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
-            zone_id="example")
+            storage_resource="24ACU",
+            enable_default_resource_group=False,
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            zone_id=zone_id)
         ```
 
         ## Import
@@ -617,9 +628,9 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         """
         Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
 
-        For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/what-is-analyticdb-for-mysql).
+        For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
 
-        > **NOTE:** Available in v1.190.0+.
+        > **NOTE:** Available since v1.190.0.
 
         ## Example Usage
 
@@ -629,18 +640,29 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id="example")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        zone_id = default_zones.ids[len(default_zones.ids) - 1]
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="10.4.0.0/24",
+            zone_id=zone_id,
+            vswitch_name=name)
         default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
             compute_resource="16ACU",
             db_cluster_version="5.0",
             payment_type="PayAsYouGo",
-            storage_resource="0ACU",
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
-            zone_id="example")
+            storage_resource="24ACU",
+            enable_default_resource_group=False,
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            zone_id=zone_id)
         ```
 
         ## Import

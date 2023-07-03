@@ -108,7 +108,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.autoUpgradeMinorVersion;
     }
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
@@ -117,7 +117,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<List<InstanceBabelfishConfig>> babelfishConfigs;
 
     /**
-     * @return The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     * @return The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
@@ -444,7 +444,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
@@ -453,7 +453,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
-     * @return The method to update the engine version.  Default value: Immediate. Valid values:
+     * @return The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
@@ -734,14 +734,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.monitoringPeriod;
     }
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
      */
     @Export(name="parameters", type=List.class, parameters={InstanceParameter.class})
     private Output<List<InstanceParameter>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
      */
     public Output<List<InstanceParameter>> parameters() {
@@ -764,14 +764,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     @Export(name="pgHbaConfs", type=List.class, parameters={InstancePgHbaConf.class})
     private Output<List<InstancePgHbaConf>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     public Output<List<InstancePgHbaConf>> pgHbaConfs() {
@@ -968,14 +968,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.serverKey;
     }
     /**
-     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
      * 
      */
     @Export(name="serverlessConfigs", type=List.class, parameters={InstanceServerlessConfig.class})
     private Output</* @Nullable */ List<InstanceServerlessConfig>> serverlessConfigs;
 
     /**
-     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
      * 
      */
     public Output<Optional<List<InstanceServerlessConfig>>> serverlessConfigs() {

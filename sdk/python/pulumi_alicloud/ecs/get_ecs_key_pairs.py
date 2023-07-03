@@ -34,10 +34,6 @@ class GetEcsKeyPairsResult:
         pulumi.set(__self__, "ids", ids)
         if key_pairs and not isinstance(key_pairs, list):
             raise TypeError("Expected argument 'key_pairs' to be a list")
-        if key_pairs is not None:
-            warnings.warn("""Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""", DeprecationWarning)
-            pulumi.log.warn("""key_pairs is deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""")
-
         pulumi.set(__self__, "key_pairs", key_pairs)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
@@ -79,6 +75,9 @@ class GetEcsKeyPairsResult:
     @property
     @pulumi.getter(name="keyPairs")
     def key_pairs(self) -> Sequence['outputs.GetEcsKeyPairsKeyPairResult']:
+        warnings.warn("""Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""", DeprecationWarning)
+        pulumi.log.warn("""key_pairs is deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""")
+
         return pulumi.get(self, "key_pairs")
 
     @property
@@ -174,16 +173,16 @@ def get_ecs_key_pairs(finger_print: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs', __args__, opts=opts, typ=GetEcsKeyPairsResult).value
 
     return AwaitableGetEcsKeyPairsResult(
-        finger_print=__ret__.finger_print,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        key_pairs=__ret__.key_pairs,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        pairs=__ret__.pairs,
-        resource_group_id=__ret__.resource_group_id,
-        tags=__ret__.tags)
+        finger_print=pulumi.get(__ret__, 'finger_print'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        key_pairs=pulumi.get(__ret__, 'key_pairs'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pairs=pulumi.get(__ret__, 'pairs'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_ecs_key_pairs)

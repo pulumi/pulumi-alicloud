@@ -91,9 +91,9 @@ def get_instances(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudfirewall/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
-        id=__ret__.id,
-        instances=__ret__.instances,
-        output_file=__ret__.output_file)
+        id=pulumi.get(__ret__, 'id'),
+        instances=pulumi.get(__ret__, 'instances'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_instances)

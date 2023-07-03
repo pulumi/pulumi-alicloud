@@ -248,20 +248,20 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getDedicatedHosts:getDedicatedHosts', __args__, opts=opts, typ=GetDedicatedHostsResult).value
 
     return AwaitableGetDedicatedHostsResult(
-        dedicated_host_id=__ret__.dedicated_host_id,
-        dedicated_host_name=__ret__.dedicated_host_name,
-        dedicated_host_type=__ret__.dedicated_host_type,
-        hosts=__ret__.hosts,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        operation_locks=__ret__.operation_locks,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        zone_id=__ret__.zone_id)
+        dedicated_host_id=pulumi.get(__ret__, 'dedicated_host_id'),
+        dedicated_host_name=pulumi.get(__ret__, 'dedicated_host_name'),
+        dedicated_host_type=pulumi.get(__ret__, 'dedicated_host_type'),
+        hosts=pulumi.get(__ret__, 'hosts'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        operation_locks=pulumi.get(__ret__, 'operation_locks'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_dedicated_hosts)

@@ -124,12 +124,12 @@ def get_bindings(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:amqp/getBindings:getBindings', __args__, opts=opts, typ=GetBindingsResult).value
 
     return AwaitableGetBindingsResult(
-        bindings=__ret__.bindings,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file,
-        virtual_host_name=__ret__.virtual_host_name)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        virtual_host_name=pulumi.get(__ret__, 'virtual_host_name'))
 
 
 @_utilities.lift_output_func(get_bindings)

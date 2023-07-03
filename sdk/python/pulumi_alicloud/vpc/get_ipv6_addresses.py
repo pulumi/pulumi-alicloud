@@ -165,15 +165,15 @@ def get_ipv6_addresses(associated_instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getIpv6Addresses:getIpv6Addresses', __args__, opts=opts, typ=GetIpv6AddressesResult).value
 
     return AwaitableGetIpv6AddressesResult(
-        addresses=__ret__.addresses,
-        associated_instance_id=__ret__.associated_instance_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        vpc_id=__ret__.vpc_id,
-        vswitch_id=__ret__.vswitch_id)
+        addresses=pulumi.get(__ret__, 'addresses'),
+        associated_instance_id=pulumi.get(__ret__, 'associated_instance_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'),
+        vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
 
 
 @_utilities.lift_output_func(get_ipv6_addresses)

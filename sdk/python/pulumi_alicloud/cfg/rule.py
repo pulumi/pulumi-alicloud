@@ -249,6 +249,9 @@ class RuleArgs:
         """
         Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         """
+        warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
+        pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
+
         return pulumi.get(self, "scope_compliance_resource_types")
 
     @scope_compliance_resource_types.setter
@@ -261,6 +264,9 @@ class RuleArgs:
         """
         Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         """
+        warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
+
         return pulumi.get(self, "source_detail_message_type")
 
     @source_detail_message_type.setter
@@ -273,6 +279,9 @@ class RuleArgs:
         """
         Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         """
+        warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
+
         return pulumi.get(self, "source_maximum_execution_frequency")
 
     @source_maximum_execution_frequency.setter
@@ -662,6 +671,9 @@ class _RuleState:
         """
         Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         """
+        warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
+        pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
+
         return pulumi.get(self, "scope_compliance_resource_types")
 
     @scope_compliance_resource_types.setter
@@ -674,6 +686,9 @@ class _RuleState:
         """
         Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         """
+        warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
+
         return pulumi.get(self, "source_detail_message_type")
 
     @source_detail_message_type.setter
@@ -698,6 +713,9 @@ class _RuleState:
         """
         Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         """
+        warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
+
         return pulumi.get(self, "source_maximum_execution_frequency")
 
     @source_maximum_execution_frequency.setter
@@ -1231,6 +1249,9 @@ class Rule(pulumi.CustomResource):
         """
         Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         """
+        warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
+        pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
+
         return pulumi.get(self, "scope_compliance_resource_types")
 
     @property
@@ -1239,6 +1260,9 @@ class Rule(pulumi.CustomResource):
         """
         Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         """
+        warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
+
         return pulumi.get(self, "source_detail_message_type")
 
     @property
@@ -1255,6 +1279,9 @@ class Rule(pulumi.CustomResource):
         """
         Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         """
+        warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
+
         return pulumi.get(self, "source_maximum_execution_frequency")
 
     @property

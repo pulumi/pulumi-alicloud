@@ -163,15 +163,15 @@ def get_desktop_types(cpu_count: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eds/getDesktopTypes:getDesktopTypes', __args__, opts=opts, typ=GetDesktopTypesResult).value
 
     return AwaitableGetDesktopTypesResult(
-        cpu_count=__ret__.cpu_count,
-        gpu_count=__ret__.gpu_count,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_type_family=__ret__.instance_type_family,
-        memory_size=__ret__.memory_size,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        types=__ret__.types)
+        cpu_count=pulumi.get(__ret__, 'cpu_count'),
+        gpu_count=pulumi.get(__ret__, 'gpu_count'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_type_family=pulumi.get(__ret__, 'instance_type_family'),
+        memory_size=pulumi.get(__ret__, 'memory_size'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        types=pulumi.get(__ret__, 'types'))
 
 
 @_utilities.lift_output_func(get_desktop_types)

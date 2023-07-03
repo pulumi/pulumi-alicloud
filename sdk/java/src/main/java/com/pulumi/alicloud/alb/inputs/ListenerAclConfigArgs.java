@@ -18,14 +18,14 @@ public final class ListenerAclConfigArgs extends com.pulumi.resources.ResourceAr
     public static final ListenerAclConfigArgs Empty = new ListenerAclConfigArgs();
 
     /**
-     * The ACLs that are associated with the listener.
+     * The ACLs that are associated with the listener. See `acl_relations` below for details.
      * 
      */
     @Import(name="aclRelations")
     private @Nullable Output<List<ListenerAclConfigAclRelationArgs>> aclRelations;
 
     /**
-     * @return The ACLs that are associated with the listener.
+     * @return The ACLs that are associated with the listener. See `acl_relations` below for details.
      * 
      */
     public Optional<Output<List<ListenerAclConfigAclRelationArgs>>> aclRelations() {
@@ -73,7 +73,7 @@ public final class ListenerAclConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aclRelations The ACLs that are associated with the listener.
+         * @param aclRelations The ACLs that are associated with the listener. See `acl_relations` below for details.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ListenerAclConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aclRelations The ACLs that are associated with the listener.
+         * @param aclRelations The ACLs that are associated with the listener. See `acl_relations` below for details.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ListenerAclConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aclRelations The ACLs that are associated with the listener.
+         * @param aclRelations The ACLs that are associated with the listener. See `acl_relations` below for details.
          * 
          * @return builder
          * 

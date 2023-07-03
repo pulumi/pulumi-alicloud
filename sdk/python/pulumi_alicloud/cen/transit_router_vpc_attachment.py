@@ -34,7 +34,7 @@ class TransitRouterVpcAttachmentArgs:
         The set of arguments for constructing a TransitRouterVpcAttachment resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         :param pulumi.Input[bool] auto_publish_route_enabled: Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
         :param pulumi.Input[bool] dry_run: The dry run.
@@ -108,7 +108,7 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]:
         """
-        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
         > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         return pulumi.get(self, "zone_mappings")
@@ -171,6 +171,9 @@ class TransitRouterVpcAttachmentArgs:
         """
         Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
+        warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
+
         return pulumi.get(self, "route_table_association_enabled")
 
     @route_table_association_enabled.setter
@@ -183,6 +186,9 @@ class TransitRouterVpcAttachmentArgs:
         """
         Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
+        warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
+
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @route_table_propagation_enabled.setter
@@ -286,7 +292,7 @@ class _TransitRouterVpcAttachmentState:
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         if auto_publish_route_enabled is not None:
@@ -394,6 +400,9 @@ class _TransitRouterVpcAttachmentState:
         """
         Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
+        warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
+
         return pulumi.get(self, "route_table_association_enabled")
 
     @route_table_association_enabled.setter
@@ -406,6 +415,9 @@ class _TransitRouterVpcAttachmentState:
         """
         Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
+        warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
+
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @route_table_propagation_enabled.setter
@@ -512,7 +524,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]]:
         """
-        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
         > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         return pulumi.get(self, "zone_mappings")
@@ -543,9 +555,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://help.aliyun.com/document_detail/261358.html)
+        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpcattachment)
 
-        > **NOTE:** Available in 1.126.0+
+        > **NOTE:** Available since v1.126.0.
 
         ## Example Usage
 
@@ -556,46 +568,47 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        transit_router_attachment_name = config.get("transitRouterAttachmentName")
-        if transit_router_attachment_name is None:
-            transit_router_attachment_name = "sdk_rebot_cen_tr_yaochi"
-        transit_router_attachment_description = config.get("transitRouterAttachmentDescription")
-        if transit_router_attachment_description is None:
-            transit_router_attachment_description = "sdk_rebot_cen_tr_yaochi"
-        default_transit_router_available_resources = alicloud.cen.get_transit_router_available_resources()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="sdk_rebot_cen_tr_yaochi",
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cen.get_transit_router_available_resources()
+        master_zone = default.resources[0].master_zones[0]
+        slave_zone = default.resources[0].slave_zones[1]
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
             cidr_block="192.168.0.0/16")
-        default_master = alicloud.vpc.Switch("defaultMaster",
-            vswitch_name="sdk_rebot_cen_tr_yaochi",
-            vpc_id=default_network.id,
+        example_master = alicloud.vpc.Switch("exampleMaster",
+            vswitch_name=name,
             cidr_block="192.168.1.0/24",
-            zone_id=default_transit_router_available_resources.resources[0].master_zones[0])
-        default_slave = alicloud.vpc.Switch("defaultSlave",
-            vswitch_name="sdk_rebot_cen_tr_yaochi",
-            vpc_id=default_network.id,
+            vpc_id=example_network.id,
+            zone_id=master_zone)
+        example_slave = alicloud.vpc.Switch("exampleSlave",
+            vswitch_name=name,
             cidr_block="192.168.2.0/24",
-            zone_id=default_transit_router_available_resources.resources[0].slave_zones[0])
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name="sdk_rebot_cen_tr_yaochi",
+            vpc_id=example_network.id,
+            zone_id=slave_zone)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
             protection_level="REDUCED")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
-        default_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment",
-            cen_id=default_instance.id,
-            transit_router_id=default_transit_router.transit_router_id,
-            vpc_id=default_network.id,
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            vpc_id=example_network.id,
             zone_mappings=[
                 alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=default_transit_router_available_resources.resources[0].master_zones[0],
-                    vswitch_id=default_master.id,
+                    zone_id=master_zone,
+                    vswitch_id=example_master.id,
                 ),
                 alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=default_transit_router_available_resources.resources[0].slave_zones[1],
-                    vswitch_id=default_slave.id,
+                    zone_id=slave_zone,
+                    vswitch_id=example_slave.id,
                 ),
             ],
-            transit_router_attachment_name=transit_router_attachment_name,
-            transit_router_attachment_description=transit_router_attachment_description)
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
         ```
 
         ## Import
@@ -621,7 +634,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         ...
@@ -631,9 +644,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  args: TransitRouterVpcAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://help.aliyun.com/document_detail/261358.html)
+        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpcattachment)
 
-        > **NOTE:** Available in 1.126.0+
+        > **NOTE:** Available since v1.126.0.
 
         ## Example Usage
 
@@ -644,46 +657,47 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        transit_router_attachment_name = config.get("transitRouterAttachmentName")
-        if transit_router_attachment_name is None:
-            transit_router_attachment_name = "sdk_rebot_cen_tr_yaochi"
-        transit_router_attachment_description = config.get("transitRouterAttachmentDescription")
-        if transit_router_attachment_description is None:
-            transit_router_attachment_description = "sdk_rebot_cen_tr_yaochi"
-        default_transit_router_available_resources = alicloud.cen.get_transit_router_available_resources()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="sdk_rebot_cen_tr_yaochi",
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cen.get_transit_router_available_resources()
+        master_zone = default.resources[0].master_zones[0]
+        slave_zone = default.resources[0].slave_zones[1]
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
             cidr_block="192.168.0.0/16")
-        default_master = alicloud.vpc.Switch("defaultMaster",
-            vswitch_name="sdk_rebot_cen_tr_yaochi",
-            vpc_id=default_network.id,
+        example_master = alicloud.vpc.Switch("exampleMaster",
+            vswitch_name=name,
             cidr_block="192.168.1.0/24",
-            zone_id=default_transit_router_available_resources.resources[0].master_zones[0])
-        default_slave = alicloud.vpc.Switch("defaultSlave",
-            vswitch_name="sdk_rebot_cen_tr_yaochi",
-            vpc_id=default_network.id,
+            vpc_id=example_network.id,
+            zone_id=master_zone)
+        example_slave = alicloud.vpc.Switch("exampleSlave",
+            vswitch_name=name,
             cidr_block="192.168.2.0/24",
-            zone_id=default_transit_router_available_resources.resources[0].slave_zones[0])
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name="sdk_rebot_cen_tr_yaochi",
+            vpc_id=example_network.id,
+            zone_id=slave_zone)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
             protection_level="REDUCED")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
-        default_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment",
-            cen_id=default_instance.id,
-            transit_router_id=default_transit_router.transit_router_id,
-            vpc_id=default_network.id,
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            vpc_id=example_network.id,
             zone_mappings=[
                 alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=default_transit_router_available_resources.resources[0].master_zones[0],
-                    vswitch_id=default_master.id,
+                    zone_id=master_zone,
+                    vswitch_id=example_master.id,
                 ),
                 alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=default_transit_router_available_resources.resources[0].slave_zones[1],
-                    vswitch_id=default_slave.id,
+                    zone_id=slave_zone,
+                    vswitch_id=example_slave.id,
                 ),
             ],
-            transit_router_attachment_name=transit_router_attachment_name,
-            transit_router_attachment_description=transit_router_attachment_description)
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
         ```
 
         ## Import
@@ -808,7 +822,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -879,6 +893,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         """
         Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
+        warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
+
         return pulumi.get(self, "route_table_association_enabled")
 
     @property
@@ -887,6 +904,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         """
         Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
+        warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
+
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @property
@@ -957,7 +977,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Output[Sequence['outputs.TransitRouterVpcAttachmentZoneMapping']]:
         """
-        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
         > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         return pulumi.get(self, "zone_mappings")

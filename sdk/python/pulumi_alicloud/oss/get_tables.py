@@ -151,13 +151,13 @@ def get_tables(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:oss/getTables:getTables', __args__, opts=opts, typ=GetTablesResult).value
 
     return AwaitableGetTablesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_name=__ret__.instance_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        tables=__ret__.tables)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        tables=pulumi.get(__ret__, 'tables'))
 
 
 @_utilities.lift_output_func(get_tables)

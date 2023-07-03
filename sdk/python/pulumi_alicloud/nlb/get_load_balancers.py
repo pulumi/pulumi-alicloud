@@ -258,23 +258,23 @@ def get_load_balancers(address_ip_version: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nlb/getLoadBalancers:getLoadBalancers', __args__, opts=opts, typ=GetLoadBalancersResult).value
 
     return AwaitableGetLoadBalancersResult(
-        address_ip_version=__ret__.address_ip_version,
-        address_type=__ret__.address_type,
-        balancers=__ret__.balancers,
-        dns_name=__ret__.dns_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        ipv6_address_type=__ret__.ipv6_address_type,
-        load_balancer_business_status=__ret__.load_balancer_business_status,
-        load_balancer_names=__ret__.load_balancer_names,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        vpc_ids=__ret__.vpc_ids,
-        zone_id=__ret__.zone_id)
+        address_ip_version=pulumi.get(__ret__, 'address_ip_version'),
+        address_type=pulumi.get(__ret__, 'address_type'),
+        balancers=pulumi.get(__ret__, 'balancers'),
+        dns_name=pulumi.get(__ret__, 'dns_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        ipv6_address_type=pulumi.get(__ret__, 'ipv6_address_type'),
+        load_balancer_business_status=pulumi.get(__ret__, 'load_balancer_business_status'),
+        load_balancer_names=pulumi.get(__ret__, 'load_balancer_names'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        vpc_ids=pulumi.get(__ret__, 'vpc_ids'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_load_balancers)

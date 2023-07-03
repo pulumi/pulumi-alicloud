@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly string Document;
         /// <summary>
-        /// Id of the role.
+        /// ID of the role.
         /// </summary>
         public readonly string Id;
         /// <summary>

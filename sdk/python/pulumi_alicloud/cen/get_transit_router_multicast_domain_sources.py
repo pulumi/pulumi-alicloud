@@ -118,11 +118,11 @@ def get_transit_router_multicast_domain_sources(ids: Optional[Sequence[str]] = N
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources', __args__, opts=opts, typ=GetTransitRouterMulticastDomainSourcesResult).value
 
     return AwaitableGetTransitRouterMulticastDomainSourcesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        sources=__ret__.sources,
-        transit_router_multicast_domain_id=__ret__.transit_router_multicast_domain_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        sources=pulumi.get(__ret__, 'sources'),
+        transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'))
 
 
 @_utilities.lift_output_func(get_transit_router_multicast_domain_sources)

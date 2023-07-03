@@ -178,16 +178,16 @@ def get_router_interfaces(filters: Optional[Sequence[pulumi.InputType['GetRouter
     __ret__ = pulumi.runtime.invoke('alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces', __args__, opts=opts, typ=GetRouterInterfacesResult).value
 
     return AwaitableGetRouterInterfacesResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        include_reservation_data=__ret__.include_reservation_data,
-        interfaces=__ret__.interfaces,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        include_reservation_data=pulumi.get(__ret__, 'include_reservation_data'),
+        interfaces=pulumi.get(__ret__, 'interfaces'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_router_interfaces)

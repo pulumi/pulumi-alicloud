@@ -170,15 +170,15 @@ def get_rds_backups(backup_mode: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getRdsBackups:getRdsBackups', __args__, opts=opts, typ=GetRdsBackupsResult).value
 
     return AwaitableGetRdsBackupsResult(
-        backup_mode=__ret__.backup_mode,
-        backup_status=__ret__.backup_status,
-        backups=__ret__.backups,
-        db_instance_id=__ret__.db_instance_id,
-        end_time=__ret__.end_time,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        start_time=__ret__.start_time)
+        backup_mode=pulumi.get(__ret__, 'backup_mode'),
+        backup_status=pulumi.get(__ret__, 'backup_status'),
+        backups=pulumi.get(__ret__, 'backups'),
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        start_time=pulumi.get(__ret__, 'start_time'))
 
 
 @_utilities.lift_output_func(get_rds_backups)

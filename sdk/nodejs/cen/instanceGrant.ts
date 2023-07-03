@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
  *
- * For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
+ * For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-attachcenchildinstance).
+ *
+ * > **NOTE:** Available since v1.37.0.
  *
  * ## Example Usage
  *
@@ -17,39 +19,47 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
- * const account1 = new alicloud.Provider("account1", {
- *     accessKey: "access123",
- *     secretKey: "secret123",
- * });
- * const account2 = new alicloud.Provider("account2", {
- *     accessKey: "access456",
- *     secretKey: "secret456",
- * });
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccCenInstanceGrantBasic";
- * const cen = new alicloud.cen.Instance("cen", {}, {
- *     provider: alicloud.account2,
+ * const childAccountAk = config.get("childAccountAk") || "example-ak";
+ * const childAccountSk = config.get("childAccountSk") || "example-sk";
+ * const yourAccount = new alicloud.Provider("yourAccount", {});
+ * const childAccount = new alicloud.Provider("childAccount", {
+ *     accessKey: childAccountAk,
+ *     secretKey: childAccountSk,
  * });
- * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "192.168.0.0/16"}, {
- *     provider: alicloud.account1,
+ * const yourAccountAccount = alicloud.getAccount({});
+ * const childAccountAccount = alicloud.getAccount({});
+ * const default = alicloud.getRegions({
+ *     current: true,
  * });
- * const fooInstanceGrant = new alicloud.cen.InstanceGrant("fooInstanceGrant", {
- *     cenId: cen.id,
- *     childInstanceId: vpc.id,
- *     cenOwnerId: "uid2",
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
  * }, {
- *     provider: alicloud.account1,
+ *     provider: alicloud.your_account,
  * });
- * const fooInstanceAttachment = new alicloud.cen.InstanceAttachment("fooInstanceAttachment", {
- *     instanceId: cen.id,
- *     childInstanceId: vpc.id,
+ * const childAccountNetwork = new alicloud.vpc.Network("childAccountNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * }, {
+ *     provider: alicloud.child_account,
+ * });
+ * const childAccountInstanceGrant = new alicloud.cen.InstanceGrant("childAccountInstanceGrant", {
+ *     cenId: exampleInstance.id,
+ *     childInstanceId: childAccountNetwork.id,
+ *     cenOwnerId: yourAccountAccount.then(yourAccountAccount => yourAccountAccount.id),
+ * }, {
+ *     provider: alicloud.child_account,
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     childInstanceId: childAccountNetwork.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: "cn-qingdao",
- *     childInstanceOwnerId: "uid1",
+ *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     childInstanceOwnerId: childAccountAccount.then(childAccountAccount => childAccountAccount.id),
  * }, {
- *     provider: alicloud.account2,
- *     dependsOn: [fooInstanceGrant],
+ *     provider: alicloud.your_account,
+ *     dependsOn: [childAccountInstanceGrant],
  * });
  * ```
  *

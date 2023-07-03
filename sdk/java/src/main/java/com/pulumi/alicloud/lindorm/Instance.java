@@ -22,11 +22,11 @@ import javax.annotation.Nullable;
 /**
  * Provides a Lindorm Instance resource.
  * 
- * For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
+ * For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/lindorm/latest/product-introduction-overview).
  * 
  * &gt; **NOTE:** Available since v1.132.0.
  * 
- * &gt; **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+ * &gt; **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
  * 
  * ## Import
  * 
@@ -82,14 +82,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.archVersion);
     }
     /**
-     * The cold storage capacity of the instance. Unit: GB.
+     * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      * 
      */
     @Export(name="coldStorage", type=Integer.class, parameters={})
     private Output<Integer> coldStorage;
 
     /**
-     * @return The cold storage capacity of the instance. Unit: GB.
+     * @return The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      * 
      */
     public Output<Integer> coldStorage() {

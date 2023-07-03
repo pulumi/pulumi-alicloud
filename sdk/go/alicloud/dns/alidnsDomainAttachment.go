@@ -13,7 +13,7 @@ import (
 
 // Provides bind the domain name to the Alidns instance resource.
 //
-// > **NOTE:** Available in v1.99.0+.
+// > **NOTE:** Available since v1.99.0.
 //
 // ## Example Usage
 //
@@ -29,12 +29,38 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewAlidnsDomainAttachment(ctx, "dns", &dns.AlidnsDomainAttachmentArgs{
-//				DomainNames: pulumi.StringArray{
-//					pulumi.String("test111.abc"),
-//					pulumi.String("test222.abc"),
+//			defaultDomainGroup, err := dns.NewDomainGroup(ctx, "defaultDomainGroup", &dns.DomainGroupArgs{
+//				DomainGroupName: pulumi.String("tf-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlidnsDomain, err := dns.NewAlidnsDomain(ctx, "defaultAlidnsDomain", &dns.AlidnsDomainArgs{
+//				DomainName: pulumi.String("starmove.com"),
+//				GroupId:    defaultDomainGroup.ID(),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
 //				},
-//				InstanceId: pulumi.String("dns-cn-mp91lyq9xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlidnsInstance, err := dns.NewAlidnsInstance(ctx, "defaultAlidnsInstance", &dns.AlidnsInstanceArgs{
+//				DnsSecurity:   pulumi.String("basic"),
+//				DomainNumbers: pulumi.String("3"),
+//				VersionCode:   pulumi.String("version_personal"),
+//				Period:        pulumi.Int(1),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewAlidnsDomainAttachment(ctx, "defaultAlidnsDomainAttachment", &dns.AlidnsDomainAttachmentArgs{
+//				InstanceId: defaultAlidnsInstance.ID(),
+//				DomainNames: pulumi.StringArray{
+//					defaultAlidnsDomain.DomainName,
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -25,9 +25,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ALB Load Balancer resource.
  * 
- * For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/doc-detail/197341.htm).
+ * For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createloadbalancer).
  * 
- * &gt; **NOTE:** Available in v1.132.0+.
+ * &gt; **NOTE:** Available since v1.132.0.
  * 
  * ## Import
  * 
@@ -41,14 +41,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
-     * The Access Logging Configuration Structure. See the following `Block access_log_config`.
+     * The Access Logging Configuration Structure. See `access_log_config` below for details.
      * 
      */
     @Export(name="accessLogConfig", type=LoadBalancerAccessLogConfig.class, parameters={})
     private Output</* @Nullable */ LoadBalancerAccessLogConfig> accessLogConfig;
 
     /**
-     * @return The Access Logging Configuration Structure. See the following `Block access_log_config`.
+     * @return The Access Logging Configuration Structure. See `access_log_config` below for details.
      * 
      */
     public Output<Optional<LoadBalancerAccessLogConfig>> accessLogConfig() {
@@ -139,14 +139,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+     * The configuration of the billing method. See `load_balancer_billing_config` below for details.
      * 
      */
     @Export(name="loadBalancerBillingConfig", type=LoadBalancerLoadBalancerBillingConfig.class, parameters={})
     private Output<LoadBalancerLoadBalancerBillingConfig> loadBalancerBillingConfig;
 
     /**
-     * @return The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+     * @return The configuration of the billing method. See `load_balancer_billing_config` below for details.
      * 
      */
     public Output<LoadBalancerLoadBalancerBillingConfig> loadBalancerBillingConfig() {
@@ -181,14 +181,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.loadBalancerName;
     }
     /**
-     * Modify the Protection Configuration. See the following `Block modification_protection_config`.
+     * Modify the Protection Configuration. See `modification_protection_config` below for details.
      * 
      */
     @Export(name="modificationProtectionConfig", type=LoadBalancerModificationProtectionConfig.class, parameters={})
     private Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig;
 
     /**
-     * @return Modify the Protection Configuration. See the following `Block modification_protection_config`.
+     * @return Modify the Protection Configuration. See `modification_protection_config` below for details.
      * 
      */
     public Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig() {
@@ -251,14 +251,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+     * The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
      * 
      */
     @Export(name="zoneMappings", type=List.class, parameters={LoadBalancerZoneMapping.class})
     private Output<List<LoadBalancerZoneMapping>> zoneMappings;
 
     /**
-     * @return The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+     * @return The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
      * 
      */
     public Output<List<LoadBalancerZoneMapping>> zoneMappings() {

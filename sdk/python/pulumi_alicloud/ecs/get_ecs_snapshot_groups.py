@@ -178,16 +178,16 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups', __args__, opts=opts, typ=GetEcsSnapshotGroupsResult).value
 
     return AwaitableGetEcsSnapshotGroupsResult(
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        snapshot_group_name=__ret__.snapshot_group_name,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        snapshot_group_name=pulumi.get(__ret__, 'snapshot_group_name'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_ecs_snapshot_groups)

@@ -20,9 +20,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://help.aliyun.com/document_detail/261358.html)
+ * Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpcattachment)
  * 
- * &gt; **NOTE:** Available in 1.126.0+
+ * &gt; **NOTE:** Available since v1.126.0.
  * 
  * ## Example Usage
  * 
@@ -60,53 +60,57 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var transitRouterAttachmentName = config.get(&#34;transitRouterAttachmentName&#34;).orElse(&#34;sdk_rebot_cen_tr_yaochi&#34;);
- *         final var transitRouterAttachmentDescription = config.get(&#34;transitRouterAttachmentDescription&#34;).orElse(&#34;sdk_rebot_cen_tr_yaochi&#34;);
- *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var default = CenFunctions.getTransitRouterAvailableResources();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;sdk_rebot_cen_tr_yaochi&#34;)
+ *         final var masterZone = default_.resources()[0].masterZones()[0];
+ * 
+ *         final var slaveZone = default_.resources()[0].slaveZones()[1];
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
  *             .build());
  * 
- *         var defaultMaster = new Switch(&#34;defaultMaster&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;sdk_rebot_cen_tr_yaochi&#34;)
- *             .vpcId(defaultNetwork.id())
+ *         var exampleMaster = new Switch(&#34;exampleMaster&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
  *             .cidrBlock(&#34;192.168.1.0/24&#34;)
- *             .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(masterZone)
  *             .build());
  * 
- *         var defaultSlave = new Switch(&#34;defaultSlave&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;sdk_rebot_cen_tr_yaochi&#34;)
- *             .vpcId(defaultNetwork.id())
+ *         var exampleSlave = new Switch(&#34;exampleSlave&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
  *             .cidrBlock(&#34;192.168.2.0/24&#34;)
- *             .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]))
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(slaveZone)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;sdk_rebot_cen_tr_yaochi&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(name)
  *             .protectionLevel(&#34;REDUCED&#34;)
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(name)
+ *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;defaultTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
- *             .cenId(defaultInstance.id())
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
- *             .vpcId(defaultNetwork.id())
+ *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;exampleTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
+ *             .cenId(exampleInstance.id())
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .vpcId(exampleNetwork.id())
  *             .zoneMappings(            
  *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
- *                     .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
- *                     .vswitchId(defaultMaster.id())
+ *                     .zoneId(masterZone)
+ *                     .vswitchId(exampleMaster.id())
  *                     .build(),
  *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
- *                     .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[1]))
- *                     .vswitchId(defaultSlave.id())
+ *                     .zoneId(slaveZone)
+ *                     .vswitchId(exampleSlave.id())
  *                     .build())
- *             .transitRouterAttachmentName(transitRouterAttachmentName)
- *             .transitRouterAttachmentDescription(transitRouterAttachmentDescription)
+ *             .transitRouterAttachmentName(name)
+ *             .transitRouterAttachmentDescription(name)
  *             .build());
  * 
  *     }
@@ -343,7 +347,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return this.vpcOwnerId;
     }
     /**
-     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
      * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      * 
      */
@@ -351,7 +355,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
     private Output<List<TransitRouterVpcAttachmentZoneMapping>> zoneMappings;
 
     /**
-     * @return The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * @return The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
      * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      * 
      */

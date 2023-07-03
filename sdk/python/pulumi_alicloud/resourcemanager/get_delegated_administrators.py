@@ -137,13 +137,13 @@ def get_delegated_administrators(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators', __args__, opts=opts, typ=GetDelegatedAdministratorsResult).value
 
     return AwaitableGetDelegatedAdministratorsResult(
-        administrators=__ret__.administrators,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        service_principal=__ret__.service_principal)
+        administrators=pulumi.get(__ret__, 'administrators'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        service_principal=pulumi.get(__ret__, 'service_principal'))
 
 
 @_utilities.lift_output_func(get_delegated_administrators)

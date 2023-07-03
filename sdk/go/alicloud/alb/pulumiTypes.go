@@ -121,7 +121,7 @@ type AclAclEntry struct {
 	Description *string `pulumi:"description"`
 	// The IP address for the ACL entry.
 	Entry *string `pulumi:"entry"`
-	// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	// The status of the ACL entry. Valid values:
 	Status *string `pulumi:"status"`
 }
 
@@ -141,7 +141,7 @@ type AclAclEntryArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The IP address for the ACL entry.
 	Entry pulumi.StringPtrInput `pulumi:"entry"`
-	// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	// The status of the ACL entry. Valid values:
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -206,7 +206,7 @@ func (o AclAclEntryOutput) Entry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclAclEntry) *string { return v.Entry }).(pulumi.StringPtrOutput)
 }
 
-// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+// The status of the ACL entry. Valid values:
 func (o AclAclEntryOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclAclEntry) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -431,7 +431,7 @@ func (o ListenerAccessLogTracingConfigPtrOutput) TracingType() pulumi.StringPtrO
 }
 
 type ListenerAclConfig struct {
-	// The ACLs that are associated with the listener.
+	// The ACLs that are associated with the listener. See `aclRelations` below for details.
 	AclRelations []ListenerAclConfigAclRelation `pulumi:"aclRelations"`
 	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
 	AclType *string `pulumi:"aclType"`
@@ -449,7 +449,7 @@ type ListenerAclConfigInput interface {
 }
 
 type ListenerAclConfigArgs struct {
-	// The ACLs that are associated with the listener.
+	// The ACLs that are associated with the listener. See `aclRelations` below for details.
 	AclRelations ListenerAclConfigAclRelationArrayInput `pulumi:"aclRelations"`
 	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
 	AclType pulumi.StringPtrInput `pulumi:"aclType"`
@@ -532,7 +532,7 @@ func (o ListenerAclConfigOutput) ToListenerAclConfigPtrOutputWithContext(ctx con
 	}).(ListenerAclConfigPtrOutput)
 }
 
-// The ACLs that are associated with the listener.
+// The ACLs that are associated with the listener. See `aclRelations` below for details.
 func (o ListenerAclConfigOutput) AclRelations() ListenerAclConfigAclRelationArrayOutput {
 	return o.ApplyT(func(v ListenerAclConfig) []ListenerAclConfigAclRelation { return v.AclRelations }).(ListenerAclConfigAclRelationArrayOutput)
 }
@@ -566,7 +566,7 @@ func (o ListenerAclConfigPtrOutput) Elem() ListenerAclConfigOutput {
 	}).(ListenerAclConfigOutput)
 }
 
-// The ACLs that are associated with the listener.
+// The ACLs that are associated with the listener. See `aclRelations` below for details.
 func (o ListenerAclConfigPtrOutput) AclRelations() ListenerAclConfigAclRelationArrayOutput {
 	return o.ApplyT(func(v *ListenerAclConfig) []ListenerAclConfigAclRelation {
 		if v == nil {
@@ -830,7 +830,7 @@ func (o ListenerCertificatesPtrOutput) CertificateId() pulumi.StringPtrOutput {
 }
 
 type ListenerDefaultAction struct {
-	// The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+	// The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forwardGroupConfig` below for details.
 	ForwardGroupConfig ListenerDefaultActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
 	// Action Type.
 	Type string `pulumi:"type"`
@@ -848,7 +848,7 @@ type ListenerDefaultActionInput interface {
 }
 
 type ListenerDefaultActionArgs struct {
-	// The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+	// The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forwardGroupConfig` below for details.
 	ForwardGroupConfig ListenerDefaultActionForwardGroupConfigInput `pulumi:"forwardGroupConfig"`
 	// Action Type.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -905,7 +905,7 @@ func (o ListenerDefaultActionOutput) ToListenerDefaultActionOutputWithContext(ct
 	return o
 }
 
-// The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+// The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forwardGroupConfig` below for details.
 func (o ListenerDefaultActionOutput) ForwardGroupConfig() ListenerDefaultActionForwardGroupConfigOutput {
 	return o.ApplyT(func(v ListenerDefaultAction) ListenerDefaultActionForwardGroupConfig { return v.ForwardGroupConfig }).(ListenerDefaultActionForwardGroupConfigOutput)
 }
@@ -936,7 +936,7 @@ func (o ListenerDefaultActionArrayOutput) Index(i pulumi.IntInput) ListenerDefau
 }
 
 type ListenerDefaultActionForwardGroupConfig struct {
-	// The destination server group to which requests are forwarded.
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples []ListenerDefaultActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -952,7 +952,7 @@ type ListenerDefaultActionForwardGroupConfigInput interface {
 }
 
 type ListenerDefaultActionForwardGroupConfigArgs struct {
-	// The destination server group to which requests are forwarded.
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -982,7 +982,7 @@ func (o ListenerDefaultActionForwardGroupConfigOutput) ToListenerDefaultActionFo
 	return o
 }
 
-// The destination server group to which requests are forwarded.
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 func (o ListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v ListenerDefaultActionForwardGroupConfig) []ListenerDefaultActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -2331,25 +2331,25 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 }
 
 type RuleRuleAction struct {
-	// Request forwarding based on CORS. See the following `Block corsConfig`.
+	// Request forwarding based on CORS. See `corsConfig` below for details.
 	CorsConfig *RuleRuleActionCorsConfig `pulumi:"corsConfig"`
-	// The configuration of the fixed response. See the following `Block fixedResponseConfig`.
+	// The configuration of the fixed response. See `fixedResponseConfig` below for details.
 	FixedResponseConfig *RuleRuleActionFixedResponseConfig `pulumi:"fixedResponseConfig"`
-	// The forward response action within ALB. See the following `Block forwardGroupConfig`.
+	// The forward response action within ALB. See `forwardGroupConfig` below for details.
 	ForwardGroupConfig *RuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
-	// The configuration of the inserted header field. See the following `Block insertHeaderConfig`.
+	// The configuration of the inserted header field. See `insertHeaderConfig` below for details.
 	InsertHeaderConfig *RuleRuleActionInsertHeaderConfig `pulumi:"insertHeaderConfig"`
 	// The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
 	Order int `pulumi:"order"`
-	// The configuration of the external redirect action. See the following `Block redirectConfig`.
+	// The configuration of the external redirect action. See `redirectConfig` below for details.
 	RedirectConfig *RuleRuleActionRedirectConfig `pulumi:"redirectConfig"`
-	// The redirect action within ALB. See the following `Block rewriteConfig`.
+	// The redirect action within ALB. See `rewriteConfig` below for details.
 	RewriteConfig *RuleRuleActionRewriteConfig `pulumi:"rewriteConfig"`
-	// The Flow speed limit. See the following `Block trafficLimitConfig`.
+	// The Flow speed limit. See `trafficLimitConfig` below for details.
 	TrafficLimitConfig *RuleRuleActionTrafficLimitConfig `pulumi:"trafficLimitConfig"`
-	// The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+	// The Traffic mirroring. See `trafficMirrorConfig` below for details.
 	TrafficMirrorConfig *RuleRuleActionTrafficMirrorConfig `pulumi:"trafficMirrorConfig"`
-	// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
 	// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
 	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
 	// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
@@ -2368,25 +2368,25 @@ type RuleRuleActionInput interface {
 }
 
 type RuleRuleActionArgs struct {
-	// Request forwarding based on CORS. See the following `Block corsConfig`.
+	// Request forwarding based on CORS. See `corsConfig` below for details.
 	CorsConfig RuleRuleActionCorsConfigPtrInput `pulumi:"corsConfig"`
-	// The configuration of the fixed response. See the following `Block fixedResponseConfig`.
+	// The configuration of the fixed response. See `fixedResponseConfig` below for details.
 	FixedResponseConfig RuleRuleActionFixedResponseConfigPtrInput `pulumi:"fixedResponseConfig"`
-	// The forward response action within ALB. See the following `Block forwardGroupConfig`.
+	// The forward response action within ALB. See `forwardGroupConfig` below for details.
 	ForwardGroupConfig RuleRuleActionForwardGroupConfigPtrInput `pulumi:"forwardGroupConfig"`
-	// The configuration of the inserted header field. See the following `Block insertHeaderConfig`.
+	// The configuration of the inserted header field. See `insertHeaderConfig` below for details.
 	InsertHeaderConfig RuleRuleActionInsertHeaderConfigPtrInput `pulumi:"insertHeaderConfig"`
 	// The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
 	Order pulumi.IntInput `pulumi:"order"`
-	// The configuration of the external redirect action. See the following `Block redirectConfig`.
+	// The configuration of the external redirect action. See `redirectConfig` below for details.
 	RedirectConfig RuleRuleActionRedirectConfigPtrInput `pulumi:"redirectConfig"`
-	// The redirect action within ALB. See the following `Block rewriteConfig`.
+	// The redirect action within ALB. See `rewriteConfig` below for details.
 	RewriteConfig RuleRuleActionRewriteConfigPtrInput `pulumi:"rewriteConfig"`
-	// The Flow speed limit. See the following `Block trafficLimitConfig`.
+	// The Flow speed limit. See `trafficLimitConfig` below for details.
 	TrafficLimitConfig RuleRuleActionTrafficLimitConfigPtrInput `pulumi:"trafficLimitConfig"`
-	// The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+	// The Traffic mirroring. See `trafficMirrorConfig` below for details.
 	TrafficMirrorConfig RuleRuleActionTrafficMirrorConfigPtrInput `pulumi:"trafficMirrorConfig"`
-	// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
 	// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
 	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
 	// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
@@ -2444,22 +2444,22 @@ func (o RuleRuleActionOutput) ToRuleRuleActionOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Request forwarding based on CORS. See the following `Block corsConfig`.
+// Request forwarding based on CORS. See `corsConfig` below for details.
 func (o RuleRuleActionOutput) CorsConfig() RuleRuleActionCorsConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionCorsConfig { return v.CorsConfig }).(RuleRuleActionCorsConfigPtrOutput)
 }
 
-// The configuration of the fixed response. See the following `Block fixedResponseConfig`.
+// The configuration of the fixed response. See `fixedResponseConfig` below for details.
 func (o RuleRuleActionOutput) FixedResponseConfig() RuleRuleActionFixedResponseConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionFixedResponseConfig { return v.FixedResponseConfig }).(RuleRuleActionFixedResponseConfigPtrOutput)
 }
 
-// The forward response action within ALB. See the following `Block forwardGroupConfig`.
+// The forward response action within ALB. See `forwardGroupConfig` below for details.
 func (o RuleRuleActionOutput) ForwardGroupConfig() RuleRuleActionForwardGroupConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionForwardGroupConfig { return v.ForwardGroupConfig }).(RuleRuleActionForwardGroupConfigPtrOutput)
 }
 
-// The configuration of the inserted header field. See the following `Block insertHeaderConfig`.
+// The configuration of the inserted header field. See `insertHeaderConfig` below for details.
 func (o RuleRuleActionOutput) InsertHeaderConfig() RuleRuleActionInsertHeaderConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionInsertHeaderConfig { return v.InsertHeaderConfig }).(RuleRuleActionInsertHeaderConfigPtrOutput)
 }
@@ -2469,27 +2469,27 @@ func (o RuleRuleActionOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v RuleRuleAction) int { return v.Order }).(pulumi.IntOutput)
 }
 
-// The configuration of the external redirect action. See the following `Block redirectConfig`.
+// The configuration of the external redirect action. See `redirectConfig` below for details.
 func (o RuleRuleActionOutput) RedirectConfig() RuleRuleActionRedirectConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRedirectConfig { return v.RedirectConfig }).(RuleRuleActionRedirectConfigPtrOutput)
 }
 
-// The redirect action within ALB. See the following `Block rewriteConfig`.
+// The redirect action within ALB. See `rewriteConfig` below for details.
 func (o RuleRuleActionOutput) RewriteConfig() RuleRuleActionRewriteConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRewriteConfig { return v.RewriteConfig }).(RuleRuleActionRewriteConfigPtrOutput)
 }
 
-// The Flow speed limit. See the following `Block trafficLimitConfig`.
+// The Flow speed limit. See `trafficLimitConfig` below for details.
 func (o RuleRuleActionOutput) TrafficLimitConfig() RuleRuleActionTrafficLimitConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionTrafficLimitConfig { return v.TrafficLimitConfig }).(RuleRuleActionTrafficLimitConfigPtrOutput)
 }
 
-// The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+// The Traffic mirroring. See `trafficMirrorConfig` below for details.
 func (o RuleRuleActionOutput) TrafficMirrorConfig() RuleRuleActionTrafficMirrorConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionTrafficMirrorConfig { return v.TrafficMirrorConfig }).(RuleRuleActionTrafficMirrorConfigPtrOutput)
 }
 
-// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
 // **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
 // **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
 // **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
@@ -2925,9 +2925,9 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) HttpCode() pulumi.StringPtrO
 }
 
 type RuleRuleActionForwardGroupConfig struct {
-	// The configuration of session persistence for server groups.
+	// The configuration of session persistence for server groups. See `serverGroupStickySession` below for details.
 	ServerGroupStickySession *RuleRuleActionForwardGroupConfigServerGroupStickySession `pulumi:"serverGroupStickySession"`
-	// The destination server group to which requests are forwarded.
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples []RuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -2943,9 +2943,9 @@ type RuleRuleActionForwardGroupConfigInput interface {
 }
 
 type RuleRuleActionForwardGroupConfigArgs struct {
-	// The configuration of session persistence for server groups.
+	// The configuration of session persistence for server groups. See `serverGroupStickySession` below for details.
 	ServerGroupStickySession RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrInput `pulumi:"serverGroupStickySession"`
-	// The destination server group to which requests are forwarded.
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -3026,14 +3026,14 @@ func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConf
 	}).(RuleRuleActionForwardGroupConfigPtrOutput)
 }
 
-// The configuration of session persistence for server groups.
+// The configuration of session persistence for server groups. See `serverGroupStickySession` below for details.
 func (o RuleRuleActionForwardGroupConfigOutput) ServerGroupStickySession() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfigServerGroupStickySession {
 		return v.ServerGroupStickySession
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
 }
 
-// The destination server group to which requests are forwarded.
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 func (o RuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -3064,7 +3064,7 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) Elem() RuleRuleActionForwardG
 	}).(RuleRuleActionForwardGroupConfigOutput)
 }
 
-// The configuration of session persistence for server groups.
+// The configuration of session persistence for server groups. See `serverGroupStickySession` below for details.
 func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupStickySession() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfigServerGroupStickySession {
 		if v == nil {
@@ -3074,7 +3074,7 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupStickySession() Ru
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
 }
 
-// The destination server group to which requests are forwarded.
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
 		if v == nil {
@@ -3349,7 +3349,7 @@ func (o RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pul
 type RuleRuleActionInsertHeaderConfig struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key *string `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The value of the values list.
 	Value *string `pulumi:"value"`
 	// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
 	ValueType *string `pulumi:"valueType"`
@@ -3369,7 +3369,7 @@ type RuleRuleActionInsertHeaderConfigInput interface {
 type RuleRuleActionInsertHeaderConfigArgs struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The value of the values list.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 	// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
@@ -3457,7 +3457,7 @@ func (o RuleRuleActionInsertHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+// The value of the values list.
 func (o RuleRuleActionInsertHeaderConfigOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -3501,7 +3501,7 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+// The value of the values list.
 func (o RuleRuleActionInsertHeaderConfigPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
 		if v == nil {
@@ -4066,7 +4066,7 @@ func (o RuleRuleActionTrafficLimitConfigPtrOutput) Qps() pulumi.IntPtrOutput {
 }
 
 type RuleRuleActionTrafficMirrorConfig struct {
-	// The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+	// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below for details.
 	MirrorGroupConfig *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig `pulumi:"mirrorGroupConfig"`
 	// The Mirror target type.
 	TargetType *string `pulumi:"targetType"`
@@ -4084,7 +4084,7 @@ type RuleRuleActionTrafficMirrorConfigInput interface {
 }
 
 type RuleRuleActionTrafficMirrorConfigArgs struct {
-	// The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+	// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below for details.
 	MirrorGroupConfig RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrInput `pulumi:"mirrorGroupConfig"`
 	// The Mirror target type.
 	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
@@ -4167,7 +4167,7 @@ func (o RuleRuleActionTrafficMirrorConfigOutput) ToRuleRuleActionTrafficMirrorCo
 	}).(RuleRuleActionTrafficMirrorConfigPtrOutput)
 }
 
-// The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below for details.
 func (o RuleRuleActionTrafficMirrorConfigOutput) MirrorGroupConfig() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfig) *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
 		return v.MirrorGroupConfig
@@ -4203,7 +4203,7 @@ func (o RuleRuleActionTrafficMirrorConfigPtrOutput) Elem() RuleRuleActionTraffic
 	}).(RuleRuleActionTrafficMirrorConfigOutput)
 }
 
-// The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below for details.
 func (o RuleRuleActionTrafficMirrorConfigPtrOutput) MirrorGroupConfig() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfig) *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
 		if v == nil {
@@ -4224,7 +4224,7 @@ func (o RuleRuleActionTrafficMirrorConfigPtrOutput) TargetType() pulumi.StringPt
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfig struct {
-	// The destination server group to which requests are forwarded.
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -4240,7 +4240,7 @@ type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput interface {
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs struct {
-	// The destination server group to which requests are forwarded.
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -4321,7 +4321,7 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ToRuleRuleActi
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
 }
 
-// The destination server group to which requests are forwarded.
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ServerGroupTuples() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -4352,7 +4352,7 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) Elem() Rule
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput)
 }
 
-// The destination server group to which requests are forwarded.
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) ServerGroupTuples() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
 		if v == nil {
@@ -4462,24 +4462,21 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayO
 }
 
 type RuleRuleCondition struct {
-	// The configuration of the cookie. See the following `Block cookieConfig`.
+	// The configuration of the cookie. See See `cookieConfig` below for details.
 	CookieConfig *RuleRuleConditionCookieConfig `pulumi:"cookieConfig"`
-	// The configuration of the header field. See the following `Block headerConfig`.
+	// The configuration of the header field. See `headerConfig` below for details.
 	HeaderConfig *RuleRuleConditionHeaderConfig `pulumi:"headerConfig"`
-	// The configuration of the host field. See the following `Block hostConfig`.
+	// The configuration of the host field. See `hostConfig` below for details.
 	HostConfig *RuleRuleConditionHostConfig `pulumi:"hostConfig"`
-	// The configuration of the request method. See the following `Block methodConfig`.
+	// The configuration of the request method. See `methodConfig` below for details.
 	MethodConfig *RuleRuleConditionMethodConfig `pulumi:"methodConfig"`
-	// The configuration of the path for the request to be forwarded. See the following `Block pathConfig`.
+	// The configuration of the path for the request to be forwarded. See `pathConfig` below for details.
 	PathConfig *RuleRuleConditionPathConfig `pulumi:"pathConfig"`
-	// The configuration of the query string. See the following `Block queryStringConfig`.
+	// The configuration of the query string. See `queryStringConfig` below for details.
 	QueryStringConfig *RuleRuleConditionQueryStringConfig `pulumi:"queryStringConfig"`
-	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below for details.
 	SourceIpConfig *RuleRuleConditionSourceIpConfig `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-	// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-	// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
 	Type string `pulumi:"type"`
 }
 
@@ -4495,24 +4492,21 @@ type RuleRuleConditionInput interface {
 }
 
 type RuleRuleConditionArgs struct {
-	// The configuration of the cookie. See the following `Block cookieConfig`.
+	// The configuration of the cookie. See See `cookieConfig` below for details.
 	CookieConfig RuleRuleConditionCookieConfigPtrInput `pulumi:"cookieConfig"`
-	// The configuration of the header field. See the following `Block headerConfig`.
+	// The configuration of the header field. See `headerConfig` below for details.
 	HeaderConfig RuleRuleConditionHeaderConfigPtrInput `pulumi:"headerConfig"`
-	// The configuration of the host field. See the following `Block hostConfig`.
+	// The configuration of the host field. See `hostConfig` below for details.
 	HostConfig RuleRuleConditionHostConfigPtrInput `pulumi:"hostConfig"`
-	// The configuration of the request method. See the following `Block methodConfig`.
+	// The configuration of the request method. See `methodConfig` below for details.
 	MethodConfig RuleRuleConditionMethodConfigPtrInput `pulumi:"methodConfig"`
-	// The configuration of the path for the request to be forwarded. See the following `Block pathConfig`.
+	// The configuration of the path for the request to be forwarded. See `pathConfig` below for details.
 	PathConfig RuleRuleConditionPathConfigPtrInput `pulumi:"pathConfig"`
-	// The configuration of the query string. See the following `Block queryStringConfig`.
+	// The configuration of the query string. See `queryStringConfig` below for details.
 	QueryStringConfig RuleRuleConditionQueryStringConfigPtrInput `pulumi:"queryStringConfig"`
-	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below for details.
 	SourceIpConfig RuleRuleConditionSourceIpConfigPtrInput `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-	// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-	// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4567,45 +4561,42 @@ func (o RuleRuleConditionOutput) ToRuleRuleConditionOutputWithContext(ctx contex
 	return o
 }
 
-// The configuration of the cookie. See the following `Block cookieConfig`.
+// The configuration of the cookie. See See `cookieConfig` below for details.
 func (o RuleRuleConditionOutput) CookieConfig() RuleRuleConditionCookieConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionCookieConfig { return v.CookieConfig }).(RuleRuleConditionCookieConfigPtrOutput)
 }
 
-// The configuration of the header field. See the following `Block headerConfig`.
+// The configuration of the header field. See `headerConfig` below for details.
 func (o RuleRuleConditionOutput) HeaderConfig() RuleRuleConditionHeaderConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionHeaderConfig { return v.HeaderConfig }).(RuleRuleConditionHeaderConfigPtrOutput)
 }
 
-// The configuration of the host field. See the following `Block hostConfig`.
+// The configuration of the host field. See `hostConfig` below for details.
 func (o RuleRuleConditionOutput) HostConfig() RuleRuleConditionHostConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionHostConfig { return v.HostConfig }).(RuleRuleConditionHostConfigPtrOutput)
 }
 
-// The configuration of the request method. See the following `Block methodConfig`.
+// The configuration of the request method. See `methodConfig` below for details.
 func (o RuleRuleConditionOutput) MethodConfig() RuleRuleConditionMethodConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionMethodConfig { return v.MethodConfig }).(RuleRuleConditionMethodConfigPtrOutput)
 }
 
-// The configuration of the path for the request to be forwarded. See the following `Block pathConfig`.
+// The configuration of the path for the request to be forwarded. See `pathConfig` below for details.
 func (o RuleRuleConditionOutput) PathConfig() RuleRuleConditionPathConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionPathConfig { return v.PathConfig }).(RuleRuleConditionPathConfigPtrOutput)
 }
 
-// The configuration of the query string. See the following `Block queryStringConfig`.
+// The configuration of the query string. See `queryStringConfig` below for details.
 func (o RuleRuleConditionOutput) QueryStringConfig() RuleRuleConditionQueryStringConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionQueryStringConfig { return v.QueryStringConfig }).(RuleRuleConditionQueryStringConfigPtrOutput)
 }
 
-// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below for details.
 func (o RuleRuleConditionOutput) SourceIpConfig() RuleRuleConditionSourceIpConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionSourceIpConfig { return v.SourceIpConfig }).(RuleRuleConditionSourceIpConfigPtrOutput)
 }
 
 // The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
 func (o RuleRuleConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4770,7 +4761,7 @@ func (o RuleRuleConditionCookieConfigPtrOutput) Values() RuleRuleConditionCookie
 type RuleRuleConditionCookieConfigValue struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key *string `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The value of the values list.
 	Value *string `pulumi:"value"`
 }
 
@@ -4788,7 +4779,7 @@ type RuleRuleConditionCookieConfigValueInput interface {
 type RuleRuleConditionCookieConfigValueArgs struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The value of the values list.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -4848,7 +4839,7 @@ func (o RuleRuleConditionCookieConfigValueOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionCookieConfigValue) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+// The value of the values list.
 func (o RuleRuleConditionCookieConfigValueOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionCookieConfigValue) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5580,7 +5571,7 @@ func (o RuleRuleConditionQueryStringConfigPtrOutput) Values() RuleRuleConditionQ
 type RuleRuleConditionQueryStringConfigValue struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key *string `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The value of the values list.
 	Value *string `pulumi:"value"`
 }
 
@@ -5598,7 +5589,7 @@ type RuleRuleConditionQueryStringConfigValueInput interface {
 type RuleRuleConditionQueryStringConfigValueArgs struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The value of the values list.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5658,7 +5649,7 @@ func (o RuleRuleConditionQueryStringConfigValueOutput) Key() pulumi.StringPtrOut
 	return o.ApplyT(func(v RuleRuleConditionQueryStringConfigValue) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+// The value of the values list.
 func (o RuleRuleConditionQueryStringConfigValueOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionQueryStringConfigValue) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5821,45 +5812,30 @@ func (o RuleRuleConditionSourceIpConfigPtrOutput) Values() pulumi.StringArrayOut
 }
 
 type ServerGroupHealthCheckConfig struct {
-	// The status code for a successful health check. Multiple status codes can be specified as a
-	// list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+	// The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
 	// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckCodes []string `pulumi:"healthCheckCodes"`
-	// The port of the backend server that is used for health checks. Valid values: `0`
-	// to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+	// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
-	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-	// value: `true`.
+	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
 	HealthCheckHost *string `pulumi:"healthCheckHost"`
-	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-	// . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckHttpVersion *string `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-	// to `50`. Default value: `2`.
+	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-	// exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckMethod *string `pulumi:"healthCheckMethod"`
-	// The forwarding rule path of health checks. **NOTE:** This parameter exists if
-	// the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
 	// Health check protocol. Valid values: `HTTP` and `TCP`.
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
-	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-	// instance does not send an expected response within the specified period of time, the ECS instance is considered
-	// unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-	// parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-	// is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
-	// The number of health checks that an unhealthy backend server must pass consecutively before it
-	// is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-	// Default value: 3.
+	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The number of consecutive health checks that a healthy backend server must consecutively fail
-	// before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-	// values: `2` to `10`. Default value: `3`.
+	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
@@ -5875,45 +5851,30 @@ type ServerGroupHealthCheckConfigInput interface {
 }
 
 type ServerGroupHealthCheckConfigArgs struct {
-	// The status code for a successful health check. Multiple status codes can be specified as a
-	// list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+	// The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
 	// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckCodes pulumi.StringArrayInput `pulumi:"healthCheckCodes"`
-	// The port of the backend server that is used for health checks. Valid values: `0`
-	// to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+	// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
 	HealthCheckConnectPort pulumi.IntPtrInput `pulumi:"healthCheckConnectPort"`
-	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-	// value: `true`.
+	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
 	HealthCheckEnabled pulumi.BoolPtrInput `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
 	HealthCheckHost pulumi.StringPtrInput `pulumi:"healthCheckHost"`
-	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-	// . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckHttpVersion pulumi.StringPtrInput `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-	// to `50`. Default value: `2`.
+	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
 	HealthCheckInterval pulumi.IntPtrInput `pulumi:"healthCheckInterval"`
-	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-	// exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckMethod pulumi.StringPtrInput `pulumi:"healthCheckMethod"`
-	// The forwarding rule path of health checks. **NOTE:** This parameter exists if
-	// the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckPath pulumi.StringPtrInput `pulumi:"healthCheckPath"`
 	// Health check protocol. Valid values: `HTTP` and `TCP`.
 	HealthCheckProtocol pulumi.StringPtrInput `pulumi:"healthCheckProtocol"`
-	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-	// instance does not send an expected response within the specified period of time, the ECS instance is considered
-	// unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-	// parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-	// is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 	HealthCheckTimeout pulumi.IntPtrInput `pulumi:"healthCheckTimeout"`
-	// The number of health checks that an unhealthy backend server must pass consecutively before it
-	// is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-	// Default value: 3.
+	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// The number of consecutive health checks that a healthy backend server must consecutively fail
-	// before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-	// values: `2` to `10`. Default value: `3`.
+	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
 	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
 }
 
@@ -5994,21 +5955,18 @@ func (o ServerGroupHealthCheckConfigOutput) ToServerGroupHealthCheckConfigPtrOut
 	}).(ServerGroupHealthCheckConfigPtrOutput)
 }
 
-// The status code for a successful health check. Multiple status codes can be specified as a
-// list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+// The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
 // parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) []string { return v.HealthCheckCodes }).(pulumi.StringArrayOutput)
 }
 
-// The port of the backend server that is used for health checks. Valid values: `0`
-// to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckConnectPort }).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-// value: `true`.
+// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *bool { return v.HealthCheckEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -6018,26 +5976,22 @@ func (o ServerGroupHealthCheckConfigOutput) HealthCheckHost() pulumi.StringPtrOu
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckHost }).(pulumi.StringPtrOutput)
 }
 
-// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-// . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckHttpVersion }).(pulumi.StringPtrOutput)
 }
 
-// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-// to `50`. Default value: `2`.
+// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
 }
 
-// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-// exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckMethod }).(pulumi.StringPtrOutput)
 }
 
-// The forwarding rule path of health checks. **NOTE:** This parameter exists if
-// the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
 }
@@ -6047,25 +6001,17 @@ func (o ServerGroupHealthCheckConfigOutput) HealthCheckProtocol() pulumi.StringP
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-// instance does not send an expected response within the specified period of time, the ECS instance is considered
-// unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-// parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-// is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The number of health checks that an unhealthy backend server must pass consecutively before it
-// is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-// Default value: 3.
+// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
 func (o ServerGroupHealthCheckConfigOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive health checks that a healthy backend server must consecutively fail
-// before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-// values: `2` to `10`. Default value: `3`.
+// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
 func (o ServerGroupHealthCheckConfigOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
 }
@@ -6094,8 +6040,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) Elem() ServerGroupHealthCheckConf
 	}).(ServerGroupHealthCheckConfigOutput)
 }
 
-// The status code for a successful health check. Multiple status codes can be specified as a
-// list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
+// The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
 // parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) []string {
@@ -6106,8 +6051,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckCodes() pulumi.StringA
 	}).(pulumi.StringArrayOutput)
 }
 
-// The port of the backend server that is used for health checks. Valid values: `0`
-// to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6117,8 +6061,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-// value: `true`.
+// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *bool {
 		if v == nil {
@@ -6138,8 +6081,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHost() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-// . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6149,8 +6091,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpVersion() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-// to `50`. Default value: `2`.
+// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6160,8 +6101,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-// exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6171,8 +6111,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckMethod() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The forwarding rule path of health checks. **NOTE:** This parameter exists if
-// the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6192,11 +6131,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckProtocol() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-// instance does not send an expected response within the specified period of time, the ECS instance is considered
-// unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-// parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-// is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6206,9 +6141,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckTimeout() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of health checks that an unhealthy backend server must pass consecutively before it
-// is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-// Default value: 3.
+// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6218,9 +6151,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive health checks that a healthy backend server must consecutively fail
-// before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-// values: `2` to `10`. Default value: `3`.
+// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
 func (o ServerGroupHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6251,7 +6182,7 @@ type ServerGroupServer struct {
 	// - Ip(Available in v1.194.0+): an IP address.
 	// - fc(Available in v1.194.0+): a function.
 	ServerType string `pulumi:"serverType"`
-	// The status of the resource.
+	// The status of the backend server. Valid values:
 	Status *string `pulumi:"status"`
 	// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
 	// requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
@@ -6290,7 +6221,7 @@ type ServerGroupServerArgs struct {
 	// - Ip(Available in v1.194.0+): an IP address.
 	// - fc(Available in v1.194.0+): a function.
 	ServerType pulumi.StringInput `pulumi:"serverType"`
-	// The status of the resource.
+	// The status of the backend server. Valid values:
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
 	// requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
@@ -6386,7 +6317,7 @@ func (o ServerGroupServerOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the backend server. Valid values:
 func (o ServerGroupServerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

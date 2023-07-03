@@ -143,13 +143,13 @@ def get_lifecycle_policies(file_system_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nas/getLifecyclePolicies:getLifecyclePolicies', __args__, opts=opts, typ=GetLifecyclePoliciesResult).value
 
     return AwaitableGetLifecyclePoliciesResult(
-        file_system_id=__ret__.file_system_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        policies=__ret__.policies)
+        file_system_id=pulumi.get(__ret__, 'file_system_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policies=pulumi.get(__ret__, 'policies'))
 
 
 @_utilities.lift_output_func(get_lifecycle_policies)

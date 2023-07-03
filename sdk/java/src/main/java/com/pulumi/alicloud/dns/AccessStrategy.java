@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DNS Access Strategy and how to use it, see [What is Access Strategy](https://www.alibabacloud.com/help/doc-detail/189620.html).
  * 
- * &gt; **NOTE:** Available in v1.152.0+.
+ * &gt; **NOTE:** Available since v1.152.0.
  * 
  * ## Import
  * 
@@ -66,14 +66,14 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
         return this.defaultAddrPoolType;
     }
     /**
-     * List of primary address pool collections. See the following `Block default_addr_pools`.
+     * List of primary address pool collections. See `default_addr_pools` below for details.
      * 
      */
     @Export(name="defaultAddrPools", type=List.class, parameters={AccessStrategyDefaultAddrPool.class})
     private Output<List<AccessStrategyDefaultAddrPool>> defaultAddrPools;
 
     /**
-     * @return List of primary address pool collections. See the following `Block default_addr_pools`.
+     * @return List of primary address pool collections. See `default_addr_pools` below for details.
      * 
      */
     public Output<List<AccessStrategyDefaultAddrPool>> defaultAddrPools() {
@@ -150,14 +150,14 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.failoverAddrPoolType);
     }
     /**
-     * List of backup address pool sets. See the following `Block failover_addr_pools`.
+     * List of backup address pool sets. See `failover_addr_pools` below for details.
      * 
      */
     @Export(name="failoverAddrPools", type=List.class, parameters={AccessStrategyFailoverAddrPool.class})
     private Output</* @Nullable */ List<AccessStrategyFailoverAddrPool>> failoverAddrPools;
 
     /**
-     * @return List of backup address pool sets. See the following `Block failover_addr_pools`.
+     * @return List of backup address pool sets. See `failover_addr_pools` below for details.
      * 
      */
     public Output<Optional<List<AccessStrategyFailoverAddrPool>>> failoverAddrPools() {
@@ -248,14 +248,14 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lang);
     }
     /**
-     * The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+     * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
      * 
      */
     @Export(name="lines", type=List.class, parameters={AccessStrategyLine.class})
     private Output</* @Nullable */ List<AccessStrategyLine>> lines;
 
     /**
-     * @return The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+     * @return The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
      * 
      */
     public Output<Optional<List<AccessStrategyLine>>> lines() {

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * > **NOTE:** Available in v1.166.0+.
+ * > **NOTE:** Available since v1.166.0.
  *
  * For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addentriestoacl).
  *
@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformalbaclconfig";
+ * const name = config.get("name") || "tf_example";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultAcl = new alicloud.alb.Acl("defaultAcl", {
  *     aclName: name,

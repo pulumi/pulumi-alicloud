@@ -184,16 +184,16 @@ def get_node_classes(category: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:polardb/getNodeClasses:getNodeClasses', __args__, opts=opts, typ=GetNodeClassesResult).value
 
     return AwaitableGetNodeClassesResult(
-        category=__ret__.category,
-        classes=__ret__.classes,
-        db_node_class=__ret__.db_node_class,
-        db_type=__ret__.db_type,
-        db_version=__ret__.db_version,
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        pay_type=__ret__.pay_type,
-        region_id=__ret__.region_id,
-        zone_id=__ret__.zone_id)
+        category=pulumi.get(__ret__, 'category'),
+        classes=pulumi.get(__ret__, 'classes'),
+        db_node_class=pulumi.get(__ret__, 'db_node_class'),
+        db_type=pulumi.get(__ret__, 'db_type'),
+        db_version=pulumi.get(__ret__, 'db_version'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pay_type=pulumi.get(__ret__, 'pay_type'),
+        region_id=pulumi.get(__ret__, 'region_id'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_node_classes)

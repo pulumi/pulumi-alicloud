@@ -156,15 +156,15 @@ def get_accounts(account_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kvstore/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
 
     return AwaitableGetAccountsResult(
-        account_name=__ret__.account_name,
-        accounts=__ret__.accounts,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        account_name=pulumi.get(__ret__, 'account_name'),
+        accounts=pulumi.get(__ret__, 'accounts'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_accounts)

@@ -436,6 +436,9 @@ class EcsLaunchTemplateArgs:
         """
         It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -618,6 +621,9 @@ class EcsLaunchTemplateArgs:
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
@@ -630,6 +636,9 @@ class EcsLaunchTemplateArgs:
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
@@ -642,6 +651,9 @@ class EcsLaunchTemplateArgs:
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
@@ -654,6 +666,9 @@ class EcsLaunchTemplateArgs:
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
@@ -716,6 +731,9 @@ class EcsLaunchTemplateArgs:
         """
         It has been deprecated from version 1.120.0, and use field `user_data` instead.
         """
+        warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
+        pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
+
         return pulumi.get(self, "userdata")
 
     @userdata.setter
@@ -1194,6 +1212,9 @@ class _EcsLaunchTemplateState:
         """
         It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1376,6 +1397,9 @@ class _EcsLaunchTemplateState:
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
@@ -1388,6 +1412,9 @@ class _EcsLaunchTemplateState:
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
@@ -1400,6 +1427,9 @@ class _EcsLaunchTemplateState:
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
@@ -1412,6 +1442,9 @@ class _EcsLaunchTemplateState:
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
@@ -1474,6 +1507,9 @@ class _EcsLaunchTemplateState:
         """
         It has been deprecated from version 1.120.0, and use field `user_data` instead.
         """
+        warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
+        pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
+
         return pulumi.get(self, "userdata")
 
     @userdata.setter
@@ -2281,6 +2317,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         """
         It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property
@@ -2403,6 +2442,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_category")
 
     @property
@@ -2411,6 +2453,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_description")
 
     @property
@@ -2419,6 +2464,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_name")
 
     @property
@@ -2427,6 +2475,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         """
         It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
+        warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
+        pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
+
         return pulumi.get(self, "system_disk_size")
 
     @property
@@ -2469,6 +2520,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         """
         It has been deprecated from version 1.120.0, and use field `user_data` instead.
         """
+        warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
+        pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
+
         return pulumi.get(self, "userdata")
 
     @property

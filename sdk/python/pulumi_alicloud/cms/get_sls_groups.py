@@ -160,15 +160,15 @@ def get_sls_groups(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getSlsGroups:getSlsGroups', __args__, opts=opts, typ=GetSlsGroupsResult).value
 
     return AwaitableGetSlsGroupsResult(
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        keyword=__ret__.keyword,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        keyword=pulumi.get(__ret__, 'keyword'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_sls_groups)

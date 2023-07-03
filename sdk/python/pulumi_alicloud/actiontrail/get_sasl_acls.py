@@ -153,13 +153,13 @@ def get_sasl_acls(acl_resource_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:actiontrail/getSaslAcls:getSaslAcls', __args__, opts=opts, typ=GetSaslAclsResult).value
 
     return AwaitableGetSaslAclsResult(
-        acl_resource_name=__ret__.acl_resource_name,
-        acl_resource_type=__ret__.acl_resource_type,
-        acls=__ret__.acls,
-        id=__ret__.id,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file,
-        username=__ret__.username)
+        acl_resource_name=pulumi.get(__ret__, 'acl_resource_name'),
+        acl_resource_type=pulumi.get(__ret__, 'acl_resource_type'),
+        acls=pulumi.get(__ret__, 'acls'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_sasl_acls)

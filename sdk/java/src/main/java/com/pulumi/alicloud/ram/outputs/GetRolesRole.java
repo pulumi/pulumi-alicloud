@@ -35,7 +35,7 @@ public final class GetRolesRole {
      */
     private String document;
     /**
-     * @return Id of the role.
+     * @return ID of the role.
      * 
      */
     private String id;
@@ -87,7 +87,7 @@ public final class GetRolesRole {
         return this.document;
     }
     /**
-     * @return Id of the role.
+     * @return ID of the role.
      * 
      */
     public String id() {

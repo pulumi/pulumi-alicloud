@@ -106,10 +106,10 @@ def get_product(available_region: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:marketplace/getProduct:getProduct', __args__, opts=opts, typ=GetProductResult).value
 
     return AwaitableGetProductResult(
-        available_region=__ret__.available_region,
-        id=__ret__.id,
-        product_code=__ret__.product_code,
-        products=__ret__.products)
+        available_region=pulumi.get(__ret__, 'available_region'),
+        id=pulumi.get(__ret__, 'id'),
+        product_code=pulumi.get(__ret__, 'product_code'),
+        products=pulumi.get(__ret__, 'products'))
 
 
 @_utilities.lift_output_func(get_product)

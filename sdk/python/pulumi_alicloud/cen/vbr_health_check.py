@@ -305,9 +305,9 @@ class VbrHealthCheck(pulumi.CustomResource):
         This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
         After you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.
 
-        For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).
+        For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-enablecenvbrhealthcheck).
 
-        > **NOTE:** Available in 1.88.0+
+        > **NOTE:** Available since v1.88.0.
 
         ## Example Usage
 
@@ -316,23 +316,43 @@ class VbrHealthCheck(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        # Create a cen vbr HealrhCheck resource and use it.
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="test_name")
-        default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
-            instance_id=default_instance.id,
-            child_instance_id="vbr-xxxxx",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=default_physical_connections.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_virtual_border_router.id,
             child_instance_type="VBR",
-            child_instance_region_id="cn-hangzhou")
-        default_vbr_health_check = alicloud.cen.VbrHealthCheck("defaultVbrHealthCheck",
-            cen_id=default_instance.id,
+            child_instance_region_id=default_regions.regions[0].id)
+        example_vbr_health_check = alicloud.cen.VbrHealthCheck("exampleVbrHealthCheck",
+            cen_id=example_instance.id,
             health_check_source_ip="192.168.1.2",
             health_check_target_ip="10.0.0.2",
-            vbr_instance_id="vbr-xxxxx",
-            vbr_instance_region_id="cn-hangzhou",
+            vbr_instance_id=example_virtual_border_router.id,
+            vbr_instance_region_id=example_instance_attachment.child_instance_region_id,
             health_check_interval=2,
-            healthy_threshold=8,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance_attachment]))
+            healthy_threshold=8)
         ```
 
         ## Import
@@ -366,9 +386,9 @@ class VbrHealthCheck(pulumi.CustomResource):
         This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
         After you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.
 
-        For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).
+        For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-enablecenvbrhealthcheck).
 
-        > **NOTE:** Available in 1.88.0+
+        > **NOTE:** Available since v1.88.0.
 
         ## Example Usage
 
@@ -377,23 +397,43 @@ class VbrHealthCheck(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        # Create a cen vbr HealrhCheck resource and use it.
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="test_name")
-        default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
-            instance_id=default_instance.id,
-            child_instance_id="vbr-xxxxx",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=default_physical_connections.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_virtual_border_router.id,
             child_instance_type="VBR",
-            child_instance_region_id="cn-hangzhou")
-        default_vbr_health_check = alicloud.cen.VbrHealthCheck("defaultVbrHealthCheck",
-            cen_id=default_instance.id,
+            child_instance_region_id=default_regions.regions[0].id)
+        example_vbr_health_check = alicloud.cen.VbrHealthCheck("exampleVbrHealthCheck",
+            cen_id=example_instance.id,
             health_check_source_ip="192.168.1.2",
             health_check_target_ip="10.0.0.2",
-            vbr_instance_id="vbr-xxxxx",
-            vbr_instance_region_id="cn-hangzhou",
+            vbr_instance_id=example_virtual_border_router.id,
+            vbr_instance_region_id=example_instance_attachment.child_instance_region_id,
             health_check_interval=2,
-            healthy_threshold=8,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance_attachment]))
+            healthy_threshold=8)
         ```
 
         ## Import

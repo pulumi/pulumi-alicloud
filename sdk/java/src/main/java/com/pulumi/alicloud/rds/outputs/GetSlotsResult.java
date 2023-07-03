@@ -21,6 +21,10 @@ public final class GetSlotsResult {
     private String id;
     private @Nullable String outputFile;
     private @Nullable String resourceGroupId;
+    /**
+     * @return A list of Rds Replication Slots. Each element contains the following attributes:
+     * 
+     */
     private List<GetSlotsSlot> slots;
 
     private GetSlotsResult() {}
@@ -40,6 +44,10 @@ public final class GetSlotsResult {
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return A list of Rds Replication Slots. Each element contains the following attributes:
+     * 
+     */
     public List<GetSlotsSlot> slots() {
         return this.slots;
     }

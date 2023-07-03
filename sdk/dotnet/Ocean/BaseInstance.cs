@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ocean
     /// 
     /// For information about Ocean Base Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/what-is-oceanbase-database).
     /// 
-    /// &gt; **NOTE:** Available in v1.203.0+.
+    /// &gt; **NOTE:** Available since v1.203.0.
     /// 
     /// ## Example Usage
     /// 
@@ -103,14 +103,14 @@ namespace Pulumi.AliCloud.Ocean
         /// - 8C32GB:100GB ~ 10000GB
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
-        /// - 62C400G:800GB-10000GB.
+        /// - 62C400G:800GB ~ 10000GB.
         /// - The default value of each package is its minimum value.
         /// </summary>
         [Output("diskSize")]
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        /// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         /// </summary>
         [Output("instanceClass")]
         public Output<string> InstanceClass { get; private set; } = null!;
@@ -240,14 +240,14 @@ namespace Pulumi.AliCloud.Ocean
         /// - 8C32GB:100GB ~ 10000GB
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
-        /// - 62C400G:800GB-10000GB.
+        /// - 62C400G:800GB ~ 10000GB.
         /// - The default value of each package is its minimum value.
         /// </summary>
         [Input("diskSize", required: true)]
         public Input<int> DiskSize { get; set; } = null!;
 
         /// <summary>
-        /// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        /// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         /// </summary>
         [Input("instanceClass", required: true)]
         public Input<string> InstanceClass { get; set; } = null!;
@@ -360,14 +360,14 @@ namespace Pulumi.AliCloud.Ocean
         /// - 8C32GB:100GB ~ 10000GB
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
-        /// - 62C400G:800GB-10000GB.
+        /// - 62C400G:800GB ~ 10000GB.
         /// - The default value of each package is its minimum value.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        /// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }

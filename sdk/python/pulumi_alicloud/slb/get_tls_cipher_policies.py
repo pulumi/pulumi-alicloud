@@ -165,15 +165,15 @@ def get_tls_cipher_policies(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies', __args__, opts=opts, typ=GetTlsCipherPoliciesResult).value
 
     return AwaitableGetTlsCipherPoliciesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        include_listener=__ret__.include_listener,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        policies=__ret__.policies,
-        status=__ret__.status,
-        tls_cipher_policy_name=__ret__.tls_cipher_policy_name)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        include_listener=pulumi.get(__ret__, 'include_listener'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policies=pulumi.get(__ret__, 'policies'),
+        status=pulumi.get(__ret__, 'status'),
+        tls_cipher_policy_name=pulumi.get(__ret__, 'tls_cipher_policy_name'))
 
 
 @_utilities.lift_output_func(get_tls_cipher_policies)

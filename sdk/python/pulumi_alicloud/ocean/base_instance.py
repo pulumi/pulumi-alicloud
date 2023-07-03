@@ -33,9 +33,9 @@ class BaseInstanceArgs:
                - 8C32GB:100GB ~ 10000GB
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
-               - 62C400G:800GB-10000GB.
+               - 62C400G:800GB ~ 10000GB.
                - The default value of each package is its minimum value.
-        :param pulumi.Input[str] instance_class: Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        :param pulumi.Input[str] instance_class: Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         :param pulumi.Input[str] payment_type: The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] series: Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Information about the zone where the cluster is deployed.
@@ -80,7 +80,7 @@ class BaseInstanceArgs:
         - 8C32GB:100GB ~ 10000GB
         - 14C70GB:200GB ~ 10000GB
         - 30C180GB:400GB ~ 10000GB
-        - 62C400G:800GB-10000GB.
+        - 62C400G:800GB ~ 10000GB.
         - The default value of each package is its minimum value.
         """
         return pulumi.get(self, "disk_size")
@@ -93,7 +93,7 @@ class BaseInstanceArgs:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Input[str]:
         """
-        Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         """
         return pulumi.get(self, "instance_class")
 
@@ -273,9 +273,9 @@ class _BaseInstanceState:
                - 8C32GB:100GB ~ 10000GB
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
-               - 62C400G:800GB-10000GB.
+               - 62C400G:800GB ~ 10000GB.
                - The default value of each package is its minimum value.
-        :param pulumi.Input[str] instance_class: Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        :param pulumi.Input[str] instance_class: Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         :param pulumi.Input[str] instance_name: OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
         :param pulumi.Input[str] node_num: The number of nodes in the cluster.
         :param pulumi.Input[str] payment_type: The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
@@ -406,7 +406,7 @@ class _BaseInstanceState:
         - 8C32GB:100GB ~ 10000GB
         - 14C70GB:200GB ~ 10000GB
         - 30C180GB:400GB ~ 10000GB
-        - 62C400G:800GB-10000GB.
+        - 62C400G:800GB ~ 10000GB.
         - The default value of each package is its minimum value.
         """
         return pulumi.get(self, "disk_size")
@@ -419,7 +419,7 @@ class _BaseInstanceState:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         """
         return pulumi.get(self, "instance_class")
 
@@ -560,7 +560,7 @@ class BaseInstance(pulumi.CustomResource):
 
         For information about Ocean Base Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/what-is-oceanbase-database).
 
-        > **NOTE:** Available in v1.203.0+.
+        > **NOTE:** Available since v1.203.0.
 
         ## Example Usage
 
@@ -602,9 +602,9 @@ class BaseInstance(pulumi.CustomResource):
                - 8C32GB:100GB ~ 10000GB
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
-               - 62C400G:800GB-10000GB.
+               - 62C400G:800GB ~ 10000GB.
                - The default value of each package is its minimum value.
-        :param pulumi.Input[str] instance_class: Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        :param pulumi.Input[str] instance_class: Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         :param pulumi.Input[str] instance_name: OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
         :param pulumi.Input[str] node_num: The number of nodes in the cluster.
         :param pulumi.Input[str] payment_type: The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
@@ -625,7 +625,7 @@ class BaseInstance(pulumi.CustomResource):
 
         For information about Ocean Base Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/what-is-oceanbase-database).
 
-        > **NOTE:** Available in v1.203.0+.
+        > **NOTE:** Available since v1.203.0.
 
         ## Example Usage
 
@@ -769,9 +769,9 @@ class BaseInstance(pulumi.CustomResource):
                - 8C32GB:100GB ~ 10000GB
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
-               - 62C400G:800GB-10000GB.
+               - 62C400G:800GB ~ 10000GB.
                - The default value of each package is its minimum value.
-        :param pulumi.Input[str] instance_class: Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        :param pulumi.Input[str] instance_class: Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         :param pulumi.Input[str] instance_name: OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
         :param pulumi.Input[str] node_num: The number of nodes in the cluster.
         :param pulumi.Input[str] payment_type: The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
@@ -866,7 +866,7 @@ class BaseInstance(pulumi.CustomResource):
         - 8C32GB:100GB ~ 10000GB
         - 14C70GB:200GB ~ 10000GB
         - 30C180GB:400GB ~ 10000GB
-        - 62C400G:800GB-10000GB.
+        - 62C400G:800GB ~ 10000GB.
         - The default value of each package is its minimum value.
         """
         return pulumi.get(self, "disk_size")
@@ -875,7 +875,7 @@ class BaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Output[str]:
         """
-        Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+        Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
         """
         return pulumi.get(self, "instance_class")
 

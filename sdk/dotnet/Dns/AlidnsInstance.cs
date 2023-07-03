@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dns
     /// <summary>
     /// Create an Alidns Instance resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.95.0+.
+    /// &gt; **NOTE:** Available since v1.95.0.
     /// 
     /// ## Example Usage
     /// 

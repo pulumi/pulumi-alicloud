@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// For information about DNS Access Strategy and how to use it, see [What is Access Strategy](https://www.alibabacloud.com/help/doc-detail/189620.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.152.0+.
+    /// &gt; **NOTE:** Available since v1.152.0.
     /// 
     /// ## Import
     /// 
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> DefaultAddrPoolType { get; private set; } = null!;
 
         /// <summary>
-        /// List of primary address pool collections. See the following `Block default_addr_pools`.
+        /// List of primary address pool collections. See `default_addr_pools` below for details.
         /// </summary>
         [Output("defaultAddrPools")]
         public Output<ImmutableArray<Outputs.AccessStrategyDefaultAddrPool>> DefaultAddrPools { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> FailoverAddrPoolType { get; private set; } = null!;
 
         /// <summary>
-        /// List of backup address pool sets. See the following `Block failover_addr_pools`.
+        /// List of backup address pool sets. See `failover_addr_pools` below for details.
         /// </summary>
         [Output("failoverAddrPools")]
         public Output<ImmutableArray<Outputs.AccessStrategyFailoverAddrPool>> FailoverAddrPools { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        /// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         /// </summary>
         [Output("lines")]
         public Output<ImmutableArray<Outputs.AccessStrategyLine>> Lines { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyDefaultAddrPoolArgs>? _defaultAddrPools;
 
         /// <summary>
-        /// List of primary address pool collections. See the following `Block default_addr_pools`.
+        /// List of primary address pool collections. See `default_addr_pools` below for details.
         /// </summary>
         public InputList<Inputs.AccessStrategyDefaultAddrPoolArgs> DefaultAddrPools
         {
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyFailoverAddrPoolArgs>? _failoverAddrPools;
 
         /// <summary>
-        /// List of backup address pool sets. See the following `Block failover_addr_pools`.
+        /// List of backup address pool sets. See `failover_addr_pools` below for details.
         /// </summary>
         public InputList<Inputs.AccessStrategyFailoverAddrPoolArgs> FailoverAddrPools
         {
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyLineArgs>? _lines;
 
         /// <summary>
-        /// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        /// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         /// </summary>
         public InputList<Inputs.AccessStrategyLineArgs> Lines
         {
@@ -331,7 +331,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyDefaultAddrPoolGetArgs>? _defaultAddrPools;
 
         /// <summary>
-        /// List of primary address pool collections. See the following `Block default_addr_pools`.
+        /// List of primary address pool collections. See `default_addr_pools` below for details.
         /// </summary>
         public InputList<Inputs.AccessStrategyDefaultAddrPoolGetArgs> DefaultAddrPools
         {
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyFailoverAddrPoolGetArgs>? _failoverAddrPools;
 
         /// <summary>
-        /// List of backup address pool sets. See the following `Block failover_addr_pools`.
+        /// List of backup address pool sets. See `failover_addr_pools` below for details.
         /// </summary>
         public InputList<Inputs.AccessStrategyFailoverAddrPoolGetArgs> FailoverAddrPools
         {
@@ -421,7 +421,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AccessStrategyLineGetArgs>? _lines;
 
         /// <summary>
-        /// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        /// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         /// </summary>
         public InputList<Inputs.AccessStrategyLineGetArgs> Lines
         {

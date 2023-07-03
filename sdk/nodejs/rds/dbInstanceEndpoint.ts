@@ -8,14 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Provide RDS cluster instance endpoint connection resources.
- * > **NOTE:** Available in 1.203.0+.
  *
- * ## Block nodeItems
- *
- * The nodeItems mapping supports the following:
- *
- * * `nodeId` - (Required) The ID of the node.
- * * `weight` - (Required) The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+ * > **NOTE:** Available since v1.203.0+.
  *
  * ## Import
  *
@@ -82,7 +76,7 @@ export class DbInstanceEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipType!: pulumi.Output<string>;
     /**
-     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
      */
     public readonly nodeItems!: pulumi.Output<outputs.rds.DbInstanceEndpointNodeItem[]>;
     /**
@@ -198,7 +192,7 @@ export interface DbInstanceEndpointState {
      */
     ipType?: pulumi.Input<string>;
     /**
-     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
      */
     nodeItems?: pulumi.Input<pulumi.Input<inputs.rds.DbInstanceEndpointNodeItem>[]>;
     /**
@@ -236,7 +230,7 @@ export interface DbInstanceEndpointArgs {
      */
     dbInstanceId: pulumi.Input<string>;
     /**
-     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
      */
     nodeItems: pulumi.Input<pulumi.Input<inputs.rds.DbInstanceEndpointNodeItem>[]>;
     /**

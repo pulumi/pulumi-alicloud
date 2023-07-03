@@ -154,14 +154,14 @@ def get_ipa_domains(domain_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dcdn/getIpaDomains:getIpaDomains', __args__, opts=opts, typ=GetIpaDomainsResult).value
 
     return AwaitableGetIpaDomainsResult(
-        domain_name=__ret__.domain_name,
-        domains=__ret__.domains,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        domain_name=pulumi.get(__ret__, 'domain_name'),
+        domains=pulumi.get(__ret__, 'domains'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_ipa_domains)

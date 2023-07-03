@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ALB Load Balancer resource.
  *
- * For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/doc-detail/197341.htm).
+ * For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createloadbalancer).
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Import
  *
@@ -50,7 +50,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     }
 
     /**
-     * The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
+     * The Access Logging Configuration Structure. See `accessLogConfig` below for details.
      */
     public readonly accessLogConfig!: pulumi.Output<outputs.alb.LoadBalancerAccessLogConfig | undefined>;
     /**
@@ -78,7 +78,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
+     * The configuration of the billing method. See `loadBalancerBillingConfig` below for details.
      */
     public readonly loadBalancerBillingConfig!: pulumi.Output<outputs.alb.LoadBalancerLoadBalancerBillingConfig>;
     /**
@@ -90,7 +90,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly loadBalancerName!: pulumi.Output<string>;
     /**
-     * Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
+     * Modify the Protection Configuration. See `modificationProtectionConfig` below for details.
      */
     public readonly modificationProtectionConfig!: pulumi.Output<outputs.alb.LoadBalancerModificationProtectionConfig>;
     /**
@@ -110,7 +110,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
+     * The zones and vSwitches. You must specify at least two zones. See `zoneMappings` below for details.
      */
     public readonly zoneMappings!: pulumi.Output<outputs.alb.LoadBalancerZoneMapping[]>;
 
@@ -190,7 +190,7 @@ export class LoadBalancer extends pulumi.CustomResource {
  */
 export interface LoadBalancerState {
     /**
-     * The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
+     * The Access Logging Configuration Structure. See `accessLogConfig` below for details.
      */
     accessLogConfig?: pulumi.Input<inputs.alb.LoadBalancerAccessLogConfig>;
     /**
@@ -218,7 +218,7 @@ export interface LoadBalancerState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
+     * The configuration of the billing method. See `loadBalancerBillingConfig` below for details.
      */
     loadBalancerBillingConfig?: pulumi.Input<inputs.alb.LoadBalancerLoadBalancerBillingConfig>;
     /**
@@ -230,7 +230,7 @@ export interface LoadBalancerState {
      */
     loadBalancerName?: pulumi.Input<string>;
     /**
-     * Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
+     * Modify the Protection Configuration. See `modificationProtectionConfig` below for details.
      */
     modificationProtectionConfig?: pulumi.Input<inputs.alb.LoadBalancerModificationProtectionConfig>;
     /**
@@ -250,7 +250,7 @@ export interface LoadBalancerState {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
+     * The zones and vSwitches. You must specify at least two zones. See `zoneMappings` below for details.
      */
     zoneMappings?: pulumi.Input<pulumi.Input<inputs.alb.LoadBalancerZoneMapping>[]>;
 }
@@ -260,7 +260,7 @@ export interface LoadBalancerState {
  */
 export interface LoadBalancerArgs {
     /**
-     * The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
+     * The Access Logging Configuration Structure. See `accessLogConfig` below for details.
      */
     accessLogConfig?: pulumi.Input<inputs.alb.LoadBalancerAccessLogConfig>;
     /**
@@ -284,7 +284,7 @@ export interface LoadBalancerArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
+     * The configuration of the billing method. See `loadBalancerBillingConfig` below for details.
      */
     loadBalancerBillingConfig: pulumi.Input<inputs.alb.LoadBalancerLoadBalancerBillingConfig>;
     /**
@@ -296,7 +296,7 @@ export interface LoadBalancerArgs {
      */
     loadBalancerName: pulumi.Input<string>;
     /**
-     * Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
+     * Modify the Protection Configuration. See `modificationProtectionConfig` below for details.
      */
     modificationProtectionConfig?: pulumi.Input<inputs.alb.LoadBalancerModificationProtectionConfig>;
     /**
@@ -312,7 +312,7 @@ export interface LoadBalancerArgs {
      */
     vpcId: pulumi.Input<string>;
     /**
-     * The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
+     * The zones and vSwitches. You must specify at least two zones. See `zoneMappings` below for details.
      */
     zoneMappings: pulumi.Input<pulumi.Input<inputs.alb.LoadBalancerZoneMapping>[]>;
 }

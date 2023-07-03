@@ -17,14 +17,14 @@ public final class RuleRuleActionTrafficMirrorConfigArgs extends com.pulumi.reso
     public static final RuleRuleActionTrafficMirrorConfigArgs Empty = new RuleRuleActionTrafficMirrorConfigArgs();
 
     /**
-     * The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+     * The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
      * 
      */
     @Import(name="mirrorGroupConfig")
     private @Nullable Output<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs> mirrorGroupConfig;
 
     /**
-     * @return The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+     * @return The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs>> mirrorGroupConfig() {
@@ -72,7 +72,7 @@ public final class RuleRuleActionTrafficMirrorConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param mirrorGroupConfig The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+         * @param mirrorGroupConfig The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class RuleRuleActionTrafficMirrorConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param mirrorGroupConfig The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+         * @param mirrorGroupConfig The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
          * 
          * @return builder
          * 

@@ -66,7 +66,7 @@ type BasicAccelerator struct {
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
-	// The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
+	// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
 	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
 	// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
 	AutoUseCoupon pulumi.StringPtrOutput `pulumi:"autoUseCoupon"`
@@ -84,6 +84,8 @@ type BasicAccelerator struct {
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
 	// The status of the Basic Accelerator instance.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewBasicAccelerator registers a new resource with the given unique name, arguments, and options.
@@ -119,7 +121,7 @@ type basicAcceleratorState struct {
 	AutoPay *bool `pulumi:"autoPay"`
 	// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
+	// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
 	AutoUseCoupon *string `pulumi:"autoUseCoupon"`
@@ -137,6 +139,8 @@ type basicAcceleratorState struct {
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// The status of the Basic Accelerator instance.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type BasicAcceleratorState struct {
@@ -144,7 +148,7 @@ type BasicAcceleratorState struct {
 	AutoPay pulumi.BoolPtrInput
 	// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
 	AutoRenew pulumi.BoolPtrInput
-	// The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
+	// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
 	AutoRenewDuration pulumi.IntPtrInput
 	// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
 	AutoUseCoupon pulumi.StringPtrInput
@@ -162,6 +166,8 @@ type BasicAcceleratorState struct {
 	PricingCycle pulumi.StringPtrInput
 	// The status of the Basic Accelerator instance.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (BasicAcceleratorState) ElementType() reflect.Type {
@@ -173,7 +179,7 @@ type basicAcceleratorArgs struct {
 	AutoPay *bool `pulumi:"autoPay"`
 	// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
+	// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
 	AutoUseCoupon *string `pulumi:"autoUseCoupon"`
@@ -189,6 +195,8 @@ type basicAcceleratorArgs struct {
 	Duration *int `pulumi:"duration"`
 	// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a BasicAccelerator resource.
@@ -197,7 +205,7 @@ type BasicAcceleratorArgs struct {
 	AutoPay pulumi.BoolPtrInput
 	// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
 	AutoRenew pulumi.BoolPtrInput
-	// The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
+	// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
 	AutoRenewDuration pulumi.IntPtrInput
 	// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
 	AutoUseCoupon pulumi.StringPtrInput
@@ -213,6 +221,8 @@ type BasicAcceleratorArgs struct {
 	Duration pulumi.IntPtrInput
 	// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
 	PricingCycle pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (BasicAcceleratorArgs) ElementType() reflect.Type {
@@ -312,7 +322,7 @@ func (o BasicAcceleratorOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BasicAccelerator) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
+// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
 func (o BasicAcceleratorOutput) AutoRenewDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BasicAccelerator) pulumi.IntPtrOutput { return v.AutoRenewDuration }).(pulumi.IntPtrOutput)
 }
@@ -352,6 +362,11 @@ func (o BasicAcceleratorOutput) PricingCycle() pulumi.StringPtrOutput {
 // The status of the Basic Accelerator instance.
 func (o BasicAcceleratorOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *BasicAccelerator) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o BasicAcceleratorOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *BasicAccelerator) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 type BasicAcceleratorArrayOutput struct{ *pulumi.OutputState }

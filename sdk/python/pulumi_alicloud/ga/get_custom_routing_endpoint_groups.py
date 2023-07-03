@@ -216,18 +216,18 @@ def get_custom_routing_endpoint_groups(accelerator_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups', __args__, opts=opts, typ=GetCustomRoutingEndpointGroupsResult).value
 
     return AwaitableGetCustomRoutingEndpointGroupsResult(
-        accelerator_id=__ret__.accelerator_id,
-        endpoint_group_id=__ret__.endpoint_group_id,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        listener_id=__ret__.listener_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status)
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
+        endpoint_group_id=pulumi.get(__ret__, 'endpoint_group_id'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        listener_id=pulumi.get(__ret__, 'listener_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_custom_routing_endpoint_groups)

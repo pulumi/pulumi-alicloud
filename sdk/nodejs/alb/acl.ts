@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Application Load Balancer (ALB) Acl resource.
  *
- * For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/200280.html).
+ * For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createacl).
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -21,12 +21,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.alb.Acl("example", {
- *     aclEntries: [{
- *         description: "example_value",
- *         entry: "10.0.0.0/24",
- *     }],
- *     aclName: "example_value",
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultAcl = new alicloud.alb.Acl("defaultAcl", {
+ *     aclName: "tf_example",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  * });
  * ```
  *
@@ -67,7 +65,8 @@ export class Acl extends pulumi.CustomResource {
     }
 
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+     * The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
+     * **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
      *
      * @deprecated Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
      */
@@ -85,7 +84,7 @@ export class Acl extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * The status of the ACL entry. Valid values:
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -134,7 +133,8 @@ export class Acl extends pulumi.CustomResource {
  */
 export interface AclState {
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+     * The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
+     * **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
      *
      * @deprecated Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
      */
@@ -152,7 +152,7 @@ export interface AclState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * The status of the ACL entry. Valid values:
      */
     status?: pulumi.Input<string>;
     /**
@@ -166,7 +166,8 @@ export interface AclState {
  */
 export interface AclArgs {
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+     * The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
+     * **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
      *
      * @deprecated Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
      */

@@ -3515,17 +3515,17 @@ func (o GetScalingConfigurationsConfigurationArrayOutput) Index(i pulumi.IntInpu
 
 type GetScalingConfigurationsConfigurationDataDisk struct {
 	// Category of data disk.
-	Category *string `pulumi:"category"`
+	Category string `pulumi:"category"`
 	// Delete_with_instance attribute of data disk.
-	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	DeleteWithInstance bool `pulumi:"deleteWithInstance"`
 	// Device attribute of data disk.
-	Device *string `pulumi:"device"`
+	Device string `pulumi:"device"`
 	// The performance level of the ESSD used as data disk.
-	PerformanceLevel *string `pulumi:"performanceLevel"`
+	PerformanceLevel string `pulumi:"performanceLevel"`
 	// Size of data disk.
-	Size *int `pulumi:"size"`
+	Size int `pulumi:"size"`
 	// Size of data disk.
-	SnapshotId *string `pulumi:"snapshotId"`
+	SnapshotId string `pulumi:"snapshotId"`
 }
 
 // GetScalingConfigurationsConfigurationDataDiskInput is an input type that accepts GetScalingConfigurationsConfigurationDataDiskArgs and GetScalingConfigurationsConfigurationDataDiskOutput values.
@@ -3541,17 +3541,17 @@ type GetScalingConfigurationsConfigurationDataDiskInput interface {
 
 type GetScalingConfigurationsConfigurationDataDiskArgs struct {
 	// Category of data disk.
-	Category pulumi.StringPtrInput `pulumi:"category"`
+	Category pulumi.StringInput `pulumi:"category"`
 	// Delete_with_instance attribute of data disk.
-	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
+	DeleteWithInstance pulumi.BoolInput `pulumi:"deleteWithInstance"`
 	// Device attribute of data disk.
-	Device pulumi.StringPtrInput `pulumi:"device"`
+	Device pulumi.StringInput `pulumi:"device"`
 	// The performance level of the ESSD used as data disk.
-	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	PerformanceLevel pulumi.StringInput `pulumi:"performanceLevel"`
 	// Size of data disk.
-	Size pulumi.IntPtrInput `pulumi:"size"`
+	Size pulumi.IntInput `pulumi:"size"`
 	// Size of data disk.
-	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
 }
 
 func (GetScalingConfigurationsConfigurationDataDiskArgs) ElementType() reflect.Type {
@@ -3606,33 +3606,33 @@ func (o GetScalingConfigurationsConfigurationDataDiskOutput) ToGetScalingConfigu
 }
 
 // Category of data disk.
-func (o GetScalingConfigurationsConfigurationDataDiskOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+func (o GetScalingConfigurationsConfigurationDataDiskOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) string { return v.Category }).(pulumi.StringOutput)
 }
 
 // Delete_with_instance attribute of data disk.
-func (o GetScalingConfigurationsConfigurationDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+func (o GetScalingConfigurationsConfigurationDataDiskOutput) DeleteWithInstance() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) bool { return v.DeleteWithInstance }).(pulumi.BoolOutput)
 }
 
 // Device attribute of data disk.
-func (o GetScalingConfigurationsConfigurationDataDiskOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+func (o GetScalingConfigurationsConfigurationDataDiskOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) string { return v.Device }).(pulumi.StringOutput)
 }
 
 // The performance level of the ESSD used as data disk.
-func (o GetScalingConfigurationsConfigurationDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+func (o GetScalingConfigurationsConfigurationDataDiskOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) string { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
 
 // Size of data disk.
-func (o GetScalingConfigurationsConfigurationDataDiskOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+func (o GetScalingConfigurationsConfigurationDataDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) int { return v.Size }).(pulumi.IntOutput)
 }
 
 // Size of data disk.
-func (o GetScalingConfigurationsConfigurationDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+func (o GetScalingConfigurationsConfigurationDataDiskOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
 type GetScalingConfigurationsConfigurationDataDiskArrayOutput struct{ *pulumi.OutputState }
@@ -3657,9 +3657,9 @@ func (o GetScalingConfigurationsConfigurationDataDiskArrayOutput) Index(i pulumi
 
 type GetScalingConfigurationsConfigurationSpotPriceLimit struct {
 	// Resource type of an ECS instance.
-	InstanceType *string `pulumi:"instanceType"`
+	InstanceType string `pulumi:"instanceType"`
 	// Price limit hourly of instance type.
-	PriceLimit *float64 `pulumi:"priceLimit"`
+	PriceLimit float64 `pulumi:"priceLimit"`
 }
 
 // GetScalingConfigurationsConfigurationSpotPriceLimitInput is an input type that accepts GetScalingConfigurationsConfigurationSpotPriceLimitArgs and GetScalingConfigurationsConfigurationSpotPriceLimitOutput values.
@@ -3675,9 +3675,9 @@ type GetScalingConfigurationsConfigurationSpotPriceLimitInput interface {
 
 type GetScalingConfigurationsConfigurationSpotPriceLimitArgs struct {
 	// Resource type of an ECS instance.
-	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// Price limit hourly of instance type.
-	PriceLimit pulumi.Float64PtrInput `pulumi:"priceLimit"`
+	PriceLimit pulumi.Float64Input `pulumi:"priceLimit"`
 }
 
 func (GetScalingConfigurationsConfigurationSpotPriceLimitArgs) ElementType() reflect.Type {
@@ -3732,13 +3732,13 @@ func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) ToGetScalingC
 }
 
 // Resource type of an ECS instance.
-func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetScalingConfigurationsConfigurationSpotPriceLimit) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationSpotPriceLimit) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // Price limit hourly of instance type.
-func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) PriceLimit() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetScalingConfigurationsConfigurationSpotPriceLimit) *float64 { return v.PriceLimit }).(pulumi.Float64PtrOutput)
+func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) PriceLimit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationSpotPriceLimit) float64 { return v.PriceLimit }).(pulumi.Float64Output)
 }
 
 type GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput struct{ *pulumi.OutputState }

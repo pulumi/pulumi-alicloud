@@ -114,11 +114,11 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kms/getCiphertext:getCiphertext', __args__, opts=opts, typ=GetCiphertextResult).value
 
     return AwaitableGetCiphertextResult(
-        ciphertext_blob=__ret__.ciphertext_blob,
-        encryption_context=__ret__.encryption_context,
-        id=__ret__.id,
-        key_id=__ret__.key_id,
-        plaintext=__ret__.plaintext)
+        ciphertext_blob=pulumi.get(__ret__, 'ciphertext_blob'),
+        encryption_context=pulumi.get(__ret__, 'encryption_context'),
+        id=pulumi.get(__ret__, 'id'),
+        key_id=pulumi.get(__ret__, 'key_id'),
+        plaintext=pulumi.get(__ret__, 'plaintext'))
 
 
 @_utilities.lift_output_func(get_ciphertext)

@@ -9,26 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Alb Ascript resource.
  *
- * For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/what-is-application-load-balancer).
+ * For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createascripts).
  *
- * > **NOTE:** Available in v1.195.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.alb.AScript("default", {
- *     scriptContent: "time()",
- *     position: "RequestHead",
- *     ascriptName: "test",
- *     enabled: true,
- *     listenerId: _var.listenerId,
- * });
- * ```
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Import
  *
@@ -79,7 +62,7 @@ export class AScript extends pulumi.CustomResource {
      */
     public readonly extAttributeEnabled!: pulumi.Output<boolean>;
     /**
-     * Extended attribute list. See the following `Block ExtAttributes`.
+     * Extended attribute list. See `extAttributes` below for details.
      */
     public readonly extAttributes!: pulumi.Output<outputs.alb.AScriptExtAttribute[]>;
     /**
@@ -174,7 +157,7 @@ export interface AScriptState {
      */
     extAttributeEnabled?: pulumi.Input<boolean>;
     /**
-     * Extended attribute list. See the following `Block ExtAttributes`.
+     * Extended attribute list. See `extAttributes` below for details.
      */
     extAttributes?: pulumi.Input<pulumi.Input<inputs.alb.AScriptExtAttribute>[]>;
     /**
@@ -216,7 +199,7 @@ export interface AScriptArgs {
      */
     extAttributeEnabled?: pulumi.Input<boolean>;
     /**
-     * Extended attribute list. See the following `Block ExtAttributes`.
+     * Extended attribute list. See `extAttributes` below for details.
      */
     extAttributes?: pulumi.Input<pulumi.Input<inputs.alb.AScriptExtAttribute>[]>;
     /**

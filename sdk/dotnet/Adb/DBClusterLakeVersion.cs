@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Adb
     /// <summary>
     /// Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
     /// 
-    /// For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/what-is-analyticdb-for-mysql).
+    /// For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
     /// 
-    /// &gt; **NOTE:** Available in v1.190.0+.
+    /// &gt; **NOTE:** Available since v1.190.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,17 +28,32 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         NameRegex = "^default-NODELETING",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var zoneId = Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = "example",
+    ///         var defaultZones = values.Item1;
+    ///         var length = values.Item2;
+    ///         return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 1];
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         ZoneId = zoneId,
+    ///         VswitchName = name,
     ///     });
     /// 
     ///     var defaultDBClusterLakeVersion = new AliCloud.Adb.DBClusterLakeVersion("defaultDBClusterLakeVersion", new()
@@ -46,10 +61,11 @@ namespace Pulumi.AliCloud.Adb
     ///         ComputeResource = "16ACU",
     ///         DbClusterVersion = "5.0",
     ///         PaymentType = "PayAsYouGo",
-    ///         StorageResource = "0ACU",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = "example",
+    ///         StorageResource = "24ACU",
+    ///         EnableDefaultResourceGroup = false,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = zoneId,
     ///     });
     /// 
     /// });

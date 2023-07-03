@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).
  * 
- * &gt; **NOTE:** Available in v1.85.0+.
+ * &gt; **NOTE:** Available since v1.85.0.
  * 
  * &gt; **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
  * 
@@ -29,6 +29,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dns.DomainGroup;
+ * import com.pulumi.alicloud.dns.DomainGroupArgs;
+ * import com.pulumi.alicloud.dns.AlidnsDomain;
+ * import com.pulumi.alicloud.dns.AlidnsDomainArgs;
  * import com.pulumi.alicloud.dns.AlidnsRecord;
  * import com.pulumi.alicloud.dns.AlidnsRecordArgs;
  * import java.util.List;
@@ -44,13 +48,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var defaultDomainGroup = new DomainGroup(&#34;defaultDomainGroup&#34;, DomainGroupArgs.builder()        
+ *             .domainGroupName(&#34;tf-example&#34;)
+ *             .build());
+ * 
+ *         var defaultAlidnsDomain = new AlidnsDomain(&#34;defaultAlidnsDomain&#34;, AlidnsDomainArgs.builder()        
+ *             .domainName(&#34;starmove.com&#34;)
+ *             .groupId(defaultDomainGroup.id())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .build());
+ * 
  *         var record = new AlidnsRecord(&#34;record&#34;, AlidnsRecordArgs.builder()        
- *             .domainName(&#34;domainname&#34;)
- *             .remark(&#34;Test new alidns record.&#34;)
- *             .rr(&#34;@&#34;)
+ *             .domainName(defaultAlidnsDomain.domainName())
+ *             .rr(&#34;alimail&#34;)
+ *             .type(&#34;CNAME&#34;)
+ *             .value(&#34;mail.mxhichin.com&#34;)
+ *             .remark(&#34;tf-example&#34;)
  *             .status(&#34;ENABLE&#34;)
- *             .type(&#34;A&#34;)
- *             .value(&#34;192.168.99.99&#34;)
  *             .build());
  * 
  *     }

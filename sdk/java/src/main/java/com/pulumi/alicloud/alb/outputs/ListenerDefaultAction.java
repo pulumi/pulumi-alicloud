@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class ListenerDefaultAction {
     /**
-     * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+     * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
      * 
      */
     private ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
@@ -23,7 +23,7 @@ public final class ListenerDefaultAction {
 
     private ListenerDefaultAction() {}
     /**
-     * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+     * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
      * 
      */
     public ListenerDefaultActionForwardGroupConfig forwardGroupConfig() {

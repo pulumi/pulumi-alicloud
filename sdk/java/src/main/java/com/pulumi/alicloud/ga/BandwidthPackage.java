@@ -12,14 +12,16 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Global Accelerator (GA) Bandwidth Package resource.
  * 
- * For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
+ * For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbandwidthpackage).
  * 
  * &gt; **NOTE:** At present, The `alicloud.ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
  * 
@@ -75,8 +77,6 @@ import javax.annotation.Nullable;
 public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     /**
      * Whether to pay automatically. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
      * 
      */
     @Export(name="autoPay", type=Boolean.class, parameters={})
@@ -84,8 +84,6 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to pay automatically. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
      * 
      */
     public Output<Optional<Boolean>> autoPay() {
@@ -106,14 +104,14 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenewDuration);
     }
     /**
-     * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+     * Whether use vouchers. Default value: `false`. Valid values:
      * 
      */
     @Export(name="autoUseCoupon", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> autoUseCoupon;
 
     /**
-     * @return Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+     * @return Whether use vouchers. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoUseCoupon() {
@@ -149,7 +147,6 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     }
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-     * 
      * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      * 
      */
@@ -158,7 +155,6 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-     * 
      * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      * 
      */
@@ -180,28 +176,28 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.billingType);
     }
     /**
-     * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+     * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
      * 
      */
     @Export(name="cbnGeographicRegionIda", type=String.class, parameters={})
     private Output<String> cbnGeographicRegionIda;
 
     /**
-     * @return Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+     * @return Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
      * 
      */
     public Output<String> cbnGeographicRegionIda() {
         return this.cbnGeographicRegionIda;
     }
     /**
-     * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+     * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
      * 
      */
     @Export(name="cbnGeographicRegionIdb", type=String.class, parameters={})
     private Output<String> cbnGeographicRegionIdb;
 
     /**
-     * @return Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+     * @return Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
      * 
      */
     public Output<String> cbnGeographicRegionIdb() {
@@ -236,28 +232,28 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.duration);
     }
     /**
-     * The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+     * The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output</* @Nullable */ String> paymentType;
 
     /**
-     * @return The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+     * @return The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
     public Output<Optional<String>> paymentType() {
         return Codegen.optional(this.paymentType);
     }
     /**
-     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
      * 
      */
     @Export(name="ratio", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> ratio;
 
     /**
-     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
      * 
      */
     public Output<Optional<Integer>> ratio() {
@@ -278,18 +274,32 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return this.renewalStatus;
     }
     /**
-     * The status of the bandwidth plan.
+     * The status of the Bandwidth Package.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the bandwidth plan.
+     * @return The status of the Bandwidth Package.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.

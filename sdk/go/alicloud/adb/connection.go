@@ -17,7 +17,7 @@ import (
 //
 //	To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 //
-// > **NOTE:** Available in v1.81.0+.
+// > **NOTE:** Available since v1.81.0.
 //
 // ## Example Usage
 //
@@ -26,8 +26,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -37,52 +37,63 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			creation := "ADB"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "adbaccountmysql"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			defaultZones, err := adb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cluster, err := adb.NewCluster(ctx, "cluster", &adb.ClusterArgs{
-//				DbClusterVersion:  pulumi.String("3.0"),
+//			defaultDBCluster, err := adb.NewDBCluster(ctx, "defaultDBCluster", &adb.DBClusterArgs{
 //				DbClusterCategory: pulumi.String("Cluster"),
 //				DbNodeClass:       pulumi.String("C8"),
-//				DbNodeCount:       pulumi.Int(2),
-//				DbNodeStorage:     pulumi.Int(200),
-//				PayType:           pulumi.String("PostPaid"),
+//				DbNodeCount:       pulumi.Int(4),
+//				DbNodeStorage:     pulumi.Int(400),
+//				Mode:              pulumi.String("reserver"),
+//				DbClusterVersion:  pulumi.String("3.0"),
+//				PaymentType:       pulumi.String("PayAsYouGo"),
 //				VswitchId:         defaultSwitch.ID(),
 //				Description:       pulumi.String(name),
+//				MaintainTime:      pulumi.String("23:00Z-00:00Z"),
+//				ResourceGroupId:   *pulumi.String(defaultResourceGroups.Ids[0]),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.168.1.12"),
+//					pulumi.String("10.168.1.11"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = adb.NewConnection(ctx, "connection", &adb.ConnectionArgs{
-//				DbClusterId:      cluster.ID(),
-//				ConnectionPrefix: pulumi.String("testabc"),
+//			_, err = adb.NewConnection(ctx, "defaultConnection", &adb.ConnectionArgs{
+//				DbClusterId:      defaultDBCluster.ID(),
+//				ConnectionPrefix: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err

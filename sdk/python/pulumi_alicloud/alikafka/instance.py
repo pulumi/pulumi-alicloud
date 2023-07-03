@@ -67,8 +67,10 @@ class InstanceArgs:
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. 
-               It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
+               It has been deprecated since version 1.194.0 and using `partition_num` instead.
+               Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
+               Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
@@ -103,8 +105,8 @@ class InstanceArgs:
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if topic_quota is not None:
-            warnings.warn("""Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
-            pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+            warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
+            pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
         if topic_quota is not None:
             pulumi.set(__self__, "topic_quota", topic_quota)
         if vpc_id is not None:
@@ -334,9 +336,14 @@ class InstanceArgs:
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> Optional[pulumi.Input[int]]:
         """
-        The max num of topic can be creation of the instance. 
-        It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        The max num of topic can be creation of the instance.
+        It has been deprecated since version 1.194.0 and using `partition_num` instead.
+        Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
+        Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         """
+        warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
+        pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+
         return pulumi.get(self, "topic_quota")
 
     @topic_quota.setter
@@ -431,8 +438,10 @@ class _InstanceState:
                - 5: running
                - 15: expired
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. 
-               It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
+               It has been deprecated since version 1.194.0 and using `partition_num` instead.
+               Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
+               Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -474,8 +483,8 @@ class _InstanceState:
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if topic_quota is not None:
-            warnings.warn("""Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
-            pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+            warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
+            pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
         if topic_quota is not None:
             pulumi.set(__self__, "topic_quota", topic_quota)
         if vpc_id is not None:
@@ -723,9 +732,14 @@ class _InstanceState:
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> Optional[pulumi.Input[int]]:
         """
-        The max num of topic can be creation of the instance. 
-        It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        The max num of topic can be creation of the instance.
+        It has been deprecated since version 1.194.0 and using `partition_num` instead.
+        Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
+        Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         """
+        warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
+        pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+
         return pulumi.get(self, "topic_quota")
 
     @topic_quota.setter
@@ -796,51 +810,9 @@ class Instance(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an ALIKAFKA instance resource.
-
-        For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
-
-        > **NOTE:** Available in 1.59.0+
-
-        > **NOTE:** Creation or modification may took about 10-40 minutes.
-
-        > **NOTE:** Only the following regions support create alikafka pre paid instance.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-
-        > **NOTE:** Only the following regions support create alikafka post paid instance.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        instance_name = config.get("instanceName")
-        if instance_name is None:
-            instance_name = "alikafkaInstanceName"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.alikafka.Instance("defaultInstance",
-            partition_num=50,
-            disk_type=1,
-            disk_size=500,
-            deploy_type=4,
-            io_max=20,
-            vswitch_id=default_switch.id,
-            security_group=default_security_group.id)
-        ```
-
         ## Import
 
-        ALIKAFKA TOPIC can be imported using the id, e.g.
+        ALIKAFKA instance can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
@@ -878,8 +850,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. 
-               It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
+               It has been deprecated since version 1.194.0 and using `partition_num` instead.
+               Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
+               Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -891,51 +865,9 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ALIKAFKA instance resource.
-
-        For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
-
-        > **NOTE:** Available in 1.59.0+
-
-        > **NOTE:** Creation or modification may took about 10-40 minutes.
-
-        > **NOTE:** Only the following regions support create alikafka pre paid instance.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-
-        > **NOTE:** Only the following regions support create alikafka post paid instance.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        instance_name = config.get("instanceName")
-        if instance_name is None:
-            instance_name = "alikafkaInstanceName"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.alikafka.Instance("defaultInstance",
-            partition_num=50,
-            disk_type=1,
-            disk_size=500,
-            deploy_type=4,
-            io_max=20,
-            vswitch_id=default_switch.id,
-            security_group=default_security_group.id)
-        ```
-
         ## Import
 
-        ALIKAFKA TOPIC can be imported using the id, e.g.
+        ALIKAFKA instance can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
@@ -1008,8 +940,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["spec_type"] = spec_type
             __props__.__dict__["tags"] = tags
             if topic_quota is not None and not opts.urn:
-                warnings.warn("""Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
-                pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+                warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
+                pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
             __props__.__dict__["topic_quota"] = topic_quota
             __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is None and not opts.urn:
@@ -1093,8 +1025,10 @@ class Instance(pulumi.CustomResource):
                - 5: running
                - 15: expired
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. 
-               It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
+               It has been deprecated since version 1.194.0 and using `partition_num` instead.
+               Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
+               Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -1293,9 +1227,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> pulumi.Output[int]:
         """
-        The max num of topic can be creation of the instance. 
-        It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        The max num of topic can be creation of the instance.
+        It has been deprecated since version 1.194.0 and using `partition_num` instead.
+        Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
+        Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         """
+        warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
+        pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+
         return pulumi.get(self, "topic_quota")
 
     @property

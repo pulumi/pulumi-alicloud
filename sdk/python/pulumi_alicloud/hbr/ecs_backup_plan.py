@@ -281,6 +281,9 @@ class EcsBackupPlanArgs:
         """
         Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
+        warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
+        pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
+
         return pulumi.get(self, "update_paths")
 
     @update_paths.setter
@@ -552,6 +555,9 @@ class _EcsBackupPlanState:
         """
         Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
+        warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
+        pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
+
         return pulumi.get(self, "update_paths")
 
     @update_paths.setter
@@ -1054,6 +1060,9 @@ class EcsBackupPlan(pulumi.CustomResource):
         """
         Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
+        warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
+        pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
+
         return pulumi.get(self, "update_paths")
 
     @property

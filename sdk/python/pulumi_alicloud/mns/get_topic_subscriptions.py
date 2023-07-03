@@ -132,12 +132,12 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mns/getTopicSubscriptions:getTopicSubscriptions', __args__, opts=opts, typ=GetTopicSubscriptionsResult).value
 
     return AwaitableGetTopicSubscriptionsResult(
-        id=__ret__.id,
-        name_prefix=__ret__.name_prefix,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        subscriptions=__ret__.subscriptions,
-        topic_name=__ret__.topic_name)
+        id=pulumi.get(__ret__, 'id'),
+        name_prefix=pulumi.get(__ret__, 'name_prefix'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        subscriptions=pulumi.get(__ret__, 'subscriptions'),
+        topic_name=pulumi.get(__ret__, 'topic_name'))
 
 
 @_utilities.lift_output_func(get_topic_subscriptions)

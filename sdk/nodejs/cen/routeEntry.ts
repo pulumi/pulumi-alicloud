@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  *
  * For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
  *
+ * > **NOTE:** Available since v1.20.0.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -17,80 +19,61 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a cen_route_entry resource and use it to publish a route entry pointing to an ECS.
- * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccCenRouteEntryConfig";
- * const defaultZones = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
+ * const default = alicloud.getRegions({
+ *     current: true,
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: exampleZones.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
- *     mostRecent: true,
+ * const exampleImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/12",
- * }, {
- *     provider: alicloud.hz,
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: vpc.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * }, {
- *     provider: alicloud.hz,
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
- *     description: "foo",
- *     vpcId: vpc.id,
- * }, {
- *     provider: alicloud.hz,
- * });
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     vswitchId: defaultSwitch.id,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
- *     systemDiskCategory: "cloud_efficiency",
- *     internetChargeType: "PayByTraffic",
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     instanceName: "terraform-example",
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
+ *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     vswitchId: exampleSwitch.id,
  *     internetMaxBandwidthOut: 5,
- *     securityGroups: [defaultSecurityGroup.id],
- *     instanceName: name,
- * }, {
- *     provider: alicloud.hz,
  * });
- * const cen = new alicloud.cen.Instance("cen", {});
- * const attach = new alicloud.cen.InstanceAttachment("attach", {
- *     instanceId: cen.id,
- *     childInstanceId: vpc.id,
+ * const exampleCen_instanceInstance = new alicloud.cen.Instance("exampleCen/instanceInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ *     instanceId: exampleCen / instanceInstance.id,
+ *     childInstanceId: exampleNetwork.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: "cn-hangzhou",
- * }, {
- *     dependsOn: [defaultSwitch],
+ *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
  * });
- * const route = new alicloud.vpc.RouteEntry("route", {
- *     routeTableId: vpc.routeTableId,
+ * const exampleRouteEntry = new alicloud.vpc.RouteEntry("exampleRouteEntry", {
+ *     routeTableId: exampleNetwork.routeTableId,
  *     destinationCidrblock: "11.0.0.0/16",
  *     nexthopType: "Instance",
- *     nexthopId: defaultInstance.id,
- * }, {
- *     provider: alicloud.hz,
+ *     nexthopId: exampleInstance.id,
  * });
- * const foo = new alicloud.cen.RouteEntry("foo", {
- *     instanceId: cen.id,
- *     routeTableId: vpc.routeTableId,
- *     cidrBlock: route.destinationCidrblock,
- * }, {
- *     provider: alicloud.hz,
- *     dependsOn: [attach],
+ * const exampleCen_routeEntryRouteEntry = new alicloud.cen.RouteEntry("exampleCen/routeEntryRouteEntry", {
+ *     instanceId: exampleInstanceAttachment.instanceId,
+ *     routeTableId: exampleNetwork.routeTableId,
+ *     cidrBlock: exampleRouteEntry.destinationCidrblock,
  * });
  * ```
  *

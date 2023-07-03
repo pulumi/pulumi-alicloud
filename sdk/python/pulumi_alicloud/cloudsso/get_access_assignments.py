@@ -169,15 +169,15 @@ def get_access_assignments(access_configuration_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudsso/getAccessAssignments:getAccessAssignments', __args__, opts=opts, typ=GetAccessAssignmentsResult).value
 
     return AwaitableGetAccessAssignmentsResult(
-        access_configuration_id=__ret__.access_configuration_id,
-        assignments=__ret__.assignments,
-        directory_id=__ret__.directory_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        principal_type=__ret__.principal_type,
-        target_id=__ret__.target_id,
-        target_type=__ret__.target_type)
+        access_configuration_id=pulumi.get(__ret__, 'access_configuration_id'),
+        assignments=pulumi.get(__ret__, 'assignments'),
+        directory_id=pulumi.get(__ret__, 'directory_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        principal_type=pulumi.get(__ret__, 'principal_type'),
+        target_id=pulumi.get(__ret__, 'target_id'),
+        target_type=pulumi.get(__ret__, 'target_type'))
 
 
 @_utilities.lift_output_func(get_access_assignments)

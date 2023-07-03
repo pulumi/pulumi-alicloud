@@ -157,6 +157,9 @@ class RdsAccountArgs:
         """
         The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         """
+        warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
+
         return pulumi.get(self, "description")
 
     @description.setter
@@ -169,6 +172,9 @@ class RdsAccountArgs:
         """
         The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         """
+        warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
+
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -205,6 +211,9 @@ class RdsAccountArgs:
         """
         The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -217,6 +226,9 @@ class RdsAccountArgs:
         """
         The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         """
+        warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
+        pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
+
         return pulumi.get(self, "password")
 
     @password.setter
@@ -243,6 +255,9 @@ class RdsAccountArgs:
 
         > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
+        warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
+
         return pulumi.get(self, "type")
 
     @type.setter
@@ -400,6 +415,9 @@ class _RdsAccountState:
         """
         The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         """
+        warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
+
         return pulumi.get(self, "description")
 
     @description.setter
@@ -412,6 +430,9 @@ class _RdsAccountState:
         """
         The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         """
+        warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
+
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -448,6 +469,9 @@ class _RdsAccountState:
         """
         The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -460,6 +484,9 @@ class _RdsAccountState:
         """
         The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         """
+        warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
+        pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
+
         return pulumi.get(self, "password")
 
     @password.setter
@@ -498,6 +525,9 @@ class _RdsAccountState:
 
         > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
+        warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
+
         return pulumi.get(self, "type")
 
     @type.setter
@@ -840,6 +870,9 @@ class RdsAccount(pulumi.CustomResource):
         """
         The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         """
+        warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
+
         return pulumi.get(self, "description")
 
     @property
@@ -848,6 +881,9 @@ class RdsAccount(pulumi.CustomResource):
         """
         The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         """
+        warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
+
         return pulumi.get(self, "instance_id")
 
     @property
@@ -872,6 +908,9 @@ class RdsAccount(pulumi.CustomResource):
         """
         The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property
@@ -880,6 +919,9 @@ class RdsAccount(pulumi.CustomResource):
         """
         The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         """
+        warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
+        pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
+
         return pulumi.get(self, "password")
 
     @property
@@ -906,5 +948,8 @@ class RdsAccount(pulumi.CustomResource):
 
         > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
+        warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
+
         return pulumi.get(self, "type")
 

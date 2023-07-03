@@ -219,20 +219,20 @@ def get_base_instances(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ocean/getBaseInstances:getBaseInstances', __args__, opts=opts, typ=GetBaseInstancesResult).value
 
     return AwaitableGetBaseInstancesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        instance_name=__ret__.instance_name,
-        instances=__ret__.instances,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        resource_group_id=__ret__.resource_group_id,
-        search_key=__ret__.search_key,
-        status=__ret__.status)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        search_key=pulumi.get(__ret__, 'search_key'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_base_instances)

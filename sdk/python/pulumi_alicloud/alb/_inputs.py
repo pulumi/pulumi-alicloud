@@ -101,7 +101,7 @@ class AclAclEntryArgs:
         """
         :param pulumi.Input[str] description: The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
         :param pulumi.Input[str] entry: The IP address for the ACL entry.
-        :param pulumi.Input[str] status: The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        :param pulumi.Input[str] status: The status of the ACL entry. Valid values:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -138,7 +138,7 @@ class AclAclEntryArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        The status of the ACL entry. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -220,7 +220,7 @@ class ListenerAclConfigArgs:
                  acl_relations: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]]] = None,
                  acl_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]] acl_relations: The ACLs that are associated with the listener.
+        :param pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]] acl_relations: The ACLs that are associated with the listener. See `acl_relations` below for details.
         :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
         """
         if acl_relations is not None:
@@ -232,7 +232,7 @@ class ListenerAclConfigArgs:
     @pulumi.getter(name="aclRelations")
     def acl_relations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]]]:
         """
-        The ACLs that are associated with the listener.
+        The ACLs that are associated with the listener. See `acl_relations` below for details.
         """
         return pulumi.get(self, "acl_relations")
 
@@ -321,7 +321,7 @@ class ListenerDefaultActionArgs:
                  forward_group_config: pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs'],
                  type: pulumi.Input[str]):
         """
-        :param pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs'] forward_group_config: The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+        :param pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs'] forward_group_config: The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
         :param pulumi.Input[str] type: Action Type.
         """
         pulumi.set(__self__, "forward_group_config", forward_group_config)
@@ -331,7 +331,7 @@ class ListenerDefaultActionArgs:
     @pulumi.getter(name="forwardGroupConfig")
     def forward_group_config(self) -> pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs']:
         """
-        The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+        The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
         """
         return pulumi.get(self, "forward_group_config")
 
@@ -357,7 +357,7 @@ class ListenerDefaultActionForwardGroupConfigArgs:
     def __init__(__self__, *,
                  server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded.
+        :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
         """
         pulumi.set(__self__, "server_group_tuples", server_group_tuples)
 
@@ -365,7 +365,7 @@ class ListenerDefaultActionForwardGroupConfigArgs:
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]]:
         """
-        The destination server group to which requests are forwarded.
+        The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
         """
         return pulumi.get(self, "server_group_tuples")
 
@@ -806,18 +806,18 @@ class RuleRuleActionArgs:
                  traffic_mirror_config: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs']] = None):
         """
         :param pulumi.Input[int] order: The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
-        :param pulumi.Input[str] type: The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+        :param pulumi.Input[str] type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
                **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
                **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
                **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
-        :param pulumi.Input['RuleRuleActionCorsConfigArgs'] cors_config: Request forwarding based on CORS. See the following `Block cors_config`.
-        :param pulumi.Input['RuleRuleActionFixedResponseConfigArgs'] fixed_response_config: The configuration of the fixed response. See the following `Block fixed_response_config`.
-        :param pulumi.Input['RuleRuleActionForwardGroupConfigArgs'] forward_group_config: The forward response action within ALB. See the following `Block forward_group_config`.
-        :param pulumi.Input['RuleRuleActionInsertHeaderConfigArgs'] insert_header_config: The configuration of the inserted header field. See the following `Block insert_header_config`.
-        :param pulumi.Input['RuleRuleActionRedirectConfigArgs'] redirect_config: The configuration of the external redirect action. See the following `Block redirect_config`.
-        :param pulumi.Input['RuleRuleActionRewriteConfigArgs'] rewrite_config: The redirect action within ALB. See the following `Block rewrite_config`.
-        :param pulumi.Input['RuleRuleActionTrafficLimitConfigArgs'] traffic_limit_config: The Flow speed limit. See the following `Block traffic_limit_config`.
-        :param pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs'] traffic_mirror_config: The Traffic mirroring. See the following `Block traffic_mirror_config`.
+        :param pulumi.Input['RuleRuleActionCorsConfigArgs'] cors_config: Request forwarding based on CORS. See `cors_config` below for details.
+        :param pulumi.Input['RuleRuleActionFixedResponseConfigArgs'] fixed_response_config: The configuration of the fixed response. See `fixed_response_config` below for details.
+        :param pulumi.Input['RuleRuleActionForwardGroupConfigArgs'] forward_group_config: The forward response action within ALB. See `forward_group_config` below for details.
+        :param pulumi.Input['RuleRuleActionInsertHeaderConfigArgs'] insert_header_config: The configuration of the inserted header field. See `insert_header_config` below for details.
+        :param pulumi.Input['RuleRuleActionRedirectConfigArgs'] redirect_config: The configuration of the external redirect action. See `redirect_config` below for details.
+        :param pulumi.Input['RuleRuleActionRewriteConfigArgs'] rewrite_config: The redirect action within ALB. See `rewrite_config` below for details.
+        :param pulumi.Input['RuleRuleActionTrafficLimitConfigArgs'] traffic_limit_config: The Flow speed limit. See `traffic_limit_config` below for details.
+        :param pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs'] traffic_mirror_config: The Traffic mirroring. See `traffic_mirror_config` below for details.
         """
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "type", type)
@@ -854,7 +854,7 @@ class RuleRuleActionArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
         **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
         **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
@@ -869,7 +869,7 @@ class RuleRuleActionArgs:
     @pulumi.getter(name="corsConfig")
     def cors_config(self) -> Optional[pulumi.Input['RuleRuleActionCorsConfigArgs']]:
         """
-        Request forwarding based on CORS. See the following `Block cors_config`.
+        Request forwarding based on CORS. See `cors_config` below for details.
         """
         return pulumi.get(self, "cors_config")
 
@@ -881,7 +881,7 @@ class RuleRuleActionArgs:
     @pulumi.getter(name="fixedResponseConfig")
     def fixed_response_config(self) -> Optional[pulumi.Input['RuleRuleActionFixedResponseConfigArgs']]:
         """
-        The configuration of the fixed response. See the following `Block fixed_response_config`.
+        The configuration of the fixed response. See `fixed_response_config` below for details.
         """
         return pulumi.get(self, "fixed_response_config")
 
@@ -893,7 +893,7 @@ class RuleRuleActionArgs:
     @pulumi.getter(name="forwardGroupConfig")
     def forward_group_config(self) -> Optional[pulumi.Input['RuleRuleActionForwardGroupConfigArgs']]:
         """
-        The forward response action within ALB. See the following `Block forward_group_config`.
+        The forward response action within ALB. See `forward_group_config` below for details.
         """
         return pulumi.get(self, "forward_group_config")
 
@@ -905,7 +905,7 @@ class RuleRuleActionArgs:
     @pulumi.getter(name="insertHeaderConfig")
     def insert_header_config(self) -> Optional[pulumi.Input['RuleRuleActionInsertHeaderConfigArgs']]:
         """
-        The configuration of the inserted header field. See the following `Block insert_header_config`.
+        The configuration of the inserted header field. See `insert_header_config` below for details.
         """
         return pulumi.get(self, "insert_header_config")
 
@@ -917,7 +917,7 @@ class RuleRuleActionArgs:
     @pulumi.getter(name="redirectConfig")
     def redirect_config(self) -> Optional[pulumi.Input['RuleRuleActionRedirectConfigArgs']]:
         """
-        The configuration of the external redirect action. See the following `Block redirect_config`.
+        The configuration of the external redirect action. See `redirect_config` below for details.
         """
         return pulumi.get(self, "redirect_config")
 
@@ -929,7 +929,7 @@ class RuleRuleActionArgs:
     @pulumi.getter(name="rewriteConfig")
     def rewrite_config(self) -> Optional[pulumi.Input['RuleRuleActionRewriteConfigArgs']]:
         """
-        The redirect action within ALB. See the following `Block rewrite_config`.
+        The redirect action within ALB. See `rewrite_config` below for details.
         """
         return pulumi.get(self, "rewrite_config")
 
@@ -941,7 +941,7 @@ class RuleRuleActionArgs:
     @pulumi.getter(name="trafficLimitConfig")
     def traffic_limit_config(self) -> Optional[pulumi.Input['RuleRuleActionTrafficLimitConfigArgs']]:
         """
-        The Flow speed limit. See the following `Block traffic_limit_config`.
+        The Flow speed limit. See `traffic_limit_config` below for details.
         """
         return pulumi.get(self, "traffic_limit_config")
 
@@ -953,7 +953,7 @@ class RuleRuleActionArgs:
     @pulumi.getter(name="trafficMirrorConfig")
     def traffic_mirror_config(self) -> Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs']]:
         """
-        The Traffic mirroring. See the following `Block traffic_mirror_config`.
+        The Traffic mirroring. See `traffic_mirror_config` below for details.
         """
         return pulumi.get(self, "traffic_mirror_config")
 
@@ -1125,8 +1125,8 @@ class RuleRuleActionForwardGroupConfigArgs:
                  server_group_sticky_session: Optional[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs']] = None,
                  server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]]] = None):
         """
-        :param pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs'] server_group_sticky_session: The configuration of session persistence for server groups.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded.
+        :param pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs'] server_group_sticky_session: The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
         """
         if server_group_sticky_session is not None:
             pulumi.set(__self__, "server_group_sticky_session", server_group_sticky_session)
@@ -1137,7 +1137,7 @@ class RuleRuleActionForwardGroupConfigArgs:
     @pulumi.getter(name="serverGroupStickySession")
     def server_group_sticky_session(self) -> Optional[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs']]:
         """
-        The configuration of session persistence for server groups.
+        The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
         """
         return pulumi.get(self, "server_group_sticky_session")
 
@@ -1149,7 +1149,7 @@ class RuleRuleActionForwardGroupConfigArgs:
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]]]:
         """
-        The destination server group to which requests are forwarded.
+        The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
         """
         return pulumi.get(self, "server_group_tuples")
 
@@ -1244,7 +1244,7 @@ class RuleRuleActionInsertHeaderConfigArgs:
                  value_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
-        :param pulumi.Input[str] value: The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
+        :param pulumi.Input[str] value: The value of the values list.
         :param pulumi.Input[str] value_type: Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
         """
         if key is not None:
@@ -1270,7 +1270,7 @@ class RuleRuleActionInsertHeaderConfigArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
+        The value of the values list.
         """
         return pulumi.get(self, "value")
 
@@ -1478,7 +1478,7 @@ class RuleRuleActionTrafficMirrorConfigArgs:
                  mirror_group_config: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']] = None,
                  target_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs'] mirror_group_config: The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+        :param pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs'] mirror_group_config: The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
         :param pulumi.Input[str] target_type: The Mirror target type.
         """
         if mirror_group_config is not None:
@@ -1490,7 +1490,7 @@ class RuleRuleActionTrafficMirrorConfigArgs:
     @pulumi.getter(name="mirrorGroupConfig")
     def mirror_group_config(self) -> Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']]:
         """
-        The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+        The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
         """
         return pulumi.get(self, "mirror_group_config")
 
@@ -1516,7 +1516,7 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs:
     def __init__(__self__, *,
                  server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
         """
         if server_group_tuples is not None:
             pulumi.set(__self__, "server_group_tuples", server_group_tuples)
@@ -1525,7 +1525,7 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs:
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]]:
         """
-        The destination server group to which requests are forwarded.
+        The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
         """
         return pulumi.get(self, "server_group_tuples")
 
@@ -1570,16 +1570,13 @@ class RuleRuleConditionArgs:
                  source_ip_config: Optional[pulumi.Input['RuleRuleConditionSourceIpConfigArgs']] = None):
         """
         :param pulumi.Input[str] type: The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-               **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-               **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-               **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
-        :param pulumi.Input['RuleRuleConditionCookieConfigArgs'] cookie_config: The configuration of the cookie. See the following `Block cookie_config`.
-        :param pulumi.Input['RuleRuleConditionHeaderConfigArgs'] header_config: The configuration of the header field. See the following `Block header_config`.
-        :param pulumi.Input['RuleRuleConditionHostConfigArgs'] host_config: The configuration of the host field. See the following `Block host_config`.
-        :param pulumi.Input['RuleRuleConditionMethodConfigArgs'] method_config: The configuration of the request method. See the following `Block method_config`.
-        :param pulumi.Input['RuleRuleConditionPathConfigArgs'] path_config: The configuration of the path for the request to be forwarded. See the following `Block path_config`.
-        :param pulumi.Input['RuleRuleConditionQueryStringConfigArgs'] query_string_config: The configuration of the query string. See the following `Block query_string_config`.
-        :param pulumi.Input['RuleRuleConditionSourceIpConfigArgs'] source_ip_config: The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
+        :param pulumi.Input['RuleRuleConditionCookieConfigArgs'] cookie_config: The configuration of the cookie. See See `cookie_config` below for details.
+        :param pulumi.Input['RuleRuleConditionHeaderConfigArgs'] header_config: The configuration of the header field. See `header_config` below for details.
+        :param pulumi.Input['RuleRuleConditionHostConfigArgs'] host_config: The configuration of the host field. See `host_config` below for details.
+        :param pulumi.Input['RuleRuleConditionMethodConfigArgs'] method_config: The configuration of the request method. See `method_config` below for details.
+        :param pulumi.Input['RuleRuleConditionPathConfigArgs'] path_config: The configuration of the path for the request to be forwarded. See `path_config` below for details.
+        :param pulumi.Input['RuleRuleConditionQueryStringConfigArgs'] query_string_config: The configuration of the query string. See `query_string_config` below for details.
+        :param pulumi.Input['RuleRuleConditionSourceIpConfigArgs'] source_ip_config: The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
         """
         pulumi.set(__self__, "type", type)
         if cookie_config is not None:
@@ -1602,9 +1599,6 @@ class RuleRuleConditionArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-        **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-        **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-        **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
         """
         return pulumi.get(self, "type")
 
@@ -1616,7 +1610,7 @@ class RuleRuleConditionArgs:
     @pulumi.getter(name="cookieConfig")
     def cookie_config(self) -> Optional[pulumi.Input['RuleRuleConditionCookieConfigArgs']]:
         """
-        The configuration of the cookie. See the following `Block cookie_config`.
+        The configuration of the cookie. See See `cookie_config` below for details.
         """
         return pulumi.get(self, "cookie_config")
 
@@ -1628,7 +1622,7 @@ class RuleRuleConditionArgs:
     @pulumi.getter(name="headerConfig")
     def header_config(self) -> Optional[pulumi.Input['RuleRuleConditionHeaderConfigArgs']]:
         """
-        The configuration of the header field. See the following `Block header_config`.
+        The configuration of the header field. See `header_config` below for details.
         """
         return pulumi.get(self, "header_config")
 
@@ -1640,7 +1634,7 @@ class RuleRuleConditionArgs:
     @pulumi.getter(name="hostConfig")
     def host_config(self) -> Optional[pulumi.Input['RuleRuleConditionHostConfigArgs']]:
         """
-        The configuration of the host field. See the following `Block host_config`.
+        The configuration of the host field. See `host_config` below for details.
         """
         return pulumi.get(self, "host_config")
 
@@ -1652,7 +1646,7 @@ class RuleRuleConditionArgs:
     @pulumi.getter(name="methodConfig")
     def method_config(self) -> Optional[pulumi.Input['RuleRuleConditionMethodConfigArgs']]:
         """
-        The configuration of the request method. See the following `Block method_config`.
+        The configuration of the request method. See `method_config` below for details.
         """
         return pulumi.get(self, "method_config")
 
@@ -1664,7 +1658,7 @@ class RuleRuleConditionArgs:
     @pulumi.getter(name="pathConfig")
     def path_config(self) -> Optional[pulumi.Input['RuleRuleConditionPathConfigArgs']]:
         """
-        The configuration of the path for the request to be forwarded. See the following `Block path_config`.
+        The configuration of the path for the request to be forwarded. See `path_config` below for details.
         """
         return pulumi.get(self, "path_config")
 
@@ -1676,7 +1670,7 @@ class RuleRuleConditionArgs:
     @pulumi.getter(name="queryStringConfig")
     def query_string_config(self) -> Optional[pulumi.Input['RuleRuleConditionQueryStringConfigArgs']]:
         """
-        The configuration of the query string. See the following `Block query_string_config`.
+        The configuration of the query string. See `query_string_config` below for details.
         """
         return pulumi.get(self, "query_string_config")
 
@@ -1688,7 +1682,7 @@ class RuleRuleConditionArgs:
     @pulumi.getter(name="sourceIpConfig")
     def source_ip_config(self) -> Optional[pulumi.Input['RuleRuleConditionSourceIpConfigArgs']]:
         """
-        The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
+        The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
         """
         return pulumi.get(self, "source_ip_config")
 
@@ -1727,7 +1721,7 @@ class RuleRuleConditionCookieConfigValueArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
-        :param pulumi.Input[str] value: The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
+        :param pulumi.Input[str] value: The value of the values list.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1750,7 +1744,7 @@ class RuleRuleConditionCookieConfigValueArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
+        The value of the values list.
         """
         return pulumi.get(self, "value")
 
@@ -1897,7 +1891,7 @@ class RuleRuleConditionQueryStringConfigValueArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
-        :param pulumi.Input[str] value: The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
+        :param pulumi.Input[str] value: The value of the values list.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1920,7 +1914,7 @@ class RuleRuleConditionQueryStringConfigValueArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
+        The value of the values list.
         """
         return pulumi.get(self, "value")
 
@@ -1968,34 +1962,19 @@ class ServerGroupHealthCheckConfigArgs:
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The status code for a successful health check. Multiple status codes can be specified as a
-               list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
                parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param pulumi.Input[int] health_check_connect_port: The port of the backend server that is used for health checks. Valid values: `0`
-               to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
-        :param pulumi.Input[bool] health_check_enabled: Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-               value: `true`.
+        :param pulumi.Input[int] health_check_connect_port: The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+        :param pulumi.Input[bool] health_check_enabled: Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
         :param pulumi.Input[str] health_check_host: The domain name that is used for health checks.
-        :param pulumi.Input[str] health_check_http_version: HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-               . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param pulumi.Input[int] health_check_interval: The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-               to `50`. Default value: `2`.
-        :param pulumi.Input[str] health_check_method: Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-               exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param pulumi.Input[str] health_check_path: The forwarding rule path of health checks. **NOTE:** This parameter exists if
-               the `HealthCheckProtocol` parameter is set to `HTTP`.
+        :param pulumi.Input[str] health_check_http_version: HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        :param pulumi.Input[int] health_check_interval: The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+        :param pulumi.Input[str] health_check_method: Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        :param pulumi.Input[str] health_check_path: The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
         :param pulumi.Input[str] health_check_protocol: Health check protocol. Valid values: `HTTP` and `TCP`.
-        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-               instance does not send an expected response within the specified period of time, the ECS instance is considered
-               unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-               parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-               is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
-        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must pass consecutively before it
-               is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-               Default value: 3.
-        :param pulumi.Input[int] unhealthy_threshold: The number of consecutive health checks that a healthy backend server must consecutively fail
-               before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-               values: `2` to `10`. Default value: `3`.
+        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+        :param pulumi.Input[int] unhealthy_threshold: The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
         """
         if health_check_codes is not None:
             pulumi.set(__self__, "health_check_codes", health_check_codes)
@@ -2026,8 +2005,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckCodes")
     def health_check_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The status code for a successful health check. Multiple status codes can be specified as a
-        list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+        The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
         parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_codes")
@@ -2040,8 +2018,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port of the backend server that is used for health checks. Valid values: `0`
-        to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+        The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -2053,8 +2030,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckEnabled")
     def health_check_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-        value: `true`.
+        Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
         """
         return pulumi.get(self, "health_check_enabled")
 
@@ -2078,8 +2054,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckHttpVersion")
     def health_check_http_version(self) -> Optional[pulumi.Input[str]]:
         """
-        HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-        . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_http_version")
 
@@ -2091,8 +2066,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-        to `50`. Default value: `2`.
+        The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -2104,8 +2078,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> Optional[pulumi.Input[str]]:
         """
-        Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-        exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -2117,8 +2090,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The forwarding rule path of health checks. **NOTE:** This parameter exists if
-        the `HealthCheckProtocol` parameter is set to `HTTP`.
+        The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_path")
 
@@ -2142,11 +2114,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-        instance does not send an expected response within the specified period of time, the ECS instance is considered
-        unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-        parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-        is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+        The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -2158,9 +2126,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of health checks that an unhealthy backend server must pass consecutively before it
-        is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-        Default value: 3.
+        The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -2172,9 +2138,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of consecutive health checks that a healthy backend server must consecutively fail
-        before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-        values: `2` to `10`. Default value: `3`.
+        The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -2209,7 +2173,7 @@ class ServerGroupServerArgs:
         :param pulumi.Input[int] port: The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
         :param pulumi.Input[bool] remote_ip_enabled: Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
         :param pulumi.Input[str] server_ip: The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] status: The status of the backend server. Valid values:
         :param pulumi.Input[int] weight: The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
                requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
         """
@@ -2312,7 +2276,7 @@ class ServerGroupServerArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the backend server. Valid values:
         """
         return pulumi.get(self, "status")
 

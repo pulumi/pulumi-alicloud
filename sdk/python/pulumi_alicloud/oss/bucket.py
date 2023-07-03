@@ -161,6 +161,9 @@ class BucketArgs:
         """
         The flag of using logging enable container. Defaults true.
         """
+        warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
+        pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
+
         return pulumi.get(self, "logging_isenable")
 
     @logging_isenable.setter
@@ -492,6 +495,9 @@ class _BucketState:
         """
         The flag of using logging enable container. Defaults true.
         """
+        warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
+        pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
+
         return pulumi.get(self, "logging_isenable")
 
     @logging_isenable.setter
@@ -1568,6 +1574,9 @@ class Bucket(pulumi.CustomResource):
         """
         The flag of using logging enable container. Defaults true.
         """
+        warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
+        pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
+
         return pulumi.get(self, "logging_isenable")
 
     @property

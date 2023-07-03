@@ -164,14 +164,14 @@ def get_elasticity_assurances(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getElasticityAssurances:getElasticityAssurances', __args__, opts=opts, typ=GetElasticityAssurancesResult).value
 
     return AwaitableGetElasticityAssurancesResult(
-        assurances=__ret__.assurances,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        private_pool_options_ids=__ret__.private_pool_options_ids,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        assurances=pulumi.get(__ret__, 'assurances'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        private_pool_options_ids=pulumi.get(__ret__, 'private_pool_options_ids'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_elasticity_assurances)

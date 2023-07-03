@@ -308,7 +308,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
@@ -317,7 +317,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> effectiveTime;
 
     /**
-     * @return The method to update the engine version.  Default value: Immediate. Valid values:
+     * @return The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
@@ -556,14 +556,14 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<DdrInstanceParameterArgs>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
      */
     public Optional<Output<List<DdrInstanceParameterArgs>>> parameters() {
@@ -603,14 +603,14 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     @Import(name="pgHbaConfs")
     private @Nullable Output<List<DdrInstancePgHbaConfArgs>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     public Optional<Output<List<DdrInstancePgHbaConfArgs>>> pgHbaConfs() {
@@ -836,7 +836,6 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the source instance if you want to restore data to a point in time.
-     * #### Block pg_hba_conf
      * 
      */
     @Import(name="sourceDbInstanceName")
@@ -844,7 +843,6 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the source instance if you want to restore data to a point in time.
-     * #### Block pg_hba_conf
      * 
      */
     public Optional<Output<String>> sourceDbInstanceName() {
@@ -1667,7 +1665,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectiveTime The method to update the engine version.  Default value: Immediate. Valid values:
+         * @param effectiveTime The method to update the engine version and change.  Default value: Immediate. Valid values:
          * - Immediate: The change immediately takes effect.
          * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
          * 
@@ -1680,7 +1678,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectiveTime The method to update the engine version.  Default value: Immediate. Valid values:
+         * @param effectiveTime The method to update the engine version and change.  Default value: Immediate. Valid values:
          * - Immediate: The change immediately takes effect.
          * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
          * 
@@ -1999,7 +1997,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
          * 
          * @return builder
          * 
@@ -2010,7 +2008,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
          * 
          * @return builder
          * 
@@ -2020,7 +2018,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
          * 
          * @return builder
          * 
@@ -2074,7 +2072,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
          * 
          * @return builder
          * 
@@ -2085,7 +2083,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
          * 
          * @return builder
          * 
@@ -2095,7 +2093,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
          * 
          * @return builder
          * 
@@ -2421,7 +2419,6 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceDbInstanceName The ID of the source instance if you want to restore data to a point in time.
-         * #### Block pg_hba_conf
          * 
          * @return builder
          * 
@@ -2433,7 +2430,6 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceDbInstanceName The ID of the source instance if you want to restore data to a point in time.
-         * #### Block pg_hba_conf
          * 
          * @return builder
          * 

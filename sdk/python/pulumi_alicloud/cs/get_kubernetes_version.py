@@ -148,11 +148,11 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getKubernetesVersion:getKubernetesVersion', __args__, opts=opts, typ=GetKubernetesVersionResult).value
 
     return AwaitableGetKubernetesVersionResult(
-        cluster_type=__ret__.cluster_type,
-        id=__ret__.id,
-        kubernetes_version=__ret__.kubernetes_version,
-        metadatas=__ret__.metadatas,
-        profile=__ret__.profile)
+        cluster_type=pulumi.get(__ret__, 'cluster_type'),
+        id=pulumi.get(__ret__, 'id'),
+        kubernetes_version=pulumi.get(__ret__, 'kubernetes_version'),
+        metadatas=pulumi.get(__ret__, 'metadatas'),
+        profile=pulumi.get(__ret__, 'profile'))
 
 
 @_utilities.lift_output_func(get_kubernetes_version)

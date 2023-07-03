@@ -22,26 +22,22 @@ class AcceleratorArgs:
                  bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
-                 renewal_status: Optional[pulumi.Input[str]] = None):
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Accelerator resource.
-        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
-               `1`: Small 1.
-               `2`: Small 2.
-               `3`: Small 3.
-               `5`: Medium 1.
-               `8`: Medium 2.
-               `10`: Medium 3.
+        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
-        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "spec", spec)
@@ -59,12 +55,14 @@ class AcceleratorArgs:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
     def duration(self) -> pulumi.Input[int]:
         """
-        The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
         * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         """
@@ -78,13 +76,7 @@ class AcceleratorArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[str]:
         """
-        The instance type of the GA instance. Specification of global acceleration instance, value:
-        `1`: Small 1.
-        `2`: Small 2.
-        `3`: Small 3.
-        `5`: Medium 1.
-        `8`: Medium 2.
-        `10`: Medium 3.
+        The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         """
         return pulumi.get(self, "spec")
 
@@ -120,7 +112,7 @@ class AcceleratorArgs:
     @pulumi.getter(name="autoUseCoupon")
     def auto_use_coupon(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        Use coupons to pay bills automatically. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_use_coupon")
 
@@ -156,7 +148,7 @@ class AcceleratorArgs:
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        The billing cycle of the GA instance. Default value: `Month`. Valid values:
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -168,13 +160,25 @@ class AcceleratorArgs:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
     def renewal_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -189,27 +193,23 @@ class _AcceleratorState:
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Accelerator resources.
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
-        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
-               `1`: Small 1.
-               `2`: Small 2.
-               `3`: Small 3.
-               `5`: Medium 1.
-               `8`: Medium 2.
-               `10`: Medium 3.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] status: The status of the GA instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if accelerator_name is not None:
             pulumi.set(__self__, "accelerator_name", accelerator_name)
@@ -231,6 +231,8 @@ class _AcceleratorState:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="acceleratorName")
@@ -260,7 +262,7 @@ class _AcceleratorState:
     @pulumi.getter(name="autoUseCoupon")
     def auto_use_coupon(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        Use coupons to pay bills automatically. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_use_coupon")
 
@@ -296,7 +298,7 @@ class _AcceleratorState:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[int]]:
         """
-        The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
         * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         """
@@ -310,7 +312,7 @@ class _AcceleratorState:
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        The billing cycle of the GA instance. Default value: `Month`. Valid values:
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -322,7 +324,7 @@ class _AcceleratorState:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
         """
         return pulumi.get(self, "renewal_status")
 
@@ -334,13 +336,7 @@ class _AcceleratorState:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance type of the GA instance. Specification of global acceleration instance, value:
-        `1`: Small 1.
-        `2`: Small 2.
-        `3`: Small 3.
-        `5`: Medium 1.
-        `8`: Medium 2.
-        `10`: Medium 3.
+        The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         """
         return pulumi.get(self, "spec")
 
@@ -360,6 +356,18 @@ class _AcceleratorState:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
 
 class Accelerator(pulumi.CustomResource):
     @overload
@@ -375,6 +383,7 @@ class Accelerator(pulumi.CustomResource):
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
         ## Import
@@ -389,21 +398,16 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
-        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
-               `1`: Small 1.
-               `2`: Small 2.
-               `3`: Small 3.
-               `5`: Medium 1.
-               `8`: Medium 2.
-               `10`: Medium 3.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -444,6 +448,7 @@ class Accelerator(pulumi.CustomResource):
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -466,6 +471,7 @@ class Accelerator(pulumi.CustomResource):
             if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
             __props__.__dict__["spec"] = spec
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["status"] = None
         super(Accelerator, __self__).__init__(
             'alicloud:ga/accelerator:Accelerator',
@@ -486,7 +492,8 @@ class Accelerator(pulumi.CustomResource):
             pricing_cycle: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'Accelerator':
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Accelerator':
         """
         Get an existing Accelerator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -496,22 +503,17 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
-        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
-               `1`: Small 1.
-               `2`: Small 2.
-               `3`: Small 3.
-               `5`: Medium 1.
-               `8`: Medium 2.
-               `10`: Medium 3.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] status: The status of the GA instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -527,6 +529,7 @@ class Accelerator(pulumi.CustomResource):
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return Accelerator(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -549,7 +552,7 @@ class Accelerator(pulumi.CustomResource):
     @pulumi.getter(name="autoUseCoupon")
     def auto_use_coupon(self) -> pulumi.Output[Optional[bool]]:
         """
-        Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        Use coupons to pay bills automatically. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_use_coupon")
 
@@ -573,7 +576,7 @@ class Accelerator(pulumi.CustomResource):
     @pulumi.getter
     def duration(self) -> pulumi.Output[int]:
         """
-        The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
         * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         """
@@ -583,7 +586,7 @@ class Accelerator(pulumi.CustomResource):
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> pulumi.Output[str]:
         """
-        The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        The billing cycle of the GA instance. Default value: `Month`. Valid values:
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -591,7 +594,7 @@ class Accelerator(pulumi.CustomResource):
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Output[str]:
         """
-        Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
         """
         return pulumi.get(self, "renewal_status")
 
@@ -599,13 +602,7 @@ class Accelerator(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output[str]:
         """
-        The instance type of the GA instance. Specification of global acceleration instance, value:
-        `1`: Small 1.
-        `2`: Small 2.
-        `3`: Small 3.
-        `5`: Medium 1.
-        `8`: Medium 2.
-        `10`: Medium 3.
+        The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         """
         return pulumi.get(self, "spec")
 
@@ -616,4 +613,12 @@ class Accelerator(pulumi.CustomResource):
         The status of the GA instance.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 

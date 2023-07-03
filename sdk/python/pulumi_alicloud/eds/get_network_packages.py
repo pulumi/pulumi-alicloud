@@ -122,11 +122,11 @@ def get_network_packages(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eds/getNetworkPackages:getNetworkPackages', __args__, opts=opts, typ=GetNetworkPackagesResult).value
 
     return AwaitableGetNetworkPackagesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        packages=__ret__.packages,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        packages=pulumi.get(__ret__, 'packages'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_network_packages)

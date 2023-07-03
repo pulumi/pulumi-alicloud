@@ -8,8 +8,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetScalingConfigurationsConfigurationDataDisk {
@@ -17,75 +15,75 @@ public final class GetScalingConfigurationsConfigurationDataDisk {
      * @return Category of data disk.
      * 
      */
-    private @Nullable String category;
+    private String category;
     /**
      * @return Delete_with_instance attribute of data disk.
      * 
      */
-    private @Nullable Boolean deleteWithInstance;
+    private Boolean deleteWithInstance;
     /**
      * @return Device attribute of data disk.
      * 
      */
-    private @Nullable String device;
+    private String device;
     /**
      * @return The performance level of the ESSD used as data disk.
      * 
      */
-    private @Nullable String performanceLevel;
+    private String performanceLevel;
     /**
      * @return Size of data disk.
      * 
      */
-    private @Nullable Integer size;
+    private Integer size;
     /**
      * @return Size of data disk.
      * 
      */
-    private @Nullable String snapshotId;
+    private String snapshotId;
 
     private GetScalingConfigurationsConfigurationDataDisk() {}
     /**
      * @return Category of data disk.
      * 
      */
-    public Optional<String> category() {
-        return Optional.ofNullable(this.category);
+    public String category() {
+        return this.category;
     }
     /**
      * @return Delete_with_instance attribute of data disk.
      * 
      */
-    public Optional<Boolean> deleteWithInstance() {
-        return Optional.ofNullable(this.deleteWithInstance);
+    public Boolean deleteWithInstance() {
+        return this.deleteWithInstance;
     }
     /**
      * @return Device attribute of data disk.
      * 
      */
-    public Optional<String> device() {
-        return Optional.ofNullable(this.device);
+    public String device() {
+        return this.device;
     }
     /**
      * @return The performance level of the ESSD used as data disk.
      * 
      */
-    public Optional<String> performanceLevel() {
-        return Optional.ofNullable(this.performanceLevel);
+    public String performanceLevel() {
+        return this.performanceLevel;
     }
     /**
      * @return Size of data disk.
      * 
      */
-    public Optional<Integer> size() {
-        return Optional.ofNullable(this.size);
+    public Integer size() {
+        return this.size;
     }
     /**
      * @return Size of data disk.
      * 
      */
-    public Optional<String> snapshotId() {
-        return Optional.ofNullable(this.snapshotId);
+    public String snapshotId() {
+        return this.snapshotId;
     }
 
     public static Builder builder() {
@@ -97,12 +95,12 @@ public final class GetScalingConfigurationsConfigurationDataDisk {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String category;
-        private @Nullable Boolean deleteWithInstance;
-        private @Nullable String device;
-        private @Nullable String performanceLevel;
-        private @Nullable Integer size;
-        private @Nullable String snapshotId;
+        private String category;
+        private Boolean deleteWithInstance;
+        private String device;
+        private String performanceLevel;
+        private Integer size;
+        private String snapshotId;
         public Builder() {}
         public Builder(GetScalingConfigurationsConfigurationDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
@@ -115,33 +113,33 @@ public final class GetScalingConfigurationsConfigurationDataDisk {
         }
 
         @CustomType.Setter
-        public Builder category(@Nullable String category) {
-            this.category = category;
+        public Builder category(String category) {
+            this.category = Objects.requireNonNull(category);
             return this;
         }
         @CustomType.Setter
-        public Builder deleteWithInstance(@Nullable Boolean deleteWithInstance) {
-            this.deleteWithInstance = deleteWithInstance;
+        public Builder deleteWithInstance(Boolean deleteWithInstance) {
+            this.deleteWithInstance = Objects.requireNonNull(deleteWithInstance);
             return this;
         }
         @CustomType.Setter
-        public Builder device(@Nullable String device) {
-            this.device = device;
+        public Builder device(String device) {
+            this.device = Objects.requireNonNull(device);
             return this;
         }
         @CustomType.Setter
-        public Builder performanceLevel(@Nullable String performanceLevel) {
-            this.performanceLevel = performanceLevel;
+        public Builder performanceLevel(String performanceLevel) {
+            this.performanceLevel = Objects.requireNonNull(performanceLevel);
             return this;
         }
         @CustomType.Setter
-        public Builder size(@Nullable Integer size) {
-            this.size = size;
+        public Builder size(Integer size) {
+            this.size = Objects.requireNonNull(size);
             return this;
         }
         @CustomType.Setter
-        public Builder snapshotId(@Nullable String snapshotId) {
-            this.snapshotId = snapshotId;
+        public Builder snapshotId(String snapshotId) {
+            this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
         public GetScalingConfigurationsConfigurationDataDisk build() {

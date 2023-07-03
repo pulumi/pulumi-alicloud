@@ -1443,6 +1443,9 @@ class ScalingConfigurationDataDisk(dict):
         """
         The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
         """
+        warnings.warn("""Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""device is deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""")
+
         return pulumi.get(self, "device")
 
     @property
@@ -2346,12 +2349,12 @@ class GetScalingConfigurationsConfigurationResult(dict):
 @pulumi.output_type
 class GetScalingConfigurationsConfigurationDataDiskResult(dict):
     def __init__(__self__, *,
-                 category: Optional[str] = None,
-                 delete_with_instance: Optional[bool] = None,
-                 device: Optional[str] = None,
-                 performance_level: Optional[str] = None,
-                 size: Optional[int] = None,
-                 snapshot_id: Optional[str] = None):
+                 category: str,
+                 delete_with_instance: bool,
+                 device: str,
+                 performance_level: str,
+                 size: int,
+                 snapshot_id: str):
         """
         :param str category: Category of data disk.
         :param bool delete_with_instance: Delete_with_instance attribute of data disk.
@@ -2360,22 +2363,16 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
         :param int size: Size of data disk.
         :param str snapshot_id: Size of data disk.
         """
-        if category is not None:
-            pulumi.set(__self__, "category", category)
-        if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
-        if device is not None:
-            pulumi.set(__self__, "device", device)
-        if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
-        if size is not None:
-            pulumi.set(__self__, "size", size)
-        if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
-    def category(self) -> Optional[str]:
+    def category(self) -> str:
         """
         Category of data disk.
         """
@@ -2383,7 +2380,7 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
 
     @property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> Optional[bool]:
+    def delete_with_instance(self) -> bool:
         """
         Delete_with_instance attribute of data disk.
         """
@@ -2391,7 +2388,7 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
 
     @property
     @pulumi.getter
-    def device(self) -> Optional[str]:
+    def device(self) -> str:
         """
         Device attribute of data disk.
         """
@@ -2399,7 +2396,7 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
 
     @property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[str]:
+    def performance_level(self) -> str:
         """
         The performance level of the ESSD used as data disk.
         """
@@ -2407,7 +2404,7 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[int]:
+    def size(self) -> int:
         """
         Size of data disk.
         """
@@ -2415,7 +2412,7 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[str]:
+    def snapshot_id(self) -> str:
         """
         Size of data disk.
         """
@@ -2425,20 +2422,18 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
 @pulumi.output_type
 class GetScalingConfigurationsConfigurationSpotPriceLimitResult(dict):
     def __init__(__self__, *,
-                 instance_type: Optional[str] = None,
-                 price_limit: Optional[float] = None):
+                 instance_type: str,
+                 price_limit: float):
         """
         :param str instance_type: Resource type of an ECS instance.
         :param float price_limit: Price limit hourly of instance type.
         """
-        if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
-        if price_limit is not None:
-            pulumi.set(__self__, "price_limit", price_limit)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "price_limit", price_limit)
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[str]:
+    def instance_type(self) -> str:
         """
         Resource type of an ECS instance.
         """
@@ -2446,7 +2441,7 @@ class GetScalingConfigurationsConfigurationSpotPriceLimitResult(dict):
 
     @property
     @pulumi.getter(name="priceLimit")
-    def price_limit(self) -> Optional[float]:
+    def price_limit(self) -> float:
         """
         Price limit hourly of instance type.
         """

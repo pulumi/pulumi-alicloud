@@ -13,9 +13,9 @@ namespace Pulumi.AliCloud.Alb
     /// Provides a ALB Server Group resource.
     /// 
     /// For information about ALB Server Group and how to use it,
-    /// see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
+    /// see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createservergroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.131.0+.
+    /// &gt; **NOTE:** Available since v1.131.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,76 +30,71 @@ namespace Pulumi.AliCloud.Alb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example_value";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         AvailableDiskCategory = "cloud_efficiency",
-    ///         AvailableResourceCreation = "VSwitch",
+    ///         AvailableResourceCreation = "Instance",
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var exampleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
     ///         MemorySize = 2,
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         NameRegex = "^ubuntu_18.*64",
-    ///         MostRecent = true,
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
     ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/16",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
+    ///         Description = name,
+    ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     var exampleInstance = new AliCloud.Ecs.Instance("exampleInstance", new()
     ///     {
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         InstanceName = name,
+    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroups = new[]
     ///         {
-    ///             defaultSecurityGroup,
-    ///         }.Select(__item =&gt; __item.Id).ToList(),
-    ///         InternetChargeType = "PayByTraffic",
-    ///         InternetMaxBandwidthOut = 10,
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         InstanceChargeType = "PostPaid",
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         VswitchId = defaultSwitch.Id,
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var defaultServerGroup = new AliCloud.Alb.ServerGroup("defaultServerGroup", new()
+    ///     var exampleServerGroup = new AliCloud.Alb.ServerGroup("exampleServerGroup", new()
     ///     {
     ///         Protocol = "HTTP",
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = exampleNetwork.Id,
     ///         ServerGroupName = name,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///         HealthCheckConfig = new AliCloud.Alb.Inputs.ServerGroupHealthCheckConfigArgs
     ///         {
     ///             HealthCheckConnectPort = 46325,
     ///             HealthCheckEnabled = true,
-    ///             HealthCheckHost = "tf-testAcc.com",
+    ///             HealthCheckHost = "tf-example.com",
     ///             HealthCheckCodes = new[]
     ///             {
     ///                 "http_2xx",
@@ -109,7 +104,7 @@ namespace Pulumi.AliCloud.Alb
     ///             HealthCheckHttpVersion = "HTTP1.1",
     ///             HealthCheckInterval = 2,
     ///             HealthCheckMethod = "HEAD",
-    ///             HealthCheckPath = "/tf-testAcc",
+    ///             HealthCheckPath = "/tf-example",
     ///             HealthCheckProtocol = "HTTP",
     ///             HealthCheckTimeout = 5,
     ///             HealthyThreshold = 3,
@@ -118,7 +113,7 @@ namespace Pulumi.AliCloud.Alb
     ///         StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
     ///         {
     ///             StickySessionEnabled = true,
-    ///             Cookie = "tf-testAcc",
+    ///             Cookie = "tf-example",
     ///             StickySessionType = "Server",
     ///         },
     ///         Tags = 
@@ -131,8 +126,8 @@ namespace Pulumi.AliCloud.Alb
     ///             {
     ///                 Description = name,
     ///                 Port = 80,
-    ///                 ServerId = defaultInstance.Id,
-    ///                 ServerIp = defaultInstance.PrivateIp,
+    ///                 ServerId = exampleInstance.Id,
+    ///                 ServerIp = exampleInstance.PrivateIp,
     ///                 ServerType = "Ecs",
     ///                 Weight = 10,
     ///             },
@@ -160,7 +155,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of health checks.
+        /// The configuration of health checks. See `health_check_config` below for details.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.ServerGroupHealthCheckConfig?> HealthCheckConfig { get; private set; } = null!;
@@ -196,19 +191,19 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ServerGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The backend server.
+        /// The backend server. See `servers` below for details.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the backend server. Valid values:
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the sticky session.
+        /// The configuration of the sticky session. See `sticky_session_config` below for details.
         /// </summary>
         [Output("stickySessionConfig")]
         public Output<Outputs.ServerGroupStickySessionConfig?> StickySessionConfig { get; private set; } = null!;
@@ -278,7 +273,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of health checks.
+        /// The configuration of health checks. See `health_check_config` below for details.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ServerGroupHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
@@ -317,7 +312,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// The backend server.
+        /// The backend server. See `servers` below for details.
         /// </summary>
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
@@ -326,7 +321,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The configuration of the sticky session.
+        /// The configuration of the sticky session. See `sticky_session_config` below for details.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigArgs>? StickySessionConfig { get; set; }
@@ -364,7 +359,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of health checks.
+        /// The configuration of health checks. See `health_check_config` below for details.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ServerGroupHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
@@ -403,7 +398,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// The backend server.
+        /// The backend server. See `servers` below for details.
         /// </summary>
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {
@@ -412,13 +407,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the backend server. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The configuration of the sticky session.
+        /// The configuration of the sticky session. See `sticky_session_config` below for details.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigGetArgs>? StickySessionConfig { get; set; }

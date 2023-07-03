@@ -83,8 +83,24 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-//				Document: pulumi.String("		{\n			\"Statement\": [\n			{\n				\"Action\": \"sts:AssumeRole\",\n				\"Effect\": \"Allow\",\n				\"Principal\": {\n					\"Service\": [\n						\"crossbackup.hbr.aliyuncs.com\"\n					]\n				}\n			}\n			],\n  			\"Version\": \"1\"\n		}\n"),
-//				Force:    pulumi.Bool(true),
+//				Document: pulumi.String(`		{
+//				"Statement": [
+//				{
+//					"Action": "sts:AssumeRole",
+//					"Effect": "Allow",
+//					"Principal": {
+//						"Service": [
+//							"crossbackup.hbr.aliyuncs.com"
+//						]
+//					}
+//				}
+//				],
+//	  			"Version": "1"
+//			}
+//
+// `),
+//
+//				Force: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

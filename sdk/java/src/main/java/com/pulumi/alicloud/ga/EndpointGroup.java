@@ -13,8 +13,10 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -199,8 +201,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return this.endpointGroupRegion;
     }
     /**
-     * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-     * 
+     * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      * 
      */
@@ -208,8 +209,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     private Output<String> endpointGroupType;
 
     /**
-     * @return The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-     * 
+     * @return The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      * 
      */
@@ -217,8 +217,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return this.endpointGroupType;
     }
     /**
-     * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-     * 
+     * The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
      * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      * 
      */
@@ -226,8 +225,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> endpointRequestProtocol;
 
     /**
-     * @return The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-     * 
+     * @return The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
      * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      * 
      */
@@ -320,7 +318,6 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-     * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */
@@ -329,7 +326,6 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-     * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */
@@ -351,18 +347,32 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      * 
      */
     @Export(name="thresholdCount", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> thresholdCount;
+    private Output<Integer> thresholdCount;
 
     /**
-     * @return The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+     * @return The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      * 
      */
-    public Output<Optional<Integer>> thresholdCount() {
-        return Codegen.optional(this.thresholdCount);
+    public Output<Integer> thresholdCount() {
+        return this.thresholdCount;
     }
     /**
      * The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.

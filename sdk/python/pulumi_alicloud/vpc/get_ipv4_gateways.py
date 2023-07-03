@@ -162,15 +162,15 @@ def get_ipv4_gateways(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getIpv4Gateways:getIpv4Gateways', __args__, opts=opts, typ=GetIpv4GatewaysResult).value
 
     return AwaitableGetIpv4GatewaysResult(
-        gateways=__ret__.gateways,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        ipv4_gateway_name=__ret__.ipv4_gateway_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        vpc_id=__ret__.vpc_id)
+        gateways=pulumi.get(__ret__, 'gateways'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        ipv4_gateway_name=pulumi.get(__ret__, 'ipv4_gateway_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_ipv4_gateways)

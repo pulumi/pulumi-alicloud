@@ -55,17 +55,9 @@ class GetInstanceClassesResult:
         pulumi.set(__self__, "output_file", output_file)
         if package_type and not isinstance(package_type, str):
             raise TypeError("Expected argument 'package_type' to be a str")
-        if package_type is not None:
-            warnings.warn("""The parameter 'package_type' has been deprecated from 1.68.0.""", DeprecationWarning)
-            pulumi.log.warn("""package_type is deprecated: The parameter 'package_type' has been deprecated from 1.68.0.""")
-
         pulumi.set(__self__, "package_type", package_type)
         if performance_type and not isinstance(performance_type, str):
             raise TypeError("Expected argument 'performance_type' to be a str")
-        if performance_type is not None:
-            warnings.warn("""The parameter 'performance_type' has been deprecated from 1.68.0.""", DeprecationWarning)
-            pulumi.log.warn("""performance_type is deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.""")
-
         pulumi.set(__self__, "performance_type", performance_type)
         if product_type and not isinstance(product_type, str):
             raise TypeError("Expected argument 'product_type' to be a str")
@@ -81,10 +73,6 @@ class GetInstanceClassesResult:
         pulumi.set(__self__, "sorted_by", sorted_by)
         if storage_type and not isinstance(storage_type, str):
             raise TypeError("Expected argument 'storage_type' to be a str")
-        if storage_type is not None:
-            warnings.warn("""The parameter 'storage_type' has been deprecated from 1.68.0.""", DeprecationWarning)
-            pulumi.log.warn("""storage_type is deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.""")
-
         pulumi.set(__self__, "storage_type", storage_type)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
@@ -152,11 +140,17 @@ class GetInstanceClassesResult:
     @property
     @pulumi.getter(name="packageType")
     def package_type(self) -> Optional[str]:
+        warnings.warn("""The parameter 'package_type' has been deprecated from 1.68.0.""", DeprecationWarning)
+        pulumi.log.warn("""package_type is deprecated: The parameter 'package_type' has been deprecated from 1.68.0.""")
+
         return pulumi.get(self, "package_type")
 
     @property
     @pulumi.getter(name="performanceType")
     def performance_type(self) -> Optional[str]:
+        warnings.warn("""The parameter 'performance_type' has been deprecated from 1.68.0.""", DeprecationWarning)
+        pulumi.log.warn("""performance_type is deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.""")
+
         return pulumi.get(self, "performance_type")
 
     @property
@@ -182,6 +176,9 @@ class GetInstanceClassesResult:
     @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[str]:
+        warnings.warn("""The parameter 'storage_type' has been deprecated from 1.68.0.""", DeprecationWarning)
+        pulumi.log.warn("""storage_type is deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.""")
+
         return pulumi.get(self, "storage_type")
 
     @property
@@ -290,24 +287,24 @@ def get_instance_classes(architecture: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kvstore/getInstanceClasses:getInstanceClasses', __args__, opts=opts, typ=GetInstanceClassesResult).value
 
     return AwaitableGetInstanceClassesResult(
-        architecture=__ret__.architecture,
-        classes=__ret__.classes,
-        edition_type=__ret__.edition_type,
-        engine=__ret__.engine,
-        engine_version=__ret__.engine_version,
-        id=__ret__.id,
-        instance_charge_type=__ret__.instance_charge_type,
-        instance_classes=__ret__.instance_classes,
-        node_type=__ret__.node_type,
-        output_file=__ret__.output_file,
-        package_type=__ret__.package_type,
-        performance_type=__ret__.performance_type,
-        product_type=__ret__.product_type,
-        series_type=__ret__.series_type,
-        shard_number=__ret__.shard_number,
-        sorted_by=__ret__.sorted_by,
-        storage_type=__ret__.storage_type,
-        zone_id=__ret__.zone_id)
+        architecture=pulumi.get(__ret__, 'architecture'),
+        classes=pulumi.get(__ret__, 'classes'),
+        edition_type=pulumi.get(__ret__, 'edition_type'),
+        engine=pulumi.get(__ret__, 'engine'),
+        engine_version=pulumi.get(__ret__, 'engine_version'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        instance_classes=pulumi.get(__ret__, 'instance_classes'),
+        node_type=pulumi.get(__ret__, 'node_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        package_type=pulumi.get(__ret__, 'package_type'),
+        performance_type=pulumi.get(__ret__, 'performance_type'),
+        product_type=pulumi.get(__ret__, 'product_type'),
+        series_type=pulumi.get(__ret__, 'series_type'),
+        shard_number=pulumi.get(__ret__, 'shard_number'),
+        sorted_by=pulumi.get(__ret__, 'sorted_by'),
+        storage_type=pulumi.get(__ret__, 'storage_type'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_instance_classes)

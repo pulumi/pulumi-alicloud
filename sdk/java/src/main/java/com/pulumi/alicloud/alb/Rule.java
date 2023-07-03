@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Application Load Balancer (ALB) Rule resource.
  * 
- * For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/doc-detail/214375.htm).
+ * For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createrule).
  * 
- * &gt; **NOTE:** Available in v1.133.0+.
+ * &gt; **NOTE:** Available since v1.133.0.
  * 
  * &gt; **NOTE:** This version only supports forwarding rules in the request direction.
  * 
@@ -96,28 +96,28 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.priority;
     }
     /**
-     * The actions of the forwarding rules. See the following `Block rule_actions`.
+     * The actions of the forwarding rules. See `rule_actions` below for details.
      * 
      */
     @Export(name="ruleActions", type=List.class, parameters={RuleRuleAction.class})
     private Output<List<RuleRuleAction>> ruleActions;
 
     /**
-     * @return The actions of the forwarding rules. See the following `Block rule_actions`.
+     * @return The actions of the forwarding rules. See `rule_actions` below for details.
      * 
      */
     public Output<List<RuleRuleAction>> ruleActions() {
         return this.ruleActions;
     }
     /**
-     * The conditions of the forwarding rule. See the following `Block rule_conditions`.
+     * The conditions of the forwarding rule. See `rule_conditions` below for details.
      * 
      */
     @Export(name="ruleConditions", type=List.class, parameters={RuleRuleCondition.class})
     private Output<List<RuleRuleCondition>> ruleConditions;
 
     /**
-     * @return The conditions of the forwarding rule. See the following `Block rule_conditions`.
+     * @return The conditions of the forwarding rule. See `rule_conditions` below for details.
      * 
      */
     public Output<List<RuleRuleCondition>> ruleConditions() {

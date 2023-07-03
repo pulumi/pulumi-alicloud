@@ -290,24 +290,24 @@ def get_domains(ali_domain: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dns/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult).value
 
     return AwaitableGetDomainsResult(
-        ali_domain=__ret__.ali_domain,
-        domain_name_regex=__ret__.domain_name_regex,
-        domains=__ret__.domains,
-        enable_details=__ret__.enable_details,
-        group_id=__ret__.group_id,
-        group_name_regex=__ret__.group_name_regex,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        key_word=__ret__.key_word,
-        lang=__ret__.lang,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        search_mode=__ret__.search_mode,
-        starmark=__ret__.starmark,
-        tags=__ret__.tags,
-        version_code=__ret__.version_code)
+        ali_domain=pulumi.get(__ret__, 'ali_domain'),
+        domain_name_regex=pulumi.get(__ret__, 'domain_name_regex'),
+        domains=pulumi.get(__ret__, 'domains'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        group_name_regex=pulumi.get(__ret__, 'group_name_regex'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        key_word=pulumi.get(__ret__, 'key_word'),
+        lang=pulumi.get(__ret__, 'lang'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        search_mode=pulumi.get(__ret__, 'search_mode'),
+        starmark=pulumi.get(__ret__, 'starmark'),
+        tags=pulumi.get(__ret__, 'tags'),
+        version_code=pulumi.get(__ret__, 'version_code'))
 
 
 @_utilities.lift_output_func(get_domains)

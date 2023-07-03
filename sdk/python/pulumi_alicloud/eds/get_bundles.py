@@ -147,14 +147,14 @@ def get_bundles(bundle_ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eds/getBundles:getBundles', __args__, opts=opts, typ=GetBundlesResult).value
 
     return AwaitableGetBundlesResult(
-        bundle_ids=__ret__.bundle_ids,
-        bundle_type=__ret__.bundle_type,
-        bundles=__ret__.bundles,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        bundle_ids=pulumi.get(__ret__, 'bundle_ids'),
+        bundle_type=pulumi.get(__ret__, 'bundle_type'),
+        bundles=pulumi.get(__ret__, 'bundles'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_bundles)

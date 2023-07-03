@@ -151,14 +151,14 @@ def get_alarms(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ess/getAlarms:getAlarms', __args__, opts=opts, typ=GetAlarmsResult).value
 
     return AwaitableGetAlarmsResult(
-        alarms=__ret__.alarms,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        metric_type=__ret__.metric_type,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        scaling_group_id=__ret__.scaling_group_id)
+        alarms=pulumi.get(__ret__, 'alarms'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        metric_type=pulumi.get(__ret__, 'metric_type'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        scaling_group_id=pulumi.get(__ret__, 'scaling_group_id'))
 
 
 @_utilities.lift_output_func(get_alarms)

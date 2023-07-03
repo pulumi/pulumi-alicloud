@@ -176,16 +176,16 @@ def get_db_instance_plans(db_instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:gpdb/getDbInstancePlans:getDbInstancePlans', __args__, opts=opts, typ=GetDbInstancePlansResult).value
 
     return AwaitableGetDbInstancePlansResult(
-        db_instance_id=__ret__.db_instance_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        plan_schedule_type=__ret__.plan_schedule_type,
-        plan_type=__ret__.plan_type,
-        plans=__ret__.plans,
-        status=__ret__.status)
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        plan_schedule_type=pulumi.get(__ret__, 'plan_schedule_type'),
+        plan_type=pulumi.get(__ret__, 'plan_type'),
+        plans=pulumi.get(__ret__, 'plans'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_db_instance_plans)

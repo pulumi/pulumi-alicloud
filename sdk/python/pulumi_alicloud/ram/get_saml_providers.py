@@ -137,13 +137,13 @@ def get_saml_providers(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ram/getSamlProviders:getSamlProviders', __args__, opts=opts, typ=GetSamlProvidersResult).value
 
     return AwaitableGetSamlProvidersResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        providers=__ret__.providers)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        providers=pulumi.get(__ret__, 'providers'))
 
 
 @_utilities.lift_output_func(get_saml_providers)

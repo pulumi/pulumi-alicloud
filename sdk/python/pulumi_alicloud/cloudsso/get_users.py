@@ -189,16 +189,16 @@ def get_users(directory_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudsso/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
-        directory_id=__ret__.directory_id,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        provision_type=__ret__.provision_type,
-        status=__ret__.status,
-        users=__ret__.users)
+        directory_id=pulumi.get(__ret__, 'directory_id'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        provision_type=pulumi.get(__ret__, 'provision_type'),
+        status=pulumi.get(__ret__, 'status'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_users)

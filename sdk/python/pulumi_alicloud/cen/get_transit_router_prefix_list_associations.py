@@ -186,17 +186,17 @@ def get_transit_router_prefix_list_associations(ids: Optional[Sequence[str]] = N
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations', __args__, opts=opts, typ=GetTransitRouterPrefixListAssociationsResult).value
 
     return AwaitableGetTransitRouterPrefixListAssociationsResult(
-        associations=__ret__.associations,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        owner_uid=__ret__.owner_uid,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        prefix_list_id=__ret__.prefix_list_id,
-        status=__ret__.status,
-        transit_router_id=__ret__.transit_router_id,
-        transit_router_table_id=__ret__.transit_router_table_id)
+        associations=pulumi.get(__ret__, 'associations'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        owner_uid=pulumi.get(__ret__, 'owner_uid'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        prefix_list_id=pulumi.get(__ret__, 'prefix_list_id'),
+        status=pulumi.get(__ret__, 'status'),
+        transit_router_id=pulumi.get(__ret__, 'transit_router_id'),
+        transit_router_table_id=pulumi.get(__ret__, 'transit_router_table_id'))
 
 
 @_utilities.lift_output_func(get_transit_router_prefix_list_associations)

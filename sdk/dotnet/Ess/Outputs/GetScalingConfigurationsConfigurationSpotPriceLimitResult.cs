@@ -16,17 +16,17 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// <summary>
         /// Resource type of an ECS instance.
         /// </summary>
-        public readonly string? InstanceType;
+        public readonly string InstanceType;
         /// <summary>
         /// Price limit hourly of instance type.
         /// </summary>
-        public readonly double? PriceLimit;
+        public readonly double PriceLimit;
 
         [OutputConstructor]
         private GetScalingConfigurationsConfigurationSpotPriceLimitResult(
-            string? instanceType,
+            string instanceType,
 
-            double? priceLimit)
+            double priceLimit)
         {
             InstanceType = instanceType;
             PriceLimit = priceLimit;

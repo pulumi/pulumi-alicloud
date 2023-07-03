@@ -34,12 +34,19 @@ class DbInstanceEndpointNodeItemArgs:
     def __init__(__self__, *,
                  node_id: pulumi.Input[str],
                  weight: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] node_id: The ID of the node.
+        :param pulumi.Input[int] weight: The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+        """
         pulumi.set(__self__, "node_id", node_id)
         pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the node.
+        """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
@@ -49,6 +56,9 @@ class DbInstanceEndpointNodeItemArgs:
     @property
     @pulumi.getter
     def weight(self) -> pulumi.Input[int]:
+        """
+        The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -61,12 +71,19 @@ class DdrInstanceParameterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The parameter name.
+        :param pulumi.Input[str] value: The parameter value.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        The parameter name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -76,6 +93,9 @@ class DdrInstanceParameterArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -294,12 +314,19 @@ class InstanceParameterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The parameter name.
+        :param pulumi.Input[str] value: The parameter value.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        The parameter name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -309,6 +336,9 @@ class InstanceParameterArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter

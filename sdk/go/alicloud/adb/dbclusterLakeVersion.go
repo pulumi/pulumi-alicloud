@@ -13,9 +13,9 @@ import (
 
 // Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
 //
-// For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/what-is-analyticdb-for-mysql).
+// For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
 //
-// > **NOTE:** Available in v1.190.0+.
+// > **NOTE:** Available since v1.190.0.
 //
 // ## Example Usage
 //
@@ -26,40 +26,53 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING"),
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef("example"),
-//			}, nil)
+//			zoneId := defaultZones.Ids[len(defaultZones.Ids)-1]
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				ZoneId:      pulumi.String(zoneId),
+//				VswitchName: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = adb.NewDBClusterLakeVersion(ctx, "defaultDBClusterLakeVersion", &adb.DBClusterLakeVersionArgs{
-//				ComputeResource:  pulumi.String("16ACU"),
-//				DbClusterVersion: pulumi.String("5.0"),
-//				PaymentType:      pulumi.String("PayAsYouGo"),
-//				StorageResource:  pulumi.String("0ACU"),
-//				VswitchId:        *pulumi.String(defaultSwitches.Ids[0]),
-//				VpcId:            *pulumi.String(defaultNetworks.Ids[0]),
-//				ZoneId:           pulumi.String("example"),
+//				ComputeResource:            pulumi.String("16ACU"),
+//				DbClusterVersion:           pulumi.String("5.0"),
+//				PaymentType:                pulumi.String("PayAsYouGo"),
+//				StorageResource:            pulumi.String("24ACU"),
+//				EnableDefaultResourceGroup: pulumi.Bool(false),
+//				VswitchId:                  defaultSwitch.ID(),
+//				VpcId:                      defaultNetwork.ID(),
+//				ZoneId:                     pulumi.String(zoneId),
 //			})
 //			if err != nil {
 //				return err

@@ -127,12 +127,12 @@ def get_ddos_coo_domain_resources(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources', __args__, opts=opts, typ=GetDdosCooDomainResourcesResult).value
 
     return AwaitableGetDdosCooDomainResourcesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_ids=__ret__.instance_ids,
-        output_file=__ret__.output_file,
-        query_domain_pattern=__ret__.query_domain_pattern,
-        resources=__ret__.resources)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_ids=pulumi.get(__ret__, 'instance_ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        query_domain_pattern=pulumi.get(__ret__, 'query_domain_pattern'),
+        resources=pulumi.get(__ret__, 'resources'))
 
 
 @_utilities.lift_output_func(get_ddos_coo_domain_resources)

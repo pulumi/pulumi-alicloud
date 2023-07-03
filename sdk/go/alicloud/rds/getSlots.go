@@ -12,7 +12,7 @@ import (
 
 // This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.204.0+.
+// > **NOTE:** Available since v1.204.0+.
 //
 // ## Example Usage
 //
@@ -65,10 +65,11 @@ type GetSlotsArgs struct {
 type GetSlotsResult struct {
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string         `pulumi:"id"`
-	OutputFile      *string        `pulumi:"outputFile"`
-	ResourceGroupId *string        `pulumi:"resourceGroupId"`
-	Slots           []GetSlotsSlot `pulumi:"slots"`
+	Id              string  `pulumi:"id"`
+	OutputFile      *string `pulumi:"outputFile"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// A list of Rds Replication Slots. Each element contains the following attributes:
+	Slots []GetSlotsSlot `pulumi:"slots"`
 }
 
 func GetSlotsOutput(ctx *pulumi.Context, args GetSlotsOutputArgs, opts ...pulumi.InvokeOption) GetSlotsResultOutput {
@@ -130,6 +131,7 @@ func (o GetSlotsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSlotsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// A list of Rds Replication Slots. Each element contains the following attributes:
 func (o GetSlotsResultOutput) Slots() GetSlotsSlotArrayOutput {
 	return o.ApplyT(func(v GetSlotsResult) []GetSlotsSlot { return v.Slots }).(GetSlotsSlotArrayOutput)
 }

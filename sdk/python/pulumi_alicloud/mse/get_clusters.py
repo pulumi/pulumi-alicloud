@@ -181,16 +181,16 @@ def get_clusters(cluster_alias_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mse/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult).value
 
     return AwaitableGetClustersResult(
-        cluster_alias_name=__ret__.cluster_alias_name,
-        clusters=__ret__.clusters,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        request_pars=__ret__.request_pars,
-        status=__ret__.status)
+        cluster_alias_name=pulumi.get(__ret__, 'cluster_alias_name'),
+        clusters=pulumi.get(__ret__, 'clusters'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        request_pars=pulumi.get(__ret__, 'request_pars'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_clusters)

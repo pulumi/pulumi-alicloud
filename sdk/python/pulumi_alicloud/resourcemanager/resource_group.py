@@ -52,6 +52,9 @@ class ResourceGroupArgs:
         """
         Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -135,6 +138,9 @@ class _ResourceGroupState:
         """
         Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -355,6 +361,9 @@ class ResourceGroup(pulumi.CustomResource):
         """
         Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property

@@ -40,10 +40,6 @@ class GetEipAddressesResult:
         pulumi.set(__self__, "dry_run", dry_run)
         if eips and not isinstance(eips, list):
             raise TypeError("Expected argument 'eips' to be a list")
-        if eips is not None:
-            warnings.warn("""Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""", DeprecationWarning)
-            pulumi.log.warn("""eips is deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""")
-
         pulumi.set(__self__, "eips", eips)
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
@@ -62,10 +58,6 @@ class GetEipAddressesResult:
         pulumi.set(__self__, "ip_address", ip_address)
         if ip_addresses and not isinstance(ip_addresses, list):
             raise TypeError("Expected argument 'ip_addresses' to be a list")
-        if ip_addresses is not None:
-            warnings.warn("""Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_addresses is deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.""")
-
         pulumi.set(__self__, "ip_addresses", ip_addresses)
         if isp and not isinstance(isp, str):
             raise TypeError("Expected argument 'isp' to be a str")
@@ -126,6 +118,9 @@ class GetEipAddressesResult:
     @property
     @pulumi.getter
     def eips(self) -> Sequence['outputs.GetEipAddressesEipResult']:
+        warnings.warn("""Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""", DeprecationWarning)
+        pulumi.log.warn("""eips is deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""")
+
         return pulumi.get(self, "eips")
 
     @property
@@ -159,6 +154,9 @@ class GetEipAddressesResult:
     @property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Optional[Sequence[str]]:
+        warnings.warn("""Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_addresses is deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.""")
+
         return pulumi.get(self, "ip_addresses")
 
     @property
@@ -321,28 +319,28 @@ def get_eip_addresses(address_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEipAddresses:getEipAddresses', __args__, opts=opts, typ=GetEipAddressesResult).value
 
     return AwaitableGetEipAddressesResult(
-        address_name=__ret__.address_name,
-        addresses=__ret__.addresses,
-        associated_instance_id=__ret__.associated_instance_id,
-        associated_instance_type=__ret__.associated_instance_type,
-        dry_run=__ret__.dry_run,
-        eips=__ret__.eips,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        include_reservation_data=__ret__.include_reservation_data,
-        ip_address=__ret__.ip_address,
-        ip_addresses=__ret__.ip_addresses,
-        isp=__ret__.isp,
-        lock_reason=__ret__.lock_reason,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        payment_type=__ret__.payment_type,
-        resource_group_id=__ret__.resource_group_id,
-        segment_instance_id=__ret__.segment_instance_id,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        address_name=pulumi.get(__ret__, 'address_name'),
+        addresses=pulumi.get(__ret__, 'addresses'),
+        associated_instance_id=pulumi.get(__ret__, 'associated_instance_id'),
+        associated_instance_type=pulumi.get(__ret__, 'associated_instance_type'),
+        dry_run=pulumi.get(__ret__, 'dry_run'),
+        eips=pulumi.get(__ret__, 'eips'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        include_reservation_data=pulumi.get(__ret__, 'include_reservation_data'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        ip_addresses=pulumi.get(__ret__, 'ip_addresses'),
+        isp=pulumi.get(__ret__, 'isp'),
+        lock_reason=pulumi.get(__ret__, 'lock_reason'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        payment_type=pulumi.get(__ret__, 'payment_type'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        segment_instance_id=pulumi.get(__ret__, 'segment_instance_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_eip_addresses)

@@ -64,14 +64,14 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Extended attribute list. See the following `Block ExtAttributes`.
+     * Extended attribute list. See `ext_attributes` below for details.
      * 
      */
     @Import(name="extAttributes")
     private @Nullable Output<List<AScriptExtAttributeArgs>> extAttributes;
 
     /**
-     * @return Extended attribute list. See the following `Block ExtAttributes`.
+     * @return Extended attribute list. See `ext_attributes` below for details.
      * 
      */
     public Optional<Output<List<AScriptExtAttributeArgs>>> extAttributes() {
@@ -249,7 +249,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Extended attribute list. See the following `Block ExtAttributes`.
+         * @param extAttributes Extended attribute list. See `ext_attributes` below for details.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Extended attribute list. See the following `Block ExtAttributes`.
+         * @param extAttributes Extended attribute list. See `ext_attributes` below for details.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Extended attribute list. See the following `Block ExtAttributes`.
+         * @param extAttributes Extended attribute list. See `ext_attributes` below for details.
          * 
          * @return builder
          * 

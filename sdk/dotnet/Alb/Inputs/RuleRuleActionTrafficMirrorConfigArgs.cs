@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class RuleRuleActionTrafficMirrorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+        /// The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
         /// </summary>
         [Input("mirrorGroupConfig")]
         public Input<Inputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs>? MirrorGroupConfig { get; set; }

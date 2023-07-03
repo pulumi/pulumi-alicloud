@@ -218,21 +218,21 @@ def get_instances(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecp/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        image_id=__ret__.image_id,
-        instance_name=__ret__.instance_name,
-        instance_type=__ret__.instance_type,
-        instances=__ret__.instances,
-        key_pair_name=__ret__.key_pair_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        payment_type=__ret__.payment_type,
-        resolution=__ret__.resolution,
-        status=__ret__.status,
-        zone_id=__ret__.zone_id)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        image_id=pulumi.get(__ret__, 'image_id'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        instances=pulumi.get(__ret__, 'instances'),
+        key_pair_name=pulumi.get(__ret__, 'key_pair_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        payment_type=pulumi.get(__ret__, 'payment_type'),
+        resolution=pulumi.get(__ret__, 'resolution'),
+        status=pulumi.get(__ret__, 'status'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_instances)

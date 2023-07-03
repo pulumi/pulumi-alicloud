@@ -15,21 +15,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupHealthCheckConfig {
     /**
-     * @return The status code for a successful health check. Multiple status codes can be specified as a
-     * list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+     * @return The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
      * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     private @Nullable List<String> healthCheckCodes;
     /**
-     * @return The port of the backend server that is used for health checks. Valid values: `0`
-     * to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+     * @return The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
      * 
      */
     private @Nullable Integer healthCheckConnectPort;
     /**
-     * @return Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-     * value: `true`.
+     * @return Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
      * 
      */
     private @Nullable Boolean healthCheckEnabled;
@@ -39,26 +36,22 @@ public final class ServerGroupHealthCheckConfig {
      */
     private @Nullable String healthCheckHost;
     /**
-     * @return HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-     * . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     private @Nullable String healthCheckHttpVersion;
     /**
-     * @return The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-     * to `50`. Default value: `2`.
+     * @return The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
      * 
      */
     private @Nullable Integer healthCheckInterval;
     /**
-     * @return Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-     * exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     private @Nullable String healthCheckMethod;
     /**
-     * @return The forwarding rule path of health checks. **NOTE:** This parameter exists if
-     * the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     private @Nullable String healthCheckPath;
@@ -68,33 +61,24 @@ public final class ServerGroupHealthCheckConfig {
      */
     private @Nullable String healthCheckProtocol;
     /**
-     * @return The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-     * instance does not send an expected response within the specified period of time, the ECS instance is considered
-     * unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-     * parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-     * is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+     * @return The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
      * 
      */
     private @Nullable Integer healthCheckTimeout;
     /**
-     * @return The number of health checks that an unhealthy backend server must pass consecutively before it
-     * is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-     * Default value: 3.
+     * @return The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
      * 
      */
     private @Nullable Integer healthyThreshold;
     /**
-     * @return The number of consecutive health checks that a healthy backend server must consecutively fail
-     * before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-     * values: `2` to `10`. Default value: `3`.
+     * @return The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
      * 
      */
     private @Nullable Integer unhealthyThreshold;
 
     private ServerGroupHealthCheckConfig() {}
     /**
-     * @return The status code for a successful health check. Multiple status codes can be specified as a
-     * list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+     * @return The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
      * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
@@ -102,16 +86,14 @@ public final class ServerGroupHealthCheckConfig {
         return this.healthCheckCodes == null ? List.of() : this.healthCheckCodes;
     }
     /**
-     * @return The port of the backend server that is used for health checks. Valid values: `0`
-     * to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+     * @return The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
      * 
      */
     public Optional<Integer> healthCheckConnectPort() {
         return Optional.ofNullable(this.healthCheckConnectPort);
     }
     /**
-     * @return Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-     * value: `true`.
+     * @return Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
      * 
      */
     public Optional<Boolean> healthCheckEnabled() {
@@ -125,32 +107,28 @@ public final class ServerGroupHealthCheckConfig {
         return Optional.ofNullable(this.healthCheckHost);
     }
     /**
-     * @return HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-     * . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     public Optional<String> healthCheckHttpVersion() {
         return Optional.ofNullable(this.healthCheckHttpVersion);
     }
     /**
-     * @return The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-     * to `50`. Default value: `2`.
+     * @return The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
      * 
      */
     public Optional<Integer> healthCheckInterval() {
         return Optional.ofNullable(this.healthCheckInterval);
     }
     /**
-     * @return Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-     * exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     public Optional<String> healthCheckMethod() {
         return Optional.ofNullable(this.healthCheckMethod);
     }
     /**
-     * @return The forwarding rule path of health checks. **NOTE:** This parameter exists if
-     * the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     public Optional<String> healthCheckPath() {
@@ -164,29 +142,21 @@ public final class ServerGroupHealthCheckConfig {
         return Optional.ofNullable(this.healthCheckProtocol);
     }
     /**
-     * @return The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-     * instance does not send an expected response within the specified period of time, the ECS instance is considered
-     * unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-     * parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-     * is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+     * @return The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
      * 
      */
     public Optional<Integer> healthCheckTimeout() {
         return Optional.ofNullable(this.healthCheckTimeout);
     }
     /**
-     * @return The number of health checks that an unhealthy backend server must pass consecutively before it
-     * is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-     * Default value: 3.
+     * @return The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
      * 
      */
     public Optional<Integer> healthyThreshold() {
         return Optional.ofNullable(this.healthyThreshold);
     }
     /**
-     * @return The number of consecutive health checks that a healthy backend server must consecutively fail
-     * before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-     * values: `2` to `10`. Default value: `3`.
+     * @return The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
      * 
      */
     public Optional<Integer> unhealthyThreshold() {

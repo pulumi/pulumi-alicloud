@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class RuleRuleActionForwardGroupConfig
     {
         /// <summary>
-        /// The configuration of session persistence for server groups.
+        /// The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
         /// </summary>
         public readonly Outputs.RuleRuleActionForwardGroupConfigServerGroupStickySession? ServerGroupStickySession;
         /// <summary>
-        /// The destination server group to which requests are forwarded.
+        /// The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.RuleRuleActionForwardGroupConfigServerGroupTuple> ServerGroupTuples;
 

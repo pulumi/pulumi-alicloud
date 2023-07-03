@@ -191,16 +191,16 @@ def get_policy_attachments(language: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments', __args__, opts=opts, typ=GetPolicyAttachmentsResult).value
 
     return AwaitableGetPolicyAttachmentsResult(
-        attachments=__ret__.attachments,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        language=__ret__.language,
-        output_file=__ret__.output_file,
-        policy_name=__ret__.policy_name,
-        policy_type=__ret__.policy_type,
-        principal_name=__ret__.principal_name,
-        principal_type=__ret__.principal_type,
-        resource_group_id=__ret__.resource_group_id)
+        attachments=pulumi.get(__ret__, 'attachments'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        language=pulumi.get(__ret__, 'language'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policy_name=pulumi.get(__ret__, 'policy_name'),
+        policy_type=pulumi.get(__ret__, 'policy_type'),
+        principal_name=pulumi.get(__ret__, 'principal_name'),
+        principal_type=pulumi.get(__ret__, 'principal_type'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'))
 
 
 @_utilities.lift_output_func(get_policy_attachments)

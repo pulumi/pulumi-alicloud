@@ -13,11 +13,11 @@ import (
 
 // Provides a Lindorm Instance resource.
 //
-// For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
+// For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/lindorm/latest/product-introduction-overview).
 //
 // > **NOTE:** Available since v1.132.0.
 //
-// > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+// > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
 //
 // ## Import
 //
@@ -37,7 +37,7 @@ type Instance struct {
 	ArbiterZoneId pulumi.StringPtrOutput `pulumi:"arbiterZoneId"`
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion pulumi.StringPtrOutput `pulumi:"archVersion"`
-	// The cold storage capacity of the instance. Unit: GB.
+	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage pulumi.IntOutput `pulumi:"coldStorage"`
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage pulumi.IntPtrOutput `pulumi:"coreSingleStorage"`
@@ -179,7 +179,7 @@ type instanceState struct {
 	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion *string `pulumi:"archVersion"`
-	// The cold storage capacity of the instance. Unit: GB.
+	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage *int `pulumi:"coldStorage"`
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage *int `pulumi:"coreSingleStorage"`
@@ -284,7 +284,7 @@ type InstanceState struct {
 	ArbiterZoneId pulumi.StringPtrInput
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion pulumi.StringPtrInput
-	// The cold storage capacity of the instance. Unit: GB.
+	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage pulumi.IntPtrInput
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage pulumi.IntPtrInput
@@ -393,7 +393,7 @@ type instanceArgs struct {
 	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion *string `pulumi:"archVersion"`
-	// The cold storage capacity of the instance. Unit: GB.
+	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage *int `pulumi:"coldStorage"`
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage *int `pulumi:"coreSingleStorage"`
@@ -485,7 +485,7 @@ type InstanceArgs struct {
 	ArbiterZoneId pulumi.StringPtrInput
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion pulumi.StringPtrInput
-	// The cold storage capacity of the instance. Unit: GB.
+	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage pulumi.IntPtrInput
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage pulumi.IntPtrInput
@@ -671,7 +671,7 @@ func (o InstanceOutput) ArchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ArchVersion }).(pulumi.StringPtrOutput)
 }
 
-// The cold storage capacity of the instance. Unit: GB.
+// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 func (o InstanceOutput) ColdStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ColdStorage }).(pulumi.IntOutput)
 }

@@ -161,15 +161,15 @@ def get_custom_lines(domain_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dns/getCustomLines:getCustomLines', __args__, opts=opts, typ=GetCustomLinesResult).value
 
     return AwaitableGetCustomLinesResult(
-        domain_name=__ret__.domain_name,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lang=__ret__.lang,
-        lines=__ret__.lines,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        domain_name=pulumi.get(__ret__, 'domain_name'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lang=pulumi.get(__ret__, 'lang'),
+        lines=pulumi.get(__ret__, 'lines'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_custom_lines)

@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Ocean Base Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/what-is-oceanbase-database).
  * 
- * &gt; **NOTE:** Available in v1.203.0+.
+ * &gt; **NOTE:** Available since v1.203.0.
  * 
  * ## Example Usage
  * 
@@ -174,7 +174,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
-     * - 62C400G:800GB-10000GB.
+     * - 62C400G:800GB ~ 10000GB.
      * - The default value of each package is its minimum value.
      * 
      */
@@ -186,7 +186,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
-     * - 62C400G:800GB-10000GB.
+     * - 62C400G:800GB ~ 10000GB.
      * - The default value of each package is its minimum value.
      * 
      */
@@ -194,14 +194,14 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
         return this.diskSize;
     }
     /**
-     * Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+     * Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
      * 
      */
     @Export(name="instanceClass", type=String.class, parameters={})
     private Output<String> instanceClass;
 
     /**
-     * @return Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+     * @return Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
      * 
      */
     public Output<String> instanceClass() {

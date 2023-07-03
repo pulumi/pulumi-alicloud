@@ -171,15 +171,15 @@ def get_domains(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:waf/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult).value
 
     return AwaitableGetDomainsResult(
-        domains=__ret__.domains,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id)
+        domains=pulumi.get(__ret__, 'domains'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'))
 
 
 @_utilities.lift_output_func(get_domains)

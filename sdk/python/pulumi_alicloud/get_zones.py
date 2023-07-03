@@ -235,20 +235,20 @@ def get_zones(available_disk_category: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        available_disk_category=__ret__.available_disk_category,
-        available_instance_type=__ret__.available_instance_type,
-        available_resource_creation=__ret__.available_resource_creation,
-        available_slb_address_ip_version=__ret__.available_slb_address_ip_version,
-        available_slb_address_type=__ret__.available_slb_address_type,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_charge_type=__ret__.instance_charge_type,
-        multi=__ret__.multi,
-        network_type=__ret__.network_type,
-        output_file=__ret__.output_file,
-        spot_strategy=__ret__.spot_strategy,
-        zones=__ret__.zones)
+        available_disk_category=pulumi.get(__ret__, 'available_disk_category'),
+        available_instance_type=pulumi.get(__ret__, 'available_instance_type'),
+        available_resource_creation=pulumi.get(__ret__, 'available_resource_creation'),
+        available_slb_address_ip_version=pulumi.get(__ret__, 'available_slb_address_ip_version'),
+        available_slb_address_type=pulumi.get(__ret__, 'available_slb_address_type'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        multi=pulumi.get(__ret__, 'multi'),
+        network_type=pulumi.get(__ret__, 'network_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        spot_strategy=pulumi.get(__ret__, 'spot_strategy'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_zones)

@@ -233,20 +233,20 @@ def get_db_clusters(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:adb/getDBClusters:getDBClusters', __args__, opts=opts, typ=GetDBClustersResult).value
 
     return AwaitableGetDBClustersResult(
-        clusters=__ret__.clusters,
-        description=__ret__.description,
-        description_regex=__ret__.description_regex,
-        descriptions=__ret__.descriptions,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        total_count=__ret__.total_count)
+        clusters=pulumi.get(__ret__, 'clusters'),
+        description=pulumi.get(__ret__, 'description'),
+        description_regex=pulumi.get(__ret__, 'description_regex'),
+        descriptions=pulumi.get(__ret__, 'descriptions'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        total_count=pulumi.get(__ret__, 'total_count'))
 
 
 @_utilities.lift_output_func(get_db_clusters)

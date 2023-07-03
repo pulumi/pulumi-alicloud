@@ -180,16 +180,16 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters', __args__, opts=opts, typ=GetEcsDedicatedHostClustersResult).value
 
     return AwaitableGetEcsDedicatedHostClustersResult(
-        clusters=__ret__.clusters,
-        dedicated_host_cluster_ids=__ret__.dedicated_host_cluster_ids,
-        dedicated_host_cluster_name=__ret__.dedicated_host_cluster_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        tags=__ret__.tags,
-        zone_id=__ret__.zone_id)
+        clusters=pulumi.get(__ret__, 'clusters'),
+        dedicated_host_cluster_ids=pulumi.get(__ret__, 'dedicated_host_cluster_ids'),
+        dedicated_host_cluster_name=pulumi.get(__ret__, 'dedicated_host_cluster_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        tags=pulumi.get(__ret__, 'tags'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_ecs_dedicated_host_clusters)

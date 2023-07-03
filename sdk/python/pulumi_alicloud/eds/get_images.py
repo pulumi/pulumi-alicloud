@@ -205,16 +205,16 @@ def get_images(desktop_instance_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eds/getImages:getImages', __args__, opts=opts, typ=GetImagesResult).value
 
     return AwaitableGetImagesResult(
-        desktop_instance_type=__ret__.desktop_instance_type,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        image_type=__ret__.image_type,
-        images=__ret__.images,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        os_type=__ret__.os_type,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        desktop_instance_type=pulumi.get(__ret__, 'desktop_instance_type'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        image_type=pulumi.get(__ret__, 'image_type'),
+        images=pulumi.get(__ret__, 'images'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        os_type=pulumi.get(__ret__, 'os_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_images)

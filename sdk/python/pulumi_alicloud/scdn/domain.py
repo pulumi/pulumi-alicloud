@@ -83,6 +83,9 @@ class DomainArgs:
         """
         Attribute perm has been deprecated and suggest removing it from your template.
         """
+        warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
+
         return pulumi.get(self, "biz_name")
 
     @biz_name.setter
@@ -198,6 +201,9 @@ class _DomainState:
         """
         Attribute perm has been deprecated and suggest removing it from your template.
         """
+        warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
+
         return pulumi.get(self, "biz_name")
 
     @biz_name.setter
@@ -489,6 +495,9 @@ class Domain(pulumi.CustomResource):
         """
         Attribute perm has been deprecated and suggest removing it from your template.
         """
+        warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
+
         return pulumi.get(self, "biz_name")
 
     @property

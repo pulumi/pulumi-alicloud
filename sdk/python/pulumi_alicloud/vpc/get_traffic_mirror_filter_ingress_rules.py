@@ -132,12 +132,12 @@ def get_traffic_mirror_filter_ingress_rules(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules', __args__, opts=opts, typ=GetTrafficMirrorFilterIngressRulesResult).value
 
     return AwaitableGetTrafficMirrorFilterIngressRulesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules,
-        status=__ret__.status,
-        traffic_mirror_filter_id=__ret__.traffic_mirror_filter_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'),
+        status=pulumi.get(__ret__, 'status'),
+        traffic_mirror_filter_id=pulumi.get(__ret__, 'traffic_mirror_filter_id'))
 
 
 @_utilities.lift_output_func(get_traffic_mirror_filter_ingress_rules)

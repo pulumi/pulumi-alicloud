@@ -160,13 +160,13 @@ def get_instance_class_infos(commodity_code: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getInstanceClassInfos:getInstanceClassInfos', __args__, opts=opts, typ=GetInstanceClassInfosResult).value
 
     return AwaitableGetInstanceClassInfosResult(
-        commodity_code=__ret__.commodity_code,
-        db_instance_id=__ret__.db_instance_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        infos=__ret__.infos,
-        order_type=__ret__.order_type,
-        output_file=__ret__.output_file)
+        commodity_code=pulumi.get(__ret__, 'commodity_code'),
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        infos=pulumi.get(__ret__, 'infos'),
+        order_type=pulumi.get(__ret__, 'order_type'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_instance_class_infos)

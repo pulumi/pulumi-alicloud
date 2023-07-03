@@ -13,7 +13,7 @@ import (
 
 // Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
 //
-// ->**NOTE:** Available in 1.42.0+
+// > **NOTE:** Available since v1.42.0.
 //
 // ## Example Usage
 //
@@ -24,37 +24,40 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-testAccCenInstanceAttachmentBasic"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
 //			}
-//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
-//				Description: pulumi.String("terraform01"),
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewInstanceAttachment(ctx, "foo", &cen.InstanceAttachmentArgs{
-//				InstanceId:            cen.ID(),
-//				ChildInstanceId:       vpc.ID(),
+//			_, err = cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            exampleInstance.ID(),
+//				ChildInstanceId:       exampleNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String("cn-beijing"),
+//				ChildInstanceRegionId: *pulumi.String(_default.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err

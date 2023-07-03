@@ -300,23 +300,23 @@ def get_switches(cidr_block: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getSwitches:getSwitches', __args__, opts=opts, typ=GetSwitchesResult).value
 
     return AwaitableGetSwitchesResult(
-        cidr_block=__ret__.cidr_block,
-        dry_run=__ret__.dry_run,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        is_default=__ret__.is_default,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        route_table_id=__ret__.route_table_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        vpc_id=__ret__.vpc_id,
-        vswitch_name=__ret__.vswitch_name,
-        vswitch_owner_id=__ret__.vswitch_owner_id,
-        vswitches=__ret__.vswitches,
-        zone_id=__ret__.zone_id)
+        cidr_block=pulumi.get(__ret__, 'cidr_block'),
+        dry_run=pulumi.get(__ret__, 'dry_run'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        is_default=pulumi.get(__ret__, 'is_default'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        route_table_id=pulumi.get(__ret__, 'route_table_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'),
+        vswitch_name=pulumi.get(__ret__, 'vswitch_name'),
+        vswitch_owner_id=pulumi.get(__ret__, 'vswitch_owner_id'),
+        vswitches=pulumi.get(__ret__, 'vswitches'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_switches)

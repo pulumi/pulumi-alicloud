@@ -138,6 +138,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="authConfig")
     def auth_config(self) -> Optional[pulumi.Input['DomainAuthConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""auth_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
@@ -147,6 +150,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="blockIps")
     def block_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""block_ips is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "block_ips")
 
     @block_ips.setter
@@ -156,6 +162,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="cacheConfigs")
     def cache_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""cache_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "cache_configs")
 
     @cache_configs.setter
@@ -165,6 +174,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="certificateConfig")
     def certificate_config(self) -> Optional[pulumi.Input['DomainCertificateConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""certificate_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "certificate_config")
 
     @certificate_config.setter
@@ -174,6 +186,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="httpHeaderConfigs")
     def http_header_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""http_header_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "http_header_configs")
 
     @http_header_configs.setter
@@ -183,6 +198,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="optimizeEnable")
     def optimize_enable(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""optimize_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "optimize_enable")
 
     @optimize_enable.setter
@@ -192,6 +210,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="page404Config")
     def page404_config(self) -> Optional[pulumi.Input['DomainPage404ConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""page404_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "page404_config")
 
     @page404_config.setter
@@ -201,6 +222,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="pageCompressEnable")
     def page_compress_enable(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""page_compress_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "page_compress_enable")
 
     @page_compress_enable.setter
@@ -210,6 +234,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="parameterFilterConfig")
     def parameter_filter_config(self) -> Optional[pulumi.Input['DomainParameterFilterConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""parameter_filter_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "parameter_filter_config")
 
     @parameter_filter_config.setter
@@ -219,6 +246,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="rangeEnable")
     def range_enable(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""range_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "range_enable")
 
     @range_enable.setter
@@ -228,6 +258,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="referConfig")
     def refer_config(self) -> Optional[pulumi.Input['DomainReferConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""refer_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "refer_config")
 
     @refer_config.setter
@@ -246,6 +279,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[pulumi.Input[int]]:
+        warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_port is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.""")
+
         return pulumi.get(self, "source_port")
 
     @source_port.setter
@@ -255,6 +291,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_type is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.""")
+
         return pulumi.get(self, "source_type")
 
     @source_type.setter
@@ -264,6 +303,9 @@ class DomainArgs:
     @property
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` argument instead.""", DeprecationWarning)
+        pulumi.log.warn("""sources is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.""")
+
         return pulumi.get(self, "sources")
 
     @sources.setter
@@ -273,6 +315,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="videoSeekEnable")
     def video_seek_enable(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""video_seek_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "video_seek_enable")
 
     @video_seek_enable.setter
@@ -389,6 +434,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="authConfig")
     def auth_config(self) -> Optional[pulumi.Input['DomainAuthConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""auth_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
@@ -398,6 +446,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="blockIps")
     def block_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""block_ips is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "block_ips")
 
     @block_ips.setter
@@ -407,6 +458,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="cacheConfigs")
     def cache_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""cache_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "cache_configs")
 
     @cache_configs.setter
@@ -425,6 +479,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="certificateConfig")
     def certificate_config(self) -> Optional[pulumi.Input['DomainCertificateConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""certificate_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "certificate_config")
 
     @certificate_config.setter
@@ -443,6 +500,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="httpHeaderConfigs")
     def http_header_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""http_header_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "http_header_configs")
 
     @http_header_configs.setter
@@ -452,6 +512,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="optimizeEnable")
     def optimize_enable(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""optimize_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "optimize_enable")
 
     @optimize_enable.setter
@@ -461,6 +524,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="page404Config")
     def page404_config(self) -> Optional[pulumi.Input['DomainPage404ConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""page404_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "page404_config")
 
     @page404_config.setter
@@ -470,6 +536,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="pageCompressEnable")
     def page_compress_enable(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""page_compress_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "page_compress_enable")
 
     @page_compress_enable.setter
@@ -479,6 +548,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="parameterFilterConfig")
     def parameter_filter_config(self) -> Optional[pulumi.Input['DomainParameterFilterConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""parameter_filter_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "parameter_filter_config")
 
     @parameter_filter_config.setter
@@ -488,6 +560,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="rangeEnable")
     def range_enable(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""range_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "range_enable")
 
     @range_enable.setter
@@ -497,6 +572,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="referConfig")
     def refer_config(self) -> Optional[pulumi.Input['DomainReferConfigArgs']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""refer_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "refer_config")
 
     @refer_config.setter
@@ -515,6 +593,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[pulumi.Input[int]]:
+        warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_port is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.""")
+
         return pulumi.get(self, "source_port")
 
     @source_port.setter
@@ -524,6 +605,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_type is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.""")
+
         return pulumi.get(self, "source_type")
 
     @source_type.setter
@@ -533,6 +617,9 @@ class _DomainState:
     @property
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` argument instead.""", DeprecationWarning)
+        pulumi.log.warn("""sources is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.""")
+
         return pulumi.get(self, "sources")
 
     @sources.setter
@@ -542,6 +629,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="videoSeekEnable")
     def video_seek_enable(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""video_seek_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "video_seek_enable")
 
     @video_seek_enable.setter
@@ -758,16 +848,25 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="authConfig")
     def auth_config(self) -> pulumi.Output[Optional['outputs.DomainAuthConfig']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""auth_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "auth_config")
 
     @property
     @pulumi.getter(name="blockIps")
     def block_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""block_ips is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "block_ips")
 
     @property
     @pulumi.getter(name="cacheConfigs")
     def cache_configs(self) -> pulumi.Output[Optional[Sequence['outputs.DomainCacheConfig']]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""cache_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "cache_configs")
 
     @property
@@ -778,6 +877,9 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="certificateConfig")
     def certificate_config(self) -> pulumi.Output[Optional['outputs.DomainCertificateConfig']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""certificate_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "certificate_config")
 
     @property
@@ -788,36 +890,57 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="httpHeaderConfigs")
     def http_header_configs(self) -> pulumi.Output[Optional[Sequence['outputs.DomainHttpHeaderConfig']]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""http_header_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "http_header_configs")
 
     @property
     @pulumi.getter(name="optimizeEnable")
     def optimize_enable(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""optimize_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "optimize_enable")
 
     @property
     @pulumi.getter(name="page404Config")
     def page404_config(self) -> pulumi.Output[Optional['outputs.DomainPage404Config']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""page404_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "page404_config")
 
     @property
     @pulumi.getter(name="pageCompressEnable")
     def page_compress_enable(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""page_compress_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "page_compress_enable")
 
     @property
     @pulumi.getter(name="parameterFilterConfig")
     def parameter_filter_config(self) -> pulumi.Output[Optional['outputs.DomainParameterFilterConfig']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""parameter_filter_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "parameter_filter_config")
 
     @property
     @pulumi.getter(name="rangeEnable")
     def range_enable(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""range_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "range_enable")
 
     @property
     @pulumi.getter(name="referConfig")
     def refer_config(self) -> pulumi.Output[Optional['outputs.DomainReferConfig']]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""refer_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "refer_config")
 
     @property
@@ -828,20 +951,32 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> pulumi.Output[Optional[int]]:
+        warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_port is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.""")
+
         return pulumi.get(self, "source_port")
 
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.""", DeprecationWarning)
+        pulumi.log.warn("""source_type is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.""")
+
         return pulumi.get(self, "source_type")
 
     @property
     @pulumi.getter
     def sources(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` argument instead.""", DeprecationWarning)
+        pulumi.log.warn("""sources is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.""")
+
         return pulumi.get(self, "sources")
 
     @property
     @pulumi.getter(name="videoSeekEnable")
     def video_seek_enable(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+        pulumi.log.warn("""video_seek_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+
         return pulumi.get(self, "video_seek_enable")
 

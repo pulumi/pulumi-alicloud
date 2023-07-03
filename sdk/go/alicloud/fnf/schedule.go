@@ -34,7 +34,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleFlow, err := fnf.NewFlow(ctx, "exampleFlow", &fnf.FlowArgs{
-//				Definition:  pulumi.String("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n"),
+//				Definition: pulumi.String(`  version: v1beta1
+//	  type: flow
+//	  steps:
+//	    - type: pass
+//	      name: helloworld
+//
+// `),
+//
 //				Description: pulumi.String("tf-testaccFnFFlow983041"),
 //				Type:        pulumi.String("FDL"),
 //			})

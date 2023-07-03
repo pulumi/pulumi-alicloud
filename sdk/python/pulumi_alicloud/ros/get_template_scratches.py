@@ -143,13 +143,13 @@ def get_template_scratches(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ros/getTemplateScratches:getTemplateScratches', __args__, opts=opts, typ=GetTemplateScratchesResult).value
 
     return AwaitableGetTemplateScratchesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        scratches=__ret__.scratches,
-        status=__ret__.status,
-        template_scratch_type=__ret__.template_scratch_type)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        scratches=pulumi.get(__ret__, 'scratches'),
+        status=pulumi.get(__ret__, 'status'),
+        template_scratch_type=pulumi.get(__ret__, 'template_scratch_type'))
 
 
 @_utilities.lift_output_func(get_template_scratches)

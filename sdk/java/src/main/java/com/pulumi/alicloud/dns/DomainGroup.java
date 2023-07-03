@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
  * 
- * &gt; **NOTE:** Available in v1.84.0+.
+ * &gt; **NOTE:** Available since v1.84.0.
  * 
  * ## Example Usage
  * ```java
@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DomainGroup(&#34;example&#34;, DomainGroupArgs.builder()        
- *             .domainGroupName(&#34;tf-testDG&#34;)
+ *         var default_ = new DomainGroup(&#34;default&#34;, DomainGroupArgs.builder()        
+ *             .domainGroupName(&#34;tf-example&#34;)
  *             .build());
  * 
  *     }

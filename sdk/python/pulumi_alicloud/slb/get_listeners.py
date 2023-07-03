@@ -161,13 +161,13 @@ def get_listeners(description_regex: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult).value
 
     return AwaitableGetListenersResult(
-        description_regex=__ret__.description_regex,
-        frontend_port=__ret__.frontend_port,
-        id=__ret__.id,
-        load_balancer_id=__ret__.load_balancer_id,
-        output_file=__ret__.output_file,
-        protocol=__ret__.protocol,
-        slb_listeners=__ret__.slb_listeners)
+        description_regex=pulumi.get(__ret__, 'description_regex'),
+        frontend_port=pulumi.get(__ret__, 'frontend_port'),
+        id=pulumi.get(__ret__, 'id'),
+        load_balancer_id=pulumi.get(__ret__, 'load_balancer_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        protocol=pulumi.get(__ret__, 'protocol'),
+        slb_listeners=pulumi.get(__ret__, 'slb_listeners'))
 
 
 @_utilities.lift_output_func(get_listeners)

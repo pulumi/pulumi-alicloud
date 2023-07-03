@@ -221,20 +221,20 @@ def get_vpc_flow_logs(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs', __args__, opts=opts, typ=GetVpcFlowLogsResult).value
 
     return AwaitableGetVpcFlowLogsResult(
-        description=__ret__.description,
-        flow_log_name=__ret__.flow_log_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        log_store_name=__ret__.log_store_name,
-        logs=__ret__.logs,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        project_name=__ret__.project_name,
-        resource_id=__ret__.resource_id,
-        resource_type=__ret__.resource_type,
-        status=__ret__.status,
-        traffic_type=__ret__.traffic_type)
+        description=pulumi.get(__ret__, 'description'),
+        flow_log_name=pulumi.get(__ret__, 'flow_log_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        log_store_name=pulumi.get(__ret__, 'log_store_name'),
+        logs=pulumi.get(__ret__, 'logs'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        project_name=pulumi.get(__ret__, 'project_name'),
+        resource_id=pulumi.get(__ret__, 'resource_id'),
+        resource_type=pulumi.get(__ret__, 'resource_type'),
+        status=pulumi.get(__ret__, 'status'),
+        traffic_type=pulumi.get(__ret__, 'traffic_type'))
 
 
 @_utilities.lift_output_func(get_vpc_flow_logs)

@@ -211,18 +211,18 @@ def get_metric_rule_black_lists(category: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists', __args__, opts=opts, typ=GetMetricRuleBlackListsResult).value
 
     return AwaitableGetMetricRuleBlackListsResult(
-        category=__ret__.category,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lists=__ret__.lists,
-        metric_rule_black_list_id=__ret__.metric_rule_black_list_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        namespace=__ret__.namespace,
-        order=__ret__.order,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        category=pulumi.get(__ret__, 'category'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lists=pulumi.get(__ret__, 'lists'),
+        metric_rule_black_list_id=pulumi.get(__ret__, 'metric_rule_black_list_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        namespace=pulumi.get(__ret__, 'namespace'),
+        order=pulumi.get(__ret__, 'order'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_metric_rule_black_lists)

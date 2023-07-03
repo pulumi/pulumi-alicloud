@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
  *
- * For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/what-is-analyticdb-for-mysql).
+ * For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
  *
- * > **NOTE:** Available in v1.190.0+.
+ * > **NOTE:** Available since v1.190.0.
  *
  * ## Example Usage
  *
@@ -19,22 +19,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: "example",
- * }));
+ * const zoneId = Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 1]);
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.4.0.0/24",
+ *     zoneId: zoneId,
+ *     vswitchName: name,
+ * });
  * const defaultDBClusterLakeVersion = new alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion", {
  *     computeResource: "16ACU",
  *     dbClusterVersion: "5.0",
  *     paymentType: "PayAsYouGo",
- *     storageResource: "0ACU",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     zoneId: "example",
+ *     storageResource: "24ACU",
+ *     enableDefaultResourceGroup: false,
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: zoneId,
  * });
  * ```
  *

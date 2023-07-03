@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
     /// 
-    /// &gt; **NOTE:** Available in v1.95.0+.
+    /// &gt; **NOTE:** Available since v1.95.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,15 +26,19 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Add a new Domain.
-    ///     var dns = new AliCloud.Dns.AlidnsDomain("dns", new()
+    ///     var defaultDomainGroup = new AliCloud.Dns.DomainGroup("defaultDomainGroup", new()
+    ///     {
+    ///         DomainGroupName = "tf-example",
+    ///     });
+    /// 
+    ///     var defaultAlidnsDomain = new AliCloud.Dns.AlidnsDomain("defaultAlidnsDomain", new()
     ///     {
     ///         DomainName = "starmove.com",
-    ///         GroupId = "85ab8713-4a30-4de4-9d20-155ff830****",
+    ///         GroupId = defaultDomainGroup.Id,
     ///         Tags = 
     ///         {
-    ///             { "Created", "Terraform" },
-    ///             { "Environment", "test" },
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 

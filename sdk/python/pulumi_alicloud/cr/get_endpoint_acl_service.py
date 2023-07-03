@@ -134,12 +134,12 @@ def get_endpoint_acl_service(enable: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cr/getEndpointAclService:getEndpointAclService', __args__, opts=opts, typ=GetEndpointAclServiceResult).value
 
     return AwaitableGetEndpointAclServiceResult(
-        enable=__ret__.enable,
-        endpoint_type=__ret__.endpoint_type,
-        id=__ret__.id,
-        instance_id=__ret__.instance_id,
-        module_name=__ret__.module_name,
-        status=__ret__.status)
+        enable=pulumi.get(__ret__, 'enable'),
+        endpoint_type=pulumi.get(__ret__, 'endpoint_type'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        module_name=pulumi.get(__ret__, 'module_name'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_endpoint_acl_service)

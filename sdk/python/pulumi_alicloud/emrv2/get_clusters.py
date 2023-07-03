@@ -217,21 +217,21 @@ def get_clusters(cluster_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:emrv2/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult).value
 
     return AwaitableGetClustersResult(
-        cluster_name=__ret__.cluster_name,
-        cluster_states=__ret__.cluster_states,
-        cluster_types=__ret__.cluster_types,
-        clusters=__ret__.clusters,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        max_results=__ret__.max_results,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        next_token=__ret__.next_token,
-        output_file=__ret__.output_file,
-        payment_types=__ret__.payment_types,
-        resource_group_id=__ret__.resource_group_id,
-        tags=__ret__.tags,
-        total_count=__ret__.total_count)
+        cluster_name=pulumi.get(__ret__, 'cluster_name'),
+        cluster_states=pulumi.get(__ret__, 'cluster_states'),
+        cluster_types=pulumi.get(__ret__, 'cluster_types'),
+        clusters=pulumi.get(__ret__, 'clusters'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        max_results=pulumi.get(__ret__, 'max_results'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        next_token=pulumi.get(__ret__, 'next_token'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        payment_types=pulumi.get(__ret__, 'payment_types'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        total_count=pulumi.get(__ret__, 'total_count'))
 
 
 @_utilities.lift_output_func(get_clusters)

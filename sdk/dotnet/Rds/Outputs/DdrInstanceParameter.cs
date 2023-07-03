@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Rds.Outputs
     [OutputType]
     public sealed class DdrInstanceParameter
     {
+        /// <summary>
+        /// The parameter name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The parameter value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

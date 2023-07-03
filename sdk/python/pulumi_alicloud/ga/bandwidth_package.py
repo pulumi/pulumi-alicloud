@@ -28,28 +28,27 @@ class BandwidthPackageArgs:
                  duration: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
-                 renewal_status: Optional[pulumi.Input[str]] = None):
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a BandwidthPackage resource.
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
-               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-               `true`: Enable automatic payment, automatic payment order.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
-        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-               
                > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         :param pulumi.Input[str] billing_type: The billing type. Valid values: `PayBy95`, `PayByTraffic`.
-        :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
-        :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
+        :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         :param pulumi.Input[str] description: The description of bandwidth package.
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
-        :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
-        :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "type", type)
@@ -79,6 +78,8 @@ class BandwidthPackageArgs:
             pulumi.set(__self__, "ratio", ratio)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -109,8 +110,6 @@ class BandwidthPackageArgs:
     def auto_pay(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to pay automatically. Valid values:
-        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        `true`: Enable automatic payment, automatic payment order.
         """
         return pulumi.get(self, "auto_pay")
 
@@ -134,7 +133,7 @@ class BandwidthPackageArgs:
     @pulumi.getter(name="autoUseCoupon")
     def auto_use_coupon(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        Whether use vouchers. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_use_coupon")
 
@@ -159,7 +158,6 @@ class BandwidthPackageArgs:
     def bandwidth_type(self) -> Optional[pulumi.Input[str]]:
         """
         The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-
         > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         """
         return pulumi.get(self, "bandwidth_type")
@@ -184,7 +182,7 @@ class BandwidthPackageArgs:
     @pulumi.getter(name="cbnGeographicRegionIda")
     def cbn_geographic_region_ida(self) -> Optional[pulumi.Input[str]]:
         """
-        Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+        Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
         """
         return pulumi.get(self, "cbn_geographic_region_ida")
 
@@ -196,7 +194,7 @@ class BandwidthPackageArgs:
     @pulumi.getter(name="cbnGeographicRegionIdb")
     def cbn_geographic_region_idb(self) -> Optional[pulumi.Input[str]]:
         """
-        Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         """
         return pulumi.get(self, "cbn_geographic_region_idb")
 
@@ -232,7 +230,7 @@ class BandwidthPackageArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+        The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -244,7 +242,7 @@ class BandwidthPackageArgs:
     @pulumi.getter
     def ratio(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         """
         return pulumi.get(self, "ratio")
 
@@ -263,6 +261,18 @@ class BandwidthPackageArgs:
     @renewal_status.setter
     def renewal_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -283,28 +293,27 @@ class _BandwidthPackageState:
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackage resources.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
-               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-               `true`: Enable automatic payment, automatic payment order.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
-        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value: `false`. Valid values:
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-               
                > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         :param pulumi.Input[str] billing_type: The billing type. Valid values: `PayBy95`, `PayByTraffic`.
-        :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
-        :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
+        :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         :param pulumi.Input[str] description: The description of bandwidth package.
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
-        :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
-        :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
-        :param pulumi.Input[str] status: The status of the bandwidth plan.
+        :param pulumi.Input[str] status: The status of the Bandwidth Package.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         """
         if auto_pay is not None:
@@ -337,6 +346,8 @@ class _BandwidthPackageState:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -345,8 +356,6 @@ class _BandwidthPackageState:
     def auto_pay(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to pay automatically. Valid values:
-        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        `true`: Enable automatic payment, automatic payment order.
         """
         return pulumi.get(self, "auto_pay")
 
@@ -370,7 +379,7 @@ class _BandwidthPackageState:
     @pulumi.getter(name="autoUseCoupon")
     def auto_use_coupon(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        Whether use vouchers. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_use_coupon")
 
@@ -407,7 +416,6 @@ class _BandwidthPackageState:
     def bandwidth_type(self) -> Optional[pulumi.Input[str]]:
         """
         The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-
         > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         """
         return pulumi.get(self, "bandwidth_type")
@@ -432,7 +440,7 @@ class _BandwidthPackageState:
     @pulumi.getter(name="cbnGeographicRegionIda")
     def cbn_geographic_region_ida(self) -> Optional[pulumi.Input[str]]:
         """
-        Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+        Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
         """
         return pulumi.get(self, "cbn_geographic_region_ida")
 
@@ -444,7 +452,7 @@ class _BandwidthPackageState:
     @pulumi.getter(name="cbnGeographicRegionIdb")
     def cbn_geographic_region_idb(self) -> Optional[pulumi.Input[str]]:
         """
-        Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         """
         return pulumi.get(self, "cbn_geographic_region_idb")
 
@@ -480,7 +488,7 @@ class _BandwidthPackageState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+        The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -492,7 +500,7 @@ class _BandwidthPackageState:
     @pulumi.getter
     def ratio(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         """
         return pulumi.get(self, "ratio")
 
@@ -516,13 +524,25 @@ class _BandwidthPackageState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the bandwidth plan.
+        The status of the Bandwidth Package.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter
@@ -556,12 +576,13 @@ class BandwidthPackage(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Bandwidth Package resource.
 
-        For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
+        For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbandwidthpackage).
 
         > **NOTE:** At present, The `ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
 
@@ -595,23 +616,21 @@ class BandwidthPackage(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
-               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-               `true`: Enable automatic payment, automatic payment order.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
-        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value: `false`. Valid values:
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-               
                > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         :param pulumi.Input[str] billing_type: The billing type. Valid values: `PayBy95`, `PayByTraffic`.
-        :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
-        :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
+        :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         :param pulumi.Input[str] description: The description of bandwidth package.
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
-        :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
-        :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         """
         ...
@@ -623,7 +642,7 @@ class BandwidthPackage(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Bandwidth Package resource.
 
-        For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
+        For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbandwidthpackage).
 
         > **NOTE:** At present, The `ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
 
@@ -683,6 +702,7 @@ class BandwidthPackage(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -709,6 +729,7 @@ class BandwidthPackage(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["ratio"] = ratio
             __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -738,6 +759,7 @@ class BandwidthPackage(pulumi.CustomResource):
             ratio: Optional[pulumi.Input[int]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'BandwidthPackage':
         """
         Get an existing BandwidthPackage resource's state with the given name, id, and optional extra
@@ -747,24 +769,22 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
-               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-               `true`: Enable automatic payment, automatic payment order.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
-        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value: `false`. Valid values:
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-               
                > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         :param pulumi.Input[str] billing_type: The billing type. Valid values: `PayBy95`, `PayByTraffic`.
-        :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
-        :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
+        :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         :param pulumi.Input[str] description: The description of bandwidth package.
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
-        :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
-        :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
-        :param pulumi.Input[str] status: The status of the bandwidth plan.
+        :param pulumi.Input[str] status: The status of the Bandwidth Package.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -786,6 +806,7 @@ class BandwidthPackage(pulumi.CustomResource):
         __props__.__dict__["ratio"] = ratio
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         return BandwidthPackage(resource_name, opts=opts, __props__=__props__)
 
@@ -794,8 +815,6 @@ class BandwidthPackage(pulumi.CustomResource):
     def auto_pay(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to pay automatically. Valid values:
-        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        `true`: Enable automatic payment, automatic payment order.
         """
         return pulumi.get(self, "auto_pay")
 
@@ -811,7 +830,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter(name="autoUseCoupon")
     def auto_use_coupon(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        Whether use vouchers. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_use_coupon")
 
@@ -836,7 +855,6 @@ class BandwidthPackage(pulumi.CustomResource):
     def bandwidth_type(self) -> pulumi.Output[Optional[str]]:
         """
         The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-
         > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         """
         return pulumi.get(self, "bandwidth_type")
@@ -853,7 +871,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter(name="cbnGeographicRegionIda")
     def cbn_geographic_region_ida(self) -> pulumi.Output[str]:
         """
-        Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+        Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
         """
         return pulumi.get(self, "cbn_geographic_region_ida")
 
@@ -861,7 +879,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter(name="cbnGeographicRegionIdb")
     def cbn_geographic_region_idb(self) -> pulumi.Output[str]:
         """
-        Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         """
         return pulumi.get(self, "cbn_geographic_region_idb")
 
@@ -885,7 +903,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+        The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -893,7 +911,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter
     def ratio(self) -> pulumi.Output[Optional[int]]:
         """
-        The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         """
         return pulumi.get(self, "ratio")
 
@@ -909,9 +927,17 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the bandwidth plan.
+        The status of the Bandwidth Package.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

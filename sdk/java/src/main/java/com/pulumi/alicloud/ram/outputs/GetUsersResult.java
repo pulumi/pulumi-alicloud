@@ -26,7 +26,7 @@ public final class GetUsersResult {
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return A list of ram user names.
+     * @return A list of ram user&#39;s name.
      * 
      */
     private List<String> names;
@@ -61,7 +61,7 @@ public final class GetUsersResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of ram user names.
+     * @return A list of ram user&#39;s name.
      * 
      */
     public List<String> names() {

@@ -137,13 +137,13 @@ def get_hybrid_monitor_fc_tasks(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks', __args__, opts=opts, typ=GetHybridMonitorFcTasksResult).value
 
     return AwaitableGetHybridMonitorFcTasksResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        namespace=__ret__.namespace,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        tasks=__ret__.tasks)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        namespace=pulumi.get(__ret__, 'namespace'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        tasks=pulumi.get(__ret__, 'tasks'))
 
 
 @_utilities.lift_output_func(get_hybrid_monitor_fc_tasks)

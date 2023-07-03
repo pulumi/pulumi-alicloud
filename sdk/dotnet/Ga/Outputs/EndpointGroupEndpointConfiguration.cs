@@ -14,22 +14,23 @@ namespace Pulumi.AliCloud.Ga.Outputs
     public sealed class EndpointGroupEndpointConfiguration
     {
         /// <summary>
-        /// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+        /// Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
         /// </summary>
         public readonly bool? EnableClientipPreservation;
+        /// <summary>
+        /// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+        /// </summary>
+        public readonly bool? EnableProxyProtocol;
         /// <summary>
         /// The IP address or domain name of Endpoint N in the endpoint group.
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-        /// 
-        /// &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+        /// The type of Endpoint N in the endpoint group. Valid values:
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-        /// 
+        /// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
         /// &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         /// </summary>
         public readonly int Weight;
@@ -38,6 +39,8 @@ namespace Pulumi.AliCloud.Ga.Outputs
         private EndpointGroupEndpointConfiguration(
             bool? enableClientipPreservation,
 
+            bool? enableProxyProtocol,
+
             string endpoint,
 
             string type,
@@ -45,6 +48,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
             int weight)
         {
             EnableClientipPreservation = enableClientipPreservation;
+            EnableProxyProtocol = enableProxyProtocol;
             Endpoint = endpoint;
             Type = type;
             Weight = weight;

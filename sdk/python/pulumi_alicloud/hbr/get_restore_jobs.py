@@ -198,18 +198,18 @@ def get_restore_jobs(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getRestoreJobs:getRestoreJobs', __args__, opts=opts, typ=GetRestoreJobsResult).value
 
     return AwaitableGetRestoreJobsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        jobs=__ret__.jobs,
-        output_file=__ret__.output_file,
-        restore_ids=__ret__.restore_ids,
-        restore_type=__ret__.restore_type,
-        source_types=__ret__.source_types,
-        status=__ret__.status,
-        target_buckets=__ret__.target_buckets,
-        target_file_system_ids=__ret__.target_file_system_ids,
-        target_instance_ids=__ret__.target_instance_ids,
-        vault_ids=__ret__.vault_ids)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        jobs=pulumi.get(__ret__, 'jobs'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        restore_ids=pulumi.get(__ret__, 'restore_ids'),
+        restore_type=pulumi.get(__ret__, 'restore_type'),
+        source_types=pulumi.get(__ret__, 'source_types'),
+        status=pulumi.get(__ret__, 'status'),
+        target_buckets=pulumi.get(__ret__, 'target_buckets'),
+        target_file_system_ids=pulumi.get(__ret__, 'target_file_system_ids'),
+        target_instance_ids=pulumi.get(__ret__, 'target_instance_ids'),
+        vault_ids=pulumi.get(__ret__, 'vault_ids'))
 
 
 @_utilities.lift_output_func(get_restore_jobs)

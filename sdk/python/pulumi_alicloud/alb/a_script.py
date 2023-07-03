@@ -31,7 +31,7 @@ class AScriptArgs:
         :param pulumi.Input[str] position: Execution location of AScript.
         :param pulumi.Input[str] script_content: The content of AScript.
         :param pulumi.Input[bool] ext_attribute_enabled: Whether extension parameters are enabled.
-        :param pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]] ext_attributes: Extended attribute list. See the following `Block ExtAttributes`.
+        :param pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]] ext_attributes: Extended attribute list. See `ext_attributes` below for details.
         """
         pulumi.set(__self__, "ascript_name", ascript_name)
         pulumi.set(__self__, "enabled", enabled)
@@ -119,7 +119,7 @@ class AScriptArgs:
     @pulumi.getter(name="extAttributes")
     def ext_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]:
         """
-        Extended attribute list. See the following `Block ExtAttributes`.
+        Extended attribute list. See `ext_attributes` below for details.
         """
         return pulumi.get(self, "ext_attributes")
 
@@ -145,7 +145,7 @@ class _AScriptState:
         :param pulumi.Input[str] ascript_name: The name of AScript.
         :param pulumi.Input[bool] enabled: Whether scripts are enabled.
         :param pulumi.Input[bool] ext_attribute_enabled: Whether extension parameters are enabled.
-        :param pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]] ext_attributes: Extended attribute list. See the following `Block ExtAttributes`.
+        :param pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]] ext_attributes: Extended attribute list. See `ext_attributes` below for details.
         :param pulumi.Input[str] listener_id: Listener ID of script attribution
         :param pulumi.Input[str] load_balancer_id: The ID of load balancer instance.
         :param pulumi.Input[str] position: Execution location of AScript.
@@ -211,7 +211,7 @@ class _AScriptState:
     @pulumi.getter(name="extAttributes")
     def ext_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]:
         """
-        Extended attribute list. See the following `Block ExtAttributes`.
+        Extended attribute list. See `ext_attributes` below for details.
         """
         return pulumi.get(self, "ext_attributes")
 
@@ -296,25 +296,9 @@ class AScript(pulumi.CustomResource):
         """
         Provides a Alb Ascript resource.
 
-        For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/what-is-application-load-balancer).
+        For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createascripts).
 
-        > **NOTE:** Available in v1.195.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.alb.AScript("default",
-            script_content="time()",
-            position="RequestHead",
-            ascript_name="test",
-            enabled=True,
-            listener_id=var["listenerId"])
-        ```
+        > **NOTE:** Available since v1.195.0.
 
         ## Import
 
@@ -329,7 +313,7 @@ class AScript(pulumi.CustomResource):
         :param pulumi.Input[str] ascript_name: The name of AScript.
         :param pulumi.Input[bool] enabled: Whether scripts are enabled.
         :param pulumi.Input[bool] ext_attribute_enabled: Whether extension parameters are enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AScriptExtAttributeArgs']]]] ext_attributes: Extended attribute list. See the following `Block ExtAttributes`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AScriptExtAttributeArgs']]]] ext_attributes: Extended attribute list. See `ext_attributes` below for details.
         :param pulumi.Input[str] listener_id: Listener ID of script attribution
         :param pulumi.Input[str] position: Execution location of AScript.
         :param pulumi.Input[str] script_content: The content of AScript.
@@ -343,25 +327,9 @@ class AScript(pulumi.CustomResource):
         """
         Provides a Alb Ascript resource.
 
-        For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/what-is-application-load-balancer).
+        For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createascripts).
 
-        > **NOTE:** Available in v1.195.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.alb.AScript("default",
-            script_content="time()",
-            position="RequestHead",
-            ascript_name="test",
-            enabled=True,
-            listener_id=var["listenerId"])
-        ```
+        > **NOTE:** Available since v1.195.0.
 
         ## Import
 
@@ -450,7 +418,7 @@ class AScript(pulumi.CustomResource):
         :param pulumi.Input[str] ascript_name: The name of AScript.
         :param pulumi.Input[bool] enabled: Whether scripts are enabled.
         :param pulumi.Input[bool] ext_attribute_enabled: Whether extension parameters are enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AScriptExtAttributeArgs']]]] ext_attributes: Extended attribute list. See the following `Block ExtAttributes`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AScriptExtAttributeArgs']]]] ext_attributes: Extended attribute list. See `ext_attributes` below for details.
         :param pulumi.Input[str] listener_id: Listener ID of script attribution
         :param pulumi.Input[str] load_balancer_id: The ID of load balancer instance.
         :param pulumi.Input[str] position: Execution location of AScript.
@@ -500,7 +468,7 @@ class AScript(pulumi.CustomResource):
     @pulumi.getter(name="extAttributes")
     def ext_attributes(self) -> pulumi.Output[Sequence['outputs.AScriptExtAttribute']]:
         """
-        Extended attribute list. See the following `Block ExtAttributes`.
+        Extended attribute list. See `ext_attributes` below for details.
         """
         return pulumi.get(self, "ext_attributes")
 

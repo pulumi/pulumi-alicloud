@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a ALB Load Balancer resource.
     /// 
-    /// For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/doc-detail/197341.htm).
+    /// For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createloadbalancer).
     /// 
-    /// &gt; **NOTE:** Available in v1.132.0+.
+    /// &gt; **NOTE:** Available since v1.132.0.
     /// 
     /// ## Import
     /// 
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Alb
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Access Logging Configuration Structure. See the following `Block access_log_config`.
+        /// The Access Logging Configuration Structure. See `access_log_config` below for details.
         /// </summary>
         [Output("accessLogConfig")]
         public Output<Outputs.LoadBalancerAccessLogConfig?> AccessLogConfig { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+        /// The configuration of the billing method. See `load_balancer_billing_config` below for details.
         /// </summary>
         [Output("loadBalancerBillingConfig")]
         public Output<Outputs.LoadBalancerLoadBalancerBillingConfig> LoadBalancerBillingConfig { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> LoadBalancerName { get; private set; } = null!;
 
         /// <summary>
-        /// Modify the Protection Configuration. See the following `Block modification_protection_config`.
+        /// Modify the Protection Configuration. See `modification_protection_config` below for details.
         /// </summary>
         [Output("modificationProtectionConfig")]
         public Output<Outputs.LoadBalancerModificationProtectionConfig> ModificationProtectionConfig { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+        /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.LoadBalancerZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Access Logging Configuration Structure. See the following `Block access_log_config`.
+        /// The Access Logging Configuration Structure. See `access_log_config` below for details.
         /// </summary>
         [Input("accessLogConfig")]
         public Input<Inputs.LoadBalancerAccessLogConfigArgs>? AccessLogConfig { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+        /// The configuration of the billing method. See `load_balancer_billing_config` below for details.
         /// </summary>
         [Input("loadBalancerBillingConfig", required: true)]
         public Input<Inputs.LoadBalancerLoadBalancerBillingConfigArgs> LoadBalancerBillingConfig { get; set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string> LoadBalancerName { get; set; } = null!;
 
         /// <summary>
-        /// Modify the Protection Configuration. See the following `Block modification_protection_config`.
+        /// Modify the Protection Configuration. See `modification_protection_config` below for details.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigArgs>? ModificationProtectionConfig { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.LoadBalancerZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+        /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingArgs> ZoneMappings
         {
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Access Logging Configuration Structure. See the following `Block access_log_config`.
+        /// The Access Logging Configuration Structure. See `access_log_config` below for details.
         /// </summary>
         [Input("accessLogConfig")]
         public Input<Inputs.LoadBalancerAccessLogConfigGetArgs>? AccessLogConfig { get; set; }
@@ -316,7 +316,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+        /// The configuration of the billing method. See `load_balancer_billing_config` below for details.
         /// </summary>
         [Input("loadBalancerBillingConfig")]
         public Input<Inputs.LoadBalancerLoadBalancerBillingConfigGetArgs>? LoadBalancerBillingConfig { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// Modify the Protection Configuration. See the following `Block modification_protection_config`.
+        /// Modify the Protection Configuration. See `modification_protection_config` below for details.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigGetArgs>? ModificationProtectionConfig { get; set; }
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.LoadBalancerZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+        /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingGetArgs> ZoneMappings
         {

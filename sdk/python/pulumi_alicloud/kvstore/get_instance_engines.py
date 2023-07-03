@@ -154,13 +154,13 @@ def get_instance_engines(engine: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kvstore/getInstanceEngines:getInstanceEngines', __args__, opts=opts, typ=GetInstanceEnginesResult).value
 
     return AwaitableGetInstanceEnginesResult(
-        engine=__ret__.engine,
-        engine_version=__ret__.engine_version,
-        id=__ret__.id,
-        instance_charge_type=__ret__.instance_charge_type,
-        instance_engines=__ret__.instance_engines,
-        output_file=__ret__.output_file,
-        zone_id=__ret__.zone_id)
+        engine=pulumi.get(__ret__, 'engine'),
+        engine_version=pulumi.get(__ret__, 'engine_version'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        instance_engines=pulumi.get(__ret__, 'instance_engines'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_instance_engines)

@@ -19,24 +19,28 @@ class AclArgs:
                  address_ip_version: pulumi.Input[str],
                  acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]] = None,
                  acl_name: Optional[pulumi.Input[str]] = None,
-                 dry_run: Optional[pulumi.Input[bool]] = None):
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Acl resource.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "address_ip_version", address_ip_version)
         if acl_entries is not None:
-            warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.""", DeprecationWarning)
-            pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.""")
+            warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
+            pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
         if acl_entries is not None:
             pulumi.set(__self__, "acl_entries", acl_entries)
         if acl_name is not None:
             pulumi.set(__self__, "acl_name", acl_name)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="addressIpVersion")
@@ -54,8 +58,11 @@ class AclArgs:
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
-        The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
+        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
+        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
+
         return pulumi.get(self, "acl_entries")
 
     @acl_entries.setter
@@ -86,6 +93,18 @@ class AclArgs:
     def dry_run(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dry_run", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _AclState:
@@ -94,18 +113,20 @@ class _AclState:
                  acl_name: Optional[pulumi.Input[str]] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if acl_entries is not None:
-            warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.""", DeprecationWarning)
-            pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.""")
+            warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
+            pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
         if acl_entries is not None:
             pulumi.set(__self__, "acl_entries", acl_entries)
         if acl_name is not None:
@@ -116,13 +137,18 @@ class _AclState:
             pulumi.set(__self__, "dry_run", dry_run)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
-        The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
+        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
+        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
+
         return pulumi.get(self, "acl_entries")
 
     @acl_entries.setter
@@ -177,6 +203,18 @@ class _AclState:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
 
 class Acl(pulumi.CustomResource):
     @overload
@@ -187,6 +225,7 @@ class Acl(pulumi.CustomResource):
                  acl_name: Optional[pulumi.Input[str]] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Acl resource.
@@ -222,10 +261,11 @@ class Acl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -284,6 +324,7 @@ class Acl(pulumi.CustomResource):
                  acl_name: Optional[pulumi.Input[str]] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -294,14 +335,15 @@ class Acl(pulumi.CustomResource):
             __props__ = AclArgs.__new__(AclArgs)
 
             if acl_entries is not None and not opts.urn:
-                warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.""", DeprecationWarning)
-                pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.""")
+                warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
+                pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
             __props__.__dict__["acl_entries"] = acl_entries
             __props__.__dict__["acl_name"] = acl_name
             if address_ip_version is None and not opts.urn:
                 raise TypeError("Missing required property 'address_ip_version'")
             __props__.__dict__["address_ip_version"] = address_ip_version
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["status"] = None
         super(Acl, __self__).__init__(
             'alicloud:ga/acl:Acl',
@@ -317,7 +359,8 @@ class Acl(pulumi.CustomResource):
             acl_name: Optional[pulumi.Input[str]] = None,
             address_ip_version: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'Acl':
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Acl':
         """
         Get an existing Acl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -325,11 +368,12 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -340,14 +384,18 @@ class Acl(pulumi.CustomResource):
         __props__.__dict__["address_ip_version"] = address_ip_version
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return Acl(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> pulumi.Output[Sequence['outputs.AclAclEntry']]:
         """
-        The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
+        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
+        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
+
         return pulumi.get(self, "acl_entries")
 
     @property
@@ -381,4 +429,12 @@ class Acl(pulumi.CustomResource):
         The status of the resource.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 

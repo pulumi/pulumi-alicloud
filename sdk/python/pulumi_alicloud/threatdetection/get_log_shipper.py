@@ -156,14 +156,14 @@ def get_log_shipper(enable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:threatdetection/getLogShipper:getLogShipper', __args__, opts=opts, typ=GetLogShipperResult).value
 
     return AwaitableGetLogShipperResult(
-        auth_status=__ret__.auth_status,
-        buy_status=__ret__.buy_status,
-        enable=__ret__.enable,
-        id=__ret__.id,
-        open_status=__ret__.open_status,
-        sls_project_status=__ret__.sls_project_status,
-        sls_service_status=__ret__.sls_service_status,
-        status=__ret__.status)
+        auth_status=pulumi.get(__ret__, 'auth_status'),
+        buy_status=pulumi.get(__ret__, 'buy_status'),
+        enable=pulumi.get(__ret__, 'enable'),
+        id=pulumi.get(__ret__, 'id'),
+        open_status=pulumi.get(__ret__, 'open_status'),
+        sls_project_status=pulumi.get(__ret__, 'sls_project_status'),
+        sls_service_status=pulumi.get(__ret__, 'sls_service_status'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_log_shipper)

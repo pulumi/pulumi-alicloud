@@ -192,16 +192,16 @@ def get_chains(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cr/getChains:getChains', __args__, opts=opts, typ=GetChainsResult).value
 
     return AwaitableGetChainsResult(
-        chains=__ret__.chains,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        repo_name=__ret__.repo_name,
-        repo_namespace_name=__ret__.repo_namespace_name)
+        chains=pulumi.get(__ret__, 'chains'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        repo_name=pulumi.get(__ret__, 'repo_name'),
+        repo_namespace_name=pulumi.get(__ret__, 'repo_namespace_name'))
 
 
 @_utilities.lift_output_func(get_chains)

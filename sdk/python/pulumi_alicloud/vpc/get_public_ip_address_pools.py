@@ -174,16 +174,16 @@ def get_public_ip_address_pools(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools', __args__, opts=opts, typ=GetPublicIpAddressPoolsResult).value
 
     return AwaitableGetPublicIpAddressPoolsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        isp=__ret__.isp,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        pools=__ret__.pools,
-        public_ip_address_pool_ids=__ret__.public_ip_address_pool_ids,
-        public_ip_address_pool_name=__ret__.public_ip_address_pool_name,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        isp=pulumi.get(__ret__, 'isp'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pools=pulumi.get(__ret__, 'pools'),
+        public_ip_address_pool_ids=pulumi.get(__ret__, 'public_ip_address_pool_ids'),
+        public_ip_address_pool_name=pulumi.get(__ret__, 'public_ip_address_pool_name'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_public_ip_address_pools)

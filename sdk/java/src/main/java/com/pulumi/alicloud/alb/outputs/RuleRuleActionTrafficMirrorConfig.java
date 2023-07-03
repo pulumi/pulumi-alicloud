@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleActionTrafficMirrorConfig {
     /**
-     * @return The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+     * @return The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
      * 
      */
     private @Nullable RuleRuleActionTrafficMirrorConfigMirrorGroupConfig mirrorGroupConfig;
@@ -25,7 +25,7 @@ public final class RuleRuleActionTrafficMirrorConfig {
 
     private RuleRuleActionTrafficMirrorConfig() {}
     /**
-     * @return The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+     * @return The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
      * 
      */
     public Optional<RuleRuleActionTrafficMirrorConfigMirrorGroupConfig> mirrorGroupConfig() {

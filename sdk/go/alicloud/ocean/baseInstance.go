@@ -15,7 +15,7 @@ import (
 //
 // For information about Ocean Base Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/what-is-oceanbase-database).
 //
-// > **NOTE:** Available in v1.203.0+.
+// > **NOTE:** Available since v1.203.0.
 //
 // ## Example Usage
 //
@@ -87,10 +87,10 @@ type BaseInstance struct {
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
-	// - 62C400G:800GB-10000GB.
+	// - 62C400G:800GB ~ 10000GB.
 	// - The default value of each package is its minimum value.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
@@ -177,10 +177,10 @@ type baseInstanceState struct {
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
-	// - 62C400G:800GB-10000GB.
+	// - 62C400G:800GB ~ 10000GB.
 	// - The default value of each package is its minimum value.
 	DiskSize *int `pulumi:"diskSize"`
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName *string `pulumi:"instanceName"`
@@ -224,10 +224,10 @@ type BaseInstanceState struct {
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
-	// - 62C400G:800GB-10000GB.
+	// - 62C400G:800GB ~ 10000GB.
 	// - The default value of each package is its minimum value.
 	DiskSize pulumi.IntPtrInput
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
 	InstanceClass pulumi.StringPtrInput
 	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName pulumi.StringPtrInput
@@ -266,10 +266,10 @@ type baseInstanceArgs struct {
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
-	// - 62C400G:800GB-10000GB.
+	// - 62C400G:800GB ~ 10000GB.
 	// - The default value of each package is its minimum value.
 	DiskSize int `pulumi:"diskSize"`
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
 	InstanceClass string `pulumi:"instanceClass"`
 	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName *string `pulumi:"instanceName"`
@@ -303,10 +303,10 @@ type BaseInstanceArgs struct {
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
-	// - 62C400G:800GB-10000GB.
+	// - 62C400G:800GB ~ 10000GB.
 	// - The default value of each package is its minimum value.
 	DiskSize pulumi.IntInput
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
 	InstanceClass pulumi.StringInput
 	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName pulumi.StringPtrInput
@@ -452,13 +452,13 @@ func (o BaseInstanceOutput) CreateTime() pulumi.StringOutput {
 // - 8C32GB:100GB ~ 10000GB
 // - 14C70GB:200GB ~ 10000GB
 // - 30C180GB:400GB ~ 10000GB
-// - 62C400G:800GB-10000GB.
+// - 62C400G:800GB ~ 10000GB.
 // - The default value of each package is its minimum value.
 func (o BaseInstanceOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
 func (o BaseInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
 }

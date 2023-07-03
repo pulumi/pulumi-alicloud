@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+        /// The value of the values list.
         /// </summary>
         public readonly string? Value;
         /// <summary>

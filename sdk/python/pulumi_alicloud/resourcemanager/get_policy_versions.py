@@ -144,13 +144,13 @@ def get_policy_versions(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getPolicyVersions:getPolicyVersions', __args__, opts=opts, typ=GetPolicyVersionsResult).value
 
     return AwaitableGetPolicyVersionsResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        policy_name=__ret__.policy_name,
-        policy_type=__ret__.policy_type,
-        versions=__ret__.versions)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policy_name=pulumi.get(__ret__, 'policy_name'),
+        policy_type=pulumi.get(__ret__, 'policy_type'),
+        versions=pulumi.get(__ret__, 'versions'))
 
 
 @_utilities.lift_output_func(get_policy_versions)

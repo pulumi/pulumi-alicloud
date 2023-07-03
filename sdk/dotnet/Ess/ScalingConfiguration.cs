@@ -50,6 +50,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 

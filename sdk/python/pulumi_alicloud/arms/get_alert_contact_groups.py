@@ -160,15 +160,15 @@ def get_alert_contact_groups(alert_contact_group_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:arms/getAlertContactGroups:getAlertContactGroups', __args__, opts=opts, typ=GetAlertContactGroupsResult).value
 
     return AwaitableGetAlertContactGroupsResult(
-        alert_contact_group_name=__ret__.alert_contact_group_name,
-        contact_id=__ret__.contact_id,
-        contact_name=__ret__.contact_name,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        alert_contact_group_name=pulumi.get(__ret__, 'alert_contact_group_name'),
+        contact_id=pulumi.get(__ret__, 'contact_id'),
+        contact_name=pulumi.get(__ret__, 'contact_name'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_alert_contact_groups)

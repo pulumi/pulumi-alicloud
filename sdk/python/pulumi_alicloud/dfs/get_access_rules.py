@@ -119,11 +119,11 @@ def get_access_rules(access_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dfs/getAccessRules:getAccessRules', __args__, opts=opts, typ=GetAccessRulesResult).value
 
     return AwaitableGetAccessRulesResult(
-        access_group_id=__ret__.access_group_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules)
+        access_group_id=pulumi.get(__ret__, 'access_group_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'))
 
 
 @_utilities.lift_output_func(get_access_rules)

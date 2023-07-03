@@ -154,14 +154,14 @@ def get_consumer_groups(consumer_id_regex: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:actiontrail/getConsumerGroups:getConsumerGroups', __args__, opts=opts, typ=GetConsumerGroupsResult).value
 
     return AwaitableGetConsumerGroupsResult(
-        consumer_id_regex=__ret__.consumer_id_regex,
-        consumer_ids=__ret__.consumer_ids,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        consumer_id_regex=pulumi.get(__ret__, 'consumer_id_regex'),
+        consumer_ids=pulumi.get(__ret__, 'consumer_ids'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_consumer_groups)

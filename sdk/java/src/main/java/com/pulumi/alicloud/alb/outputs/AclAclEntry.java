@@ -22,7 +22,7 @@ public final class AclAclEntry {
      */
     private @Nullable String entry;
     /**
-     * @return The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * @return The status of the ACL entry. Valid values:
      * 
      */
     private @Nullable String status;
@@ -43,7 +43,7 @@ public final class AclAclEntry {
         return Optional.ofNullable(this.entry);
     }
     /**
-     * @return The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * @return The status of the ACL entry. Valid values:
      * 
      */
     public Optional<String> status() {

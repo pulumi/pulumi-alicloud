@@ -11,10 +11,10 @@ replace (
 )
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.207.0
+	github.com/aliyun/terraform-provider-alicloud v1.207.1
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.50.1
-	github.com/pulumi/pulumi/sdk/v3 v3.71.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.53.0
+	github.com/pulumi/pulumi/sdk/v3 v3.73.1-0.20230623071431-db579129f4c9
 )
 
 require (
@@ -71,13 +71,13 @@ require (
 	github.com/alibabacloud-go/tea-utils v1.4.5 // indirect
 	github.com/alibabacloud-go/tea-utils/v2 v2.0.1 // indirect
 	github.com/alibabacloud-go/tea-xml v1.1.2 // indirect
-	github.com/aliyun/alibaba-cloud-sdk-go v1.61.1538 // indirect
+	github.com/aliyun/alibaba-cloud-sdk-go v1.62.362 // indirect
 	github.com/aliyun/aliyun-datahub-sdk-go v0.1.5 // indirect
 	github.com/aliyun/aliyun-log-go-sdk v0.1.44-0.20230310032108-e8f9ed9bb3c5 // indirect
 	github.com/aliyun/aliyun-mns-go-sdk v0.0.0-20210305050620-d1b5875bda58 // indirect
 	github.com/aliyun/aliyun-oss-go-sdk v2.2.1+incompatible // indirect
 	github.com/aliyun/aliyun-tablestore-go-sdk v4.1.3+incompatible // indirect
-	github.com/aliyun/credentials-go v1.2.6 // indirect
+	github.com/aliyun/credentials-go v1.3.0 // indirect
 	github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
@@ -224,7 +224,7 @@ require (
 	github.com/natefinch/atomic v1.0.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
-	github.com/opentracing/opentracing-go v1.2.0 // indirect
+	github.com/opentracing/opentracing-go v1.2.1-0.20220228012449-10b1cf09e00b // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
 	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
 	github.com/pjbgf/sha1cd v0.3.0 // indirect
@@ -236,9 +236,9 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.9.4 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.1.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.71.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.73.1-0.20230623071431-db579129f4c9 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
-	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
+	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect

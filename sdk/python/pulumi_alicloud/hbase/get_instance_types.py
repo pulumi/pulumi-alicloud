@@ -211,19 +211,19 @@ def get_instance_types(charge_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:hbase/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult).value
 
     return AwaitableGetInstanceTypesResult(
-        charge_type=__ret__.charge_type,
-        core_instance_types=__ret__.core_instance_types,
-        disk_type=__ret__.disk_type,
-        engine=__ret__.engine,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_type=__ret__.instance_type,
-        master_instance_types=__ret__.master_instance_types,
-        output_file=__ret__.output_file,
-        region_id=__ret__.region_id,
-        types=__ret__.types,
-        version=__ret__.version,
-        zone_id=__ret__.zone_id)
+        charge_type=pulumi.get(__ret__, 'charge_type'),
+        core_instance_types=pulumi.get(__ret__, 'core_instance_types'),
+        disk_type=pulumi.get(__ret__, 'disk_type'),
+        engine=pulumi.get(__ret__, 'engine'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        master_instance_types=pulumi.get(__ret__, 'master_instance_types'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        region_id=pulumi.get(__ret__, 'region_id'),
+        types=pulumi.get(__ret__, 'types'),
+        version=pulumi.get(__ret__, 'version'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_instance_types)

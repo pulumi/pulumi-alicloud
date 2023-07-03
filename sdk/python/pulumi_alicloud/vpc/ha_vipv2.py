@@ -94,6 +94,9 @@ class HaVipv2Args:
         """
         Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         """
+        warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
+
         return pulumi.get(self, "havip_name")
 
     @havip_name.setter
@@ -299,6 +302,9 @@ class _HaVipv2State:
         """
         Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         """
+        warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
+
         return pulumi.get(self, "havip_name")
 
     @havip_name.setter
@@ -707,6 +713,9 @@ class HaVipv2(pulumi.CustomResource):
         """
         Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         """
+        warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
+
         return pulumi.get(self, "havip_name")
 
     @property

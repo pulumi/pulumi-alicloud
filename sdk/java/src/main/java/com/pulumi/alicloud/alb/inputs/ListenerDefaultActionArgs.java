@@ -15,14 +15,14 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
     public static final ListenerDefaultActionArgs Empty = new ListenerDefaultActionArgs();
 
     /**
-     * The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+     * The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
      * 
      */
     @Import(name="forwardGroupConfig", required=true)
     private Output<ListenerDefaultActionForwardGroupConfigArgs> forwardGroupConfig;
 
     /**
-     * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+     * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
      * 
      */
     public Output<ListenerDefaultActionForwardGroupConfigArgs> forwardGroupConfig() {
@@ -70,7 +70,7 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param forwardGroupConfig The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+         * @param forwardGroupConfig The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param forwardGroupConfig The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+         * @param forwardGroupConfig The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
          * 
          * @return builder
          * 

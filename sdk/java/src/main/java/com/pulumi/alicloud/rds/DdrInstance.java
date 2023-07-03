@@ -332,7 +332,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
         return this.deletionProtection;
     }
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
@@ -341,7 +341,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
-     * @return The method to update the engine version.  Default value: Immediate. Valid values:
+     * @return The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
@@ -566,14 +566,14 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
         return this.monitoringPeriod;
     }
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
      */
     @Export(name="parameters", type=List.class, parameters={DdrInstanceParameter.class})
     private Output<List<DdrInstanceParameter>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
      */
     public Output<List<DdrInstanceParameter>> parameters() {
@@ -610,14 +610,14 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     @Export(name="pgHbaConfs", type=List.class, parameters={DdrInstancePgHbaConf.class})
     private Output<List<DdrInstancePgHbaConf>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     public Output<List<DdrInstancePgHbaConf>> pgHbaConfs() {
@@ -829,7 +829,6 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the source instance if you want to restore data to a point in time.
-     * #### Block pg_hba_conf
      * 
      */
     @Export(name="sourceDbInstanceName", type=String.class, parameters={})
@@ -837,7 +836,6 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the source instance if you want to restore data to a point in time.
-     * #### Block pg_hba_conf
      * 
      */
     public Output<Optional<String>> sourceDbInstanceName() {

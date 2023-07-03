@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about EDAS k8s slb attachment and how to use it, see [What is k8s slb attachment](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/bindk8sslb).
  * 
- * &gt; **NOTE:** Available in v1.194.0+.
+ * &gt; **NOTE:** Available since v1.194.0.
  * 
  * ## Example Usage
  * 
@@ -98,14 +98,14 @@ public class K8sSlbAttachment extends com.pulumi.resources.CustomResource {
         return this.appId;
     }
     /**
-     * The configurations of SLB attachment, which is supported for multiple configurations.
+     * The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
      * 
      */
     @Export(name="slbConfigs", type=List.class, parameters={K8sSlbAttachmentSlbConfig.class})
     private Output<List<K8sSlbAttachmentSlbConfig>> slbConfigs;
 
     /**
-     * @return The configurations of SLB attachment, which is supported for multiple configurations.
+     * @return The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
      * 
      */
     public Output<List<K8sSlbAttachmentSlbConfig>> slbConfigs() {

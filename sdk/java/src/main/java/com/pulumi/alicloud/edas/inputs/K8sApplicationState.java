@@ -140,6 +140,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+     * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
@@ -151,6 +152,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+     * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
@@ -162,7 +164,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The public network SLB front-end port, range 1~65535.
+     * The public network SLB front-end port, range 1~65535. It has been deprecated and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
@@ -173,7 +175,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Integer> internetSlbPort;
 
     /**
-     * @return The public network SLB front-end port, range 1~65535.
+     * @return The public network SLB front-end port, range 1~65535. It has been deprecated and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
@@ -185,7 +187,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+     * The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
@@ -196,7 +198,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> internetSlbProtocol;
 
     /**
-     * @return The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+     * @return The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
@@ -209,6 +211,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+     * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
@@ -220,6 +223,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+     * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
@@ -749,6 +753,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param internetSlbId Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+         * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
          * 
          * @return builder
          * 
@@ -764,6 +769,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param internetSlbId Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+         * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
          * 
          * @return builder
          * 
@@ -777,7 +783,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param internetSlbPort The public network SLB front-end port, range 1~65535.
+         * @param internetSlbPort The public network SLB front-end port, range 1~65535. It has been deprecated and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
          * 
          * @return builder
          * 
@@ -792,7 +798,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param internetSlbPort The public network SLB front-end port, range 1~65535.
+         * @param internetSlbPort The public network SLB front-end port, range 1~65535. It has been deprecated and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
          * 
          * @return builder
          * 
@@ -806,7 +812,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param internetSlbProtocol The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+         * @param internetSlbProtocol The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
          * 
          * @return builder
          * 
@@ -821,7 +827,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param internetSlbProtocol The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+         * @param internetSlbProtocol The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
          * 
          * @return builder
          * 
@@ -836,6 +842,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param internetTargetPort The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+         * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
          * 
          * @return builder
          * 
@@ -851,6 +858,7 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param internetTargetPort The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+         * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
          * 
          * @return builder
          * 

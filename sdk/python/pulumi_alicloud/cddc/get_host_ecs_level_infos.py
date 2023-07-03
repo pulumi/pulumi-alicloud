@@ -127,13 +127,13 @@ def get_host_ecs_level_infos(db_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos', __args__, opts=opts, typ=GetHostEcsLevelInfosResult).value
 
     return AwaitableGetHostEcsLevelInfosResult(
-        db_type=__ret__.db_type,
-        id=__ret__.id,
-        image_category=__ret__.image_category,
-        infos=__ret__.infos,
-        output_file=__ret__.output_file,
-        storage_type=__ret__.storage_type,
-        zone_id=__ret__.zone_id)
+        db_type=pulumi.get(__ret__, 'db_type'),
+        id=pulumi.get(__ret__, 'id'),
+        image_category=pulumi.get(__ret__, 'image_category'),
+        infos=pulumi.get(__ret__, 'infos'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        storage_type=pulumi.get(__ret__, 'storage_type'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_host_ecs_level_infos)

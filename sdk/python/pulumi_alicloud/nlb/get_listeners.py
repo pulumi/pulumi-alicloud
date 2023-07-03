@@ -115,12 +115,12 @@ def get_listeners(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nlb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult).value
 
     return AwaitableGetListenersResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        listener_protocol=__ret__.listener_protocol,
-        listeners=__ret__.listeners,
-        load_balancer_ids=__ret__.load_balancer_ids,
-        output_file=__ret__.output_file)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        listener_protocol=pulumi.get(__ret__, 'listener_protocol'),
+        listeners=pulumi.get(__ret__, 'listeners'),
+        load_balancer_ids=pulumi.get(__ret__, 'load_balancer_ids'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_listeners)

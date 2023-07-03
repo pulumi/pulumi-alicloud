@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
  *
+ * > **NOTE:** Available since v1.18.0.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -15,18 +17,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a new bandwidth package attachment and use it to attach a bandwidth package to a new CEN
- * const cen = new alicloud.cen.Instance("cen", {description: "tf-testAccCenBandwidthPackageAttachmentDescription"});
- * const bwp = new alicloud.cen.BandwidthPackage("bwp", {
- *     bandwidth: 20,
- *     geographicRegionIds: [
- *         "China",
- *         "Asia-Pacific",
- *     ],
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
  * });
- * const foo = new alicloud.cen.BandwidthPackageAttachment("foo", {
- *     instanceId: cen.id,
- *     bandwidthPackageId: bwp.id,
+ * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("exampleBandwidthPackage", {
+ *     bandwidth: 5,
+ *     cenBandwidthPackageName: "tf_example",
+ *     geographicRegionAId: "China",
+ *     geographicRegionBId: "China",
+ * });
+ * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     bandwidthPackageId: exampleBandwidthPackage.id,
  * });
  * ```
  *

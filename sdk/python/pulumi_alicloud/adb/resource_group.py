@@ -226,9 +226,9 @@ class ResourceGroup(pulumi.CustomResource):
         """
         Provides a Adb Resource Group resource.
 
-        For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/create-db-resource-group).
+        For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -238,11 +238,49 @@ class ResourceGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.adb.ResourceGroup("default",
-            db_cluster_id="am-bp1a16357gty69185",
-            group_name="TESTOPENAPI",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.adb.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="10.4.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
+            compute_resource="48Core192GBNEW",
+            db_cluster_category="MixedStorage",
+            db_cluster_version="3.0",
+            db_node_class="E32",
+            db_node_count=1,
+            db_node_storage=100,
+            description=name,
+            elastic_io_resource=1,
+            maintain_time="04:00Z-05:00Z",
+            mode="flexible",
+            payment_type="PayAsYouGo",
+            resource_group_id=default_resource_groups.ids[0],
+            security_ips=[
+                "10.168.1.12",
+                "10.168.1.11",
+            ],
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            zone_id=default_zones.zones[0].id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_resource_group = alicloud.adb.ResourceGroup("defaultResourceGroup",
+            group_name="TF_EXAMPLE",
             group_type="batch",
-            node_num=0)
+            node_num=1,
+            db_cluster_id=default_db_cluster.id)
         ```
 
         ## Import
@@ -272,9 +310,9 @@ class ResourceGroup(pulumi.CustomResource):
         """
         Provides a Adb Resource Group resource.
 
-        For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/create-db-resource-group).
+        For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -284,11 +322,49 @@ class ResourceGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.adb.ResourceGroup("default",
-            db_cluster_id="am-bp1a16357gty69185",
-            group_name="TESTOPENAPI",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.adb.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="10.4.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
+            compute_resource="48Core192GBNEW",
+            db_cluster_category="MixedStorage",
+            db_cluster_version="3.0",
+            db_node_class="E32",
+            db_node_count=1,
+            db_node_storage=100,
+            description=name,
+            elastic_io_resource=1,
+            maintain_time="04:00Z-05:00Z",
+            mode="flexible",
+            payment_type="PayAsYouGo",
+            resource_group_id=default_resource_groups.ids[0],
+            security_ips=[
+                "10.168.1.12",
+                "10.168.1.11",
+            ],
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            zone_id=default_zones.zones[0].id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_resource_group = alicloud.adb.ResourceGroup("defaultResourceGroup",
+            group_name="TF_EXAMPLE",
             group_type="batch",
-            node_num=0)
+            node_num=1,
+            db_cluster_id=default_db_cluster.id)
         ```
 
         ## Import

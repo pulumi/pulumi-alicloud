@@ -206,17 +206,17 @@ def get_nat_ips(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getNatIps:getNatIps', __args__, opts=opts, typ=GetNatIpsResult).value
 
     return AwaitableGetNatIpsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        ips=__ret__.ips,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        nat_gateway_id=__ret__.nat_gateway_id,
-        nat_ip_cidr=__ret__.nat_ip_cidr,
-        nat_ip_ids=__ret__.nat_ip_ids,
-        nat_ip_names=__ret__.nat_ip_names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        ips=pulumi.get(__ret__, 'ips'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        nat_gateway_id=pulumi.get(__ret__, 'nat_gateway_id'),
+        nat_ip_cidr=pulumi.get(__ret__, 'nat_ip_cidr'),
+        nat_ip_ids=pulumi.get(__ret__, 'nat_ip_ids'),
+        nat_ip_names=pulumi.get(__ret__, 'nat_ip_names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_nat_ips)

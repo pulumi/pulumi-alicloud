@@ -181,17 +181,17 @@ def get_gateways(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudstoragegateway/getGateways:getGateways', __args__, opts=opts, typ=GetGatewaysResult).value
 
     return AwaitableGetGatewaysResult(
-        gateways=__ret__.gateways,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status,
-        storage_bundle_id=__ret__.storage_bundle_id,
-        total_count=__ret__.total_count)
+        gateways=pulumi.get(__ret__, 'gateways'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'),
+        storage_bundle_id=pulumi.get(__ret__, 'storage_bundle_id'),
+        total_count=pulumi.get(__ret__, 'total_count'))
 
 
 @_utilities.lift_output_func(get_gateways)

@@ -145,13 +145,13 @@ def get_db_instances(db_instance_description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:graphdatabase/getDbInstances:getDbInstances', __args__, opts=opts, typ=GetDbInstancesResult).value
 
     return AwaitableGetDbInstancesResult(
-        db_instance_description=__ret__.db_instance_description,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        db_instance_description=pulumi.get(__ret__, 'db_instance_description'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_db_instances)

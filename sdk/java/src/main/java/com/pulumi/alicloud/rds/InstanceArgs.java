@@ -101,7 +101,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
@@ -110,7 +110,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<InstanceBabelfishConfigArgs>> babelfishConfigs;
 
     /**
-     * @return The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     * @return The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
@@ -410,7 +410,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
@@ -419,7 +419,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> effectiveTime;
 
     /**
-     * @return The method to update the engine version.  Default value: Immediate. Valid values:
+     * @return The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
@@ -715,14 +715,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<InstanceParameterArgs>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
      */
     public Optional<Output<List<InstanceParameterArgs>>> parameters() {
@@ -747,14 +747,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     @Import(name="pgHbaConfs")
     private @Nullable Output<List<InstancePgHbaConfArgs>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     public Optional<Output<List<InstancePgHbaConfArgs>>> pgHbaConfs() {
@@ -968,14 +968,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
      * 
      */
     @Import(name="serverlessConfigs")
     private @Nullable Output<List<InstanceServerlessConfigArgs>> serverlessConfigs;
 
     /**
-     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
      * 
      */
     public Optional<Output<List<InstanceServerlessConfigArgs>>> serverlessConfigs() {
@@ -1574,7 +1574,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
@@ -1587,7 +1587,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
@@ -1599,7 +1599,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
@@ -1985,7 +1985,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectiveTime The method to update the engine version.  Default value: Immediate. Valid values:
+         * @param effectiveTime The method to update the engine version and change.  Default value: Immediate. Valid values:
          * - Immediate: The change immediately takes effect.
          * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
          * 
@@ -1998,7 +1998,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectiveTime The method to update the engine version.  Default value: Immediate. Valid values:
+         * @param effectiveTime The method to update the engine version and change.  Default value: Immediate. Valid values:
          * - Immediate: The change immediately takes effect.
          * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
          * 
@@ -2380,7 +2380,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
          * 
          * @return builder
          * 
@@ -2391,7 +2391,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
          * 
          * @return builder
          * 
@@ -2401,7 +2401,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
          * 
          * @return builder
          * 
@@ -2434,7 +2434,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
          * 
          * @return builder
          * 
@@ -2445,7 +2445,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
          * 
          * @return builder
          * 
@@ -2455,7 +2455,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
          * 
          * @return builder
          * 
@@ -2763,7 +2763,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
          * 
          * @return builder
          * 
@@ -2774,7 +2774,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
          * 
          * @return builder
          * 
@@ -2784,7 +2784,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
          * 
          * @return builder
          * 

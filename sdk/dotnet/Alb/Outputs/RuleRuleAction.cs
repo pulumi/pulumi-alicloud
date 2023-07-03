@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class RuleRuleAction
     {
         /// <summary>
-        /// Request forwarding based on CORS. See the following `Block cors_config`.
+        /// Request forwarding based on CORS. See `cors_config` below for details.
         /// </summary>
         public readonly Outputs.RuleRuleActionCorsConfig? CorsConfig;
         /// <summary>
-        /// The configuration of the fixed response. See the following `Block fixed_response_config`.
+        /// The configuration of the fixed response. See `fixed_response_config` below for details.
         /// </summary>
         public readonly Outputs.RuleRuleActionFixedResponseConfig? FixedResponseConfig;
         /// <summary>
-        /// The forward response action within ALB. See the following `Block forward_group_config`.
+        /// The forward response action within ALB. See `forward_group_config` below for details.
         /// </summary>
         public readonly Outputs.RuleRuleActionForwardGroupConfig? ForwardGroupConfig;
         /// <summary>
-        /// The configuration of the inserted header field. See the following `Block insert_header_config`.
+        /// The configuration of the inserted header field. See `insert_header_config` below for details.
         /// </summary>
         public readonly Outputs.RuleRuleActionInsertHeaderConfig? InsertHeaderConfig;
         /// <summary>
@@ -34,23 +34,23 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly int Order;
         /// <summary>
-        /// The configuration of the external redirect action. See the following `Block redirect_config`.
+        /// The configuration of the external redirect action. See `redirect_config` below for details.
         /// </summary>
         public readonly Outputs.RuleRuleActionRedirectConfig? RedirectConfig;
         /// <summary>
-        /// The redirect action within ALB. See the following `Block rewrite_config`.
+        /// The redirect action within ALB. See `rewrite_config` below for details.
         /// </summary>
         public readonly Outputs.RuleRuleActionRewriteConfig? RewriteConfig;
         /// <summary>
-        /// The Flow speed limit. See the following `Block traffic_limit_config`.
+        /// The Flow speed limit. See `traffic_limit_config` below for details.
         /// </summary>
         public readonly Outputs.RuleRuleActionTrafficLimitConfig? TrafficLimitConfig;
         /// <summary>
-        /// The Traffic mirroring. See the following `Block traffic_mirror_config`.
+        /// The Traffic mirroring. See `traffic_mirror_config` below for details.
         /// </summary>
         public readonly Outputs.RuleRuleActionTrafficMirrorConfig? TrafficMirrorConfig;
         /// <summary>
-        /// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+        /// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
         /// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
         /// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         /// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.

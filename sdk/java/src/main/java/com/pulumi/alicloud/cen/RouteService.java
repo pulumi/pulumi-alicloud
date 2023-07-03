@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
  * 
- * For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/doc-detail/106671.htm).
+ * For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-resolveandrouteserviceincen).
  * 
- * &gt; **NOTE:** Available in v1.99.0+.
+ * &gt; **NOTE:** Available since v1.99.0.
  * 
  * &gt; **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
  * 
@@ -32,9 +32,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.InstanceAttachment;
  * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import com.pulumi.alicloud.cen.RouteService;
@@ -52,26 +55,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-test&#34;);
- *         final var exampleNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .isDefault(true)
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;);
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
  * 
- *         var vpc = new InstanceAttachment(&#34;vpc&#34;, InstanceAttachmentArgs.builder()        
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
+ *             .build());
+ * 
+ *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
  *             .instanceId(exampleInstance.id())
- *             .childInstanceId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()))
+ *             .childInstanceId(exampleNetwork.id())
  *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].regionId()))
+ *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
- *         var this_ = new RouteService(&#34;this&#34;, RouteServiceArgs.builder()        
- *             .accessRegionId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].regionId()))
- *             .hostRegionId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].regionId()))
- *             .hostVpcId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()))
- *             .cenId(vpc.instanceId())
+ *         var exampleRouteService = new RouteService(&#34;exampleRouteService&#34;, RouteServiceArgs.builder()        
+ *             .accessRegionId(default_.regions()[0].id())
+ *             .hostRegionId(default_.regions()[0].id())
+ *             .hostVpcId(exampleNetwork.id())
+ *             .cenId(exampleInstanceAttachment.instanceId())
  *             .host(&#34;100.118.28.52/32&#34;)
  *             .build());
  * 

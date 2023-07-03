@@ -15,7 +15,7 @@ import (
 //
 // For information about Cen Child Instance Route Entry To Attachment and how to use it, see [What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment).
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -27,17 +27,97 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cen.NewChildInstanceRouteEntryToAttachment(ctx, "default", &cen.ChildInstanceRouteEntryToAttachmentArgs{
-//				CenId:                     pulumi.String("cen-3sgjn0u745c3i0o3dk"),
-//				ChildInstanceRouteTableId: pulumi.String("vtb-t4nt0z5xxbti85c78nkzy"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			masterZone := _default.Resources[0].MasterZones[0]
+//			slaveZone := _default.Resources[0].SlaveZones[1]
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleMaster, err := vpc.NewSwitch(ctx, "exampleMaster", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("192.168.1.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(masterZone),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSlave, err := vpc.NewSwitch(ctx, "exampleSlave", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("192.168.2.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(slaveZone),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String(name),
+//				CenId:             exampleInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "exampleTransitRouterVpcAttachment", &cen.TransitRouterVpcAttachmentArgs{
+//				CenId:           exampleInstance.ID(),
+//				TransitRouterId: exampleTransitRouter.TransitRouterId,
+//				VpcId:           exampleNetwork.ID(),
+//				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						ZoneId:    *pulumi.String(masterZone),
+//						VswitchId: exampleMaster.ID(),
+//					},
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						ZoneId:    *pulumi.String(slaveZone),
+//						VswitchId: exampleSlave.ID(),
+//					},
+//				},
+//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleRouteTable, err := vpc.NewRouteTable(ctx, "exampleRouteTable", &vpc.RouteTableArgs{
+//				VpcId:          exampleNetwork.ID(),
+//				RouteTableName: pulumi.String(name),
+//				Description:    pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewChildInstanceRouteEntryToAttachment(ctx, "exampleChildInstanceRouteEntryToAttachment", &cen.ChildInstanceRouteEntryToAttachmentArgs{
+//				TransitRouterAttachmentId: exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
+//				CenId:                     exampleInstance.ID(),
 //				DestinationCidrBlock:      pulumi.String("10.0.0.0/24"),
-//				TransitRouterAttachmentId: pulumi.String("tr-attach-f1fd1y50rql00emvej"),
+//				ChildInstanceRouteTableId: exampleRouteTable.ID(),
 //			})
 //			if err != nil {
 //				return err

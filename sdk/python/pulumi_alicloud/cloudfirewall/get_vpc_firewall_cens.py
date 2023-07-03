@@ -235,19 +235,19 @@ def get_vpc_firewall_cens(cen_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudfirewall/getVpcFirewallCens:getVpcFirewallCens', __args__, opts=opts, typ=GetVpcFirewallCensResult).value
 
     return AwaitableGetVpcFirewallCensResult(
-        cen_id=__ret__.cen_id,
-        cens=__ret__.cens,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lang=__ret__.lang,
-        member_uid=__ret__.member_uid,
-        network_instance_id=__ret__.network_instance_id,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status,
-        vpc_firewall_id=__ret__.vpc_firewall_id,
-        vpc_firewall_name=__ret__.vpc_firewall_name)
+        cen_id=pulumi.get(__ret__, 'cen_id'),
+        cens=pulumi.get(__ret__, 'cens'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lang=pulumi.get(__ret__, 'lang'),
+        member_uid=pulumi.get(__ret__, 'member_uid'),
+        network_instance_id=pulumi.get(__ret__, 'network_instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'),
+        vpc_firewall_id=pulumi.get(__ret__, 'vpc_firewall_id'),
+        vpc_firewall_name=pulumi.get(__ret__, 'vpc_firewall_name'))
 
 
 @_utilities.lift_output_func(get_vpc_firewall_cens)

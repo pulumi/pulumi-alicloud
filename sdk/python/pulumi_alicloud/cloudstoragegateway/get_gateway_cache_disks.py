@@ -138,12 +138,12 @@ def get_gateway_cache_disks(gateway_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks', __args__, opts=opts, typ=GetGatewayCacheDisksResult).value
 
     return AwaitableGetGatewayCacheDisksResult(
-        disks=__ret__.disks,
-        gateway_id=__ret__.gateway_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        disks=pulumi.get(__ret__, 'disks'),
+        gateway_id=pulumi.get(__ret__, 'gateway_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_gateway_cache_disks)

@@ -219,20 +219,20 @@ def get_control_policies(acl_action: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudfirewall/getControlPolicies:getControlPolicies', __args__, opts=opts, typ=GetControlPoliciesResult).value
 
     return AwaitableGetControlPoliciesResult(
-        acl_action=__ret__.acl_action,
-        acl_uuid=__ret__.acl_uuid,
-        description=__ret__.description,
-        destination=__ret__.destination,
-        direction=__ret__.direction,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        ip_version=__ret__.ip_version,
-        lang=__ret__.lang,
-        output_file=__ret__.output_file,
-        policies=__ret__.policies,
-        proto=__ret__.proto,
-        source=__ret__.source,
-        source_ip=__ret__.source_ip)
+        acl_action=pulumi.get(__ret__, 'acl_action'),
+        acl_uuid=pulumi.get(__ret__, 'acl_uuid'),
+        description=pulumi.get(__ret__, 'description'),
+        destination=pulumi.get(__ret__, 'destination'),
+        direction=pulumi.get(__ret__, 'direction'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        ip_version=pulumi.get(__ret__, 'ip_version'),
+        lang=pulumi.get(__ret__, 'lang'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policies=pulumi.get(__ret__, 'policies'),
+        proto=pulumi.get(__ret__, 'proto'),
+        source=pulumi.get(__ret__, 'source'),
+        source_ip=pulumi.get(__ret__, 'source_ip'))
 
 
 @_utilities.lift_output_func(get_control_policies)

@@ -64,6 +64,9 @@ class KeyPairArgs:
         """
         The key pair's name. It is the only in one Alicloud account.
         """
+        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -187,6 +190,9 @@ class _KeyPairState:
         """
         The key pair's name. It is the only in one Alicloud account.
         """
+        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -436,6 +442,9 @@ class KeyPair(pulumi.CustomResource):
         """
         The key pair's name. It is the only in one Alicloud account.
         """
+        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+
         return pulumi.get(self, "key_name")
 
     @property

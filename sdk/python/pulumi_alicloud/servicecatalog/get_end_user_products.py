@@ -165,15 +165,15 @@ def get_end_user_products(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:servicecatalog/getEndUserProducts:getEndUserProducts', __args__, opts=opts, typ=GetEndUserProductsResult).value
 
     return AwaitableGetEndUserProductsResult(
-        end_user_products=__ret__.end_user_products,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        sort_by=__ret__.sort_by,
-        sort_order=__ret__.sort_order)
+        end_user_products=pulumi.get(__ret__, 'end_user_products'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        sort_by=pulumi.get(__ret__, 'sort_by'),
+        sort_order=pulumi.get(__ret__, 'sort_order'))
 
 
 @_utilities.lift_output_func(get_end_user_products)

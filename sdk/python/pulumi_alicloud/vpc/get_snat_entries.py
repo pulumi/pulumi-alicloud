@@ -236,18 +236,18 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getSnatEntries:getSnatEntries', __args__, opts=opts, typ=GetSnatEntriesResult).value
 
     return AwaitableGetSnatEntriesResult(
-        entries=__ret__.entries,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        snat_entry_name=__ret__.snat_entry_name,
-        snat_ip=__ret__.snat_ip,
-        snat_table_id=__ret__.snat_table_id,
-        source_cidr=__ret__.source_cidr,
-        source_vswitch_id=__ret__.source_vswitch_id,
-        status=__ret__.status)
+        entries=pulumi.get(__ret__, 'entries'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        snat_entry_name=pulumi.get(__ret__, 'snat_entry_name'),
+        snat_ip=pulumi.get(__ret__, 'snat_ip'),
+        snat_table_id=pulumi.get(__ret__, 'snat_table_id'),
+        source_cidr=pulumi.get(__ret__, 'source_cidr'),
+        source_vswitch_id=pulumi.get(__ret__, 'source_vswitch_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_snat_entries)

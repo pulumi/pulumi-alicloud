@@ -117,11 +117,11 @@ def get_protocols(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nas/getProtocols:getProtocols', __args__, opts=opts, typ=GetProtocolsResult).value
 
     return AwaitableGetProtocolsResult(
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        protocols=__ret__.protocols,
-        type=__ret__.type,
-        zone_id=__ret__.zone_id)
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        protocols=pulumi.get(__ret__, 'protocols'),
+        type=pulumi.get(__ret__, 'type'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_protocols)

@@ -17,14 +17,8 @@ import javax.annotation.Nullable;
 
 /**
  * Provide RDS cluster instance endpoint connection resources.
- * &gt; **NOTE:** Available in 1.203.0+.
  * 
- * ## Block node_items
- * 
- * The node_items mapping supports the following:
- * 
- * * `node_id` - (Required) The ID of the node.
- * * `weight` - (Required) The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+ * &gt; **NOTE:** Available since v1.203.0+.
  * 
  * ## Import
  * 
@@ -136,14 +130,14 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
         return this.ipType;
     }
     /**
-     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
      * 
      */
     @Export(name="nodeItems", type=List.class, parameters={DbInstanceEndpointNodeItem.class})
     private Output<List<DbInstanceEndpointNodeItem>> nodeItems;
 
     /**
-     * @return The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+     * @return The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
      * 
      */
     public Output<List<DbInstanceEndpointNodeItem>> nodeItems() {

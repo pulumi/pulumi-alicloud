@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> AutoUpgradeMinorVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+        /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
         /// &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:'",&lt;&gt;/?
         /// </summary>
         [Output("connectionStringPrefix")]
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbTimeZone { get; private set; } = null!;
 
         /// <summary>
-        /// The switch of delete protection. Valid values: 
+        /// The switch of delete protection. Valid values:
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The method to update the engine version.  Default value: Immediate. Valid values:
+        /// The method to update the engine version and change.  Default value: Immediate. Valid values:
         /// - Immediate: The change immediately takes effect.
         /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         /// </summary>
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> MonitoringPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         /// </summary>
         [Output("pgHbaConfs")]
         public Output<ImmutableArray<Outputs.InstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
@@ -434,7 +434,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ServerKey { get; private set; } = null!;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         /// </summary>
         [Output("serverlessConfigs")]
         public Output<ImmutableArray<Outputs.InstanceServerlessConfig>> ServerlessConfigs { get; private set; } = null!;
@@ -700,7 +700,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceBabelfishConfigArgs>? _babelfishConfigs;
 
         /// <summary>
-        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
@@ -769,7 +769,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? ClientCrlEnabled { get; set; }
 
         /// <summary>
-        /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+        /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
         /// &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:'",&lt;&gt;/?
         /// </summary>
         [Input("connectionStringPrefix")]
@@ -825,7 +825,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbTimeZone { get; set; }
 
         /// <summary>
-        /// The switch of delete protection. Valid values: 
+        /// The switch of delete protection. Valid values:
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
@@ -835,7 +835,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The method to update the engine version.  Default value: Immediate. Valid values:
+        /// The method to update the engine version and change.  Default value: Immediate. Valid values:
         /// - Immediate: The change immediately takes effect.
         /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         /// </summary>
@@ -968,7 +968,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         /// </summary>
         public InputList<Inputs.InstanceParameterArgs> Parameters
         {
@@ -987,7 +987,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstancePgHbaConfArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         /// </summary>
         public InputList<Inputs.InstancePgHbaConfArgs> PgHbaConfs
         {
@@ -1092,7 +1092,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceServerlessConfigArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         /// </summary>
         public InputList<Inputs.InstanceServerlessConfigArgs> ServerlessConfigs
         {
@@ -1317,7 +1317,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceBabelfishConfigGetArgs>? _babelfishConfigs;
 
         /// <summary>
-        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
         /// 
         /// &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
@@ -1392,7 +1392,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
-        /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+        /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
         /// &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:'",&lt;&gt;/?
         /// </summary>
         [Input("connectionStringPrefix")]
@@ -1460,7 +1460,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbTimeZone { get; set; }
 
         /// <summary>
-        /// The switch of delete protection. Valid values: 
+        /// The switch of delete protection. Valid values:
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
@@ -1470,7 +1470,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The method to update the engine version.  Default value: Immediate. Valid values:
+        /// The method to update the engine version and change.  Default value: Immediate. Valid values:
         /// - Immediate: The change immediately takes effect.
         /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         /// </summary>
@@ -1603,7 +1603,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         /// </summary>
         public InputList<Inputs.InstanceParameterGetArgs> Parameters
         {
@@ -1622,7 +1622,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstancePgHbaConfGetArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         /// </summary>
         public InputList<Inputs.InstancePgHbaConfGetArgs> PgHbaConfs
         {
@@ -1727,7 +1727,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceServerlessConfigGetArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         /// </summary>
         public InputList<Inputs.InstanceServerlessConfigGetArgs> ServerlessConfigs
         {

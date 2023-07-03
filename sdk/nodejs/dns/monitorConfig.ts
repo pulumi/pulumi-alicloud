@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *
@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc";
- * const domainName = config.get("domainName") || "your_domain_name";
+ * const name = config.get("name") || "tf_example";
+ * const domainName = config.get("domainName") || "alicloud-provider.com";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {alarmContactGroupName: name});
  * const defaultGtmInstance = new alicloud.dns.GtmInstance("defaultGtmInstance", {
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewalStatus: "ManualRenewal",
- *     packageEdition: "ultimate",
+ *     packageEdition: "standard",
  *     healthCheckTaskCount: 100,
  *     smsNotificationCount: 1000,
  *     publicCnameMode: "SYSTEM_ASSIGN",
@@ -66,11 +66,11 @@ import * as utilities from "../utilities";
  *     interval: 60,
  *     timeout: 5000,
  *     protocolType: "TCP",
- *     monitorExtendInfo: "{\"failureRate\"=50,\"port\"=80}",
- *     ispCityNodes: {
+ *     monitorExtendInfo: "{\"failureRate\":50,\"port\":80}",
+ *     ispCityNodes: [{
  *         cityCode: "503",
  *         ispCode: "465",
- *     },
+ *     }],
  * });
  * ```
  *
@@ -123,7 +123,7 @@ export class MonitorConfig extends pulumi.CustomResource {
      */
     public readonly interval!: pulumi.Output<number>;
     /**
-     * The Monitoring node. See the following `Block ispCityNode`.
+     * The Monitoring node. See `ispCityNode` below for details.
      */
     public readonly ispCityNodes!: pulumi.Output<outputs.dns.MonitorConfigIspCityNode[]>;
     /**
@@ -218,7 +218,7 @@ export interface MonitorConfigState {
      */
     interval?: pulumi.Input<number>;
     /**
-     * The Monitoring node. See the following `Block ispCityNode`.
+     * The Monitoring node. See `ispCityNode` below for details.
      */
     ispCityNodes?: pulumi.Input<pulumi.Input<inputs.dns.MonitorConfigIspCityNode>[]>;
     /**
@@ -256,7 +256,7 @@ export interface MonitorConfigArgs {
      */
     interval: pulumi.Input<number>;
     /**
-     * The Monitoring node. See the following `Block ispCityNode`.
+     * The Monitoring node. See `ispCityNode` below for details.
      */
     ispCityNodes: pulumi.Input<pulumi.Input<inputs.dns.MonitorConfigIspCityNode>[]>;
     /**

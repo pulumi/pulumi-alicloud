@@ -13,9 +13,9 @@ import (
 
 // Provides a ALB Load Balancer resource.
 //
-// For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/doc-detail/197341.htm).
+// For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createloadbalancer).
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Import
 //
@@ -29,7 +29,7 @@ import (
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
-	// The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
+	// The Access Logging Configuration Structure. See `accessLogConfig` below for details.
 	AccessLogConfig LoadBalancerAccessLogConfigPtrOutput `pulumi:"accessLogConfig"`
 	// The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
 	AddressAllocatedMode pulumi.StringPtrOutput `pulumi:"addressAllocatedMode"`
@@ -43,13 +43,13 @@ type LoadBalancer struct {
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// Specifies whether to precheck the API request. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
+	// The configuration of the billing method. See `loadBalancerBillingConfig` below for details.
 	LoadBalancerBillingConfig LoadBalancerLoadBalancerBillingConfigOutput `pulumi:"loadBalancerBillingConfig"`
 	// The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
 	LoadBalancerEdition pulumi.StringOutput `pulumi:"loadBalancerEdition"`
 	// The name of the resource.
 	LoadBalancerName pulumi.StringOutput `pulumi:"loadBalancerName"`
-	// Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
+	// Modify the Protection Configuration. See `modificationProtectionConfig` below for details.
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigOutput `pulumi:"modificationProtectionConfig"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -59,7 +59,7 @@ type LoadBalancer struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
+	// The zones and vSwitches. You must specify at least two zones. See `zoneMappings` below for details.
 	ZoneMappings LoadBalancerZoneMappingArrayOutput `pulumi:"zoneMappings"`
 }
 
@@ -110,7 +110,7 @@ func GetLoadBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
-	// The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
+	// The Access Logging Configuration Structure. See `accessLogConfig` below for details.
 	AccessLogConfig *LoadBalancerAccessLogConfig `pulumi:"accessLogConfig"`
 	// The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
 	AddressAllocatedMode *string `pulumi:"addressAllocatedMode"`
@@ -124,13 +124,13 @@ type loadBalancerState struct {
 	DnsName *string `pulumi:"dnsName"`
 	// Specifies whether to precheck the API request. Valid values: `true` and `false`.
 	DryRun *bool `pulumi:"dryRun"`
-	// The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
+	// The configuration of the billing method. See `loadBalancerBillingConfig` below for details.
 	LoadBalancerBillingConfig *LoadBalancerLoadBalancerBillingConfig `pulumi:"loadBalancerBillingConfig"`
 	// The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
 	LoadBalancerEdition *string `pulumi:"loadBalancerEdition"`
 	// The name of the resource.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
-	// Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
+	// Modify the Protection Configuration. See `modificationProtectionConfig` below for details.
 	ModificationProtectionConfig *LoadBalancerModificationProtectionConfig `pulumi:"modificationProtectionConfig"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -140,12 +140,12 @@ type loadBalancerState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId *string `pulumi:"vpcId"`
-	// The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
+	// The zones and vSwitches. You must specify at least two zones. See `zoneMappings` below for details.
 	ZoneMappings []LoadBalancerZoneMapping `pulumi:"zoneMappings"`
 }
 
 type LoadBalancerState struct {
-	// The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
+	// The Access Logging Configuration Structure. See `accessLogConfig` below for details.
 	AccessLogConfig LoadBalancerAccessLogConfigPtrInput
 	// The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
 	AddressAllocatedMode pulumi.StringPtrInput
@@ -159,13 +159,13 @@ type LoadBalancerState struct {
 	DnsName pulumi.StringPtrInput
 	// Specifies whether to precheck the API request. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrInput
-	// The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
+	// The configuration of the billing method. See `loadBalancerBillingConfig` below for details.
 	LoadBalancerBillingConfig LoadBalancerLoadBalancerBillingConfigPtrInput
 	// The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
 	LoadBalancerEdition pulumi.StringPtrInput
 	// The name of the resource.
 	LoadBalancerName pulumi.StringPtrInput
-	// Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
+	// Modify the Protection Configuration. See `modificationProtectionConfig` below for details.
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -175,7 +175,7 @@ type LoadBalancerState struct {
 	Tags pulumi.MapInput
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringPtrInput
-	// The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
+	// The zones and vSwitches. You must specify at least two zones. See `zoneMappings` below for details.
 	ZoneMappings LoadBalancerZoneMappingArrayInput
 }
 
@@ -184,7 +184,7 @@ func (LoadBalancerState) ElementType() reflect.Type {
 }
 
 type loadBalancerArgs struct {
-	// The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
+	// The Access Logging Configuration Structure. See `accessLogConfig` below for details.
 	AccessLogConfig *LoadBalancerAccessLogConfig `pulumi:"accessLogConfig"`
 	// The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
 	AddressAllocatedMode *string `pulumi:"addressAllocatedMode"`
@@ -196,13 +196,13 @@ type loadBalancerArgs struct {
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Specifies whether to precheck the API request. Valid values: `true` and `false`.
 	DryRun *bool `pulumi:"dryRun"`
-	// The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
+	// The configuration of the billing method. See `loadBalancerBillingConfig` below for details.
 	LoadBalancerBillingConfig LoadBalancerLoadBalancerBillingConfig `pulumi:"loadBalancerBillingConfig"`
 	// The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
 	LoadBalancerEdition string `pulumi:"loadBalancerEdition"`
 	// The name of the resource.
 	LoadBalancerName string `pulumi:"loadBalancerName"`
-	// Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
+	// Modify the Protection Configuration. See `modificationProtectionConfig` below for details.
 	ModificationProtectionConfig *LoadBalancerModificationProtectionConfig `pulumi:"modificationProtectionConfig"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -210,13 +210,13 @@ type loadBalancerArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId string `pulumi:"vpcId"`
-	// The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
+	// The zones and vSwitches. You must specify at least two zones. See `zoneMappings` below for details.
 	ZoneMappings []LoadBalancerZoneMapping `pulumi:"zoneMappings"`
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
-	// The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
+	// The Access Logging Configuration Structure. See `accessLogConfig` below for details.
 	AccessLogConfig LoadBalancerAccessLogConfigPtrInput
 	// The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
 	AddressAllocatedMode pulumi.StringPtrInput
@@ -228,13 +228,13 @@ type LoadBalancerArgs struct {
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Specifies whether to precheck the API request. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrInput
-	// The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
+	// The configuration of the billing method. See `loadBalancerBillingConfig` below for details.
 	LoadBalancerBillingConfig LoadBalancerLoadBalancerBillingConfigInput
 	// The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
 	LoadBalancerEdition pulumi.StringInput
 	// The name of the resource.
 	LoadBalancerName pulumi.StringInput
-	// Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
+	// Modify the Protection Configuration. See `modificationProtectionConfig` below for details.
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -242,7 +242,7 @@ type LoadBalancerArgs struct {
 	Tags pulumi.MapInput
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringInput
-	// The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
+	// The zones and vSwitches. You must specify at least two zones. See `zoneMappings` below for details.
 	ZoneMappings LoadBalancerZoneMappingArrayInput
 }
 
@@ -333,7 +333,7 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
+// The Access Logging Configuration Structure. See `accessLogConfig` below for details.
 func (o LoadBalancerOutput) AccessLogConfig() LoadBalancerAccessLogConfigPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerAccessLogConfigPtrOutput { return v.AccessLogConfig }).(LoadBalancerAccessLogConfigPtrOutput)
 }
@@ -368,7 +368,7 @@ func (o LoadBalancerOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
+// The configuration of the billing method. See `loadBalancerBillingConfig` below for details.
 func (o LoadBalancerOutput) LoadBalancerBillingConfig() LoadBalancerLoadBalancerBillingConfigOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerLoadBalancerBillingConfigOutput { return v.LoadBalancerBillingConfig }).(LoadBalancerLoadBalancerBillingConfigOutput)
 }
@@ -383,7 +383,7 @@ func (o LoadBalancerOutput) LoadBalancerName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerName }).(pulumi.StringOutput)
 }
 
-// Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
+// Modify the Protection Configuration. See `modificationProtectionConfig` below for details.
 func (o LoadBalancerOutput) ModificationProtectionConfig() LoadBalancerModificationProtectionConfigOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerModificationProtectionConfigOutput {
 		return v.ModificationProtectionConfig
@@ -410,7 +410,7 @@ func (o LoadBalancerOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
+// The zones and vSwitches. You must specify at least two zones. See `zoneMappings` below for details.
 func (o LoadBalancerOutput) ZoneMappings() LoadBalancerZoneMappingArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerZoneMappingArrayOutput { return v.ZoneMappings }).(LoadBalancerZoneMappingArrayOutput)
 }

@@ -37,10 +37,6 @@ class GetNetworkInterfacesResult:
         pulumi.set(__self__, "interfaces", interfaces)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
-        if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
-
         pulumi.set(__self__, "name", name)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
@@ -59,10 +55,6 @@ class GetNetworkInterfacesResult:
         pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         if private_ip and not isinstance(private_ip, str):
             raise TypeError("Expected argument 'private_ip' to be a str")
-        if private_ip is not None:
-            warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
-            pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
-
         pulumi.set(__self__, "private_ip", private_ip)
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
@@ -124,6 +116,9 @@ class GetNetworkInterfacesResult:
         """
         Name of the ENI.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
+
         return pulumi.get(self, "name")
 
     @property
@@ -157,6 +152,9 @@ class GetNetworkInterfacesResult:
         """
         Primary private IP of the ENI.
         """
+        warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
+        pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
+
         return pulumi.get(self, "private_ip")
 
     @property
@@ -367,25 +365,25 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces', __args__, opts=opts, typ=GetNetworkInterfacesResult).value
 
     return AwaitableGetNetworkInterfacesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        interfaces=__ret__.interfaces,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        network_interface_name=__ret__.network_interface_name,
-        output_file=__ret__.output_file,
-        primary_ip_address=__ret__.primary_ip_address,
-        private_ip=__ret__.private_ip,
-        resource_group_id=__ret__.resource_group_id,
-        security_group_id=__ret__.security_group_id,
-        service_managed=__ret__.service_managed,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        type=__ret__.type,
-        vpc_id=__ret__.vpc_id,
-        vswitch_id=__ret__.vswitch_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        interfaces=pulumi.get(__ret__, 'interfaces'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        network_interface_name=pulumi.get(__ret__, 'network_interface_name'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        primary_ip_address=pulumi.get(__ret__, 'primary_ip_address'),
+        private_ip=pulumi.get(__ret__, 'private_ip'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        security_group_id=pulumi.get(__ret__, 'security_group_id'),
+        service_managed=pulumi.get(__ret__, 'service_managed'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'),
+        vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
 
 
 @_utilities.lift_output_func(get_network_interfaces)

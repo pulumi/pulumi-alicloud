@@ -197,17 +197,17 @@ def get_studio_applications(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:bp/getStudioApplications:getStudioApplications', __args__, opts=opts, typ=GetStudioApplicationsResult).value
 
     return AwaitableGetStudioApplicationsResult(
-        applications=__ret__.applications,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        keyword=__ret__.keyword,
-        max_results=__ret__.max_results,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        order_type=__ret__.order_type,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status)
+        applications=pulumi.get(__ret__, 'applications'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        keyword=pulumi.get(__ret__, 'keyword'),
+        max_results=pulumi.get(__ret__, 'max_results'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        order_type=pulumi.get(__ret__, 'order_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_studio_applications)

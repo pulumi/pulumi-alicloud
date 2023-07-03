@@ -175,16 +175,16 @@ def get_global_database_networks(db_cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks', __args__, opts=opts, typ=GetGlobalDatabaseNetworksResult).value
 
     return AwaitableGetGlobalDatabaseNetworksResult(
-        db_cluster_id=__ret__.db_cluster_id,
-        description=__ret__.description,
-        gdn_id=__ret__.gdn_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        networks=__ret__.networks,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status)
+        db_cluster_id=pulumi.get(__ret__, 'db_cluster_id'),
+        description=pulumi.get(__ret__, 'description'),
+        gdn_id=pulumi.get(__ret__, 'gdn_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        networks=pulumi.get(__ret__, 'networks'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_global_database_networks)

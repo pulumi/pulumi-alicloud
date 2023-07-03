@@ -126,6 +126,9 @@ class SnapshotArgs:
         The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -294,6 +297,9 @@ class _SnapshotState:
         The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -591,6 +597,9 @@ class Snapshot(pulumi.CustomResource):
         The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property

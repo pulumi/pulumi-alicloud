@@ -157,14 +157,14 @@ def get_keys(description_regex: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kms/getKeys:getKeys', __args__, opts=opts, typ=GetKeysResult).value
 
     return AwaitableGetKeysResult(
-        description_regex=__ret__.description_regex,
-        enable_details=__ret__.enable_details,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        keys=__ret__.keys,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        description_regex=pulumi.get(__ret__, 'description_regex'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        keys=pulumi.get(__ret__, 'keys'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_keys)

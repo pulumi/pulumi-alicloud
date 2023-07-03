@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
  *
- * > **NOTE:** Available in v1.95.0+.
+ * > **NOTE:** Available since v1.95.0.
  *
  * ## Example Usage
  *
@@ -17,13 +17,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Add a new Domain.
- * const dns = new alicloud.dns.AlidnsDomain("dns", {
+ * const defaultDomainGroup = new alicloud.dns.DomainGroup("defaultDomainGroup", {domainGroupName: "tf-example"});
+ * const defaultAlidnsDomain = new alicloud.dns.AlidnsDomain("defaultAlidnsDomain", {
  *     domainName: "starmove.com",
- *     groupId: "85ab8713-4a30-4de4-9d20-155ff830****",
+ *     groupId: defaultDomainGroup.id,
  *     tags: {
- *         Created: "Terraform",
- *         Environment: "test",
+ *         Created: "TF",
+ *         For: "example",
  *     },
  * });
  * ```

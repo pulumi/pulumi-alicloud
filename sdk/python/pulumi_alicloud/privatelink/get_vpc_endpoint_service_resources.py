@@ -112,11 +112,11 @@ def get_vpc_endpoint_service_resources(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources', __args__, opts=opts, typ=GetVpcEndpointServiceResourcesResult).value
 
     return AwaitableGetVpcEndpointServiceResourcesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        resources=__ret__.resources,
-        service_id=__ret__.service_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resources=pulumi.get(__ret__, 'resources'),
+        service_id=pulumi.get(__ret__, 'service_id'))
 
 
 @_utilities.lift_output_func(get_vpc_endpoint_service_resources)

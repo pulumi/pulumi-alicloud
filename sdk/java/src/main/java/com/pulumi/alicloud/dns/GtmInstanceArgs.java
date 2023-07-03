@@ -20,14 +20,14 @@ public final class GtmInstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final GtmInstanceArgs Empty = new GtmInstanceArgs();
 
     /**
-     * The alert notification methods. See the following `Block alert_config`.
+     * The alert notification methods. See `alert_config` below for details.
      * 
      */
     @Import(name="alertConfigs")
     private @Nullable Output<List<GtmInstanceAlertConfigArgs>> alertConfigs;
 
     /**
-     * @return The alert notification methods. See the following `Block alert_config`.
+     * @return The alert notification methods. See `alert_config` below for details.
      * 
      */
     public Optional<Output<List<GtmInstanceAlertConfigArgs>>> alertConfigs() {
@@ -363,7 +363,7 @@ public final class GtmInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertConfigs The alert notification methods. See the following `Block alert_config`.
+         * @param alertConfigs The alert notification methods. See `alert_config` below for details.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class GtmInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertConfigs The alert notification methods. See the following `Block alert_config`.
+         * @param alertConfigs The alert notification methods. See `alert_config` below for details.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class GtmInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertConfigs The alert notification methods. See the following `Block alert_config`.
+         * @param alertConfigs The alert notification methods. See `alert_config` below for details.
          * 
          * @return builder
          * 

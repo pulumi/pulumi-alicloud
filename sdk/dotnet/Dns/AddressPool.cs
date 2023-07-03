@@ -14,7 +14,81 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// For information about Alidns Address Pool and how to use it, see [What is Address Pool](https://www.alibabacloud.com/help/doc-detail/189621.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.152.0+.
+    /// &gt; **NOTE:** Available since v1.152.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var domainName = config.Get("domainName") ?? "alicloud-provider.com";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     {
+    ///         AlarmContactGroupName = name,
+    ///     });
+    /// 
+    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         PackageEdition = "standard",
+    ///         HealthCheckTaskCount = 100,
+    ///         SmsNotificationCount = 1000,
+    ///         PublicCnameMode = "SYSTEM_ASSIGN",
+    ///         Ttl = 60,
+    ///         CnameType = "PUBLIC",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         AlertGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.AlarmContactGroupName,
+    ///         },
+    ///         PublicUserDomainName = domainName,
+    ///         AlertConfigs = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.GtmInstanceAlertConfigArgs
+    ///             {
+    ///                 SmsNotice = true,
+    ///                 NoticeType = "ADDR_ALERT",
+    ///                 EmailNotice = true,
+    ///                 DingtalkNotice = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultAddressPool = new AliCloud.Dns.AddressPool("defaultAddressPool", new()
+    ///     {
+    ///         AddressPoolName = name,
+    ///         InstanceId = defaultGtmInstance.Id,
+    ///         LbaStrategy = "RATIO",
+    ///         Type = "IPV4",
+    ///         Addresses = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.AddressPoolAddressArgs
+    ///             {
+    ///                 AttributeInfo = "{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}",
+    ///                 Remark = "address_remark",
+    ///                 Address = "1.1.1.1",
+    ///                 Mode = "SMART",
+    ///                 LbaWeight = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -34,7 +108,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> AddressPoolName { get; private set; } = null!;
 
         /// <summary>
-        /// The address lists of the Address Pool. See the following `Block address`.
+        /// The address lists of the Address Pool. See `address` below for details.
         /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<Outputs.AddressPoolAddress>> Addresses { get; private set; } = null!;
@@ -113,7 +187,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AddressPoolAddressArgs>? _addresses;
 
         /// <summary>
-        /// The address lists of the Address Pool. See the following `Block address`.
+        /// The address lists of the Address Pool. See `address` below for details.
         /// </summary>
         public InputList<Inputs.AddressPoolAddressArgs> Addresses
         {
@@ -157,7 +231,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AddressPoolAddressGetArgs>? _addresses;
 
         /// <summary>
-        /// The address lists of the Address Pool. See the following `Block address`.
+        /// The address lists of the Address Pool. See `address` below for details.
         /// </summary>
         public InputList<Inputs.AddressPoolAddressGetArgs> Addresses
         {

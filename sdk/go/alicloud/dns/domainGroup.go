@@ -12,7 +12,7 @@ import (
 
 // Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
 //
-// > **NOTE:** Available in v1.84.0+.
+// > **NOTE:** Available since v1.84.0.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewDomainGroup(ctx, "example", &dns.DomainGroupArgs{
-//				DomainGroupName: pulumi.String("tf-testDG"),
+//			_, err := dns.NewDomainGroup(ctx, "default", &dns.DomainGroupArgs{
+//				DomainGroupName: pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err

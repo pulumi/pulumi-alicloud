@@ -24,7 +24,7 @@ class AddressPoolArgs:
         """
         The set of arguments for constructing a AddressPool resource.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address lists of the Address Pool. See the following `Block address`.
+        :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -51,7 +51,7 @@ class AddressPoolArgs:
     @pulumi.getter
     def addresses(self) -> pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]:
         """
-        The address lists of the Address Pool. See the following `Block address`.
+        The address lists of the Address Pool. See `address` below for details.
         """
         return pulumi.get(self, "addresses")
 
@@ -107,7 +107,7 @@ class _AddressPoolState:
         """
         Input properties used for looking up and filtering AddressPool resources.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address lists of the Address Pool. See the following `Block address`.
+        :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -139,7 +139,7 @@ class _AddressPoolState:
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]]:
         """
-        The address lists of the Address Pool. See the following `Block address`.
+        The address lists of the Address Pool. See `address` below for details.
         """
         return pulumi.get(self, "addresses")
 
@@ -200,7 +200,58 @@ class AddressPool(pulumi.CustomResource):
 
         For information about Alidns Address Pool and how to use it, see [What is Address Pool](https://www.alibabacloud.com/help/doc-detail/189621.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.152.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.com"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
+        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
+            instance_name=name,
+            payment_type="Subscription",
+            period=1,
+            renewal_status="ManualRenewal",
+            package_edition="standard",
+            health_check_task_count=100,
+            sms_notification_count=1000,
+            public_cname_mode="SYSTEM_ASSIGN",
+            ttl=60,
+            cname_type="PUBLIC",
+            resource_group_id=default_resource_groups.groups[0].id,
+            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            public_user_domain_name=domain_name,
+            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
+                sms_notice=True,
+                notice_type="ADDR_ALERT",
+                email_notice=True,
+                dingtalk_notice=True,
+            )])
+        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
+            address_pool_name=name,
+            instance_id=default_gtm_instance.id,
+            lba_strategy="RATIO",
+            type="IPV4",
+            addresses=[alicloud.dns.AddressPoolAddressArgs(
+                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
+                remark="address_remark",
+                address="1.1.1.1",
+                mode="SMART",
+                lba_weight=1,
+            )])
+        ```
 
         ## Import
 
@@ -213,7 +264,7 @@ class AddressPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address lists of the Address Pool. See the following `Block address`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -229,7 +280,58 @@ class AddressPool(pulumi.CustomResource):
 
         For information about Alidns Address Pool and how to use it, see [What is Address Pool](https://www.alibabacloud.com/help/doc-detail/189621.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.152.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.com"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
+        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
+            instance_name=name,
+            payment_type="Subscription",
+            period=1,
+            renewal_status="ManualRenewal",
+            package_edition="standard",
+            health_check_task_count=100,
+            sms_notification_count=1000,
+            public_cname_mode="SYSTEM_ASSIGN",
+            ttl=60,
+            cname_type="PUBLIC",
+            resource_group_id=default_resource_groups.groups[0].id,
+            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            public_user_domain_name=domain_name,
+            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
+                sms_notice=True,
+                notice_type="ADDR_ALERT",
+                email_notice=True,
+                dingtalk_notice=True,
+            )])
+        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
+            address_pool_name=name,
+            instance_id=default_gtm_instance.id,
+            lba_strategy="RATIO",
+            type="IPV4",
+            addresses=[alicloud.dns.AddressPoolAddressArgs(
+                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
+                remark="address_remark",
+                address="1.1.1.1",
+                mode="SMART",
+                lba_weight=1,
+            )])
+        ```
 
         ## Import
 
@@ -306,7 +408,7 @@ class AddressPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address lists of the Address Pool. See the following `Block address`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -334,7 +436,7 @@ class AddressPool(pulumi.CustomResource):
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence['outputs.AddressPoolAddress']]:
         """
-        The address lists of the Address Pool. See the following `Block address`.
+        The address lists of the Address Pool. See `address` below for details.
         """
         return pulumi.get(self, "addresses")
 

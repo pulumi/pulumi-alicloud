@@ -132,7 +132,9 @@ class InstanceGrant(pulumi.CustomResource):
         """
         Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
 
-        For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
+        For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-attachcenchildinstance).
+
+        > **NOTE:** Available since v1.37.0.
 
         ## Example Usage
 
@@ -142,33 +144,41 @@ class InstanceGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
-        account1 = alicloud.Provider("account1",
-            access_key="access123",
-            secret_key="secret123")
-        account2 = alicloud.Provider("account2",
-            access_key="access456",
-            secret_key="secret456")
         config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccCenInstanceGrantBasic"
-        cen = alicloud.cen.Instance("cen", opts=pulumi.ResourceOptions(provider=alicloud["account2"]))
-        vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/16",
-        opts=pulumi.ResourceOptions(provider=alicloud["account1"]))
-        foo_instance_grant = alicloud.cen.InstanceGrant("fooInstanceGrant",
-            cen_id=cen.id,
-            child_instance_id=vpc.id,
-            cen_owner_id="uid2",
-            opts=pulumi.ResourceOptions(provider=alicloud["account1"]))
-        foo_instance_attachment = alicloud.cen.InstanceAttachment("fooInstanceAttachment",
-            instance_id=cen.id,
-            child_instance_id=vpc.id,
+        child_account_ak = config.get("childAccountAk")
+        if child_account_ak is None:
+            child_account_ak = "example-ak"
+        child_account_sk = config.get("childAccountSk")
+        if child_account_sk is None:
+            child_account_sk = "example-sk"
+        your_account = alicloud.Provider("yourAccount")
+        child_account = alicloud.Provider("childAccount",
+            access_key=child_account_ak,
+            secret_key=child_account_sk)
+        your_account_account = alicloud.get_account()
+        child_account_account = alicloud.get_account()
+        default = alicloud.get_regions(current=True)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen",
+            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
+        child_account_network = alicloud.vpc.Network("childAccountNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
+        child_account_instance_grant = alicloud.cen.InstanceGrant("childAccountInstanceGrant",
+            cen_id=example_instance.id,
+            child_instance_id=child_account_network.id,
+            cen_owner_id=your_account_account.id,
+            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=child_account_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-qingdao",
-            child_instance_owner_id="uid1",
-            opts=pulumi.ResourceOptions(provider=alicloud["account2"],
-                depends_on=[foo_instance_grant]))
+            child_instance_region_id=default.regions[0].id,
+            child_instance_owner_id=child_account_account.id,
+            opts=pulumi.ResourceOptions(provider=alicloud["your_account"],
+                depends_on=[child_account_instance_grant]))
         ```
 
         ## Import
@@ -194,7 +204,9 @@ class InstanceGrant(pulumi.CustomResource):
         """
         Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
 
-        For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
+        For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-attachcenchildinstance).
+
+        > **NOTE:** Available since v1.37.0.
 
         ## Example Usage
 
@@ -204,33 +216,41 @@ class InstanceGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
-        account1 = alicloud.Provider("account1",
-            access_key="access123",
-            secret_key="secret123")
-        account2 = alicloud.Provider("account2",
-            access_key="access456",
-            secret_key="secret456")
         config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccCenInstanceGrantBasic"
-        cen = alicloud.cen.Instance("cen", opts=pulumi.ResourceOptions(provider=alicloud["account2"]))
-        vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/16",
-        opts=pulumi.ResourceOptions(provider=alicloud["account1"]))
-        foo_instance_grant = alicloud.cen.InstanceGrant("fooInstanceGrant",
-            cen_id=cen.id,
-            child_instance_id=vpc.id,
-            cen_owner_id="uid2",
-            opts=pulumi.ResourceOptions(provider=alicloud["account1"]))
-        foo_instance_attachment = alicloud.cen.InstanceAttachment("fooInstanceAttachment",
-            instance_id=cen.id,
-            child_instance_id=vpc.id,
+        child_account_ak = config.get("childAccountAk")
+        if child_account_ak is None:
+            child_account_ak = "example-ak"
+        child_account_sk = config.get("childAccountSk")
+        if child_account_sk is None:
+            child_account_sk = "example-sk"
+        your_account = alicloud.Provider("yourAccount")
+        child_account = alicloud.Provider("childAccount",
+            access_key=child_account_ak,
+            secret_key=child_account_sk)
+        your_account_account = alicloud.get_account()
+        child_account_account = alicloud.get_account()
+        default = alicloud.get_regions(current=True)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen",
+            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
+        child_account_network = alicloud.vpc.Network("childAccountNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
+        child_account_instance_grant = alicloud.cen.InstanceGrant("childAccountInstanceGrant",
+            cen_id=example_instance.id,
+            child_instance_id=child_account_network.id,
+            cen_owner_id=your_account_account.id,
+            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=child_account_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-qingdao",
-            child_instance_owner_id="uid1",
-            opts=pulumi.ResourceOptions(provider=alicloud["account2"],
-                depends_on=[foo_instance_grant]))
+            child_instance_region_id=default.regions[0].id,
+            child_instance_owner_id=child_account_account.id,
+            opts=pulumi.ResourceOptions(provider=alicloud["your_account"],
+                depends_on=[child_account_instance_grant]))
         ```
 
         ## Import

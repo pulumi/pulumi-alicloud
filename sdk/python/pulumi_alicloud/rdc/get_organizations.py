@@ -145,13 +145,13 @@ def get_organizations(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rdc/getOrganizations:getOrganizations', __args__, opts=opts, typ=GetOrganizationsResult).value
 
     return AwaitableGetOrganizationsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        organizations=__ret__.organizations,
-        output_file=__ret__.output_file,
-        real_pk=__ret__.real_pk)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        organizations=pulumi.get(__ret__, 'organizations'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        real_pk=pulumi.get(__ret__, 'real_pk'))
 
 
 @_utilities.lift_output_func(get_organizations)

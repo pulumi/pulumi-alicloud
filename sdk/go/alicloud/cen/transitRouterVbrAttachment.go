@@ -11,9 +11,91 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://help.aliyun.com/document_detail/261361.html)
+// Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
 //
-// > **NOTE:** Available in 1.126.0+
+// > **NOTE:** Available since v1.126.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String(name),
+//				CenId:             exampleInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nameRegex, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(2999),
+//				Min: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//				LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//				PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//				PhysicalConnectionId:    *pulumi.String(nameRegex.Connections[0].Id),
+//				VirtualBorderRouterName: pulumi.String(name),
+//				VlanId:                  vlanId.ID(),
+//				MinRxInterval:           pulumi.Int(1000),
+//				MinTxInterval:           pulumi.Int(1000),
+//				DetectMultiplier:        pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterVbrAttachment(ctx, "exampleTransitRouterVbrAttachment", &cen.TransitRouterVbrAttachmentArgs{
+//				VbrId:                              exampleVirtualBorderRouter.ID(),
+//				CenId:                              exampleInstance.ID(),
+//				TransitRouterId:                    exampleTransitRouter.TransitRouterId,
+//				AutoPublishRouteEnabled:            pulumi.Bool(true),
+//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -34,6 +116,8 @@ type TransitRouterVbrAttachment struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	ResourceType pulumi.StringPtrOutput `pulumi:"resourceType"`
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled pulumi.BoolPtrOutput `pulumi:"routeTableAssociationEnabled"`
@@ -54,8 +138,6 @@ type TransitRouterVbrAttachment struct {
 	// The ID of the VBR.
 	VbrId pulumi.StringOutput `pulumi:"vbrId"`
 	// The owner id of the transit router vbr attachment.
-	//
-	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId pulumi.StringOutput `pulumi:"vbrOwnerId"`
 }
 
@@ -101,6 +183,8 @@ type transitRouterVbrAttachmentState struct {
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
 	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	ResourceType *string `pulumi:"resourceType"`
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
@@ -121,8 +205,6 @@ type transitRouterVbrAttachmentState struct {
 	// The ID of the VBR.
 	VbrId *string `pulumi:"vbrId"`
 	// The owner id of the transit router vbr attachment.
-	//
-	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId *string `pulumi:"vbrOwnerId"`
 }
 
@@ -134,6 +216,8 @@ type TransitRouterVbrAttachmentState struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
 	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	ResourceType pulumi.StringPtrInput
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled pulumi.BoolPtrInput
@@ -154,8 +238,6 @@ type TransitRouterVbrAttachmentState struct {
 	// The ID of the VBR.
 	VbrId pulumi.StringPtrInput
 	// The owner id of the transit router vbr attachment.
-	//
-	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId pulumi.StringPtrInput
 }
 
@@ -171,6 +253,8 @@ type transitRouterVbrAttachmentArgs struct {
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
 	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	ResourceType *string `pulumi:"resourceType"`
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
@@ -187,8 +271,6 @@ type transitRouterVbrAttachmentArgs struct {
 	// The ID of the VBR.
 	VbrId string `pulumi:"vbrId"`
 	// The owner id of the transit router vbr attachment.
-	//
-	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId *string `pulumi:"vbrOwnerId"`
 }
 
@@ -201,6 +283,8 @@ type TransitRouterVbrAttachmentArgs struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
 	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	ResourceType pulumi.StringPtrInput
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled pulumi.BoolPtrInput
@@ -217,8 +301,6 @@ type TransitRouterVbrAttachmentArgs struct {
 	// The ID of the VBR.
 	VbrId pulumi.StringInput
 	// The owner id of the transit router vbr attachment.
-	//
-	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId pulumi.StringPtrInput
 }
 
@@ -325,6 +407,8 @@ func (o TransitRouterVbrAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 }
 
 // The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+//
+// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 func (o TransitRouterVbrAttachmentOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
@@ -377,8 +461,6 @@ func (o TransitRouterVbrAttachmentOutput) VbrId() pulumi.StringOutput {
 }
 
 // The owner id of the transit router vbr attachment.
-//
-// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 func (o TransitRouterVbrAttachmentOutput) VbrOwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.VbrOwnerId }).(pulumi.StringOutput)
 }

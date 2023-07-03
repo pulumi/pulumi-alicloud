@@ -153,14 +153,14 @@ def get_instance_type_families(generation: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies', __args__, opts=opts, typ=GetInstanceTypeFamiliesResult).value
 
     return AwaitableGetInstanceTypeFamiliesResult(
-        families=__ret__.families,
-        generation=__ret__.generation,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_charge_type=__ret__.instance_charge_type,
-        output_file=__ret__.output_file,
-        spot_strategy=__ret__.spot_strategy,
-        zone_id=__ret__.zone_id)
+        families=pulumi.get(__ret__, 'families'),
+        generation=pulumi.get(__ret__, 'generation'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        spot_strategy=pulumi.get(__ret__, 'spot_strategy'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_instance_type_families)

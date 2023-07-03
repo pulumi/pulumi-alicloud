@@ -176,15 +176,15 @@ def get_transit_router_route_table_associations(ids: Optional[Sequence[str]] = N
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations', __args__, opts=opts, typ=GetTransitRouterRouteTableAssociationsResult).value
 
     return AwaitableGetTransitRouterRouteTableAssociationsResult(
-        associations=__ret__.associations,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        transit_router_attachment_id=__ret__.transit_router_attachment_id,
-        transit_router_attachment_resource_id=__ret__.transit_router_attachment_resource_id,
-        transit_router_attachment_resource_type=__ret__.transit_router_attachment_resource_type,
-        transit_router_route_table_id=__ret__.transit_router_route_table_id)
+        associations=pulumi.get(__ret__, 'associations'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
+        transit_router_attachment_resource_id=pulumi.get(__ret__, 'transit_router_attachment_resource_id'),
+        transit_router_attachment_resource_type=pulumi.get(__ret__, 'transit_router_attachment_resource_type'),
+        transit_router_route_table_id=pulumi.get(__ret__, 'transit_router_route_table_id'))
 
 
 @_utilities.lift_output_func(get_transit_router_route_table_associations)

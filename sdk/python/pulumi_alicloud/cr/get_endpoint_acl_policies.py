@@ -132,12 +132,12 @@ def get_endpoint_acl_policies(endpoint_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies', __args__, opts=opts, typ=GetEndpointAclPoliciesResult).value
 
     return AwaitableGetEndpointAclPoliciesResult(
-        endpoint_type=__ret__.endpoint_type,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file,
-        policies=__ret__.policies)
+        endpoint_type=pulumi.get(__ret__, 'endpoint_type'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policies=pulumi.get(__ret__, 'policies'))
 
 
 @_utilities.lift_output_func(get_endpoint_acl_policies)

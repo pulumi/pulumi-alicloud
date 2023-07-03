@@ -159,14 +159,14 @@ def get_scheduled_tasks(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ess/getScheduledTasks:getScheduledTasks', __args__, opts=opts, typ=GetScheduledTasksResult).value
 
     return AwaitableGetScheduledTasksResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        scheduled_action=__ret__.scheduled_action,
-        scheduled_task_id=__ret__.scheduled_task_id,
-        tasks=__ret__.tasks)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        scheduled_action=pulumi.get(__ret__, 'scheduled_action'),
+        scheduled_task_id=pulumi.get(__ret__, 'scheduled_task_id'),
+        tasks=pulumi.get(__ret__, 'tasks'))
 
 
 @_utilities.lift_output_func(get_scheduled_tasks)

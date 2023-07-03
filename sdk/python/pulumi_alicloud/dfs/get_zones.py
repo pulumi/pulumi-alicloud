@@ -90,9 +90,9 @@ def get_zones(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dfs/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        zones=__ret__.zones)
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_zones)

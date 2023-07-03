@@ -204,17 +204,17 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules', __args__, opts=opts, typ=GetAggregateConfigRulesResult).value
 
     return AwaitableGetAggregateConfigRulesResult(
-        aggregate_config_rule_name=__ret__.aggregate_config_rule_name,
-        aggregator_id=__ret__.aggregator_id,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        risk_level=__ret__.risk_level,
-        rules=__ret__.rules,
-        status=__ret__.status)
+        aggregate_config_rule_name=pulumi.get(__ret__, 'aggregate_config_rule_name'),
+        aggregator_id=pulumi.get(__ret__, 'aggregator_id'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        risk_level=pulumi.get(__ret__, 'risk_level'),
+        rules=pulumi.get(__ret__, 'rules'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_aggregate_config_rules)

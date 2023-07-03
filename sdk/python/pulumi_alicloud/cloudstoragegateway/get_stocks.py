@@ -103,10 +103,10 @@ def get_stocks(gateway_class: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudstoragegateway/getStocks:getStocks', __args__, opts=opts, typ=GetStocksResult).value
 
     return AwaitableGetStocksResult(
-        gateway_class=__ret__.gateway_class,
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        stocks=__ret__.stocks)
+        gateway_class=pulumi.get(__ret__, 'gateway_class'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        stocks=pulumi.get(__ret__, 'stocks'))
 
 
 @_utilities.lift_output_func(get_stocks)

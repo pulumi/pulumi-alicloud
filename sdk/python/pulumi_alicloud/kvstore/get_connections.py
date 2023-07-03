@@ -97,10 +97,10 @@ def get_connections(ids: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kvstore/getConnections:getConnections', __args__, opts=opts, typ=GetConnectionsResult).value
 
     return AwaitableGetConnectionsResult(
-        connections=__ret__.connections,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file)
+        connections=pulumi.get(__ret__, 'connections'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_connections)

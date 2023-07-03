@@ -146,13 +146,13 @@ def get_ssl_vpn_client_certs(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts', __args__, opts=opts, typ=GetSslVpnClientCertsResult).value
 
     return AwaitableGetSslVpnClientCertsResult(
-        certs=__ret__.certs,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        ssl_vpn_server_id=__ret__.ssl_vpn_server_id)
+        certs=pulumi.get(__ret__, 'certs'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        ssl_vpn_server_id=pulumi.get(__ret__, 'ssl_vpn_server_id'))
 
 
 @_utilities.lift_output_func(get_ssl_vpn_client_certs)

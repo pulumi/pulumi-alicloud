@@ -139,13 +139,13 @@ def get_server_group_server_attachments(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments', __args__, opts=opts, typ=GetServerGroupServerAttachmentsResult).value
 
     return AwaitableGetServerGroupServerAttachmentsResult(
-        attachments=__ret__.attachments,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        server_group_id=__ret__.server_group_id,
-        server_ids=__ret__.server_ids,
-        server_ips=__ret__.server_ips)
+        attachments=pulumi.get(__ret__, 'attachments'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        server_group_id=pulumi.get(__ret__, 'server_group_id'),
+        server_ids=pulumi.get(__ret__, 'server_ids'),
+        server_ips=pulumi.get(__ret__, 'server_ips'))
 
 
 @_utilities.lift_output_func(get_server_group_server_attachments)

@@ -165,15 +165,15 @@ def get_ddos_bgp_ips(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ddos/getDdosBgpIps:getDdosBgpIps', __args__, opts=opts, typ=GetDdosBgpIpsResult).value
 
     return AwaitableGetDdosBgpIpsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        ips=__ret__.ips,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        product_name=__ret__.product_name,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        ips=pulumi.get(__ret__, 'ips'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        product_name=pulumi.get(__ret__, 'product_name'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_ddos_bgp_ips)

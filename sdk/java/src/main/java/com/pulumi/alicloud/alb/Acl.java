@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Application Load Balancer (ALB) Acl resource.
  * 
- * For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/200280.html).
+ * For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createacl).
  * 
- * &gt; **NOTE:** Available in v1.133.0+.
+ * &gt; **NOTE:** Available since v1.133.0.
  * 
  * ## Example Usage
  * 
@@ -35,9 +35,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.alb.Acl;
  * import com.pulumi.alicloud.alb.AclArgs;
- * import com.pulumi.alicloud.alb.inputs.AclAclEntryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,12 +52,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Acl(&#34;example&#34;, AclArgs.builder()        
- *             .aclEntries(AclAclEntryArgs.builder()
- *                 .description(&#34;example_value&#34;)
- *                 .entry(&#34;10.0.0.0/24&#34;)
- *                 .build())
- *             .aclName(&#34;example_value&#34;)
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+ *             .aclName(&#34;tf_example&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .build());
  * 
  *     }
@@ -75,7 +75,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
+     * The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+     * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
      * 
      * @deprecated
      * Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.
@@ -86,7 +87,8 @@ public class Acl extends com.pulumi.resources.CustomResource {
     private Output<List<AclAclEntry>> aclEntries;
 
     /**
-     * @return The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
+     * @return The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+     * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
      * 
      */
     public Output<List<AclAclEntry>> aclEntries() {
@@ -135,14 +137,14 @@ public class Acl extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * The status of the ACL entry. Valid values:
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * @return The status of the ACL entry. Valid values:
      * 
      */
     public Output<String> status() {

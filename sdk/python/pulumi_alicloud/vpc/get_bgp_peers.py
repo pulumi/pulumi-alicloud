@@ -148,13 +148,13 @@ def get_bgp_peers(bgp_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getBgpPeers:getBgpPeers', __args__, opts=opts, typ=GetBgpPeersResult).value
 
     return AwaitableGetBgpPeersResult(
-        bgp_group_id=__ret__.bgp_group_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        peers=__ret__.peers,
-        router_id=__ret__.router_id,
-        status=__ret__.status)
+        bgp_group_id=pulumi.get(__ret__, 'bgp_group_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        peers=pulumi.get(__ret__, 'peers'),
+        router_id=pulumi.get(__ret__, 'router_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_bgp_peers)

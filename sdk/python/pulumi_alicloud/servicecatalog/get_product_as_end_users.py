@@ -144,13 +144,13 @@ def get_product_as_end_users(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers', __args__, opts=opts, typ=GetProductAsEndUsersResult).value
 
     return AwaitableGetProductAsEndUsersResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        output_file=__ret__.output_file,
-        sort_by=__ret__.sort_by,
-        sort_order=__ret__.sort_order,
-        users=__ret__.users)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        sort_by=pulumi.get(__ret__, 'sort_by'),
+        sort_order=pulumi.get(__ret__, 'sort_order'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_product_as_end_users)

@@ -2350,7 +2350,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.204.0+.
+     * &gt; **NOTE:** Available since v1.204.0+.
      * 
      * ## Example Usage
      * 
@@ -2392,7 +2392,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.204.0+.
+     * &gt; **NOTE:** Available since v1.204.0+.
      * 
      * ## Example Usage
      * 
@@ -2434,7 +2434,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.204.0+.
+     * &gt; **NOTE:** Available since v1.204.0+.
      * 
      * ## Example Usage
      * 
@@ -2476,7 +2476,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.204.0+.
+     * &gt; **NOTE:** Available since v1.204.0+.
      * 
      * ## Example Usage
      * 

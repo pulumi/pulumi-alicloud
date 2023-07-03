@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
  * This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
  * After you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.
  *
- * For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).
+ * For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-enablecenvbrhealthcheck).
  *
- * > **NOTE:** Available in 1.88.0+
+ * > **NOTE:** Available since v1.88.0.
  *
  * ## Example Usage
  *
@@ -19,25 +19,49 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * // Create a cen vbr HealrhCheck resource and use it.
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "test_name"});
- * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("defaultInstanceAttachment", {
- *     instanceId: defaultInstance.id,
- *     childInstanceId: "vbr-xxxxx",
- *     childInstanceType: "VBR",
- *     childInstanceRegionId: "cn-hangzhou",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
  * });
- * const defaultVbrHealthCheck = new alicloud.cen.VbrHealthCheck("defaultVbrHealthCheck", {
- *     cenId: defaultInstance.id,
+ * const defaultPhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^preserved-NODELETING",
+ * });
+ * const vlanId = new random.RandomInteger("vlanId", {
+ *     max: 2999,
+ *     min: 1,
+ * });
+ * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
+ *     localGatewayIp: "10.0.0.1",
+ *     peerGatewayIp: "10.0.0.2",
+ *     peeringSubnetMask: "255.255.255.252",
+ *     physicalConnectionId: defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.connections?.[0]?.id),
+ *     virtualBorderRouterName: name,
+ *     vlanId: vlanId.id,
+ *     minRxInterval: 1000,
+ *     minTxInterval: 1000,
+ *     detectMultiplier: 10,
+ * });
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     childInstanceId: exampleVirtualBorderRouter.id,
+ *     childInstanceType: "VBR",
+ *     childInstanceRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ * });
+ * const exampleVbrHealthCheck = new alicloud.cen.VbrHealthCheck("exampleVbrHealthCheck", {
+ *     cenId: exampleInstance.id,
  *     healthCheckSourceIp: "192.168.1.2",
  *     healthCheckTargetIp: "10.0.0.2",
- *     vbrInstanceId: "vbr-xxxxx",
- *     vbrInstanceRegionId: "cn-hangzhou",
+ *     vbrInstanceId: exampleVirtualBorderRouter.id,
+ *     vbrInstanceRegionId: exampleInstanceAttachment.childInstanceRegionId,
  *     healthCheckInterval: 2,
  *     healthyThreshold: 8,
- * }, {
- *     dependsOn: [defaultInstanceAttachment],
  * });
  * ```
  *

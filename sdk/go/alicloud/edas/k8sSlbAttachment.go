@@ -15,7 +15,7 @@ import (
 //
 // For information about EDAS k8s slb attachment and how to use it, see [What is k8s slb attachment](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/bindk8sslb).
 //
-// > **NOTE:** Available in v1.194.0+.
+// > **NOTE:** Available since v1.194.0.
 //
 // ## Example Usage
 //
@@ -79,7 +79,7 @@ type K8sSlbAttachment struct {
 
 	// The ID of the EDAS k8s application to which you want to bind SLB instances.
 	AppId pulumi.StringOutput `pulumi:"appId"`
-	// The configurations of SLB attachment, which is supported for multiple configurations.
+	// The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
 	SlbConfigs K8sSlbAttachmentSlbConfigArrayOutput `pulumi:"slbConfigs"`
 }
 
@@ -117,14 +117,14 @@ func GetK8sSlbAttachment(ctx *pulumi.Context,
 type k8sSlbAttachmentState struct {
 	// The ID of the EDAS k8s application to which you want to bind SLB instances.
 	AppId *string `pulumi:"appId"`
-	// The configurations of SLB attachment, which is supported for multiple configurations.
+	// The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
 	SlbConfigs []K8sSlbAttachmentSlbConfig `pulumi:"slbConfigs"`
 }
 
 type K8sSlbAttachmentState struct {
 	// The ID of the EDAS k8s application to which you want to bind SLB instances.
 	AppId pulumi.StringPtrInput
-	// The configurations of SLB attachment, which is supported for multiple configurations.
+	// The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
 	SlbConfigs K8sSlbAttachmentSlbConfigArrayInput
 }
 
@@ -135,7 +135,7 @@ func (K8sSlbAttachmentState) ElementType() reflect.Type {
 type k8sSlbAttachmentArgs struct {
 	// The ID of the EDAS k8s application to which you want to bind SLB instances.
 	AppId string `pulumi:"appId"`
-	// The configurations of SLB attachment, which is supported for multiple configurations.
+	// The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
 	SlbConfigs []K8sSlbAttachmentSlbConfig `pulumi:"slbConfigs"`
 }
 
@@ -143,7 +143,7 @@ type k8sSlbAttachmentArgs struct {
 type K8sSlbAttachmentArgs struct {
 	// The ID of the EDAS k8s application to which you want to bind SLB instances.
 	AppId pulumi.StringInput
-	// The configurations of SLB attachment, which is supported for multiple configurations.
+	// The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
 	SlbConfigs K8sSlbAttachmentSlbConfigArrayInput
 }
 
@@ -239,7 +239,7 @@ func (o K8sSlbAttachmentOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *K8sSlbAttachment) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
 
-// The configurations of SLB attachment, which is supported for multiple configurations.
+// The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
 func (o K8sSlbAttachmentOutput) SlbConfigs() K8sSlbAttachmentSlbConfigArrayOutput {
 	return o.ApplyT(func(v *K8sSlbAttachment) K8sSlbAttachmentSlbConfigArrayOutput { return v.SlbConfigs }).(K8sSlbAttachmentSlbConfigArrayOutput)
 }

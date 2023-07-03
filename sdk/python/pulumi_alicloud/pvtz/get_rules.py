@@ -138,13 +138,13 @@ def get_rules(endpoint_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:pvtz/getRules:getRules', __args__, opts=opts, typ=GetRulesResult).value
 
     return AwaitableGetRulesResult(
-        endpoint_id=__ret__.endpoint_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules)
+        endpoint_id=pulumi.get(__ret__, 'endpoint_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'))
 
 
 @_utilities.lift_output_func(get_rules)

@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Ga
     public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
         /// </summary>
         [Output("aclEntries")]
         public Output<ImmutableArray<Outputs.AclAclEntry>> AclEntries { get; private set; } = null!;
@@ -84,6 +84,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,9 +141,9 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.AclAclEntryArgs>? _aclEntries;
 
         /// <summary>
-        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
         /// </summary>
-        [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.")]
+        [Obsolete(@"Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.")]
         public InputList<Inputs.AclAclEntryArgs> AclEntries
         {
             get => _aclEntries ?? (_aclEntries = new InputList<Inputs.AclAclEntryArgs>());
@@ -162,6 +168,18 @@ namespace Pulumi.AliCloud.Ga
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         public AclArgs()
         {
         }
@@ -174,9 +192,9 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.AclAclEntryGetArgs>? _aclEntries;
 
         /// <summary>
-        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
         /// </summary>
-        [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.")]
+        [Obsolete(@"Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.")]
         public InputList<Inputs.AclAclEntryGetArgs> AclEntries
         {
             get => _aclEntries ?? (_aclEntries = new InputList<Inputs.AclAclEntryGetArgs>());
@@ -206,6 +224,18 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public AclState()
         {

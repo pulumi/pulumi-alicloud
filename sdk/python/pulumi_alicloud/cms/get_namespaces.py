@@ -137,13 +137,13 @@ def get_namespaces(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getNamespaces:getNamespaces', __args__, opts=opts, typ=GetNamespacesResult).value
 
     return AwaitableGetNamespacesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        keyword=__ret__.keyword,
-        namespaces=__ret__.namespaces,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        keyword=pulumi.get(__ret__, 'keyword'),
+        namespaces=pulumi.get(__ret__, 'namespaces'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_namespaces)

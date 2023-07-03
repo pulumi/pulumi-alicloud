@@ -14,16 +14,32 @@ public final class DbInstanceEndpointNodeItemArgs extends com.pulumi.resources.R
 
     public static final DbInstanceEndpointNodeItemArgs Empty = new DbInstanceEndpointNodeItemArgs();
 
+    /**
+     * The ID of the node.
+     * 
+     */
     @Import(name="nodeId", required=true)
     private Output<String> nodeId;
 
+    /**
+     * @return The ID of the node.
+     * 
+     */
     public Output<String> nodeId() {
         return this.nodeId;
     }
 
+    /**
+     * The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+     * 
+     */
     @Import(name="weight", required=true)
     private Output<Integer> weight;
 
+    /**
+     * @return The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+     * 
+     */
     public Output<Integer> weight() {
         return this.weight;
     }
@@ -53,20 +69,44 @@ public final class DbInstanceEndpointNodeItemArgs extends com.pulumi.resources.R
             $ = new DbInstanceEndpointNodeItemArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeId The ID of the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeId(Output<String> nodeId) {
             $.nodeId = nodeId;
             return this;
         }
 
+        /**
+         * @param nodeId The ID of the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeId(String nodeId) {
             return nodeId(Output.of(nodeId));
         }
 
+        /**
+         * @param weight The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(Output<Integer> weight) {
             $.weight = weight;
             return this;
         }
 
+        /**
+         * @param weight The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(Integer weight) {
             return weight(Output.of(weight));
         }

@@ -157,6 +157,9 @@ class ImageCopyArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -300,6 +303,9 @@ class _ImageCopyState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -679,6 +685,9 @@ class ImageCopy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
+
         return pulumi.get(self, "name")
 
     @property

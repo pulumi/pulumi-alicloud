@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a Application Load Balancer (ALB) Rule resource.
     /// 
-    /// For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/doc-detail/214375.htm).
+    /// For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createrule).
     /// 
-    /// &gt; **NOTE:** Available in v1.133.0+.
+    /// &gt; **NOTE:** Available since v1.133.0.
     /// 
     /// &gt; **NOTE:** This version only supports forwarding rules in the request direction.
     /// 
@@ -54,13 +54,13 @@ namespace Pulumi.AliCloud.Alb
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The actions of the forwarding rules. See the following `Block rule_actions`.
+        /// The actions of the forwarding rules. See `rule_actions` below for details.
         /// </summary>
         [Output("ruleActions")]
         public Output<ImmutableArray<Outputs.RuleRuleAction>> RuleActions { get; private set; } = null!;
 
         /// <summary>
-        /// The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        /// The conditions of the forwarding rule. See `rule_conditions` below for details.
         /// </summary>
         [Output("ruleConditions")]
         public Output<ImmutableArray<Outputs.RuleRuleCondition>> RuleConditions { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.RuleRuleActionArgs>? _ruleActions;
 
         /// <summary>
-        /// The actions of the forwarding rules. See the following `Block rule_actions`.
+        /// The actions of the forwarding rules. See `rule_actions` below for details.
         /// </summary>
         public InputList<Inputs.RuleRuleActionArgs> RuleActions
         {
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.RuleRuleConditionArgs>? _ruleConditions;
 
         /// <summary>
-        /// The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        /// The conditions of the forwarding rule. See `rule_conditions` below for details.
         /// </summary>
         public InputList<Inputs.RuleRuleConditionArgs> RuleConditions
         {
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.RuleRuleActionGetArgs>? _ruleActions;
 
         /// <summary>
-        /// The actions of the forwarding rules. See the following `Block rule_actions`.
+        /// The actions of the forwarding rules. See `rule_actions` below for details.
         /// </summary>
         public InputList<Inputs.RuleRuleActionGetArgs> RuleActions
         {
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.RuleRuleConditionGetArgs>? _ruleConditions;
 
         /// <summary>
-        /// The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        /// The conditions of the forwarding rule. See `rule_conditions` below for details.
         /// </summary>
         public InputList<Inputs.RuleRuleConditionGetArgs> RuleConditions
         {

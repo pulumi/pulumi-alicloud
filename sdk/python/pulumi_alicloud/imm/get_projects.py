@@ -103,10 +103,10 @@ def get_projects(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:imm/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult).value
 
     return AwaitableGetProjectsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        projects=__ret__.projects)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        projects=pulumi.get(__ret__, 'projects'))
 
 
 @_utilities.lift_output_func(get_projects)

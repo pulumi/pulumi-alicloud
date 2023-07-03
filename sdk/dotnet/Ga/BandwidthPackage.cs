@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ga
     /// <summary>
     /// Provides a Global Accelerator (GA) Bandwidth Package resource.
     /// 
-    /// For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
+    /// For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbandwidthpackage).
     /// 
     /// &gt; **NOTE:** At present, The `alicloud.ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
     /// 
@@ -56,8 +56,6 @@ namespace Pulumi.AliCloud.Ga
     {
         /// <summary>
         /// Whether to pay automatically. Valid values:
-        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        /// `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
@@ -69,7 +67,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<int?> AutoRenewDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        /// Whether use vouchers. Default value: `false`. Valid values:
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
@@ -88,7 +86,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-        /// 
         /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Output("bandwidthType")]
@@ -101,13 +98,13 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> BillingType { get; private set; } = null!;
 
         /// <summary>
-        /// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+        /// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
         /// </summary>
         [Output("cbnGeographicRegionIda")]
         public Output<string> CbnGeographicRegionIda { get; private set; } = null!;
 
         /// <summary>
-        /// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        /// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         /// </summary>
         [Output("cbnGeographicRegionIdb")]
         public Output<string> CbnGeographicRegionIdb { get; private set; } = null!;
@@ -125,13 +122,13 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+        /// The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         /// </summary>
         [Output("paymentType")]
         public Output<string?> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         /// </summary>
         [Output("ratio")]
         public Output<int?> Ratio { get; private set; } = null!;
@@ -143,10 +140,16 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the bandwidth plan.
+        /// The status of the Bandwidth Package.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -202,8 +205,6 @@ namespace Pulumi.AliCloud.Ga
     {
         /// <summary>
         /// Whether to pay automatically. Valid values:
-        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        /// `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
@@ -215,7 +216,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        /// Whether use vouchers. Default value: `false`. Valid values:
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -234,7 +235,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-        /// 
         /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Input("bandwidthType")]
@@ -247,13 +247,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BillingType { get; set; }
 
         /// <summary>
-        /// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+        /// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
         /// </summary>
         [Input("cbnGeographicRegionIda")]
         public Input<string>? CbnGeographicRegionIda { get; set; }
 
         /// <summary>
-        /// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        /// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         /// </summary>
         [Input("cbnGeographicRegionIdb")]
         public Input<string>? CbnGeographicRegionIdb { get; set; }
@@ -271,13 +271,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+        /// The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
@@ -287,6 +287,18 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -304,8 +316,6 @@ namespace Pulumi.AliCloud.Ga
     {
         /// <summary>
         /// Whether to pay automatically. Valid values:
-        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        /// `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
@@ -317,7 +327,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+        /// Whether use vouchers. Default value: `false`. Valid values:
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -336,7 +346,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-        /// 
         /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Input("bandwidthType")]
@@ -349,13 +358,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BillingType { get; set; }
 
         /// <summary>
-        /// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+        /// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
         /// </summary>
         [Input("cbnGeographicRegionIda")]
         public Input<string>? CbnGeographicRegionIda { get; set; }
 
         /// <summary>
-        /// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+        /// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
         /// </summary>
         [Input("cbnGeographicRegionIdb")]
         public Input<string>? CbnGeographicRegionIdb { get; set; }
@@ -373,13 +382,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+        /// The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
@@ -391,10 +400,22 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// The status of the bandwidth plan.
+        /// The status of the Bandwidth Package.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.

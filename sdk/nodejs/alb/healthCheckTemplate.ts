@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Application Load Balancer (ALB) Health Check Template resource.
  *
- * For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/doc-detail/214343.htm).
+ * For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createhealthchecktemplate).
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *

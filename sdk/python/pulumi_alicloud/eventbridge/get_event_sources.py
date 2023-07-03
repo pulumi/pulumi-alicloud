@@ -125,12 +125,12 @@ def get_event_sources(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eventbridge/getEventSources:getEventSources', __args__, opts=opts, typ=GetEventSourcesResult).value
 
     return AwaitableGetEventSourcesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        sources=__ret__.sources)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        sources=pulumi.get(__ret__, 'sources'))
 
 
 @_utilities.lift_output_func(get_event_sources)

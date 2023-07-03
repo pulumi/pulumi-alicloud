@@ -139,13 +139,13 @@ def get_mail_addresses(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:directmail/getMailAddresses:getMailAddresses', __args__, opts=opts, typ=GetMailAddressesResult).value
 
     return AwaitableGetMailAddressesResult(
-        addresses=__ret__.addresses,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        key_word=__ret__.key_word,
-        output_file=__ret__.output_file,
-        sendtype=__ret__.sendtype,
-        status=__ret__.status)
+        addresses=pulumi.get(__ret__, 'addresses'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        key_word=pulumi.get(__ret__, 'key_word'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        sendtype=pulumi.get(__ret__, 'sendtype'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_mail_addresses)

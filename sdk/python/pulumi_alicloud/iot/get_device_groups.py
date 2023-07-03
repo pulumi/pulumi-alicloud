@@ -163,15 +163,15 @@ def get_device_groups(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:iot/getDeviceGroups:getDeviceGroups', __args__, opts=opts, typ=GetDeviceGroupsResult).value
 
     return AwaitableGetDeviceGroupsResult(
-        enable_details=__ret__.enable_details,
-        group_name=__ret__.group_name,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        iot_instance_id=__ret__.iot_instance_id,
-        name_regex=__ret__.name_regex,
-        output_file=__ret__.output_file,
-        super_group_id=__ret__.super_group_id)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        group_name=pulumi.get(__ret__, 'group_name'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        iot_instance_id=pulumi.get(__ret__, 'iot_instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        super_group_id=pulumi.get(__ret__, 'super_group_id'))
 
 
 @_utilities.lift_output_func(get_device_groups)

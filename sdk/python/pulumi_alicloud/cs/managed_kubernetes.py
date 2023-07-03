@@ -546,6 +546,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         """
+        warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'cpu_policy' to replace it""")
+
         return pulumi.get(self, "cpu_policy")
 
     @cpu_policy.setter
@@ -594,6 +597,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) Enable login to the node through SSH. Default to `false`.
         """
+        warnings.warn("""Field 'enable_ssh' has been deprecated from provider version 1.177.0.""", DeprecationWarning)
+        pulumi.log.warn("""enable_ssh is deprecated: Field 'enable_ssh' has been deprecated from provider version 1.177.0.""")
+
         return pulumi.get(self, "enable_ssh")
 
     @enable_ssh.setter
@@ -618,6 +624,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         """
+        warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes""", DeprecationWarning)
+        pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes""")
+
         return pulumi.get(self, "exclude_autoscaler_nodes")
 
     @exclude_autoscaler_nodes.setter
@@ -630,6 +639,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
         """
+        warnings.warn("""Field 'image_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'image_id' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""image_id is deprecated: Field 'image_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'image_id' to replace it""")
+
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -642,6 +654,9 @@ class ManagedKubernetesArgs:
         """
         Install cloud monitor agent on ECS. Default to `true`.
         """
+        warnings.warn("""Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""install_cloud_monitor is deprecated: Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it""")
+
         return pulumi.get(self, "install_cloud_monitor")
 
     @install_cloud_monitor.setter
@@ -666,6 +681,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
+        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'key_name' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'key_name' to replace it""")
+
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -678,6 +696,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         """
+        warnings.warn("""Field 'kms_encrypted_password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encrypted_password' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""kms_encrypted_password is deprecated: Field 'kms_encrypted_password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encrypted_password' to replace it""")
+
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
@@ -690,6 +711,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
+        warnings.warn("""Field 'kms_encryption_context' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encryption_context' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""kms_encryption_context is deprecated: Field 'kms_encryption_context' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encryption_context' to replace it""")
+
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
@@ -702,6 +726,9 @@ class ManagedKubernetesArgs:
         """
         The path of kube config, like `~/.kube/config`.
         """
+        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
@@ -783,6 +810,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         """
+        warnings.warn("""Field 'node_name_mode' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'node_name_mode' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""node_name_mode is deprecated: Field 'node_name_mode' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'node_name_mode' to replace it.""")
+
         return pulumi.get(self, "node_name_mode")
 
     @node_name_mode.setter
@@ -795,6 +825,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         """
+        warnings.warn("""Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""", DeprecationWarning)
+        pulumi.log.warn("""node_port_range is deprecated: Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""")
+
         return pulumi.get(self, "node_port_range")
 
     @node_port_range.setter
@@ -807,6 +840,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         """
+        warnings.warn("""Field 'os_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""", DeprecationWarning)
+        pulumi.log.warn("""os_type is deprecated: Field 'os_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""")
+
         return pulumi.get(self, "os_type")
 
     @os_type.setter
@@ -819,6 +855,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
+        warnings.warn("""Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it""")
+
         return pulumi.get(self, "password")
 
     @password.setter
@@ -831,6 +870,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
         """
+        warnings.warn("""Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'platform' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'platform' to replace it.""")
+
         return pulumi.get(self, "platform")
 
     @platform.setter
@@ -879,6 +921,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
         """
+        warnings.warn("""Field 'rds_instances' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'rds_instances' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""rds_instances is deprecated: Field 'rds_instances' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'rds_instances' to replace it.""")
+
         return pulumi.get(self, "rds_instances")
 
     @rds_instances.setter
@@ -924,6 +969,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         """
+        warnings.warn("""Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""runtime is deprecated: Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""")
+
         return pulumi.get(self, "runtime")
 
     @runtime.setter
@@ -999,6 +1047,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         """
+        warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'taints' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'taints' to replace it.""")
+
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -1035,6 +1086,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         """
+        warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'user_data' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'user_data' to replace it.""")
+
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -1059,6 +1113,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) Enable worker payment auto-renew, defaults to false.
         """
+        warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew")
 
     @worker_auto_renew.setter
@@ -1071,6 +1128,9 @@ class ManagedKubernetesArgs:
         """
         Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
+        warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew_period' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew_period")
 
     @worker_auto_renew_period.setter
@@ -1083,6 +1143,9 @@ class ManagedKubernetesArgs:
         """
         The data disk category of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_category")
 
     @worker_data_disk_category.setter
@@ -1095,6 +1158,9 @@ class ManagedKubernetesArgs:
         """
         The data disk size of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_size")
 
     @worker_data_disk_size.setter
@@ -1107,6 +1173,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
         """
+        warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it""")
+
         return pulumi.get(self, "worker_data_disks")
 
     @worker_data_disks.setter
@@ -1119,6 +1188,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
+        warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_category' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_category' to replace it.""")
+
         return pulumi.get(self, "worker_disk_category")
 
     @worker_disk_category.setter
@@ -1131,6 +1203,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
+        warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_performance_level' to replace it""")
+
         return pulumi.get(self, "worker_disk_performance_level")
 
     @worker_disk_performance_level.setter
@@ -1143,6 +1218,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         """
+        warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_size' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_size' to replace it.""")
+
         return pulumi.get(self, "worker_disk_size")
 
     @worker_disk_size.setter
@@ -1155,6 +1233,9 @@ class ManagedKubernetesArgs:
         """
         (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
         """
+        warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
+
         return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
     @worker_disk_snapshot_policy_id.setter
@@ -1167,6 +1248,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         """
+        warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_charge_type' to replace it""")
+
         return pulumi.get(self, "worker_instance_charge_type")
 
     @worker_instance_charge_type.setter
@@ -1179,6 +1263,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         """
+        warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_types' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_types' to replace it.""")
+
         return pulumi.get(self, "worker_instance_types")
 
     @worker_instance_types.setter
@@ -1191,6 +1278,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         """
+        warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes., by using field 'desired_size' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes., by using field 'desired_size' to replace it.""")
+
         return pulumi.get(self, "worker_number")
 
     @worker_number.setter
@@ -1203,6 +1293,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         """
+        warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period' to replace it""")
+
         return pulumi.get(self, "worker_period")
 
     @worker_period.setter
@@ -1215,6 +1308,9 @@ class ManagedKubernetesArgs:
         """
         (Optional) Worker payment period unit, the valid value is `Month`.
         """
+        warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period_unit' to replace it""")
+
         return pulumi.get(self, "worker_period_unit")
 
     @worker_period_unit.setter
@@ -1810,6 +1906,9 @@ class _ManagedKubernetesState:
         """
         (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         """
+        warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'cpu_policy' to replace it""")
+
         return pulumi.get(self, "cpu_policy")
 
     @cpu_policy.setter
@@ -1858,6 +1957,9 @@ class _ManagedKubernetesState:
         """
         (Optional) Enable login to the node through SSH. Default to `false`.
         """
+        warnings.warn("""Field 'enable_ssh' has been deprecated from provider version 1.177.0.""", DeprecationWarning)
+        pulumi.log.warn("""enable_ssh is deprecated: Field 'enable_ssh' has been deprecated from provider version 1.177.0.""")
+
         return pulumi.get(self, "enable_ssh")
 
     @enable_ssh.setter
@@ -1882,6 +1984,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         """
+        warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes""", DeprecationWarning)
+        pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes""")
+
         return pulumi.get(self, "exclude_autoscaler_nodes")
 
     @exclude_autoscaler_nodes.setter
@@ -1894,6 +1999,9 @@ class _ManagedKubernetesState:
         """
         (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
         """
+        warnings.warn("""Field 'image_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'image_id' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""image_id is deprecated: Field 'image_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'image_id' to replace it""")
+
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -1906,6 +2014,9 @@ class _ManagedKubernetesState:
         """
         Install cloud monitor agent on ECS. Default to `true`.
         """
+        warnings.warn("""Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""install_cloud_monitor is deprecated: Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it""")
+
         return pulumi.get(self, "install_cloud_monitor")
 
     @install_cloud_monitor.setter
@@ -1930,6 +2041,9 @@ class _ManagedKubernetesState:
         """
         (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
+        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'key_name' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'key_name' to replace it""")
+
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -1942,6 +2056,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         """
+        warnings.warn("""Field 'kms_encrypted_password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encrypted_password' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""kms_encrypted_password is deprecated: Field 'kms_encrypted_password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encrypted_password' to replace it""")
+
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
@@ -1954,6 +2071,9 @@ class _ManagedKubernetesState:
         """
         (Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
+        warnings.warn("""Field 'kms_encryption_context' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encryption_context' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""kms_encryption_context is deprecated: Field 'kms_encryption_context' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encryption_context' to replace it""")
+
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
@@ -1966,6 +2086,9 @@ class _ManagedKubernetesState:
         """
         The path of kube config, like `~/.kube/config`.
         """
+        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
@@ -2059,6 +2182,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         """
+        warnings.warn("""Field 'node_name_mode' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'node_name_mode' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""node_name_mode is deprecated: Field 'node_name_mode' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'node_name_mode' to replace it.""")
+
         return pulumi.get(self, "node_name_mode")
 
     @node_name_mode.setter
@@ -2071,6 +2197,9 @@ class _ManagedKubernetesState:
         """
         (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         """
+        warnings.warn("""Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""", DeprecationWarning)
+        pulumi.log.warn("""node_port_range is deprecated: Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""")
+
         return pulumi.get(self, "node_port_range")
 
     @node_port_range.setter
@@ -2083,6 +2212,9 @@ class _ManagedKubernetesState:
         """
         (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         """
+        warnings.warn("""Field 'os_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""", DeprecationWarning)
+        pulumi.log.warn("""os_type is deprecated: Field 'os_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""")
+
         return pulumi.get(self, "os_type")
 
     @os_type.setter
@@ -2095,6 +2227,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
+        warnings.warn("""Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it""")
+
         return pulumi.get(self, "password")
 
     @password.setter
@@ -2107,6 +2242,9 @@ class _ManagedKubernetesState:
         """
         (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
         """
+        warnings.warn("""Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'platform' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'platform' to replace it.""")
+
         return pulumi.get(self, "platform")
 
     @platform.setter
@@ -2155,6 +2293,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
         """
+        warnings.warn("""Field 'rds_instances' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'rds_instances' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""rds_instances is deprecated: Field 'rds_instances' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'rds_instances' to replace it.""")
+
         return pulumi.get(self, "rds_instances")
 
     @rds_instances.setter
@@ -2200,6 +2341,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         """
+        warnings.warn("""Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""runtime is deprecated: Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""")
+
         return pulumi.get(self, "runtime")
 
     @runtime.setter
@@ -2248,6 +2392,9 @@ class _ManagedKubernetesState:
         """
         The ID of load balancer.
         """
+        warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
+
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
@@ -2311,6 +2458,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         """
+        warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'taints' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'taints' to replace it.""")
+
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -2347,6 +2497,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         """
+        warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'user_data' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'user_data' to replace it.""")
+
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -2383,6 +2536,9 @@ class _ManagedKubernetesState:
         """
         (Optional) Enable worker payment auto-renew, defaults to false.
         """
+        warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew")
 
     @worker_auto_renew.setter
@@ -2395,6 +2551,9 @@ class _ManagedKubernetesState:
         """
         Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
+        warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew_period' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew_period")
 
     @worker_auto_renew_period.setter
@@ -2407,6 +2566,9 @@ class _ManagedKubernetesState:
         """
         The data disk category of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_category")
 
     @worker_data_disk_category.setter
@@ -2419,6 +2581,9 @@ class _ManagedKubernetesState:
         """
         The data disk size of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_size")
 
     @worker_data_disk_size.setter
@@ -2431,6 +2596,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
         """
+        warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it""")
+
         return pulumi.get(self, "worker_data_disks")
 
     @worker_data_disks.setter
@@ -2443,6 +2611,9 @@ class _ManagedKubernetesState:
         """
         (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
+        warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_category' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_category' to replace it.""")
+
         return pulumi.get(self, "worker_disk_category")
 
     @worker_disk_category.setter
@@ -2455,6 +2626,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
+        warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_performance_level' to replace it""")
+
         return pulumi.get(self, "worker_disk_performance_level")
 
     @worker_disk_performance_level.setter
@@ -2467,6 +2641,9 @@ class _ManagedKubernetesState:
         """
         (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         """
+        warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_size' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_size' to replace it.""")
+
         return pulumi.get(self, "worker_disk_size")
 
     @worker_disk_size.setter
@@ -2479,6 +2656,9 @@ class _ManagedKubernetesState:
         """
         (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
         """
+        warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
+
         return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
     @worker_disk_snapshot_policy_id.setter
@@ -2491,6 +2671,9 @@ class _ManagedKubernetesState:
         """
         (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         """
+        warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_charge_type' to replace it""")
+
         return pulumi.get(self, "worker_instance_charge_type")
 
     @worker_instance_charge_type.setter
@@ -2503,6 +2686,9 @@ class _ManagedKubernetesState:
         """
         (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         """
+        warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_types' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_types' to replace it.""")
+
         return pulumi.get(self, "worker_instance_types")
 
     @worker_instance_types.setter
@@ -2515,6 +2701,9 @@ class _ManagedKubernetesState:
         """
         (Deprecated from version 1.177.0) List of cluster worker nodes.
         """
+        warnings.warn("""Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""", DeprecationWarning)
+        pulumi.log.warn("""worker_nodes is deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""")
+
         return pulumi.get(self, "worker_nodes")
 
     @worker_nodes.setter
@@ -2527,6 +2716,9 @@ class _ManagedKubernetesState:
         """
         (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         """
+        warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes., by using field 'desired_size' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes., by using field 'desired_size' to replace it.""")
+
         return pulumi.get(self, "worker_number")
 
     @worker_number.setter
@@ -2539,6 +2731,9 @@ class _ManagedKubernetesState:
         """
         (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         """
+        warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period' to replace it""")
+
         return pulumi.get(self, "worker_period")
 
     @worker_period.setter
@@ -2551,6 +2746,9 @@ class _ManagedKubernetesState:
         """
         (Optional) Worker payment period unit, the valid value is `Month`.
         """
+        warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period_unit' to replace it""")
+
         return pulumi.get(self, "worker_period_unit")
 
     @worker_period_unit.setter
@@ -3400,6 +3598,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         """
+        warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'cpu_policy' to replace it""")
+
         return pulumi.get(self, "cpu_policy")
 
     @property
@@ -3432,6 +3633,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) Enable login to the node through SSH. Default to `false`.
         """
+        warnings.warn("""Field 'enable_ssh' has been deprecated from provider version 1.177.0.""", DeprecationWarning)
+        pulumi.log.warn("""enable_ssh is deprecated: Field 'enable_ssh' has been deprecated from provider version 1.177.0.""")
+
         return pulumi.get(self, "enable_ssh")
 
     @property
@@ -3448,6 +3652,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         """
+        warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes""", DeprecationWarning)
+        pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes""")
+
         return pulumi.get(self, "exclude_autoscaler_nodes")
 
     @property
@@ -3456,6 +3663,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
         """
+        warnings.warn("""Field 'image_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'image_id' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""image_id is deprecated: Field 'image_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'image_id' to replace it""")
+
         return pulumi.get(self, "image_id")
 
     @property
@@ -3464,6 +3674,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         Install cloud monitor agent on ECS. Default to `true`.
         """
+        warnings.warn("""Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""install_cloud_monitor is deprecated: Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it""")
+
         return pulumi.get(self, "install_cloud_monitor")
 
     @property
@@ -3480,6 +3693,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
+        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'key_name' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'key_name' to replace it""")
+
         return pulumi.get(self, "key_name")
 
     @property
@@ -3488,6 +3704,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         """
+        warnings.warn("""Field 'kms_encrypted_password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encrypted_password' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""kms_encrypted_password is deprecated: Field 'kms_encrypted_password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encrypted_password' to replace it""")
+
         return pulumi.get(self, "kms_encrypted_password")
 
     @property
@@ -3496,6 +3715,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
+        warnings.warn("""Field 'kms_encryption_context' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encryption_context' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""kms_encryption_context is deprecated: Field 'kms_encryption_context' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encryption_context' to replace it""")
+
         return pulumi.get(self, "kms_encryption_context")
 
     @property
@@ -3504,6 +3726,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         The path of kube config, like `~/.kube/config`.
         """
+        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+
         return pulumi.get(self, "kube_config")
 
     @property
@@ -3565,6 +3790,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         """
+        warnings.warn("""Field 'node_name_mode' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'node_name_mode' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""node_name_mode is deprecated: Field 'node_name_mode' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'node_name_mode' to replace it.""")
+
         return pulumi.get(self, "node_name_mode")
 
     @property
@@ -3573,6 +3801,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         """
+        warnings.warn("""Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""", DeprecationWarning)
+        pulumi.log.warn("""node_port_range is deprecated: Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""")
+
         return pulumi.get(self, "node_port_range")
 
     @property
@@ -3581,6 +3812,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         """
+        warnings.warn("""Field 'os_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""", DeprecationWarning)
+        pulumi.log.warn("""os_type is deprecated: Field 'os_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""")
+
         return pulumi.get(self, "os_type")
 
     @property
@@ -3589,6 +3823,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         """
+        warnings.warn("""Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it""")
+
         return pulumi.get(self, "password")
 
     @property
@@ -3597,6 +3834,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
         """
+        warnings.warn("""Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'platform' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'platform' to replace it.""")
+
         return pulumi.get(self, "platform")
 
     @property
@@ -3629,6 +3869,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
         """
+        warnings.warn("""Field 'rds_instances' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'rds_instances' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""rds_instances is deprecated: Field 'rds_instances' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'rds_instances' to replace it.""")
+
         return pulumi.get(self, "rds_instances")
 
     @property
@@ -3658,6 +3901,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         """
+        warnings.warn("""Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""runtime is deprecated: Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""")
+
         return pulumi.get(self, "runtime")
 
     @property
@@ -3690,6 +3936,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         The ID of load balancer.
         """
+        warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
+
         return pulumi.get(self, "slb_id")
 
     @property
@@ -3733,6 +3982,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         """
+        warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'taints' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'taints' to replace it.""")
+
         return pulumi.get(self, "taints")
 
     @property
@@ -3757,6 +4009,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         """
+        warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'user_data' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'user_data' to replace it.""")
+
         return pulumi.get(self, "user_data")
 
     @property
@@ -3781,6 +4036,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) Enable worker payment auto-renew, defaults to false.
         """
+        warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew")
 
     @property
@@ -3789,6 +4047,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
+        warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew_period' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew_period")
 
     @property
@@ -3797,6 +4058,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         The data disk category of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_category")
 
     @property
@@ -3805,6 +4069,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         The data disk size of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_size")
 
     @property
@@ -3813,6 +4080,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
         """
+        warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it""")
+
         return pulumi.get(self, "worker_data_disks")
 
     @property
@@ -3821,6 +4091,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
+        warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_category' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_category' to replace it.""")
+
         return pulumi.get(self, "worker_disk_category")
 
     @property
@@ -3829,6 +4102,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
+        warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_performance_level' to replace it""")
+
         return pulumi.get(self, "worker_disk_performance_level")
 
     @property
@@ -3837,6 +4113,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         """
+        warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_size' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_size' to replace it.""")
+
         return pulumi.get(self, "worker_disk_size")
 
     @property
@@ -3845,6 +4124,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
         """
+        warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
+
         return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
     @property
@@ -3853,6 +4135,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         """
+        warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_charge_type' to replace it""")
+
         return pulumi.get(self, "worker_instance_charge_type")
 
     @property
@@ -3861,6 +4146,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         """
+        warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_types' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_types' to replace it.""")
+
         return pulumi.get(self, "worker_instance_types")
 
     @property
@@ -3869,6 +4157,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Deprecated from version 1.177.0) List of cluster worker nodes.
         """
+        warnings.warn("""Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""", DeprecationWarning)
+        pulumi.log.warn("""worker_nodes is deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes.""")
+
         return pulumi.get(self, "worker_nodes")
 
     @property
@@ -3877,6 +4168,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         """
+        warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes., by using field 'desired_size' to replace it.""", DeprecationWarning)
+        pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes., by using field 'desired_size' to replace it.""")
+
         return pulumi.get(self, "worker_number")
 
     @property
@@ -3885,6 +4179,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         """
+        warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period' to replace it""")
+
         return pulumi.get(self, "worker_period")
 
     @property
@@ -3893,6 +4190,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         (Optional) Worker payment period unit, the valid value is `Month`.
         """
+        warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period_unit' to replace it""")
+
         return pulumi.get(self, "worker_period_unit")
 
     @property

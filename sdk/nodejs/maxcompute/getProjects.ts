@@ -10,6 +10,27 @@ import * as utilities from "../utilities";
  * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_testaccmp";
+ * const defaultProject = new alicloud.maxcompute.Project("defaultProject", {
+ *     defaultQuota: "默认后付费Quota",
+ *     projectName: name,
+ *     comment: name,
+ *     productType: "PAYASYOUGO",
+ * });
+ * const defaultProjects = defaultProject.id.apply(id => alicloud.maxcompute.getProjectsOutput({
+ *     ids: [id],
+ *     nameRegex: defaultProject.name,
+ * }));
+ * export const alicloudMaxcomputeProjectExampleId = defaultProjects.apply(defaultProjects => defaultProjects.projects?.[0]?.id);
+ * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
@@ -67,6 +88,27 @@ export interface GetProjectsResult {
  * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_testaccmp";
+ * const defaultProject = new alicloud.maxcompute.Project("defaultProject", {
+ *     defaultQuota: "默认后付费Quota",
+ *     projectName: name,
+ *     comment: name,
+ *     productType: "PAYASYOUGO",
+ * });
+ * const defaultProjects = defaultProject.id.apply(id => alicloud.maxcompute.getProjectsOutput({
+ *     ids: [id],
+ *     nameRegex: defaultProject.name,
+ * }));
+ * export const alicloudMaxcomputeProjectExampleId = defaultProjects.apply(defaultProjects => defaultProjects.projects?.[0]?.id);
+ * ```
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
     return pulumi.output(args).apply((a: any) => getProjects(a, opts))

@@ -21,7 +21,8 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
     public static final AclState Empty = new AclState();
 
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
+     * The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+     * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
      * 
      * @deprecated
      * Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.
@@ -32,7 +33,8 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<AclAclEntryArgs>> aclEntries;
 
     /**
-     * @return The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
+     * @return The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+     * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
      * 
      * @deprecated
      * Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.
@@ -89,14 +91,14 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * The status of the ACL entry. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * @return The status of the ACL entry. Valid values:
      * 
      */
     public Optional<Output<String>> status() {
@@ -148,7 +150,8 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
+         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+         * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
          * 
          * @return builder
          * 
@@ -163,7 +166,8 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
+         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+         * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
          * 
          * @return builder
          * 
@@ -177,7 +181,8 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
+         * @param aclEntries The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+         * **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_acl_entry_attachment&#39;.&#34;,
          * 
          * @return builder
          * 
@@ -254,7 +259,7 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         * @param status The status of the ACL entry. Valid values:
          * 
          * @return builder
          * 
@@ -265,7 +270,7 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         * @param status The status of the ACL entry. Valid values:
          * 
          * @return builder
          * 

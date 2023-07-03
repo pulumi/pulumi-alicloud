@@ -15,7 +15,7 @@ import (
 //
 // For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0.
 //
 // ## Example Usage
 //
@@ -37,11 +37,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testacc"
+//			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			domainName := "your_domain_name"
+//			domainName := "alicloud-provider.com"
 //			if param := cfg.Get("domainName"); param != "" {
 //				domainName = param
 //			}
@@ -60,7 +60,7 @@ import (
 //				PaymentType:          pulumi.String("Subscription"),
 //				Period:               pulumi.Int(1),
 //				RenewalStatus:        pulumi.String("ManualRenewal"),
-//				PackageEdition:       pulumi.String("ultimate"),
+//				PackageEdition:       pulumi.String("standard"),
 //				HealthCheckTaskCount: pulumi.Int(100),
 //				SmsNotificationCount: pulumi.Int(1000),
 //				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
@@ -107,10 +107,12 @@ import (
 //				Interval:          pulumi.Int(60),
 //				Timeout:           pulumi.Int(5000),
 //				ProtocolType:      pulumi.String("TCP"),
-//				MonitorExtendInfo: pulumi.String("{\"failureRate\"=50,\"port\"=80}"),
+//				MonitorExtendInfo: pulumi.String("{\"failureRate\":50,\"port\":80}"),
 //				IspCityNodes: dns.MonitorConfigIspCityNodeArray{
-//					CityCode: "503",
-//					IspCode:  "465",
+//					&dns.MonitorConfigIspCityNodeArgs{
+//						CityCode: pulumi.String("503"),
+//						IspCode:  pulumi.String("465"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -140,7 +142,7 @@ type MonitorConfig struct {
 	EvaluationCount pulumi.IntOutput `pulumi:"evaluationCount"`
 	// The health check interval. Unit: seconds. Valid values: `60`.
 	Interval pulumi.IntOutput `pulumi:"interval"`
-	// The Monitoring node. See the following `Block ispCityNode`.
+	// The Monitoring node. See `ispCityNode` below for details.
 	IspCityNodes MonitorConfigIspCityNodeArrayOutput `pulumi:"ispCityNodes"`
 	// The lang.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
@@ -208,7 +210,7 @@ type monitorConfigState struct {
 	EvaluationCount *int `pulumi:"evaluationCount"`
 	// The health check interval. Unit: seconds. Valid values: `60`.
 	Interval *int `pulumi:"interval"`
-	// The Monitoring node. See the following `Block ispCityNode`.
+	// The Monitoring node. See `ispCityNode` below for details.
 	IspCityNodes []MonitorConfigIspCityNode `pulumi:"ispCityNodes"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
@@ -227,7 +229,7 @@ type MonitorConfigState struct {
 	EvaluationCount pulumi.IntPtrInput
 	// The health check interval. Unit: seconds. Valid values: `60`.
 	Interval pulumi.IntPtrInput
-	// The Monitoring node. See the following `Block ispCityNode`.
+	// The Monitoring node. See `ispCityNode` below for details.
 	IspCityNodes MonitorConfigIspCityNodeArrayInput
 	// The lang.
 	Lang pulumi.StringPtrInput
@@ -250,7 +252,7 @@ type monitorConfigArgs struct {
 	EvaluationCount int `pulumi:"evaluationCount"`
 	// The health check interval. Unit: seconds. Valid values: `60`.
 	Interval int `pulumi:"interval"`
-	// The Monitoring node. See the following `Block ispCityNode`.
+	// The Monitoring node. See `ispCityNode` below for details.
 	IspCityNodes []MonitorConfigIspCityNode `pulumi:"ispCityNodes"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
@@ -270,7 +272,7 @@ type MonitorConfigArgs struct {
 	EvaluationCount pulumi.IntInput
 	// The health check interval. Unit: seconds. Valid values: `60`.
 	Interval pulumi.IntInput
-	// The Monitoring node. See the following `Block ispCityNode`.
+	// The Monitoring node. See `ispCityNode` below for details.
 	IspCityNodes MonitorConfigIspCityNodeArrayInput
 	// The lang.
 	Lang pulumi.StringPtrInput
@@ -384,7 +386,7 @@ func (o MonitorConfigOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v *MonitorConfig) pulumi.IntOutput { return v.Interval }).(pulumi.IntOutput)
 }
 
-// The Monitoring node. See the following `Block ispCityNode`.
+// The Monitoring node. See `ispCityNode` below for details.
 func (o MonitorConfigOutput) IspCityNodes() MonitorConfigIspCityNodeArrayOutput {
 	return o.ApplyT(func(v *MonitorConfig) MonitorConfigIspCityNodeArrayOutput { return v.IspCityNodes }).(MonitorConfigIspCityNodeArrayOutput)
 }

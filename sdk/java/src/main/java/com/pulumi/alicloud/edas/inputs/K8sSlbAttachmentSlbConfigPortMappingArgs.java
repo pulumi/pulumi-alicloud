@@ -47,14 +47,14 @@ public final class K8sSlbAttachmentSlbConfigPortMappingArgs extends com.pulumi.r
     }
 
     /**
-     * The backend k8s service configuration for SLB instance, which is supported for multiple configurations.
+     * The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
      * 
      */
     @Import(name="servicePort", required=true)
     private Output<K8sSlbAttachmentSlbConfigPortMappingServicePortArgs> servicePort;
 
     /**
-     * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations.
+     * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
      * 
      */
     public Output<K8sSlbAttachmentSlbConfigPortMappingServicePortArgs> servicePort() {
@@ -130,7 +130,7 @@ public final class K8sSlbAttachmentSlbConfigPortMappingArgs extends com.pulumi.r
         }
 
         /**
-         * @param servicePort The backend k8s service configuration for SLB instance, which is supported for multiple configurations.
+         * @param servicePort The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class K8sSlbAttachmentSlbConfigPortMappingArgs extends com.pulumi.r
         }
 
         /**
-         * @param servicePort The backend k8s service configuration for SLB instance, which is supported for multiple configurations.
+         * @param servicePort The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
          * 
          * @return builder
          * 

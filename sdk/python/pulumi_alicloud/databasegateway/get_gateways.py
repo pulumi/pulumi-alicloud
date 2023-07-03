@@ -162,15 +162,15 @@ def get_gateways(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:databasegateway/getGateways:getGateways', __args__, opts=opts, typ=GetGatewaysResult).value
 
     return AwaitableGetGatewaysResult(
-        enable_details=__ret__.enable_details,
-        gateways=__ret__.gateways,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        search_key=__ret__.search_key,
-        status=__ret__.status)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        gateways=pulumi.get(__ret__, 'gateways'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        search_key=pulumi.get(__ret__, 'search_key'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_gateways)

@@ -180,15 +180,15 @@ def get_stack_instances(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ros/getStackInstances:getStackInstances', __args__, opts=opts, typ=GetStackInstancesResult).value
 
     return AwaitableGetStackInstancesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        output_file=__ret__.output_file,
-        stack_group_name=__ret__.stack_group_name,
-        stack_instance_account_id=__ret__.stack_instance_account_id,
-        stack_instance_region_id=__ret__.stack_instance_region_id,
-        status=__ret__.status)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        stack_group_name=pulumi.get(__ret__, 'stack_group_name'),
+        stack_instance_account_id=pulumi.get(__ret__, 'stack_instance_account_id'),
+        stack_instance_region_id=pulumi.get(__ret__, 'stack_instance_region_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_stack_instances)

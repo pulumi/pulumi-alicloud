@@ -124,12 +124,12 @@ def get_vpc_endpoint_zones(endpoint_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones', __args__, opts=opts, typ=GetVpcEndpointZonesResult).value
 
     return AwaitableGetVpcEndpointZonesResult(
-        endpoint_id=__ret__.endpoint_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        zones=__ret__.zones)
+        endpoint_id=pulumi.get(__ret__, 'endpoint_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_vpc_endpoint_zones)

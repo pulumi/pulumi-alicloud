@@ -43,7 +43,24 @@ import (
 //				ControlPolicyName: pulumi.String("tf-testAccName"),
 //				Description:       pulumi.String("tf-testAccRDControlPolicy"),
 //				EffectScope:       pulumi.String("RAM"),
-//				PolicyDocument:    pulumi.String("  {\n    \"Version\": \"1\",\n    \"Statement\": [\n      {\n        \"Effect\": \"Deny\",\n        \"Action\": [\n          \"ram:UpdateRole\",\n          \"ram:DeleteRole\",\n          \"ram:AttachPolicyToRole\",\n          \"ram:DetachPolicyFromRole\"\n        ],\n        \"Resource\": \"acs:ram:*:*:role/ResourceDirectoryAccountAccessRole\"\n      }\n    ]\n  }\n"),
+//				PolicyDocument: pulumi.String(`  {
+//	    "Version": "1",
+//	    "Statement": [
+//	      {
+//	        "Effect": "Deny",
+//	        "Action": [
+//	          "ram:UpdateRole",
+//	          "ram:DeleteRole",
+//	          "ram:AttachPolicyToRole",
+//	          "ram:DetachPolicyFromRole"
+//	        ],
+//	        "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+//	      }
+//	    ]
+//	  }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err

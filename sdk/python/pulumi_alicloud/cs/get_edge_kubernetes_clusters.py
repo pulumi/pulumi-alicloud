@@ -143,13 +143,13 @@ def get_edge_kubernetes_clusters(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters', __args__, opts=opts, typ=GetEdgeKubernetesClustersResult).value
 
     return AwaitableGetEdgeKubernetesClustersResult(
-        clusters=__ret__.clusters,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        clusters=pulumi.get(__ret__, 'clusters'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_edge_kubernetes_clusters)

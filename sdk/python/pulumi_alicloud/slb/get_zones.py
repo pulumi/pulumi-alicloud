@@ -31,10 +31,6 @@ class GetZonesResult:
         pulumi.set(__self__, "available_slb_address_type", available_slb_address_type)
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
-        if enable_details is not None:
-            warnings.warn("""The parameter enable_details has been deprecated from version v1.154.0+""", DeprecationWarning)
-            pulumi.log.warn("""enable_details is deprecated: The parameter enable_details has been deprecated from version v1.154.0+""")
-
         pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -68,6 +64,9 @@ class GetZonesResult:
     @property
     @pulumi.getter(name="enableDetails")
     def enable_details(self) -> Optional[bool]:
+        warnings.warn("""The parameter enable_details has been deprecated from version v1.154.0+""", DeprecationWarning)
+        pulumi.log.warn("""enable_details is deprecated: The parameter enable_details has been deprecated from version v1.154.0+""")
+
         return pulumi.get(self, "enable_details")
 
     @property
@@ -177,15 +176,15 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        available_slb_address_ip_version=__ret__.available_slb_address_ip_version,
-        available_slb_address_type=__ret__.available_slb_address_type,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        master_zone_id=__ret__.master_zone_id,
-        output_file=__ret__.output_file,
-        slave_zone_id=__ret__.slave_zone_id,
-        zones=__ret__.zones)
+        available_slb_address_ip_version=pulumi.get(__ret__, 'available_slb_address_ip_version'),
+        available_slb_address_type=pulumi.get(__ret__, 'available_slb_address_type'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        master_zone_id=pulumi.get(__ret__, 'master_zone_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        slave_zone_id=pulumi.get(__ret__, 'slave_zone_id'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_zones)

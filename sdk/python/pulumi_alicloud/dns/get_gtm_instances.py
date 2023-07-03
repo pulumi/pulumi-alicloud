@@ -124,12 +124,12 @@ def get_gtm_instances(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dns/getGtmInstances:getGtmInstances', __args__, opts=opts, typ=GetGtmInstancesResult).value
 
     return AwaitableGetGtmInstancesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        lang=__ret__.lang,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        lang=pulumi.get(__ret__, 'lang'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'))
 
 
 @_utilities.lift_output_func(get_gtm_instances)

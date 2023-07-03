@@ -80,6 +80,9 @@ class ServerGroupArgs:
         """
         A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         """
+        warnings.warn("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""", DeprecationWarning)
+        pulumi.log.warn("""servers is deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
+
         return pulumi.get(self, "servers")
 
     @servers.setter
@@ -155,6 +158,9 @@ class _ServerGroupState:
         """
         A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         """
+        warnings.warn("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""", DeprecationWarning)
+        pulumi.log.warn("""servers is deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
+
         return pulumi.get(self, "servers")
 
     @servers.setter
@@ -404,5 +410,8 @@ class ServerGroup(pulumi.CustomResource):
         """
         A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         """
+        warnings.warn("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""", DeprecationWarning)
+        pulumi.log.warn("""servers is deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
+
         return pulumi.get(self, "servers")
 

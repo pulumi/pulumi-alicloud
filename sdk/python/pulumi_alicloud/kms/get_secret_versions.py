@@ -159,14 +159,14 @@ def get_secret_versions(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kms/getSecretVersions:getSecretVersions', __args__, opts=opts, typ=GetSecretVersionsResult).value
 
     return AwaitableGetSecretVersionsResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        include_deprecated=__ret__.include_deprecated,
-        output_file=__ret__.output_file,
-        secret_name=__ret__.secret_name,
-        version_stage=__ret__.version_stage,
-        versions=__ret__.versions)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        include_deprecated=pulumi.get(__ret__, 'include_deprecated'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        secret_name=pulumi.get(__ret__, 'secret_name'),
+        version_stage=pulumi.get(__ret__, 'version_stage'),
+        versions=pulumi.get(__ret__, 'versions'))
 
 
 @_utilities.lift_output_func(get_secret_versions)

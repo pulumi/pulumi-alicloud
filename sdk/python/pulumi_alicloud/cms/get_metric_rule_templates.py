@@ -178,16 +178,16 @@ def get_metric_rule_templates(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates', __args__, opts=opts, typ=GetMetricRuleTemplatesResult).value
 
     return AwaitableGetMetricRuleTemplatesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        keyword=__ret__.keyword,
-        metric_rule_template_name=__ret__.metric_rule_template_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        template_id=__ret__.template_id,
-        templates=__ret__.templates)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        keyword=pulumi.get(__ret__, 'keyword'),
+        metric_rule_template_name=pulumi.get(__ret__, 'metric_rule_template_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        template_id=pulumi.get(__ret__, 'template_id'),
+        templates=pulumi.get(__ret__, 'templates'))
 
 
 @_utilities.lift_output_func(get_metric_rule_templates)

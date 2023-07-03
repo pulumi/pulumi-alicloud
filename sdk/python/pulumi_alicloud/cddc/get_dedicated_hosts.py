@@ -231,18 +231,18 @@ def get_dedicated_hosts(allocation_status: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cddc/getDedicatedHosts:getDedicatedHosts', __args__, opts=opts, typ=GetDedicatedHostsResult).value
 
     return AwaitableGetDedicatedHostsResult(
-        allocation_status=__ret__.allocation_status,
-        dedicated_host_group_id=__ret__.dedicated_host_group_id,
-        enable_details=__ret__.enable_details,
-        host_type=__ret__.host_type,
-        hosts=__ret__.hosts,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        order_id=__ret__.order_id,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        zone_id=__ret__.zone_id)
+        allocation_status=pulumi.get(__ret__, 'allocation_status'),
+        dedicated_host_group_id=pulumi.get(__ret__, 'dedicated_host_group_id'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        host_type=pulumi.get(__ret__, 'host_type'),
+        hosts=pulumi.get(__ret__, 'hosts'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        order_id=pulumi.get(__ret__, 'order_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_dedicated_hosts)

@@ -185,16 +185,16 @@ def get_transit_routers(cen_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouters:getTransitRouters', __args__, opts=opts, typ=GetTransitRoutersResult).value
 
     return AwaitableGetTransitRoutersResult(
-        cen_id=__ret__.cen_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        transit_router_id=__ret__.transit_router_id,
-        transit_router_ids=__ret__.transit_router_ids,
-        transit_routers=__ret__.transit_routers)
+        cen_id=pulumi.get(__ret__, 'cen_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        transit_router_id=pulumi.get(__ret__, 'transit_router_id'),
+        transit_router_ids=pulumi.get(__ret__, 'transit_router_ids'),
+        transit_routers=pulumi.get(__ret__, 'transit_routers'))
 
 
 @_utilities.lift_output_func(get_transit_routers)

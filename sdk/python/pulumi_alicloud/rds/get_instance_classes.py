@@ -264,22 +264,22 @@ def get_instance_classes(category: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getInstanceClasses:getInstanceClasses', __args__, opts=opts, typ=GetInstanceClassesResult).value
 
     return AwaitableGetInstanceClassesResult(
-        category=__ret__.category,
-        commodity_code=__ret__.commodity_code,
-        db_instance_class=__ret__.db_instance_class,
-        db_instance_id=__ret__.db_instance_id,
-        db_instance_storage_type=__ret__.db_instance_storage_type,
-        engine=__ret__.engine,
-        engine_version=__ret__.engine_version,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_charge_type=__ret__.instance_charge_type,
-        instance_classes=__ret__.instance_classes,
-        multi_zone=__ret__.multi_zone,
-        output_file=__ret__.output_file,
-        sorted_by=__ret__.sorted_by,
-        storage_type=__ret__.storage_type,
-        zone_id=__ret__.zone_id)
+        category=pulumi.get(__ret__, 'category'),
+        commodity_code=pulumi.get(__ret__, 'commodity_code'),
+        db_instance_class=pulumi.get(__ret__, 'db_instance_class'),
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        db_instance_storage_type=pulumi.get(__ret__, 'db_instance_storage_type'),
+        engine=pulumi.get(__ret__, 'engine'),
+        engine_version=pulumi.get(__ret__, 'engine_version'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        instance_classes=pulumi.get(__ret__, 'instance_classes'),
+        multi_zone=pulumi.get(__ret__, 'multi_zone'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        sorted_by=pulumi.get(__ret__, 'sorted_by'),
+        storage_type=pulumi.get(__ret__, 'storage_type'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_instance_classes)

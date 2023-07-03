@@ -34,9 +34,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ros.NewStack(ctx, "example", &ros.StackArgs{
-//				StackName:       pulumi.String("tf-testaccstack"),
-//				StackPolicyBody: pulumi.String("    {\n    	\"Statement\": [{\n    		\"Action\": \"Update:Delete\",\n    		\"Resource\": \"*\",\n    		\"Effect\": \"Allow\",\n    		\"Principal\": \"*\"\n    	}]\n    }\n    \n"),
-//				TemplateBody:    pulumi.String("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n"),
+//				StackName: pulumi.String("tf-testaccstack"),
+//				StackPolicyBody: pulumi.String(`    {
+//	    	"Statement": [{
+//	    		"Action": "Update:Delete",
+//	    		"Resource": "*",
+//	    		"Effect": "Allow",
+//	    		"Principal": "*"
+//	    	}]
+//	    }
+//
+// `),
+//
+//				TemplateBody: pulumi.String("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n"),
 //			})
 //			if err != nil {
 //				return err

@@ -121,12 +121,12 @@ def get_deploy_groups(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:edas/getDeployGroups:getDeployGroups', __args__, opts=opts, typ=GetDeployGroupsResult).value
 
     return AwaitableGetDeployGroupsResult(
-        app_id=__ret__.app_id,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_deploy_groups)

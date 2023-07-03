@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.204.0+.
+        /// &gt; **NOTE:** Available since v1.204.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.204.0+.
+        /// &gt; **NOTE:** Available since v1.204.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -148,6 +148,9 @@ namespace Pulumi.AliCloud.Rds
         public readonly string Id;
         public readonly string? OutputFile;
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// A list of Rds Replication Slots. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSlotsSlotResult> Slots;
 
         [OutputConstructor]

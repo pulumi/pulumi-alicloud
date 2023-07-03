@@ -798,7 +798,7 @@ type GetRolesRole struct {
 	Description string `pulumi:"description"`
 	// Authorization strategy of the role.
 	Document string `pulumi:"document"`
-	// Id of the role.
+	// ID of the role.
 	Id string `pulumi:"id"`
 	// Name of the role.
 	Name string `pulumi:"name"`
@@ -828,7 +828,7 @@ type GetRolesRoleArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Authorization strategy of the role.
 	Document pulumi.StringInput `pulumi:"document"`
-	// Id of the role.
+	// ID of the role.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the role.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -912,7 +912,7 @@ func (o GetRolesRoleOutput) Document() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Document }).(pulumi.StringOutput)
 }
 
-// Id of the role.
+// ID of the role.
 func (o GetRolesRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1092,7 +1092,7 @@ func (o GetSamlProvidersProviderArrayOutput) Index(i pulumi.IntInput) GetSamlPro
 type GetUsersUser struct {
 	// Creation date of the user.
 	CreateDate string `pulumi:"createDate"`
-	// The original id is user name, but it is user id in 1.37.0+.
+	// The original id is user's name, but it is user id in 1.37.0+.
 	Id string `pulumi:"id"`
 	// Last login date of the user. Removed from version 1.79.0.
 	LastLoginDate string `pulumi:"lastLoginDate"`
@@ -1114,7 +1114,7 @@ type GetUsersUserInput interface {
 type GetUsersUserArgs struct {
 	// Creation date of the user.
 	CreateDate pulumi.StringInput `pulumi:"createDate"`
-	// The original id is user name, but it is user id in 1.37.0+.
+	// The original id is user's name, but it is user id in 1.37.0+.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Last login date of the user. Removed from version 1.79.0.
 	LastLoginDate pulumi.StringInput `pulumi:"lastLoginDate"`
@@ -1178,7 +1178,7 @@ func (o GetUsersUserOutput) CreateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.CreateDate }).(pulumi.StringOutput)
 }
 
-// The original id is user name, but it is user id in 1.37.0+.
+// The original id is user's name, but it is user id in 1.37.0+.
 func (o GetUsersUserOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
  * You can use the route map function to filter routes and modify route attributes.
  * By doing so, you can manage the communication between networks attached to a CEN.
  * 
- * For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
+ * For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenroutemap).
  * 
- * &gt; **NOTE:** Available in 1.82.0+
+ * &gt; **NOTE:** Available since v1.82.0.
  * 
  * ## Example Usage
  * 
@@ -35,11 +35,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.Provider;
  * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.InstanceAttachment;
  * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import com.pulumi.alicloud.cen.RouteMap;
@@ -58,60 +59,68 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;);
- * 
- *         var vpc00Region = new Provider(&#34;vpc00Region&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
+ *         final var config = ctx.config();
+ *         final var sourceRegion = config.get(&#34;sourceRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var destinationRegion = config.get(&#34;destinationRegion&#34;).orElse(&#34;cn-shanghai&#34;);
+ *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
+ *             .region(sourceRegion)
  *             .build());
  * 
- *         var vpc01Region = new Provider(&#34;vpc01Region&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-shanghai&#34;)
+ *         var sh = new Provider(&#34;sh&#34;, ProviderArgs.builder()        
+ *             .region(destinationRegion)
  *             .build());
  * 
- *         var vpc00 = new Network(&#34;vpc00&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var exampleHzNetwork = new Network(&#34;exampleHzNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_example&#34;)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.vpc00_region())
+ *                 .provider(alicloud.hz())
  *                 .build());
  * 
- *         var vpc01 = new Network(&#34;vpc01&#34;, NetworkArgs.builder()        
+ *         var exampleShNetwork = new Network(&#34;exampleShNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.vpc01_region())
+ *                 .provider(alicloud.sh())
  *                 .build());
  * 
- *         var default00 = new InstanceAttachment(&#34;default00&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(defaultInstance.id())
- *             .childInstanceId(vpc00.id())
- *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(&#34;cn-hangzhou&#34;)
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var default01 = new InstanceAttachment(&#34;default01&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(defaultInstance.id())
- *             .childInstanceId(vpc01.id())
+ *         var exampleHzInstanceAttachment = new InstanceAttachment(&#34;exampleHzInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(example.id())
+ *             .childInstanceId(exampleHzNetwork.id())
  *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(&#34;cn-shanghai&#34;)
+ *             .childInstanceRegionId(sourceRegion)
  *             .build());
  * 
- *         var defaultRouteMap = new RouteMap(&#34;defaultRouteMap&#34;, RouteMapArgs.builder()        
- *             .cenRegionId(&#34;cn-hangzhou&#34;)
- *             .cenId(alicloud_cen_instance.cen().id())
- *             .description(&#34;test-desc&#34;)
+ *         var exampleShInstanceAttachment = new InstanceAttachment(&#34;exampleShInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(example.id())
+ *             .childInstanceId(exampleShNetwork.id())
+ *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceRegionId(destinationRegion)
+ *             .build());
+ * 
+ *         var default_ = new RouteMap(&#34;default&#34;, RouteMapArgs.builder()        
+ *             .cenRegionId(sourceRegion)
+ *             .cenId(example.id())
+ *             .description(&#34;tf_example&#34;)
  *             .priority(&#34;1&#34;)
  *             .transmitDirection(&#34;RegionIn&#34;)
  *             .mapResult(&#34;Permit&#34;)
  *             .nextPriority(&#34;1&#34;)
- *             .sourceRegionIds(&#34;cn-hangzhou&#34;)
- *             .sourceInstanceIds(vpc00.id())
+ *             .sourceRegionIds(sourceRegion)
+ *             .sourceInstanceIds(exampleHzInstanceAttachment.childInstanceId())
  *             .sourceInstanceIdsReverseMatch(&#34;false&#34;)
- *             .destinationInstanceIds(vpc01.id())
+ *             .destinationInstanceIds(exampleShInstanceAttachment.childInstanceId())
  *             .destinationInstanceIdsReverseMatch(&#34;false&#34;)
- *             .sourceRouteTableIds(vpc00.routeTableId())
- *             .destinationRouteTableIds(vpc01.routeTableId())
+ *             .sourceRouteTableIds(exampleHzNetwork.routeTableId())
+ *             .destinationRouteTableIds(exampleShNetwork.routeTableId())
  *             .sourceChildInstanceTypes(&#34;VPC&#34;)
  *             .destinationChildInstanceTypes(&#34;VPC&#34;)
- *             .destinationCidrBlocks(vpc01.cidrBlock())
+ *             .destinationCidrBlocks(exampleShNetwork.cidrBlock())
  *             .cidrMatchMode(&#34;Include&#34;)
  *             .routeTypes(&#34;System&#34;)
  *             .matchAsns(&#34;65501&#34;)
@@ -122,11 +131,7 @@ import javax.annotation.Nullable;
  *             .operateCommunitySets(&#34;65501:1&#34;)
  *             .preference(&#34;20&#34;)
  *             .prependAsPaths(&#34;65501&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     default00,
- *                     default01)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -162,15 +162,15 @@ def get_snapshots(file_system_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nas/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult).value
 
     return AwaitableGetSnapshotsResult(
-        file_system_id=__ret__.file_system_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        snapshot_name=__ret__.snapshot_name,
-        snapshots=__ret__.snapshots,
-        status=__ret__.status)
+        file_system_id=pulumi.get(__ret__, 'file_system_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        snapshot_name=pulumi.get(__ret__, 'snapshot_name'),
+        snapshots=pulumi.get(__ret__, 'snapshots'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_snapshots)

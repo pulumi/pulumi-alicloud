@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
  * 
- * &gt; **NOTE:** Available in v1.153.0+.
+ * &gt; **NOTE:** Available since v1.153.0.
  * 
  * ## Example Usage
  * 
@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.dns.inputs.AddressPoolAddressArgs;
  * import com.pulumi.alicloud.dns.MonitorConfig;
  * import com.pulumi.alicloud.dns.MonitorConfigArgs;
+ * import com.pulumi.alicloud.dns.inputs.MonitorConfigIspCityNodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,8 +60,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
- *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;your_domain_name&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;alicloud-provider.com&#34;);
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
@@ -72,7 +73,7 @@ import javax.annotation.Nullable;
  *             .paymentType(&#34;Subscription&#34;)
  *             .period(1)
  *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .packageEdition(&#34;ultimate&#34;)
+ *             .packageEdition(&#34;standard&#34;)
  *             .healthCheckTaskCount(100)
  *             .smsNotificationCount(1000)
  *             .publicCnameMode(&#34;SYSTEM_ASSIGN&#34;)
@@ -109,7 +110,7 @@ import javax.annotation.Nullable;
  *             .interval(&#34;60&#34;)
  *             .timeout(&#34;5000&#34;)
  *             .protocolType(&#34;TCP&#34;)
- *             .monitorExtendInfo(&#34;{\&#34;failureRate\&#34;=50,\&#34;port\&#34;=80}&#34;)
+ *             .monitorExtendInfo(&#34;{\&#34;failureRate\&#34;:50,\&#34;port\&#34;:80}&#34;)
  *             .ispCityNodes(MonitorConfigIspCityNodeArgs.builder()
  *                 .cityCode(&#34;503&#34;)
  *                 .ispCode(&#34;465&#34;)
@@ -174,14 +175,14 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
         return this.interval;
     }
     /**
-     * The Monitoring node. See the following `Block isp_city_node`.
+     * The Monitoring node. See `isp_city_node` below for details.
      * 
      */
     @Export(name="ispCityNodes", type=List.class, parameters={MonitorConfigIspCityNode.class})
     private Output<List<MonitorConfigIspCityNode>> ispCityNodes;
 
     /**
-     * @return The Monitoring node. See the following `Block isp_city_node`.
+     * @return The Monitoring node. See `isp_city_node` below for details.
      * 
      */
     public Output<List<MonitorConfigIspCityNode>> ispCityNodes() {

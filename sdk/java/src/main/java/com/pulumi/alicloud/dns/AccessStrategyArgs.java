@@ -51,14 +51,14 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * List of primary address pool collections. See the following `Block default_addr_pools`.
+     * List of primary address pool collections. See `default_addr_pools` below for details.
      * 
      */
     @Import(name="defaultAddrPools", required=true)
     private Output<List<AccessStrategyDefaultAddrPoolArgs>> defaultAddrPools;
 
     /**
-     * @return List of primary address pool collections. See the following `Block default_addr_pools`.
+     * @return List of primary address pool collections. See `default_addr_pools` below for details.
      * 
      */
     public Output<List<AccessStrategyDefaultAddrPoolArgs>> defaultAddrPools() {
@@ -141,14 +141,14 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * List of backup address pool sets. See the following `Block failover_addr_pools`.
+     * List of backup address pool sets. See `failover_addr_pools` below for details.
      * 
      */
     @Import(name="failoverAddrPools")
     private @Nullable Output<List<AccessStrategyFailoverAddrPoolArgs>> failoverAddrPools;
 
     /**
-     * @return List of backup address pool sets. See the following `Block failover_addr_pools`.
+     * @return List of backup address pool sets. See `failover_addr_pools` below for details.
      * 
      */
     public Optional<Output<List<AccessStrategyFailoverAddrPoolArgs>>> failoverAddrPools() {
@@ -246,14 +246,14 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+     * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
      * 
      */
     @Import(name="lines")
     private @Nullable Output<List<AccessStrategyLineArgs>> lines;
 
     /**
-     * @return The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+     * @return The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
      * 
      */
     public Optional<Output<List<AccessStrategyLineArgs>>> lines() {
@@ -374,7 +374,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultAddrPools List of primary address pool collections. See the following `Block default_addr_pools`.
+         * @param defaultAddrPools List of primary address pool collections. See `default_addr_pools` below for details.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultAddrPools List of primary address pool collections. See the following `Block default_addr_pools`.
+         * @param defaultAddrPools List of primary address pool collections. See `default_addr_pools` below for details.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultAddrPools List of primary address pool collections. See the following `Block default_addr_pools`.
+         * @param defaultAddrPools List of primary address pool collections. See `default_addr_pools` below for details.
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param failoverAddrPools List of backup address pool sets. See the following `Block failover_addr_pools`.
+         * @param failoverAddrPools List of backup address pool sets. See `failover_addr_pools` below for details.
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param failoverAddrPools List of backup address pool sets. See the following `Block failover_addr_pools`.
+         * @param failoverAddrPools List of backup address pool sets. See `failover_addr_pools` below for details.
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param failoverAddrPools List of backup address pool sets. See the following `Block failover_addr_pools`.
+         * @param failoverAddrPools List of backup address pool sets. See `failover_addr_pools` below for details.
          * 
          * @return builder
          * 
@@ -667,7 +667,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param lines The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+         * @param lines The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
          * 
          * @return builder
          * 
@@ -678,7 +678,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param lines The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+         * @param lines The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
          * 
          * @return builder
          * 
@@ -688,7 +688,7 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param lines The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+         * @param lines The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
          * 
          * @return builder
          * 

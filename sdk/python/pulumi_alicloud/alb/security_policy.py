@@ -247,9 +247,9 @@ class SecurityPolicy(pulumi.CustomResource):
         """
         Provides a ALB Security Policy resource.
 
-        For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/doc-detail/213607.htm).
+        For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createsecuritypolicy).
 
-        > **NOTE:** Available in v1.130.0+.
+        > **NOTE:** Available since v1.130.0.
 
         ## Example Usage
 
@@ -259,17 +259,13 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "testAccSecurityPolicy"
         default = alicloud.alb.SecurityPolicy("default",
-            security_policy_name=name,
-            tls_versions=["TLSv1.0"],
             ciphers=[
                 "ECDHE-ECDSA-AES128-SHA",
                 "AES256-SHA",
-            ])
+            ],
+            security_policy_name="tf_example",
+            tls_versions=["TLSv1.0"])
         ```
 
         ## Import
@@ -298,9 +294,9 @@ class SecurityPolicy(pulumi.CustomResource):
         """
         Provides a ALB Security Policy resource.
 
-        For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/doc-detail/213607.htm).
+        For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createsecuritypolicy).
 
-        > **NOTE:** Available in v1.130.0+.
+        > **NOTE:** Available since v1.130.0.
 
         ## Example Usage
 
@@ -310,17 +306,13 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "testAccSecurityPolicy"
         default = alicloud.alb.SecurityPolicy("default",
-            security_policy_name=name,
-            tls_versions=["TLSv1.0"],
             ciphers=[
                 "ECDHE-ECDSA-AES128-SHA",
                 "AES256-SHA",
-            ])
+            ],
+            security_policy_name="tf_example",
+            tls_versions=["TLSv1.0"])
         ```
 
         ## Import

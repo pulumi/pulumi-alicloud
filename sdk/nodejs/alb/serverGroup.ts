@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  * Provides a ALB Server Group resource.
  *
  * For information about ALB Server Group and how to use it,
- * see [What is Server Group](https://www.alibabacloud.com/help/doc-detail/213627.htm).
+ * see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createservergroup).
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *
@@ -23,54 +23,51 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "example_value";
- * const defaultZones = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
+ * const name = config.get("name") || "terraform-example";
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: exampleZones.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
- *     mostRecent: true,
+ * const exampleImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
  *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
+ *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {
+ *     description: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
  *     instanceName: name,
- *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
- *     internetChargeType: "PayByTraffic",
- *     internetMaxBandwidthOut: 10,
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     instanceChargeType: "PostPaid",
- *     systemDiskCategory: "cloud_efficiency",
- *     vswitchId: defaultSwitch.id,
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
+ *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     vswitchId: exampleSwitch.id,
  * });
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultServerGroup = new alicloud.alb.ServerGroup("defaultServerGroup", {
+ * const exampleServerGroup = new alicloud.alb.ServerGroup("exampleServerGroup", {
  *     protocol: "HTTP",
- *     vpcId: defaultNetwork.id,
+ *     vpcId: exampleNetwork.id,
  *     serverGroupName: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
  *     healthCheckConfig: {
  *         healthCheckConnectPort: 46325,
  *         healthCheckEnabled: true,
- *         healthCheckHost: "tf-testAcc.com",
+ *         healthCheckHost: "tf-example.com",
  *         healthCheckCodes: [
  *             "http_2xx",
  *             "http_3xx",
@@ -79,7 +76,7 @@ import * as utilities from "../utilities";
  *         healthCheckHttpVersion: "HTTP1.1",
  *         healthCheckInterval: 2,
  *         healthCheckMethod: "HEAD",
- *         healthCheckPath: "/tf-testAcc",
+ *         healthCheckPath: "/tf-example",
  *         healthCheckProtocol: "HTTP",
  *         healthCheckTimeout: 5,
  *         healthyThreshold: 3,
@@ -87,7 +84,7 @@ import * as utilities from "../utilities";
  *     },
  *     stickySessionConfig: {
  *         stickySessionEnabled: true,
- *         cookie: "tf-testAcc",
+ *         cookie: "tf-example",
  *         stickySessionType: "Server",
  *     },
  *     tags: {
@@ -96,8 +93,8 @@ import * as utilities from "../utilities";
  *     servers: [{
  *         description: name,
  *         port: 80,
- *         serverId: defaultInstance.id,
- *         serverIp: defaultInstance.privateIp,
+ *         serverId: exampleInstance.id,
+ *         serverIp: exampleInstance.privateIp,
  *         serverType: "Ecs",
  *         weight: 10,
  *     }],
@@ -145,7 +142,7 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The configuration of health checks.
+     * The configuration of health checks. See `healthCheckConfig` below for details.
      */
     public readonly healthCheckConfig!: pulumi.Output<outputs.alb.ServerGroupHealthCheckConfig | undefined>;
     /**
@@ -169,15 +166,15 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly serverGroupType!: pulumi.Output<string>;
     /**
-     * The backend server.
+     * The backend server. See `servers` below for details.
      */
     public readonly servers!: pulumi.Output<outputs.alb.ServerGroupServer[] | undefined>;
     /**
-     * The status of the resource.
+     * The status of the backend server. Valid values:
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The configuration of the sticky session.
+     * The configuration of the sticky session. See `stickySessionConfig` below for details.
      */
     public readonly stickySessionConfig!: pulumi.Output<outputs.alb.ServerGroupStickySessionConfig | undefined>;
     /**
@@ -243,7 +240,7 @@ export interface ServerGroupState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The configuration of health checks.
+     * The configuration of health checks. See `healthCheckConfig` below for details.
      */
     healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
@@ -267,15 +264,15 @@ export interface ServerGroupState {
      */
     serverGroupType?: pulumi.Input<string>;
     /**
-     * The backend server.
+     * The backend server. See `servers` below for details.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
-     * The status of the resource.
+     * The status of the backend server. Valid values:
      */
     status?: pulumi.Input<string>;
     /**
-     * The configuration of the sticky session.
+     * The configuration of the sticky session. See `stickySessionConfig` below for details.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
     /**
@@ -297,7 +294,7 @@ export interface ServerGroupArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The configuration of health checks.
+     * The configuration of health checks. See `healthCheckConfig` below for details.
      */
     healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
@@ -321,11 +318,11 @@ export interface ServerGroupArgs {
      */
     serverGroupType?: pulumi.Input<string>;
     /**
-     * The backend server.
+     * The backend server. See `servers` below for details.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
-     * The configuration of the sticky session.
+     * The configuration of the sticky session. See `stickySessionConfig` below for details.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
     /**

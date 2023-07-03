@@ -125,12 +125,12 @@ def get_ots_snapshots(end_time: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getOtsSnapshots:getOtsSnapshots', __args__, opts=opts, typ=GetOtsSnapshotsResult).value
 
     return AwaitableGetOtsSnapshotsResult(
-        end_time=__ret__.end_time,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        snapshots=__ret__.snapshots,
-        start_time=__ret__.start_time)
+        end_time=pulumi.get(__ret__, 'end_time'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        snapshots=pulumi.get(__ret__, 'snapshots'),
+        start_time=pulumi.get(__ret__, 'start_time'))
 
 
 @_utilities.lift_output_func(get_ots_snapshots)

@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
  * This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
  * After you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.
  * 
- * For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).
+ * For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-enablecenvbrhealthcheck).
  * 
- * &gt; **NOTE:** Available in 1.88.0+
+ * &gt; **NOTE:** Available since v1.88.0.
  * 
  * ## Example Usage
  * 
@@ -32,13 +32,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+ * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.InstanceAttachment;
  * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import com.pulumi.alicloud.cen.VbrHealthCheck;
  * import com.pulumi.alicloud.cen.VbrHealthCheckArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,28 +59,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;test_name&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
- *         var defaultInstanceAttachment = new InstanceAttachment(&#34;defaultInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(defaultInstance.id())
- *             .childInstanceId(&#34;vbr-xxxxx&#34;)
+ *         final var defaultPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *             .nameRegex(&#34;^preserved-NODELETING&#34;)
+ *             .build());
+ * 
+ *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
+ *             .max(2999)
+ *             .min(1)
+ *             .build());
+ * 
+ *         var exampleVirtualBorderRouter = new VirtualBorderRouter(&#34;exampleVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
+ *             .localGatewayIp(&#34;10.0.0.1&#34;)
+ *             .peerGatewayIp(&#34;10.0.0.2&#34;)
+ *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
+ *             .physicalConnectionId(defaultPhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *             .virtualBorderRouterName(name)
+ *             .vlanId(vlanId.id())
+ *             .minRxInterval(1000)
+ *             .minTxInterval(1000)
+ *             .detectMultiplier(10)
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(name)
+ *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .build());
+ * 
+ *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .childInstanceId(exampleVirtualBorderRouter.id())
  *             .childInstanceType(&#34;VBR&#34;)
- *             .childInstanceRegionId(&#34;cn-hangzhou&#34;)
+ *             .childInstanceRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .build());
  * 
- *         var defaultVbrHealthCheck = new VbrHealthCheck(&#34;defaultVbrHealthCheck&#34;, VbrHealthCheckArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *         var exampleVbrHealthCheck = new VbrHealthCheck(&#34;exampleVbrHealthCheck&#34;, VbrHealthCheckArgs.builder()        
+ *             .cenId(exampleInstance.id())
  *             .healthCheckSourceIp(&#34;192.168.1.2&#34;)
  *             .healthCheckTargetIp(&#34;10.0.0.2&#34;)
- *             .vbrInstanceId(&#34;vbr-xxxxx&#34;)
- *             .vbrInstanceRegionId(&#34;cn-hangzhou&#34;)
+ *             .vbrInstanceId(exampleVirtualBorderRouter.id())
+ *             .vbrInstanceRegionId(exampleInstanceAttachment.childInstanceRegionId())
  *             .healthCheckInterval(2)
  *             .healthyThreshold(8)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultInstanceAttachment)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

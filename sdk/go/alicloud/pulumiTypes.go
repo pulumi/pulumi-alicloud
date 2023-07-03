@@ -11,6 +11,7 @@ import (
 )
 
 type ProviderAssumeRole struct {
+	ExternalId        *string `pulumi:"externalId"`
 	Policy            *string `pulumi:"policy"`
 	RoleArn           string  `pulumi:"roleArn"`
 	SessionExpiration *int    `pulumi:"sessionExpiration"`
@@ -29,6 +30,7 @@ type ProviderAssumeRoleInput interface {
 }
 
 type ProviderAssumeRoleArgs struct {
+	ExternalId        pulumi.StringPtrInput `pulumi:"externalId"`
 	Policy            pulumi.StringPtrInput `pulumi:"policy"`
 	RoleArn           pulumi.StringInput    `pulumi:"roleArn"`
 	SessionExpiration pulumi.IntPtrInput    `pulumi:"sessionExpiration"`
@@ -112,6 +114,10 @@ func (o ProviderAssumeRoleOutput) ToProviderAssumeRolePtrOutputWithContext(ctx c
 	}).(ProviderAssumeRolePtrOutput)
 }
 
+func (o ProviderAssumeRoleOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderAssumeRoleOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
@@ -150,6 +156,15 @@ func (o ProviderAssumeRolePtrOutput) Elem() ProviderAssumeRoleOutput {
 		var ret ProviderAssumeRole
 		return ret
 	}).(ProviderAssumeRoleOutput)
+}
+
+func (o ProviderAssumeRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAssumeRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderAssumeRolePtrOutput) Policy() pulumi.StringPtrOutput {

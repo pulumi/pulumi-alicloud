@@ -149,16 +149,16 @@ def get_mongo_instances(availability_zone: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dds/getMongoInstances:getMongoInstances', __args__, opts=opts, typ=GetMongoInstancesResult).value
 
     return AwaitableGetMongoInstancesResult(
-        availability_zone=__ret__.availability_zone,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_class=__ret__.instance_class,
-        instance_type=__ret__.instance_type,
-        instances=__ret__.instances,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        tags=__ret__.tags)
+        availability_zone=pulumi.get(__ret__, 'availability_zone'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_class=pulumi.get(__ret__, 'instance_class'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_mongo_instances)

@@ -10,72 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.AliKafka
 {
     /// <summary>
-    /// Provides an ALIKAFKA instance resource.
-    /// 
-    /// For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
-    /// 
-    /// &gt; **NOTE:** Available in 1.59.0+
-    /// 
-    /// &gt; **NOTE:** Creation or modification may took about 10-40 minutes.
-    /// 
-    /// &gt; **NOTE:** Only the following regions support create alikafka pre paid instance.
-    /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-    /// 
-    /// &gt; **NOTE:** Only the following regions support create alikafka post paid instance.
-    /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
-    ///     {
-    ///         PartitionNum = 50,
-    ///         DiskType = 1,
-    ///         DiskSize = 500,
-    ///         DeployType = 4,
-    ///         IoMax = 20,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         SecurityGroup = defaultSecurityGroup.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// ALIKAFKA TOPIC can be imported using the id, e.g.
+    /// ALIKAFKA instance can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
@@ -211,8 +148,10 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The max num of topic can be creation of the instance. 
-        /// It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        /// The max num of topic can be creation of the instance.
+        /// It has been deprecated since version 1.194.0 and using `partition_num` instead.
+        /// Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
+        /// Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         /// </summary>
         [Output("topicQuota")]
         public Output<int> TopicQuota { get; private set; } = null!;
@@ -404,8 +343,10 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The max num of topic can be creation of the instance. 
-        /// It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        /// The max num of topic can be creation of the instance.
+        /// It has been deprecated since version 1.194.0 and using `partition_num` instead.
+        /// Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
+        /// Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         /// </summary>
         [Input("topicQuota")]
         public Input<int>? TopicQuota { get; set; }
@@ -575,8 +516,10 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The max num of topic can be creation of the instance. 
-        /// It has been deprecated from version 1.194.0 and using `partition_num` instead.
+        /// The max num of topic can be creation of the instance.
+        /// It has been deprecated since version 1.194.0 and using `partition_num` instead.
+        /// Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
+        /// Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         /// </summary>
         [Input("topicQuota")]
         public Input<int>? TopicQuota { get; set; }

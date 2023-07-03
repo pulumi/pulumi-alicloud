@@ -79,7 +79,28 @@ import (
 //			}
 //			_, err = log.NewProject(ctx, "examplePolicy", &log.ProjectArgs{
 //				Description: pulumi.String("terraform-example"),
-//				Policy:      pulumi.String("{\n  \"Statement\": [\n    {\n      \"Action\": [\n        \"log:PostLogStoreLogs\"\n      ],\n      \"Condition\": {\n        \"StringNotLike\": {\n          \"acs:SourceVpc\": [\n            \"vpc-*\"\n          ]\n        }\n      },\n      \"Effect\": \"Deny\",\n      \"Resource\": \"acs:log:*:*:project/tf-log/*\"\n    }\n  ],\n  \"Version\": \"1\"\n}\n\n"),
+//				Policy: pulumi.String(`{
+//	  "Statement": [
+//	    {
+//	      "Action": [
+//	        "log:PostLogStoreLogs"
+//	      ],
+//	      "Condition": {
+//	        "StringNotLike": {
+//	          "acs:SourceVpc": [
+//	            "vpc-*"
+//	          ]
+//	        }
+//	      },
+//	      "Effect": "Deny",
+//	      "Resource": "acs:log:*:*:project/tf-log/*"
+//	    }
+//	  ],
+//	  "Version": "1"
+//	}
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err

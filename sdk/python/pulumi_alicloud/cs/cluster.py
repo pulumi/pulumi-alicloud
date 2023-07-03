@@ -181,6 +181,9 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""")
+
         return pulumi.get(self, "size")
 
     @size.setter
@@ -393,6 +396,9 @@ class _ClusterState:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""")
+
         return pulumi.get(self, "size")
 
     @size.setter
@@ -670,6 +676,9 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def size(self) -> pulumi.Output[Optional[int]]:
+        warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""")
+
         return pulumi.get(self, "size")
 
     @property

@@ -272,11 +272,11 @@ def get_policy_document(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ram/getPolicyDocument:getPolicyDocument', __args__, opts=opts, typ=GetPolicyDocumentResult).value
 
     return AwaitableGetPolicyDocumentResult(
-        document=__ret__.document,
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        statements=__ret__.statements,
-        version=__ret__.version)
+        document=pulumi.get(__ret__, 'document'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        statements=pulumi.get(__ret__, 'statements'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_policy_document)

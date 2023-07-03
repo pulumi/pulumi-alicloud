@@ -227,19 +227,19 @@ def get_vpds(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eflo/getVpds:getVpds', __args__, opts=opts, typ=GetVpdsResult).value
 
     return AwaitableGetVpdsResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        vpd_id=__ret__.vpd_id,
-        vpd_name=__ret__.vpd_name,
-        vpds=__ret__.vpds)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        vpd_id=pulumi.get(__ret__, 'vpd_id'),
+        vpd_name=pulumi.get(__ret__, 'vpd_name'),
+        vpds=pulumi.get(__ret__, 'vpds'))
 
 
 @_utilities.lift_output_func(get_vpds)

@@ -167,14 +167,14 @@ def get_basic_accelerate_ip_endpoint_relations(accelerate_ip_id: Optional[str] =
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations', __args__, opts=opts, typ=GetBasicAccelerateIpEndpointRelationsResult).value
 
     return AwaitableGetBasicAccelerateIpEndpointRelationsResult(
-        accelerate_ip_id=__ret__.accelerate_ip_id,
-        accelerator_id=__ret__.accelerator_id,
-        endpoint_id=__ret__.endpoint_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        relations=__ret__.relations,
-        status=__ret__.status)
+        accelerate_ip_id=pulumi.get(__ret__, 'accelerate_ip_id'),
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
+        endpoint_id=pulumi.get(__ret__, 'endpoint_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        relations=pulumi.get(__ret__, 'relations'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_basic_accelerate_ip_endpoint_relations)

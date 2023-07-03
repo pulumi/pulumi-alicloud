@@ -154,14 +154,14 @@ def get_hybrid_monitor_datas(end: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas', __args__, opts=opts, typ=GetHybridMonitorDatasResult).value
 
     return AwaitableGetHybridMonitorDatasResult(
-        datas=__ret__.datas,
-        end=__ret__.end,
-        id=__ret__.id,
-        namespace=__ret__.namespace,
-        output_file=__ret__.output_file,
-        period=__ret__.period,
-        prom_sql=__ret__.prom_sql,
-        start=__ret__.start)
+        datas=pulumi.get(__ret__, 'datas'),
+        end=pulumi.get(__ret__, 'end'),
+        id=pulumi.get(__ret__, 'id'),
+        namespace=pulumi.get(__ret__, 'namespace'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        period=pulumi.get(__ret__, 'period'),
+        prom_sql=pulumi.get(__ret__, 'prom_sql'),
+        start=pulumi.get(__ret__, 'start'))
 
 
 @_utilities.lift_output_func(get_hybrid_monitor_datas)

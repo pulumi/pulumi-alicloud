@@ -127,12 +127,12 @@ def get_state_configurations(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:oos/getStateConfigurations:getStateConfigurations', __args__, opts=opts, typ=GetStateConfigurationsResult).value
 
     return AwaitableGetStateConfigurationsResult(
-        configurations=__ret__.configurations,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        tags=__ret__.tags)
+        configurations=pulumi.get(__ret__, 'configurations'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_state_configurations)

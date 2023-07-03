@@ -100,7 +100,7 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     __ret__ = pulumi.runtime.invoke('alicloud:index/getCallerIdentity:getCallerIdentity', __args__, opts=opts, typ=GetCallerIdentityResult).value
 
     return AwaitableGetCallerIdentityResult(
-        account_id=__ret__.account_id,
-        arn=__ret__.arn,
-        id=__ret__.id,
-        identity_type=__ret__.identity_type)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        arn=pulumi.get(__ret__, 'arn'),
+        id=pulumi.get(__ret__, 'id'),
+        identity_type=pulumi.get(__ret__, 'identity_type'))

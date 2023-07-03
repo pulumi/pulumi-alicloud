@@ -69,9 +69,9 @@ export class Acl extends pulumi.CustomResource {
     }
 
     /**
-     * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+     * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
      *
-     * @deprecated Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
+     * @deprecated Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.
      */
     public readonly aclEntries!: pulumi.Output<outputs.ga.AclAclEntry[]>;
     /**
@@ -90,6 +90,10 @@ export class Acl extends pulumi.CustomResource {
      * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -109,6 +113,7 @@ export class Acl extends pulumi.CustomResource {
             resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AclArgs | undefined;
             if ((!args || args.addressIpVersion === undefined) && !opts.urn) {
@@ -118,6 +123,7 @@ export class Acl extends pulumi.CustomResource {
             resourceInputs["aclName"] = args ? args.aclName : undefined;
             resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,9 +136,9 @@ export class Acl extends pulumi.CustomResource {
  */
 export interface AclState {
     /**
-     * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+     * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
      *
-     * @deprecated Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
+     * @deprecated Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[]>;
     /**
@@ -151,6 +157,10 @@ export interface AclState {
      * The status of the resource.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -158,9 +168,9 @@ export interface AclState {
  */
 export interface AclArgs {
     /**
-     * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+     * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
      *
-     * @deprecated Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
+     * @deprecated Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[]>;
     /**
@@ -175,4 +185,8 @@ export interface AclArgs {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -150,14 +150,14 @@ def get_certificates(domain: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:waf/getCertificates:getCertificates', __args__, opts=opts, typ=GetCertificatesResult).value
 
     return AwaitableGetCertificatesResult(
-        certificates=__ret__.certificates,
-        domain=__ret__.domain,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        certificates=pulumi.get(__ret__, 'certificates'),
+        domain=pulumi.get(__ret__, 'domain'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_certificates)

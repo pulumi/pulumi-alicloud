@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Adb Resource Group resource.
  * 
- * For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/create-db-resource-group).
+ * For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 
@@ -30,6 +30,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.adb.AdbFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.adb.DBCluster;
+ * import com.pulumi.alicloud.adb.DBClusterArgs;
  * import com.pulumi.alicloud.adb.ResourceGroup;
  * import com.pulumi.alicloud.adb.ResourceGroupArgs;
  * import java.util.List;
@@ -45,11 +55,56 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ResourceGroup(&#34;default&#34;, ResourceGroupArgs.builder()        
- *             .dbClusterId(&#34;am-bp1a16357gty69185&#34;)
- *             .groupName(&#34;TESTOPENAPI&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AdbFunctions.getZones();
+ * 
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultDBCluster = new DBCluster(&#34;defaultDBCluster&#34;, DBClusterArgs.builder()        
+ *             .computeResource(&#34;48Core192GBNEW&#34;)
+ *             .dbClusterCategory(&#34;MixedStorage&#34;)
+ *             .dbClusterVersion(&#34;3.0&#34;)
+ *             .dbNodeClass(&#34;E32&#34;)
+ *             .dbNodeCount(1)
+ *             .dbNodeStorage(100)
+ *             .description(name)
+ *             .elasticIoResource(1)
+ *             .maintainTime(&#34;04:00Z-05:00Z&#34;)
+ *             .mode(&#34;flexible&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .securityIps(            
+ *                 &#34;10.168.1.12&#34;,
+ *                 &#34;10.168.1.11&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .build());
+ * 
+ *         var defaultResourceGroup = new ResourceGroup(&#34;defaultResourceGroup&#34;, ResourceGroupArgs.builder()        
+ *             .groupName(&#34;TF_EXAMPLE&#34;)
  *             .groupType(&#34;batch&#34;)
- *             .nodeNum(0)
+ *             .nodeNum(1)
+ *             .dbClusterId(defaultDBCluster.id())
  *             .build());
  * 
  *     }

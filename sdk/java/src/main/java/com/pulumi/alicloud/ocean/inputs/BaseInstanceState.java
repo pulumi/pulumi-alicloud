@@ -123,7 +123,7 @@ public final class BaseInstanceState extends com.pulumi.resources.ResourceArgs {
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
-     * - 62C400G:800GB-10000GB.
+     * - 62C400G:800GB ~ 10000GB.
      * - The default value of each package is its minimum value.
      * 
      */
@@ -135,7 +135,7 @@ public final class BaseInstanceState extends com.pulumi.resources.ResourceArgs {
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
-     * - 62C400G:800GB-10000GB.
+     * - 62C400G:800GB ~ 10000GB.
      * - The default value of each package is its minimum value.
      * 
      */
@@ -144,14 +144,14 @@ public final class BaseInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+     * Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
      * 
      */
     @Import(name="instanceClass")
     private @Nullable Output<String> instanceClass;
 
     /**
-     * @return Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+     * @return Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
      * 
      */
     public Optional<Output<String>> instanceClass() {
@@ -474,7 +474,7 @@ public final class BaseInstanceState extends com.pulumi.resources.ResourceArgs {
          * - 8C32GB:100GB ~ 10000GB
          * - 14C70GB:200GB ~ 10000GB
          * - 30C180GB:400GB ~ 10000GB
-         * - 62C400G:800GB-10000GB.
+         * - 62C400G:800GB ~ 10000GB.
          * - The default value of each package is its minimum value.
          * 
          * @return builder
@@ -490,7 +490,7 @@ public final class BaseInstanceState extends com.pulumi.resources.ResourceArgs {
          * - 8C32GB:100GB ~ 10000GB
          * - 14C70GB:200GB ~ 10000GB
          * - 30C180GB:400GB ~ 10000GB
-         * - 62C400G:800GB-10000GB.
+         * - 62C400G:800GB ~ 10000GB.
          * - The default value of each package is its minimum value.
          * 
          * @return builder
@@ -501,7 +501,7 @@ public final class BaseInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceClass Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+         * @param instanceClass Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class BaseInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceClass Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`.
+         * @param instanceClass Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
          * 
          * @return builder
          * 

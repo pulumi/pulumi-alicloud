@@ -33,14 +33,14 @@ public final class K8sSlbAttachmentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The configurations of SLB attachment, which is supported for multiple configurations.
+     * The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
      * 
      */
     @Import(name="slbConfigs")
     private @Nullable Output<List<K8sSlbAttachmentSlbConfigArgs>> slbConfigs;
 
     /**
-     * @return The configurations of SLB attachment, which is supported for multiple configurations.
+     * @return The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
      * 
      */
     public Optional<Output<List<K8sSlbAttachmentSlbConfigArgs>>> slbConfigs() {
@@ -94,7 +94,7 @@ public final class K8sSlbAttachmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations.
+         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class K8sSlbAttachmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations.
+         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class K8sSlbAttachmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations.
+         * @param slbConfigs The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
          * 
          * @return builder
          * 

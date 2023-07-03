@@ -127,12 +127,12 @@ def get_bucket_objects(bucket_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:oss/getBucketObjects:getBucketObjects', __args__, opts=opts, typ=GetBucketObjectsResult).value
 
     return AwaitableGetBucketObjectsResult(
-        bucket_name=__ret__.bucket_name,
-        id=__ret__.id,
-        key_prefix=__ret__.key_prefix,
-        key_regex=__ret__.key_regex,
-        objects=__ret__.objects,
-        output_file=__ret__.output_file)
+        bucket_name=pulumi.get(__ret__, 'bucket_name'),
+        id=pulumi.get(__ret__, 'id'),
+        key_prefix=pulumi.get(__ret__, 'key_prefix'),
+        key_regex=pulumi.get(__ret__, 'key_regex'),
+        objects=pulumi.get(__ret__, 'objects'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_bucket_objects)

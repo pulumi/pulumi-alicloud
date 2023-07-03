@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleActionForwardGroupConfig {
     /**
-     * @return The configuration of session persistence for server groups.
+     * @return The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
      * 
      */
     private @Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession;
     /**
-     * @return The destination server group to which requests are forwarded.
+     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
      * 
      */
     private @Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
     private RuleRuleActionForwardGroupConfig() {}
     /**
-     * @return The configuration of session persistence for server groups.
+     * @return The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
      * 
      */
     public Optional<RuleRuleActionForwardGroupConfigServerGroupStickySession> serverGroupStickySession() {
         return Optional.ofNullable(this.serverGroupStickySession);
     }
     /**
-     * @return The destination server group to which requests are forwarded.
+     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
      * 
      */
     public List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples() {

@@ -52,10 +52,6 @@ class GetProvisionedProductsResult:
         pulumi.set(__self__, "page_size", page_size)
         if products and not isinstance(products, list):
             raise TypeError("Expected argument 'products' to be a list")
-        if products is not None:
-            warnings.warn("""Field 'products' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
-            pulumi.log.warn("""products is deprecated: Field 'products' has been deprecated from provider version 1.197.0.""")
-
         pulumi.set(__self__, "products", products)
         if provisioned_products and not isinstance(provisioned_products, list):
             raise TypeError("Expected argument 'provisioned_products' to be a list")
@@ -124,6 +120,9 @@ class GetProvisionedProductsResult:
     @property
     @pulumi.getter
     def products(self) -> Sequence['outputs.GetProvisionedProductsProductResult']:
+        warnings.warn("""Field 'products' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
+        pulumi.log.warn("""products is deprecated: Field 'products' has been deprecated from provider version 1.197.0.""")
+
         return pulumi.get(self, "products")
 
     @property
@@ -211,19 +210,19 @@ def get_provisioned_products(access_level_filter: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts', __args__, opts=opts, typ=GetProvisionedProductsResult).value
 
     return AwaitableGetProvisionedProductsResult(
-        access_level_filter=__ret__.access_level_filter,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        products=__ret__.products,
-        provisioned_products=__ret__.provisioned_products,
-        sort_by=__ret__.sort_by,
-        sort_order=__ret__.sort_order)
+        access_level_filter=pulumi.get(__ret__, 'access_level_filter'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        products=pulumi.get(__ret__, 'products'),
+        provisioned_products=pulumi.get(__ret__, 'provisioned_products'),
+        sort_by=pulumi.get(__ret__, 'sort_by'),
+        sort_order=pulumi.get(__ret__, 'sort_order'))
 
 
 @_utilities.lift_output_func(get_provisioned_products)

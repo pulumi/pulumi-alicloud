@@ -24,14 +24,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     public static final LoadBalancerArgs Empty = new LoadBalancerArgs();
 
     /**
-     * The Access Logging Configuration Structure. See the following `Block access_log_config`.
+     * The Access Logging Configuration Structure. See `access_log_config` below for details.
      * 
      */
     @Import(name="accessLogConfig")
     private @Nullable Output<LoadBalancerAccessLogConfigArgs> accessLogConfig;
 
     /**
-     * @return The Access Logging Configuration Structure. See the following `Block access_log_config`.
+     * @return The Access Logging Configuration Structure. See `access_log_config` below for details.
      * 
      */
     public Optional<Output<LoadBalancerAccessLogConfigArgs>> accessLogConfig() {
@@ -114,14 +114,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+     * The configuration of the billing method. See `load_balancer_billing_config` below for details.
      * 
      */
     @Import(name="loadBalancerBillingConfig", required=true)
     private Output<LoadBalancerLoadBalancerBillingConfigArgs> loadBalancerBillingConfig;
 
     /**
-     * @return The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+     * @return The configuration of the billing method. See `load_balancer_billing_config` below for details.
      * 
      */
     public Output<LoadBalancerLoadBalancerBillingConfigArgs> loadBalancerBillingConfig() {
@@ -159,14 +159,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Modify the Protection Configuration. See the following `Block modification_protection_config`.
+     * Modify the Protection Configuration. See `modification_protection_config` below for details.
      * 
      */
     @Import(name="modificationProtectionConfig")
     private @Nullable Output<LoadBalancerModificationProtectionConfigArgs> modificationProtectionConfig;
 
     /**
-     * @return Modify the Protection Configuration. See the following `Block modification_protection_config`.
+     * @return Modify the Protection Configuration. See `modification_protection_config` below for details.
      * 
      */
     public Optional<Output<LoadBalancerModificationProtectionConfigArgs>> modificationProtectionConfig() {
@@ -219,14 +219,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+     * The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
      * 
      */
     @Import(name="zoneMappings", required=true)
     private Output<List<LoadBalancerZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+     * @return The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
      * 
      */
     public Output<List<LoadBalancerZoneMappingArgs>> zoneMappings() {
@@ -271,7 +271,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogConfig The Access Logging Configuration Structure. See the following `Block access_log_config`.
+         * @param accessLogConfig The Access Logging Configuration Structure. See `access_log_config` below for details.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogConfig The Access Logging Configuration Structure. See the following `Block access_log_config`.
+         * @param accessLogConfig The Access Logging Configuration Structure. See `access_log_config` below for details.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerBillingConfig The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+         * @param loadBalancerBillingConfig The configuration of the billing method. See `load_balancer_billing_config` below for details.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerBillingConfig The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+         * @param loadBalancerBillingConfig The configuration of the billing method. See `load_balancer_billing_config` below for details.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionConfig Modify the Protection Configuration. See the following `Block modification_protection_config`.
+         * @param modificationProtectionConfig Modify the Protection Configuration. See `modification_protection_config` below for details.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionConfig Modify the Protection Configuration. See the following `Block modification_protection_config`.
+         * @param modificationProtectionConfig Modify the Protection Configuration. See `modification_protection_config` below for details.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+         * @param zoneMappings The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+         * @param zoneMappings The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+         * @param zoneMappings The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
          * 
          * @return builder
          * 

@@ -175,16 +175,16 @@ def get_instances(app_key: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:tsdb/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
-        app_key=__ret__.app_key,
-        enable_details=__ret__.enable_details,
-        engine_type=__ret__.engine_type,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        output_file=__ret__.output_file,
-        query_str=__ret__.query_str,
-        status=__ret__.status,
-        status_list=__ret__.status_list)
+        app_key=pulumi.get(__ret__, 'app_key'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        engine_type=pulumi.get(__ret__, 'engine_type'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        query_str=pulumi.get(__ret__, 'query_str'),
+        status=pulumi.get(__ret__, 'status'),
+        status_list=pulumi.get(__ret__, 'status_list'))
 
 
 @_utilities.lift_output_func(get_instances)

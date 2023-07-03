@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Edas.Inputs
         private InputList<Inputs.K8sSlbAttachmentSlbConfigPortMappingArgs>? _portMappings;
 
         /// <summary>
-        /// The port configuration for SLB instance, which is supported for multiple configurations.
+        /// The port configuration for SLB instance, which is supported for multiple configurations. See `port_mappings` below.
         /// </summary>
         public InputList<Inputs.K8sSlbAttachmentSlbConfigPortMappingArgs> PortMappings
         {

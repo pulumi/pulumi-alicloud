@@ -57,11 +57,23 @@ import (
 //				return err
 //			}
 //			_, err = log.NewLogTailConfig(ctx, "exampleLogTailConfig", &log.LogTailConfigArgs{
-//				Project:     exampleProject.Name,
-//				Logstore:    exampleStore.Name,
-//				InputType:   pulumi.String("file"),
-//				OutputType:  pulumi.String("LogService"),
-//				InputDetail: pulumi.String("  	{\n		\"logPath\": \"/logPath\",\n		\"filePattern\": \"access.log\",\n		\"logType\": \"json_log\",\n		\"topicFormat\": \"default\",\n		\"discardUnmatch\": false,\n		\"enableRawLog\": true,\n		\"fileEncoding\": \"gbk\",\n		\"maxDepth\": 10\n	}\n"),
+//				Project:    exampleProject.Name,
+//				Logstore:   exampleStore.Name,
+//				InputType:  pulumi.String("file"),
+//				OutputType: pulumi.String("LogService"),
+//				InputDetail: pulumi.String(`  	{
+//			"logPath": "/logPath",
+//			"filePattern": "access.log",
+//			"logType": "json_log",
+//			"topicFormat": "default",
+//			"discardUnmatch": false,
+//			"enableRawLog": true,
+//			"fileEncoding": "gbk",
+//			"maxDepth": 10
+//		}
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err

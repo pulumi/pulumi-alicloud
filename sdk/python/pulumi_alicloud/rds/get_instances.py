@@ -281,23 +281,23 @@ def get_instances(connection_mode: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
-        connection_mode=__ret__.connection_mode,
-        db_type=__ret__.db_type,
-        enable_details=__ret__.enable_details,
-        engine=__ret__.engine,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        total_count=__ret__.total_count,
-        vpc_id=__ret__.vpc_id,
-        vswitch_id=__ret__.vswitch_id)
+        connection_mode=pulumi.get(__ret__, 'connection_mode'),
+        db_type=pulumi.get(__ret__, 'db_type'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        engine=pulumi.get(__ret__, 'engine'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        total_count=pulumi.get(__ret__, 'total_count'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'),
+        vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
 
 
 @_utilities.lift_output_func(get_instances)

@@ -167,15 +167,15 @@ def get_service_topics(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:message/getServiceTopics:getServiceTopics', __args__, opts=opts, typ=GetServiceTopicsResult).value
 
     return AwaitableGetServiceTopicsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        topic_name=__ret__.topic_name,
-        topics=__ret__.topics)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        topic_name=pulumi.get(__ret__, 'topic_name'),
+        topics=pulumi.get(__ret__, 'topics'))
 
 
 @_utilities.lift_output_func(get_service_topics)

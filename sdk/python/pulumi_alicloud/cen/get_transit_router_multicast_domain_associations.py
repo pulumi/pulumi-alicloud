@@ -197,16 +197,16 @@ def get_transit_router_multicast_domain_associations(ids: Optional[Sequence[str]
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations', __args__, opts=opts, typ=GetTransitRouterMulticastDomainAssociationsResult).value
 
     return AwaitableGetTransitRouterMulticastDomainAssociationsResult(
-        associations=__ret__.associations,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        resource_id=__ret__.resource_id,
-        resource_type=__ret__.resource_type,
-        status=__ret__.status,
-        transit_router_attachment_id=__ret__.transit_router_attachment_id,
-        transit_router_multicast_domain_id=__ret__.transit_router_multicast_domain_id,
-        vswitch_id=__ret__.vswitch_id)
+        associations=pulumi.get(__ret__, 'associations'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_id=pulumi.get(__ret__, 'resource_id'),
+        resource_type=pulumi.get(__ret__, 'resource_type'),
+        status=pulumi.get(__ret__, 'status'),
+        transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
+        transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'),
+        vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
 
 
 @_utilities.lift_output_func(get_transit_router_multicast_domain_associations)

@@ -168,14 +168,14 @@ def get_child_instance_route_entry_to_attachments(cen_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments', __args__, opts=opts, typ=GetChildInstanceRouteEntryToAttachmentsResult).value
 
     return AwaitableGetChildInstanceRouteEntryToAttachmentsResult(
-        attachments=__ret__.attachments,
-        cen_id=__ret__.cen_id,
-        child_instance_route_table_id=__ret__.child_instance_route_table_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        service_type=__ret__.service_type,
-        transit_router_attachment_id=__ret__.transit_router_attachment_id)
+        attachments=pulumi.get(__ret__, 'attachments'),
+        cen_id=pulumi.get(__ret__, 'cen_id'),
+        child_instance_route_table_id=pulumi.get(__ret__, 'child_instance_route_table_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        service_type=pulumi.get(__ret__, 'service_type'),
+        transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'))
 
 
 @_utilities.lift_output_func(get_child_instance_route_entry_to_attachments)

@@ -186,17 +186,17 @@ def get_hana_backup_plans(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans', __args__, opts=opts, typ=GetHanaBackupPlansResult).value
 
     return AwaitableGetHanaBackupPlansResult(
-        cluster_id=__ret__.cluster_id,
-        database_name=__ret__.database_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        plans=__ret__.plans,
-        vault_id=__ret__.vault_id)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        database_name=pulumi.get(__ret__, 'database_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        plans=pulumi.get(__ret__, 'plans'),
+        vault_id=pulumi.get(__ret__, 'vault_id'))
 
 
 @_utilities.lift_output_func(get_hana_backup_plans)

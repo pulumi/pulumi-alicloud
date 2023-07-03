@@ -31,14 +31,14 @@ public final class RuleRuleConditionQueryStringConfigValueArgs extends com.pulum
     }
 
     /**
-     * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+     * The value of the values list.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+     * @return The value of the values list.
      * 
      */
     public Optional<Output<String>> value() {
@@ -92,7 +92,7 @@ public final class RuleRuleConditionQueryStringConfigValueArgs extends com.pulum
         }
 
         /**
-         * @param value The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+         * @param value The value of the values list.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RuleRuleConditionQueryStringConfigValueArgs extends com.pulum
         }
 
         /**
-         * @param value The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+         * @param value The value of the values list.
          * 
          * @return builder
          * 

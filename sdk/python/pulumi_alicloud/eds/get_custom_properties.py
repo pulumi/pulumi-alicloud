@@ -103,10 +103,10 @@ def get_custom_properties(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eds/getCustomProperties:getCustomProperties', __args__, opts=opts, typ=GetCustomPropertiesResult).value
 
     return AwaitableGetCustomPropertiesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        properties=__ret__.properties)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        properties=pulumi.get(__ret__, 'properties'))
 
 
 @_utilities.lift_output_func(get_custom_properties)

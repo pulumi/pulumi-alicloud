@@ -168,15 +168,15 @@ def get_open_api_pricing_modules(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules', __args__, opts=opts, typ=GetOpenApiPricingModulesResult).value
 
     return AwaitableGetOpenApiPricingModulesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        modules=__ret__.modules,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        product_code=__ret__.product_code,
-        product_type=__ret__.product_type,
-        subscription_type=__ret__.subscription_type)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        modules=pulumi.get(__ret__, 'modules'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        product_code=pulumi.get(__ret__, 'product_code'),
+        product_type=pulumi.get(__ret__, 'product_type'),
+        subscription_type=pulumi.get(__ret__, 'subscription_type'))
 
 
 @_utilities.lift_output_func(get_open_api_pricing_modules)

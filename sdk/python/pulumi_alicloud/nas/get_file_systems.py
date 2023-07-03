@@ -166,14 +166,14 @@ def get_file_systems(description_regex: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nas/getFileSystems:getFileSystems', __args__, opts=opts, typ=GetFileSystemsResult).value
 
     return AwaitableGetFileSystemsResult(
-        description_regex=__ret__.description_regex,
-        descriptions=__ret__.descriptions,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        protocol_type=__ret__.protocol_type,
-        storage_type=__ret__.storage_type,
-        systems=__ret__.systems)
+        description_regex=pulumi.get(__ret__, 'description_regex'),
+        descriptions=pulumi.get(__ret__, 'descriptions'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        protocol_type=pulumi.get(__ret__, 'protocol_type'),
+        storage_type=pulumi.get(__ret__, 'storage_type'),
+        systems=pulumi.get(__ret__, 'systems'))
 
 
 @_utilities.lift_output_func(get_file_systems)

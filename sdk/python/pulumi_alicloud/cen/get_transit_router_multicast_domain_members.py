@@ -134,12 +134,12 @@ def get_transit_router_multicast_domain_members(ids: Optional[Sequence[str]] = N
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers', __args__, opts=opts, typ=GetTransitRouterMulticastDomainMembersResult).value
 
     return AwaitableGetTransitRouterMulticastDomainMembersResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        members=__ret__.members,
-        network_interface_id=__ret__.network_interface_id,
-        output_file=__ret__.output_file,
-        transit_router_multicast_domain_id=__ret__.transit_router_multicast_domain_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        members=pulumi.get(__ret__, 'members'),
+        network_interface_id=pulumi.get(__ret__, 'network_interface_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'))
 
 
 @_utilities.lift_output_func(get_transit_router_multicast_domain_members)

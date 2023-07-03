@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
  * 
- * For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/what-is-analyticdb-for-mysql).
+ * For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
  * 
- * &gt; **NOTE:** Available in v1.190.0+.
+ * &gt; **NOTE:** Available since v1.190.0.
  * 
  * ## Example Usage
  * 
@@ -31,11 +31,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
  * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
  * import java.util.List;
@@ -51,25 +52,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
- * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(&#34;example&#34;)
+ *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()).length() - 1];
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .zoneId(zoneId)
+ *             .vswitchName(name)
  *             .build());
  * 
  *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion(&#34;defaultDBClusterLakeVersion&#34;, DBClusterLakeVersionArgs.builder()        
  *             .computeResource(&#34;16ACU&#34;)
  *             .dbClusterVersion(&#34;5.0&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .storageResource(&#34;0ACU&#34;)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(&#34;example&#34;)
+ *             .storageResource(&#34;24ACU&#34;)
+ *             .enableDefaultResourceGroup(false)
+ *             .vswitchId(defaultSwitch.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(zoneId)
  *             .build());
  * 
  *     }

@@ -181,6 +181,9 @@ class DBClusterArgs:
         """
         It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
+        warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
+        pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
+
         return pulumi.get(self, "db_cluster_class")
 
     @db_cluster_class.setter
@@ -313,6 +316,9 @@ class DBClusterArgs:
         """
         Field `pay_type` has been deprecated. New field `payment_type` instead.
         """
+        warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
@@ -617,6 +623,9 @@ class _DBClusterState:
         """
         It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
+        warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
+        pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
+
         return pulumi.get(self, "db_cluster_class")
 
     @db_cluster_class.setter
@@ -761,6 +770,9 @@ class _DBClusterState:
         """
         Field `pay_type` has been deprecated. New field `payment_type` instead.
         """
+        warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
@@ -1231,6 +1243,9 @@ class DBCluster(pulumi.CustomResource):
         """
         It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
+        warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
+        pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
+
         return pulumi.get(self, "db_cluster_class")
 
     @property
@@ -1327,6 +1342,9 @@ class DBCluster(pulumi.CustomResource):
         """
         Field `pay_type` has been deprecated. New field `payment_type` instead.
         """
+        warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+
         return pulumi.get(self, "pay_type")
 
     @property

@@ -127,12 +127,12 @@ def get_waf_domains(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dcdn/getWafDomains:getWafDomains', __args__, opts=opts, typ=GetWafDomainsResult).value
 
     return AwaitableGetWafDomainsResult(
-        domains=__ret__.domains,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        query_args=__ret__.query_args)
+        domains=pulumi.get(__ret__, 'domains'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        query_args=pulumi.get(__ret__, 'query_args'))
 
 
 @_utilities.lift_output_func(get_waf_domains)

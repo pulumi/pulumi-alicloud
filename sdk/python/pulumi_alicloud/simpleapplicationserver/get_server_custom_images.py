@@ -126,12 +126,12 @@ def get_server_custom_images(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages', __args__, opts=opts, typ=GetServerCustomImagesResult).value
 
     return AwaitableGetServerCustomImagesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        images=__ret__.images,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        images=pulumi.get(__ret__, 'images'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_server_custom_images)

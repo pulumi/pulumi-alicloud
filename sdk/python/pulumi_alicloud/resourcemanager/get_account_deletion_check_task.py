@@ -134,12 +134,12 @@ def get_account_deletion_check_task(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask', __args__, opts=opts, typ=GetAccountDeletionCheckTaskResult).value
 
     return AwaitableGetAccountDeletionCheckTaskResult(
-        abandon_able_checks=__ret__.abandon_able_checks,
-        account_id=__ret__.account_id,
-        allow_delete=__ret__.allow_delete,
-        id=__ret__.id,
-        not_allow_reasons=__ret__.not_allow_reasons,
-        status=__ret__.status)
+        abandon_able_checks=pulumi.get(__ret__, 'abandon_able_checks'),
+        account_id=pulumi.get(__ret__, 'account_id'),
+        allow_delete=pulumi.get(__ret__, 'allow_delete'),
+        id=pulumi.get(__ret__, 'id'),
+        not_allow_reasons=pulumi.get(__ret__, 'not_allow_reasons'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_account_deletion_check_task)

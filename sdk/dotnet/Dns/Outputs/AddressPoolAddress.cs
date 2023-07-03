@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
     public sealed class AddressPoolAddress
     {
         /// <summary>
-        /// The address lists of the Address Pool. See the following `Block address`.
+        /// The address that you want to add to the address pool.
         /// </summary>
         public readonly string Address;
         /// <summary>

@@ -209,19 +209,19 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getMonitorGroups:getMonitorGroups', __args__, opts=opts, typ=GetMonitorGroupsResult).value
 
     return AwaitableGetMonitorGroupsResult(
-        dynamic_tag_rule_id=__ret__.dynamic_tag_rule_id,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        include_template_history=__ret__.include_template_history,
-        keyword=__ret__.keyword,
-        monitor_group_name=__ret__.monitor_group_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        select_contact_groups=__ret__.select_contact_groups,
-        tags=__ret__.tags,
-        type=__ret__.type)
+        dynamic_tag_rule_id=pulumi.get(__ret__, 'dynamic_tag_rule_id'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        include_template_history=pulumi.get(__ret__, 'include_template_history'),
+        keyword=pulumi.get(__ret__, 'keyword'),
+        monitor_group_name=pulumi.get(__ret__, 'monitor_group_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        select_contact_groups=pulumi.get(__ret__, 'select_contact_groups'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_monitor_groups)

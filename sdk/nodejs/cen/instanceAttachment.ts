@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
  *
- * ->**NOTE:** Available in 1.42.0+
+ * > **NOTE:** Available since v1.42.0.
  *
  * ## Example Usage
  *
@@ -17,15 +17,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccCenInstanceAttachmentBasic";
- * const cen = new alicloud.cen.Instance("cen", {description: "terraform01"});
- * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "192.168.0.0/16"});
- * const foo = new alicloud.cen.InstanceAttachment("foo", {
- *     instanceId: cen.id,
- *     childInstanceId: vpc.id,
+ * const default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "tf_example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     childInstanceId: exampleNetwork.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: "cn-beijing",
+ *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
  * });
  * ```
  *

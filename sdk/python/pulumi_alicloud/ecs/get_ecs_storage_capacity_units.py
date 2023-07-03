@@ -138,13 +138,13 @@ def get_ecs_storage_capacity_units(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits', __args__, opts=opts, typ=GetEcsStorageCapacityUnitsResult).value
 
     return AwaitableGetEcsStorageCapacityUnitsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        units=__ret__.units)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        units=pulumi.get(__ret__, 'units'))
 
 
 @_utilities.lift_output_func(get_ecs_storage_capacity_units)

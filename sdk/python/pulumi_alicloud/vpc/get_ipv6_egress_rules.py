@@ -185,16 +185,16 @@ def get_ipv6_egress_rules(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules', __args__, opts=opts, typ=GetIpv6EgressRulesResult).value
 
     return AwaitableGetIpv6EgressRulesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        ipv6_egress_rule_name=__ret__.ipv6_egress_rule_name,
-        ipv6_gateway_id=__ret__.ipv6_gateway_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        ipv6_egress_rule_name=pulumi.get(__ret__, 'ipv6_egress_rule_name'),
+        ipv6_gateway_id=pulumi.get(__ret__, 'ipv6_gateway_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_ipv6_egress_rules)

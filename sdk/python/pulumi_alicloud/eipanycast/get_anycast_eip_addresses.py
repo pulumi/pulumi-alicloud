@@ -221,20 +221,20 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses', __args__, opts=opts, typ=GetAnycastEipAddressesResult).value
 
     return AwaitableGetAnycastEipAddressesResult(
-        addresses=__ret__.addresses,
-        anycast_eip_address_name=__ret__.anycast_eip_address_name,
-        bind_instance_ids=__ret__.bind_instance_ids,
-        business_status=__ret__.business_status,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        internet_charge_type=__ret__.internet_charge_type,
-        ip_address=__ret__.ip_address,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        payment_type=__ret__.payment_type,
-        service_location=__ret__.service_location,
-        status=__ret__.status)
+        addresses=pulumi.get(__ret__, 'addresses'),
+        anycast_eip_address_name=pulumi.get(__ret__, 'anycast_eip_address_name'),
+        bind_instance_ids=pulumi.get(__ret__, 'bind_instance_ids'),
+        business_status=pulumi.get(__ret__, 'business_status'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        internet_charge_type=pulumi.get(__ret__, 'internet_charge_type'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        payment_type=pulumi.get(__ret__, 'payment_type'),
+        service_location=pulumi.get(__ret__, 'service_location'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_anycast_eip_addresses)

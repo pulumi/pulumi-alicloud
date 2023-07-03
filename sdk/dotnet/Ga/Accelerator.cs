@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<int?> AutoRenewDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        /// Use coupons to pay bills automatically. Default value: `false`. Valid values:
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        /// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
         /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         /// </summary>
@@ -60,25 +60,19 @@ namespace Pulumi.AliCloud.Ga
         public Output<int> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        /// The billing cycle of the GA instance. Default value: `Month`. Valid values:
         /// </summary>
         [Output("pricingCycle")]
         public Output<string> PricingCycle { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        /// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The instance type of the GA instance. Specification of global acceleration instance, value:
-        /// `1`: Small 1.
-        /// `2`: Small 2.
-        /// `3`: Small 3.
-        /// `5`: Medium 1.
-        /// `8`: Medium 2.
-        /// `10`: Medium 3.
+        /// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         /// </summary>
         [Output("spec")]
         public Output<string> Spec { get; private set; } = null!;
@@ -88,6 +82,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        /// Use coupons to pay bills automatically. Default value: `false`. Valid values:
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        /// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
         /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         /// </summary>
@@ -174,28 +174,34 @@ namespace Pulumi.AliCloud.Ga
         public Input<int> Duration { get; set; } = null!;
 
         /// <summary>
-        /// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        /// The billing cycle of the GA instance. Default value: `Month`. Valid values:
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        /// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// The instance type of the GA instance. Specification of global acceleration instance, value:
-        /// `1`: Small 1.
-        /// `2`: Small 2.
-        /// `3`: Small 3.
-        /// `5`: Medium 1.
-        /// `8`: Medium 2.
-        /// `10`: Medium 3.
+        /// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         /// </summary>
         [Input("spec", required: true)]
         public Input<string> Spec { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public AcceleratorArgs()
         {
@@ -218,7 +224,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
-        /// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        /// Use coupons to pay bills automatically. Default value: `false`. Valid values:
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -236,7 +242,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        /// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
         /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         /// </summary>
@@ -244,25 +250,19 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        /// The billing cycle of the GA instance. Default value: `Month`. Valid values:
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        /// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// The instance type of the GA instance. Specification of global acceleration instance, value:
-        /// `1`: Small 1.
-        /// `2`: Small 2.
-        /// `3`: Small 3.
-        /// `5`: Medium 1.
-        /// `8`: Medium 2.
-        /// `10`: Medium 3.
+        /// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }
@@ -272,6 +272,18 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public AcceleratorState()
         {

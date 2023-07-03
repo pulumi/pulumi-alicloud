@@ -44,7 +44,7 @@ class GtmInstanceArgs:
         :param pulumi.Input[str] payment_type: The Payment Type of the resource. Valid value: `Subscription`.
         :param pulumi.Input[int] period: Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
         :param pulumi.Input[int] sms_notification_count: The quota of SMS notifications.
-        :param pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]] alert_configs: The alert notification methods. See the following `Block alert_config`.
+        :param pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]] alert_configs: The alert notification methods. See `alert_config` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_groups: The alert group.
         :param pulumi.Input[str] cname_type: The access type of the CNAME domain name. Valid value: `PUBLIC`.
         :param pulumi.Input[bool] force_update: The force update.
@@ -170,7 +170,7 @@ class GtmInstanceArgs:
     @pulumi.getter(name="alertConfigs")
     def alert_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]:
         """
-        The alert notification methods. See the following `Block alert_config`.
+        The alert notification methods. See `alert_config` below for details.
         """
         return pulumi.get(self, "alert_configs")
 
@@ -360,7 +360,7 @@ class _GtmInstanceState:
                  ttl: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering GtmInstance resources.
-        :param pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]] alert_configs: The alert notification methods. See the following `Block alert_config`.
+        :param pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]] alert_configs: The alert notification methods. See `alert_config` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_groups: The alert group.
         :param pulumi.Input[str] cname_type: The access type of the CNAME domain name. Valid value: `PUBLIC`.
         :param pulumi.Input[bool] force_update: The force update.
@@ -426,7 +426,7 @@ class _GtmInstanceState:
     @pulumi.getter(name="alertConfigs")
     def alert_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]:
         """
-        The alert notification methods. See the following `Block alert_config`.
+        The alert notification methods. See `alert_config` below for details.
         """
         return pulumi.get(self, "alert_configs")
 
@@ -694,7 +694,7 @@ class GtmInstance(pulumi.CustomResource):
 
         For information about Alidns Gtm Instance and how to use it, see [What is Gtm Instance](https://www.alibabacloud.com/help/en/doc-detail/204852.html).
 
-        > **NOTE:** Available in v1.151.0+.
+        > **NOTE:** Available since v1.151.0.
 
         ## Example Usage
 
@@ -704,10 +704,14 @@ class GtmInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.com"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=var["name"])
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name="tf_example")
         default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
-            instance_name=var["name"],
+            instance_name="tf_example",
             payment_type="Subscription",
             period=1,
             renewal_status="ManualRenewal",
@@ -719,7 +723,7 @@ class GtmInstance(pulumi.CustomResource):
             cname_type="PUBLIC",
             resource_group_id=default_resource_groups.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            public_user_domain_name=var["domain_name"],
+            public_user_domain_name=domain_name,
             alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
                 sms_notice=True,
                 notice_type="ADDR_ALERT",
@@ -738,7 +742,7 @@ class GtmInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GtmInstanceAlertConfigArgs']]]] alert_configs: The alert notification methods. See the following `Block alert_config`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GtmInstanceAlertConfigArgs']]]] alert_configs: The alert notification methods. See `alert_config` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_groups: The alert group.
         :param pulumi.Input[str] cname_type: The access type of the CNAME domain name. Valid value: `PUBLIC`.
         :param pulumi.Input[bool] force_update: The force update.
@@ -770,7 +774,7 @@ class GtmInstance(pulumi.CustomResource):
 
         For information about Alidns Gtm Instance and how to use it, see [What is Gtm Instance](https://www.alibabacloud.com/help/en/doc-detail/204852.html).
 
-        > **NOTE:** Available in v1.151.0+.
+        > **NOTE:** Available since v1.151.0.
 
         ## Example Usage
 
@@ -780,10 +784,14 @@ class GtmInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.com"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=var["name"])
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name="tf_example")
         default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
-            instance_name=var["name"],
+            instance_name="tf_example",
             payment_type="Subscription",
             period=1,
             renewal_status="ManualRenewal",
@@ -795,7 +803,7 @@ class GtmInstance(pulumi.CustomResource):
             cname_type="PUBLIC",
             resource_group_id=default_resource_groups.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            public_user_domain_name=var["domain_name"],
+            public_user_domain_name=domain_name,
             alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
                 sms_notice=True,
                 notice_type="ADDR_ALERT",
@@ -925,7 +933,7 @@ class GtmInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GtmInstanceAlertConfigArgs']]]] alert_configs: The alert notification methods. See the following `Block alert_config`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GtmInstanceAlertConfigArgs']]]] alert_configs: The alert notification methods. See `alert_config` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_groups: The alert group.
         :param pulumi.Input[str] cname_type: The access type of the CNAME domain name. Valid value: `PUBLIC`.
         :param pulumi.Input[bool] force_update: The force update.
@@ -976,7 +984,7 @@ class GtmInstance(pulumi.CustomResource):
     @pulumi.getter(name="alertConfigs")
     def alert_configs(self) -> pulumi.Output[Optional[Sequence['outputs.GtmInstanceAlertConfig']]]:
         """
-        The alert notification methods. See the following `Block alert_config`.
+        The alert notification methods. See `alert_config` below for details.
         """
         return pulumi.get(self, "alert_configs")
 

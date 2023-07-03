@@ -117,11 +117,11 @@ def get_kubernetes_addon_metadata(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata', __args__, opts=opts, typ=GetKubernetesAddonMetadataResult).value
 
     return AwaitableGetKubernetesAddonMetadataResult(
-        cluster_id=__ret__.cluster_id,
-        config_schema=__ret__.config_schema,
-        id=__ret__.id,
-        name=__ret__.name,
-        version=__ret__.version)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        config_schema=pulumi.get(__ret__, 'config_schema'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_kubernetes_addon_metadata)

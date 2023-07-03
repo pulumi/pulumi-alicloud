@@ -102,10 +102,10 @@ def get_bandwidth_limits(instance_ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getBandwidthLimits:getBandwidthLimits', __args__, opts=opts, typ=GetBandwidthLimitsResult).value
 
     return AwaitableGetBandwidthLimitsResult(
-        id=__ret__.id,
-        instance_ids=__ret__.instance_ids,
-        limits=__ret__.limits,
-        output_file=__ret__.output_file)
+        id=pulumi.get(__ret__, 'id'),
+        instance_ids=pulumi.get(__ret__, 'instance_ids'),
+        limits=pulumi.get(__ret__, 'limits'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_bandwidth_limits)

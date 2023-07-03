@@ -206,17 +206,17 @@ def get_basic_endpoints(endpoint_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getBasicEndpoints:getBasicEndpoints', __args__, opts=opts, typ=GetBasicEndpointsResult).value
 
     return AwaitableGetBasicEndpointsResult(
-        endpoint_group_id=__ret__.endpoint_group_id,
-        endpoint_id=__ret__.endpoint_id,
-        endpoint_type=__ret__.endpoint_type,
-        endpoints=__ret__.endpoints,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        endpoint_group_id=pulumi.get(__ret__, 'endpoint_group_id'),
+        endpoint_id=pulumi.get(__ret__, 'endpoint_id'),
+        endpoint_type=pulumi.get(__ret__, 'endpoint_type'),
+        endpoints=pulumi.get(__ret__, 'endpoints'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_basic_endpoints)

@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://help.aliyun.com/document_detail/261169.html)
+// Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouter)
 //
-// > **NOTE:** Available in 1.126.0+
+// > **NOTE:** Available since v1.126.0.
 //
 // ## Example Usage
 //
@@ -26,27 +26,21 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-testAccCenTransitRouter"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
-//				Description:     pulumi.String("terraform01"),
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
-//				TransitRouterName: pulumi.String(name),
-//				CenId:             defaultInstance.ID(),
+//			_, err = cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String("tf_example"),
+//				CenId:             exampleInstance.ID(),
 //			})
 //			if err != nil {
 //				return err

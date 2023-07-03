@@ -27,8 +27,8 @@ class RuleArgs:
         The set of arguments for constructing a Rule resource.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]] rule_actions: The actions of the forwarding rules. See the following `Block rule_actions`.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]] rule_conditions: The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]] rule_actions: The actions of the forwarding rules. See `rule_actions` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below for details.
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
@@ -71,7 +71,7 @@ class RuleArgs:
     @pulumi.getter(name="ruleActions")
     def rule_actions(self) -> pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]]:
         """
-        The actions of the forwarding rules. See the following `Block rule_actions`.
+        The actions of the forwarding rules. See `rule_actions` below for details.
         """
         return pulumi.get(self, "rule_actions")
 
@@ -83,7 +83,7 @@ class RuleArgs:
     @pulumi.getter(name="ruleConditions")
     def rule_conditions(self) -> pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]:
         """
-        The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        The conditions of the forwarding rule. See `rule_conditions` below for details.
         """
         return pulumi.get(self, "rule_conditions")
 
@@ -145,8 +145,8 @@ class _RuleState:
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]] rule_actions: The actions of the forwarding rules. See the following `Block rule_actions`.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]] rule_conditions: The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]] rule_actions: The actions of the forwarding rules. See `rule_actions` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below for details.
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -219,7 +219,7 @@ class _RuleState:
     @pulumi.getter(name="ruleActions")
     def rule_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]]]:
         """
-        The actions of the forwarding rules. See the following `Block rule_actions`.
+        The actions of the forwarding rules. See `rule_actions` below for details.
         """
         return pulumi.get(self, "rule_actions")
 
@@ -231,7 +231,7 @@ class _RuleState:
     @pulumi.getter(name="ruleConditions")
     def rule_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]]:
         """
-        The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        The conditions of the forwarding rule. See `rule_conditions` below for details.
         """
         return pulumi.get(self, "rule_conditions")
 
@@ -280,9 +280,9 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Rule resource.
 
-        For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/doc-detail/214375.htm).
+        For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createrule).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         > **NOTE:** This version only supports forwarding rules in the request direction.
 
@@ -300,8 +300,8 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleActionArgs']]]] rule_actions: The actions of the forwarding rules. See the following `Block rule_actions`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleConditionArgs']]]] rule_conditions: The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleActionArgs']]]] rule_actions: The actions of the forwarding rules. See `rule_actions` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleConditionArgs']]]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below for details.
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         """
         ...
@@ -313,9 +313,9 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Rule resource.
 
-        For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/doc-detail/214375.htm).
+        For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createrule).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         > **NOTE:** This version only supports forwarding rules in the request direction.
 
@@ -405,8 +405,8 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleActionArgs']]]] rule_actions: The actions of the forwarding rules. See the following `Block rule_actions`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleConditionArgs']]]] rule_conditions: The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleActionArgs']]]] rule_actions: The actions of the forwarding rules. See `rule_actions` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleConditionArgs']]]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below for details.
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -460,7 +460,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="ruleActions")
     def rule_actions(self) -> pulumi.Output[Sequence['outputs.RuleRuleAction']]:
         """
-        The actions of the forwarding rules. See the following `Block rule_actions`.
+        The actions of the forwarding rules. See `rule_actions` below for details.
         """
         return pulumi.get(self, "rule_actions")
 
@@ -468,7 +468,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="ruleConditions")
     def rule_conditions(self) -> pulumi.Output[Sequence['outputs.RuleRuleCondition']]:
         """
-        The conditions of the forwarding rule. See the following `Block rule_conditions`.
+        The conditions of the forwarding rule. See `rule_conditions` below for details.
         """
         return pulumi.get(self, "rule_conditions")
 

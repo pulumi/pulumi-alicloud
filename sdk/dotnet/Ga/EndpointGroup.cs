@@ -147,16 +147,14 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> EndpointGroupRegion { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-        /// 
+        /// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
         /// &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         /// </summary>
         [Output("endpointGroupType")]
         public Output<string> EndpointGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-        /// 
+        /// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
         /// &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         /// </summary>
         [Output("endpointRequestProtocol")]
@@ -200,7 +198,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-        /// 
         /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
         [Output("portOverrides")]
@@ -213,10 +210,16 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         /// </summary>
         [Output("thresholdCount")]
-        public Output<int?> ThresholdCount { get; private set; } = null!;
+        public Output<int> ThresholdCount { get; private set; } = null!;
 
         /// <summary>
         /// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
@@ -301,16 +304,14 @@ namespace Pulumi.AliCloud.Ga
         public Input<string> EndpointGroupRegion { get; set; } = null!;
 
         /// <summary>
-        /// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-        /// 
+        /// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
         /// &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         /// </summary>
         [Input("endpointGroupType")]
         public Input<string>? EndpointGroupType { get; set; }
 
         /// <summary>
-        /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-        /// 
+        /// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
         /// &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         /// </summary>
         [Input("endpointRequestProtocol")]
@@ -354,14 +355,25 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-        /// 
         /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
         [Input("portOverrides")]
         public Input<Inputs.EndpointGroupPortOverridesArgs>? PortOverrides { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
         /// <summary>
-        /// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         /// </summary>
         [Input("thresholdCount")]
         public Input<int>? ThresholdCount { get; set; }
@@ -411,16 +423,14 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? EndpointGroupRegion { get; set; }
 
         /// <summary>
-        /// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-        /// 
+        /// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
         /// &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         /// </summary>
         [Input("endpointGroupType")]
         public Input<string>? EndpointGroupType { get; set; }
 
         /// <summary>
-        /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-        /// 
+        /// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
         /// &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         /// </summary>
         [Input("endpointRequestProtocol")]
@@ -464,7 +474,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-        /// 
         /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
         [Input("portOverrides")]
@@ -476,8 +485,20 @@ namespace Pulumi.AliCloud.Ga
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
         /// <summary>
-        /// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         /// </summary>
         [Input("thresholdCount")]
         public Input<int>? ThresholdCount { get; set; }

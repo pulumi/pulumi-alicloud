@@ -149,13 +149,13 @@ def get_db_clusters(db_cluster_description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:clickhouse/getDbClusters:getDbClusters', __args__, opts=opts, typ=GetDbClustersResult).value
 
     return AwaitableGetDbClustersResult(
-        clusters=__ret__.clusters,
-        db_cluster_description=__ret__.db_cluster_description,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        clusters=pulumi.get(__ret__, 'clusters'),
+        db_cluster_description=pulumi.get(__ret__, 'db_cluster_description'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_db_clusters)

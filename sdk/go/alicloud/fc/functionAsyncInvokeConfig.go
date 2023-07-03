@@ -58,18 +58,46 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-//				Document:    pulumi.String("	{\n		\"Statement\": [\n		  {\n			\"Action\": \"sts:AssumeRole\",\n			\"Effect\": \"Allow\",\n			\"Principal\": {\n			  \"Service\": [\n				\"fc.aliyuncs.com\"\n			  ]\n			}\n		  }\n		],\n		\"Version\": \"1\"\n	}\n"),
-//				Description: pulumi.String("this is a example"),
-//				Force:       pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultPolicy, err := ram.NewPolicy(ctx, "defaultPolicy", &ram.PolicyArgs{
-//				PolicyName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("examplepolicy%v", result), nil
-//				}).(pulumi.StringOutput),
-//				PolicyDocument: pulumi.String("	{\n		\"Version\": \"1\",\n		\"Statement\": [\n		  {\n			\"Action\": \"mns:*\",\n			\"Resource\": \"*\",\n			\"Effect\": \"Allow\"\n		  }\n		]\n	  }\n"),
+//				Document: pulumi.String(`	{
+//			"Statement": [
+//			  {
+//				"Action": "sts:AssumeRole",
+//				"Effect": "Allow",
+//				"Principal": {
+//				  "Service": [
+//					"fc.aliyuncs.com"
+//				  ]
+//				}
+//			  }
+//			],
+//			"Version": "1"
+//		}
+//
+// `),
+//
+//			Description: pulumi.String("this is a example"),
+//			Force:       pulumi.Bool(true),
+//		})
+//		if err != nil {
+//			return err
+//		}
+//		defaultPolicy, err := ram.NewPolicy(ctx, "defaultPolicy", &ram.PolicyArgs{
+//			PolicyName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//				return fmt.Sprintf("examplepolicy%v", result), nil
+//			}).(pulumi.StringOutput),
+//			PolicyDocument: pulumi.String(`	{
+//		"Version": "1",
+//		"Statement": [
+//		  {
+//			"Action": "mns:*",
+//			"Resource": "*",
+//			"Effect": "Allow"
+//		  }
+//		]
+//	  }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err

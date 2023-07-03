@@ -157,13 +157,13 @@ def get_public_ip_address_pool_cidr_blocks(cidr_block: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks', __args__, opts=opts, typ=GetPublicIpAddressPoolCidrBlocksResult).value
 
     return AwaitableGetPublicIpAddressPoolCidrBlocksResult(
-        blocks=__ret__.blocks,
-        cidr_block=__ret__.cidr_block,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        public_ip_address_pool_id=__ret__.public_ip_address_pool_id,
-        status=__ret__.status)
+        blocks=pulumi.get(__ret__, 'blocks'),
+        cidr_block=pulumi.get(__ret__, 'cidr_block'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        public_ip_address_pool_id=pulumi.get(__ret__, 'public_ip_address_pool_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_public_ip_address_pool_cidr_blocks)

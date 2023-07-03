@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly string CreateDate;
         /// <summary>
-        /// The original id is user name, but it is user id in 1.37.0+.
+        /// The original id is user's name, but it is user id in 1.37.0+.
         /// </summary>
         public readonly string Id;
         /// <summary>

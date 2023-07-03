@@ -13,7 +13,7 @@ import (
 
 // This operation is provided to scale out an EDAS application.
 //
-// > **NOTE:** Available in 1.82.0+
+// > **NOTE:** Available since v1.82.0
 //
 // ## Example Usage
 //

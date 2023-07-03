@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
     /// 
+    /// &gt; **NOTE:** Available since v1.18.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -29,87 +31,88 @@ namespace Pulumi.AliCloud.Cen
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAccCenBandwidthLimitConfig";
-    ///     var fra = new AliCloud.Provider("fra", new()
+    ///     var region1 = config.Get("region1") ?? "eu-central-1";
+    ///     var region2 = config.Get("region2") ?? "ap-southeast-1";
+    ///     var ec = new AliCloud.Provider("ec", new()
     ///     {
-    ///         Region = "eu-central-1",
+    ///         Region = region1,
     ///     });
     /// 
-    ///     var sh = new AliCloud.Provider("sh", new()
+    ///     var @as = new AliCloud.Provider("as", new()
     ///     {
-    ///         Region = "cn-shanghai",
+    ///         Region = region2,
     ///     });
     /// 
     ///     var vpc1 = new AliCloud.Vpc.Network("vpc1", new()
     ///     {
-    ///         VpcName = name,
+    ///         VpcName = "tf-example",
     ///         CidrBlock = "192.168.0.0/16",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Fra,
+    ///         Provider = alicloud.Ec,
     ///     });
     /// 
     ///     var vpc2 = new AliCloud.Vpc.Network("vpc2", new()
     ///     {
+    ///         VpcName = "tf-example",
     ///         CidrBlock = "172.16.0.0/12",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Sh,
+    ///         Provider = alicloud.As,
     ///     });
     /// 
-    ///     var cen = new AliCloud.Cen.Instance("cen", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         Description = "tf-testAccCenBandwidthLimitConfigDescription",
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var bwp = new AliCloud.Cen.BandwidthPackage("bwp", new()
+    ///     var example1 = new AliCloud.Cen.InstanceAttachment("example1", new()
     ///     {
-    ///         Bandwidth = 5,
-    ///         GeographicRegionIds = new[]
-    ///         {
-    ///             "Europe",
-    ///             "China",
-    ///         },
-    ///     });
-    /// 
-    ///     var bwpAttach = new AliCloud.Cen.BandwidthPackageAttachment("bwpAttach", new()
-    ///     {
-    ///         InstanceId = cen.Id,
-    ///         BandwidthPackageId = bwp.Id,
-    ///     });
-    /// 
-    ///     var vpcAttach1 = new AliCloud.Cen.InstanceAttachment("vpcAttach1", new()
-    ///     {
-    ///         InstanceId = cen.Id,
+    ///         InstanceId = exampleInstance.Id,
     ///         ChildInstanceId = vpc1.Id,
     ///         ChildInstanceType = "VPC",
-    ///         ChildInstanceRegionId = "eu-central-1",
+    ///         ChildInstanceRegionId = region1,
     ///     });
     /// 
-    ///     var vpcAttach2 = new AliCloud.Cen.InstanceAttachment("vpcAttach2", new()
+    ///     var example2 = new AliCloud.Cen.InstanceAttachment("example2", new()
     ///     {
-    ///         InstanceId = cen.Id,
+    ///         InstanceId = exampleInstance.Id,
     ///         ChildInstanceId = vpc2.Id,
     ///         ChildInstanceType = "VPC",
-    ///         ChildInstanceRegionId = "cn-shanghai",
+    ///         ChildInstanceRegionId = region2,
     ///     });
     /// 
-    ///     var foo = new AliCloud.Cen.BandwidthLimit("foo", new()
+    ///     var exampleBandwidthPackage = new AliCloud.Cen.BandwidthPackage("exampleBandwidthPackage", new()
     ///     {
-    ///         InstanceId = cen.Id,
+    ///         Bandwidth = 5,
+    ///         CenBandwidthPackageName = "tf_example",
+    ///         GeographicRegionAId = "Europe",
+    ///         GeographicRegionBId = "Asia-Pacific",
+    ///     });
+    /// 
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///         BandwidthPackageId = exampleBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var exampleBandwidthLimit = new AliCloud.Cen.BandwidthLimit("exampleBandwidthLimit", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
     ///         RegionIds = new[]
     ///         {
-    ///             "eu-central-1",
-    ///             "cn-shanghai",
+    ///             region1,
+    ///             region2,
     ///         },
     ///         Limit = 4,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]
     ///         {
-    ///             bwpAttach,
-    ///             vpcAttach1,
-    ///             vpcAttach2,
+    ///             exampleBandwidthPackageAttachment,
+    ///             example2,
+    ///             example1,
     ///         },
     ///     });
     /// 

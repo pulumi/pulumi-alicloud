@@ -141,6 +141,9 @@ class ReservedInstanceArgs:
         """
         Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -462,6 +465,9 @@ class _ReservedInstanceState:
         """
         Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -961,6 +967,9 @@ class ReservedInstance(pulumi.CustomResource):
         """
         Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property

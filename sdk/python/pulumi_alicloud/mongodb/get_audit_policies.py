@@ -103,10 +103,10 @@ def get_audit_policies(db_instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mongodb/getAuditPolicies:getAuditPolicies', __args__, opts=opts, typ=GetAuditPoliciesResult).value
 
     return AwaitableGetAuditPoliciesResult(
-        db_instance_id=__ret__.db_instance_id,
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        policies=__ret__.policies)
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policies=pulumi.get(__ret__, 'policies'))
 
 
 @_utilities.lift_output_func(get_audit_policies)

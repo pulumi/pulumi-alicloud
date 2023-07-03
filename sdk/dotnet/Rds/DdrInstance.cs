@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The method to update the engine version.  Default value: Immediate. Valid values:
+        /// The method to update the engine version and change.  Default value: Immediate. Valid values:
         /// - Immediate: The change immediately takes effect.
         /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         /// </summary>
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> MonitoringPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.DdrInstanceParameter>> Parameters { get; private set; } = null!;
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         /// </summary>
         [Output("pgHbaConfs")]
         public Output<ImmutableArray<Outputs.DdrInstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
@@ -372,7 +372,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the source instance if you want to restore data to a point in time.
-        /// #### Block pg_hba_conf
         /// </summary>
         [Output("sourceDbInstanceName")]
         public Output<string?> SourceDbInstanceName { get; private set; } = null!;
@@ -711,7 +710,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The method to update the engine version.  Default value: Immediate. Valid values:
+        /// The method to update the engine version and change.  Default value: Immediate. Valid values:
         /// - Immediate: The change immediately takes effect.
         /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         /// </summary>
@@ -817,7 +816,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DdrInstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         /// </summary>
         public InputList<Inputs.DdrInstanceParameterArgs> Parameters
         {
@@ -842,7 +841,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DdrInstancePgHbaConfArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         /// </summary>
         public InputList<Inputs.DdrInstancePgHbaConfArgs> PgHbaConfs
         {
@@ -953,7 +952,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the source instance if you want to restore data to a point in time.
-        /// #### Block pg_hba_conf
         /// </summary>
         [Input("sourceDbInstanceName")]
         public Input<string>? SourceDbInstanceName { get; set; }
@@ -1254,7 +1252,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The method to update the engine version.  Default value: Immediate. Valid values:
+        /// The method to update the engine version and change.  Default value: Immediate. Valid values:
         /// - Immediate: The change immediately takes effect.
         /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         /// </summary>
@@ -1360,7 +1358,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DdrInstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         /// </summary>
         public InputList<Inputs.DdrInstanceParameterGetArgs> Parameters
         {
@@ -1385,7 +1383,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DdrInstancePgHbaConfGetArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         /// </summary>
         public InputList<Inputs.DdrInstancePgHbaConfGetArgs> PgHbaConfs
         {
@@ -1496,7 +1494,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the source instance if you want to restore data to a point in time.
-        /// #### Block pg_hba_conf
         /// </summary>
         [Input("sourceDbInstanceName")]
         public Input<string>? SourceDbInstanceName { get; set; }

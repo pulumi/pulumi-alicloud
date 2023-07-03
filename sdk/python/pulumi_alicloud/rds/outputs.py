@@ -69,17 +69,27 @@ class DbInstanceEndpointNodeItem(dict):
     def __init__(__self__, *,
                  node_id: str,
                  weight: int):
+        """
+        :param str node_id: The ID of the node.
+        :param int weight: The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+        """
         pulumi.set(__self__, "node_id", node_id)
         pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> str:
+        """
+        The ID of the node.
+        """
         return pulumi.get(self, "node_id")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -88,17 +98,27 @@ class DdrInstanceParameter(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
+        """
+        :param str name: The parameter name.
+        :param str value: The parameter value.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The parameter name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "value")
 
 
@@ -305,17 +325,27 @@ class InstanceParameter(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
+        """
+        :param str name: The parameter name.
+        :param str value: The parameter value.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The parameter name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "value")
 
 

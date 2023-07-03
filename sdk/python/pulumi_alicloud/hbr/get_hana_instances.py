@@ -170,16 +170,16 @@ def get_hana_instances(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getHanaInstances:getHanaInstances', __args__, opts=opts, typ=GetHanaInstancesResult).value
 
     return AwaitableGetHanaInstancesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status,
-        vault_id=__ret__.vault_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'),
+        vault_id=pulumi.get(__ret__, 'vault_id'))
 
 
 @_utilities.lift_output_func(get_hana_instances)

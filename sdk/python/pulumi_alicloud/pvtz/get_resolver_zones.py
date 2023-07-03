@@ -103,10 +103,10 @@ def get_resolver_zones(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:pvtz/getResolverZones:getResolverZones', __args__, opts=opts, typ=GetResolverZonesResult).value
 
     return AwaitableGetResolverZonesResult(
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        zones=__ret__.zones)
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_resolver_zones)

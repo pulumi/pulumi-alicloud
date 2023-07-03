@@ -18,10 +18,13 @@ __all__ = [
 class AssumeRole(dict):
     def __init__(__self__, *,
                  role_arn: str,
+                 external_id: Optional[str] = None,
                  policy: Optional[str] = None,
                  session_expiration: Optional[int] = None,
                  session_name: Optional[str] = None):
         pulumi.set(__self__, "role_arn", role_arn)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
         if session_expiration is not None:
@@ -33,6 +36,11 @@ class AssumeRole(dict):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> str:
         return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
