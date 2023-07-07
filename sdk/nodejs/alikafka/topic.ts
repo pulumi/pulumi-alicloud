@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ALIKAFKA topic resource.
+ * Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createtopic).
  *
- * > **NOTE:** Available in 1.56.0+
+ * > **NOTE:** Available since v1.56.0.
  *
  * > **NOTE:**  Only the following regions support create alikafka topic.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
@@ -37,11 +37,9 @@ import * as utilities from "../utilities";
  *     ioMax: 20,
  *     vswitchId: defaultSwitch.id,
  * });
- * const config = new pulumi.Config();
- * const topic = config.get("topic") || "alikafkaTopicName";
  * const defaultTopic = new alicloud.alikafka.Topic("defaultTopic", {
  *     instanceId: defaultInstance.id,
- *     topic: topic,
+ *     topic: "example-topic",
  *     localTopic: false,
  *     compactTopic: false,
  *     partitionNum: 12,
@@ -51,7 +49,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
+ * ALIKAFKA TOPIC can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+ * ```
  */
 export class Topic extends pulumi.CustomResource {
     /**

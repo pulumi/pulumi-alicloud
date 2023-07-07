@@ -13,9 +13,9 @@ import (
 
 // Provides a Amqp Static Account resource.
 //
-// For information about Amqp Static Account and how to use it, see [What is Static Account](https://help.aliyun.com/document_detail/184399.html).
+// For information about Amqp Static Account and how to use it, see [What is Static Account](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/create-a-pair-of-static-username-and-password).
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -28,15 +28,38 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := amqp.NewStaticAccount(ctx, "default", &amqp.StaticAccountArgs{
-//				AccessKey:  pulumi.String("LTAI5t8beMmVM1eRZtEJ6vfo"),
-//				InstanceId: pulumi.String("amqp-cn-0ju2y01zs001"),
-//				SecretKey:  pulumi.String("sample-secret-key"),
+//			cfg := config.New(ctx, "")
+//			accessKey := "access_key"
+//			if param := cfg.Get("accessKey"); param != "" {
+//				accessKey = param
+//			}
+//			secretKey := "secret_key"
+//			if param := cfg.Get("secretKey"); param != "" {
+//				secretKey = param
+//			}
+//			defaultInstance, err := amqp.NewInstance(ctx, "defaultInstance", &amqp.InstanceArgs{
+//				InstanceType:  pulumi.String("enterprise"),
+//				MaxTps:        pulumi.String("3000"),
+//				QueueCapacity: pulumi.String("200"),
+//				StorageSize:   pulumi.String("700"),
+//				SupportEip:    pulumi.Bool(false),
+//				MaxEipTps:     pulumi.String("128"),
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = amqp.NewStaticAccount(ctx, "defaultStaticAccount", &amqp.StaticAccountArgs{
+//				InstanceId: defaultInstance.ID(),
+//				AccessKey:  pulumi.String(accessKey),
+//				SecretKey:  pulumi.String(secretKey),
 //			})
 //			if err != nil {
 //				return err
@@ -71,7 +94,8 @@ type StaticAccount struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Secret key.
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
-	UserName  pulumi.StringOutput `pulumi:"userName"`
+	// Static user name.
+	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
 // NewStaticAccount registers a new resource with the given unique name, arguments, and options.
@@ -131,7 +155,8 @@ type staticAccountState struct {
 	Password *string `pulumi:"password"`
 	// Secret key.
 	SecretKey *string `pulumi:"secretKey"`
-	UserName  *string `pulumi:"userName"`
+	// Static user name.
+	UserName *string `pulumi:"userName"`
 }
 
 type StaticAccountState struct {
@@ -147,7 +172,8 @@ type StaticAccountState struct {
 	Password pulumi.StringPtrInput
 	// Secret key.
 	SecretKey pulumi.StringPtrInput
-	UserName  pulumi.StringPtrInput
+	// Static user name.
+	UserName pulumi.StringPtrInput
 }
 
 func (StaticAccountState) ElementType() reflect.Type {
@@ -290,6 +316,7 @@ func (o StaticAccountOutput) SecretKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticAccount) pulumi.StringOutput { return v.SecretKey }).(pulumi.StringOutput)
 }
 
+// Static user name.
 func (o StaticAccountOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticAccount) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

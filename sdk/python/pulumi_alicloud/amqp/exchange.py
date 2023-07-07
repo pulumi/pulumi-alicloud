@@ -305,9 +305,9 @@ class Exchange(pulumi.CustomResource):
         """
         Provides a RabbitMQ (AMQP) Exchange resource.
 
-        For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/product/100989.html).
+        For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createexchange).
 
-        > **NOTE:** Available in v1.128.0+.
+        > **NOTE:** Available since v1.128.0.
 
         ## Example Usage
 
@@ -317,16 +317,24 @@ class Exchange(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_virtual_host = alicloud.amqp.VirtualHost("exampleVirtualHost",
-            instance_id="amqp-abc12345",
-            virtual_host_name="my-VirtualHost")
-        example_exchange = alicloud.amqp.Exchange("exampleExchange",
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="professional",
+            max_tps="1000",
+            queue_capacity="50",
+            support_eip=True,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
             auto_delete_state=False,
-            exchange_name="my-Exchange",
+            exchange_name="tf-example",
             exchange_type="DIRECT",
-            instance_id=example_virtual_host.instance_id,
+            instance_id=default_instance.id,
             internal=False,
-            virtual_host_name=example_virtual_host.virtual_host_name)
+            virtual_host_name=default_virtual_host.virtual_host_name)
         ```
 
         ## Import
@@ -367,9 +375,9 @@ class Exchange(pulumi.CustomResource):
         """
         Provides a RabbitMQ (AMQP) Exchange resource.
 
-        For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/product/100989.html).
+        For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createexchange).
 
-        > **NOTE:** Available in v1.128.0+.
+        > **NOTE:** Available since v1.128.0.
 
         ## Example Usage
 
@@ -379,16 +387,24 @@ class Exchange(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_virtual_host = alicloud.amqp.VirtualHost("exampleVirtualHost",
-            instance_id="amqp-abc12345",
-            virtual_host_name="my-VirtualHost")
-        example_exchange = alicloud.amqp.Exchange("exampleExchange",
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="professional",
+            max_tps="1000",
+            queue_capacity="50",
+            support_eip=True,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
             auto_delete_state=False,
-            exchange_name="my-Exchange",
+            exchange_name="tf-example",
             exchange_type="DIRECT",
-            instance_id=example_virtual_host.instance_id,
+            instance_id=default_instance.id,
             internal=False,
-            virtual_host_name=example_virtual_host.virtual_host_name)
+            virtual_host_name=default_virtual_host.virtual_host_name)
         ```
 
         ## Import

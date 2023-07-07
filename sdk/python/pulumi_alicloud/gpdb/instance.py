@@ -25,6 +25,8 @@ class InstanceArgs:
                  db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_group_count: Optional[pulumi.Input[int]] = None,
                  instance_network_type: Optional[pulumi.Input[str]] = None,
@@ -44,48 +46,54 @@ class InstanceArgs:
                  storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
+                 vector_configuration_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
-        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
-        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
+        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[str] description: The description of the instance.
+        :param pulumi.Input[str] encryption_key: The ID of the encryption key.
+               > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        :param pulumi.Input[str] encryption_type: The encryption type. Valid values: `CloudDisk`.
+               > **NOTE:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
-        :param pulumi.Input[str] instance_network_type: The network type of the instance.
+        :param pulumi.Input[str] instance_network_type: The network type of the instance. Valid values: `VPC`.
         :param pulumi.Input[str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See block `ip_whitelist`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
-        :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        :param pulumi.Input[int] master_node_num: The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private ip address.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
-        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
-        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
+        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        :param pulumi.Input[str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
@@ -106,9 +114,13 @@ class InstanceArgs:
             pulumi.set(__self__, "db_instance_class", db_instance_class)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
         if instance_charge_type is not None:
-            warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
-            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+            warnings.warn("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_group_count is not None:
@@ -150,6 +162,8 @@ class InstanceArgs:
             pulumi.set(__self__, "tags", tags)
         if used_time is not None:
             pulumi.set(__self__, "used_time", used_time)
+        if vector_configuration_status is not None:
+            pulumi.set(__self__, "vector_configuration_status", vector_configuration_status)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if zone_id is not None:
@@ -171,7 +185,7 @@ class InstanceArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         """
         return pulumi.get(self, "engine")
 
@@ -234,7 +248,7 @@ class InstanceArgs:
     @pulumi.getter(name="dbInstanceCategory")
     def db_instance_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The db instance category. Valid values: `HighAvailability`, `Basic`.
+        The db instance category. Valid values: `Basic`, `HighAvailability`.
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_category")
@@ -247,7 +261,7 @@ class InstanceArgs:
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_class")
@@ -269,13 +283,39 @@ class InstanceArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the encryption key.
+        > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption type. Valid values: `CloudDisk`.
+        > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_type", value)
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
-        warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+        warnings.warn("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
 
         return pulumi.get(self, "instance_charge_type")
 
@@ -299,7 +339,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceNetworkType")
     def instance_network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The network type of the instance.
+        The network type of the instance. Valid values: `VPC`.
         """
         return pulumi.get(self, "instance_network_type")
 
@@ -327,7 +367,7 @@ class InstanceArgs:
     @pulumi.getter(name="ipWhitelists")
     def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]]:
         """
-        The ip whitelist. See block `ip_whitelist`.
+        The ip whitelist. See `ip_whitelist` below.
         Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         """
         return pulumi.get(self, "ip_whitelists")
@@ -364,7 +404,7 @@ class InstanceArgs:
     @pulumi.getter(name="masterNodeNum")
     def master_node_num(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         """
         return pulumi.get(self, "master_node_num")
 
@@ -439,7 +479,7 @@ class InstanceArgs:
     @pulumi.getter(name="segNodeNum")
     def seg_node_num(self) -> Optional[pulumi.Input[int]]:
         """
-        Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
         > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         """
         return pulumi.get(self, "seg_node_num")
@@ -477,7 +517,7 @@ class InstanceArgs:
     @pulumi.getter(name="storageSize")
     def storage_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The storage capacity. Unit: GB. Value: `50` to `4000`.
+        The storage capacity. Unit: GB. Valid values: `50` to `4000`.
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "storage_size")
@@ -502,13 +542,25 @@ class InstanceArgs:
     @pulumi.getter(name="usedTime")
     def used_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         """
         return pulumi.get(self, "used_time")
 
     @used_time.setter
     def used_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "used_time", value)
+
+    @property
+    @pulumi.getter(name="vectorConfigurationStatus")
+    def vector_configuration_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+        """
+        return pulumi.get(self, "vector_configuration_status")
+
+    @vector_configuration_status.setter
+    def vector_configuration_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vector_configuration_status", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -545,6 +597,8 @@ class _InstanceState:
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_mode: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -568,51 +622,57 @@ class _InstanceState:
                  storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
+                 vector_configuration_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
-        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) The connection string of the instance.
+        :param pulumi.Input[str] connection_string: (Available since v1.196.0) The connection string of the instance.
         :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
-        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
+        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
         :param pulumi.Input[str] description: The description of the instance.
-        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        :param pulumi.Input[str] encryption_key: The ID of the encryption key.
+               > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        :param pulumi.Input[str] encryption_type: The encryption type. Valid values: `CloudDisk`.
+               > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
-        :param pulumi.Input[str] instance_network_type: The network type of the instance.
+        :param pulumi.Input[str] instance_network_type: The network type of the instance. Valid values: `VPC`.
         :param pulumi.Input[str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See block `ip_whitelist`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
-        :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        :param pulumi.Input[int] master_node_num: The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
-        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the instance.
+        :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[str] private_ip_address: The private ip address.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
-        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[str] status: The status of the instance.
-        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
+        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        :param pulumi.Input[str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -634,13 +694,17 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_mode", db_instance_mode)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
         if engine is not None:
             pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
         if instance_charge_type is not None:
-            warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
-            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+            warnings.warn("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_group_count is not None:
@@ -686,6 +750,8 @@ class _InstanceState:
             pulumi.set(__self__, "tags", tags)
         if used_time is not None:
             pulumi.set(__self__, "used_time", used_time)
+        if vector_configuration_status is not None:
+            pulumi.set(__self__, "vector_configuration_status", vector_configuration_status)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -712,7 +778,7 @@ class _InstanceState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.196.0+) The connection string of the instance.
+        (Available since v1.196.0) The connection string of the instance.
         """
         return pulumi.get(self, "connection_string")
 
@@ -736,7 +802,7 @@ class _InstanceState:
     @pulumi.getter(name="dbInstanceCategory")
     def db_instance_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The db instance category. Valid values: `HighAvailability`, `Basic`.
+        The db instance category. Valid values: `Basic`, `HighAvailability`.
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_category")
@@ -749,7 +815,7 @@ class _InstanceState:
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_class")
@@ -783,10 +849,36 @@ class _InstanceState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the encryption key.
+        > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption type. Valid values: `CloudDisk`.
+        > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_type", value)
+
+    @property
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         """
         return pulumi.get(self, "engine")
 
@@ -812,8 +904,8 @@ class _InstanceState:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
-        warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+        warnings.warn("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
 
         return pulumi.get(self, "instance_charge_type")
 
@@ -837,7 +929,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceNetworkType")
     def instance_network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The network type of the instance.
+        The network type of the instance. Valid values: `VPC`.
         """
         return pulumi.get(self, "instance_network_type")
 
@@ -865,7 +957,7 @@ class _InstanceState:
     @pulumi.getter(name="ipWhitelists")
     def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]]:
         """
-        The ip whitelist. See block `ip_whitelist`.
+        The ip whitelist. See `ip_whitelist` below.
         Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         """
         return pulumi.get(self, "ip_whitelists")
@@ -902,7 +994,7 @@ class _InstanceState:
     @pulumi.getter(name="masterNodeNum")
     def master_node_num(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         """
         return pulumi.get(self, "master_node_num")
 
@@ -938,7 +1030,7 @@ class _InstanceState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.196.0+) The connection port of the instance.
+        (Available since v1.196.0) The connection port of the instance.
         """
         return pulumi.get(self, "port")
 
@@ -989,7 +1081,7 @@ class _InstanceState:
     @pulumi.getter(name="segNodeNum")
     def seg_node_num(self) -> Optional[pulumi.Input[int]]:
         """
-        Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
         > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         """
         return pulumi.get(self, "seg_node_num")
@@ -1039,7 +1131,7 @@ class _InstanceState:
     @pulumi.getter(name="storageSize")
     def storage_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The storage capacity. Unit: GB. Value: `50` to `4000`.
+        The storage capacity. Unit: GB. Valid values: `50` to `4000`.
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "storage_size")
@@ -1064,13 +1156,25 @@ class _InstanceState:
     @pulumi.getter(name="usedTime")
     def used_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         """
         return pulumi.get(self, "used_time")
 
     @used_time.setter
     def used_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "used_time", value)
+
+    @property
+    @pulumi.getter(name="vectorConfigurationStatus")
+    def vector_configuration_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+        """
+        return pulumi.get(self, "vector_configuration_status")
+
+    @vector_configuration_status.setter
+    def vector_configuration_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vector_configuration_status", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -1120,6 +1224,8 @@ class Instance(pulumi.CustomResource):
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_mode: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1141,15 +1247,16 @@ class Instance(pulumi.CustomResource):
                  storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
+                 vector_configuration_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)
+        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
 
-        > **NOTE:**  Available in 1.47.0+
+        > **NOTE:** Available since v1.47.0.
 
         ## Import
 
@@ -1163,41 +1270,46 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
-        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
+        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
         :param pulumi.Input[str] description: The description of the instance.
-        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        :param pulumi.Input[str] encryption_key: The ID of the encryption key.
+               > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        :param pulumi.Input[str] encryption_type: The encryption type. Valid values: `CloudDisk`.
+               > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
-        :param pulumi.Input[str] instance_network_type: The network type of the instance.
+        :param pulumi.Input[str] instance_network_type: The network type of the instance. Valid values: `VPC`.
         :param pulumi.Input[str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist. See block `ip_whitelist`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
-        :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        :param pulumi.Input[int] master_node_num: The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private ip address.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
-        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
-        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
+        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        :param pulumi.Input[str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -1210,9 +1322,9 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)
+        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
 
-        > **NOTE:**  Available in 1.47.0+
+        > **NOTE:** Available since v1.47.0.
 
         ## Import
 
@@ -1243,6 +1355,8 @@ class Instance(pulumi.CustomResource):
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_mode: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1264,6 +1378,7 @@ class Instance(pulumi.CustomResource):
                  storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
+                 vector_configuration_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -1287,6 +1402,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'db_instance_mode'")
             __props__.__dict__["db_instance_mode"] = db_instance_mode
             __props__.__dict__["description"] = description
+            __props__.__dict__["encryption_key"] = encryption_key
+            __props__.__dict__["encryption_type"] = encryption_type
             if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")
             __props__.__dict__["engine"] = engine
@@ -1294,8 +1411,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
             if instance_charge_type is not None and not opts.urn:
-                warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
-                pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+                warnings.warn("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""", DeprecationWarning)
+                pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["instance_group_count"] = instance_group_count
             __props__.__dict__["instance_network_type"] = instance_network_type
@@ -1318,6 +1435,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["storage_size"] = storage_size
             __props__.__dict__["tags"] = tags
             __props__.__dict__["used_time"] = used_time
+            __props__.__dict__["vector_configuration_status"] = vector_configuration_status
             __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
@@ -1343,6 +1461,8 @@ class Instance(pulumi.CustomResource):
             db_instance_class: Optional[pulumi.Input[str]] = None,
             db_instance_mode: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            encryption_key: Optional[pulumi.Input[str]] = None,
+            encryption_type: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1366,6 +1486,7 @@ class Instance(pulumi.CustomResource):
             storage_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             used_time: Optional[pulumi.Input[str]] = None,
+            vector_configuration_status: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -1377,45 +1498,50 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
-        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) The connection string of the instance.
+        :param pulumi.Input[str] connection_string: (Available since v1.196.0) The connection string of the instance.
         :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
-        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
+        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
         :param pulumi.Input[str] description: The description of the instance.
-        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        :param pulumi.Input[str] encryption_key: The ID of the encryption key.
+               > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        :param pulumi.Input[str] encryption_type: The encryption type. Valid values: `CloudDisk`.
+               > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
-        :param pulumi.Input[str] instance_network_type: The network type of the instance.
+        :param pulumi.Input[str] instance_network_type: The network type of the instance. Valid values: `VPC`.
         :param pulumi.Input[str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist. See block `ip_whitelist`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
-        :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        :param pulumi.Input[int] master_node_num: The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
-        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the instance.
+        :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[str] private_ip_address: The private ip address.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
-        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[str] status: The status of the instance.
-        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
+        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
+        :param pulumi.Input[str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -1431,6 +1557,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["db_instance_class"] = db_instance_class
         __props__.__dict__["db_instance_mode"] = db_instance_mode
         __props__.__dict__["description"] = description
+        __props__.__dict__["encryption_key"] = encryption_key
+        __props__.__dict__["encryption_type"] = encryption_type
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["instance_charge_type"] = instance_charge_type
@@ -1454,6 +1582,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["storage_size"] = storage_size
         __props__.__dict__["tags"] = tags
         __props__.__dict__["used_time"] = used_time
+        __props__.__dict__["vector_configuration_status"] = vector_configuration_status
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
@@ -1474,7 +1603,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[str]:
         """
-        (Available in 1.196.0+) The connection string of the instance.
+        (Available since v1.196.0) The connection string of the instance.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1490,7 +1619,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceCategory")
     def db_instance_category(self) -> pulumi.Output[str]:
         """
-        The db instance category. Valid values: `HighAvailability`, `Basic`.
+        The db instance category. Valid values: `Basic`, `HighAvailability`.
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_category")
@@ -1499,7 +1628,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> pulumi.Output[Optional[str]]:
         """
-        The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_class")
@@ -1521,10 +1650,28 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the encryption key.
+        > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The encryption type. Valid values: `CloudDisk`.
+        > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @property
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         """
         return pulumi.get(self, "engine")
 
@@ -1542,8 +1689,8 @@ class Instance(pulumi.CustomResource):
         """
         Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
-        warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+        warnings.warn("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
 
         return pulumi.get(self, "instance_charge_type")
 
@@ -1559,7 +1706,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceNetworkType")
     def instance_network_type(self) -> pulumi.Output[str]:
         """
-        The network type of the instance.
+        The network type of the instance. Valid values: `VPC`.
         """
         return pulumi.get(self, "instance_network_type")
 
@@ -1579,7 +1726,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="ipWhitelists")
     def ip_whitelists(self) -> pulumi.Output[Sequence['outputs.InstanceIpWhitelist']]:
         """
-        The ip whitelist. See block `ip_whitelist`.
+        The ip whitelist. See `ip_whitelist` below.
         Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         """
         return pulumi.get(self, "ip_whitelists")
@@ -1604,7 +1751,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="masterNodeNum")
     def master_node_num(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         """
         return pulumi.get(self, "master_node_num")
 
@@ -1628,7 +1775,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
         """
-        (Available in 1.196.0+) The connection port of the instance.
+        (Available since v1.196.0) The connection port of the instance.
         """
         return pulumi.get(self, "port")
 
@@ -1663,7 +1810,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="segNodeNum")
     def seg_node_num(self) -> pulumi.Output[int]:
         """
-        Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
         > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         """
         return pulumi.get(self, "seg_node_num")
@@ -1697,7 +1844,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="storageSize")
     def storage_size(self) -> pulumi.Output[int]:
         """
-        The storage capacity. Unit: GB. Value: `50` to `4000`.
+        The storage capacity. Unit: GB. Valid values: `50` to `4000`.
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "storage_size")
@@ -1714,9 +1861,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="usedTime")
     def used_time(self) -> pulumi.Output[Optional[str]]:
         """
-        The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         """
         return pulumi.get(self, "used_time")
+
+    @property
+    @pulumi.getter(name="vectorConfigurationStatus")
+    def vector_configuration_status(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+        """
+        return pulumi.get(self, "vector_configuration_status")
 
     @property
     @pulumi.getter(name="vpcId")

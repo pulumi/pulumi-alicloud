@@ -16,9 +16,115 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://help.aliyun.com/document_detail/261242.html)
+ * Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation)
  * 
- * &gt; **NOTE:** Available in 1.126.0+
+ * &gt; **NOTE:** Available since v1.126.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.CenFunctions;
+ * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+ * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterRouteTable;
+ * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterRouteTableAssociation;
+ * import com.pulumi.alicloud.cen.TransitRouterRouteTableAssociationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var default = CenFunctions.getTransitRouterAvailableResources();
+ * 
+ *         final var masterZone = default_.resources()[0].masterZones()[0];
+ * 
+ *         final var slaveZone = default_.resources()[0].slaveZones()[1];
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var exampleMaster = new Switch(&#34;exampleMaster&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;192.168.1.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(masterZone)
+ *             .build());
+ * 
+ *         var exampleSlave = new Switch(&#34;exampleSlave&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;192.168.2.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(slaveZone)
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(name)
+ *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .build());
+ * 
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(name)
+ *             .cenId(exampleInstance.id())
+ *             .build());
+ * 
+ *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;exampleTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
+ *             .cenId(exampleInstance.id())
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneMappings(            
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(masterZone)
+ *                     .vswitchId(exampleMaster.id())
+ *                     .build(),
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(slaveZone)
+ *                     .vswitchId(exampleSlave.id())
+ *                     .build())
+ *             .transitRouterAttachmentName(name)
+ *             .transitRouterAttachmentDescription(name)
+ *             .build());
+ * 
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable(&#34;exampleTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .build());
+ * 
+ *         var exampleTransitRouterRouteTableAssociation = new TransitRouterRouteTableAssociation(&#34;exampleTransitRouterRouteTableAssociation&#34;, TransitRouterRouteTableAssociationArgs.builder()        
+ *             .transitRouterRouteTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
+ *             .transitRouterAttachmentId(exampleTransitRouterVpcAttachment.transitRouterAttachmentId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

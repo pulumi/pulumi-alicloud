@@ -16,7 +16,6 @@ class TairInstanceArgs:
     def __init__(__self__, *,
                  instance_class: pulumi.Input[str],
                  instance_type: pulumi.Input[str],
-                 shard_count: pulumi.Input[int],
                  vpc_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
@@ -31,12 +30,12 @@ class TairInstanceArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
+                 shard_count: Optional[pulumi.Input[int]] = None,
                  tair_instance_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TairInstance resource.
         :param pulumi.Input[str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
-        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC).
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance is connected.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -51,11 +50,11 @@ class TairInstanceArgs:
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
+        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         """
         pulumi.set(__self__, "instance_class", instance_class)
         pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "shard_count", shard_count)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -81,6 +80,8 @@ class TairInstanceArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if secondary_zone_id is not None:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
+        if shard_count is not None:
+            pulumi.set(__self__, "shard_count", shard_count)
         if tair_instance_name is not None:
             pulumi.set(__self__, "tair_instance_name", tair_instance_name)
 
@@ -107,18 +108,6 @@ class TairInstanceArgs:
     @instance_type.setter
     def instance_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_type", value)
-
-    @property
-    @pulumi.getter(name="shardCount")
-    def shard_count(self) -> pulumi.Input[int]:
-        """
-        The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
-        """
-        return pulumi.get(self, "shard_count")
-
-    @shard_count.setter
-    def shard_count(self, value: pulumi.Input[int]):
-        pulumi.set(self, "shard_count", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -287,6 +276,18 @@ class TairInstanceArgs:
     @secondary_zone_id.setter
     def secondary_zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secondary_zone_id", value)
+
+    @property
+    @pulumi.getter(name="shardCount")
+    def shard_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+        """
+        return pulumi.get(self, "shard_count")
+
+    @shard_count.setter
+    def shard_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "shard_count", value)
 
     @property
     @pulumi.getter(name="tairInstanceName")
@@ -757,8 +758,6 @@ class TairInstance(pulumi.CustomResource):
             __props__.__dict__["port"] = port
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["secondary_zone_id"] = secondary_zone_id
-            if shard_count is None and not opts.urn:
-                raise TypeError("Missing required property 'shard_count'")
             __props__.__dict__["shard_count"] = shard_count
             __props__.__dict__["tair_instance_name"] = tair_instance_name
             if vpc_id is None and not opts.urn:

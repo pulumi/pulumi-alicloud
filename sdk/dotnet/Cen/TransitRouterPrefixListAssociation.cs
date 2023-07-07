@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about Cloud Enterprise Network (CEN) Transit Router Prefix List Association and how to use it, see [What is Transit Router Prefix List Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitrouterprefixlistassociation).
     /// 
-    /// &gt; **NOTE:** Available in v1.188.0+.
+    /// &gt; **NOTE:** Available since v1.188.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,9 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultPrefixList = new AliCloud.Vpc.PrefixList("defaultPrefixList", new()
+    ///     var examplePrefixList = new AliCloud.Vpc.PrefixList("examplePrefixList", new()
     ///     {
     ///         Entrys = new[]
     ///         {
@@ -41,29 +41,31 @@ namespace Pulumi.AliCloud.Cen
     ///         },
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         CenInstanceName = "tf-example",
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         TransitRouterName = "tf_example",
+    ///         CenId = exampleInstance.Id,
     ///     });
     /// 
-    ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", new()
+    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", new()
     ///     {
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
     ///     });
     /// 
-    ///     var defaultTransitRouterPrefixListAssociation = new AliCloud.Cen.TransitRouterPrefixListAssociation("defaultTransitRouterPrefixListAssociation", new()
+    ///     var exampleTransitRouterPrefixListAssociation = new AliCloud.Cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation", new()
     ///     {
-    ///         PrefixListId = defaultPrefixList.Id,
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
-    ///         TransitRouterTableId = defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+    ///         PrefixListId = examplePrefixList.Id,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         TransitRouterTableId = exampleTransitRouterRouteTable.TransitRouterRouteTableId,
     ///         NextHop = "BlackHole",
     ///         NextHopType = "BlackHole",
-    ///         OwnerUid = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         OwnerUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///     });
     /// 
     /// });

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutermulticastdomain).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,22 +28,24 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         CenInstanceName = "tf-example",
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         TransitRouterName = "tf_example",
+    ///         CenId = exampleInstance.Id,
     ///         SupportMulticast = true,
     ///     });
     /// 
-    ///     var defaultTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", new()
+    ///     var exampleTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", new()
     ///     {
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
-    ///         TransitRouterMulticastDomainName = "tf-example-name",
-    ///         TransitRouterMulticastDomainDescription = "tf-example-description",
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         TransitRouterMulticastDomainName = "tf_example",
+    ///         TransitRouterMulticastDomainDescription = "tf_example",
     ///     });
     /// 
     /// });

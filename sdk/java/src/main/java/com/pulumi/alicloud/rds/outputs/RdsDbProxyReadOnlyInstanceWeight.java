@@ -10,20 +10,28 @@ import java.util.Objects;
 @CustomType
 public final class RdsDbProxyReadOnlyInstanceWeight {
     /**
-     * @return The Id of instance that can run database.
+     * @return The Id of the instance and its read-only instances that can run database.
      * 
      */
     private String instanceId;
+    /**
+     * @return Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * 
+     */
     private String weight;
 
     private RdsDbProxyReadOnlyInstanceWeight() {}
     /**
-     * @return The Id of instance that can run database.
+     * @return The Id of the instance and its read-only instances that can run database.
      * 
      */
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * 
+     */
     public String weight() {
         return this.weight;
     }

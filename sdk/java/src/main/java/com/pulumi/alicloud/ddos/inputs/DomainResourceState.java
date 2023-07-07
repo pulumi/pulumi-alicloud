@@ -19,6 +19,21 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
     public static final DomainResourceState Empty = new DomainResourceState();
 
     /**
+     * (Available since v1.207.2) The CNAME assigned to the domain name.
+     * 
+     */
+    @Import(name="cname")
+    private @Nullable Output<String> cname;
+
+    /**
+     * @return (Available since v1.207.2) The CNAME assigned to the domain name.
+     * 
+     */
+    public Optional<Output<String>> cname() {
+        return Optional.ofNullable(this.cname);
+    }
+
+    /**
      * The domain name of the website that you want to add to the instance.
      * 
      */
@@ -50,9 +65,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
 
     /**
      * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-     * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
-     * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
-     * and you can use tolist to convert it to a list.
+     * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
      * 
      */
     @Import(name="instanceIds")
@@ -60,9 +73,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-     * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
-     * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
-     * and you can use tolist to convert it to a list.
+     * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
      * 
      */
     public Optional<Output<List<String>>> instanceIds() {
@@ -70,14 +81,16 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
+     * Protocol type and port number information. See `proxy_types` below.
+     * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
      * 
      */
     @Import(name="proxyTypes")
     private @Nullable Output<List<DomainResourceProxyTypeArgs>> proxyTypes;
 
     /**
-     * @return Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
+     * @return Protocol type and port number information. See `proxy_types` below.
+     * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
      * 
      */
     public Optional<Output<List<DomainResourceProxyTypeArgs>>> proxyTypes() {
@@ -100,14 +113,14 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
+     * The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
      * 
      */
     @Import(name="rsType")
     private @Nullable Output<Integer> rsType;
 
     /**
-     * @return The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
+     * @return The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
      * 
      */
     public Optional<Output<Integer>> rsType() {
@@ -117,6 +130,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
     private DomainResourceState() {}
 
     private DomainResourceState(DomainResourceState $) {
+        this.cname = $.cname;
         this.domain = $.domain;
         this.httpsExt = $.httpsExt;
         this.instanceIds = $.instanceIds;
@@ -141,6 +155,27 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
 
         public Builder(DomainResourceState defaults) {
             $ = new DomainResourceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cname (Available since v1.207.2) The CNAME assigned to the domain name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cname(@Nullable Output<String> cname) {
+            $.cname = cname;
+            return this;
+        }
+
+        /**
+         * @param cname (Available since v1.207.2) The CNAME assigned to the domain name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cname(String cname) {
+            return cname(Output.of(cname));
         }
 
         /**
@@ -187,9 +222,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param instanceIds A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-         * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
-         * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
-         * and you can use tolist to convert it to a list.
+         * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
          * 
          * @return builder
          * 
@@ -201,9 +234,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param instanceIds A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-         * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
-         * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
-         * and you can use tolist to convert it to a list.
+         * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
          * 
          * @return builder
          * 
@@ -214,9 +245,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param instanceIds A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-         * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
-         * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
-         * and you can use tolist to convert it to a list.
+         * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
          * 
          * @return builder
          * 
@@ -226,7 +255,8 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param proxyTypes Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
+         * @param proxyTypes Protocol type and port number information. See `proxy_types` below.
+         * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
          * 
          * @return builder
          * 
@@ -237,7 +267,8 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param proxyTypes Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
+         * @param proxyTypes Protocol type and port number information. See `proxy_types` below.
+         * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
          * 
          * @return builder
          * 
@@ -247,7 +278,8 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param proxyTypes Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
+         * @param proxyTypes Protocol type and port number information. See `proxy_types` below.
+         * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
          * 
          * @return builder
          * 
@@ -288,7 +320,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rsType The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
+         * @param rsType The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
          * 
          * @return builder
          * 
@@ -299,7 +331,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rsType The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
+         * @param rsType The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
          * 
          * @return builder
          * 

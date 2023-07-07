@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.AliKafka
 {
     /// <summary>
-    /// Provides an ALIKAFKA topic resource.
+    /// Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createtopic).
     /// 
-    /// &gt; **NOTE:** Available in 1.56.0+
+    /// &gt; **NOTE:** Available since v1.56.0.
     /// 
     /// &gt; **NOTE:**  Only the following regions support create alikafka topic.
     /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
@@ -56,12 +56,10 @@ namespace Pulumi.AliCloud.AliKafka
     ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
-    ///     var config = new Config();
-    ///     var topic = config.Get("topic") ?? "alikafkaTopicName";
     ///     var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
-    ///         TopicName = topic,
+    ///         TopicName = "example-topic",
     ///         LocalTopic = false,
     ///         CompactTopic = false,
     ///         PartitionNum = 12,
@@ -73,7 +71,11 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// ## Import
     /// 
-    /// ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
+    /// ALIKAFKA TOPIC can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/topic:Topic")]
     public partial class Topic : global::Pulumi.CustomResource

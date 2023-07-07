@@ -32,6 +32,7 @@ class ReadOnlyInstanceArgs:
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -92,6 +93,9 @@ class ReadOnlyInstanceArgs:
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+        :param pulumi.Input[str] effective_time: The method to change.  Default value: Immediate. Valid values:
+               - Immediate: The change immediately takes effect.
+               - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
@@ -99,7 +103,7 @@ class ReadOnlyInstanceArgs:
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
-        :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
@@ -173,6 +177,8 @@ class ReadOnlyInstanceArgs:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
         if instance_charge_type is not None:
@@ -430,6 +436,20 @@ class ReadOnlyInstanceArgs:
         pulumi.set(self, "deletion_protection", value)
 
     @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method to change.  Default value: Immediate. Valid values:
+        - Immediate: The change immediately takes effect.
+        - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @property
     @pulumi.getter(name="forceRestart")
     def force_restart(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -484,7 +504,7 @@ class ReadOnlyInstanceArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -729,6 +749,7 @@ class _ReadOnlyInstanceState:
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
@@ -792,6 +813,9 @@ class _ReadOnlyInstanceState:
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+        :param pulumi.Input[str] effective_time: The method to change.  Default value: Immediate. Valid values:
+               - Immediate: The change immediately takes effect.
+               - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] engine: Database type.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -804,7 +828,7 @@ class _ReadOnlyInstanceState:
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
-        :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
@@ -877,6 +901,8 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
         if engine is not None:
             pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
@@ -1110,6 +1136,20 @@ class _ReadOnlyInstanceState:
         pulumi.set(self, "deletion_protection", value)
 
     @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method to change.  Default value: Immediate. Valid values:
+        - Immediate: The change immediately takes effect.
+        - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @property
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1224,7 +1264,7 @@ class _ReadOnlyInstanceState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -1482,6 +1522,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1510,6 +1551,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  __props__=None):
         """
         Provides an RDS readonly instance resource.
+        > **NOTE:** Available since v1.52.1+.
 
         ## Example Usage
 
@@ -1596,6 +1638,9 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+        :param pulumi.Input[str] effective_time: The method to change.  Default value: Immediate. Valid values:
+               - Immediate: The change immediately takes effect.
+               - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
@@ -1607,7 +1652,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
@@ -1661,6 +1706,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides an RDS readonly instance resource.
+        > **NOTE:** Available since v1.52.1+.
 
         ## Example Usage
 
@@ -1739,6 +1785,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1785,6 +1832,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
             __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["effective_time"] = effective_time
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
@@ -1844,6 +1892,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            effective_time: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             force_restart: Optional[pulumi.Input[bool]] = None,
@@ -1912,6 +1961,9 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+        :param pulumi.Input[str] effective_time: The method to change.  Default value: Immediate. Valid values:
+               - Immediate: The change immediately takes effect.
+               - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] engine: Database type.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -1924,7 +1976,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
@@ -1988,6 +2040,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
         __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["effective_time"] = effective_time
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["force_restart"] = force_restart
@@ -2143,6 +2196,16 @@ class ReadOnlyInstance(pulumi.CustomResource):
         return pulumi.get(self, "deletion_protection")
 
     @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The method to change.  Default value: Immediate. Valid values:
+        - Immediate: The change immediately takes effect.
+        - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @property
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
@@ -2221,7 +2284,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.ReadOnlyInstanceParameter']]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 

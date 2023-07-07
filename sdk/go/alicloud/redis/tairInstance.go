@@ -78,9 +78,6 @@ func NewTairInstance(ctx *pulumi.Context,
 	if args.InstanceType == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
-	if args.ShardCount == nil {
-		return nil, errors.New("invalid value for required argument 'ShardCount'")
-	}
 	if args.VpcId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
@@ -236,7 +233,7 @@ type tairInstanceArgs struct {
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
-	ShardCount int `pulumi:"shardCount"`
+	ShardCount *int `pulumi:"shardCount"`
 	// The name of the resource.
 	TairInstanceName *string `pulumi:"tairInstanceName"`
 	// The ID of the virtual private cloud (VPC).
@@ -276,7 +273,7 @@ type TairInstanceArgs struct {
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
-	ShardCount pulumi.IntInput
+	ShardCount pulumi.IntPtrInput
 	// The name of the resource.
 	TairInstanceName pulumi.StringPtrInput
 	// The ID of the virtual private cloud (VPC).

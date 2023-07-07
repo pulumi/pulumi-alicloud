@@ -15,7 +15,7 @@ import (
 //
 // For information about Cloud Enterprise Network (CEN) Transit Router Prefix List Association and how to use it, see [What is Transit Router Prefix List Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitrouterprefixlistassociation).
 //
-// > **NOTE:** Available in v1.188.0+.
+// > **NOTE:** Available since v1.188.0.
 //
 // ## Example Usage
 //
@@ -35,11 +35,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultPrefixList, err := vpc.NewPrefixList(ctx, "defaultPrefixList", &vpc.PrefixListArgs{
+//			examplePrefixList, err := vpc.NewPrefixList(ctx, "examplePrefixList", &vpc.PrefixListArgs{
 //				Entrys: vpc.PrefixListEntryArray{
 //					&vpc.PrefixListEntryArgs{
 //						Cidr: pulumi.String("192.168.0.0/16"),
@@ -49,31 +49,33 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf-example"),
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
-//				CenId: defaultInstance.ID(),
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String("tf_example"),
+//				CenId:             exampleInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "defaultTransitRouterRouteTable", &cen.TransitRouterRouteTableArgs{
-//				TransitRouterId: defaultTransitRouter.TransitRouterId,
+//			exampleTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "exampleTransitRouterRouteTable", &cen.TransitRouterRouteTableArgs{
+//				TransitRouterId: exampleTransitRouter.TransitRouterId,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterPrefixListAssociation(ctx, "defaultTransitRouterPrefixListAssociation", &cen.TransitRouterPrefixListAssociationArgs{
-//				PrefixListId:         defaultPrefixList.ID(),
-//				TransitRouterId:      defaultTransitRouter.TransitRouterId,
-//				TransitRouterTableId: defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+//			_, err = cen.NewTransitRouterPrefixListAssociation(ctx, "exampleTransitRouterPrefixListAssociation", &cen.TransitRouterPrefixListAssociationArgs{
+//				PrefixListId:         examplePrefixList.ID(),
+//				TransitRouterId:      exampleTransitRouter.TransitRouterId,
+//				TransitRouterTableId: exampleTransitRouterRouteTable.TransitRouterRouteTableId,
 //				NextHop:              pulumi.String("BlackHole"),
 //				NextHopType:          pulumi.String("BlackHole"),
-//				OwnerUid:             *pulumi.String(defaultAccount.Id),
+//				OwnerUid:             *pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

@@ -141,14 +141,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Health check protocol. Valid values: `HTTP` and `TCP`.
+     * Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
      * 
      */
     @Import(name="healthCheckProtocol")
     private @Nullable Output<String> healthCheckProtocol;
 
     /**
-     * @return Health check protocol. Valid values: `HTTP` and `TCP`.
+     * @return Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
      * 
      */
     public Optional<Output<String>> healthCheckProtocol() {
@@ -417,7 +417,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckProtocol Health check protocol. Valid values: `HTTP` and `TCP`.
+         * @param healthCheckProtocol Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckProtocol Health check protocol. Valid values: `HTTP` and `TCP`.
+         * @param healthCheckProtocol Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
          * 
          * @return builder
          * 

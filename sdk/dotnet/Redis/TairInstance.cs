@@ -282,8 +282,8 @@ namespace Pulumi.AliCloud.Redis
         /// <summary>
         /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
         /// </summary>
-        [Input("shardCount", required: true)]
-        public Input<int> ShardCount { get; set; } = null!;
+        [Input("shardCount")]
+        public Input<int>? ShardCount { get; set; }
 
         /// <summary>
         /// The name of the resource.

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation).
  *
- * > **NOTE:** Available in v1.202.0+.
+ * > **NOTE:** Available since v1.202.0.
  *
  * ## Example Usage
  *
@@ -19,15 +19,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "tf-example"});
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id});
- * const defaultTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", {transitRouterId: defaultTransitRouter.transitRouterId});
- * const defaultTransitRouteTableAggregation = new alicloud.cen.TransitRouteTableAggregation("defaultTransitRouteTableAggregation", {
- *     transitRouteTableId: defaultTransitRouterRouteTable.transitRouterRouteTableId,
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: "tf_example",
+ *     cenId: exampleInstance.id,
+ * });
+ * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
+ * const exampleTransitRouteTableAggregation = new alicloud.cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation", {
+ *     transitRouteTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
  *     transitRouteTableAggregationCidr: "10.0.0.0/8",
  *     transitRouteTableAggregationScope: "VPC",
- *     transitRouteTableAggregationName: "tf-example-name",
- *     transitRouteTableAggregationDescription: "tf-example-description",
+ *     transitRouteTableAggregationName: "tf_example",
+ *     transitRouteTableAggregationDescription: "tf_example",
  * });
  * ```
  *

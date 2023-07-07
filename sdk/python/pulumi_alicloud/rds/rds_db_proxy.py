@@ -76,7 +76,7 @@ class RdsDbProxyArgs:
         :param pulumi.Input[int] read_only_instance_max_delay_time: The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
                
                > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]] read_only_instance_weights: A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]] read_only_instance_weights: A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] switch_time: The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] upgrade_time: The time when you want to upgrade the database proxy version of the instance. Valid values:
@@ -314,7 +314,7 @@ class RdsDbProxyArgs:
     @pulumi.getter(name="readOnlyInstanceWeights")
     def read_only_instance_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]:
         """
-        A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         """
         return pulumi.get(self, "read_only_instance_weights")
 
@@ -432,7 +432,7 @@ class _RdsDbProxyState:
         :param pulumi.Input[int] read_only_instance_max_delay_time: The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
                
                > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]] read_only_instance_weights: A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]] read_only_instance_weights: A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] ssl_expired_time: The time when the certificate expires.
         :param pulumi.Input[str] switch_time: The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -712,7 +712,7 @@ class _RdsDbProxyState:
     @pulumi.getter(name="readOnlyInstanceWeights")
     def read_only_instance_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]:
         """
-        A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         """
         return pulumi.get(self, "read_only_instance_weights")
 
@@ -822,7 +822,7 @@ class RdsDbProxy(pulumi.CustomResource):
                  __props__=None):
         """
         Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
-        > **NOTE:** Available in 1.193.0+.
+        > **NOTE:** Available since v1.193.0+.
 
         ## Example Usage
 
@@ -888,12 +888,6 @@ class RdsDbProxy(pulumi.CustomResource):
         ```
 
         > **NOTE:** Resource `rds.RdsDbProxy` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
-        ## Block read_only_instance_weight
-
-        The read_only_instance_weight mapping supports the following:
-
-        * `instance_id` - (Required) The Id of the instance and its read-only instances that can run database.
-        * `weight` - (Required) Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
 
         ## Import
 
@@ -943,7 +937,7 @@ class RdsDbProxy(pulumi.CustomResource):
         :param pulumi.Input[int] read_only_instance_max_delay_time: The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
                
                > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsDbProxyReadOnlyInstanceWeightArgs']]]] read_only_instance_weights: A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsDbProxyReadOnlyInstanceWeightArgs']]]] read_only_instance_weights: A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] switch_time: The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] upgrade_time: The time when you want to upgrade the database proxy version of the instance. Valid values:
@@ -961,7 +955,7 @@ class RdsDbProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
-        > **NOTE:** Available in 1.193.0+.
+        > **NOTE:** Available since v1.193.0+.
 
         ## Example Usage
 
@@ -1027,12 +1021,6 @@ class RdsDbProxy(pulumi.CustomResource):
         ```
 
         > **NOTE:** Resource `rds.RdsDbProxy` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
-        ## Block read_only_instance_weight
-
-        The read_only_instance_weight mapping supports the following:
-
-        * `instance_id` - (Required) The Id of the instance and its read-only instances that can run database.
-        * `weight` - (Required) Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
 
         ## Import
 
@@ -1199,7 +1187,7 @@ class RdsDbProxy(pulumi.CustomResource):
         :param pulumi.Input[int] read_only_instance_max_delay_time: The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
                
                > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsDbProxyReadOnlyInstanceWeightArgs']]]] read_only_instance_weights: A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsDbProxyReadOnlyInstanceWeightArgs']]]] read_only_instance_weights: A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] ssl_expired_time: The time when the certificate expires.
         :param pulumi.Input[str] switch_time: The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -1397,7 +1385,7 @@ class RdsDbProxy(pulumi.CustomResource):
     @pulumi.getter(name="readOnlyInstanceWeights")
     def read_only_instance_weights(self) -> pulumi.Output[Sequence['outputs.RdsDbProxyReadOnlyInstanceWeight']]:
         """
-        A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         """
         return pulumi.get(self, "read_only_instance_weights")
 

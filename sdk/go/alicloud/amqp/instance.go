@@ -11,59 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RabbitMQ (AMQP) Instance resource.
-//
-// For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/101631.htm).
-//
-// > **NOTE:** Available in v1.128.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := amqp.NewInstance(ctx, "professional", &amqp.InstanceArgs{
-//				InstanceType:  pulumi.String("professional"),
-//				MaxEipTps:     pulumi.String("128"),
-//				MaxTps:        pulumi.String("1000"),
-//				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
-//				QueueCapacity: pulumi.String("50"),
-//				SupportEip:    pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = amqp.NewInstance(ctx, "vip", &amqp.InstanceArgs{
-//				InstanceType:  pulumi.String("vip"),
-//				MaxEipTps:     pulumi.String("128"),
-//				MaxTps:        pulumi.String("5000"),
-//				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
-//				QueueCapacity: pulumi.String("50"),
-//				StorageSize:   pulumi.String("700"),
-//				SupportEip:    pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // RabbitMQ (AMQP) Instance can be imported using the id, e.g.
@@ -79,8 +26,9 @@ type Instance struct {
 	// The instance name.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
-	InstanceType pulumi.StringOutput    `pulumi:"instanceType"`
-	Logistics    pulumi.StringPtrOutput `pulumi:"logistics"`
+	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
+	// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+	Logistics pulumi.StringPtrOutput `pulumi:"logistics"`
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
 	MaxEipTps pulumi.StringPtrOutput `pulumi:"maxEipTps"`
 	// The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
@@ -155,7 +103,8 @@ type instanceState struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
 	InstanceType *string `pulumi:"instanceType"`
-	Logistics    *string `pulumi:"logistics"`
+	// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+	Logistics *string `pulumi:"logistics"`
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
 	MaxEipTps *string `pulumi:"maxEipTps"`
 	// The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
@@ -187,7 +136,8 @@ type InstanceState struct {
 	InstanceName pulumi.StringPtrInput
 	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
 	InstanceType pulumi.StringPtrInput
-	Logistics    pulumi.StringPtrInput
+	// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+	Logistics pulumi.StringPtrInput
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
 	MaxEipTps pulumi.StringPtrInput
 	// The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
@@ -222,8 +172,9 @@ type instanceArgs struct {
 	// The instance name.
 	InstanceName *string `pulumi:"instanceName"`
 	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
-	InstanceType string  `pulumi:"instanceType"`
-	Logistics    *string `pulumi:"logistics"`
+	InstanceType string `pulumi:"instanceType"`
+	// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+	Logistics *string `pulumi:"logistics"`
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
 	MaxEipTps *string `pulumi:"maxEipTps"`
 	// The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
@@ -254,7 +205,8 @@ type InstanceArgs struct {
 	InstanceName pulumi.StringPtrInput
 	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
 	InstanceType pulumi.StringInput
-	Logistics    pulumi.StringPtrInput
+	// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+	Logistics pulumi.StringPtrInput
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
 	MaxEipTps pulumi.StringPtrInput
 	// The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
@@ -376,6 +328,7 @@ func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
 func (o InstanceOutput) Logistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Logistics }).(pulumi.StringPtrOutput)
 }

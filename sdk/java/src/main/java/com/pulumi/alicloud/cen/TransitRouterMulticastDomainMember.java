@@ -20,42 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainMember;
- * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainMemberArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new TransitRouterMulticastDomainMember(&#34;default&#34;, TransitRouterMulticastDomainMemberArgs.builder()        
- *             .groupIpAddress(&#34;239.1.1.1&#34;)
- *             .networkInterfaceId(&#34;eni-d7o632ny4ryst9ydmt93&#34;)
- *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfr29&#34;)
- *             .vpcId(&#34;vpc-d7oapc6waducz2ytvg6b6&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Import
  * 

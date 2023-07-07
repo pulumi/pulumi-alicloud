@@ -1410,9 +1410,10 @@ func (o RdsCloneDbInstanceServerlessConfigArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type RdsDbProxyReadOnlyInstanceWeight struct {
-	// The Id of instance that can run database.
+	// The Id of the instance and its read-only instances that can run database.
 	InstanceId string `pulumi:"instanceId"`
-	Weight     string `pulumi:"weight"`
+	// Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+	Weight string `pulumi:"weight"`
 }
 
 // RdsDbProxyReadOnlyInstanceWeightInput is an input type that accepts RdsDbProxyReadOnlyInstanceWeightArgs and RdsDbProxyReadOnlyInstanceWeightOutput values.
@@ -1427,9 +1428,10 @@ type RdsDbProxyReadOnlyInstanceWeightInput interface {
 }
 
 type RdsDbProxyReadOnlyInstanceWeightArgs struct {
-	// The Id of instance that can run database.
+	// The Id of the instance and its read-only instances that can run database.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	Weight     pulumi.StringInput `pulumi:"weight"`
+	// Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+	Weight pulumi.StringInput `pulumi:"weight"`
 }
 
 func (RdsDbProxyReadOnlyInstanceWeightArgs) ElementType() reflect.Type {
@@ -1483,11 +1485,12 @@ func (o RdsDbProxyReadOnlyInstanceWeightOutput) ToRdsDbProxyReadOnlyInstanceWeig
 	return o
 }
 
-// The Id of instance that can run database.
+// The Id of the instance and its read-only instances that can run database.
 func (o RdsDbProxyReadOnlyInstanceWeightOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v RdsDbProxyReadOnlyInstanceWeight) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
 func (o RdsDbProxyReadOnlyInstanceWeightOutput) Weight() pulumi.StringOutput {
 	return o.ApplyT(func(v RdsDbProxyReadOnlyInstanceWeight) string { return v.Weight }).(pulumi.StringOutput)
 }
@@ -1619,7 +1622,9 @@ func (o RdsParameterGroupParamDetailArrayOutput) Index(i pulumi.IntInput) RdsPar
 }
 
 type RdsUpgradeDbInstanceParameter struct {
-	Name  string `pulumi:"name"`
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// The parameter value.
 	Value string `pulumi:"value"`
 }
 
@@ -1635,7 +1640,9 @@ type RdsUpgradeDbInstanceParameterInput interface {
 }
 
 type RdsUpgradeDbInstanceParameterArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The parameter value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1690,10 +1697,12 @@ func (o RdsUpgradeDbInstanceParameterOutput) ToRdsUpgradeDbInstanceParameterOutp
 	return o
 }
 
+// The parameter name.
 func (o RdsUpgradeDbInstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RdsUpgradeDbInstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The parameter value.
 func (o RdsUpgradeDbInstanceParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v RdsUpgradeDbInstanceParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1894,7 +1903,9 @@ func (o RdsUpgradeDbInstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) RdsUp
 }
 
 type ReadOnlyInstanceParameter struct {
-	Name  string `pulumi:"name"`
+	// The parameter name.
+	Name string `pulumi:"name"`
+	// The parameter value.
 	Value string `pulumi:"value"`
 }
 
@@ -1910,7 +1921,9 @@ type ReadOnlyInstanceParameterInput interface {
 }
 
 type ReadOnlyInstanceParameterArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The parameter value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1965,10 +1978,12 @@ func (o ReadOnlyInstanceParameterOutput) ToReadOnlyInstanceParameterOutputWithCo
 	return o
 }
 
+// The parameter name.
 func (o ReadOnlyInstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReadOnlyInstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The parameter value.
 func (o ReadOnlyInstanceParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ReadOnlyInstanceParameter) string { return v.Value }).(pulumi.StringOutput)
 }

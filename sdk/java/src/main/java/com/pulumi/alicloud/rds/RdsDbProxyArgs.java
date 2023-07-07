@@ -251,14 +251,14 @@ public final class RdsDbProxyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
      * 
      */
     @Import(name="readOnlyInstanceWeights")
     private @Nullable Output<List<RdsDbProxyReadOnlyInstanceWeightArgs>> readOnlyInstanceWeights;
 
     /**
-     * @return A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * @return A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
      * 
      */
     public Optional<Output<List<RdsDbProxyReadOnlyInstanceWeightArgs>>> readOnlyInstanceWeights() {
@@ -692,7 +692,7 @@ public final class RdsDbProxyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnlyInstanceWeights A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+         * @param readOnlyInstanceWeights A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
          * 
          * @return builder
          * 
@@ -703,7 +703,7 @@ public final class RdsDbProxyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnlyInstanceWeights A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+         * @param readOnlyInstanceWeights A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
          * 
          * @return builder
          * 
@@ -713,7 +713,7 @@ public final class RdsDbProxyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnlyInstanceWeights A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+         * @param readOnlyInstanceWeights A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
          * 
          * @return builder
          * 

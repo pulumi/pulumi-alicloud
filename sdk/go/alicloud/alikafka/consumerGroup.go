@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an ALIKAFKA consumer group resource.
+// Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createconsumergroup).
 //
-// > **NOTE:** Available in 1.56.0+
+// > **NOTE:** Available since v1.56.0.
 //
 // > **NOTE:**  Only the following regions support create alikafka consumer group.
 // [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
@@ -38,9 +38,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			consumerId := "CID-alikafkaGroupDatasourceName"
-//			if param := cfg.Get("consumerId"); param != "" {
-//				consumerId = param
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			_, err = alikafka.NewConsumerGroup(ctx, "defaultConsumerGroup", &alikafka.ConsumerGroupArgs{
-//				ConsumerId: pulumi.String(consumerId),
+//				ConsumerId: pulumi.String(name),
 //				InstanceId: defaultInstance.ID(),
 //			})
 //			if err != nil {

@@ -199,7 +199,7 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
 
         For information about Cloud Enterprise Network (CEN) Transit Router Grant Attachment and how to use it, see [What is Transit Router Grant Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/grantinstancetotransitrouter).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -209,14 +209,17 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=var["name"],
-            description="test for transit router grant attachment")
-        default_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("defaultTransitRouterGrantAttachment",
-            cen_id=default_instance.id,
-            cen_owner_id="your_cen_owner_id",
-            instance_id=default_networks.ids[0],
+        default = alicloud.get_account()
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment",
+            cen_id=example_instance.id,
+            cen_owner_id=default.id,
+            instance_id=example_network.id,
             instance_type="VPC",
             order_type="PayByCenOwner")
         ```
@@ -248,7 +251,7 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
 
         For information about Cloud Enterprise Network (CEN) Transit Router Grant Attachment and how to use it, see [What is Transit Router Grant Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/grantinstancetotransitrouter).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -258,14 +261,17 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=var["name"],
-            description="test for transit router grant attachment")
-        default_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("defaultTransitRouterGrantAttachment",
-            cen_id=default_instance.id,
-            cen_owner_id="your_cen_owner_id",
-            instance_id=default_networks.ids[0],
+        default = alicloud.get_account()
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment",
+            cen_id=example_instance.id,
+            cen_owner_id=default.id,
+            instance_id=example_network.id,
             instance_type="VPC",
             order_type="PayByCenOwner")
         ```

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 /**
  * Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
- * &gt; **NOTE:** Available in 1.193.0+.
+ * &gt; **NOTE:** Available since v1.193.0+.
  * 
  * ## Example Usage
  * ```java
@@ -122,12 +122,6 @@ import javax.annotation.Nullable;
  * ```
  * 
  * &gt; **NOTE:** Resource `alicloud.rds.RdsDbProxy` should be created after `alicloud.rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
- * ## Block read_only_instance_weight
- * 
- * The read_only_instance_weight mapping supports the following:
- * 
- * * `instance_id` - (Required) The Id of the instance and its read-only instances that can run database.
- * * `weight` - (Required) Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
  * 
  * ## Import
  * 
@@ -417,14 +411,14 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
         return this.readOnlyInstanceMaxDelayTime;
     }
     /**
-     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
      * 
      */
     @Export(name="readOnlyInstanceWeights", type=List.class, parameters={RdsDbProxyReadOnlyInstanceWeight.class})
     private Output<List<RdsDbProxyReadOnlyInstanceWeight>> readOnlyInstanceWeights;
 
     /**
-     * @return A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * @return A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
      * 
      */
     public Output<List<RdsDbProxyReadOnlyInstanceWeight>> readOnlyInstanceWeights() {

@@ -9,23 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cen Transit Router Multicast Domain Source and how to use it, see [What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources).
  *
- * > **NOTE:** Available in v1.195.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.cen.TransitRouterMulticastDomainSource("default", {
- *     groupIpAddress: "239.1.1.1",
- *     networkInterfaceId: "eni-xxxx",
- *     transitRouterMulticastDomainId: "tr-mcast-domain-xxxx",
- *     vpcId: "vpc-xxxx",
- * });
- * ```
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Import
  *

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
  *
- * For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/createtransitroutercidr).
+ * For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
  *
- * > **NOTE:** Available in v1.193.0+.
+ * > **NOTE:** Available since v1.193.0.
  *
  * ## Example Usage
  *
@@ -19,13 +19,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "tf-example"});
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id});
- * const defaultTransitRouterCidr = new alicloud.cen.TransitRouterCidr("defaultTransitRouterCidr", {
- *     transitRouterId: defaultTransitRouter.transitRouterId,
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: "tf_example",
+ *     cenId: exampleInstance.id,
+ * });
+ * const exampleTransitRouterCidr = new alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr", {
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
  *     cidr: "192.168.0.0/16",
- *     transitRouterCidrName: "tf-example-name",
- *     description: "tf-example-description",
+ *     transitRouterCidrName: "tf_example",
+ *     description: "tf_example",
  *     publishCidrRoute: true,
  * });
  * ```

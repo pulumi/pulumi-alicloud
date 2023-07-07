@@ -100,9 +100,9 @@ class VirtualHost(pulumi.CustomResource):
         """
         Provides a RabbitMQ (AMQP) Virtual Host resource.
 
-        For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/product/100989.html).
+        For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
 
-        > **NOTE:** Available in v1.126.0+.
+        > **NOTE:** Available since v1.126.0.
 
         ## Example Usage
 
@@ -112,9 +112,17 @@ class VirtualHost(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.amqp.VirtualHost("example",
-            instance_id="amqp-abc12345",
-            virtual_host_name="my-VirtualHost")
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="professional",
+            max_tps="1000",
+            queue_capacity="50",
+            support_eip=True,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
         ```
 
         ## Import
@@ -139,9 +147,9 @@ class VirtualHost(pulumi.CustomResource):
         """
         Provides a RabbitMQ (AMQP) Virtual Host resource.
 
-        For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/product/100989.html).
+        For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
 
-        > **NOTE:** Available in v1.126.0+.
+        > **NOTE:** Available since v1.126.0.
 
         ## Example Usage
 
@@ -151,9 +159,17 @@ class VirtualHost(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.amqp.VirtualHost("example",
-            instance_id="amqp-abc12345",
-            virtual_host_name="my-VirtualHost")
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="professional",
+            max_tps="1000",
+            queue_capacity="50",
+            support_eip=True,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
         ```
 
         ## Import

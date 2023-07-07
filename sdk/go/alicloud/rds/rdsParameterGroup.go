@@ -15,7 +15,7 @@ import (
 //
 // For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
 //
-// > **NOTE:** Available in v1.119.0+.
+// > **NOTE:** Available since v1.119.0+.
 //
 // ## Example Usage
 //
@@ -46,8 +46,8 @@ import (
 //						ParamValue: pulumi.String("86460"),
 //					},
 //				},
-//				ParameterGroupDesc: pulumi.String("test"),
-//				ParameterGroupName: pulumi.String("test1234"),
+//				ParameterGroupDesc: pulumi.String("rdsparameter"),
+//				ParameterGroupName: pulumi.String("rds1234"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ type RdsParameterGroup struct {
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
-	// Parameter list.
+	// Parameter list. See `paramDetail` below.
 	ParamDetails RdsParameterGroupParamDetailArrayOutput `pulumi:"paramDetails"`
 	// The description of the parameter template.
 	ParameterGroupDesc pulumi.StringPtrOutput `pulumi:"parameterGroupDesc"`
@@ -127,7 +127,7 @@ type rdsParameterGroupState struct {
 	Engine *string `pulumi:"engine"`
 	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion *string `pulumi:"engineVersion"`
-	// Parameter list.
+	// Parameter list. See `paramDetail` below.
 	ParamDetails []RdsParameterGroupParamDetail `pulumi:"paramDetails"`
 	// The description of the parameter template.
 	ParameterGroupDesc *string `pulumi:"parameterGroupDesc"`
@@ -140,7 +140,7 @@ type RdsParameterGroupState struct {
 	Engine pulumi.StringPtrInput
 	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion pulumi.StringPtrInput
-	// Parameter list.
+	// Parameter list. See `paramDetail` below.
 	ParamDetails RdsParameterGroupParamDetailArrayInput
 	// The description of the parameter template.
 	ParameterGroupDesc pulumi.StringPtrInput
@@ -157,7 +157,7 @@ type rdsParameterGroupArgs struct {
 	Engine string `pulumi:"engine"`
 	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion string `pulumi:"engineVersion"`
-	// Parameter list.
+	// Parameter list. See `paramDetail` below.
 	ParamDetails []RdsParameterGroupParamDetail `pulumi:"paramDetails"`
 	// The description of the parameter template.
 	ParameterGroupDesc *string `pulumi:"parameterGroupDesc"`
@@ -171,7 +171,7 @@ type RdsParameterGroupArgs struct {
 	Engine pulumi.StringInput
 	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion pulumi.StringInput
-	// Parameter list.
+	// Parameter list. See `paramDetail` below.
 	ParamDetails RdsParameterGroupParamDetailArrayInput
 	// The description of the parameter template.
 	ParameterGroupDesc pulumi.StringPtrInput
@@ -276,7 +276,7 @@ func (o RdsParameterGroupOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsParameterGroup) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// Parameter list.
+// Parameter list. See `paramDetail` below.
 func (o RdsParameterGroupOutput) ParamDetails() RdsParameterGroupParamDetailArrayOutput {
 	return o.ApplyT(func(v *RdsParameterGroup) RdsParameterGroupParamDetailArrayOutput { return v.ParamDetails }).(RdsParameterGroupParamDetailArrayOutput)
 }

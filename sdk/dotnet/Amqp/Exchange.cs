@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Amqp
     /// <summary>
     /// Provides a RabbitMQ (AMQP) Exchange resource.
     /// 
-    /// For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/product/100989.html).
+    /// For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createexchange).
     /// 
-    /// &gt; **NOTE:** Available in v1.128.0+.
+    /// &gt; **NOTE:** Available since v1.128.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,20 +28,31 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVirtualHost = new AliCloud.Amqp.VirtualHost("exampleVirtualHost", new()
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
     ///     {
-    ///         InstanceId = "amqp-abc12345",
-    ///         VirtualHostName = "my-VirtualHost",
+    ///         InstanceType = "professional",
+    ///         MaxTps = "1000",
+    ///         QueueCapacity = "50",
+    ///         SupportEip = true,
+    ///         MaxEipTps = "128",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
     ///     });
     /// 
-    ///     var exampleExchange = new AliCloud.Amqp.Exchange("exampleExchange", new()
+    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("defaultVirtualHost", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         VirtualHostName = "tf-example",
+    ///     });
+    /// 
+    ///     var defaultExchange = new AliCloud.Amqp.Exchange("defaultExchange", new()
     ///     {
     ///         AutoDeleteState = false,
-    ///         ExchangeName = "my-Exchange",
+    ///         ExchangeName = "tf-example",
     ///         ExchangeType = "DIRECT",
-    ///         InstanceId = exampleVirtualHost.InstanceId,
+    ///         InstanceId = defaultInstance.Id,
     ///         Internal = false,
-    ///         VirtualHostName = exampleVirtualHost.VirtualHostName,
+    ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });
     /// 
     /// });

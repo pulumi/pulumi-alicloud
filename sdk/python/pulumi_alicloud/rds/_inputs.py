@@ -857,7 +857,8 @@ class RdsDbProxyReadOnlyInstanceWeightArgs:
                  instance_id: pulumi.Input[str],
                  weight: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] instance_id: The Id of instance that can run database.
+        :param pulumi.Input[str] instance_id: The Id of the instance and its read-only instances that can run database.
+        :param pulumi.Input[str] weight: Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "weight", weight)
@@ -866,7 +867,7 @@ class RdsDbProxyReadOnlyInstanceWeightArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The Id of instance that can run database.
+        The Id of the instance and its read-only instances that can run database.
         """
         return pulumi.get(self, "instance_id")
 
@@ -877,6 +878,9 @@ class RdsDbProxyReadOnlyInstanceWeightArgs:
     @property
     @pulumi.getter
     def weight(self) -> pulumi.Input[str]:
+        """
+        Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -926,12 +930,19 @@ class RdsUpgradeDbInstanceParameterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The parameter name.
+        :param pulumi.Input[str] value: The parameter value.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        The parameter name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -941,6 +952,9 @@ class RdsUpgradeDbInstanceParameterArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1092,12 +1106,19 @@ class ReadOnlyInstanceParameterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The parameter name.
+        :param pulumi.Input[str] value: The parameter value.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        The parameter name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1107,6 +1128,9 @@ class ReadOnlyInstanceParameterArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter

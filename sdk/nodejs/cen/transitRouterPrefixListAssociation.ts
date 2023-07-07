@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Enterprise Network (CEN) Transit Router Prefix List Association and how to use it, see [What is Transit Router Prefix List Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitrouterprefixlistassociation).
  *
- * > **NOTE:** Available in v1.188.0+.
+ * > **NOTE:** Available since v1.188.0.
  *
  * ## Example Usage
  *
@@ -19,20 +19,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccount = alicloud.getAccount({});
- * const defaultPrefixList = new alicloud.vpc.PrefixList("defaultPrefixList", {entrys: [{
+ * const default = alicloud.getAccount({});
+ * const examplePrefixList = new alicloud.vpc.PrefixList("examplePrefixList", {entrys: [{
  *     cidr: "192.168.0.0/16",
  * }]});
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "tf-example"});
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id});
- * const defaultTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", {transitRouterId: defaultTransitRouter.transitRouterId});
- * const defaultTransitRouterPrefixListAssociation = new alicloud.cen.TransitRouterPrefixListAssociation("defaultTransitRouterPrefixListAssociation", {
- *     prefixListId: defaultPrefixList.id,
- *     transitRouterId: defaultTransitRouter.transitRouterId,
- *     transitRouterTableId: defaultTransitRouterRouteTable.transitRouterRouteTableId,
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: "tf_example",
+ *     cenId: exampleInstance.id,
+ * });
+ * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
+ * const exampleTransitRouterPrefixListAssociation = new alicloud.cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation", {
+ *     prefixListId: examplePrefixList.id,
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     transitRouterTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
  *     nextHop: "BlackHole",
  *     nextHopType: "BlackHole",
- *     ownerUid: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     ownerUid: _default.then(_default => _default.id),
  * });
  * ```
  *

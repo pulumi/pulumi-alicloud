@@ -13,9 +13,9 @@ import (
 
 // Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
 //
-// For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://help.aliyun.com/document_detail/419025.html).
+// For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtrafficmarkingpolicy).
 //
-// > **NOTE:** Available in v1.173.0+.
+// > **NOTE:** Available since v1.173.0.
 //
 // ## Example Usage
 //
@@ -34,14 +34,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("example_value"),
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String("tf_example"),
 //				CenId:             exampleInstance.ID(),
-//				TransitRouterName: pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err
@@ -49,7 +50,7 @@ import (
 //			_, err = cen.NewTrafficMarkingPolicy(ctx, "exampleTrafficMarkingPolicy", &cen.TrafficMarkingPolicyArgs{
 //				MarkingDscp:              pulumi.Int(1),
 //				Priority:                 pulumi.Int(1),
-//				TrafficMarkingPolicyName: pulumi.String("example_value"),
+//				TrafficMarkingPolicyName: pulumi.String("tf_example"),
 //				TransitRouterId:          exampleTransitRouter.TransitRouterId,
 //			})
 //			if err != nil {

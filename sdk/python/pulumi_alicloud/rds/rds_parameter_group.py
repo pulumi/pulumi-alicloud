@@ -25,7 +25,7 @@ class RdsParameterGroupArgs:
         The set of arguments for constructing a RdsParameterGroup resource.
         :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]] param_details: Parameter list.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]] param_details: Parameter list. See `param_detail` below.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         """
@@ -64,7 +64,7 @@ class RdsParameterGroupArgs:
     @pulumi.getter(name="paramDetails")
     def param_details(self) -> pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]:
         """
-        Parameter list.
+        Parameter list. See `param_detail` below.
         """
         return pulumi.get(self, "param_details")
 
@@ -109,7 +109,7 @@ class _RdsParameterGroupState:
         Input properties used for looking up and filtering RdsParameterGroup resources.
         :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]] param_details: Parameter list.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]] param_details: Parameter list. See `param_detail` below.
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
         """
@@ -152,7 +152,7 @@ class _RdsParameterGroupState:
     @pulumi.getter(name="paramDetails")
     def param_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]]:
         """
-        Parameter list.
+        Parameter list. See `param_detail` below.
         """
         return pulumi.get(self, "param_details")
 
@@ -201,7 +201,7 @@ class RdsParameterGroup(pulumi.CustomResource):
 
         For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
 
-        > **NOTE:** Available in v1.119.0+.
+        > **NOTE:** Available since v1.119.0+.
 
         ## Example Usage
 
@@ -224,8 +224,8 @@ class RdsParameterGroup(pulumi.CustomResource):
                     param_value="86460",
                 ),
             ],
-            parameter_group_desc="test",
-            parameter_group_name="test1234")
+            parameter_group_desc="rdsparameter",
+            parameter_group_name="rds1234")
         ```
 
         ## Import
@@ -240,7 +240,7 @@ class RdsParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsParameterGroupParamDetailArgs']]]] param_details: Parameter list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsParameterGroupParamDetailArgs']]]] param_details: Parameter list. See `param_detail` below.
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
         """
@@ -255,7 +255,7 @@ class RdsParameterGroup(pulumi.CustomResource):
 
         For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
 
-        > **NOTE:** Available in v1.119.0+.
+        > **NOTE:** Available since v1.119.0+.
 
         ## Example Usage
 
@@ -278,8 +278,8 @@ class RdsParameterGroup(pulumi.CustomResource):
                     param_value="86460",
                 ),
             ],
-            parameter_group_desc="test",
-            parameter_group_name="test1234")
+            parameter_group_desc="rdsparameter",
+            parameter_group_name="rds1234")
         ```
 
         ## Import
@@ -356,7 +356,7 @@ class RdsParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsParameterGroupParamDetailArgs']]]] param_details: Parameter list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsParameterGroupParamDetailArgs']]]] param_details: Parameter list. See `param_detail` below.
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
         """
@@ -391,7 +391,7 @@ class RdsParameterGroup(pulumi.CustomResource):
     @pulumi.getter(name="paramDetails")
     def param_details(self) -> pulumi.Output[Sequence['outputs.RdsParameterGroupParamDetail']]:
         """
-        Parameter list.
+        Parameter list. See `param_detail` below.
         """
         return pulumi.get(self, "param_details")
 

@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
  * 
- * &gt; **NOTE:** Available in v1.119.0+.
+ * &gt; **NOTE:** Available since v1.119.0+.
  * 
  * ## Example Usage
  * 
@@ -60,8 +60,8 @@ import javax.annotation.Nullable;
  *                     .paramName(&#34;wait_timeout&#34;)
  *                     .paramValue(&#34;86460&#34;)
  *                     .build())
- *             .parameterGroupDesc(&#34;test&#34;)
- *             .parameterGroupName(&#34;test1234&#34;)
+ *             .parameterGroupDesc(&#34;rdsparameter&#34;)
+ *             .parameterGroupName(&#34;rds1234&#34;)
  *             .build());
  * 
  *     }
@@ -108,14 +108,14 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
-     * Parameter list.
+     * Parameter list. See `param_detail` below.
      * 
      */
     @Export(name="paramDetails", type=List.class, parameters={RdsParameterGroupParamDetail.class})
     private Output<List<RdsParameterGroupParamDetail>> paramDetails;
 
     /**
-     * @return Parameter list.
+     * @return Parameter list. See `param_detail` below.
      * 
      */
     public Output<List<RdsParameterGroupParamDetail>> paramDetails() {

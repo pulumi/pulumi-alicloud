@@ -33,14 +33,14 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * IP whitelist group name
+     * IP whitelist group name.
      * 
      */
     @Import(name="ipGroupName")
     private @Nullable Output<String> ipGroupName;
 
     /**
-     * @return IP whitelist group name
+     * @return IP whitelist group name.
      * 
      */
     public Optional<Output<String>> ipGroupName() {
@@ -48,14 +48,14 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
      * 
      */
     @Import(name="securityIpList")
     private @Nullable Output<String> securityIpList;
 
     /**
-     * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+     * @return List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
      * 
      */
     public Optional<Output<String>> securityIpList() {
@@ -112,7 +112,7 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipGroupName IP whitelist group name
+         * @param ipGroupName IP whitelist group name.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipGroupName IP whitelist group name
+         * @param ipGroupName IP whitelist group name.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param securityIpList Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+         * @param securityIpList List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param securityIpList Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+         * @param securityIpList List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
          * 
          * @return builder
          * 

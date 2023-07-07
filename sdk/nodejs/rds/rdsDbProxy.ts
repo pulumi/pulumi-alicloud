@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
- * > **NOTE:** Available in 1.193.0+.
+ * > **NOTE:** Available since v1.193.0+.
  *
  * ## Example Usage
  *
@@ -77,12 +77,6 @@ import * as utilities from "../utilities";
  * ```
  *
  * > **NOTE:** Resource `alicloud.rds.RdsDbProxy` should be created after `alicloud.rds.ReadOnlyInstance`, so the `dependsOn` statement is necessary.
- * ## Block readOnlyInstanceWeight
- *
- * The readOnlyInstanceWeight mapping supports the following:
- *
- * * `instanceId` - (Required) The Id of the instance and its read-only instances that can run database.
- * * `weight` - (Required) Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
  *
  * ## Import
  *
@@ -211,7 +205,7 @@ export class RdsDbProxy extends pulumi.CustomResource {
      */
     public readonly readOnlyInstanceMaxDelayTime!: pulumi.Output<number>;
     /**
-     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
      */
     public readonly readOnlyInstanceWeights!: pulumi.Output<outputs.rds.RdsDbProxyReadOnlyInstanceWeight[]>;
     /**
@@ -419,7 +413,7 @@ export interface RdsDbProxyState {
      */
     readOnlyInstanceMaxDelayTime?: pulumi.Input<number>;
     /**
-     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
      */
     readOnlyInstanceWeights?: pulumi.Input<pulumi.Input<inputs.rds.RdsDbProxyReadOnlyInstanceWeight>[]>;
     /**
@@ -530,7 +524,7 @@ export interface RdsDbProxyArgs {
      */
     readOnlyInstanceMaxDelayTime?: pulumi.Input<number>;
     /**
-     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
      */
     readOnlyInstanceWeights?: pulumi.Input<pulumi.Input<inputs.rds.RdsDbProxyReadOnlyInstanceWeight>[]>;
     /**

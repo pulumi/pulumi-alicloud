@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Enterprise Network (CEN) Transit Router Grant Attachment and how to use it, see [What is Transit Router Grant Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/grantinstancetotransitrouter).
  * 
- * &gt; **NOTE:** Available in v1.187.0+.
+ * &gt; **NOTE:** Available since v1.187.0.
  * 
  * ## Example Usage
  * 
@@ -29,8 +29,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.TransitRouterGrantAttachment;
@@ -48,19 +49,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         final var default = AlicloudFunctions.getAccount();
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(var_.name())
- *             .description(&#34;test for transit router grant attachment&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var defaultTransitRouterGrantAttachment = new TransitRouterGrantAttachment(&#34;defaultTransitRouterGrantAttachment&#34;, TransitRouterGrantAttachmentArgs.builder()        
- *             .cenId(defaultInstance.id())
- *             .cenOwnerId(&#34;your_cen_owner_id&#34;)
- *             .instanceId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var exampleTransitRouterGrantAttachment = new TransitRouterGrantAttachment(&#34;exampleTransitRouterGrantAttachment&#34;, TransitRouterGrantAttachmentArgs.builder()        
+ *             .cenId(exampleInstance.id())
+ *             .cenOwnerId(default_.id())
+ *             .instanceId(exampleNetwork.id())
  *             .instanceType(&#34;VPC&#34;)
  *             .orderType(&#34;PayByCenOwner&#34;)
  *             .build());

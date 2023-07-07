@@ -14,9 +14,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALIKAFKA sasl acl resource.
+ * Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createacl).
  * 
- * &gt; **NOTE:** Available in 1.66.0+
+ * &gt; **NOTE:** Available since v1.66.0.
  * 
  * &gt; **NOTE:**  Only the following regions support create alikafka sasl user.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
@@ -36,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.alikafka.Instance;
  * import com.pulumi.alicloud.alikafka.InstanceArgs;
  * import com.pulumi.alicloud.alikafka.Topic;
@@ -58,41 +60,50 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var username = config.get(&#34;username&#34;).orElse(&#34;testusername&#34;);
- *         final var password = config.get(&#34;password&#34;).orElse(&#34;testpassword&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .partitionNum(&#34;50&#34;)
+ *             .partitionNum(50)
  *             .diskType(&#34;1&#34;)
  *             .diskSize(&#34;500&#34;)
  *             .deployType(&#34;5&#34;)
  *             .ioMax(&#34;20&#34;)
+ *             .specType(&#34;professional&#34;)
+ *             .serviceVersion(&#34;2.2.0&#34;)
+ *             .config(&#34;{\&#34;enable.acl\&#34;:\&#34;true\&#34;}&#34;)
  *             .vswitchId(defaultSwitch.id())
+ *             .securityGroup(defaultSecurityGroup.id())
  *             .build());
  * 
  *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .topic(&#34;test-topic&#34;)
+ *             .topic(&#34;example-topic&#34;)
  *             .remark(&#34;topic-remark&#34;)
  *             .build());
  * 
  *         var defaultSaslUser = new SaslUser(&#34;defaultSaslUser&#34;, SaslUserArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .username(username)
- *             .password(password)
+ *             .username(name)
+ *             .password(&#34;tf_example123&#34;)
  *             .build());
  * 
  *         var defaultSaslAcl = new SaslAcl(&#34;defaultSaslAcl&#34;, SaslAclArgs.builder()        

@@ -142,11 +142,11 @@ class RdsUpgradeDbInstanceArgs:
                * **RPO**: Data persistence is preferred. The instance preferentially ensures data reliability to minimize data loss. Use this mode if you have higher requirements on data consistency.
                * **RTO**: Instance availability is preferred. The instance restores services as soon as possible to ensure availability. Use this mode if you have higher requirements on service availability.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -694,7 +694,7 @@ class RdsUpgradeDbInstanceArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -720,7 +720,7 @@ class RdsUpgradeDbInstanceArgs:
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -1120,12 +1120,12 @@ class _RdsUpgradeDbInstanceState:
                * **Classic**: Classic Network.
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -1651,7 +1651,7 @@ class _RdsUpgradeDbInstanceState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -1689,7 +1689,7 @@ class _RdsUpgradeDbInstanceState:
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -2081,7 +2081,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
 
         For information about RDS Upgrade DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 
-        > **NOTE:** Available in v1.153.0+.
+        > **NOTE:** Available since v1.153.0+.
 
         ## Example Usage
         ### Create a RDS MySQL upgrade instance
@@ -2201,12 +2201,12 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                * **Classic**: Classic Network.
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2273,7 +2273,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
 
         For information about RDS Upgrade DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 
-        > **NOTE:** Available in v1.153.0+.
+        > **NOTE:** Available since v1.153.0+.
 
         ## Example Usage
         ### Create a RDS MySQL upgrade instance
@@ -2615,12 +2615,12 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                * **Classic**: Classic Network.
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2988,7 +2988,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.RdsUpgradeDbInstanceParameter']]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -3014,7 +3014,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> pulumi.Output[Sequence['outputs.RdsUpgradeDbInstancePgHbaConf']]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 

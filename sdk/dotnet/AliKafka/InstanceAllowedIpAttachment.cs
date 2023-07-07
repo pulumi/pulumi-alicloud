@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.AliKafka
     /// <summary>
     /// Provides a AliKafka Instance Allowed Ip Attachment resource.
     /// 
-    /// For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/doc-detail/68151.html).
+    /// For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-updateallowedip).
     /// 
-    /// &gt; **NOTE:** Available in v1.163.0+.
+    /// &gt; **NOTE:** Available since v1.163.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,20 +29,29 @@ namespace Pulumi.AliCloud.AliKafka
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tftest";
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         NameRegex = "^default-NODELETING",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
@@ -52,7 +61,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///         DiskSize = 500,
     ///         DeployType = 5,
     ///         IoMax = 20,
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = defaultSwitch.Id,
     ///         SecurityGroup = defaultSecurityGroup.Id,
     ///     });
     /// 

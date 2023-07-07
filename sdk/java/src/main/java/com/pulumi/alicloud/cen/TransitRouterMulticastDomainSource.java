@@ -18,42 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cen Transit Router Multicast Domain Source and how to use it, see [What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainSource;
- * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainSourceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new TransitRouterMulticastDomainSource(&#34;default&#34;, TransitRouterMulticastDomainSourceArgs.builder()        
- *             .groupIpAddress(&#34;239.1.1.1&#34;)
- *             .networkInterfaceId(&#34;eni-xxxx&#34;)
- *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-xxxx&#34;)
- *             .vpcId(&#34;vpc-xxxx&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Import
  * 

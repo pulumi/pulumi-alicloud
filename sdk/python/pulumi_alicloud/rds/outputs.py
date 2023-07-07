@@ -853,7 +853,8 @@ class RdsDbProxyReadOnlyInstanceWeight(dict):
                  instance_id: str,
                  weight: str):
         """
-        :param str instance_id: The Id of instance that can run database.
+        :param str instance_id: The Id of the instance and its read-only instances that can run database.
+        :param str weight: Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "weight", weight)
@@ -862,13 +863,16 @@ class RdsDbProxyReadOnlyInstanceWeight(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        The Id of instance that can run database.
+        The Id of the instance and its read-only instances that can run database.
         """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter
     def weight(self) -> str:
+        """
+        Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -925,17 +929,27 @@ class RdsUpgradeDbInstanceParameter(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
+        """
+        :param str name: The parameter name.
+        :param str value: The parameter value.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The parameter name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "value")
 
 
@@ -1068,17 +1082,27 @@ class ReadOnlyInstanceParameter(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
+        """
+        :param str name: The parameter name.
+        :param str value: The parameter value.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The parameter name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "value")
 
 

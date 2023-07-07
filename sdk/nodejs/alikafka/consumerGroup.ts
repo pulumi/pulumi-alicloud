@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ALIKAFKA consumer group resource.
+ * Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createconsumergroup).
  *
- * > **NOTE:** Available in 1.56.0+
+ * > **NOTE:** Available since v1.56.0.
  *
  * > **NOTE:**  Only the following regions support create alikafka consumer group.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const consumerId = config.get("consumerId") || "CID-alikafkaGroupDatasourceName";
+ * const name = config.get("name") || "tf_example";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  * });
  * const defaultConsumerGroup = new alicloud.alikafka.ConsumerGroup("defaultConsumerGroup", {
- *     consumerId: consumerId,
+ *     consumerId: name,
  *     instanceId: defaultInstance.id,
  * });
  * ```

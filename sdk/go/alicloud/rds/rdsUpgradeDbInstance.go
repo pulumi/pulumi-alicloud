@@ -15,7 +15,7 @@ import (
 //
 // For information about RDS Upgrade DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0+.
 //
 // ## Example Usage
 // ### Create a RDS MySQL upgrade instance
@@ -207,7 +207,7 @@ type RdsUpgradeDbInstance struct {
 	InstanceNetworkType pulumi.StringOutput `pulumi:"instanceNetworkType"`
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters RdsUpgradeDbInstanceParameterArrayOutput `pulumi:"parameters"`
 	// The password of the certificate.
 	//
@@ -215,7 +215,7 @@ type RdsUpgradeDbInstance struct {
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs RdsUpgradeDbInstancePgHbaConfArrayOutput `pulumi:"pgHbaConfs"`
 	// The port.
 	Port pulumi.StringOutput `pulumi:"port"`
@@ -438,7 +438,7 @@ type rdsUpgradeDbInstanceState struct {
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime *string `pulumi:"maintainTime"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters []RdsUpgradeDbInstanceParameter `pulumi:"parameters"`
 	// The password of the certificate.
 	//
@@ -446,7 +446,7 @@ type rdsUpgradeDbInstanceState struct {
 	Password *string `pulumi:"password"`
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs []RdsUpgradeDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The port.
 	Port *string `pulumi:"port"`
@@ -614,7 +614,7 @@ type RdsUpgradeDbInstanceState struct {
 	InstanceNetworkType pulumi.StringPtrInput
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime pulumi.StringPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters RdsUpgradeDbInstanceParameterArrayInput
 	// The password of the certificate.
 	//
@@ -622,7 +622,7 @@ type RdsUpgradeDbInstanceState struct {
 	Password pulumi.StringPtrInput
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringPtrInput
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs RdsUpgradeDbInstancePgHbaConfArrayInput
 	// The port.
 	Port pulumi.StringPtrInput
@@ -792,7 +792,7 @@ type rdsUpgradeDbInstanceArgs struct {
 	InstanceNetworkType string `pulumi:"instanceNetworkType"`
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime *string `pulumi:"maintainTime"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters []RdsUpgradeDbInstanceParameter `pulumi:"parameters"`
 	// The password of the certificate.
 	//
@@ -800,7 +800,7 @@ type rdsUpgradeDbInstanceArgs struct {
 	Password *string `pulumi:"password"`
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs []RdsUpgradeDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The port.
 	Port *string `pulumi:"port"`
@@ -967,7 +967,7 @@ type RdsUpgradeDbInstanceArgs struct {
 	InstanceNetworkType pulumi.StringInput
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime pulumi.StringPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters RdsUpgradeDbInstanceParameterArrayInput
 	// The password of the certificate.
 	//
@@ -975,7 +975,7 @@ type RdsUpgradeDbInstanceArgs struct {
 	Password pulumi.StringPtrInput
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringInput
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs RdsUpgradeDbInstancePgHbaConfArrayInput
 	// The port.
 	Port pulumi.StringPtrInput
@@ -1310,7 +1310,7 @@ func (o RdsUpgradeDbInstanceOutput) MaintainTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
 }
 
-// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 func (o RdsUpgradeDbInstanceOutput) Parameters() RdsUpgradeDbInstanceParameterArrayOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) RdsUpgradeDbInstanceParameterArrayOutput { return v.Parameters }).(RdsUpgradeDbInstanceParameterArrayOutput)
 }
@@ -1327,7 +1327,7 @@ func (o RdsUpgradeDbInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 func (o RdsUpgradeDbInstanceOutput) PgHbaConfs() RdsUpgradeDbInstancePgHbaConfArrayOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) RdsUpgradeDbInstancePgHbaConfArrayOutput { return v.PgHbaConfs }).(RdsUpgradeDbInstancePgHbaConfArrayOutput)
 }

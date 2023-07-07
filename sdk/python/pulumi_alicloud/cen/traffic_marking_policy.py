@@ -263,9 +263,9 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
 
-        For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://help.aliyun.com/document_detail/419025.html).
+        For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtrafficmarkingpolicy).
 
-        > **NOTE:** Available in v1.173.0+.
+        > **NOTE:** Available since v1.173.0.
 
         ## Example Usage
 
@@ -275,14 +275,16 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance", cen_instance_name="example_value")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
         example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            cen_id=example_instance.id,
-            transit_router_name="example_value")
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
         example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy",
             marking_dscp=1,
             priority=1,
-            traffic_marking_policy_name="example_value",
+            traffic_marking_policy_name="tf_example",
             transit_router_id=example_transit_router.transit_router_id)
         ```
 
@@ -312,9 +314,9 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
 
-        For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://help.aliyun.com/document_detail/419025.html).
+        For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtrafficmarkingpolicy).
 
-        > **NOTE:** Available in v1.173.0+.
+        > **NOTE:** Available since v1.173.0.
 
         ## Example Usage
 
@@ -324,14 +326,16 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance", cen_instance_name="example_value")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
         example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            cen_id=example_instance.id,
-            transit_router_name="example_value")
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
         example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy",
             marking_dscp=1,
             priority=1,
-            traffic_marking_policy_name="example_value",
+            traffic_marking_policy_name="tf_example",
             transit_router_id=example_transit_router.transit_router_id)
         ```
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// For information about RDS Upgrade DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.153.0+.
+    /// &gt; **NOTE:** Available since v1.153.0+.
     /// 
     /// ## Example Usage
     /// ### Create a RDS MySQL upgrade instance
@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.RdsUpgradeDbInstanceParameter>> Parameters { get; private set; } = null!;
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         /// </summary>
         [Output("pgHbaConfs")]
         public Output<ImmutableArray<Outputs.RdsUpgradeDbInstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
@@ -734,7 +734,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsUpgradeDbInstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         /// </summary>
         public InputList<Inputs.RdsUpgradeDbInstanceParameterArgs> Parameters
         {
@@ -760,7 +760,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsUpgradeDbInstancePgHbaConfArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         /// </summary>
         public InputList<Inputs.RdsUpgradeDbInstancePgHbaConfArgs> PgHbaConfs
         {
@@ -1153,7 +1153,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsUpgradeDbInstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         /// </summary>
         public InputList<Inputs.RdsUpgradeDbInstanceParameterGetArgs> Parameters
         {
@@ -1179,7 +1179,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsUpgradeDbInstancePgHbaConfGetArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         /// </summary>
         public InputList<Inputs.RdsUpgradeDbInstancePgHbaConfGetArgs> PgHbaConfs
         {

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cen Transit Router Multicast Domain Peer Member and how to use it, see [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-deregistertransitroutermulticastgroupmembers).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,40 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.cen.TransitRouterMulticastDomainPeerMember("default", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultRegion = config.get("defaultRegion") || "cn-hangzhou";
+ * const peerRegion = config.get("peerRegion") || "cn-beijing";
+ * const hz = new alicloud.Provider("hz", {region: defaultRegion});
+ * const bj = new alicloud.Provider("bj", {region: peerRegion});
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id}, {
+ *     provider: alicloud.hz,
+ * });
+ * const peerTransitRouter = new alicloud.cen.TransitRouter("peerTransitRouter", {cenId: defaultTransitRouter.cenId}, {
+ *     provider: alicloud.bj,
+ * });
+ * const defaultTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", {
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     transitRouterMulticastDomainName: name,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const peerTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("peerTransitRouterMulticastDomain", {
+ *     transitRouterId: peerTransitRouter.transitRouterId,
+ *     transitRouterMulticastDomainName: name,
+ * }, {
+ *     provider: alicloud.bj,
+ * });
+ * const defaultTransitRouterMulticastDomainPeerMember = new alicloud.cen.TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember", {
+ *     peerTransitRouterMulticastDomainId: peerTransitRouterMulticastDomain.id,
+ *     transitRouterMulticastDomainId: defaultTransitRouterMulticastDomain.id,
  *     groupIpAddress: "239.1.1.1",
- *     peerTransitRouterMulticastDomainId: "tr-mcast-domain-itc67v79yk4xrkr9f3",
- *     transitRouterMulticastDomainId: "tr-mcast-domain-2d9oq455uk533zfr29",
+ * }, {
+ *     provider: alicloud.hz,
  * });
  * ```
  *

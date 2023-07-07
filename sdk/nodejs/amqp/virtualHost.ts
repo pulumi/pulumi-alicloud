@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a RabbitMQ (AMQP) Virtual Host resource.
  *
- * For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/product/100989.html).
+ * For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
  *
- * > **NOTE:** Available in v1.126.0+.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.amqp.VirtualHost("example", {
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
+ * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
+ *     instanceType: "professional",
+ *     maxTps: "1000",
+ *     queueCapacity: "50",
+ *     supportEip: true,
+ *     maxEipTps: "128",
+ *     paymentType: "Subscription",
+ *     period: 1,
+ * });
+ * const defaultVirtualHost = new alicloud.amqp.VirtualHost("defaultVirtualHost", {
+ *     instanceId: defaultInstance.id,
+ *     virtualHostName: "tf-example",
  * });
  * ```
  *

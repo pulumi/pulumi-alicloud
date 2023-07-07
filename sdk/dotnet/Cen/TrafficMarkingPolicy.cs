@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
     /// 
-    /// For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://help.aliyun.com/document_detail/419025.html).
+    /// For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtrafficmarkingpolicy).
     /// 
-    /// &gt; **NOTE:** Available in v1.173.0+.
+    /// &gt; **NOTE:** Available since v1.173.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,20 +30,21 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         CenInstanceName = "example_value",
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     });
     /// 
     ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
     ///     {
+    ///         TransitRouterName = "tf_example",
     ///         CenId = exampleInstance.Id,
-    ///         TransitRouterName = "example_value",
     ///     });
     /// 
     ///     var exampleTrafficMarkingPolicy = new AliCloud.Cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy", new()
     ///     {
     ///         MarkingDscp = 1,
     ///         Priority = 1,
-    ///         TrafficMarkingPolicyName = "example_value",
+    ///         TrafficMarkingPolicyName = "tf_example",
     ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
     ///     });
     /// 

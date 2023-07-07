@@ -216,7 +216,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
 
         For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation).
 
-        > **NOTE:** Available in v1.202.0+.
+        > **NOTE:** Available since v1.202.0.
 
         ## Example Usage
 
@@ -226,15 +226,19 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="tf-example")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
-        default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", transit_router_id=default_transit_router.transit_router_id)
-        default_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("defaultTransitRouteTableAggregation",
-            transit_route_table_id=default_transit_router_route_table.transit_router_route_table_id,
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
+        example_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation",
+            transit_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
             transit_route_table_aggregation_cidr="10.0.0.0/8",
             transit_route_table_aggregation_scope="VPC",
-            transit_route_table_aggregation_name="tf-example-name",
-            transit_route_table_aggregation_description="tf-example-description")
+            transit_route_table_aggregation_name="tf_example",
+            transit_route_table_aggregation_description="tf_example")
         ```
 
         ## Import
@@ -264,7 +268,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
 
         For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation).
 
-        > **NOTE:** Available in v1.202.0+.
+        > **NOTE:** Available since v1.202.0.
 
         ## Example Usage
 
@@ -274,15 +278,19 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="tf-example")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
-        default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", transit_router_id=default_transit_router.transit_router_id)
-        default_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("defaultTransitRouteTableAggregation",
-            transit_route_table_id=default_transit_router_route_table.transit_router_route_table_id,
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
+        example_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation",
+            transit_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
             transit_route_table_aggregation_cidr="10.0.0.0/8",
             transit_route_table_aggregation_scope="VPC",
-            transit_route_table_aggregation_name="tf-example-name",
-            transit_route_table_aggregation_description="tf-example-description")
+            transit_route_table_aggregation_name="tf_example",
+            transit_route_table_aggregation_description="tf_example")
         ```
 
         ## Import

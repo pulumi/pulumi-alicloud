@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://help.aliyun.com/document_detail/261363.html)
+ * Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterpeerattachment)
  * 
- * &gt; **NOTE:** Available in 1.128.0+
+ * &gt; **NOTE:** Available since v1.128.0.
  * 
  * ## Example Usage
  * 
@@ -57,59 +57,63 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAcccExample&#34;);
- *         var us = new Provider(&#34;us&#34;, ProviderArgs.builder()        
- *             .region(&#34;us-east-1&#34;)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var peerRegion = config.get(&#34;peerRegion&#34;).orElse(&#34;cn-beijing&#34;);
+ *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
+ *             .region(region)
  *             .build());
  * 
- *         var cn = new Provider(&#34;cn&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
+ *         var bj = new Provider(&#34;bj&#34;, ProviderArgs.builder()        
+ *             .region(peerRegion)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(name)
  *             .protectionLevel(&#34;REDUCED&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.cn())
+ *                 .provider(alicloud.bj())
  *                 .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var exampleBandwidthPackage = new BandwidthPackage(&#34;exampleBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
  *             .bandwidth(5)
- *             .cenBandwidthPackageName(name)
+ *             .cenBandwidthPackageName(&#34;tf_example&#34;)
  *             .geographicRegionAId(&#34;China&#34;)
- *             .geographicRegionBId(&#34;North-America&#34;)
- *             .build());
- * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .instanceId(defaultInstance.id())
- *             .bandwidthPackageId(defaultBandwidthPackage.id())
+ *             .geographicRegionBId(&#34;China&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.cn())
+ *                 .provider(alicloud.bj())
  *                 .build());
  * 
- *         var cnTransitRouter = new TransitRouter(&#34;cnTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultBandwidthPackageAttachment.instanceId())
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.cn())
+ *                 .provider(alicloud.bj())
  *                 .build());
  * 
- *         var usTransitRouter = new TransitRouter(&#34;usTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(cnTransitRouter.id())
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .cenId(exampleBandwidthPackageAttachment.instanceId())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.us())
+ *                 .provider(alicloud.hz())
  *                 .build());
  * 
- *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
- *             .cenId(defaultInstance.id())
- *             .transitRouterId(cnTransitRouter.transitRouterId())
- *             .peerTransitRouterRegionId(&#34;us-east-1&#34;)
- *             .peerTransitRouterId(usTransitRouter.transitRouterId())
- *             .cenBandwidthPackageId(defaultBandwidthPackageAttachment.bandwidthPackageId())
+ *         var peer = new TransitRouter(&#34;peer&#34;, TransitRouterArgs.builder()        
+ *             .cenId(exampleTransitRouter.cenId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.bj())
+ *                 .build());
+ * 
+ *         var exampleTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;exampleTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
+ *             .cenId(exampleInstance.id())
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .peerTransitRouterRegionId(peerRegion)
+ *             .peerTransitRouterId(peer.transitRouterId())
+ *             .cenBandwidthPackageId(exampleBandwidthPackageAttachment.bandwidthPackageId())
  *             .bandwidth(5)
  *             .transitRouterAttachmentDescription(name)
  *             .transitRouterAttachmentName(name)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.cn())
+ *                 .provider(alicloud.hz())
  *                 .build());
  * 
  *     }

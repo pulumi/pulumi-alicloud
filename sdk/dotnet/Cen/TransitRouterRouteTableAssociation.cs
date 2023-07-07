@@ -10,9 +10,99 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://help.aliyun.com/document_detail/261242.html)
+    /// Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation)
     /// 
-    /// &gt; **NOTE:** Available in 1.126.0+
+    /// &gt; **NOTE:** Available since v1.126.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+    /// 
+    ///     var masterZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]));
+    /// 
+    ///     var slaveZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[1]));
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleMaster = new AliCloud.Vpc.Switch("exampleMaster", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = masterZone,
+    ///     });
+    /// 
+    ///     var exampleSlave = new AliCloud.Vpc.Switch("exampleSlave", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "192.168.2.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = slaveZone,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///         ProtectionLevel = "REDUCED",
+    ///     });
+    /// 
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     {
+    ///         TransitRouterName = name,
+    ///         CenId = exampleInstance.Id,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", new()
+    ///     {
+    ///         CenId = exampleInstance.Id,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///             {
+    ///                 ZoneId = masterZone,
+    ///                 VswitchId = exampleMaster.Id,
+    ///             },
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///             {
+    ///                 ZoneId = slaveZone,
+    ///                 VswitchId = exampleSlave.Id,
+    ///             },
+    ///         },
+    ///         TransitRouterAttachmentName = name,
+    ///         TransitRouterAttachmentDescription = name,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", new()
+    ///     {
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterRouteTableAssociation = new AliCloud.Cen.TransitRouterRouteTableAssociation("exampleTransitRouterRouteTableAssociation", new()
+    ///     {
+    ///         TransitRouterRouteTableId = exampleTransitRouterRouteTable.TransitRouterRouteTableId,
+    ///         TransitRouterAttachmentId = exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

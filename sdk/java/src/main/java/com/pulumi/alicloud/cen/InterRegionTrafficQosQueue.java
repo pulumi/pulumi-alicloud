@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createceninterregiontrafficqosqueue).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 
@@ -32,8 +32,23 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.Provider;
+ * import com.pulumi.alicloud.ProviderArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackage;
+ * import com.pulumi.alicloud.cen.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachmentArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterPeerAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterPeerAttachmentArgs;
+ * import com.pulumi.alicloud.cen.InterRegionTrafficQosPolicy;
+ * import com.pulumi.alicloud.cen.InterRegionTrafficQosPolicyArgs;
  * import com.pulumi.alicloud.cen.InterRegionTrafficQosQueue;
  * import com.pulumi.alicloud.cen.InterRegionTrafficQosQueueArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,13 +62,82 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new InterRegionTrafficQosQueue(&#34;default&#34;, InterRegionTrafficQosQueueArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultRegion = config.get(&#34;defaultRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var peerRegion = config.get(&#34;peerRegion&#34;).orElse(&#34;cn-beijing&#34;);
+ *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
+ *             .region(defaultRegion)
+ *             .build());
+ * 
+ *         var bj = new Provider(&#34;bj&#34;, ProviderArgs.builder()        
+ *             .region(peerRegion)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(name)
+ *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(5)
+ *             .cenBandwidthPackageName(&#34;tf_example&#34;)
+ *             .geographicRegionAId(&#34;China&#34;)
+ *             .geographicRegionBId(&#34;China&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .cenId(defaultInstance.id())
+ *             .supportMulticast(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var peer = new TransitRouter(&#34;peer&#34;, TransitRouterArgs.builder()        
+ *             .cenId(defaultTransitRouter.cenId())
+ *             .supportMulticast(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.bj())
+ *                 .build());
+ * 
+ *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
+ *             .cenId(defaultInstance.id())
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .peerTransitRouterRegionId(peerRegion)
+ *             .peerTransitRouterId(peer.transitRouterId())
+ *             .cenBandwidthPackageId(defaultBandwidthPackageAttachment.bandwidthPackageId())
+ *             .bandwidth(5)
+ *             .transitRouterAttachmentDescription(name)
+ *             .transitRouterAttachmentName(name)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy(&#34;defaultInterRegionTrafficQosPolicy&#34;, InterRegionTrafficQosPolicyArgs.builder()        
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .transitRouterAttachmentId(defaultTransitRouterPeerAttachment.transitRouterAttachmentId())
+ *             .interRegionTrafficQosPolicyName(name)
+ *             .interRegionTrafficQosPolicyDescription(name)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var defaultInterRegionTrafficQosQueue = new InterRegionTrafficQosQueue(&#34;defaultInterRegionTrafficQosQueue&#34;, InterRegionTrafficQosQueueArgs.builder()        
+ *             .remainBandwidthPercent(20)
+ *             .trafficQosPolicyId(defaultInterRegionTrafficQosPolicy.id())
  *             .dscps(            
  *                 1,
  *                 2)
- *             .interRegionTrafficQosQueueDescription(&#34;test&#34;)
- *             .remainBandwidthPercent(20)
- *             .trafficQosPolicyId(&#34;qos-xxxxxx&#34;)
+ *             .interRegionTrafficQosQueueDescription(name)
  *             .build());
  * 
  *     }

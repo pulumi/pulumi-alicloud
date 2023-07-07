@@ -14,30 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about Cen Transit Router Multicast Domain Source and how to use it, see [What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Cen.TransitRouterMulticastDomainSource("default", new()
-    ///     {
-    ///         GroupIpAddress = "239.1.1.1",
-    ///         NetworkInterfaceId = "eni-xxxx",
-    ///         TransitRouterMulticastDomainId = "tr-mcast-domain-xxxx",
-    ///         VpcId = "vpc-xxxx",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Import
     /// 

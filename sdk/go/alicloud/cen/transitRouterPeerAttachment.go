@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://help.aliyun.com/document_detail/261363.html)
+// Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterpeerattachment)
 //
-// > **NOTE:** Available in 1.128.0+
+// > **NOTE:** Available since v1.128.0.
 //
 // ## Example Usage
 //
@@ -34,67 +34,75 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testAcccExample"
+//			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := alicloud.NewProvider(ctx, "us", &alicloud.ProviderArgs{
-//				Region: pulumi.String("us-east-1"),
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			peerRegion := "cn-beijing"
+//			if param := cfg.Get("peerRegion"); param != "" {
+//				peerRegion = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
+//				Region: pulumi.String(region),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alicloud.NewProvider(ctx, "cn", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-hangzhou"),
+//			_, err = alicloud.NewProvider(ctx, "bj", &alicloud.ProviderArgs{
+//				Region: pulumi.String(peerRegion),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
-//			}, pulumi.Provider(alicloud.Cn))
+//			}, pulumi.Provider(alicloud.Bj))
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &cen.BandwidthPackageArgs{
+//			exampleBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &cen.BandwidthPackageArgs{
 //				Bandwidth:               pulumi.Int(5),
-//				CenBandwidthPackageName: pulumi.String(name),
+//				CenBandwidthPackageName: pulumi.String("tf_example"),
 //				GeographicRegionAId:     pulumi.String("China"),
-//				GeographicRegionBId:     pulumi.String("North-America"),
-//			})
+//				GeographicRegionBId:     pulumi.String("China"),
+//			}, pulumi.Provider(alicloud.Bj))
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         defaultInstance.ID(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID(),
-//			}, pulumi.Provider(alicloud.Cn))
+//			exampleBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &cen.BandwidthPackageAttachmentArgs{
+//				InstanceId:         exampleInstance.ID(),
+//				BandwidthPackageId: exampleBandwidthPackage.ID(),
+//			}, pulumi.Provider(alicloud.Bj))
 //			if err != nil {
 //				return err
 //			}
-//			cnTransitRouter, err := cen.NewTransitRouter(ctx, "cnTransitRouter", &cen.TransitRouterArgs{
-//				CenId: defaultBandwidthPackageAttachment.InstanceId,
-//			}, pulumi.Provider(alicloud.Cn))
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				CenId: exampleBandwidthPackageAttachment.InstanceId,
+//			}, pulumi.Provider(alicloud.Hz))
 //			if err != nil {
 //				return err
 //			}
-//			usTransitRouter, err := cen.NewTransitRouter(ctx, "usTransitRouter", &cen.TransitRouterArgs{
-//				CenId: cnTransitRouter.ID(),
-//			}, pulumi.Provider(alicloud.Us))
+//			peer, err := cen.NewTransitRouter(ctx, "peer", &cen.TransitRouterArgs{
+//				CenId: exampleTransitRouter.CenId,
+//			}, pulumi.Provider(alicloud.Bj))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterPeerAttachment(ctx, "defaultTransitRouterPeerAttachment", &cen.TransitRouterPeerAttachmentArgs{
-//				CenId:                              defaultInstance.ID(),
-//				TransitRouterId:                    cnTransitRouter.TransitRouterId,
-//				PeerTransitRouterRegionId:          pulumi.String("us-east-1"),
-//				PeerTransitRouterId:                usTransitRouter.TransitRouterId,
-//				CenBandwidthPackageId:              defaultBandwidthPackageAttachment.BandwidthPackageId,
+//			_, err = cen.NewTransitRouterPeerAttachment(ctx, "exampleTransitRouterPeerAttachment", &cen.TransitRouterPeerAttachmentArgs{
+//				CenId:                              exampleInstance.ID(),
+//				TransitRouterId:                    exampleTransitRouter.TransitRouterId,
+//				PeerTransitRouterRegionId:          pulumi.String(peerRegion),
+//				PeerTransitRouterId:                peer.TransitRouterId,
+//				CenBandwidthPackageId:              exampleBandwidthPackageAttachment.BandwidthPackageId,
 //				Bandwidth:                          pulumi.Int(5),
 //				TransitRouterAttachmentDescription: pulumi.String(name),
 //				TransitRouterAttachmentName:        pulumi.String(name),
-//			}, pulumi.Provider(alicloud.Cn))
+//			}, pulumi.Provider(alicloud.Hz))
 //			if err != nil {
 //				return err
 //			}

@@ -15,7 +15,7 @@ import (
 //
 // For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association and how to use it, see [What is Transit Router Multicast Domain Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-associatetransitroutermulticastdomain).
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -27,49 +27,79 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf-example"),
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			zone := _default.Resources[0].MasterZones[1]
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
-//				CenId:            defaultInstance.ID(),
-//				SupportMulticast: pulumi.Bool(true),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("192.168.1.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(zone),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTransitRouterMulticastDomain, err := cen.NewTransitRouterMulticastDomain(ctx, "defaultTransitRouterMulticastDomain", &cen.TransitRouterMulticastDomainArgs{
-//				TransitRouterId: defaultTransitRouter.TransitRouterId,
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "defaultTransitRouterVpcAttachment", &cen.TransitRouterVpcAttachmentArgs{
-//				CenId:           defaultTransitRouter.CenId,
-//				TransitRouterId: defaultTransitRouterMulticastDomain.TransitRouterId,
-//				VpcId:           pulumi.String("your_vpc_id"),
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String(name),
+//				CenId:             exampleInstance.ID(),
+//				SupportMulticast:  pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouterMulticastDomain, err := cen.NewTransitRouterMulticastDomain(ctx, "exampleTransitRouterMulticastDomain", &cen.TransitRouterMulticastDomainArgs{
+//				TransitRouterId:                  exampleTransitRouter.TransitRouterId,
+//				TransitRouterMulticastDomainName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "exampleTransitRouterVpcAttachment", &cen.TransitRouterVpcAttachmentArgs{
+//				CenId:           exampleTransitRouter.CenId,
+//				TransitRouterId: exampleTransitRouterMulticastDomain.TransitRouterId,
+//				VpcId:           exampleNetwork.ID(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						ZoneId:    pulumi.String("your_zone_id"),
-//						VswitchId: pulumi.String("your_vswitch_id"),
+//						ZoneId:    *pulumi.String(zone),
+//						VswitchId: exampleSwitch.ID(),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterMulticastDomainAssociation(ctx, "defaultTransitRouterMulticastDomainAssociation", &cen.TransitRouterMulticastDomainAssociationArgs{
-//				TransitRouterMulticastDomainId: defaultTransitRouterMulticastDomain.ID(),
-//				TransitRouterAttachmentId:      defaultTransitRouterVpcAttachment.TransitRouterAttachmentId,
-//				VswitchId:                      pulumi.String("your_vswitch_id"),
+//			_, err = cen.NewTransitRouterMulticastDomainAssociation(ctx, "exampleTransitRouterMulticastDomainAssociation", &cen.TransitRouterMulticastDomainAssociationArgs{
+//				TransitRouterMulticastDomainId: exampleTransitRouterMulticastDomain.ID(),
+//				TransitRouterAttachmentId:      exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
+//				VswitchId:                      exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err

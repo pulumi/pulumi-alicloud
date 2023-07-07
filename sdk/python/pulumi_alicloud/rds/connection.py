@@ -209,6 +209,7 @@ class Connection(pulumi.CustomResource):
 
         > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+        **NOTE:** Available since v1.5.0+.
 
         ## Example Usage
 
@@ -272,6 +273,7 @@ class Connection(pulumi.CustomResource):
 
         > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+        **NOTE:** Available since v1.5.0+.
 
         ## Example Usage
 

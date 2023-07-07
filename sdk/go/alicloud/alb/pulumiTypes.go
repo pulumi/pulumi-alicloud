@@ -5829,7 +5829,7 @@ type ServerGroupHealthCheckConfig struct {
 	HealthCheckMethod *string `pulumi:"healthCheckMethod"`
 	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
-	// Health check protocol. Valid values: `HTTP` and `TCP`.
+	// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
 	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
@@ -5868,7 +5868,7 @@ type ServerGroupHealthCheckConfigArgs struct {
 	HealthCheckMethod pulumi.StringPtrInput `pulumi:"healthCheckMethod"`
 	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
 	HealthCheckPath pulumi.StringPtrInput `pulumi:"healthCheckPath"`
-	// Health check protocol. Valid values: `HTTP` and `TCP`.
+	// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
 	HealthCheckProtocol pulumi.StringPtrInput `pulumi:"healthCheckProtocol"`
 	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
 	HealthCheckTimeout pulumi.IntPtrInput `pulumi:"healthCheckTimeout"`
@@ -5996,7 +5996,7 @@ func (o ServerGroupHealthCheckConfigOutput) HealthCheckPath() pulumi.StringPtrOu
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
 }
 
-// Health check protocol. Valid values: `HTTP` and `TCP`.
+// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
 }
@@ -6121,7 +6121,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Health check protocol. Valid values: `HTTP` and `TCP`.
+// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {

@@ -12,7 +12,9 @@ namespace Pulumi.AliCloud.Amqp
     /// <summary>
     /// Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
     /// 
-    /// &gt; **NOTE:** Available in v1.135.0+.
+    /// For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
+    /// 
+    /// &gt; **NOTE:** Available since v1.135.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,38 +28,50 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVirtualHost = new AliCloud.Amqp.VirtualHost("exampleVirtualHost", new()
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
     ///     {
-    ///         InstanceId = "amqp-abc12345",
-    ///         VirtualHostName = "my-VirtualHost",
+    ///         InstanceType = "enterprise",
+    ///         MaxTps = "3000",
+    ///         QueueCapacity = "200",
+    ///         StorageSize = "700",
+    ///         SupportEip = false,
+    ///         MaxEipTps = "128",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
     ///     });
     /// 
-    ///     var exampleExchange = new AliCloud.Amqp.Exchange("exampleExchange", new()
+    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("defaultVirtualHost", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         VirtualHostName = "tf-example",
+    ///     });
+    /// 
+    ///     var defaultExchange = new AliCloud.Amqp.Exchange("defaultExchange", new()
     ///     {
     ///         AutoDeleteState = false,
-    ///         ExchangeName = "my-Exchange",
-    ///         ExchangeType = "HEADERS",
-    ///         InstanceId = exampleVirtualHost.InstanceId,
+    ///         ExchangeName = "tf-example",
+    ///         ExchangeType = "DIRECT",
+    ///         InstanceId = defaultInstance.Id,
     ///         Internal = false,
-    ///         VirtualHostName = exampleVirtualHost.VirtualHostName,
+    ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });
     /// 
-    ///     var exampleQueue = new AliCloud.Amqp.Queue("exampleQueue", new()
+    ///     var defaultQueue = new AliCloud.Amqp.Queue("defaultQueue", new()
     ///     {
-    ///         InstanceId = exampleVirtualHost.InstanceId,
-    ///         QueueName = "my-Queue",
-    ///         VirtualHostName = exampleVirtualHost.VirtualHostName,
+    ///         InstanceId = defaultInstance.Id,
+    ///         QueueName = "tf-example",
+    ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });
     /// 
-    ///     var exampleBinding = new AliCloud.Amqp.Binding("exampleBinding", new()
+    ///     var defaultBinding = new AliCloud.Amqp.Binding("defaultBinding", new()
     ///     {
     ///         Argument = "x-match:all",
-    ///         BindingKey = exampleQueue.QueueName,
+    ///         BindingKey = defaultQueue.QueueName,
     ///         BindingType = "QUEUE",
-    ///         DestinationName = "binding-queue",
-    ///         InstanceId = exampleExchange.InstanceId,
-    ///         SourceExchange = exampleExchange.ExchangeName,
-    ///         VirtualHostName = exampleExchange.VirtualHostName,
+    ///         DestinationName = "tf-example",
+    ///         InstanceId = defaultInstance.Id,
+    ///         SourceExchange = defaultExchange.ExchangeName,
+    ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });
     /// 
     /// });

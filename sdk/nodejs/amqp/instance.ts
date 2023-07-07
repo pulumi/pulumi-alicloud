@@ -5,41 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RabbitMQ (AMQP) Instance resource.
- *
- * For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/101631.htm).
- *
- * > **NOTE:** Available in v1.128.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const professional = new alicloud.amqp.Instance("professional", {
- *     instanceType: "professional",
- *     maxEipTps: "128",
- *     maxTps: "1000",
- *     paymentType: "Subscription",
- *     period: 1,
- *     queueCapacity: "50",
- *     supportEip: true,
- * });
- * const vip = new alicloud.amqp.Instance("vip", {
- *     instanceType: "vip",
- *     maxEipTps: "128",
- *     maxTps: "5000",
- *     paymentType: "Subscription",
- *     period: 1,
- *     queueCapacity: "50",
- *     storageSize: "700",
- *     supportEip: true,
- * });
- * ```
- *
  * ## Import
  *
  * RabbitMQ (AMQP) Instance can be imported using the id, e.g.
@@ -84,6 +49,9 @@ export class Instance extends pulumi.CustomResource {
      * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
      */
     public readonly instanceType!: pulumi.Output<string>;
+    /**
+     * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     */
     public readonly logistics!: pulumi.Output<string | undefined>;
     /**
      * The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
@@ -212,6 +180,9 @@ export interface InstanceState {
      * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     */
     logistics?: pulumi.Input<string>;
     /**
      * The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
@@ -275,6 +246,9 @@ export interface InstanceArgs {
      * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
      */
     instanceType: pulumi.Input<string>;
+    /**
+     * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     */
     logistics?: pulumi.Input<string>;
     /**
      * The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.

@@ -1950,7 +1950,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="archVersion")
-    def arch_version(self) -> pulumi.Output[Optional[str]]:
+    def arch_version(self) -> pulumi.Output[str]:
         """
         The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         """

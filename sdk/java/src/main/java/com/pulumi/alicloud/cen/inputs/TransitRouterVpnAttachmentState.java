@@ -156,14 +156,14 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The list of zone mapping. See the following `Block zone`.
+     * The list of zone mapping. See `zone` below.
      * 
      */
     @Import(name="zones")
     private @Nullable Output<List<TransitRouterVpnAttachmentZoneArgs>> zones;
 
     /**
-     * @return The list of zone mapping. See the following `Block zone`.
+     * @return The list of zone mapping. See `zone` below.
      * 
      */
     public Optional<Output<List<TransitRouterVpnAttachmentZoneArgs>>> zones() {
@@ -393,7 +393,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zones The list of zone mapping. See the following `Block zone`.
+         * @param zones The list of zone mapping. See `zone` below.
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zones The list of zone mapping. See the following `Block zone`.
+         * @param zones The list of zone mapping. See `zone` below.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zones The list of zone mapping. See the following `Block zone`.
+         * @param zones The list of zone mapping. See `zone` below.
          * 
          * @return builder
          * 

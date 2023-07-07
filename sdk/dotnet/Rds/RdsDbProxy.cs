@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
     /// Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
-    /// &gt; **NOTE:** Available in 1.193.0+.
+    /// &gt; **NOTE:** Available since v1.193.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -100,12 +100,6 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// 
     /// &gt; **NOTE:** Resource `alicloud.rds.RdsDbProxy` should be created after `alicloud.rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
-    /// ## Block read_only_instance_weight
-    /// 
-    /// The read_only_instance_weight mapping supports the following:
-    /// 
-    /// * `instance_id` - (Required) The Id of the instance and its read-only instances that can run database.
-    /// * `weight` - (Required) Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
     /// 
     /// ## Import
     /// 
@@ -241,7 +235,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> ReadOnlyInstanceMaxDelayTime { get; private set; } = null!;
 
         /// <summary>
-        /// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        /// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         /// </summary>
         [Output("readOnlyInstanceWeights")]
         public Output<ImmutableArray<Outputs.RdsDbProxyReadOnlyInstanceWeight>> ReadOnlyInstanceWeights { get; private set; } = null!;
@@ -433,7 +427,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsDbProxyReadOnlyInstanceWeightArgs>? _readOnlyInstanceWeights;
 
         /// <summary>
-        /// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        /// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         /// </summary>
         public InputList<Inputs.RdsDbProxyReadOnlyInstanceWeightArgs> ReadOnlyInstanceWeights
         {
@@ -608,7 +602,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsDbProxyReadOnlyInstanceWeightGetArgs>? _readOnlyInstanceWeights;
 
         /// <summary>
-        /// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+        /// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         /// </summary>
         public InputList<Inputs.RdsDbProxyReadOnlyInstanceWeightGetArgs> ReadOnlyInstanceWeights
         {

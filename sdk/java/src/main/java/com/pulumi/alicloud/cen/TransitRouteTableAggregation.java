@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation).
  * 
- * &gt; **NOTE:** Available in v1.202.0+.
+ * &gt; **NOTE:** Available since v1.202.0.
  * 
  * ## Example Usage
  * 
@@ -51,24 +51,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf-example&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(&#34;tf_example&#34;)
+ *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable(&#34;defaultTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable(&#34;exampleTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
- *         var defaultTransitRouteTableAggregation = new TransitRouteTableAggregation(&#34;defaultTransitRouteTableAggregation&#34;, TransitRouteTableAggregationArgs.builder()        
- *             .transitRouteTableId(defaultTransitRouterRouteTable.transitRouterRouteTableId())
+ *         var exampleTransitRouteTableAggregation = new TransitRouteTableAggregation(&#34;exampleTransitRouteTableAggregation&#34;, TransitRouteTableAggregationArgs.builder()        
+ *             .transitRouteTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
  *             .transitRouteTableAggregationCidr(&#34;10.0.0.0/8&#34;)
  *             .transitRouteTableAggregationScope(&#34;VPC&#34;)
- *             .transitRouteTableAggregationName(&#34;tf-example-name&#34;)
- *             .transitRouteTableAggregationDescription(&#34;tf-example-description&#34;)
+ *             .transitRouteTableAggregationName(&#34;tf_example&#34;)
+ *             .transitRouteTableAggregationDescription(&#34;tf_example&#34;)
  *             .build());
  * 
  *     }

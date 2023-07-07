@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a RabbitMQ (AMQP) Queue resource.
  * 
- * For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/doc-detail/101631.htm).
+ * For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createqueue).
  * 
- * &gt; **NOTE:** Available in v1.127.0+.
+ * &gt; **NOTE:** Available since v1.127.0.
  * 
  * ## Example Usage
  * 
@@ -32,8 +32,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.amqp.Instance;
+ * import com.pulumi.alicloud.amqp.InstanceArgs;
  * import com.pulumi.alicloud.amqp.VirtualHost;
  * import com.pulumi.alicloud.amqp.VirtualHostArgs;
+ * import com.pulumi.alicloud.amqp.Exchange;
+ * import com.pulumi.alicloud.amqp.ExchangeArgs;
  * import com.pulumi.alicloud.amqp.Queue;
  * import com.pulumi.alicloud.amqp.QueueArgs;
  * import java.util.List;
@@ -49,15 +53,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVirtualHost = new VirtualHost(&#34;exampleVirtualHost&#34;, VirtualHostArgs.builder()        
- *             .instanceId(&#34;amqp-abc12345&#34;)
- *             .virtualHostName(&#34;my-VirtualHost&#34;)
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .instanceType(&#34;enterprise&#34;)
+ *             .maxTps(3000)
+ *             .queueCapacity(200)
+ *             .storageSize(700)
+ *             .supportEip(false)
+ *             .maxEipTps(128)
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
  *             .build());
  * 
- *         var exampleQueue = new Queue(&#34;exampleQueue&#34;, QueueArgs.builder()        
- *             .instanceId(exampleVirtualHost.instanceId())
- *             .queueName(&#34;my-Queue&#34;)
- *             .virtualHostName(exampleVirtualHost.virtualHostName())
+ *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .virtualHostName(&#34;tf-example&#34;)
+ *             .build());
+ * 
+ *         var defaultExchange = new Exchange(&#34;defaultExchange&#34;, ExchangeArgs.builder()        
+ *             .autoDeleteState(false)
+ *             .exchangeName(&#34;tf-example&#34;)
+ *             .exchangeType(&#34;DIRECT&#34;)
+ *             .instanceId(defaultInstance.id())
+ *             .internal(false)
+ *             .virtualHostName(defaultVirtualHost.virtualHostName())
+ *             .build());
+ * 
+ *         var example = new Queue(&#34;example&#34;, QueueArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .queueName(&#34;tf-example&#34;)
+ *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
  *     }

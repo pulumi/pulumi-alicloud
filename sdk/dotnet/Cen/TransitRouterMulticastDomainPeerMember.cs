@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about Cen Transit Router Multicast Domain Peer Member and how to use it, see [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-deregistertransitroutermulticastgroupmembers).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,68 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Cen.TransitRouterMulticastDomainPeerMember("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultRegion = config.Get("defaultRegion") ?? "cn-hangzhou";
+    ///     var peerRegion = config.Get("peerRegion") ?? "cn-beijing";
+    ///     var hz = new AliCloud.Provider("hz", new()
     ///     {
+    ///         Region = defaultRegion,
+    ///     });
+    /// 
+    ///     var bj = new AliCloud.Provider("bj", new()
+    ///     {
+    ///         Region = peerRegion,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///         ProtectionLevel = "REDUCED",
+    ///     });
+    /// 
+    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var peerTransitRouter = new AliCloud.Cen.TransitRouter("peerTransitRouter", new()
+    ///     {
+    ///         CenId = defaultTransitRouter.CenId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Bj,
+    ///     });
+    /// 
+    ///     var defaultTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", new()
+    ///     {
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterMulticastDomainName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var peerTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("peerTransitRouterMulticastDomain", new()
+    ///     {
+    ///         TransitRouterId = peerTransitRouter.TransitRouterId,
+    ///         TransitRouterMulticastDomainName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Bj,
+    ///     });
+    /// 
+    ///     var defaultTransitRouterMulticastDomainPeerMember = new AliCloud.Cen.TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember", new()
+    ///     {
+    ///         PeerTransitRouterMulticastDomainId = peerTransitRouterMulticastDomain.Id,
+    ///         TransitRouterMulticastDomainId = defaultTransitRouterMulticastDomain.Id,
     ///         GroupIpAddress = "239.1.1.1",
-    ///         PeerTransitRouterMulticastDomainId = "tr-mcast-domain-itc67v79yk4xrkr9f3",
-    ///         TransitRouterMulticastDomainId = "tr-mcast-domain-2d9oq455uk533zfr29",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
     ///     });
     /// 
     /// });

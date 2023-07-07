@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/doc-detail/157463.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.123.0+.
+    /// &gt; **NOTE:** Available since v1.123.0.
     /// 
     /// ## Example Usage
     /// 
@@ -69,6 +69,12 @@ namespace Pulumi.AliCloud.Ddos
     public partial class DomainResource : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Available since v1.207.2) The CNAME assigned to the domain name.
+        /// </summary>
+        [Output("cname")]
+        public Output<string> Cname { get; private set; } = null!;
+
+        /// <summary>
         /// The domain name of the website that you want to add to the instance.
         /// </summary>
         [Output("domain")]
@@ -82,15 +88,14 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-        /// **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
-        /// So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
-        /// and you can use tolist to convert it to a list.
+        /// &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
         /// </summary>
         [Output("instanceIds")]
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
         /// <summary>
-        /// Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
+        /// Protocol type and port number information. See `proxy_types` below.
+        /// &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
         [Output("proxyTypes")]
         public Output<ImmutableArray<Outputs.DomainResourceProxyType>> ProxyTypes { get; private set; } = null!;
@@ -102,7 +107,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<ImmutableArray<string>> RealServers { get; private set; } = null!;
 
         /// <summary>
-        /// The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
+        /// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
         /// </summary>
         [Output("rsType")]
         public Output<int> RsType { get; private set; } = null!;
@@ -170,9 +175,7 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-        /// **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
-        /// So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
-        /// and you can use tolist to convert it to a list.
+        /// &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
         /// </summary>
         public InputList<string> InstanceIds
         {
@@ -184,7 +187,8 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.DomainResourceProxyTypeArgs>? _proxyTypes;
 
         /// <summary>
-        /// Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
+        /// Protocol type and port number information. See `proxy_types` below.
+        /// &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
         public InputList<Inputs.DomainResourceProxyTypeArgs> ProxyTypes
         {
@@ -205,7 +209,7 @@ namespace Pulumi.AliCloud.Ddos
         }
 
         /// <summary>
-        /// The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
+        /// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
         /// </summary>
         [Input("rsType", required: true)]
         public Input<int> RsType { get; set; } = null!;
@@ -218,6 +222,12 @@ namespace Pulumi.AliCloud.Ddos
 
     public sealed class DomainResourceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available since v1.207.2) The CNAME assigned to the domain name.
+        /// </summary>
+        [Input("cname")]
+        public Input<string>? Cname { get; set; }
+
         /// <summary>
         /// The domain name of the website that you want to add to the instance.
         /// </summary>
@@ -235,9 +245,7 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-        /// **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
-        /// So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
-        /// and you can use tolist to convert it to a list.
+        /// &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
         /// </summary>
         public InputList<string> InstanceIds
         {
@@ -249,7 +257,8 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.DomainResourceProxyTypeGetArgs>? _proxyTypes;
 
         /// <summary>
-        /// Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
+        /// Protocol type and port number information. See `proxy_types` below.
+        /// &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
         public InputList<Inputs.DomainResourceProxyTypeGetArgs> ProxyTypes
         {
@@ -270,7 +279,7 @@ namespace Pulumi.AliCloud.Ddos
         }
 
         /// <summary>
-        /// The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
+        /// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
         /// </summary>
         [Input("rsType")]
         public Input<int>? RsType { get; set; }

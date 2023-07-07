@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Amqp Static Account resource.
  * 
- * For information about Amqp Static Account and how to use it, see [What is Static Account](https://help.aliyun.com/document_detail/184399.html).
+ * For information about Amqp Static Account and how to use it, see [What is Static Account](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/create-a-pair-of-static-username-and-password).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.amqp.Instance;
+ * import com.pulumi.alicloud.amqp.InstanceArgs;
  * import com.pulumi.alicloud.amqp.StaticAccount;
  * import com.pulumi.alicloud.amqp.StaticAccountArgs;
  * import java.util.List;
@@ -46,10 +48,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new StaticAccount(&#34;default&#34;, StaticAccountArgs.builder()        
- *             .accessKey(&#34;LTAI5t8beMmVM1eRZtEJ6vfo&#34;)
- *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
- *             .secretKey(&#34;sample-secret-key&#34;)
+ *         final var config = ctx.config();
+ *         final var accessKey = config.get(&#34;accessKey&#34;).orElse(&#34;access_key&#34;);
+ *         final var secretKey = config.get(&#34;secretKey&#34;).orElse(&#34;secret_key&#34;);
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .instanceType(&#34;enterprise&#34;)
+ *             .maxTps(3000)
+ *             .queueCapacity(200)
+ *             .storageSize(700)
+ *             .supportEip(false)
+ *             .maxEipTps(128)
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .build());
+ * 
+ *         var defaultStaticAccount = new StaticAccount(&#34;defaultStaticAccount&#34;, StaticAccountArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .accessKey(accessKey)
+ *             .secretKey(secretKey)
  *             .build());
  * 
  *     }
@@ -151,9 +167,17 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
     public Output<String> secretKey() {
         return this.secretKey;
     }
+    /**
+     * Static user name.
+     * 
+     */
     @Export(name="userName", type=String.class, parameters={})
     private Output<String> userName;
 
+    /**
+     * @return Static user name.
+     * 
+     */
     public Output<String> userName() {
         return this.userName;
     }

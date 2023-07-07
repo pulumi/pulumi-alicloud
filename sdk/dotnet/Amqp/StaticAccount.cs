@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Amqp
     /// <summary>
     /// Provides a Amqp Static Account resource.
     /// 
-    /// For information about Amqp Static Account and how to use it, see [What is Static Account](https://help.aliyun.com/document_detail/184399.html).
+    /// For information about Amqp Static Account and how to use it, see [What is Static Account](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/create-a-pair-of-static-username-and-password).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,26 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Amqp.StaticAccount("default", new()
+    ///     var config = new Config();
+    ///     var accessKey = config.Get("accessKey") ?? "access_key";
+    ///     var secretKey = config.Get("secretKey") ?? "secret_key";
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
     ///     {
-    ///         AccessKey = "LTAI5t8beMmVM1eRZtEJ6vfo",
-    ///         InstanceId = "amqp-cn-0ju2y01zs001",
-    ///         SecretKey = "sample-secret-key",
+    ///         InstanceType = "enterprise",
+    ///         MaxTps = "3000",
+    ///         QueueCapacity = "200",
+    ///         StorageSize = "700",
+    ///         SupportEip = false,
+    ///         MaxEipTps = "128",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///     });
+    /// 
+    ///     var defaultStaticAccount = new AliCloud.Amqp.StaticAccount("defaultStaticAccount", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         AccessKey = accessKey,
+    ///         SecretKey = secretKey,
     ///     });
     /// 
     /// });
@@ -85,6 +100,9 @@ namespace Pulumi.AliCloud.Amqp
         [Output("secretKey")]
         public Output<string> SecretKey { get; private set; } = null!;
 
+        /// <summary>
+        /// Static user name.
+        /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
 
@@ -220,6 +238,9 @@ namespace Pulumi.AliCloud.Amqp
             }
         }
 
+        /// <summary>
+        /// Static user name.
+        /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
 

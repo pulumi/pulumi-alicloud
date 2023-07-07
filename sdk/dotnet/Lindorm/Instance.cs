@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Lindorm
         /// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         /// </summary>
         [Output("archVersion")]
-        public Output<string?> ArchVersion { get; private set; } = null!;
+        public Output<string> ArchVersion { get; private set; } = null!;
 
         /// <summary>
         /// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].

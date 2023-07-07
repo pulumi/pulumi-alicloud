@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * For information about RDS Upgrade DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
  * 
- * &gt; **NOTE:** Available in v1.153.0+.
+ * &gt; **NOTE:** Available since v1.153.0+.
  * 
  * ## Example Usage
  * ### Create a RDS MySQL upgrade instance
@@ -572,14 +572,14 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
         return this.maintainTime;
     }
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      * 
      */
     @Export(name="parameters", type=List.class, parameters={RdsUpgradeDbInstanceParameter.class})
     private Output<List<RdsUpgradeDbInstanceParameter>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      * 
      */
     public Output<List<RdsUpgradeDbInstanceParameter>> parameters() {
@@ -618,14 +618,14 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     @Export(name="pgHbaConfs", type=List.class, parameters={RdsUpgradeDbInstancePgHbaConf.class})
     private Output<List<RdsUpgradeDbInstancePgHbaConf>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     public Output<List<RdsUpgradeDbInstancePgHbaConf>> pgHbaConfs() {

@@ -297,7 +297,9 @@ class Binding(pulumi.CustomResource):
         """
         Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
 
-        > **NOTE:** Available in v1.135.0+.
+        For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
+
+        > **NOTE:** Available since v1.135.0.
 
         ## Example Usage
 
@@ -307,28 +309,37 @@ class Binding(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_virtual_host = alicloud.amqp.VirtualHost("exampleVirtualHost",
-            instance_id="amqp-abc12345",
-            virtual_host_name="my-VirtualHost")
-        example_exchange = alicloud.amqp.Exchange("exampleExchange",
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="enterprise",
+            max_tps="3000",
+            queue_capacity="200",
+            storage_size="700",
+            support_eip=False,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
             auto_delete_state=False,
-            exchange_name="my-Exchange",
-            exchange_type="HEADERS",
-            instance_id=example_virtual_host.instance_id,
+            exchange_name="tf-example",
+            exchange_type="DIRECT",
+            instance_id=default_instance.id,
             internal=False,
-            virtual_host_name=example_virtual_host.virtual_host_name)
-        example_queue = alicloud.amqp.Queue("exampleQueue",
-            instance_id=example_virtual_host.instance_id,
-            queue_name="my-Queue",
-            virtual_host_name=example_virtual_host.virtual_host_name)
-        example_binding = alicloud.amqp.Binding("exampleBinding",
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        default_queue = alicloud.amqp.Queue("defaultQueue",
+            instance_id=default_instance.id,
+            queue_name="tf-example",
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        default_binding = alicloud.amqp.Binding("defaultBinding",
             argument="x-match:all",
-            binding_key=example_queue.queue_name,
+            binding_key=default_queue.queue_name,
             binding_type="QUEUE",
-            destination_name="binding-queue",
-            instance_id=example_exchange.instance_id,
-            source_exchange=example_exchange.exchange_name,
-            virtual_host_name=example_exchange.virtual_host_name)
+            destination_name="tf-example",
+            instance_id=default_instance.id,
+            source_exchange=default_exchange.exchange_name,
+            virtual_host_name=default_virtual_host.virtual_host_name)
         ```
 
         ## Import
@@ -367,7 +378,9 @@ class Binding(pulumi.CustomResource):
         """
         Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
 
-        > **NOTE:** Available in v1.135.0+.
+        For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
+
+        > **NOTE:** Available since v1.135.0.
 
         ## Example Usage
 
@@ -377,28 +390,37 @@ class Binding(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_virtual_host = alicloud.amqp.VirtualHost("exampleVirtualHost",
-            instance_id="amqp-abc12345",
-            virtual_host_name="my-VirtualHost")
-        example_exchange = alicloud.amqp.Exchange("exampleExchange",
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="enterprise",
+            max_tps="3000",
+            queue_capacity="200",
+            storage_size="700",
+            support_eip=False,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
             auto_delete_state=False,
-            exchange_name="my-Exchange",
-            exchange_type="HEADERS",
-            instance_id=example_virtual_host.instance_id,
+            exchange_name="tf-example",
+            exchange_type="DIRECT",
+            instance_id=default_instance.id,
             internal=False,
-            virtual_host_name=example_virtual_host.virtual_host_name)
-        example_queue = alicloud.amqp.Queue("exampleQueue",
-            instance_id=example_virtual_host.instance_id,
-            queue_name="my-Queue",
-            virtual_host_name=example_virtual_host.virtual_host_name)
-        example_binding = alicloud.amqp.Binding("exampleBinding",
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        default_queue = alicloud.amqp.Queue("defaultQueue",
+            instance_id=default_instance.id,
+            queue_name="tf-example",
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        default_binding = alicloud.amqp.Binding("defaultBinding",
             argument="x-match:all",
-            binding_key=example_queue.queue_name,
+            binding_key=default_queue.queue_name,
             binding_type="QUEUE",
-            destination_name="binding-queue",
-            instance_id=example_exchange.instance_id,
-            source_exchange=example_exchange.exchange_name,
-            virtual_host_name=example_exchange.virtual_host_name)
+            destination_name="tf-example",
+            instance_id=default_instance.id,
+            source_exchange=default_exchange.exchange_name,
+            virtual_host_name=default_virtual_host.virtual_host_name)
         ```
 
         ## Import

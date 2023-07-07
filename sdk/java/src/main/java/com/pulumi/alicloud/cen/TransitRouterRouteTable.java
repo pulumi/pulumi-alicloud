@@ -18,14 +18,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://help.aliyun.com/document_detail/261233.html)
+ * Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterroutetable)
  * 
- * &gt; **NOTE:** Available in 1.126.0+
+ * &gt; **NOTE:** Available since v1.126.0.
  * 
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -51,19 +50,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenTransitRouter&#34;);
- *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
- *             .description(&#34;terraform01&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .name(name)
- *             .cenId(cen.id())
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(&#34;tf_example&#34;)
+ *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable(&#34;defaultTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable(&#34;exampleTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
  *     }
