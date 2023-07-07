@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutermulticastdomain).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 
@@ -51,19 +51,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf-example&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(&#34;tf_example&#34;)
+ *             .cenId(exampleInstance.id())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var defaultTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;defaultTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
- *             .transitRouterMulticastDomainName(&#34;tf-example-name&#34;)
- *             .transitRouterMulticastDomainDescription(&#34;tf-example-description&#34;)
+ *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;exampleTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .transitRouterMulticastDomainName(&#34;tf_example&#34;)
+ *             .transitRouterMulticastDomainDescription(&#34;tf_example&#34;)
  *             .build());
  * 
  *     }

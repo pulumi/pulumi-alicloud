@@ -246,9 +246,26 @@ class TransitRouterRouteTable(pulumi.CustomResource):
                  transit_router_route_table_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://help.aliyun.com/document_detail/261233.html)
+        Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterroutetable)
 
-        > **NOTE:** Available in 1.126.0+
+        > **NOTE:** Available since v1.126.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
+        ```
 
         ## Import
 
@@ -275,9 +292,26 @@ class TransitRouterRouteTable(pulumi.CustomResource):
                  args: TransitRouterRouteTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://help.aliyun.com/document_detail/261233.html)
+        Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterroutetable)
 
-        > **NOTE:** Available in 1.126.0+
+        > **NOTE:** Available since v1.126.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
+        ```
 
         ## Import
 

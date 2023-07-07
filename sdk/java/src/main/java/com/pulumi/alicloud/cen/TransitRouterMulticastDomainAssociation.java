@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association and how to use it, see [What is Transit Router Multicast Domain Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-associatetransitroutermulticastdomain).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 
@@ -29,6 +29,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.CenFunctions;
+ * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.TransitRouter;
@@ -53,33 +59,53 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf-example&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var default = CenFunctions.getTransitRouterAvailableResources();
+ * 
+ *         final var zone = default_.resources()[0].masterZones()[1];
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;192.168.1.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(zone)
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(name)
+ *             .build());
+ * 
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(name)
+ *             .cenId(exampleInstance.id())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var defaultTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;defaultTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;exampleTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .transitRouterMulticastDomainName(name)
  *             .build());
  * 
- *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;defaultTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
- *             .cenId(defaultTransitRouter.cenId())
- *             .transitRouterId(defaultTransitRouterMulticastDomain.transitRouterId())
- *             .vpcId(&#34;your_vpc_id&#34;)
+ *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;exampleTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
+ *             .cenId(exampleTransitRouter.cenId())
+ *             .transitRouterId(exampleTransitRouterMulticastDomain.transitRouterId())
+ *             .vpcId(exampleNetwork.id())
  *             .zoneMappings(TransitRouterVpcAttachmentZoneMappingArgs.builder()
- *                 .zoneId(&#34;your_zone_id&#34;)
- *                 .vswitchId(&#34;your_vswitch_id&#34;)
+ *                 .zoneId(zone)
+ *                 .vswitchId(exampleSwitch.id())
  *                 .build())
  *             .build());
  * 
- *         var defaultTransitRouterMulticastDomainAssociation = new TransitRouterMulticastDomainAssociation(&#34;defaultTransitRouterMulticastDomainAssociation&#34;, TransitRouterMulticastDomainAssociationArgs.builder()        
- *             .transitRouterMulticastDomainId(defaultTransitRouterMulticastDomain.id())
- *             .transitRouterAttachmentId(defaultTransitRouterVpcAttachment.transitRouterAttachmentId())
- *             .vswitchId(&#34;your_vswitch_id&#34;)
+ *         var exampleTransitRouterMulticastDomainAssociation = new TransitRouterMulticastDomainAssociation(&#34;exampleTransitRouterMulticastDomainAssociation&#34;, TransitRouterMulticastDomainAssociationArgs.builder()        
+ *             .transitRouterMulticastDomainId(exampleTransitRouterMulticastDomain.id())
+ *             .transitRouterAttachmentId(exampleTransitRouterVpcAttachment.transitRouterAttachmentId())
+ *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
  *     }

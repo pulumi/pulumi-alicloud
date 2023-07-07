@@ -18,12 +18,12 @@ public final class InstanceIpWhitelist {
      */
     private @Nullable String ipGroupAttribute;
     /**
-     * @return IP whitelist group name
+     * @return IP whitelist group name.
      * 
      */
     private @Nullable String ipGroupName;
     /**
-     * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+     * @return List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
      * 
      */
     private @Nullable String securityIpList;
@@ -38,14 +38,14 @@ public final class InstanceIpWhitelist {
         return Optional.ofNullable(this.ipGroupAttribute);
     }
     /**
-     * @return IP whitelist group name
+     * @return IP whitelist group name.
      * 
      */
     public Optional<String> ipGroupName() {
         return Optional.ofNullable(this.ipGroupName);
     }
     /**
-     * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+     * @return List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
      * 
      */
     public Optional<String> securityIpList() {

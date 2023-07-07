@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)
+ * You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
  *
- * > **NOTE:**  Available in 1.47.0+
+ * > **NOTE:** Available since v1.47.0.
  *
  * ## Import
  *
@@ -55,7 +55,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * (Available in 1.196.0+) The connection string of the instance.
+     * (Available since v1.196.0) The connection string of the instance.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
@@ -63,12 +63,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly createSampleData!: pulumi.Output<boolean>;
     /**
-     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     public readonly dbInstanceCategory!: pulumi.Output<string>;
     /**
-     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     public readonly dbInstanceClass!: pulumi.Output<string | undefined>;
@@ -81,7 +81,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The ID of the encryption key.
+     * > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+     */
+    public readonly encryptionKey!: pulumi.Output<string | undefined>;
+    /**
+     * The encryption type. Valid values: `CloudDisk`.
+     * > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+     */
+    public readonly encryptionType!: pulumi.Output<string | undefined>;
+    /**
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -91,7 +101,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      *
-     * @deprecated Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
+     * @deprecated Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
@@ -99,7 +109,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceGroupCount!: pulumi.Output<number | undefined>;
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `VPC`.
      */
     public readonly instanceNetworkType!: pulumi.Output<string>;
     /**
@@ -111,7 +121,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceSpec!: pulumi.Output<string | undefined>;
     /**
-     * The ip whitelist. See block `ipWhitelist`.
+     * The ip whitelist. See `ipWhitelist` below.
      * Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
      */
     public readonly ipWhitelists!: pulumi.Output<outputs.gpdb.InstanceIpWhitelist[]>;
@@ -124,7 +134,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly maintainStartTime!: pulumi.Output<string>;
     /**
-     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
      */
     public readonly masterNodeNum!: pulumi.Output<number | undefined>;
     /**
@@ -136,7 +146,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
-     * (Available in 1.196.0+) The connection port of the instance.
+     * (Available since v1.196.0) The connection port of the instance.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
@@ -154,7 +164,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityIpLists!: pulumi.Output<string[]>;
     /**
-     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
     public readonly segNodeNum!: pulumi.Output<number>;
@@ -172,7 +182,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     public readonly storageSize!: pulumi.Output<number>;
@@ -181,9 +191,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+     * The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
      */
     public readonly usedTime!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+     */
+    public readonly vectorConfigurationStatus!: pulumi.Output<string>;
     /**
      * The vpc ID of the resource.
      */
@@ -217,6 +231,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
             resourceInputs["dbInstanceMode"] = state ? state.dbInstanceMode : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
+            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
@@ -240,6 +256,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["storageSize"] = state ? state.storageSize : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["usedTime"] = state ? state.usedTime : undefined;
+            resourceInputs["vectorConfigurationStatus"] = state ? state.vectorConfigurationStatus : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -263,6 +280,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
             resourceInputs["dbInstanceMode"] = args ? args.dbInstanceMode : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
+            resourceInputs["encryptionType"] = args ? args.encryptionType : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
@@ -284,6 +303,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["storageSize"] = args ? args.storageSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["usedTime"] = args ? args.usedTime : undefined;
+            resourceInputs["vectorConfigurationStatus"] = args ? args.vectorConfigurationStatus : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -307,7 +327,7 @@ export interface InstanceState {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * (Available in 1.196.0+) The connection string of the instance.
+     * (Available since v1.196.0) The connection string of the instance.
      */
     connectionString?: pulumi.Input<string>;
     /**
@@ -315,12 +335,12 @@ export interface InstanceState {
      */
     createSampleData?: pulumi.Input<boolean>;
     /**
-     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     dbInstanceCategory?: pulumi.Input<string>;
     /**
-     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     dbInstanceClass?: pulumi.Input<string>;
@@ -333,7 +353,17 @@ export interface InstanceState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The ID of the encryption key.
+     * > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+     */
+    encryptionKey?: pulumi.Input<string>;
+    /**
+     * The encryption type. Valid values: `CloudDisk`.
+     * > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+     */
+    encryptionType?: pulumi.Input<string>;
+    /**
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
      */
     engine?: pulumi.Input<string>;
     /**
@@ -343,7 +373,7 @@ export interface InstanceState {
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      *
-     * @deprecated Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
+     * @deprecated Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -351,7 +381,7 @@ export interface InstanceState {
      */
     instanceGroupCount?: pulumi.Input<number>;
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `VPC`.
      */
     instanceNetworkType?: pulumi.Input<string>;
     /**
@@ -363,7 +393,7 @@ export interface InstanceState {
      */
     instanceSpec?: pulumi.Input<string>;
     /**
-     * The ip whitelist. See block `ipWhitelist`.
+     * The ip whitelist. See `ipWhitelist` below.
      * Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
      */
     ipWhitelists?: pulumi.Input<pulumi.Input<inputs.gpdb.InstanceIpWhitelist>[]>;
@@ -376,7 +406,7 @@ export interface InstanceState {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
      */
     masterNodeNum?: pulumi.Input<number>;
     /**
@@ -388,7 +418,7 @@ export interface InstanceState {
      */
     period?: pulumi.Input<string>;
     /**
-     * (Available in 1.196.0+) The connection port of the instance.
+     * (Available since v1.196.0) The connection port of the instance.
      */
     port?: pulumi.Input<string>;
     /**
@@ -406,7 +436,7 @@ export interface InstanceState {
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
     segNodeNum?: pulumi.Input<number>;
@@ -424,7 +454,7 @@ export interface InstanceState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     storageSize?: pulumi.Input<number>;
@@ -433,9 +463,13 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+     * The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
      */
     usedTime?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+     */
+    vectorConfigurationStatus?: pulumi.Input<string>;
     /**
      * The vpc ID of the resource.
      */
@@ -465,12 +499,12 @@ export interface InstanceArgs {
      */
     createSampleData?: pulumi.Input<boolean>;
     /**
-     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     dbInstanceCategory?: pulumi.Input<string>;
     /**
-     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     dbInstanceClass?: pulumi.Input<string>;
@@ -483,7 +517,17 @@ export interface InstanceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The ID of the encryption key.
+     * > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+     */
+    encryptionKey?: pulumi.Input<string>;
+    /**
+     * The encryption type. Valid values: `CloudDisk`.
+     * > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+     */
+    encryptionType?: pulumi.Input<string>;
+    /**
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
      */
     engine: pulumi.Input<string>;
     /**
@@ -493,7 +537,7 @@ export interface InstanceArgs {
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      *
-     * @deprecated Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
+     * @deprecated Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -501,7 +545,7 @@ export interface InstanceArgs {
      */
     instanceGroupCount?: pulumi.Input<number>;
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `VPC`.
      */
     instanceNetworkType?: pulumi.Input<string>;
     /**
@@ -513,7 +557,7 @@ export interface InstanceArgs {
      */
     instanceSpec?: pulumi.Input<string>;
     /**
-     * The ip whitelist. See block `ipWhitelist`.
+     * The ip whitelist. See `ipWhitelist` below.
      * Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
      */
     ipWhitelists?: pulumi.Input<pulumi.Input<inputs.gpdb.InstanceIpWhitelist>[]>;
@@ -526,7 +570,7 @@ export interface InstanceArgs {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
      */
     masterNodeNum?: pulumi.Input<number>;
     /**
@@ -552,7 +596,7 @@ export interface InstanceArgs {
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
     segNodeNum?: pulumi.Input<number>;
@@ -566,7 +610,7 @@ export interface InstanceArgs {
      */
     sslEnabled?: pulumi.Input<number>;
     /**
-     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     storageSize?: pulumi.Input<number>;
@@ -575,9 +619,13 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+     * The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
      */
     usedTime?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+     */
+    vectorConfigurationStatus?: pulumi.Input<string>;
     /**
      * The vpc ID of the resource.
      */

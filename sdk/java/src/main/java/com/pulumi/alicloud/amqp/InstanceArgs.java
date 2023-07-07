@@ -47,9 +47,17 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return this.instanceType;
     }
 
+    /**
+     * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     * 
+     */
     @Import(name="logistics")
     private @Nullable Output<String> logistics;
 
+    /**
+     * @return The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     * 
+     */
     public Optional<Output<String>> logistics() {
         return Optional.ofNullable(this.logistics);
     }
@@ -298,11 +306,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return instanceType(Output.of(instanceType));
         }
 
+        /**
+         * @param logistics The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logistics(@Nullable Output<String> logistics) {
             $.logistics = logistics;
             return this;
         }
 
+        /**
+         * @param logistics The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logistics(String logistics) {
             return logistics(Output.of(logistics));
         }

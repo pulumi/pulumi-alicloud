@@ -216,22 +216,7 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
 
         For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers).
 
-        > **NOTE:** Available in v1.195.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.cen.TransitRouterMulticastDomainMember("default",
-            group_ip_address="239.1.1.1",
-            network_interface_id="eni-d7o632ny4ryst9ydmt93",
-            transit_router_multicast_domain_id="tr-mcast-domain-2d9oq455uk533zfr29",
-            vpc_id="vpc-d7oapc6waducz2ytvg6b6")
-        ```
+        > **NOTE:** Available since v1.195.0.
 
         ## Import
 
@@ -260,22 +245,7 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
 
         For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers).
 
-        > **NOTE:** Available in v1.195.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.cen.TransitRouterMulticastDomainMember("default",
-            group_ip_address="239.1.1.1",
-            network_interface_id="eni-d7o632ny4ryst9ydmt93",
-            transit_router_multicast_domain_id="tr-mcast-domain-2d9oq455uk533zfr29",
-            vpc_id="vpc-d7oapc6waducz2ytvg6b6")
-        ```
+        > **NOTE:** Available since v1.195.0.
 
         ## Import
 

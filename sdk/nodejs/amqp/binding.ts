@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
+ *
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -17,31 +19,41 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleVirtualHost = new alicloud.amqp.VirtualHost("exampleVirtualHost", {
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
+ * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
+ *     instanceType: "enterprise",
+ *     maxTps: "3000",
+ *     queueCapacity: "200",
+ *     storageSize: "700",
+ *     supportEip: false,
+ *     maxEipTps: "128",
+ *     paymentType: "Subscription",
+ *     period: 1,
  * });
- * const exampleExchange = new alicloud.amqp.Exchange("exampleExchange", {
+ * const defaultVirtualHost = new alicloud.amqp.VirtualHost("defaultVirtualHost", {
+ *     instanceId: defaultInstance.id,
+ *     virtualHostName: "tf-example",
+ * });
+ * const defaultExchange = new alicloud.amqp.Exchange("defaultExchange", {
  *     autoDeleteState: false,
- *     exchangeName: "my-Exchange",
- *     exchangeType: "HEADERS",
- *     instanceId: exampleVirtualHost.instanceId,
+ *     exchangeName: "tf-example",
+ *     exchangeType: "DIRECT",
+ *     instanceId: defaultInstance.id,
  *     internal: false,
- *     virtualHostName: exampleVirtualHost.virtualHostName,
+ *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });
- * const exampleQueue = new alicloud.amqp.Queue("exampleQueue", {
- *     instanceId: exampleVirtualHost.instanceId,
- *     queueName: "my-Queue",
- *     virtualHostName: exampleVirtualHost.virtualHostName,
+ * const defaultQueue = new alicloud.amqp.Queue("defaultQueue", {
+ *     instanceId: defaultInstance.id,
+ *     queueName: "tf-example",
+ *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });
- * const exampleBinding = new alicloud.amqp.Binding("exampleBinding", {
+ * const defaultBinding = new alicloud.amqp.Binding("defaultBinding", {
  *     argument: "x-match:all",
- *     bindingKey: exampleQueue.queueName,
+ *     bindingKey: defaultQueue.queueName,
  *     bindingType: "QUEUE",
- *     destinationName: "binding-queue",
- *     instanceId: exampleExchange.instanceId,
- *     sourceExchange: exampleExchange.exchangeName,
- *     virtualHostName: exampleExchange.virtualHostName,
+ *     destinationName: "tf-example",
+ *     instanceId: defaultInstance.id,
+ *     sourceExchange: defaultExchange.exchangeName,
+ *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });
  * ```
  *

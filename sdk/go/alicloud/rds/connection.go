@@ -17,6 +17,8 @@ import (
 //
 //	To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 //
+// **NOTE:** Available since v1.5.0+.
+//
 // ## Example Usage
 //
 // ```go

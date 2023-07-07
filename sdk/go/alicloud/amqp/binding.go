@@ -13,7 +13,9 @@ import (
 
 // Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
 //
-// > **NOTE:** Available in v1.135.0+.
+// For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
+//
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -31,40 +33,53 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVirtualHost, err := amqp.NewVirtualHost(ctx, "exampleVirtualHost", &amqp.VirtualHostArgs{
-//				InstanceId:      pulumi.String("amqp-abc12345"),
-//				VirtualHostName: pulumi.String("my-VirtualHost"),
+//			defaultInstance, err := amqp.NewInstance(ctx, "defaultInstance", &amqp.InstanceArgs{
+//				InstanceType:  pulumi.String("enterprise"),
+//				MaxTps:        pulumi.String("3000"),
+//				QueueCapacity: pulumi.String("200"),
+//				StorageSize:   pulumi.String("700"),
+//				SupportEip:    pulumi.Bool(false),
+//				MaxEipTps:     pulumi.String("128"),
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleExchange, err := amqp.NewExchange(ctx, "exampleExchange", &amqp.ExchangeArgs{
+//			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "defaultVirtualHost", &amqp.VirtualHostArgs{
+//				InstanceId:      defaultInstance.ID(),
+//				VirtualHostName: pulumi.String("tf-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultExchange, err := amqp.NewExchange(ctx, "defaultExchange", &amqp.ExchangeArgs{
 //				AutoDeleteState: pulumi.Bool(false),
-//				ExchangeName:    pulumi.String("my-Exchange"),
-//				ExchangeType:    pulumi.String("HEADERS"),
-//				InstanceId:      exampleVirtualHost.InstanceId,
+//				ExchangeName:    pulumi.String("tf-example"),
+//				ExchangeType:    pulumi.String("DIRECT"),
+//				InstanceId:      defaultInstance.ID(),
 //				Internal:        pulumi.Bool(false),
-//				VirtualHostName: exampleVirtualHost.VirtualHostName,
+//				VirtualHostName: defaultVirtualHost.VirtualHostName,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleQueue, err := amqp.NewQueue(ctx, "exampleQueue", &amqp.QueueArgs{
-//				InstanceId:      exampleVirtualHost.InstanceId,
-//				QueueName:       pulumi.String("my-Queue"),
-//				VirtualHostName: exampleVirtualHost.VirtualHostName,
+//			defaultQueue, err := amqp.NewQueue(ctx, "defaultQueue", &amqp.QueueArgs{
+//				InstanceId:      defaultInstance.ID(),
+//				QueueName:       pulumi.String("tf-example"),
+//				VirtualHostName: defaultVirtualHost.VirtualHostName,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = amqp.NewBinding(ctx, "exampleBinding", &amqp.BindingArgs{
+//			_, err = amqp.NewBinding(ctx, "defaultBinding", &amqp.BindingArgs{
 //				Argument:        pulumi.String("x-match:all"),
-//				BindingKey:      exampleQueue.QueueName,
+//				BindingKey:      defaultQueue.QueueName,
 //				BindingType:     pulumi.String("QUEUE"),
-//				DestinationName: pulumi.String("binding-queue"),
-//				InstanceId:      exampleExchange.InstanceId,
-//				SourceExchange:  exampleExchange.ExchangeName,
-//				VirtualHostName: exampleExchange.VirtualHostName,
+//				DestinationName: pulumi.String("tf-example"),
+//				InstanceId:      defaultInstance.ID(),
+//				SourceExchange:  defaultExchange.ExchangeName,
+//				VirtualHostName: defaultVirtualHost.VirtualHostName,
 //			})
 //			if err != nil {
 //				return err

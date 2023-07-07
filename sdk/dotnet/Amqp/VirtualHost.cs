@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Amqp
     /// <summary>
     /// Provides a RabbitMQ (AMQP) Virtual Host resource.
     /// 
-    /// For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/product/100989.html).
+    /// For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
     /// 
-    /// &gt; **NOTE:** Available in v1.126.0+.
+    /// &gt; **NOTE:** Available since v1.126.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,21 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Amqp.VirtualHost("example", new()
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
     ///     {
-    ///         InstanceId = "amqp-abc12345",
-    ///         VirtualHostName = "my-VirtualHost",
+    ///         InstanceType = "professional",
+    ///         MaxTps = "1000",
+    ///         QueueCapacity = "50",
+    ///         SupportEip = true,
+    ///         MaxEipTps = "128",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///     });
+    /// 
+    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("defaultVirtualHost", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         VirtualHostName = "tf-example",
     ///     });
     /// 
     /// });

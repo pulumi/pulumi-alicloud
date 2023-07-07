@@ -163,9 +163,6 @@ export class TairInstance extends pulumi.CustomResource {
             if ((!args || args.instanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.shardCount === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'shardCount'");
-            }
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
@@ -348,7 +345,7 @@ export interface TairInstanceArgs {
     /**
      * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
      */
-    shardCount: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number>;
     /**
      * The name of the resource.
      */

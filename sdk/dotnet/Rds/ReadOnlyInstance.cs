@@ -11,6 +11,7 @@ namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
     /// Provides an RDS readonly instance resource.
+    /// &gt; **NOTE:** Available since v1.52.1+.
     /// 
     /// ## Example Usage
     /// 
@@ -184,6 +185,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// The method to change.  Default value: Immediate. Valid values:
+        /// - Immediate: The change immediately takes effect.
+        /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        /// </summary>
+        [Output("effectiveTime")]
+        public Output<string?> EffectiveTime { get; private set; } = null!;
+
+        /// <summary>
         /// Database type.
         /// </summary>
         [Output("engine")]
@@ -241,7 +250,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> ModifyMode { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ReadOnlyInstanceParameter>> Parameters { get; private set; } = null!;
@@ -516,6 +525,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// The method to change.  Default value: Immediate. Valid values:
+        /// - Immediate: The change immediately takes effect.
+        /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        /// </summary>
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         /// </summary>
         [Input("engineVersion", required: true)]
@@ -570,7 +587,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.ReadOnlyInstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         /// </summary>
         public InputList<Inputs.ReadOnlyInstanceParameterArgs> Parameters
         {
@@ -822,6 +839,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// The method to change.  Default value: Immediate. Valid values:
+        /// - Immediate: The change immediately takes effect.
+        /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        /// </summary>
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
+
+        /// <summary>
         /// Database type.
         /// </summary>
         [Input("engine")]
@@ -882,7 +907,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.ReadOnlyInstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         /// </summary>
         public InputList<Inputs.ReadOnlyInstanceParameterGetArgs> Parameters
         {

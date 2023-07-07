@@ -15,7 +15,7 @@ import (
 //
 // For information about Cloud Enterprise Network (CEN) Transit Router Grant Attachment and how to use it, see [What is Transit Router Grant Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/grantinstancetotransitrouter).
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -26,6 +26,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -34,23 +35,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.Any(_var.Name),
-//				Description:     pulumi.String("test for transit router grant attachment"),
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterGrantAttachment(ctx, "defaultTransitRouterGrantAttachment", &cen.TransitRouterGrantAttachmentArgs{
-//				CenId:        defaultInstance.ID(),
-//				CenOwnerId:   pulumi.String("your_cen_owner_id"),
-//				InstanceId:   *pulumi.String(defaultNetworks.Ids[0]),
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterGrantAttachment(ctx, "exampleTransitRouterGrantAttachment", &cen.TransitRouterGrantAttachmentArgs{
+//				CenId:        exampleInstance.ID(),
+//				CenOwnerId:   *pulumi.String(_default.Id),
+//				InstanceId:   exampleNetwork.ID(),
 //				InstanceType: pulumi.String("VPC"),
 //				OrderType:    pulumi.String("PayByCenOwner"),
 //			})

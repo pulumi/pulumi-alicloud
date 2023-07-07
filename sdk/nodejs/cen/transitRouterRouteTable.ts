@@ -5,9 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://help.aliyun.com/document_detail/261233.html)
+ * Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterroutetable)
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: "tf_example",
+ *     cenId: exampleInstance.id,
+ * });
+ * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
+ * ```
  *
  * ## Import
  *

@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class RdsUpgradeDbInstanceParameter {
+    /**
+     * @return The parameter name.
+     * 
+     */
     private String name;
+    /**
+     * @return The parameter value.
+     * 
+     */
     private String value;
 
     private RdsUpgradeDbInstanceParameter() {}
+    /**
+     * @return The parameter name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The parameter value.
+     * 
+     */
     public String value() {
         return this.value;
     }

@@ -13,12 +13,12 @@ import (
 
 // Provides an Alikafka sasl user resource.
 //
-// > **NOTE:** Available in 1.66.0+
+// > **NOTE:** Available since v1.66.0.
 //
 // > **NOTE:**  Only the following regions support create alikafka sasl user.
 // [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 //
-// For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user a](https://www.alibabacloud.com/help/en/doc-detail/162221.html)
+// For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createsasluser).
 //
 // ## Example Usage
 //
@@ -31,6 +31,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -40,13 +41,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			username := "testusername"
-//			if param := cfg.Get("username"); param != "" {
-//				username = param
-//			}
-//			password := "testpassword"
-//			if param := cfg.Get("password"); param != "" {
-//				password = param
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
@@ -55,34 +52,54 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-//				PartitionNum: pulumi.Int(50),
-//				DiskType:     pulumi.Int(1),
-//				DiskSize:     pulumi.Int(500),
-//				DeployType:   pulumi.Int(5),
-//				IoMax:        pulumi.Int(20),
-//				VswitchId:    defaultSwitch.ID(),
+//				PartitionNum:   pulumi.Int(50),
+//				DiskType:       pulumi.Int(1),
+//				DiskSize:       pulumi.Int(500),
+//				DeployType:     pulumi.Int(5),
+//				IoMax:          pulumi.Int(20),
+//				SpecType:       pulumi.String("professional"),
+//				ServiceVersion: pulumi.String("2.2.0"),
+//				Config:         pulumi.String("{\"enable.acl\":\"true\"}"),
+//				VswitchId:      defaultSwitch.ID(),
+//				SecurityGroup:  defaultSecurityGroup.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
+//				InstanceId: defaultInstance.ID(),
+//				Topic:      pulumi.String("example-topic"),
+//				Remark:     pulumi.String("topic-remark"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alikafka.NewSaslUser(ctx, "defaultSaslUser", &alikafka.SaslUserArgs{
 //				InstanceId: defaultInstance.ID(),
-//				Username:   pulumi.String(username),
-//				Password:   pulumi.String(password),
+//				Username:   pulumi.String(name),
+//				Password:   pulumi.String("tf_example123"),
 //			})
 //			if err != nil {
 //				return err

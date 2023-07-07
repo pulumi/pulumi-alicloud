@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Amqp Static Account resource.
  *
- * For information about Amqp Static Account and how to use it, see [What is Static Account](https://help.aliyun.com/document_detail/184399.html).
+ * For information about Amqp Static Account and how to use it, see [What is Static Account](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/create-a-pair-of-static-username-and-password).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.amqp.StaticAccount("default", {
- *     accessKey: "LTAI5t8beMmVM1eRZtEJ6vfo",
- *     instanceId: "amqp-cn-0ju2y01zs001",
- *     secretKey: "sample-secret-key",
+ * const config = new pulumi.Config();
+ * const accessKey = config.get("accessKey") || "access_key";
+ * const secretKey = config.get("secretKey") || "secret_key";
+ * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
+ *     instanceType: "enterprise",
+ *     maxTps: "3000",
+ *     queueCapacity: "200",
+ *     storageSize: "700",
+ *     supportEip: false,
+ *     maxEipTps: "128",
+ *     paymentType: "Subscription",
+ *     period: 1,
+ * });
+ * const defaultStaticAccount = new alicloud.amqp.StaticAccount("defaultStaticAccount", {
+ *     instanceId: defaultInstance.id,
+ *     accessKey: accessKey,
+ *     secretKey: secretKey,
  * });
  * ```
  *
@@ -86,6 +99,9 @@ export class StaticAccount extends pulumi.CustomResource {
      * Secret key.
      */
     public readonly secretKey!: pulumi.Output<string>;
+    /**
+     * Static user name.
+     */
     public /*out*/ readonly userName!: pulumi.Output<string>;
 
     /**
@@ -162,6 +178,9 @@ export interface StaticAccountState {
      * Secret key.
      */
     secretKey?: pulumi.Input<string>;
+    /**
+     * Static user name.
+     */
     userName?: pulumi.Input<string>;
 }
 

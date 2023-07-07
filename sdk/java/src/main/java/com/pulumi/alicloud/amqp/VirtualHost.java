@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a RabbitMQ (AMQP) Virtual Host resource.
  * 
- * For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/product/100989.html).
+ * For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
  * 
- * &gt; **NOTE:** Available in v1.126.0+.
+ * &gt; **NOTE:** Available since v1.126.0.
  * 
  * ## Example Usage
  * 
@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.amqp.Instance;
+ * import com.pulumi.alicloud.amqp.InstanceArgs;
  * import com.pulumi.alicloud.amqp.VirtualHost;
  * import com.pulumi.alicloud.amqp.VirtualHostArgs;
  * import java.util.List;
@@ -44,9 +46,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new VirtualHost(&#34;example&#34;, VirtualHostArgs.builder()        
- *             .instanceId(&#34;amqp-abc12345&#34;)
- *             .virtualHostName(&#34;my-VirtualHost&#34;)
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .instanceType(&#34;professional&#34;)
+ *             .maxTps(1000)
+ *             .queueCapacity(50)
+ *             .supportEip(true)
+ *             .maxEipTps(128)
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .build());
+ * 
+ *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .virtualHostName(&#34;tf-example&#34;)
  *             .build());
  * 
  *     }

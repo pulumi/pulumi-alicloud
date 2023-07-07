@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about RDS Upgrade DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0+.
  *
  * ## Example Usage
  * ### Create a RDS MySQL upgrade instance
@@ -248,7 +248,7 @@ export class RdsUpgradeDbInstance extends pulumi.CustomResource {
      */
     public readonly maintainTime!: pulumi.Output<string>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      */
     public readonly parameters!: pulumi.Output<outputs.rds.RdsUpgradeDbInstanceParameter[]>;
     /**
@@ -262,7 +262,7 @@ export class RdsUpgradeDbInstance extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
     public readonly pgHbaConfs!: pulumi.Output<outputs.rds.RdsUpgradeDbInstancePgHbaConf[]>;
     /**
@@ -694,7 +694,7 @@ export interface RdsUpgradeDbInstanceState {
      */
     maintainTime?: pulumi.Input<string>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstanceParameter>[]>;
     /**
@@ -708,7 +708,7 @@ export interface RdsUpgradeDbInstanceState {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
     pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstancePgHbaConf>[]>;
     /**
@@ -979,7 +979,7 @@ export interface RdsUpgradeDbInstanceArgs {
      */
     maintainTime?: pulumi.Input<string>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstanceParameter>[]>;
     /**
@@ -993,7 +993,7 @@ export interface RdsUpgradeDbInstanceArgs {
      */
     paymentType: pulumi.Input<string>;
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
     pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstancePgHbaConf>[]>;
     /**

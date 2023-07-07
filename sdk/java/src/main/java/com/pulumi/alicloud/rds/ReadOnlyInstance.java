@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
 
 /**
  * Provides an RDS readonly instance resource.
+ * &gt; **NOTE:** Available since v1.52.1+.
  * 
  * ## Example Usage
  * ```java
@@ -334,6 +335,24 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
+     * The method to change.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     * 
+     */
+    @Export(name="effectiveTime", type=String.class, parameters={})
+    private Output</* @Nullable */ String> effectiveTime;
+
+    /**
+     * @return The method to change.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     * 
+     */
+    public Output<Optional<String>> effectiveTime() {
+        return Codegen.optional(this.effectiveTime);
+    }
+    /**
      * Database type.
      * 
      */
@@ -466,14 +485,14 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modifyMode);
     }
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      * 
      */
     @Export(name="parameters", type=List.class, parameters={ReadOnlyInstanceParameter.class})
     private Output<List<ReadOnlyInstanceParameter>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      * 
      */
     public Output<List<ReadOnlyInstanceParameter>> parameters() {

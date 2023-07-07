@@ -13,9 +13,9 @@ import (
 
 // Provides a RabbitMQ (AMQP) Exchange resource.
 //
-// For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/product/100989.html).
+// For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createexchange).
 //
-// > **NOTE:** Available in v1.128.0+.
+// > **NOTE:** Available since v1.128.0.
 //
 // ## Example Usage
 //
@@ -33,20 +33,32 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVirtualHost, err := amqp.NewVirtualHost(ctx, "exampleVirtualHost", &amqp.VirtualHostArgs{
-//				InstanceId:      pulumi.String("amqp-abc12345"),
-//				VirtualHostName: pulumi.String("my-VirtualHost"),
+//			defaultInstance, err := amqp.NewInstance(ctx, "defaultInstance", &amqp.InstanceArgs{
+//				InstanceType:  pulumi.String("professional"),
+//				MaxTps:        pulumi.String("1000"),
+//				QueueCapacity: pulumi.String("50"),
+//				SupportEip:    pulumi.Bool(true),
+//				MaxEipTps:     pulumi.String("128"),
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = amqp.NewExchange(ctx, "exampleExchange", &amqp.ExchangeArgs{
+//			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "defaultVirtualHost", &amqp.VirtualHostArgs{
+//				InstanceId:      defaultInstance.ID(),
+//				VirtualHostName: pulumi.String("tf-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = amqp.NewExchange(ctx, "defaultExchange", &amqp.ExchangeArgs{
 //				AutoDeleteState: pulumi.Bool(false),
-//				ExchangeName:    pulumi.String("my-Exchange"),
+//				ExchangeName:    pulumi.String("tf-example"),
 //				ExchangeType:    pulumi.String("DIRECT"),
-//				InstanceId:      exampleVirtualHost.InstanceId,
+//				InstanceId:      defaultInstance.ID(),
 //				Internal:        pulumi.Bool(false),
-//				VirtualHostName: exampleVirtualHost.VirtualHostName,
+//				VirtualHostName: defaultVirtualHost.VirtualHostName,
 //			})
 //			if err != nil {
 //				return err

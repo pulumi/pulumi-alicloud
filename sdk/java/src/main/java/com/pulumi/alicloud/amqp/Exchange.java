@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a RabbitMQ (AMQP) Exchange resource.
  * 
- * For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/product/100989.html).
+ * For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createexchange).
  * 
- * &gt; **NOTE:** Available in v1.128.0+.
+ * &gt; **NOTE:** Available since v1.128.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.amqp.Instance;
+ * import com.pulumi.alicloud.amqp.InstanceArgs;
  * import com.pulumi.alicloud.amqp.VirtualHost;
  * import com.pulumi.alicloud.amqp.VirtualHostArgs;
  * import com.pulumi.alicloud.amqp.Exchange;
@@ -48,18 +50,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVirtualHost = new VirtualHost(&#34;exampleVirtualHost&#34;, VirtualHostArgs.builder()        
- *             .instanceId(&#34;amqp-abc12345&#34;)
- *             .virtualHostName(&#34;my-VirtualHost&#34;)
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .instanceType(&#34;professional&#34;)
+ *             .maxTps(1000)
+ *             .queueCapacity(50)
+ *             .supportEip(true)
+ *             .maxEipTps(128)
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
  *             .build());
  * 
- *         var exampleExchange = new Exchange(&#34;exampleExchange&#34;, ExchangeArgs.builder()        
+ *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .virtualHostName(&#34;tf-example&#34;)
+ *             .build());
+ * 
+ *         var defaultExchange = new Exchange(&#34;defaultExchange&#34;, ExchangeArgs.builder()        
  *             .autoDeleteState(false)
- *             .exchangeName(&#34;my-Exchange&#34;)
+ *             .exchangeName(&#34;tf-example&#34;)
  *             .exchangeType(&#34;DIRECT&#34;)
- *             .instanceId(exampleVirtualHost.instanceId())
+ *             .instanceId(defaultInstance.id())
  *             .internal(false)
- *             .virtualHostName(exampleVirtualHost.virtualHostName())
+ *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
  *     }

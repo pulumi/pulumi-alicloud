@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
     /// 
-    /// For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/createtransitroutercidr).
+    /// For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
     /// 
-    /// &gt; **NOTE:** Available in v1.193.0+.
+    /// &gt; **NOTE:** Available since v1.193.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,22 +28,24 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         CenInstanceName = "tf-example",
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         TransitRouterName = "tf_example",
+    ///         CenId = exampleInstance.Id,
     ///     });
     /// 
-    ///     var defaultTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("defaultTransitRouterCidr", new()
+    ///     var exampleTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("exampleTransitRouterCidr", new()
     ///     {
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
     ///         Cidr = "192.168.0.0/16",
-    ///         TransitRouterCidrName = "tf-example-name",
-    ///         Description = "tf-example-description",
+    ///         TransitRouterCidrName = "tf_example",
+    ///         Description = "tf_example",
     ///         PublishCidrRoute = true,
     ///     });
     /// 

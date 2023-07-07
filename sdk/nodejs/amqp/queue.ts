@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a RabbitMQ (AMQP) Queue resource.
  *
- * For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/doc-detail/101631.htm).
+ * For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createqueue).
  *
- * > **NOTE:** Available in v1.127.0+.
+ * > **NOTE:** Available since v1.127.0.
  *
  * ## Example Usage
  *
@@ -19,14 +19,32 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleVirtualHost = new alicloud.amqp.VirtualHost("exampleVirtualHost", {
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
+ * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
+ *     instanceType: "enterprise",
+ *     maxTps: "3000",
+ *     queueCapacity: "200",
+ *     storageSize: "700",
+ *     supportEip: false,
+ *     maxEipTps: "128",
+ *     paymentType: "Subscription",
+ *     period: 1,
  * });
- * const exampleQueue = new alicloud.amqp.Queue("exampleQueue", {
- *     instanceId: exampleVirtualHost.instanceId,
- *     queueName: "my-Queue",
- *     virtualHostName: exampleVirtualHost.virtualHostName,
+ * const defaultVirtualHost = new alicloud.amqp.VirtualHost("defaultVirtualHost", {
+ *     instanceId: defaultInstance.id,
+ *     virtualHostName: "tf-example",
+ * });
+ * const defaultExchange = new alicloud.amqp.Exchange("defaultExchange", {
+ *     autoDeleteState: false,
+ *     exchangeName: "tf-example",
+ *     exchangeType: "DIRECT",
+ *     instanceId: defaultInstance.id,
+ *     internal: false,
+ *     virtualHostName: defaultVirtualHost.virtualHostName,
+ * });
+ * const example = new alicloud.amqp.Queue("example", {
+ *     instanceId: defaultInstance.id,
+ *     queueName: "tf-example",
+ *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });
  * ```
  *

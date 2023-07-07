@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
  * 
- * For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/createtransitroutercidr).
+ * For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
  * 
- * &gt; **NOTE:** Available in v1.193.0+.
+ * &gt; **NOTE:** Available since v1.193.0.
  * 
  * ## Example Usage
  * 
@@ -50,19 +50,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf-example&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(&#34;tf_example&#34;)
+ *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var defaultTransitRouterCidr = new TransitRouterCidr(&#34;defaultTransitRouterCidr&#34;, TransitRouterCidrArgs.builder()        
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *         var exampleTransitRouterCidr = new TransitRouterCidr(&#34;exampleTransitRouterCidr&#34;, TransitRouterCidrArgs.builder()        
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .cidr(&#34;192.168.0.0/16&#34;)
- *             .transitRouterCidrName(&#34;tf-example-name&#34;)
- *             .description(&#34;tf-example-description&#34;)
+ *             .transitRouterCidrName(&#34;tf_example&#34;)
+ *             .description(&#34;tf_example&#34;)
  *             .publishCidrRoute(true)
  *             .build());
  * 

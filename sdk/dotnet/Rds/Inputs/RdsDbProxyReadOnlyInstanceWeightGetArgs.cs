@@ -13,11 +13,14 @@ namespace Pulumi.AliCloud.Rds.Inputs
     public sealed class RdsDbProxyReadOnlyInstanceWeightGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Id of instance that can run database.
+        /// The Id of the instance and its read-only instances that can run database.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+        /// </summary>
         [Input("weight", required: true)]
         public Input<string> Weight { get; set; } = null!;
 

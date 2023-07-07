@@ -56,7 +56,7 @@ public final class ServerGroupHealthCheckConfig {
      */
     private @Nullable String healthCheckPath;
     /**
-     * @return Health check protocol. Valid values: `HTTP` and `TCP`.
+     * @return Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
      * 
      */
     private @Nullable String healthCheckProtocol;
@@ -135,7 +135,7 @@ public final class ServerGroupHealthCheckConfig {
         return Optional.ofNullable(this.healthCheckPath);
     }
     /**
-     * @return Health check protocol. Valid values: `HTTP` and `TCP`.
+     * @return Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
      * 
      */
     public Optional<String> healthCheckProtocol() {

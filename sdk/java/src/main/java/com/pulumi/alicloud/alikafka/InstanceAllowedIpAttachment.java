@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a AliKafka Instance Allowed Ip Attachment resource.
  * 
- * For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/doc-detail/68151.html).
+ * For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-updateallowedip).
  * 
- * &gt; **NOTE:** Available in v1.163.0+.
+ * &gt; **NOTE:** Available since v1.163.0.
  * 
  * ## Example Usage
  * 
@@ -29,9 +29,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.alikafka.Instance;
@@ -52,17 +55,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tftest&#34;);
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING&#34;)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
@@ -71,7 +82,7 @@ import javax.annotation.Nullable;
  *             .diskSize(500)
  *             .deployType(5)
  *             .ioMax(20)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vswitchId(defaultSwitch.id())
  *             .securityGroup(defaultSecurityGroup.id())
  *             .build());
  * 

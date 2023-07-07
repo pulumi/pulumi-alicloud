@@ -262,9 +262,9 @@ class Topic(pulumi.CustomResource):
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an ALIKAFKA topic resource.
+        Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createtopic).
 
-        > **NOTE:** Available in 1.56.0+
+        > **NOTE:** Available since v1.56.0.
 
         > **NOTE:**  Only the following regions support create alikafka topic.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
@@ -290,13 +290,9 @@ class Topic(pulumi.CustomResource):
             deploy_type=5,
             io_max=20,
             vswitch_id=default_switch.id)
-        config = pulumi.Config()
-        topic = config.get("topic")
-        if topic is None:
-            topic = "alikafkaTopicName"
         default_topic = alicloud.alikafka.Topic("defaultTopic",
             instance_id=default_instance.id,
-            topic=topic,
+            topic="example-topic",
             local_topic=False,
             compact_topic=False,
             partition_num=12,
@@ -305,7 +301,11 @@ class Topic(pulumi.CustomResource):
 
         ## Import
 
-        ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
+        ALIKAFKA TOPIC can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -324,9 +324,9 @@ class Topic(pulumi.CustomResource):
                  args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ALIKAFKA topic resource.
+        Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createtopic).
 
-        > **NOTE:** Available in 1.56.0+
+        > **NOTE:** Available since v1.56.0.
 
         > **NOTE:**  Only the following regions support create alikafka topic.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
@@ -352,13 +352,9 @@ class Topic(pulumi.CustomResource):
             deploy_type=5,
             io_max=20,
             vswitch_id=default_switch.id)
-        config = pulumi.Config()
-        topic = config.get("topic")
-        if topic is None:
-            topic = "alikafkaTopicName"
         default_topic = alicloud.alikafka.Topic("defaultTopic",
             instance_id=default_instance.id,
-            topic=topic,
+            topic="example-topic",
             local_topic=False,
             compact_topic=False,
             partition_num=12,
@@ -367,7 +363,11 @@ class Topic(pulumi.CustomResource):
 
         ## Import
 
-        ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
+        ALIKAFKA TOPIC can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+        ```
 
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.

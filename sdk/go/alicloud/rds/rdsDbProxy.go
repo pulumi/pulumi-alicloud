@@ -12,7 +12,7 @@ import (
 )
 
 // Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
-// > **NOTE:** Available in 1.193.0+.
+// > **NOTE:** Available since v1.193.0+.
 //
 // ## Example Usage
 //
@@ -122,12 +122,6 @@ import (
 // ```
 //
 // > **NOTE:** Resource `rds.RdsDbProxy` should be created after `rds.ReadOnlyInstance`, so the `dependsOn` statement is necessary.
-// ## Block readOnlyInstanceWeight
-//
-// The readOnlyInstanceWeight mapping supports the following:
-//
-// * `instanceId` - (Required) The Id of the instance and its read-only instances that can run database.
-// * `weight` - (Required) Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
 //
 // ## Import
 //
@@ -199,7 +193,7 @@ type RdsDbProxy struct {
 	//
 	// > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
 	ReadOnlyInstanceMaxDelayTime pulumi.IntOutput `pulumi:"readOnlyInstanceMaxDelayTime"`
-	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
 	ReadOnlyInstanceWeights RdsDbProxyReadOnlyInstanceWeightArrayOutput `pulumi:"readOnlyInstanceWeights"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -320,7 +314,7 @@ type rdsDbProxyState struct {
 	//
 	// > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
 	ReadOnlyInstanceMaxDelayTime *int `pulumi:"readOnlyInstanceMaxDelayTime"`
-	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
 	ReadOnlyInstanceWeights []RdsDbProxyReadOnlyInstanceWeight `pulumi:"readOnlyInstanceWeights"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -398,7 +392,7 @@ type RdsDbProxyState struct {
 	//
 	// > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
 	ReadOnlyInstanceMaxDelayTime pulumi.IntPtrInput
-	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
 	ReadOnlyInstanceWeights RdsDbProxyReadOnlyInstanceWeightArrayInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -472,7 +466,7 @@ type rdsDbProxyArgs struct {
 	//
 	// > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
 	ReadOnlyInstanceMaxDelayTime *int `pulumi:"readOnlyInstanceMaxDelayTime"`
-	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
 	ReadOnlyInstanceWeights []RdsDbProxyReadOnlyInstanceWeight `pulumi:"readOnlyInstanceWeights"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -541,7 +535,7 @@ type RdsDbProxyArgs struct {
 	//
 	// > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
 	ReadOnlyInstanceMaxDelayTime pulumi.IntPtrInput
-	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+	// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
 	ReadOnlyInstanceWeights RdsDbProxyReadOnlyInstanceWeightArrayInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -751,7 +745,7 @@ func (o RdsDbProxyOutput) ReadOnlyInstanceMaxDelayTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *RdsDbProxy) pulumi.IntOutput { return v.ReadOnlyInstanceMaxDelayTime }).(pulumi.IntOutput)
 }
 
-// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000.
+// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
 func (o RdsDbProxyOutput) ReadOnlyInstanceWeights() RdsDbProxyReadOnlyInstanceWeightArrayOutput {
 	return o.ApplyT(func(v *RdsDbProxy) RdsDbProxyReadOnlyInstanceWeightArrayOutput { return v.ReadOnlyInstanceWeights }).(RdsDbProxyReadOnlyInstanceWeightArrayOutput)
 }

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
  *
- * For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://help.aliyun.com/document_detail/419025.html).
+ * For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtrafficmarkingpolicy).
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0.
  *
  * ## Example Usage
  *
@@ -19,15 +19,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {cenInstanceName: "example_value"});
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
  * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: "tf_example",
  *     cenId: exampleInstance.id,
- *     transitRouterName: "example_value",
  * });
  * const exampleTrafficMarkingPolicy = new alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy", {
  *     markingDscp: 1,
  *     priority: 1,
- *     trafficMarkingPolicyName: "example_value",
+ *     trafficMarkingPolicyName: "tf_example",
  *     transitRouterId: exampleTransitRouter.transitRouterId,
  * });
  * ```

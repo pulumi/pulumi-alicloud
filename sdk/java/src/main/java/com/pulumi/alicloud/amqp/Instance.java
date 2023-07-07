@@ -17,61 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RabbitMQ (AMQP) Instance resource.
- * 
- * For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/101631.htm).
- * 
- * &gt; **NOTE:** Available in v1.128.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.amqp.Instance;
- * import com.pulumi.alicloud.amqp.InstanceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var professional = new Instance(&#34;professional&#34;, InstanceArgs.builder()        
- *             .instanceType(&#34;professional&#34;)
- *             .maxEipTps(128)
- *             .maxTps(1000)
- *             .paymentType(&#34;Subscription&#34;)
- *             .period(1)
- *             .queueCapacity(50)
- *             .supportEip(true)
- *             .build());
- * 
- *         var vip = new Instance(&#34;vip&#34;, InstanceArgs.builder()        
- *             .instanceType(&#34;vip&#34;)
- *             .maxEipTps(128)
- *             .maxTps(5000)
- *             .paymentType(&#34;Subscription&#34;)
- *             .period(1)
- *             .queueCapacity(50)
- *             .storageSize(700)
- *             .supportEip(true)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * RabbitMQ (AMQP) Instance can be imported using the id, e.g.
@@ -111,9 +56,17 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> instanceType() {
         return this.instanceType;
     }
+    /**
+     * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     * 
+     */
     @Export(name="logistics", type=String.class, parameters={})
     private Output</* @Nullable */ String> logistics;
 
+    /**
+     * @return The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     * 
+     */
     public Output<Optional<String>> logistics() {
         return Codegen.optional(this.logistics);
     }

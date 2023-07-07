@@ -12,6 +12,7 @@ import (
 )
 
 // Provides an RDS readonly instance resource.
+// > **NOTE:** Available since v1.52.1+.
 //
 // ## Example Usage
 //
@@ -155,6 +156,10 @@ type ReadOnlyInstance struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// The method to change.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// Database type.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -176,7 +181,7 @@ type ReadOnlyInstance struct {
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
 	// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
 	ModifyMode pulumi.StringPtrOutput `pulumi:"modifyMode"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters ReadOnlyInstanceParameterArrayOutput `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
@@ -330,6 +335,10 @@ type readOnlyInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The method to change.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Database type.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -351,7 +360,7 @@ type readOnlyInstanceState struct {
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
 	// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
 	ModifyMode *string `pulumi:"modifyMode"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters []ReadOnlyInstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
@@ -465,6 +474,10 @@ type ReadOnlyInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrInput
+	// The method to change.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime pulumi.StringPtrInput
 	// Database type.
 	Engine pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -486,7 +499,7 @@ type ReadOnlyInstanceState struct {
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
 	// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
 	ModifyMode pulumi.StringPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters ReadOnlyInstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
@@ -602,6 +615,10 @@ type readOnlyInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The method to change.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -621,7 +638,7 @@ type readOnlyInstanceArgs struct {
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
 	// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
 	ModifyMode *string `pulumi:"modifyMode"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters []ReadOnlyInstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
@@ -732,6 +749,10 @@ type ReadOnlyInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrInput
+	// The method to change.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -751,7 +772,7 @@ type ReadOnlyInstanceArgs struct {
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
 	// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
 	ModifyMode pulumi.StringPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 	Parameters ReadOnlyInstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
@@ -988,6 +1009,13 @@ func (o ReadOnlyInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
+// The method to change.  Default value: Immediate. Valid values:
+// - Immediate: The change immediately takes effect.
+// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+func (o ReadOnlyInstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
 // Database type.
 func (o ReadOnlyInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
@@ -1036,7 +1064,7 @@ func (o ReadOnlyInstanceOutput) ModifyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.ModifyMode }).(pulumi.StringPtrOutput)
 }
 
-// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
 func (o ReadOnlyInstanceOutput) Parameters() ReadOnlyInstanceParameterArrayOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) ReadOnlyInstanceParameterArrayOutput { return v.Parameters }).(ReadOnlyInstanceParameterArrayOutput)
 }

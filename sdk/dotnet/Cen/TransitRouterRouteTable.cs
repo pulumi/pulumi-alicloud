@@ -10,9 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://help.aliyun.com/document_detail/261233.html)
+    /// Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterroutetable)
     /// 
-    /// &gt; **NOTE:** Available in 1.126.0+
+    /// &gt; **NOTE:** Available since v1.126.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
+    ///     });
+    /// 
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     {
+    ///         TransitRouterName = "tf_example",
+    ///         CenId = exampleInstance.Id,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", new()
+    ///     {
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about Cloud Enterprise Network (CEN) Transit Router Grant Attachment and how to use it, see [What is Transit Router Grant Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/grantinstancetotransitrouter).
     /// 
-    /// &gt; **NOTE:** Available in v1.187.0+.
+    /// &gt; **NOTE:** Available since v1.187.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,22 +28,25 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = "tf_example",
+    ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         CenInstanceName = @var.Name,
-    ///         Description = "test for transit router grant attachment",
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var defaultTransitRouterGrantAttachment = new AliCloud.Cen.TransitRouterGrantAttachment("defaultTransitRouterGrantAttachment", new()
+    ///     var exampleTransitRouterGrantAttachment = new AliCloud.Cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
-    ///         CenOwnerId = "your_cen_owner_id",
-    ///         InstanceId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         CenId = exampleInstance.Id,
+    ///         CenOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         InstanceId = exampleNetwork.Id,
     ///         InstanceType = "VPC",
     ///         OrderType = "PayByCenOwner",
     ///     });

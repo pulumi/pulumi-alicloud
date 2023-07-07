@@ -72,14 +72,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="archVersion", type=String.class, parameters={})
-    private Output</* @Nullable */ String> archVersion;
+    private Output<String> archVersion;
 
     /**
      * @return The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
      * 
      */
-    public Output<Optional<String>> archVersion() {
-        return Codegen.optional(this.archVersion);
+    public Output<String> archVersion() {
+        return this.archVersion;
     }
     /**
      * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].

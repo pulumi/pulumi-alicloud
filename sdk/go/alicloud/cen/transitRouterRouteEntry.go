@@ -11,9 +11,108 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://help.aliyun.com/document_detail/261238.html)
+// Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterrouteentry)
 //
-// > **NOTE:** Available in 1.126.0+
+// > **NOTE:** Available since v1.126.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				Description:     pulumi.String("an example for cen"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String(name),
+//				CenId:             exampleInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "exampleTransitRouterRouteTable", &cen.TransitRouterRouteTableArgs{
+//				TransitRouterId: exampleTransitRouter.TransitRouterId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(2999),
+//				Min: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//				LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//				PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//				PhysicalConnectionId:    *pulumi.String(examplePhysicalConnections.Connections[0].Id),
+//				VirtualBorderRouterName: pulumi.String(name),
+//				VlanId:                  vlanId.ID(),
+//				MinRxInterval:           pulumi.Int(1000),
+//				MinTxInterval:           pulumi.Int(1000),
+//				DetectMultiplier:        pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouterVbrAttachment, err := cen.NewTransitRouterVbrAttachment(ctx, "exampleTransitRouterVbrAttachment", &cen.TransitRouterVbrAttachmentArgs{
+//				VbrId:                              exampleVirtualBorderRouter.ID(),
+//				CenId:                              exampleInstance.ID(),
+//				TransitRouterId:                    exampleTransitRouter.TransitRouterId,
+//				AutoPublishRouteEnabled:            pulumi.Bool(true),
+//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterRouteEntry(ctx, "exampleTransitRouterRouteEntry", &cen.TransitRouterRouteEntryArgs{
+//				TransitRouterRouteTableId:                   exampleTransitRouterRouteTable.TransitRouterRouteTableId,
+//				TransitRouterRouteEntryDestinationCidrBlock: pulumi.String("192.168.0.0/24"),
+//				TransitRouterRouteEntryNextHopType:          pulumi.String("Attachment"),
+//				TransitRouterRouteEntryName:                 pulumi.String(name),
+//				TransitRouterRouteEntryDescription:          pulumi.String(name),
+//				TransitRouterRouteEntryNextHopId:            exampleTransitRouterVbrAttachment.TransitRouterAttachmentId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

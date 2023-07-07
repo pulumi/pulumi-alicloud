@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://help.aliyun.com/document_detail/261363.html)
+ * Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterpeerattachment)
  *
- * > **NOTE:** Available in 1.128.0+
+ * > **NOTE:** Available since v1.128.0.
  *
  * ## Example Usage
  *
@@ -18,44 +18,48 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAcccExample";
- * const us = new alicloud.Provider("us", {region: "us-east-1"});
- * const cn = new alicloud.Provider("cn", {region: "cn-hangzhou"});
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
+ * const name = config.get("name") || "tf_example";
+ * const region = config.get("region") || "cn-hangzhou";
+ * const peerRegion = config.get("peerRegion") || "cn-beijing";
+ * const hz = new alicloud.Provider("hz", {region: region});
+ * const bj = new alicloud.Provider("bj", {region: peerRegion});
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
  *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * }, {
- *     provider: alicloud.cn,
+ *     provider: alicloud.bj,
  * });
- * const defaultBandwidthPackage = new alicloud.cen.BandwidthPackage("defaultBandwidthPackage", {
+ * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("exampleBandwidthPackage", {
  *     bandwidth: 5,
- *     cenBandwidthPackageName: name,
+ *     cenBandwidthPackageName: "tf_example",
  *     geographicRegionAId: "China",
- *     geographicRegionBId: "North-America",
- * });
- * const defaultBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     instanceId: defaultInstance.id,
- *     bandwidthPackageId: defaultBandwidthPackage.id,
+ *     geographicRegionBId: "China",
  * }, {
- *     provider: alicloud.cn,
+ *     provider: alicloud.bj,
  * });
- * const cnTransitRouter = new alicloud.cen.TransitRouter("cnTransitRouter", {cenId: defaultBandwidthPackageAttachment.instanceId}, {
- *     provider: alicloud.cn,
+ * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     bandwidthPackageId: exampleBandwidthPackage.id,
+ * }, {
+ *     provider: alicloud.bj,
  * });
- * const usTransitRouter = new alicloud.cen.TransitRouter("usTransitRouter", {cenId: cnTransitRouter.id}, {
- *     provider: alicloud.us,
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {cenId: exampleBandwidthPackageAttachment.instanceId}, {
+ *     provider: alicloud.hz,
  * });
- * const defaultTransitRouterPeerAttachment = new alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", {
- *     cenId: defaultInstance.id,
- *     transitRouterId: cnTransitRouter.transitRouterId,
- *     peerTransitRouterRegionId: "us-east-1",
- *     peerTransitRouterId: usTransitRouter.transitRouterId,
- *     cenBandwidthPackageId: defaultBandwidthPackageAttachment.bandwidthPackageId,
+ * const peer = new alicloud.cen.TransitRouter("peer", {cenId: exampleTransitRouter.cenId}, {
+ *     provider: alicloud.bj,
+ * });
+ * const exampleTransitRouterPeerAttachment = new alicloud.cen.TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment", {
+ *     cenId: exampleInstance.id,
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     peerTransitRouterRegionId: peerRegion,
+ *     peerTransitRouterId: peer.transitRouterId,
+ *     cenBandwidthPackageId: exampleBandwidthPackageAttachment.bandwidthPackageId,
  *     bandwidth: 5,
  *     transitRouterAttachmentDescription: name,
  *     transitRouterAttachmentName: name,
  * }, {
- *     provider: alicloud.cn,
+ *     provider: alicloud.hz,
  * });
  * ```
  *

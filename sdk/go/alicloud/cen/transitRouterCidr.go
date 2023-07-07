@@ -13,9 +13,9 @@ import (
 
 // Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
 //
-// For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/createtransitroutercidr).
+// For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
 //
-// > **NOTE:** Available in v1.193.0+.
+// > **NOTE:** Available since v1.193.0.
 //
 // ## Example Usage
 //
@@ -33,23 +33,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf-example"),
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
-//				CenId: defaultInstance.ID(),
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String("tf_example"),
+//				CenId:             exampleInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterCidr(ctx, "defaultTransitRouterCidr", &cen.TransitRouterCidrArgs{
-//				TransitRouterId:       defaultTransitRouter.TransitRouterId,
+//			_, err = cen.NewTransitRouterCidr(ctx, "exampleTransitRouterCidr", &cen.TransitRouterCidrArgs{
+//				TransitRouterId:       exampleTransitRouter.TransitRouterId,
 //				Cidr:                  pulumi.String("192.168.0.0/16"),
-//				TransitRouterCidrName: pulumi.String("tf-example-name"),
-//				Description:           pulumi.String("tf-example-description"),
+//				TransitRouterCidrName: pulumi.String("tf_example"),
+//				Description:           pulumi.String("tf_example"),
 //				PublishCidrRoute:      pulumi.Bool(true),
 //			})
 //			if err != nil {

@@ -14,23 +14,31 @@ public final class RdsDbProxyReadOnlyInstanceWeightArgs extends com.pulumi.resou
     public static final RdsDbProxyReadOnlyInstanceWeightArgs Empty = new RdsDbProxyReadOnlyInstanceWeightArgs();
 
     /**
-     * The Id of instance that can run database.
+     * The Id of the instance and its read-only instances that can run database.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The Id of instance that can run database.
+     * @return The Id of the instance and its read-only instances that can run database.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
 
+    /**
+     * Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * 
+     */
     @Import(name="weight", required=true)
     private Output<String> weight;
 
+    /**
+     * @return Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+     * 
+     */
     public Output<String> weight() {
         return this.weight;
     }
@@ -61,7 +69,7 @@ public final class RdsDbProxyReadOnlyInstanceWeightArgs extends com.pulumi.resou
         }
 
         /**
-         * @param instanceId The Id of instance that can run database.
+         * @param instanceId The Id of the instance and its read-only instances that can run database.
          * 
          * @return builder
          * 
@@ -72,7 +80,7 @@ public final class RdsDbProxyReadOnlyInstanceWeightArgs extends com.pulumi.resou
         }
 
         /**
-         * @param instanceId The Id of instance that can run database.
+         * @param instanceId The Id of the instance and its read-only instances that can run database.
          * 
          * @return builder
          * 
@@ -81,11 +89,23 @@ public final class RdsDbProxyReadOnlyInstanceWeightArgs extends com.pulumi.resou
             return instanceId(Output.of(instanceId));
         }
 
+        /**
+         * @param weight Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(Output<String> weight) {
             $.weight = weight;
             return this;
         }
 
+        /**
+         * @param weight Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(String weight) {
             return weight(Output.of(weight));
         }

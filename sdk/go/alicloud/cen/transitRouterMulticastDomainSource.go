@@ -15,38 +15,7 @@ import (
 //
 // For information about Cen Transit Router Multicast Domain Source and how to use it, see [What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources).
 //
-// > **NOTE:** Available in v1.195.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cen.NewTransitRouterMulticastDomainSource(ctx, "default", &cen.TransitRouterMulticastDomainSourceArgs{
-//				GroupIpAddress:                 pulumi.String("239.1.1.1"),
-//				NetworkInterfaceId:             pulumi.String("eni-xxxx"),
-//				TransitRouterMulticastDomainId: pulumi.String("tr-mcast-domain-xxxx"),
-//				VpcId:                          pulumi.String("vpc-xxxx"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Import
 //

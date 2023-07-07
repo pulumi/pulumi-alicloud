@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an RDS readonly instance resource.
+ * > **NOTE:** Available since v1.52.1+.
  *
  * ## Example Usage
  *
@@ -162,6 +163,12 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * The method to change.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     */
+    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    /**
      * Database type.
      */
     public /*out*/ readonly engine!: pulumi.Output<string>;
@@ -201,7 +208,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public readonly modifyMode!: pulumi.Output<string | undefined>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      */
     public readonly parameters!: pulumi.Output<outputs.rds.ReadOnlyInstanceParameter[]>;
     /**
@@ -327,6 +334,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
             resourceInputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
             resourceInputs["forceRestart"] = state ? state.forceRestart : undefined;
@@ -380,6 +388,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
             resourceInputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["forceRestart"] = args ? args.forceRestart : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
@@ -492,6 +501,12 @@ export interface ReadOnlyInstanceState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
+     * The method to change.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     */
+    effectiveTime?: pulumi.Input<string>;
+    /**
      * Database type.
      */
     engine?: pulumi.Input<string>;
@@ -531,7 +546,7 @@ export interface ReadOnlyInstanceState {
      */
     modifyMode?: pulumi.Input<string>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
     /**
@@ -706,6 +721,12 @@ export interface ReadOnlyInstanceArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
+     * The method to change.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     */
+    effectiveTime?: pulumi.Input<string>;
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
     engineVersion: pulumi.Input<string>;
@@ -741,7 +762,7 @@ export interface ReadOnlyInstanceArgs {
      */
     modifyMode?: pulumi.Input<string>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
     /**

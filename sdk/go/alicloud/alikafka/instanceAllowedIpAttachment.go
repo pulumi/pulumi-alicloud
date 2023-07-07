@@ -13,9 +13,9 @@ import (
 
 // Provides a AliKafka Instance Allowed Ip Attachment resource.
 //
-// For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/doc-detail/68151.html).
+// For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-updateallowedip).
 //
-// > **NOTE:** Available in v1.163.0+.
+// > **NOTE:** Available since v1.163.0.
 //
 // ## Example Usage
 //
@@ -26,6 +26,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
@@ -37,24 +38,34 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tftest"
+//			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING"),
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +76,7 @@ import (
 //				DiskSize:      pulumi.Int(500),
 //				DeployType:    pulumi.Int(5),
 //				IoMax:         pulumi.Int(20),
-//				VswitchId:     *pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:     defaultSwitch.ID(),
 //				SecurityGroup: defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {

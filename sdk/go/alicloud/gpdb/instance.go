@@ -12,9 +12,9 @@ import (
 )
 
 // Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)
+// You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
 //
-// > **NOTE:**  Available in 1.47.0+
+// > **NOTE:** Available since v1.47.0.
 //
 // ## Import
 //
@@ -32,31 +32,37 @@ type Instance struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// (Available in 1.196.0+) The connection string of the instance.
+	// (Available since v1.196.0) The connection string of the instance.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData pulumi.BoolOutput `pulumi:"createSampleData"`
-	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory pulumi.StringOutput `pulumi:"dbInstanceCategory"`
-	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceClass pulumi.StringPtrOutput `pulumi:"dbInstanceClass"`
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
 	DbInstanceMode pulumi.StringOutput `pulumi:"dbInstanceMode"`
 	// The description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+	// The ID of the encryption key.
+	// > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
+	// The encryption type. Valid values: `CloudDisk`.
+	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType pulumi.StringPtrOutput `pulumi:"encryptionType"`
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// The version of the database engine used by the instance.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
+	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount pulumi.IntPtrOutput `pulumi:"instanceGroupCount"`
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType pulumi.StringOutput `pulumi:"instanceNetworkType"`
 	// The specification of segment nodes.
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -64,20 +70,20 @@ type Instance struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrOutput `pulumi:"instanceSpec"`
-	// The ip whitelist. See block `ipWhitelist`.
+	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists InstanceIpWhitelistArrayOutput `pulumi:"ipWhitelists"`
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
-	// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
 	MasterNodeNum pulumi.IntPtrOutput `pulumi:"masterNodeNum"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
-	// (Available in 1.196.0+) The connection port of the instance.
+	// (Available since v1.196.0) The connection port of the instance.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The private ip address.
 	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
@@ -87,7 +93,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
-	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum pulumi.IntOutput `pulumi:"segNodeNum"`
 	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
@@ -97,13 +103,15 @@ type Instance struct {
 	SslEnabled pulumi.IntOutput `pulumi:"sslEnabled"`
 	// The status of the instance.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The storage capacity. Unit: GB. Value: `50` to `4000`.
+	// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize pulumi.IntOutput `pulumi:"storageSize"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime pulumi.StringPtrOutput `pulumi:"usedTime"`
+	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+	VectorConfigurationStatus pulumi.StringOutput `pulumi:"vectorConfigurationStatus"`
 	// The vpc ID of the resource.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitch id.
@@ -157,31 +165,37 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// (Available in 1.196.0+) The connection string of the instance.
+	// (Available since v1.196.0) The connection string of the instance.
 	ConnectionString *string `pulumi:"connectionString"`
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData *bool `pulumi:"createSampleData"`
-	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory *string `pulumi:"dbInstanceCategory"`
-	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
 	DbInstanceMode *string `pulumi:"dbInstanceMode"`
 	// The description of the instance.
 	Description *string `pulumi:"description"`
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+	// The ID of the encryption key.
+	// > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+	EncryptionKey *string `pulumi:"encryptionKey"`
+	// The encryption type. Valid values: `CloudDisk`.
+	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType *string `pulumi:"encryptionType"`
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
 	Engine *string `pulumi:"engine"`
 	// The version of the database engine used by the instance.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
+	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount *int `pulumi:"instanceGroupCount"`
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
 	// The specification of segment nodes.
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -189,20 +203,20 @@ type instanceState struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec *string `pulumi:"instanceSpec"`
-	// The ip whitelist. See block `ipWhitelist`.
+	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists []InstanceIpWhitelist `pulumi:"ipWhitelists"`
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
 	MasterNodeNum *int `pulumi:"masterNodeNum"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
 	Period *string `pulumi:"period"`
-	// (Available in 1.196.0+) The connection port of the instance.
+	// (Available since v1.196.0) The connection port of the instance.
 	Port *string `pulumi:"port"`
 	// The private ip address.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
@@ -212,7 +226,7 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
-	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum *int `pulumi:"segNodeNum"`
 	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
@@ -222,13 +236,15 @@ type instanceState struct {
 	SslEnabled *int `pulumi:"sslEnabled"`
 	// The status of the instance.
 	Status *string `pulumi:"status"`
-	// The storage capacity. Unit: GB. Value: `50` to `4000`.
+	// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize *int `pulumi:"storageSize"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime *string `pulumi:"usedTime"`
+	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+	VectorConfigurationStatus *string `pulumi:"vectorConfigurationStatus"`
 	// The vpc ID of the resource.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
@@ -242,31 +258,37 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
-	// (Available in 1.196.0+) The connection string of the instance.
+	// (Available since v1.196.0) The connection string of the instance.
 	ConnectionString pulumi.StringPtrInput
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData pulumi.BoolPtrInput
-	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory pulumi.StringPtrInput
-	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceClass pulumi.StringPtrInput
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
 	DbInstanceMode pulumi.StringPtrInput
 	// The description of the instance.
 	Description pulumi.StringPtrInput
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+	// The ID of the encryption key.
+	// > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+	EncryptionKey pulumi.StringPtrInput
+	// The encryption type. Valid values: `CloudDisk`.
+	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType pulumi.StringPtrInput
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
 	Engine pulumi.StringPtrInput
 	// The version of the database engine used by the instance.
 	EngineVersion pulumi.StringPtrInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
+	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount pulumi.IntPtrInput
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType pulumi.StringPtrInput
 	// The specification of segment nodes.
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -274,20 +296,20 @@ type InstanceState struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrInput
-	// The ip whitelist. See block `ipWhitelist`.
+	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists InstanceIpWhitelistArrayInput
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime pulumi.StringPtrInput
-	// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
 	MasterNodeNum pulumi.IntPtrInput
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
 	Period pulumi.StringPtrInput
-	// (Available in 1.196.0+) The connection port of the instance.
+	// (Available since v1.196.0) The connection port of the instance.
 	Port pulumi.StringPtrInput
 	// The private ip address.
 	PrivateIpAddress pulumi.StringPtrInput
@@ -297,7 +319,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists pulumi.StringArrayInput
-	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum pulumi.IntPtrInput
 	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
@@ -307,13 +329,15 @@ type InstanceState struct {
 	SslEnabled pulumi.IntPtrInput
 	// The status of the instance.
 	Status pulumi.StringPtrInput
-	// The storage capacity. Unit: GB. Value: `50` to `4000`.
+	// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime pulumi.StringPtrInput
+	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+	VectorConfigurationStatus pulumi.StringPtrInput
 	// The vpc ID of the resource.
 	VpcId pulumi.StringPtrInput
 	// The vswitch id.
@@ -333,27 +357,33 @@ type instanceArgs struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData *bool `pulumi:"createSampleData"`
-	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory *string `pulumi:"dbInstanceCategory"`
-	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
 	DbInstanceMode string `pulumi:"dbInstanceMode"`
 	// The description of the instance.
 	Description *string `pulumi:"description"`
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+	// The ID of the encryption key.
+	// > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+	EncryptionKey *string `pulumi:"encryptionKey"`
+	// The encryption type. Valid values: `CloudDisk`.
+	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType *string `pulumi:"encryptionType"`
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
 	Engine string `pulumi:"engine"`
 	// The version of the database engine used by the instance.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
+	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount *int `pulumi:"instanceGroupCount"`
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
 	// The specification of segment nodes.
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -361,14 +391,14 @@ type instanceArgs struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec *string `pulumi:"instanceSpec"`
-	// The ip whitelist. See block `ipWhitelist`.
+	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists []InstanceIpWhitelist `pulumi:"ipWhitelists"`
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
 	MasterNodeNum *int `pulumi:"masterNodeNum"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -382,7 +412,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
-	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum *int `pulumi:"segNodeNum"`
 	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
@@ -390,13 +420,15 @@ type instanceArgs struct {
 	SegStorageType *string `pulumi:"segStorageType"`
 	// Enable or disable SSL. Valid values: `0` and `1`.
 	SslEnabled *int `pulumi:"sslEnabled"`
-	// The storage capacity. Unit: GB. Value: `50` to `4000`.
+	// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize *int `pulumi:"storageSize"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime *string `pulumi:"usedTime"`
+	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+	VectorConfigurationStatus *string `pulumi:"vectorConfigurationStatus"`
 	// The vpc ID of the resource.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
@@ -413,27 +445,33 @@ type InstanceArgs struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData pulumi.BoolPtrInput
-	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory pulumi.StringPtrInput
-	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+	// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceClass pulumi.StringPtrInput
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
 	DbInstanceMode pulumi.StringInput
 	// The description of the instance.
 	Description pulumi.StringPtrInput
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+	// The ID of the encryption key.
+	// > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+	EncryptionKey pulumi.StringPtrInput
+	// The encryption type. Valid values: `CloudDisk`.
+	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType pulumi.StringPtrInput
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
 	Engine pulumi.StringInput
 	// The version of the database engine used by the instance.
 	EngineVersion pulumi.StringInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
+	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount pulumi.IntPtrInput
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType pulumi.StringPtrInput
 	// The specification of segment nodes.
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -441,14 +479,14 @@ type InstanceArgs struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrInput
-	// The ip whitelist. See block `ipWhitelist`.
+	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists InstanceIpWhitelistArrayInput
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime pulumi.StringPtrInput
-	// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
 	MasterNodeNum pulumi.IntPtrInput
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
@@ -462,7 +500,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists pulumi.StringArrayInput
-	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum pulumi.IntPtrInput
 	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
@@ -470,13 +508,15 @@ type InstanceArgs struct {
 	SegStorageType pulumi.StringPtrInput
 	// Enable or disable SSL. Valid values: `0` and `1`.
 	SslEnabled pulumi.IntPtrInput
-	// The storage capacity. Unit: GB. Value: `50` to `4000`.
+	// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime pulumi.StringPtrInput
+	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+	VectorConfigurationStatus pulumi.StringPtrInput
 	// The vpc ID of the resource.
 	VpcId pulumi.StringPtrInput
 	// The vswitch id.
@@ -579,7 +619,7 @@ func (o InstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// (Available in 1.196.0+) The connection string of the instance.
+// (Available since v1.196.0) The connection string of the instance.
 func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
@@ -589,13 +629,13 @@ func (o InstanceOutput) CreateSampleData() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.CreateSampleData }).(pulumi.BoolOutput)
 }
 
-// The db instance category. Valid values: `HighAvailability`, `Basic`.
+// The db instance category. Valid values: `Basic`, `HighAvailability`.
 // > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 func (o InstanceOutput) DbInstanceCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceCategory }).(pulumi.StringOutput)
 }
 
-// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
 // > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 func (o InstanceOutput) DbInstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DbInstanceClass }).(pulumi.StringPtrOutput)
@@ -611,7 +651,19 @@ func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+// The ID of the encryption key.
+// > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+func (o InstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// The encryption type. Valid values: `CloudDisk`.
+// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
+func (o InstanceOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
 func (o InstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
@@ -623,7 +675,7 @@ func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 
 // Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 //
-// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
+// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
 func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
@@ -633,7 +685,7 @@ func (o InstanceOutput) InstanceGroupCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.InstanceGroupCount }).(pulumi.IntPtrOutput)
 }
 
-// The network type of the instance.
+// The network type of the instance. Valid values: `VPC`.
 func (o InstanceOutput) InstanceNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceNetworkType }).(pulumi.StringOutput)
 }
@@ -647,7 +699,7 @@ func (o InstanceOutput) InstanceSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceSpec }).(pulumi.StringPtrOutput)
 }
 
-// The ip whitelist. See block `ipWhitelist`.
+// The ip whitelist. See `ipWhitelist` below.
 // Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 func (o InstanceOutput) IpWhitelists() InstanceIpWhitelistArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceIpWhitelistArrayOutput { return v.IpWhitelists }).(InstanceIpWhitelistArrayOutput)
@@ -663,7 +715,7 @@ func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
 
-// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
 func (o InstanceOutput) MasterNodeNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.MasterNodeNum }).(pulumi.IntPtrOutput)
 }
@@ -678,7 +730,7 @@ func (o InstanceOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
 }
 
-// (Available in 1.196.0+) The connection port of the instance.
+// (Available since v1.196.0) The connection port of the instance.
 func (o InstanceOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
@@ -700,7 +752,7 @@ func (o InstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityIpLists }).(pulumi.StringArrayOutput)
 }
 
-// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 // > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 func (o InstanceOutput) SegNodeNum() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SegNodeNum }).(pulumi.IntOutput)
@@ -722,7 +774,7 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The storage capacity. Unit: GB. Value: `50` to `4000`.
+// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
 // > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 func (o InstanceOutput) StorageSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.StorageSize }).(pulumi.IntOutput)
@@ -733,9 +785,14 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 func (o InstanceOutput) UsedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UsedTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+func (o InstanceOutput) VectorConfigurationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VectorConfigurationStatus }).(pulumi.StringOutput)
 }
 
 // The vpc ID of the resource.

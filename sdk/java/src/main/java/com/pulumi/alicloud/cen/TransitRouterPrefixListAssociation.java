@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Enterprise Network (CEN) Transit Router Prefix List Association and how to use it, see [What is Transit Router Prefix List Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitrouterprefixlistassociation).
  * 
- * &gt; **NOTE:** Available in v1.188.0+.
+ * &gt; **NOTE:** Available since v1.188.0.
  * 
  * ## Example Usage
  * 
@@ -55,33 +55,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var defaultPrefixList = new PrefixList(&#34;defaultPrefixList&#34;, PrefixListArgs.builder()        
+ *         var examplePrefixList = new PrefixList(&#34;examplePrefixList&#34;, PrefixListArgs.builder()        
  *             .entrys(PrefixListEntryArgs.builder()
  *                 .cidr(&#34;192.168.0.0/16&#34;)
  *                 .build())
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf-example&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(&#34;tf_example&#34;)
+ *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable(&#34;defaultTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable(&#34;exampleTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
- *         var defaultTransitRouterPrefixListAssociation = new TransitRouterPrefixListAssociation(&#34;defaultTransitRouterPrefixListAssociation&#34;, TransitRouterPrefixListAssociationArgs.builder()        
- *             .prefixListId(defaultPrefixList.id())
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
- *             .transitRouterTableId(defaultTransitRouterRouteTable.transitRouterRouteTableId())
+ *         var exampleTransitRouterPrefixListAssociation = new TransitRouterPrefixListAssociation(&#34;exampleTransitRouterPrefixListAssociation&#34;, TransitRouterPrefixListAssociationArgs.builder()        
+ *             .prefixListId(examplePrefixList.id())
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .transitRouterTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
  *             .nextHop(&#34;BlackHole&#34;)
  *             .nextHopType(&#34;BlackHole&#34;)
- *             .ownerUid(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .ownerUid(default_.id())
  *             .build());
  * 
  *     }

@@ -11,9 +11,9 @@ namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
     /// Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-    /// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)
+    /// You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
     /// 
-    /// &gt; **NOTE:**  Available in 1.47.0+
+    /// &gt; **NOTE:** Available since v1.47.0.
     /// 
     /// ## Import
     /// 
@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection string of the instance.
+        /// (Available since v1.196.0) The connection string of the instance.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -45,14 +45,14 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<bool> CreateSampleData { get; private set; } = null!;
 
         /// <summary>
-        /// The db instance category. Valid values: `HighAvailability`, `Basic`.
+        /// The db instance category. Valid values: `Basic`, `HighAvailability`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Output("dbInstanceCategory")]
         public Output<string> DbInstanceCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Output("dbInstanceClass")]
@@ -71,7 +71,21 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        /// The ID of the encryption key.
+        /// &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        /// </summary>
+        [Output("encryptionKey")]
+        public Output<string?> EncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The encryption type. Valid values: `CloudDisk`.
+        /// &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
+        /// </summary>
+        [Output("encryptionType")]
+        public Output<string?> EncryptionType { get; private set; } = null!;
+
+        /// <summary>
+        /// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -95,7 +109,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<int?> InstanceGroupCount { get; private set; } = null!;
 
         /// <summary>
-        /// The network type of the instance.
+        /// The network type of the instance. Valid values: `VPC`.
         /// </summary>
         [Output("instanceNetworkType")]
         public Output<string> InstanceNetworkType { get; private set; } = null!;
@@ -111,7 +125,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> InstanceSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The ip whitelist. See block `ip_whitelist`.
+        /// The ip whitelist. See `ip_whitelist` below.
         /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         /// </summary>
         [Output("ipWhitelists")]
@@ -130,7 +144,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        /// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         /// </summary>
         [Output("masterNodeNum")]
         public Output<int?> MasterNodeNum { get; private set; } = null!;
@@ -148,7 +162,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the instance.
+        /// (Available since v1.196.0) The connection port of the instance.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -172,7 +186,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<ImmutableArray<string>> SecurityIpLists { get; private set; } = null!;
 
         /// <summary>
-        /// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         /// </summary>
         [Output("segNodeNum")]
@@ -198,7 +212,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The storage capacity. Unit: GB. Value: `50` to `4000`.
+        /// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Output("storageSize")]
@@ -211,10 +225,16 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        /// The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         /// </summary>
         [Output("usedTime")]
         public Output<string?> UsedTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+        /// </summary>
+        [Output("vectorConfigurationStatus")]
+        public Output<string> VectorConfigurationStatus { get; private set; } = null!;
 
         /// <summary>
         /// The vpc ID of the resource.
@@ -293,14 +313,14 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<bool>? CreateSampleData { get; set; }
 
         /// <summary>
-        /// The db instance category. Valid values: `HighAvailability`, `Basic`.
+        /// The db instance category. Valid values: `Basic`, `HighAvailability`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("dbInstanceCategory")]
         public Input<string>? DbInstanceCategory { get; set; }
 
         /// <summary>
-        /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("dbInstanceClass")]
@@ -319,7 +339,21 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        /// The ID of the encryption key.
+        /// &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// The encryption type. Valid values: `CloudDisk`.
+        /// &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
+        /// </summary>
+        [Input("encryptionType")]
+        public Input<string>? EncryptionType { get; set; }
+
+        /// <summary>
+        /// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -343,7 +377,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? InstanceGroupCount { get; set; }
 
         /// <summary>
-        /// The network type of the instance.
+        /// The network type of the instance. Valid values: `VPC`.
         /// </summary>
         [Input("instanceNetworkType")]
         public Input<string>? InstanceNetworkType { get; set; }
@@ -362,7 +396,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.InstanceIpWhitelistArgs>? _ipWhitelists;
 
         /// <summary>
-        /// The ip whitelist. See block `ip_whitelist`.
+        /// The ip whitelist. See `ip_whitelist` below.
         /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         /// </summary>
         public InputList<Inputs.InstanceIpWhitelistArgs> IpWhitelists
@@ -384,7 +418,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        /// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         /// </summary>
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
@@ -427,7 +461,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         /// </summary>
         [Input("segNodeNum")]
@@ -447,7 +481,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? SslEnabled { get; set; }
 
         /// <summary>
-        /// The storage capacity. Unit: GB. Value: `50` to `4000`.
+        /// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("storageSize")]
@@ -466,10 +500,16 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        /// The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+        /// </summary>
+        [Input("vectorConfigurationStatus")]
+        public Input<string>? VectorConfigurationStatus { get; set; }
 
         /// <summary>
         /// The vpc ID of the resource.
@@ -504,7 +544,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection string of the instance.
+        /// (Available since v1.196.0) The connection string of the instance.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
@@ -516,14 +556,14 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<bool>? CreateSampleData { get; set; }
 
         /// <summary>
-        /// The db instance category. Valid values: `HighAvailability`, `Basic`.
+        /// The db instance category. Valid values: `Basic`, `HighAvailability`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("dbInstanceCategory")]
         public Input<string>? DbInstanceCategory { get; set; }
 
         /// <summary>
-        /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("dbInstanceClass")]
@@ -542,7 +582,21 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        /// The ID of the encryption key.
+        /// &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// The encryption type. Valid values: `CloudDisk`.
+        /// &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
+        /// </summary>
+        [Input("encryptionType")]
+        public Input<string>? EncryptionType { get; set; }
+
+        /// <summary>
+        /// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -566,7 +620,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? InstanceGroupCount { get; set; }
 
         /// <summary>
-        /// The network type of the instance.
+        /// The network type of the instance. Valid values: `VPC`.
         /// </summary>
         [Input("instanceNetworkType")]
         public Input<string>? InstanceNetworkType { get; set; }
@@ -585,7 +639,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.InstanceIpWhitelistGetArgs>? _ipWhitelists;
 
         /// <summary>
-        /// The ip whitelist. See block `ip_whitelist`.
+        /// The ip whitelist. See `ip_whitelist` below.
         /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         /// </summary>
         public InputList<Inputs.InstanceIpWhitelistGetArgs> IpWhitelists
@@ -607,7 +661,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        /// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
         /// </summary>
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
@@ -625,7 +679,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the instance.
+        /// (Available since v1.196.0) The connection port of the instance.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
@@ -656,7 +710,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         /// </summary>
         [Input("segNodeNum")]
@@ -682,7 +736,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The storage capacity. Unit: GB. Value: `50` to `4000`.
+        /// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("storageSize")]
@@ -701,10 +755,16 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        /// The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+        /// </summary>
+        [Input("vectorConfigurationStatus")]
+        public Input<string>? VectorConfigurationStatus { get; set; }
 
         /// <summary>
         /// The vpc ID of the resource.

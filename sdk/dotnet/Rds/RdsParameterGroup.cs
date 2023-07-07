@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.119.0+.
+    /// &gt; **NOTE:** Available since v1.119.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -45,8 +45,8 @@ namespace Pulumi.AliCloud.Rds
     ///                 ParamValue = "86460",
     ///             },
     ///         },
-    ///         ParameterGroupDesc = "test",
-    ///         ParameterGroupName = "test1234",
+    ///         ParameterGroupDesc = "rdsparameter",
+    ///         ParameterGroupName = "rds1234",
     ///     });
     /// 
     /// });
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Parameter list.
+        /// Parameter list. See `param_detail` below.
         /// </summary>
         [Output("paramDetails")]
         public Output<ImmutableArray<Outputs.RdsParameterGroupParamDetail>> ParamDetails { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsParameterGroupParamDetailArgs>? _paramDetails;
 
         /// <summary>
-        /// Parameter list.
+        /// Parameter list. See `param_detail` below.
         /// </summary>
         public InputList<Inputs.RdsParameterGroupParamDetailArgs> ParamDetails
         {
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsParameterGroupParamDetailGetArgs>? _paramDetails;
 
         /// <summary>
-        /// Parameter list.
+        /// Parameter list. See `param_detail` below.
         /// </summary>
         public InputList<Inputs.RdsParameterGroupParamDetailGetArgs> ParamDetails
         {

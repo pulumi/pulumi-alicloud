@@ -45,14 +45,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.196.0+) The connection string of the instance.
+     * (Available since v1.196.0) The connection string of the instance.
      * 
      */
     @Import(name="connectionString")
     private @Nullable Output<String> connectionString;
 
     /**
-     * @return (Available in 1.196.0+) The connection string of the instance.
+     * @return (Available since v1.196.0) The connection string of the instance.
      * 
      */
     public Optional<Output<String>> connectionString() {
@@ -75,7 +75,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -83,7 +83,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> dbInstanceCategory;
 
     /**
-     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * @return The db instance category. Valid values: `Basic`, `HighAvailability`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -92,7 +92,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -100,7 +100,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> dbInstanceClass;
 
     /**
-     * @return The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * @return The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -139,14 +139,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The ID of the encryption key.
+     * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+     * 
+     */
+    @Import(name="encryptionKey")
+    private @Nullable Output<String> encryptionKey;
+
+    /**
+     * @return The ID of the encryption key.
+     * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+     * 
+     */
+    public Optional<Output<String>> encryptionKey() {
+        return Optional.ofNullable(this.encryptionKey);
+    }
+
+    /**
+     * The encryption type. Valid values: `CloudDisk`.
+     * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
+     * 
+     */
+    @Import(name="encryptionType")
+    private @Nullable Output<String> encryptionType;
+
+    /**
+     * @return The encryption type. Valid values: `CloudDisk`.
+     * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
+     * 
+     */
+    public Optional<Output<String>> encryptionType() {
+        return Optional.ofNullable(this.encryptionType);
+    }
+
+    /**
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * @return The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
      * 
      */
     public Optional<Output<String>> engine() {
@@ -172,10 +206,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
      * 
      * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
+     * Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
+    @Deprecated /* Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
@@ -183,10 +217,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
      * 
      * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
+     * Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
+    @Deprecated /* Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -207,14 +241,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `VPC`.
      * 
      */
     @Import(name="instanceNetworkType")
     private @Nullable Output<String> instanceNetworkType;
 
     /**
-     * @return The network type of the instance.
+     * @return The network type of the instance. Valid values: `VPC`.
      * 
      */
     public Optional<Output<String>> instanceNetworkType() {
@@ -245,7 +279,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ip whitelist. See block `ip_whitelist`.
+     * The ip whitelist. See `ip_whitelist` below.
      * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
      * 
      */
@@ -253,7 +287,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<InstanceIpWhitelistArgs>> ipWhitelists;
 
     /**
-     * @return The ip whitelist. See block `ip_whitelist`.
+     * @return The ip whitelist. See `ip_whitelist` below.
      * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
      * 
      */
@@ -292,14 +326,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
      * 
      */
     @Import(name="masterNodeNum")
     private @Nullable Output<Integer> masterNodeNum;
 
     /**
-     * @return The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * @return The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
      * 
      */
     public Optional<Output<Integer>> masterNodeNum() {
@@ -337,14 +371,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.196.0+) The connection port of the instance.
+     * (Available since v1.196.0) The connection port of the instance.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the instance.
+     * @return (Available since v1.196.0) The connection port of the instance.
      * 
      */
     public Optional<Output<String>> port() {
@@ -405,7 +439,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      * 
      */
@@ -413,7 +447,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> segNodeNum;
 
     /**
-     * @return Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * @return Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      * 
      */
@@ -469,7 +503,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -477,7 +511,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> storageSize;
 
     /**
-     * @return The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * @return The storage capacity. Unit: GB. Valid values: `50` to `4000`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -501,18 +535,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+     * The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
      * 
      */
     @Import(name="usedTime")
     private @Nullable Output<String> usedTime;
 
     /**
-     * @return The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+     * @return The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
      * 
      */
     public Optional<Output<String>> usedTime() {
         return Optional.ofNullable(this.usedTime);
+    }
+
+    /**
+     * Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+     * 
+     */
+    @Import(name="vectorConfigurationStatus")
+    private @Nullable Output<String> vectorConfigurationStatus;
+
+    /**
+     * @return Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+     * 
+     */
+    public Optional<Output<String>> vectorConfigurationStatus() {
+        return Optional.ofNullable(this.vectorConfigurationStatus);
     }
 
     /**
@@ -570,6 +619,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.dbInstanceClass = $.dbInstanceClass;
         this.dbInstanceMode = $.dbInstanceMode;
         this.description = $.description;
+        this.encryptionKey = $.encryptionKey;
+        this.encryptionType = $.encryptionType;
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
         this.instanceChargeType = $.instanceChargeType;
@@ -593,6 +644,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.storageSize = $.storageSize;
         this.tags = $.tags;
         this.usedTime = $.usedTime;
+        this.vectorConfigurationStatus = $.vectorConfigurationStatus;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
@@ -646,7 +698,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.196.0+) The connection string of the instance.
+         * @param connectionString (Available since v1.196.0) The connection string of the instance.
          * 
          * @return builder
          * 
@@ -657,7 +709,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.196.0+) The connection string of the instance.
+         * @param connectionString (Available since v1.196.0) The connection string of the instance.
          * 
          * @return builder
          * 
@@ -688,7 +740,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceCategory The db instance category. Valid values: `HighAvailability`, `Basic`.
+         * @param dbInstanceCategory The db instance category. Valid values: `Basic`, `HighAvailability`.
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -700,7 +752,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceCategory The db instance category. Valid values: `HighAvailability`, `Basic`.
+         * @param dbInstanceCategory The db instance category. Valid values: `Basic`, `HighAvailability`.
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -711,7 +763,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceClass The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+         * @param dbInstanceClass The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -723,7 +775,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceClass The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+         * @param dbInstanceClass The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -776,7 +828,53 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+         * @param encryptionKey The ID of the encryption key.
+         * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKey(@Nullable Output<String> encryptionKey) {
+            $.encryptionKey = encryptionKey;
+            return this;
+        }
+
+        /**
+         * @param encryptionKey The ID of the encryption key.
+         * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKey(String encryptionKey) {
+            return encryptionKey(Output.of(encryptionKey));
+        }
+
+        /**
+         * @param encryptionType The encryption type. Valid values: `CloudDisk`.
+         * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionType(@Nullable Output<String> encryptionType) {
+            $.encryptionType = encryptionType;
+            return this;
+        }
+
+        /**
+         * @param encryptionType The encryption type. Valid values: `CloudDisk`.
+         * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionType(String encryptionType) {
+            return encryptionType(Output.of(encryptionType));
+        }
+
+        /**
+         * @param engine The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
          * 
          * @return builder
          * 
@@ -787,7 +885,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+         * @param engine The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
          * 
          * @return builder
          * 
@@ -823,10 +921,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
+         * Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
+        @Deprecated /* Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -838,10 +936,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
+         * Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
+        @Deprecated /* Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
@@ -868,7 +966,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceNetworkType The network type of the instance.
+         * @param instanceNetworkType The network type of the instance. Valid values: `VPC`.
          * 
          * @return builder
          * 
@@ -879,7 +977,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceNetworkType The network type of the instance.
+         * @param instanceNetworkType The network type of the instance. Valid values: `VPC`.
          * 
          * @return builder
          * 
@@ -918,7 +1016,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhitelists The ip whitelist. See block `ip_whitelist`.
+         * @param ipWhitelists The ip whitelist. See `ip_whitelist` below.
          * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
          * 
          * @return builder
@@ -930,7 +1028,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhitelists The ip whitelist. See block `ip_whitelist`.
+         * @param ipWhitelists The ip whitelist. See `ip_whitelist` below.
          * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
          * 
          * @return builder
@@ -941,7 +1039,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhitelists The ip whitelist. See block `ip_whitelist`.
+         * @param ipWhitelists The ip whitelist. See `ip_whitelist` below.
          * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
          * 
          * @return builder
@@ -994,7 +1092,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterNodeNum The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+         * @param masterNodeNum The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
          * 
          * @return builder
          * 
@@ -1005,7 +1103,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterNodeNum The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+         * @param masterNodeNum The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
          * 
          * @return builder
          * 
@@ -1057,7 +1155,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * @param port (Available since v1.196.0) The connection port of the instance.
          * 
          * @return builder
          * 
@@ -1068,7 +1166,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * @param port (Available since v1.196.0) The connection port of the instance.
          * 
          * @return builder
          * 
@@ -1163,7 +1261,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param segNodeNum Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+         * @param segNodeNum Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
          * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
          * 
          * @return builder
@@ -1175,7 +1273,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param segNodeNum Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+         * @param segNodeNum Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
          * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
          * 
          * @return builder
@@ -1251,7 +1349,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageSize The storage capacity. Unit: GB. Value: `50` to `4000`.
+         * @param storageSize The storage capacity. Unit: GB. Valid values: `50` to `4000`.
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -1263,7 +1361,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageSize The storage capacity. Unit: GB. Value: `50` to `4000`.
+         * @param storageSize The storage capacity. Unit: GB. Valid values: `50` to `4000`.
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -1295,7 +1393,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usedTime The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+         * @param usedTime The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
          * 
          * @return builder
          * 
@@ -1306,13 +1404,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usedTime The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+         * @param usedTime The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
          * 
          * @return builder
          * 
          */
         public Builder usedTime(String usedTime) {
             return usedTime(Output.of(usedTime));
+        }
+
+        /**
+         * @param vectorConfigurationStatus Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vectorConfigurationStatus(@Nullable Output<String> vectorConfigurationStatus) {
+            $.vectorConfigurationStatus = vectorConfigurationStatus;
+            return this;
+        }
+
+        /**
+         * @param vectorConfigurationStatus Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vectorConfigurationStatus(String vectorConfigurationStatus) {
+            return vectorConfigurationStatus(Output.of(vectorConfigurationStatus));
         }
 
         /**

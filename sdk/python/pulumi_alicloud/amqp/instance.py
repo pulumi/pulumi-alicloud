@@ -36,6 +36,7 @@ class InstanceArgs:
         :param pulumi.Input[str] queue_capacity: The queue capacity. The smallest value is 50 and the step size 5.
         :param pulumi.Input[bool] support_eip: Whether to support EIP.
         :param pulumi.Input[str] instance_name: The instance name.
+        :param pulumi.Input[str] logistics: The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
         :param pulumi.Input[int] period: The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
@@ -143,6 +144,9 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def logistics(self) -> Optional[pulumi.Input[str]]:
+        """
+        The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        """
         return pulumi.get(self, "logistics")
 
     @logistics.setter
@@ -256,6 +260,7 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] instance_name: The instance name.
         :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+        :param pulumi.Input[str] logistics: The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
@@ -327,6 +332,9 @@ class _InstanceState:
     @property
     @pulumi.getter
     def logistics(self) -> Optional[pulumi.Input[str]]:
+        """
+        The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        """
         return pulumi.get(self, "logistics")
 
     @logistics.setter
@@ -499,39 +507,6 @@ class Instance(pulumi.CustomResource):
                  support_eip: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a RabbitMQ (AMQP) Instance resource.
-
-        For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/101631.htm).
-
-        > **NOTE:** Available in v1.128.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        professional = alicloud.amqp.Instance("professional",
-            instance_type="professional",
-            max_eip_tps="128",
-            max_tps="1000",
-            payment_type="Subscription",
-            period=1,
-            queue_capacity="50",
-            support_eip=True)
-        vip = alicloud.amqp.Instance("vip",
-            instance_type="vip",
-            max_eip_tps="128",
-            max_tps="5000",
-            payment_type="Subscription",
-            period=1,
-            queue_capacity="50",
-            storage_size="700",
-            support_eip=True)
-        ```
-
         ## Import
 
         RabbitMQ (AMQP) Instance can be imported using the id, e.g.
@@ -544,6 +519,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: The instance name.
         :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+        :param pulumi.Input[str] logistics: The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
@@ -563,39 +539,6 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RabbitMQ (AMQP) Instance resource.
-
-        For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/101631.htm).
-
-        > **NOTE:** Available in v1.128.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        professional = alicloud.amqp.Instance("professional",
-            instance_type="professional",
-            max_eip_tps="128",
-            max_tps="1000",
-            payment_type="Subscription",
-            period=1,
-            queue_capacity="50",
-            support_eip=True)
-        vip = alicloud.amqp.Instance("vip",
-            instance_type="vip",
-            max_eip_tps="128",
-            max_tps="5000",
-            payment_type="Subscription",
-            period=1,
-            queue_capacity="50",
-            storage_size="700",
-            support_eip=True)
-        ```
-
         ## Import
 
         RabbitMQ (AMQP) Instance can be imported using the id, e.g.
@@ -701,6 +644,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: The instance name.
         :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+        :param pulumi.Input[str] logistics: The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
@@ -754,6 +698,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def logistics(self) -> pulumi.Output[Optional[str]]:
+        """
+        The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        """
         return pulumi.get(self, "logistics")
 
     @property

@@ -9,23 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers).
  *
- * > **NOTE:** Available in v1.195.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.cen.TransitRouterMulticastDomainMember("default", {
- *     groupIpAddress: "239.1.1.1",
- *     networkInterfaceId: "eni-d7o632ny4ryst9ydmt93",
- *     transitRouterMulticastDomainId: "tr-mcast-domain-2d9oq455uk533zfr29",
- *     vpcId: "vpc-d7oapc6waducz2ytvg6b6",
- * });
- * ```
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Import
  *

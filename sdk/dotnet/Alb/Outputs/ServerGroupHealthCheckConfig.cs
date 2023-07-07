@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string? HealthCheckPath;
         /// <summary>
-        /// Health check protocol. Valid values: `HTTP` and `TCP`.
+        /// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
         /// </summary>
         public readonly string? HealthCheckProtocol;
         /// <summary>

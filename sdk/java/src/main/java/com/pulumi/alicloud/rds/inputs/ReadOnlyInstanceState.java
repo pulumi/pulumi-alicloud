@@ -259,6 +259,25 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The method to change.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     * 
+     */
+    @Import(name="effectiveTime")
+    private @Nullable Output<String> effectiveTime;
+
+    /**
+     * @return The method to change.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     * 
+     */
+    public Optional<Output<String>> effectiveTime() {
+        return Optional.ofNullable(this.effectiveTime);
+    }
+
+    /**
      * Database type.
      * 
      */
@@ -400,14 +419,14 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<ReadOnlyInstanceParameterArgs>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      * 
      */
     public Optional<Output<List<ReadOnlyInstanceParameterArgs>>> parameters() {
@@ -741,6 +760,7 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         this.dbInstanceIpArrayName = $.dbInstanceIpArrayName;
         this.dbInstanceStorageType = $.dbInstanceStorageType;
         this.deletionProtection = $.deletionProtection;
+        this.effectiveTime = $.effectiveTime;
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
         this.forceRestart = $.forceRestart;
@@ -1104,6 +1124,31 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param effectiveTime The method to change.  Default value: Immediate. Valid values:
+         * - Immediate: The change immediately takes effect.
+         * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(@Nullable Output<String> effectiveTime) {
+            $.effectiveTime = effectiveTime;
+            return this;
+        }
+
+        /**
+         * @param effectiveTime The method to change.  Default value: Immediate. Valid values:
+         * - Immediate: The change immediately takes effect.
+         * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(String effectiveTime) {
+            return effectiveTime(Output.of(effectiveTime));
+        }
+
+        /**
          * @param engine Database type.
          * 
          * @return builder
@@ -1299,7 +1344,7 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
          * 
          * @return builder
          * 
@@ -1310,7 +1355,7 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
          * 
          * @return builder
          * 
@@ -1320,7 +1365,7 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
          * 
          * @return builder
          * 

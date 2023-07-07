@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createceninterregiontrafficqosqueue).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -19,14 +19,70 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.cen.InterRegionTrafficQosQueue("default", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultRegion = config.get("defaultRegion") || "cn-hangzhou";
+ * const peerRegion = config.get("peerRegion") || "cn-beijing";
+ * const hz = new alicloud.Provider("hz", {region: defaultRegion});
+ * const bj = new alicloud.Provider("bj", {region: peerRegion});
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const defaultBandwidthPackage = new alicloud.cen.BandwidthPackage("defaultBandwidthPackage", {
+ *     bandwidth: 5,
+ *     cenBandwidthPackageName: "tf_example",
+ *     geographicRegionAId: "China",
+ *     geographicRegionBId: "China",
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     instanceId: defaultInstance.id,
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {
+ *     cenId: defaultInstance.id,
+ *     supportMulticast: true,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const peer = new alicloud.cen.TransitRouter("peer", {
+ *     cenId: defaultTransitRouter.cenId,
+ *     supportMulticast: true,
+ * }, {
+ *     provider: alicloud.bj,
+ * });
+ * const defaultTransitRouterPeerAttachment = new alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", {
+ *     cenId: defaultInstance.id,
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     peerTransitRouterRegionId: peerRegion,
+ *     peerTransitRouterId: peer.transitRouterId,
+ *     cenBandwidthPackageId: defaultBandwidthPackageAttachment.bandwidthPackageId,
+ *     bandwidth: 5,
+ *     transitRouterAttachmentDescription: name,
+ *     transitRouterAttachmentName: name,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultInterRegionTrafficQosPolicy = new alicloud.cen.InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", {
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     transitRouterAttachmentId: defaultTransitRouterPeerAttachment.transitRouterAttachmentId,
+ *     interRegionTrafficQosPolicyName: name,
+ *     interRegionTrafficQosPolicyDescription: name,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultInterRegionTrafficQosQueue = new alicloud.cen.InterRegionTrafficQosQueue("defaultInterRegionTrafficQosQueue", {
+ *     remainBandwidthPercent: 20,
+ *     trafficQosPolicyId: defaultInterRegionTrafficQosPolicy.id,
  *     dscps: [
  *         "1",
  *         "2",
  *     ],
- *     interRegionTrafficQosQueueDescription: "test",
- *     remainBandwidthPercent: 20,
- *     trafficQosPolicyId: "qos-xxxxxx",
+ *     interRegionTrafficQosQueueDescription: name,
  * });
  * ```
  *

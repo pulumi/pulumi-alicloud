@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Rds.Inputs
 
     public sealed class RdsUpgradeDbInstanceParameterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The parameter name.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The parameter value.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

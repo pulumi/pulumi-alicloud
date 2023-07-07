@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
  *
- * > **NOTE:** Available in v1.119.0+.
+ * > **NOTE:** Available since v1.119.0+.
  *
  * ## Example Usage
  *
@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  *             paramValue: "86460",
  *         },
  *     ],
- *     parameterGroupDesc: "test",
- *     parameterGroupName: "test1234",
+ *     parameterGroupDesc: "rdsparameter",
+ *     parameterGroupName: "rds1234",
  * });
  * ```
  *
@@ -84,7 +84,7 @@ export class RdsParameterGroup extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Parameter list.
+     * Parameter list. See `paramDetail` below.
      */
     public readonly paramDetails!: pulumi.Output<outputs.rds.RdsParameterGroupParamDetail[]>;
     /**
@@ -152,7 +152,7 @@ export interface RdsParameterGroupState {
      */
     engineVersion?: pulumi.Input<string>;
     /**
-     * Parameter list.
+     * Parameter list. See `paramDetail` below.
      */
     paramDetails?: pulumi.Input<pulumi.Input<inputs.rds.RdsParameterGroupParamDetail>[]>;
     /**
@@ -178,7 +178,7 @@ export interface RdsParameterGroupArgs {
      */
     engineVersion: pulumi.Input<string>;
     /**
-     * Parameter list.
+     * Parameter list. See `paramDetail` below.
      */
     paramDetails: pulumi.Input<pulumi.Input<inputs.rds.RdsParameterGroupParamDetail>[]>;
     /**

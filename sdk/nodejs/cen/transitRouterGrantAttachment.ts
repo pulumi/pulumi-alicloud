@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Enterprise Network (CEN) Transit Router Grant Attachment and how to use it, see [What is Transit Router Grant Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/grantinstancetotransitrouter).
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -19,17 +19,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const default = alicloud.getAccount({});
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "tf_example",
+ *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
- *     cenInstanceName: _var.name,
- *     description: "test for transit router grant attachment",
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
  * });
- * const defaultTransitRouterGrantAttachment = new alicloud.cen.TransitRouterGrantAttachment("defaultTransitRouterGrantAttachment", {
- *     cenId: defaultInstance.id,
- *     cenOwnerId: "your_cen_owner_id",
- *     instanceId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ * const exampleTransitRouterGrantAttachment = new alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment", {
+ *     cenId: exampleInstance.id,
+ *     cenOwnerId: _default.then(_default => _default.id),
+ *     instanceId: exampleNetwork.id,
  *     instanceType: "VPC",
  *     orderType: "PayByCenOwner",
  * });

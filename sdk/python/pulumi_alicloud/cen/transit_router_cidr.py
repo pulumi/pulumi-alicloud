@@ -215,9 +215,9 @@ class TransitRouterCidr(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/createtransitroutercidr).
+        For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
 
-        > **NOTE:** Available in v1.193.0+.
+        > **NOTE:** Available since v1.193.0.
 
         ## Example Usage
 
@@ -227,13 +227,17 @@ class TransitRouterCidr(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="tf-example")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
-        default_transit_router_cidr = alicloud.cen.TransitRouterCidr("defaultTransitRouterCidr",
-            transit_router_id=default_transit_router.transit_router_id,
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
+            transit_router_id=example_transit_router.transit_router_id,
             cidr="192.168.0.0/16",
-            transit_router_cidr_name="tf-example-name",
-            description="tf-example-description",
+            transit_router_cidr_name="tf_example",
+            description="tf_example",
             publish_cidr_route=True)
         ```
 
@@ -262,9 +266,9 @@ class TransitRouterCidr(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/createtransitroutercidr).
+        For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
 
-        > **NOTE:** Available in v1.193.0+.
+        > **NOTE:** Available since v1.193.0.
 
         ## Example Usage
 
@@ -274,13 +278,17 @@ class TransitRouterCidr(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="tf-example")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
-        default_transit_router_cidr = alicloud.cen.TransitRouterCidr("defaultTransitRouterCidr",
-            transit_router_id=default_transit_router.transit_router_id,
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
+            transit_router_id=example_transit_router.transit_router_id,
             cidr="192.168.0.0/16",
-            transit_router_cidr_name="tf-example-name",
-            description="tf-example-description",
+            transit_router_cidr_name="tf_example",
+            description="tf_example",
             publish_cidr_route=True)
         ```
 

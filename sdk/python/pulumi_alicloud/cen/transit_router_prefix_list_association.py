@@ -248,7 +248,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
 
         For information about Cloud Enterprise Network (CEN) Transit Router Prefix List Association and how to use it, see [What is Transit Router Prefix List Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitrouterprefixlistassociation).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
 
         ## Example Usage
 
@@ -258,20 +258,24 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_account = alicloud.get_account()
-        default_prefix_list = alicloud.vpc.PrefixList("defaultPrefixList", entrys=[alicloud.vpc.PrefixListEntryArgs(
+        default = alicloud.get_account()
+        example_prefix_list = alicloud.vpc.PrefixList("examplePrefixList", entrys=[alicloud.vpc.PrefixListEntryArgs(
             cidr="192.168.0.0/16",
         )])
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="tf-example")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
-        default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", transit_router_id=default_transit_router.transit_router_id)
-        default_transit_router_prefix_list_association = alicloud.cen.TransitRouterPrefixListAssociation("defaultTransitRouterPrefixListAssociation",
-            prefix_list_id=default_prefix_list.id,
-            transit_router_id=default_transit_router.transit_router_id,
-            transit_router_table_id=default_transit_router_route_table.transit_router_route_table_id,
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
+        example_transit_router_prefix_list_association = alicloud.cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation",
+            prefix_list_id=example_prefix_list.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            transit_router_table_id=example_transit_router_route_table.transit_router_route_table_id,
             next_hop="BlackHole",
             next_hop_type="BlackHole",
-            owner_uid=default_account.id)
+            owner_uid=default.id)
         ```
 
         ## Import
@@ -302,7 +306,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
 
         For information about Cloud Enterprise Network (CEN) Transit Router Prefix List Association and how to use it, see [What is Transit Router Prefix List Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitrouterprefixlistassociation).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
 
         ## Example Usage
 
@@ -312,20 +316,24 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_account = alicloud.get_account()
-        default_prefix_list = alicloud.vpc.PrefixList("defaultPrefixList", entrys=[alicloud.vpc.PrefixListEntryArgs(
+        default = alicloud.get_account()
+        example_prefix_list = alicloud.vpc.PrefixList("examplePrefixList", entrys=[alicloud.vpc.PrefixListEntryArgs(
             cidr="192.168.0.0/16",
         )])
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="tf-example")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
-        default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", transit_router_id=default_transit_router.transit_router_id)
-        default_transit_router_prefix_list_association = alicloud.cen.TransitRouterPrefixListAssociation("defaultTransitRouterPrefixListAssociation",
-            prefix_list_id=default_prefix_list.id,
-            transit_router_id=default_transit_router.transit_router_id,
-            transit_router_table_id=default_transit_router_route_table.transit_router_route_table_id,
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
+        example_transit_router_prefix_list_association = alicloud.cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation",
+            prefix_list_id=example_prefix_list.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            transit_router_table_id=example_transit_router_route_table.transit_router_route_table_id,
             next_hop="BlackHole",
             next_hop_type="BlackHole",
-            owner_uid=default_account.id)
+            owner_uid=default.id)
         ```
 
         ## Import

@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? HealthCheckPath { get; set; }
 
         /// <summary>
-        /// Health check protocol. Valid values: `HTTP` and `TCP`.
+        /// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
         /// </summary>
         [Input("healthCheckProtocol")]
         public Input<string>? HealthCheckProtocol { get; set; }

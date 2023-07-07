@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
  * 
- * For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://help.aliyun.com/document_detail/419025.html).
+ * For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtrafficmarkingpolicy).
  * 
- * &gt; **NOTE:** Available in v1.173.0+.
+ * &gt; **NOTE:** Available since v1.173.0.
  * 
  * ## Example Usage
  * 
@@ -52,18 +52,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;example_value&#34;)
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
  *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(&#34;tf_example&#34;)
  *             .cenId(exampleInstance.id())
- *             .transitRouterName(&#34;example_value&#34;)
  *             .build());
  * 
  *         var exampleTrafficMarkingPolicy = new TrafficMarkingPolicy(&#34;exampleTrafficMarkingPolicy&#34;, TrafficMarkingPolicyArgs.builder()        
  *             .markingDscp(1)
  *             .priority(1)
- *             .trafficMarkingPolicyName(&#34;example_value&#34;)
+ *             .trafficMarkingPolicyName(&#34;tf_example&#34;)
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 

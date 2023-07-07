@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createceninterregiontrafficqospolicy).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 

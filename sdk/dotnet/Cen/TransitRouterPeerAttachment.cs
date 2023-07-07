@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://help.aliyun.com/document_detail/261363.html)
+    /// Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterpeerattachment)
     /// 
-    /// &gt; **NOTE:** Available in 1.128.0+
+    /// &gt; **NOTE:** Available since v1.128.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,72 +27,77 @@ namespace Pulumi.AliCloud.Cen
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAcccExample";
-    ///     var us = new AliCloud.Provider("us", new()
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var peerRegion = config.Get("peerRegion") ?? "cn-beijing";
+    ///     var hz = new AliCloud.Provider("hz", new()
     ///     {
-    ///         Region = "us-east-1",
+    ///         Region = region,
     ///     });
     /// 
-    ///     var cn = new AliCloud.Provider("cn", new()
+    ///     var bj = new AliCloud.Provider("bj", new()
     ///     {
-    ///         Region = "cn-hangzhou",
+    ///         Region = peerRegion,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
     ///         CenInstanceName = name,
     ///         ProtectionLevel = "REDUCED",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Cn,
+    ///         Provider = alicloud.Bj,
     ///     });
     /// 
-    ///     var defaultBandwidthPackage = new AliCloud.Cen.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     var exampleBandwidthPackage = new AliCloud.Cen.BandwidthPackage("exampleBandwidthPackage", new()
     ///     {
     ///         Bandwidth = 5,
-    ///         CenBandwidthPackageName = name,
+    ///         CenBandwidthPackageName = "tf_example",
     ///         GeographicRegionAId = "China",
-    ///         GeographicRegionBId = "North-America",
-    ///     });
-    /// 
-    ///     var defaultBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
-    ///     {
-    ///         InstanceId = defaultInstance.Id,
-    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///         GeographicRegionBId = "China",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Cn,
+    ///         Provider = alicloud.Bj,
     ///     });
     /// 
-    ///     var cnTransitRouter = new AliCloud.Cen.TransitRouter("cnTransitRouter", new()
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
     ///     {
-    ///         CenId = defaultBandwidthPackageAttachment.InstanceId,
+    ///         InstanceId = exampleInstance.Id,
+    ///         BandwidthPackageId = exampleBandwidthPackage.Id,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Cn,
+    ///         Provider = alicloud.Bj,
     ///     });
     /// 
-    ///     var usTransitRouter = new AliCloud.Cen.TransitRouter("usTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
     ///     {
-    ///         CenId = cnTransitRouter.Id,
+    ///         CenId = exampleBandwidthPackageAttachment.InstanceId,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Us,
+    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var defaultTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", new()
+    ///     var peer = new AliCloud.Cen.TransitRouter("peer", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
-    ///         TransitRouterId = cnTransitRouter.TransitRouterId,
-    ///         PeerTransitRouterRegionId = "us-east-1",
-    ///         PeerTransitRouterId = usTransitRouter.TransitRouterId,
-    ///         CenBandwidthPackageId = defaultBandwidthPackageAttachment.BandwidthPackageId,
+    ///         CenId = exampleTransitRouter.CenId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Bj,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment", new()
+    ///     {
+    ///         CenId = exampleInstance.Id,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         PeerTransitRouterRegionId = peerRegion,
+    ///         PeerTransitRouterId = peer.TransitRouterId,
+    ///         CenBandwidthPackageId = exampleBandwidthPackageAttachment.BandwidthPackageId,
     ///         Bandwidth = 5,
     ///         TransitRouterAttachmentDescription = name,
     ///         TransitRouterAttachmentName = name,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Cn,
+    ///         Provider = alicloud.Hz,
     ///     });
     /// 
     /// });

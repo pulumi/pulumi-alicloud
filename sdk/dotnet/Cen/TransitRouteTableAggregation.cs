@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation).
     /// 
-    /// &gt; **NOTE:** Available in v1.202.0+.
+    /// &gt; **NOTE:** Available since v1.202.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,28 +28,30 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         CenInstanceName = "tf-example",
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         TransitRouterName = "tf_example",
+    ///         CenId = exampleInstance.Id,
     ///     });
     /// 
-    ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", new()
+    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", new()
     ///     {
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
     ///     });
     /// 
-    ///     var defaultTransitRouteTableAggregation = new AliCloud.Cen.TransitRouteTableAggregation("defaultTransitRouteTableAggregation", new()
+    ///     var exampleTransitRouteTableAggregation = new AliCloud.Cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation", new()
     ///     {
-    ///         TransitRouteTableId = defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+    ///         TransitRouteTableId = exampleTransitRouterRouteTable.TransitRouterRouteTableId,
     ///         TransitRouteTableAggregationCidr = "10.0.0.0/8",
     ///         TransitRouteTableAggregationScope = "VPC",
-    ///         TransitRouteTableAggregationName = "tf-example-name",
-    ///         TransitRouteTableAggregationDescription = "tf-example-description",
+    ///         TransitRouteTableAggregationName = "tf_example",
+    ///         TransitRouteTableAggregationDescription = "tf_example",
     ///     });
     /// 
     /// });

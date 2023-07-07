@@ -448,9 +448,9 @@ class Queue(pulumi.CustomResource):
         """
         Provides a RabbitMQ (AMQP) Queue resource.
 
-        For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/doc-detail/101631.htm).
+        For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createqueue).
 
-        > **NOTE:** Available in v1.127.0+.
+        > **NOTE:** Available since v1.127.0.
 
         ## Example Usage
 
@@ -460,13 +460,29 @@ class Queue(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_virtual_host = alicloud.amqp.VirtualHost("exampleVirtualHost",
-            instance_id="amqp-abc12345",
-            virtual_host_name="my-VirtualHost")
-        example_queue = alicloud.amqp.Queue("exampleQueue",
-            instance_id=example_virtual_host.instance_id,
-            queue_name="my-Queue",
-            virtual_host_name=example_virtual_host.virtual_host_name)
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="enterprise",
+            max_tps="3000",
+            queue_capacity="200",
+            storage_size="700",
+            support_eip=False,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
+            auto_delete_state=False,
+            exchange_name="tf-example",
+            exchange_type="DIRECT",
+            instance_id=default_instance.id,
+            internal=False,
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        example = alicloud.amqp.Queue("example",
+            instance_id=default_instance.id,
+            queue_name="tf-example",
+            virtual_host_name=default_virtual_host.virtual_host_name)
         ```
 
         ## Import
@@ -513,9 +529,9 @@ class Queue(pulumi.CustomResource):
         """
         Provides a RabbitMQ (AMQP) Queue resource.
 
-        For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/doc-detail/101631.htm).
+        For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createqueue).
 
-        > **NOTE:** Available in v1.127.0+.
+        > **NOTE:** Available since v1.127.0.
 
         ## Example Usage
 
@@ -525,13 +541,29 @@ class Queue(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_virtual_host = alicloud.amqp.VirtualHost("exampleVirtualHost",
-            instance_id="amqp-abc12345",
-            virtual_host_name="my-VirtualHost")
-        example_queue = alicloud.amqp.Queue("exampleQueue",
-            instance_id=example_virtual_host.instance_id,
-            queue_name="my-Queue",
-            virtual_host_name=example_virtual_host.virtual_host_name)
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="enterprise",
+            max_tps="3000",
+            queue_capacity="200",
+            storage_size="700",
+            support_eip=False,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
+            auto_delete_state=False,
+            exchange_name="tf-example",
+            exchange_type="DIRECT",
+            instance_id=default_instance.id,
+            internal=False,
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        example = alicloud.amqp.Queue("example",
+            instance_id=default_instance.id,
+            queue_name="tf-example",
+            virtual_host_name=default_virtual_host.virtual_host_name)
         ```
 
         ## Import

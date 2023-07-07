@@ -19,9 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALIKAFKA topic resource.
+ * Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createtopic).
  * 
- * &gt; **NOTE:** Available in 1.56.0+
+ * &gt; **NOTE:** Available since v1.56.0.
  * 
  * &gt; **NOTE:**  Only the following regions support create alikafka topic.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
@@ -58,7 +58,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
@@ -82,10 +81,9 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
- *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;alikafkaTopicName&#34;);
  *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .topic(topic)
+ *             .topic(&#34;example-topic&#34;)
  *             .localTopic(&#34;false&#34;)
  *             .compactTopic(&#34;false&#34;)
  *             .partitionNum(&#34;12&#34;)
@@ -98,7 +96,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
+ * ALIKAFKA TOPIC can be imported using the id, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+ * ```
  * 
  */
 @ResourceType(type="alicloud:alikafka/topic:Topic")

@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)
+ * You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
  * 
- * &gt; **NOTE:**  Available in 1.47.0+
+ * &gt; **NOTE:** Available since v1.47.0.
  * 
  * ## Import
  * 
@@ -56,14 +56,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
-     * (Available in 1.196.0+) The connection string of the instance.
+     * (Available since v1.196.0) The connection string of the instance.
      * 
      */
     @Export(name="connectionString", type=String.class, parameters={})
     private Output<String> connectionString;
 
     /**
-     * @return (Available in 1.196.0+) The connection string of the instance.
+     * @return (Available since v1.196.0) The connection string of the instance.
      * 
      */
     public Output<String> connectionString() {
@@ -84,7 +84,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createSampleData;
     }
     /**
-     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -92,7 +92,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> dbInstanceCategory;
 
     /**
-     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * @return The db instance category. Valid values: `Basic`, `HighAvailability`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -100,7 +100,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dbInstanceCategory;
     }
     /**
-     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -108,7 +108,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> dbInstanceClass;
 
     /**
-     * @return The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * @return The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -144,14 +144,46 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The ID of the encryption key.
+     * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+     * 
+     */
+    @Export(name="encryptionKey", type=String.class, parameters={})
+    private Output</* @Nullable */ String> encryptionKey;
+
+    /**
+     * @return The ID of the encryption key.
+     * &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+     * 
+     */
+    public Output<Optional<String>> encryptionKey() {
+        return Codegen.optional(this.encryptionKey);
+    }
+    /**
+     * The encryption type. Valid values: `CloudDisk`.
+     * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
+     * 
+     */
+    @Export(name="encryptionType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> encryptionType;
+
+    /**
+     * @return The encryption type. Valid values: `CloudDisk`.
+     * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
+     * 
+     */
+    public Output<Optional<String>> encryptionType() {
+        return Codegen.optional(this.encryptionType);
+    }
+    /**
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
      * 
      */
     @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
-     * @return The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * @return The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
      * 
      */
     public Output<String> engine() {
@@ -175,10 +207,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
      * 
      * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
+     * Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
+    @Deprecated /* Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead. */
     @Export(name="instanceChargeType", type=String.class, parameters={})
     private Output<String> instanceChargeType;
 
@@ -204,14 +236,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceGroupCount);
     }
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `VPC`.
      * 
      */
     @Export(name="instanceNetworkType", type=String.class, parameters={})
     private Output<String> instanceNetworkType;
 
     /**
-     * @return The network type of the instance.
+     * @return The network type of the instance. Valid values: `VPC`.
      * 
      */
     public Output<String> instanceNetworkType() {
@@ -240,7 +272,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceSpec);
     }
     /**
-     * The ip whitelist. See block `ip_whitelist`.
+     * The ip whitelist. See `ip_whitelist` below.
      * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
      * 
      */
@@ -248,7 +280,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<List<InstanceIpWhitelist>> ipWhitelists;
 
     /**
-     * @return The ip whitelist. See block `ip_whitelist`.
+     * @return The ip whitelist. See `ip_whitelist` below.
      * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
      * 
      */
@@ -284,14 +316,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.maintainStartTime;
     }
     /**
-     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
      * 
      */
     @Export(name="masterNodeNum", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> masterNodeNum;
 
     /**
-     * @return The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * @return The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
      * 
      */
     public Output<Optional<Integer>> masterNodeNum() {
@@ -326,14 +358,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * (Available in 1.196.0+) The connection port of the instance.
+     * (Available since v1.196.0) The connection port of the instance.
      * 
      */
     @Export(name="port", type=String.class, parameters={})
     private Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the instance.
+     * @return (Available since v1.196.0) The connection port of the instance.
      * 
      */
     public Output<String> port() {
@@ -386,7 +418,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityIpLists;
     }
     /**
-     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      * 
      */
@@ -394,7 +426,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<Integer> segNodeNum;
 
     /**
-     * @return Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * @return Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      * 
      */
@@ -446,7 +478,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -454,7 +486,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<Integer> storageSize;
 
     /**
-     * @return The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * @return The storage capacity. Unit: GB. Valid values: `50` to `4000`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -476,18 +508,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+     * The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
      * 
      */
     @Export(name="usedTime", type=String.class, parameters={})
     private Output</* @Nullable */ String> usedTime;
 
     /**
-     * @return The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+     * @return The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
      * 
      */
     public Output<Optional<String>> usedTime() {
         return Codegen.optional(this.usedTime);
+    }
+    /**
+     * Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+     * 
+     */
+    @Export(name="vectorConfigurationStatus", type=String.class, parameters={})
+    private Output<String> vectorConfigurationStatus;
+
+    /**
+     * @return Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
+     * 
+     */
+    public Output<String> vectorConfigurationStatus() {
+        return this.vectorConfigurationStatus;
     }
     /**
      * The vpc ID of the resource.

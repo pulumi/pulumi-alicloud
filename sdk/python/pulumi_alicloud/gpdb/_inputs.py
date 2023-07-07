@@ -286,8 +286,8 @@ class InstanceIpWhitelistArgs:
         """
         :param pulumi.Input[str] ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. 
                If the value contains `hidden`, this white list item will not output.
-        :param pulumi.Input[str] ip_group_name: IP whitelist group name
-        :param pulumi.Input[str] security_ip_list: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param pulumi.Input[str] ip_group_name: IP whitelist group name.
+        :param pulumi.Input[str] security_ip_list: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
         if ip_group_attribute is not None:
             pulumi.set(__self__, "ip_group_attribute", ip_group_attribute)
@@ -313,7 +313,7 @@ class InstanceIpWhitelistArgs:
     @pulumi.getter(name="ipGroupName")
     def ip_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        IP whitelist group name
+        IP whitelist group name.
         """
         return pulumi.get(self, "ip_group_name")
 
@@ -325,7 +325,7 @@ class InstanceIpWhitelistArgs:
     @pulumi.getter(name="securityIpList")
     def security_ip_list(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
         return pulumi.get(self, "security_ip_list")
 

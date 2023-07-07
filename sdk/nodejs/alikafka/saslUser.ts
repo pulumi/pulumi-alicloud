@@ -7,12 +7,12 @@ import * as utilities from "../utilities";
 /**
  * Provides an Alikafka sasl user resource.
  *
- * > **NOTE:** Available in 1.66.0+
+ * > **NOTE:** Available since v1.66.0.
  *
  * > **NOTE:**  Only the following regions support create alikafka sasl user.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
  *
- * For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user a](https://www.alibabacloud.com/help/en/doc-detail/162221.html)
+ * For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createsasluser).
  *
  * ## Example Usage
  *
@@ -23,29 +23,42 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const username = config.get("username") || "testusername";
- * const password = config.get("password") || "testpassword";
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
  *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
  *     deployType: 5,
  *     ioMax: 20,
+ *     specType: "professional",
+ *     serviceVersion: "2.2.0",
+ *     config: "{\"enable.acl\":\"true\"}",
  *     vswitchId: defaultSwitch.id,
+ *     securityGroup: defaultSecurityGroup.id,
+ * });
+ * const defaultTopic = new alicloud.alikafka.Topic("defaultTopic", {
+ *     instanceId: defaultInstance.id,
+ *     topic: "example-topic",
+ *     remark: "topic-remark",
  * });
  * const defaultSaslUser = new alicloud.alikafka.SaslUser("defaultSaslUser", {
  *     instanceId: defaultInstance.id,
- *     username: username,
- *     password: password,
+ *     username: name,
+ *     password: "tf_example123",
  * });
  * ```
  *

@@ -106,9 +106,17 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.secretKey);
     }
 
+    /**
+     * Static user name.
+     * 
+     */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
+    /**
+     * @return Static user name.
+     * 
+     */
     public Optional<Output<String>> userName() {
         return Optional.ofNullable(this.userName);
     }
@@ -269,11 +277,23 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
             return secretKey(Output.of(secretKey));
         }
 
+        /**
+         * @param userName Static user name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(@Nullable Output<String> userName) {
             $.userName = userName;
             return this;
         }
 
+        /**
+         * @param userName Static user name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(String userName) {
             return userName(Output.of(userName));
         }

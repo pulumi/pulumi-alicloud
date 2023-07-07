@@ -715,7 +715,7 @@ export namespace alb {
          */
         healthCheckPath?: pulumi.Input<string>;
         /**
-         * Health check protocol. Valid values: `HTTP` and `TCP`.
+         * Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
          */
         healthCheckProtocol?: pulumi.Input<string>;
         /**
@@ -6746,11 +6746,11 @@ export namespace gpdb {
          */
         ipGroupAttribute?: pulumi.Input<string>;
         /**
-         * IP whitelist group name
+         * IP whitelist group name.
          */
         ipGroupName?: pulumi.Input<string>;
         /**
-         * Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
+         * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
          */
         securityIpList?: pulumi.Input<string>;
     }
@@ -8955,9 +8955,12 @@ export namespace rds {
 
     export interface RdsDbProxyReadOnlyInstanceWeight {
         /**
-         * The Id of instance that can run database.
+         * The Id of the instance and its read-only instances that can run database.
          */
         instanceId: pulumi.Input<string>;
+        /**
+         * Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+         */
         weight: pulumi.Input<string>;
     }
 
@@ -8973,7 +8976,13 @@ export namespace rds {
     }
 
     export interface RdsUpgradeDbInstanceParameter {
+        /**
+         * The parameter name.
+         */
         name: pulumi.Input<string>;
+        /**
+         * The parameter value.
+         */
         value: pulumi.Input<string>;
     }
 
@@ -9018,7 +9027,13 @@ export namespace rds {
     }
 
     export interface ReadOnlyInstanceParameter {
+        /**
+         * The parameter name.
+         */
         name: pulumi.Input<string>;
+        /**
+         * The parameter value.
+         */
         value: pulumi.Input<string>;
     }
 }

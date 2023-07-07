@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALIKAFKA consumer group resource.
+ * Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createconsumergroup).
  * 
- * &gt; **NOTE:** Available in 1.56.0+
+ * &gt; **NOTE:** Available since v1.56.0.
  * 
  * &gt; **NOTE:**  Only the following regions support create alikafka consumer group.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var consumerId = config.get(&#34;consumerId&#34;).orElse(&#34;CID-alikafkaGroupDatasourceName&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultConsumerGroup = new ConsumerGroup(&#34;defaultConsumerGroup&#34;, ConsumerGroupArgs.builder()        
- *             .consumerId(consumerId)
+ *             .consumerId(name)
  *             .instanceId(defaultInstance.id())
  *             .build());
  * 

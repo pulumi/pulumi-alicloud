@@ -185,7 +185,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
 
         For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutermulticastdomain).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -195,14 +195,17 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="tf-example")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
-            cen_id=default_instance.id,
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id,
             support_multicast=True)
-        default_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain",
-            transit_router_id=default_transit_router.transit_router_id,
-            transit_router_multicast_domain_name="tf-example-name",
-            transit_router_multicast_domain_description="tf-example-description")
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
+            transit_router_id=example_transit_router.transit_router_id,
+            transit_router_multicast_domain_name="tf_example",
+            transit_router_multicast_domain_description="tf_example")
         ```
 
         ## Import
@@ -231,7 +234,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
 
         For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutermulticastdomain).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -241,14 +244,17 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name="tf-example")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
-            cen_id=default_instance.id,
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id,
             support_multicast=True)
-        default_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain",
-            transit_router_id=default_transit_router.transit_router_id,
-            transit_router_multicast_domain_name="tf-example-name",
-            transit_router_multicast_domain_description="tf-example-description")
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
+            transit_router_id=example_transit_router.transit_router_id,
+            transit_router_multicast_domain_name="tf_example",
+            transit_router_multicast_domain_description="tf_example")
         ```
 
         ## Import

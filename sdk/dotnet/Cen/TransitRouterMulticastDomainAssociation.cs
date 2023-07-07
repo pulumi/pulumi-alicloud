@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association and how to use it, see [What is Transit Router Multicast Domain Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-associatetransitroutermulticastdomain).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,42 +28,64 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+    /// 
+    ///     var zone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[1]));
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         CenInstanceName = "tf-example",
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         VswitchName = name,
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = zone,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///     });
+    /// 
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     {
+    ///         TransitRouterName = name,
+    ///         CenId = exampleInstance.Id,
     ///         SupportMulticast = true,
     ///     });
     /// 
-    ///     var defaultTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", new()
+    ///     var exampleTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", new()
     ///     {
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         TransitRouterMulticastDomainName = name,
     ///     });
     /// 
-    ///     var defaultTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", new()
+    ///     var exampleTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", new()
     ///     {
-    ///         CenId = defaultTransitRouter.CenId,
-    ///         TransitRouterId = defaultTransitRouterMulticastDomain.TransitRouterId,
-    ///         VpcId = "your_vpc_id",
+    ///         CenId = exampleTransitRouter.CenId,
+    ///         TransitRouterId = exampleTransitRouterMulticastDomain.TransitRouterId,
+    ///         VpcId = exampleNetwork.Id,
     ///         ZoneMappings = new[]
     ///         {
     ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
     ///             {
-    ///                 ZoneId = "your_zone_id",
-    ///                 VswitchId = "your_vswitch_id",
+    ///                 ZoneId = zone,
+    ///                 VswitchId = exampleSwitch.Id,
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var defaultTransitRouterMulticastDomainAssociation = new AliCloud.Cen.TransitRouterMulticastDomainAssociation("defaultTransitRouterMulticastDomainAssociation", new()
+    ///     var exampleTransitRouterMulticastDomainAssociation = new AliCloud.Cen.TransitRouterMulticastDomainAssociation("exampleTransitRouterMulticastDomainAssociation", new()
     ///     {
-    ///         TransitRouterMulticastDomainId = defaultTransitRouterMulticastDomain.Id,
-    ///         TransitRouterAttachmentId = defaultTransitRouterVpcAttachment.TransitRouterAttachmentId,
-    ///         VswitchId = "your_vswitch_id",
+    ///         TransitRouterMulticastDomainId = exampleTransitRouterMulticastDomain.Id,
+    ///         TransitRouterAttachmentId = exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
+    ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
     /// });

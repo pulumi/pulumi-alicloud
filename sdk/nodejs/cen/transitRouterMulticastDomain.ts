@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutermulticastdomain).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -19,15 +19,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "tf-example"});
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {
- *     cenId: defaultInstance.id,
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: "tf_example",
+ *     cenId: exampleInstance.id,
  *     supportMulticast: true,
  * });
- * const defaultTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", {
- *     transitRouterId: defaultTransitRouter.transitRouterId,
- *     transitRouterMulticastDomainName: "tf-example-name",
- *     transitRouterMulticastDomainDescription: "tf-example-description",
+ * const exampleTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", {
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     transitRouterMulticastDomainName: "tf_example",
+ *     transitRouterMulticastDomainDescription: "tf_example",
  * });
  * ```
  *

@@ -10,50 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Amqp
 {
     /// <summary>
-    /// Provides a RabbitMQ (AMQP) Instance resource.
-    /// 
-    /// For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/101631.htm).
-    /// 
-    /// &gt; **NOTE:** Available in v1.128.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var professional = new AliCloud.Amqp.Instance("professional", new()
-    ///     {
-    ///         InstanceType = "professional",
-    ///         MaxEipTps = "128",
-    ///         MaxTps = "1000",
-    ///         PaymentType = "Subscription",
-    ///         Period = 1,
-    ///         QueueCapacity = "50",
-    ///         SupportEip = true,
-    ///     });
-    /// 
-    ///     var vip = new AliCloud.Amqp.Instance("vip", new()
-    ///     {
-    ///         InstanceType = "vip",
-    ///         MaxEipTps = "128",
-    ///         MaxTps = "5000",
-    ///         PaymentType = "Subscription",
-    ///         Period = 1,
-    ///         QueueCapacity = "50",
-    ///         StorageSize = "700",
-    ///         SupportEip = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RabbitMQ (AMQP) Instance can be imported using the id, e.g.
@@ -77,6 +33,9 @@ namespace Pulumi.AliCloud.Amqp
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
+        /// <summary>
+        /// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        /// </summary>
         [Output("logistics")]
         public Output<string?> Logistics { get; private set; } = null!;
 
@@ -210,6 +169,9 @@ namespace Pulumi.AliCloud.Amqp
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
+        /// <summary>
+        /// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        /// </summary>
         [Input("logistics")]
         public Input<string>? Logistics { get; set; }
 
@@ -299,6 +261,9 @@ namespace Pulumi.AliCloud.Amqp
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        /// <summary>
+        /// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        /// </summary>
         [Input("logistics")]
         public Input<string>? Logistics { get; set; }
 

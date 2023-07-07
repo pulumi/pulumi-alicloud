@@ -20,13 +20,13 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
         public Input<string>? IpGroupAttribute { get; set; }
 
         /// <summary>
-        /// IP whitelist group name
+        /// IP whitelist group name.
         /// </summary>
         [Input("ipGroupName")]
         public Input<string>? IpGroupName { get; set; }
 
         /// <summary>
-        /// Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         /// </summary>
         [Input("securityIpList")]
         public Input<string>? SecurityIpList { get; set; }

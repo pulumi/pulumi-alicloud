@@ -1971,7 +1971,7 @@ class ServerGroupHealthCheckConfigArgs:
         :param pulumi.Input[int] health_check_interval: The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
         :param pulumi.Input[str] health_check_method: Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
         :param pulumi.Input[str] health_check_path: The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param pulumi.Input[str] health_check_protocol: Health check protocol. Valid values: `HTTP` and `TCP`.
+        :param pulumi.Input[str] health_check_protocol: Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
         :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
         :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
         :param pulumi.Input[int] unhealthy_threshold: The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
@@ -2102,7 +2102,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Health check protocol. Valid values: `HTTP` and `TCP`.
+        Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
         """
         return pulumi.get(self, "health_check_protocol")
 

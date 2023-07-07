@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a AliKafka Instance Allowed Ip Attachment resource.
  *
- * For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/doc-detail/68151.html).
+ * For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-updateallowedip).
  *
- * > **NOTE:** Available in v1.163.0+.
+ * > **NOTE:** Available since v1.163.0.
  *
  * ## Example Usage
  *
@@ -20,21 +20,28 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tftest";
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING",
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
  *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
  *     deployType: 5,
  *     ioMax: 20,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
  *     securityGroup: defaultSecurityGroup.id,
  * });
  * const defaultInstanceAllowedIpAttachment = new alicloud.alikafka.InstanceAllowedIpAttachment("defaultInstanceAllowedIpAttachment", {

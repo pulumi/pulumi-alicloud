@@ -473,14 +473,14 @@ public final class RdsUpgradeDbInstanceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<RdsUpgradeDbInstanceParameterArgs>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      * 
      */
     public Optional<Output<List<RdsUpgradeDbInstanceParameterArgs>>> parameters() {
@@ -522,14 +522,14 @@ public final class RdsUpgradeDbInstanceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     @Import(name="pgHbaConfs")
     private @Nullable Output<List<RdsUpgradeDbInstancePgHbaConfArgs>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
     public Optional<Output<List<RdsUpgradeDbInstancePgHbaConfArgs>>> pgHbaConfs() {
@@ -1642,7 +1642,7 @@ public final class RdsUpgradeDbInstanceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
          * 
          * @return builder
          * 
@@ -1653,7 +1653,7 @@ public final class RdsUpgradeDbInstanceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
          * 
          * @return builder
          * 
@@ -1663,7 +1663,7 @@ public final class RdsUpgradeDbInstanceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+         * @param parameters Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
          * 
          * @return builder
          * 
@@ -1719,7 +1719,7 @@ public final class RdsUpgradeDbInstanceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
          * 
          * @return builder
          * 
@@ -1730,7 +1730,7 @@ public final class RdsUpgradeDbInstanceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
          * 
          * @return builder
          * 
@@ -1740,7 +1740,7 @@ public final class RdsUpgradeDbInstanceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+         * @param pgHbaConfs The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
          * 
          * @return builder
          * 

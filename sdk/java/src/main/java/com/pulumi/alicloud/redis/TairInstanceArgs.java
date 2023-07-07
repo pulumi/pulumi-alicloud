@@ -216,15 +216,15 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
      * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
      * 
      */
-    @Import(name="shardCount", required=true)
-    private Output<Integer> shardCount;
+    @Import(name="shardCount")
+    private @Nullable Output<Integer> shardCount;
 
     /**
      * @return The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
      * 
      */
-    public Output<Integer> shardCount() {
-        return this.shardCount;
+    public Optional<Output<Integer>> shardCount() {
+        return Optional.ofNullable(this.shardCount);
     }
 
     /**
@@ -607,7 +607,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder shardCount(Output<Integer> shardCount) {
+        public Builder shardCount(@Nullable Output<Integer> shardCount) {
             $.shardCount = shardCount;
             return this;
         }
@@ -709,7 +709,6 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         public TairInstanceArgs build() {
             $.instanceClass = Objects.requireNonNull($.instanceClass, "expected parameter 'instanceClass' to be non-null");
             $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.shardCount = Objects.requireNonNull($.shardCount, "expected parameter 'shardCount' to be non-null");
             $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
             $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
             $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
