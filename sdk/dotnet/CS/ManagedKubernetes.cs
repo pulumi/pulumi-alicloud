@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS
     public partial class ManagedKubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The addon you want to install in cluster.
+        /// The addon you want to install in cluster. Detailed below.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.ManagedKubernetesAddon>> Addons { get; private set; } = null!;
@@ -150,10 +150,10 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. Default to `true`.
+        /// (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
         /// </summary>
         [Output("installCloudMonitor")]
-        public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
+        public Output<bool> InstallCloudMonitor { get; private set; } = null!;
 
         /// <summary>
         /// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
         /// </summary>
         [Output("rrsaMetadata")]
         public Output<Outputs.ManagedKubernetesRrsaMetadata> RrsaMetadata { get; private set; } = null!;
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of load balancer.
+        /// (Deprecated) The ID of load balancer.
         /// </summary>
         [Output("slbId")]
         public Output<string> SlbId { get; private set; } = null!;
@@ -399,19 +399,19 @@ namespace Pulumi.AliCloud.CS
         public Output<int> WorkerAutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The data disk category of worker, use `worker_data_disks` to instead it.
+        /// (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
         /// </summary>
         [Output("workerDataDiskCategory")]
         public Output<string?> WorkerDataDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The data disk size of worker, use `worker_data_disks` to instead it.
+        /// (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
         /// </summary>
         [Output("workerDataDiskSize")]
         public Output<int?> WorkerDataDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
         /// </summary>
         [Output("workerDataDisks")]
         public Output<ImmutableArray<Outputs.ManagedKubernetesWorkerDataDisk>> WorkerDataDisks { get; private set; } = null!;
@@ -542,7 +542,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ManagedKubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster.
+        /// The addon you want to install in cluster. Detailed below.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesAddonArgs> Addons
         {
@@ -673,7 +673,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. Default to `true`.
+        /// (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -841,7 +841,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
         /// </summary>
         [Input("rrsaMetadata")]
         public Input<Inputs.ManagedKubernetesRrsaMetadataArgs>? RrsaMetadata { get; set; }
@@ -941,13 +941,13 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The data disk category of worker, use `worker_data_disks` to instead it.
+        /// (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
         /// </summary>
         [Input("workerDataDiskCategory")]
         public Input<string>? WorkerDataDiskCategory { get; set; }
 
         /// <summary>
-        /// The data disk size of worker, use `worker_data_disks` to instead it.
+        /// (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
         /// </summary>
         [Input("workerDataDiskSize")]
         public Input<int>? WorkerDataDiskSize { get; set; }
@@ -956,7 +956,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ManagedKubernetesWorkerDataDiskArgs>? _workerDataDisks;
 
         /// <summary>
-        /// (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
         /// </summary>
         [Obsolete(@"Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it")]
         public InputList<Inputs.ManagedKubernetesWorkerDataDiskArgs> WorkerDataDisks
@@ -1050,7 +1050,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ManagedKubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster.
+        /// The addon you want to install in cluster. Detailed below.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesAddonGetArgs> Addons
         {
@@ -1193,7 +1193,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install cloud monitor agent on ECS. Default to `true`.
+        /// (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -1367,7 +1367,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
         /// </summary>
         [Input("rrsaMetadata")]
         public Input<Inputs.ManagedKubernetesRrsaMetadataGetArgs>? RrsaMetadata { get; set; }
@@ -1397,7 +1397,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// The ID of load balancer.
+        /// (Deprecated) The ID of load balancer.
         /// </summary>
         [Input("slbId")]
         public Input<string>? SlbId { get; set; }
@@ -1491,13 +1491,13 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The data disk category of worker, use `worker_data_disks` to instead it.
+        /// (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
         /// </summary>
         [Input("workerDataDiskCategory")]
         public Input<string>? WorkerDataDiskCategory { get; set; }
 
         /// <summary>
-        /// The data disk size of worker, use `worker_data_disks` to instead it.
+        /// (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
         /// </summary>
         [Input("workerDataDiskSize")]
         public Input<int>? WorkerDataDiskSize { get; set; }
@@ -1506,7 +1506,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ManagedKubernetesWorkerDataDiskGetArgs>? _workerDataDisks;
 
         /// <summary>
-        /// (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
         /// </summary>
         [Obsolete(@"Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it")]
         public InputList<Inputs.ManagedKubernetesWorkerDataDiskGetArgs> WorkerDataDisks

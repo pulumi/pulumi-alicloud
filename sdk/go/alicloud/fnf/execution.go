@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +129,7 @@ func NewExecution(ctx *pulumi.Context,
 	if args.FlowName == nil {
 		return nil, errors.New("invalid value for required argument 'FlowName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Execution
 	err := ctx.RegisterResource("alicloud:fnf/execution:Execution", name, args, &resource, opts...)
 	if err != nil {

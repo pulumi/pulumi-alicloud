@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Acl entry attachment resource.
 //
-// For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-addentriestoacl).
+// For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
 //
 // > **NOTE:** Available since v1.190.0.
 //
@@ -89,6 +90,7 @@ func NewAclEntryAttachment(ctx *pulumi.Context,
 	if args.Entry == nil {
 		return nil, errors.New("invalid value for required argument 'Entry'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclEntryAttachment
 	err := ctx.RegisterResource("alicloud:ga/aclEntryAttachment:AclEntryAttachment", name, args, &resource, opts...)
 	if err != nil {

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         private InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilterGetArgs>? _filters;
 
         /// <summary>
-        /// The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+        /// The conditions that are used to filter logs imported from Log Service. See `filters` below.
         /// </summary>
         public InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilterGetArgs> Filters
         {

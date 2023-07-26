@@ -4,6 +4,7 @@
 package actiontrail
 
 import (
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupGlobalEventsStorageRegion(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupGlobalEventsStorageRegionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalEventsStorageRegionResult
 	err := ctx.Invoke("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", nil, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +52,7 @@ import (
 //
 // ```
 func GetAccountDeletionCheckTask(ctx *pulumi.Context, args *GetAccountDeletionCheckTaskArgs, opts ...pulumi.InvokeOption) (*GetAccountDeletionCheckTaskResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountDeletionCheckTaskResult
 	err := ctx.Invoke("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", args, &rv, opts...)
 	if err != nil {

@@ -134,7 +134,7 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
 
         For information about Bastion Host Host Account Share Key Attachment and how to use it, see [What is Host Account Share Key Attachment](https://www.alibabacloud.com/help/en/bastion-host/latest/attachhostaccountstohostsharekey).
 
-        > **NOTE:** Available in v1.165.0+.
+        > **NOTE:** Available since v1.165.0.
 
         ## Example Usage
 
@@ -147,28 +147,49 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfacc_host_account_share_key_attachment"
-        default_instances = alicloud.bastionhost.get_instances()
-        default_host_share_key = alicloud.bastionhost.HostShareKey("defaultHostShareKey",
-            host_share_key_name="example_name",
-            instance_id=default_instances.instances[0].id,
-            pass_phrase="example_value",
-            private_key="example_value")
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
         default_host = alicloud.bastionhost.Host("defaultHost",
-            instance_id=default_instances.ids[0],
+            instance_id=default_instance.id,
             host_name=name,
             active_address_type="Private",
             host_private_address="172.16.0.10",
             os_type="Linux",
             source="Local")
         default_host_account = alicloud.bastionhost.HostAccount("defaultHostAccount",
-            instance_id=default_instances.ids[0],
             host_account_name=name,
             host_id=default_host.host_id,
+            instance_id=default_host.instance_id,
             protocol_name="SSH",
             password="YourPassword12345")
+        private_key = config.get("privateKey")
+        if private_key is None:
+            private_key = "LS0tLS1CR*******"
+        default_host_share_key = alicloud.bastionhost.HostShareKey("defaultHostShareKey",
+            host_share_key_name=name,
+            instance_id=default_instance.id,
+            pass_phrase="NTIxeGlubXU=",
+            private_key=private_key)
         default_host_account_share_key_attachment = alicloud.bastionhost.HostAccountShareKeyAttachment("defaultHostAccountShareKeyAttachment",
-            instance_id=default_instances.instances[0].id,
+            instance_id=default_instance.id,
             host_share_key_id=default_host_share_key.host_share_key_id,
             host_account_id=default_host_account.host_account_id)
         ```
@@ -198,7 +219,7 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
 
         For information about Bastion Host Host Account Share Key Attachment and how to use it, see [What is Host Account Share Key Attachment](https://www.alibabacloud.com/help/en/bastion-host/latest/attachhostaccountstohostsharekey).
 
-        > **NOTE:** Available in v1.165.0+.
+        > **NOTE:** Available since v1.165.0.
 
         ## Example Usage
 
@@ -211,28 +232,49 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfacc_host_account_share_key_attachment"
-        default_instances = alicloud.bastionhost.get_instances()
-        default_host_share_key = alicloud.bastionhost.HostShareKey("defaultHostShareKey",
-            host_share_key_name="example_name",
-            instance_id=default_instances.instances[0].id,
-            pass_phrase="example_value",
-            private_key="example_value")
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
         default_host = alicloud.bastionhost.Host("defaultHost",
-            instance_id=default_instances.ids[0],
+            instance_id=default_instance.id,
             host_name=name,
             active_address_type="Private",
             host_private_address="172.16.0.10",
             os_type="Linux",
             source="Local")
         default_host_account = alicloud.bastionhost.HostAccount("defaultHostAccount",
-            instance_id=default_instances.ids[0],
             host_account_name=name,
             host_id=default_host.host_id,
+            instance_id=default_host.instance_id,
             protocol_name="SSH",
             password="YourPassword12345")
+        private_key = config.get("privateKey")
+        if private_key is None:
+            private_key = "LS0tLS1CR*******"
+        default_host_share_key = alicloud.bastionhost.HostShareKey("defaultHostShareKey",
+            host_share_key_name=name,
+            instance_id=default_instance.id,
+            pass_phrase="NTIxeGlubXU=",
+            private_key=private_key)
         default_host_account_share_key_attachment = alicloud.bastionhost.HostAccountShareKeyAttachment("defaultHostAccountShareKeyAttachment",
-            instance_id=default_instances.instances[0].id,
+            instance_id=default_instance.id,
             host_share_key_id=default_host_share_key.host_share_key_id,
             host_account_id=default_host_account.host_account_id)
         ```

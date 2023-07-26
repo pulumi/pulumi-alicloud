@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
     /**
-     * @return Sets the dispatch rule. See the following `Block label_match_expressions`.
+     * @return Sets the dispatch rule. See `label_match_expressions` below.
      * 
      */
     private List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression> labelMatchExpressions;
 
     private DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup() {}
     /**
-     * @return Sets the dispatch rule. See the following `Block label_match_expressions`.
+     * @return Sets the dispatch rule. See `label_match_expressions` below.
      * 
      */
     public List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression> labelMatchExpressions() {

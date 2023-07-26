@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetHealthCheckTemplates(ctx *pulumi.Context, args *GetHealthCheckTemplatesArgs, opts ...pulumi.InvokeOption) (*GetHealthCheckTemplatesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHealthCheckTemplatesResult
 	err := ctx.Invoke("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args, &rv, opts...)
 	if err != nil {

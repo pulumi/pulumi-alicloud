@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupContainerLivenessProbeTcpSocket
     {
         /// <summary>
-        /// The port number. Valid values: 1 to 65535.
+        /// The port number. Valid values: `1` to `65535`.
         /// </summary>
         public readonly int? Port;
 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator (GA) Acl resource.
  *
- * For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createacl).
+ * For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createacl).
  *
  * > **NOTE:** Available since v1.150.0.
  *

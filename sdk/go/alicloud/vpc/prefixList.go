@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -122,6 +123,7 @@ func NewPrefixList(ctx *pulumi.Context,
 		args = &PrefixListArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PrefixList
 	err := ctx.RegisterResource("alicloud:vpc/prefixList:PrefixList", name, args, &resource, opts...)
 	if err != nil {

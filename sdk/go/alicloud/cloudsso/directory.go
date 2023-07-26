@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +76,7 @@ func NewDirectory(ctx *pulumi.Context,
 		args = &DirectoryArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Directory
 	err := ctx.RegisterResource("alicloud:cloudsso/directory:Directory", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,6 +93,7 @@ func NewQuotaApplication(ctx *pulumi.Context,
 	if args.Reason == nil {
 		return nil, errors.New("invalid value for required argument 'Reason'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource QuotaApplication
 	err := ctx.RegisterResource("alicloud:quotas/quotaApplication:QuotaApplication", name, args, &resource, opts...)
 	if err != nil {

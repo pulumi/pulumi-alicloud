@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Config Aggregate Compliance Pack resource.
 //
-// For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+// For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregatecompliancepack).
 //
-// > **NOTE:** Available in v1.124.0+.
+// > **NOTE:** Available since v1.124.0.
 //
 // ## Example Usage
 //
@@ -27,7 +28,6 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -37,61 +37,53 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "example_name"
+//			name := "terraform_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-//				Status: pulumi.StringRef("OK"),
+//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
+//				Status: pulumi.StringRef("CreateSuccess"),
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstances, err := ecs.GetInstances(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultAggregator, err := cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   pulumi.String("140278452670****"),
-//						AccountName: pulumi.String("test-2"),
+//						AccountId:   *pulumi.String(defaultAccounts.Accounts[0].AccountId),
+//						AccountName: *pulumi.String(defaultAccounts.Accounts[0].DisplayName),
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},
-//				AggregatorName: pulumi.String("tf-testaccaggregator"),
-//				Description:    pulumi.String("tf-testaccaggregator"),
+//				AggregatorName: pulumi.String(name),
+//				Description:    pulumi.String(name),
+//				AggregatorType: pulumi.String("CUSTOM"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultAggregateConfigRule, err := cfg.NewAggregateConfigRule(ctx, "defaultAggregateConfigRule", &cfg.AggregateConfigRuleArgs{
+//				AggregateConfigRuleName: pulumi.String("contains-tag"),
 //				AggregatorId:            defaultAggregator.ID(),
-//				AggregateConfigRuleName: pulumi.String(name),
-//				SourceOwner:             pulumi.String("ALIYUN"),
-//				SourceIdentifier:        pulumi.String("ecs-cpu-min-count-limit"),
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
+//				SourceOwner:             pulumi.String("ALIYUN"),
+//				SourceIdentifier:        pulumi.String("contains-tag"),
+//				RiskLevel:               pulumi.Int(1),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::ECS::Instance"),
 //				},
-//				RiskLevel:               pulumi.Int(1),
-//				Description:             pulumi.String(name),
-//				ExcludeResourceIdsScope: *pulumi.String(defaultInstances.Ids[0]),
 //				InputParameters: pulumi.AnyMap{
-//					"cpuCount": pulumi.Any("4"),
+//					"key":   pulumi.Any("example"),
+//					"value": pulumi.Any("example"),
 //				},
-//				RegionIdsScope:        pulumi.String("cn-hangzhou"),
-//				ResourceGroupIdsScope: *pulumi.String(defaultResourceGroups.Ids[0]),
-//				TagKeyScope:           pulumi.String("tFTest"),
-//				TagValueScope:         pulumi.String("forTF 123"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cfg.NewAggregateCompliancePack(ctx, "defaultAggregateCompliancePack", &cfg.AggregateCompliancePackArgs{
-//				AggregateCompliancePackName: pulumi.String("tf-testaccConfig1234"),
+//				AggregateCompliancePackName: pulumi.String(name),
 //				AggregatorId:                defaultAggregator.ID(),
-//				Description:                 pulumi.String("tf-testaccConfig1234"),
+//				Description:                 pulumi.String(name),
 //				RiskLevel:                   pulumi.Int(1),
 //				ConfigRuleIds: cfg.AggregateCompliancePackConfigRuleIdArray{
 //					&cfg.AggregateCompliancePackConfigRuleIdArgs{
@@ -126,9 +118,9 @@ type AggregateCompliancePack struct {
 	AggregatorId pulumi.StringOutput `pulumi:"aggregatorId"`
 	// The Template ID of compliance package.
 	CompliancePackTemplateId pulumi.StringPtrOutput `pulumi:"compliancePackTemplateId"`
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds AggregateCompliancePackConfigRuleIdArrayOutput `pulumi:"configRuleIds"`
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayOutput `pulumi:"configRules"`
@@ -159,6 +151,7 @@ func NewAggregateCompliancePack(ctx *pulumi.Context,
 	if args.RiskLevel == nil {
 		return nil, errors.New("invalid value for required argument 'RiskLevel'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AggregateCompliancePack
 	err := ctx.RegisterResource("alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack", name, args, &resource, opts...)
 	if err != nil {
@@ -187,9 +180,9 @@ type aggregateCompliancePackState struct {
 	AggregatorId *string `pulumi:"aggregatorId"`
 	// The Template ID of compliance package.
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds []AggregateCompliancePackConfigRuleId `pulumi:"configRuleIds"`
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
@@ -208,9 +201,9 @@ type AggregateCompliancePackState struct {
 	AggregatorId pulumi.StringPtrInput
 	// The Template ID of compliance package.
 	CompliancePackTemplateId pulumi.StringPtrInput
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds AggregateCompliancePackConfigRuleIdArrayInput
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
@@ -233,9 +226,9 @@ type aggregateCompliancePackArgs struct {
 	AggregatorId string `pulumi:"aggregatorId"`
 	// The Template ID of compliance package.
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds []AggregateCompliancePackConfigRuleId `pulumi:"configRuleIds"`
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
@@ -253,9 +246,9 @@ type AggregateCompliancePackArgs struct {
 	AggregatorId pulumi.StringInput
 	// The Template ID of compliance package.
 	CompliancePackTemplateId pulumi.StringPtrInput
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds AggregateCompliancePackConfigRuleIdArrayInput
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
@@ -367,14 +360,14 @@ func (o AggregateCompliancePackOutput) CompliancePackTemplateId() pulumi.StringP
 	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringPtrOutput { return v.CompliancePackTemplateId }).(pulumi.StringPtrOutput)
 }
 
-// A list of Config Rule IDs.
+// A list of Config Rule IDs. See `configRuleIds` below.
 func (o AggregateCompliancePackOutput) ConfigRuleIds() AggregateCompliancePackConfigRuleIdArrayOutput {
 	return o.ApplyT(func(v *AggregateCompliancePack) AggregateCompliancePackConfigRuleIdArrayOutput {
 		return v.ConfigRuleIds
 	}).(AggregateCompliancePackConfigRuleIdArrayOutput)
 }
 
-// A list of Config Rules.
+// A list of Config Rules. See `configRules` below.
 //
 // Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 func (o AggregateCompliancePackOutput) ConfigRules() AggregateCompliancePackConfigRuleArrayOutput {

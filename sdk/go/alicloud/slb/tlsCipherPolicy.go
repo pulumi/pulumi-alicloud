@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,6 +91,7 @@ func NewTlsCipherPolicy(ctx *pulumi.Context,
 	if args.TlsVersions == nil {
 		return nil, errors.New("invalid value for required argument 'TlsVersions'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TlsCipherPolicy
 	err := ctx.RegisterResource("alicloud:slb/tlsCipherPolicy:TlsCipherPolicy", name, args, &resource, opts...)
 	if err != nil {

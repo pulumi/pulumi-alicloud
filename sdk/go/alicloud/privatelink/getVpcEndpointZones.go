@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetVpcEndpointZones(ctx *pulumi.Context, args *GetVpcEndpointZonesArgs, opts ...pulumi.InvokeOption) (*GetVpcEndpointZonesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcEndpointZonesResult
 	err := ctx.Invoke("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", args, &rv, opts...)
 	if err != nil {

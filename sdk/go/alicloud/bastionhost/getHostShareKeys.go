@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +56,7 @@ import (
 //
 // ```
 func GetHostShareKeys(ctx *pulumi.Context, args *GetHostShareKeysArgs, opts ...pulumi.InvokeOption) (*GetHostShareKeysResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostShareKeysResult
 	err := ctx.Invoke("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +56,7 @@ import (
 //
 // ```
 func GetVirtualHosts(ctx *pulumi.Context, args *GetVirtualHostsArgs, opts ...pulumi.InvokeOption) (*GetVirtualHostsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualHostsResult
 	err := ctx.Invoke("alicloud:amqp/getVirtualHosts:getVirtualHosts", args, &rv, opts...)
 	if err != nil {

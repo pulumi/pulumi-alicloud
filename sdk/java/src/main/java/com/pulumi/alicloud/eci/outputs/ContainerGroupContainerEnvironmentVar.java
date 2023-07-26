@@ -17,7 +17,7 @@ public final class ContainerGroupContainerEnvironmentVar {
      */
     private @Nullable String key;
     /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
+     * @return The variable value of the security context that the container group runs.
      * 
      */
     private @Nullable String value;
@@ -31,7 +31,7 @@ public final class ContainerGroupContainerEnvironmentVar {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
+     * @return The variable value of the security context that the container group runs.
      * 
      */
     public Optional<String> value() {

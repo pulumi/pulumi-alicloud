@@ -11,69 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Monitor Service Hybrid Monitor Sls Task and how to use it, see [What is Hybrid Monitor Sls Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
  *
- * > **NOTE:** Available in v1.179.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const this = alicloud.getAccount({});
- * const defaultSlsGroup = new alicloud.cms.SlsGroup("defaultSlsGroup", {
- *     slsGroupConfigs: [{
- *         slsUserId: _this.then(_this => _this.id),
- *         slsLogstore: "Logstore-ECS",
- *         slsProject: "aliyun-project",
- *         slsRegion: "cn-hangzhou",
- *     }],
- *     slsGroupDescription: "example_value",
- *     slsGroupName: "example_value",
- * });
- * const defaultNamespace = new alicloud.cms.Namespace("defaultNamespace", {
- *     description: _var.name,
- *     namespace: "example-value",
- *     specification: "cms.s1.large",
- * });
- * const defaultHybridMonitorSlsTask = new alicloud.cms.HybridMonitorSlsTask("defaultHybridMonitorSlsTask", {
- *     slsProcessConfig: {
- *         filter: {
- *             relation: "and",
- *             filters: [{
- *                 operator: "=",
- *                 value: "200",
- *                 slsKeyName: "code",
- *             }],
- *         },
- *         statistics: [{
- *             "function": "count",
- *             alias: "level_count",
- *             slsKeyName: "name",
- *             parameterOne: "200",
- *             parameterTwo: "299",
- *         }],
- *         groupBies: [{
- *             alias: "code",
- *             slsKeyName: "ApiResult",
- *         }],
- *         expresses: [{
- *             express: "success_count",
- *             alias: "SuccRate",
- *         }],
- *     },
- *     taskName: "example_value",
- *     namespace: defaultNamespace.id,
- *     description: "example_value",
- *     collectInterval: 60,
- *     collectTargetType: defaultSlsGroup.id,
- *     attachLabels: [{
- *         name: "app_service",
- *         value: "testValue",
- *     }],
- * });
- * ```
+ * > **NOTE:** Available since v1.179.0.
  *
  * ## Import
  *
@@ -112,7 +50,7 @@ export class HybridMonitorSlsTask extends pulumi.CustomResource {
     }
 
     /**
-     * The label of the monitoring task. See the following `Block attachLabels`.
+     * The label of the monitoring task. See `attachLabels` below.
      */
     public readonly attachLabels!: pulumi.Output<outputs.cms.HybridMonitorSlsTaskAttachLabel[] | undefined>;
     /**
@@ -132,7 +70,7 @@ export class HybridMonitorSlsTask extends pulumi.CustomResource {
      */
     public readonly namespace!: pulumi.Output<string>;
     /**
-     * The configurations of the logs that are imported from Log Service. See the following `Block slsProcessConfig`.
+     * The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
      */
     public readonly slsProcessConfig!: pulumi.Output<outputs.cms.HybridMonitorSlsTaskSlsProcessConfig>;
     /**
@@ -192,7 +130,7 @@ export class HybridMonitorSlsTask extends pulumi.CustomResource {
  */
 export interface HybridMonitorSlsTaskState {
     /**
-     * The label of the monitoring task. See the following `Block attachLabels`.
+     * The label of the monitoring task. See `attachLabels` below.
      */
     attachLabels?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskAttachLabel>[]>;
     /**
@@ -212,7 +150,7 @@ export interface HybridMonitorSlsTaskState {
      */
     namespace?: pulumi.Input<string>;
     /**
-     * The configurations of the logs that are imported from Log Service. See the following `Block slsProcessConfig`.
+     * The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
      */
     slsProcessConfig?: pulumi.Input<inputs.cms.HybridMonitorSlsTaskSlsProcessConfig>;
     /**
@@ -226,7 +164,7 @@ export interface HybridMonitorSlsTaskState {
  */
 export interface HybridMonitorSlsTaskArgs {
     /**
-     * The label of the monitoring task. See the following `Block attachLabels`.
+     * The label of the monitoring task. See `attachLabels` below.
      */
     attachLabels?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskAttachLabel>[]>;
     /**
@@ -246,7 +184,7 @@ export interface HybridMonitorSlsTaskArgs {
      */
     namespace: pulumi.Input<string>;
     /**
-     * The configurations of the logs that are imported from Log Service. See the following `Block slsProcessConfig`.
+     * The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
      */
     slsProcessConfig: pulumi.Input<inputs.cms.HybridMonitorSlsTaskSlsProcessConfig>;
     /**

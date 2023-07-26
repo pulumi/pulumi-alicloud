@@ -7,14 +7,15 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Monitor Service Monitor Group resource.
 //
-// For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/doc-detail/115030.htm).
+// For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroup).
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
 //
 // ## Example Usage
 //
@@ -33,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewMonitorGroup(ctx, "example", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String("tf-testaccmonitorgroup"),
+//				MonitorGroupName: pulumi.String("tf-example-accmonitorgroup"),
 //			})
 //			if err != nil {
 //				return err
@@ -46,7 +47,7 @@ import (
 //				ResourceGroupName: pulumi.String("resource_group_name"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Acceptance-test"),
+//					"For":     pulumi.Any("Acceptance-example"),
 //				},
 //			})
 //			if err != nil {
@@ -89,6 +90,7 @@ func NewMonitorGroup(ctx *pulumi.Context,
 		args = &MonitorGroupArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MonitorGroup
 	err := ctx.RegisterResource("alicloud:cms/monitorGroup:MonitorGroup", name, args, &resource, opts...)
 	if err != nil {

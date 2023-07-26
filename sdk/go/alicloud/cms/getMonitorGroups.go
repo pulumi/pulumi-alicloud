@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetMonitorGroups(ctx *pulumi.Context, args *GetMonitorGroupsArgs, opts ...pulumi.InvokeOption) (*GetMonitorGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMonitorGroupsResult
 	err := ctx.Invoke("alicloud:cms/getMonitorGroups:getMonitorGroups", args, &rv, opts...)
 	if err != nil {

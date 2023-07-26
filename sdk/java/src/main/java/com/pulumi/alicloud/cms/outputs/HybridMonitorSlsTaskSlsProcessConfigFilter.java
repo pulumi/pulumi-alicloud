@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HybridMonitorSlsTaskSlsProcessConfigFilter {
     /**
-     * @return The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+     * @return The conditions that are used to filter logs imported from Log Service. See `filters` below.
      * 
      */
     private @Nullable List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter> filters;
@@ -26,7 +26,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilter {
 
     private HybridMonitorSlsTaskSlsProcessConfigFilter() {}
     /**
-     * @return The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+     * @return The conditions that are used to filter logs imported from Log Service. See `filters` below.
      * 
      */
     public List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter> filters() {

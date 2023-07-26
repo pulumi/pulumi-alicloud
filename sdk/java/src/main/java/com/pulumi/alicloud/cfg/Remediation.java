@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Config Remediation resource.
  * 
- * For information about Config Remediation and how to use it, see [What is Remediation](https://www.alibabacloud.com/help/en/).
+ * For information about Config Remediation and how to use it, see [What is Remediation](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createremediation).
  * 
- * &gt; **NOTE:** Available in v1.204.0+.
+ * &gt; **NOTE:** Available since v1.204.0.
  * 
  * ## Example Usage
  * 
@@ -29,6 +29,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.cfg.Rule;
+ * import com.pulumi.alicloud.cfg.RuleArgs;
  * import com.pulumi.alicloud.cfg.Remediation;
  * import com.pulumi.alicloud.cfg.RemediationArgs;
  * import java.util.List;
@@ -44,12 +50,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Remediation(&#34;default&#34;, RemediationArgs.builder()        
- *             .configRuleId(alicloud_config_rule.prerequirement-rule().config_rule_id())
- *             .remediationTemplateId(&#34;ACS-TAG-TagResources&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-oss&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(name)
+ *             .acl(&#34;public-read&#34;)
+ *             .tags(Map.of(&#34;For&#34;, &#34;example&#34;))
+ *             .build());
+ * 
+ *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+ *             .description(&#34;If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.&#34;)
+ *             .sourceOwner(&#34;ALIYUN&#34;)
+ *             .sourceIdentifier(&#34;oss-bucket-public-read-prohibited&#34;)
+ *             .riskLevel(1)
+ *             .tagKeyScope(&#34;For&#34;)
+ *             .tagValueScope(&#34;example&#34;)
+ *             .regionIdsScope(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
+ *             .resourceTypesScopes(&#34;ACS::OSS::Bucket&#34;)
+ *             .ruleName(&#34;oss-bucket-public-read-prohibited&#34;)
+ *             .build());
+ * 
+ *         var defaultRemediation = new Remediation(&#34;defaultRemediation&#34;, RemediationArgs.builder()        
+ *             .configRuleId(defaultRule.configRuleId())
+ *             .remediationTemplateId(&#34;ACS-OSS-PutBucketAcl&#34;)
  *             .remediationSourceType(&#34;ALIYUN&#34;)
  *             .invokeType(&#34;MANUAL_EXECUTION&#34;)
- *             .params(&#34;{\&#34;regionId\&#34;:\&#34;{regionId}\&#34;,\&#34;tags\&#34;:\&#34;{\\\&#34;terraform\\\&#34;:\\\&#34;terraform\\\&#34;}\&#34;,\&#34;resourceType\&#34;:\&#34;{resourceType}\&#34;,\&#34;resourceIds\&#34;:\&#34;{resourceId}\&#34;}&#34;)
+ *             .params(defaultBucket.bucket().applyValue(bucket -&gt; String.format(&#34;{{\&#34;bucketName\&#34;: \&#34;%s\&#34;, \&#34;regionId\&#34;: \&#34;%s\&#34;, \&#34;permissionName\&#34;: \&#34;private\&#34;}}&#34;, bucket,defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))))
  *             .remediationType(&#34;OOS&#34;)
  *             .build());
  * 

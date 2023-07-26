@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -123,6 +124,7 @@ func NewIpv6EgressRule(ctx *pulumi.Context,
 	if args.Ipv6GatewayId == nil {
 		return nil, errors.New("invalid value for required argument 'Ipv6GatewayId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ipv6EgressRule
 	err := ctx.RegisterResource("alicloud:vpc/ipv6EgressRule:Ipv6EgressRule", name, args, &resource, opts...)
 	if err != nil {

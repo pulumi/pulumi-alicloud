@@ -4,6 +4,7 @@
 package alicloud
 
 import (
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,6 +35,7 @@ import (
 //
 // ```
 func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountResult
 	err := ctx.Invoke("alicloud:index/getAccount:getAccount", nil, &rv, opts...)
 	if err != nil {

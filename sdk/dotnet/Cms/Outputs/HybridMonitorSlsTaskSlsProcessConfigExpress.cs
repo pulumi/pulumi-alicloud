@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? Alias;
         /// <summary>
-        /// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+        /// The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
         /// </summary>
         public readonly string? Express;
 

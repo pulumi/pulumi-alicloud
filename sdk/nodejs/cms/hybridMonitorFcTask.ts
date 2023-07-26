@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Monitor Service Hybrid Monitor Fc Task and how to use it, see [What is Hybrid Monitor Fc Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
  *
- * > **NOTE:** Available in v1.179.0+.
+ * > **NOTE:** Available since v1.179.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,35 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cms.HybridMonitorFcTask("example", {
- *     namespace: "example_value",
- *     targetUserId: "example_value",
- *     yarmConfig: "example_value",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultNamespace = new alicloud.cms.Namespace("defaultNamespace", {
+ *     description: name,
+ *     namespace: name,
+ *     specification: "cms.s1.large",
+ * });
+ * const defaultHybridMonitorFcTask = new alicloud.cms.HybridMonitorFcTask("defaultHybridMonitorFcTask", {
+ *     namespace: defaultNamespace.id,
+ *     yarmConfig: `products:
+ * - namespace: acs_ecs_dashboard
+ *   metric_info:
+ *   - metric_list:
+ *     - cpu_total
+ *     - cpu_idle
+ *     - diskusage_utilization
+ *     - CPUUtilization
+ *     - DiskReadBPS
+ *     - InternetOut
+ *     - IntranetOut
+ *     - cpu_system
+ * - namespace: acs_rds_dashboard
+ *   metric_info:
+ *   - metric_list:
+ *     - MySQL_QPS
+ *     - MySQL_TPS
+ * `,
+ *     targetUserId: defaultAccount.then(defaultAccount => defaultAccount.id),
  * });
  * ```
  *

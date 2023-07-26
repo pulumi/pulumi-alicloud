@@ -239,40 +239,48 @@ class EipAssociation(pulumi.CustomResource):
 
         > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
 
+        > **NOTE:** Available since v1.117.0.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones()
-        vpc = alicloud.vpc.Network("vpc", cidr_block="10.1.0.0/21")
-        vsw = alicloud.vpc.Switch("vsw",
-            vpc_id=vpc.id,
-            cidr_block="10.1.1.0/24",
-            zone_id=default_zones.zones[0].id,
-            opts=pulumi.ResourceOptions(depends_on=[vpc]))
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        group = alicloud.ecs.SecurityGroup("group",
-            description="New security group",
-            vpc_id=vpc.id)
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            availability_zone=default_zones.zones[0].id,
-            security_groups=[group.id],
-            vswitch_id=vsw.id,
-            instance_name="hello",
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            availability_zone=example_zones.zones[0].id,
+            instance_name=name,
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            security_groups=[example_security_group.id],
+            vswitch_id=example_switch.id,
             tags={
-                "Name": "TerraformTest-instance",
+                "Created": "TF",
+                "For": "example",
             })
-        eip = alicloud.ecs.EipAddress("eip")
-        eip_asso = alicloud.ecs.EipAssociation("eipAsso",
-            allocation_id=eip.id,
-            instance_id=ecs_instance.id)
+        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress", address_name=name)
+        example_eip_association = alicloud.ecs.EipAssociation("exampleEipAssociation",
+            allocation_id=example_eip_address.id,
+            instance_id=example_instance.id)
         ```
         ## Module Support
 
@@ -312,40 +320,48 @@ class EipAssociation(pulumi.CustomResource):
 
         > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
 
+        > **NOTE:** Available since v1.117.0.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones()
-        vpc = alicloud.vpc.Network("vpc", cidr_block="10.1.0.0/21")
-        vsw = alicloud.vpc.Switch("vsw",
-            vpc_id=vpc.id,
-            cidr_block="10.1.1.0/24",
-            zone_id=default_zones.zones[0].id,
-            opts=pulumi.ResourceOptions(depends_on=[vpc]))
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        group = alicloud.ecs.SecurityGroup("group",
-            description="New security group",
-            vpc_id=vpc.id)
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            availability_zone=default_zones.zones[0].id,
-            security_groups=[group.id],
-            vswitch_id=vsw.id,
-            instance_name="hello",
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            availability_zone=example_zones.zones[0].id,
+            instance_name=name,
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            security_groups=[example_security_group.id],
+            vswitch_id=example_switch.id,
             tags={
-                "Name": "TerraformTest-instance",
+                "Created": "TF",
+                "For": "example",
             })
-        eip = alicloud.ecs.EipAddress("eip")
-        eip_asso = alicloud.ecs.EipAssociation("eipAsso",
-            allocation_id=eip.id,
-            instance_id=ecs_instance.id)
+        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress", address_name=name)
+        example_eip_association = alicloud.ecs.EipAssociation("exampleEipAssociation",
+            allocation_id=example_eip_address.id,
+            instance_id=example_instance.id)
         ```
         ## Module Support
 

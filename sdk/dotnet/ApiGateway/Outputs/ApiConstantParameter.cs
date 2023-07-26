@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
     public sealed class ApiConstantParameter
     {
         /// <summary>
-        /// The description of the api. Defaults to null.
+        /// The description of Constant parameter.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        /// Constant parameter location; values: 'HEAD' and 'QUERY'.
         /// </summary>
         public readonly string In;
         /// <summary>
-        /// The name of the api gateway api. Defaults to null.
+        /// Constant parameter name.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -54,19 +54,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiGroup = new Group(&#34;apiGroup&#34;, GroupArgs.builder()        
- *             .description(&#34;description of the api group&#34;)
+ *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
+ *             .description(&#34;tf-example&#34;)
  *             .build());
  * 
- *         var apiGatewayApi = new Api(&#34;apiGatewayApi&#34;, ApiArgs.builder()        
- *             .groupId(apiGroup.id())
- *             .description(&#34;your description&#34;)
+ *         var exampleApi = new Api(&#34;exampleApi&#34;, ApiArgs.builder()        
+ *             .groupId(exampleGroup.id())
+ *             .description(&#34;tf-example&#34;)
  *             .authType(&#34;APP&#34;)
  *             .forceNonceCheck(false)
  *             .requestConfig(ApiRequestConfigArgs.builder()
  *                 .protocol(&#34;HTTP&#34;)
  *                 .method(&#34;GET&#34;)
- *                 .path(&#34;/test/path1&#34;)
+ *                 .path(&#34;/example/path&#34;)
  *                 .mode(&#34;MAPPING&#34;)
  *                 .build())
  *             .serviceType(&#34;HTTP&#34;)
@@ -78,12 +78,12 @@ import javax.annotation.Nullable;
  *                 .aoneName(&#34;cloudapi-openapi&#34;)
  *                 .build())
  *             .requestParameters(ApiRequestParameterArgs.builder()
- *                 .name(&#34;aaa&#34;)
+ *                 .name(&#34;example&#34;)
  *                 .type(&#34;STRING&#34;)
  *                 .required(&#34;OPTIONAL&#34;)
  *                 .in(&#34;QUERY&#34;)
  *                 .inService(&#34;QUERY&#34;)
- *                 .nameService(&#34;testparams&#34;)
+ *                 .nameService(&#34;exampleservice&#34;)
  *                 .build())
  *             .stageNames(            
  *                 &#34;RELEASE&#34;,
@@ -134,14 +134,14 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.authType;
     }
     /**
-     * constant_parameters defines the constant parameters of the api.
+     * constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
      * 
      */
     @Export(name="constantParameters", type=List.class, parameters={ApiConstantParameter.class})
     private Output</* @Nullable */ List<ApiConstantParameter>> constantParameters;
 
     /**
-     * @return constant_parameters defines the constant parameters of the api.
+     * @return constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
      * 
      */
     public Output<Optional<List<ApiConstantParameter>>> constantParameters() {
@@ -162,14 +162,14 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;.
+     * fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;. See `fc_service_config` below.
      * 
      */
     @Export(name="fcServiceConfig", type=ApiFcServiceConfig.class, parameters={})
     private Output</* @Nullable */ ApiFcServiceConfig> fcServiceConfig;
 
     /**
-     * @return fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;.
+     * @return fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;. See `fc_service_config` below.
      * 
      */
     public Output<Optional<ApiFcServiceConfig>> fcServiceConfig() {
@@ -204,42 +204,42 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
-     * http_service_config defines the config when service_type selected &#39;HTTP&#39;.
+     * http_service_config defines the config when service_type selected &#39;HTTP&#39;. See `http_service_config` below.
      * 
      */
     @Export(name="httpServiceConfig", type=ApiHttpServiceConfig.class, parameters={})
     private Output</* @Nullable */ ApiHttpServiceConfig> httpServiceConfig;
 
     /**
-     * @return http_service_config defines the config when service_type selected &#39;HTTP&#39;.
+     * @return http_service_config defines the config when service_type selected &#39;HTTP&#39;. See `http_service_config` below.
      * 
      */
     public Output<Optional<ApiHttpServiceConfig>> httpServiceConfig() {
         return Codegen.optional(this.httpServiceConfig);
     }
     /**
-     * http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;.
+     * http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;. See `http_vpc_service_config` below.
      * 
      */
     @Export(name="httpVpcServiceConfig", type=ApiHttpVpcServiceConfig.class, parameters={})
     private Output</* @Nullable */ ApiHttpVpcServiceConfig> httpVpcServiceConfig;
 
     /**
-     * @return http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;.
+     * @return http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;. See `http_vpc_service_config` below.
      * 
      */
     public Output<Optional<ApiHttpVpcServiceConfig>> httpVpcServiceConfig() {
         return Codegen.optional(this.httpVpcServiceConfig);
     }
     /**
-     * http_service_config defines the config when service_type selected &#39;MOCK&#39;.
+     * http_service_config defines the config when service_type selected &#39;MOCK&#39;. See `mock_service_config` below.
      * 
      */
     @Export(name="mockServiceConfig", type=ApiMockServiceConfig.class, parameters={})
     private Output</* @Nullable */ ApiMockServiceConfig> mockServiceConfig;
 
     /**
-     * @return http_service_config defines the config when service_type selected &#39;MOCK&#39;.
+     * @return http_service_config defines the config when service_type selected &#39;MOCK&#39;. See `mock_service_config` below.
      * 
      */
     public Output<Optional<ApiMockServiceConfig>> mockServiceConfig() {
@@ -260,28 +260,28 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Request_config defines how users can send requests to your API.
+     * Request_config defines how users can send requests to your API. See `request_config` below.
      * 
      */
     @Export(name="requestConfig", type=ApiRequestConfig.class, parameters={})
     private Output<ApiRequestConfig> requestConfig;
 
     /**
-     * @return Request_config defines how users can send requests to your API.
+     * @return Request_config defines how users can send requests to your API. See `request_config` below.
      * 
      */
     public Output<ApiRequestConfig> requestConfig() {
         return this.requestConfig;
     }
     /**
-     * request_parameters defines the request parameters of the api.
+     * request_parameters defines the request parameters of the api. See `request_parameters` below.
      * 
      */
     @Export(name="requestParameters", type=List.class, parameters={ApiRequestParameter.class})
     private Output</* @Nullable */ List<ApiRequestParameter>> requestParameters;
 
     /**
-     * @return request_parameters defines the request parameters of the api.
+     * @return request_parameters defines the request parameters of the api. See `request_parameters` below.
      * 
      */
     public Output<Optional<List<ApiRequestParameter>>> requestParameters() {
@@ -316,14 +316,14 @@ public class Api extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.stageNames);
     }
     /**
-     * system_parameters defines the system parameters of the api.
+     * system_parameters defines the system parameters of the api. See `system_parameters` below.
      * 
      */
     @Export(name="systemParameters", type=List.class, parameters={ApiSystemParameter.class})
     private Output</* @Nullable */ List<ApiSystemParameter>> systemParameters;
 
     /**
-     * @return system_parameters defines the system parameters of the api.
+     * @return system_parameters defines the system parameters of the api. See `system_parameters` below.
      * 
      */
     public Output<Optional<List<ApiSystemParameter>>> systemParameters() {

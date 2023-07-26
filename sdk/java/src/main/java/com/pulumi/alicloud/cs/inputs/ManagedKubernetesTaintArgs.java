@@ -15,23 +15,129 @@ public final class ManagedKubernetesTaintArgs extends com.pulumi.resources.Resou
 
     public static final ManagedKubernetesTaintArgs Empty = new ManagedKubernetesTaintArgs();
 
+    /**
+     * The taint effect.
+     * 
+     * The following example is the definition of taints block:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesTaintArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var k8s = new ManagedKubernetes(&#34;k8s&#34;, ManagedKubernetesArgs.builder()        
+     *             .taints(            
+     *                 ManagedKubernetesTaintArgs.builder()
+     *                     .effect(&#34;NoSchedule&#34;)
+     *                     .key(&#34;key-a&#34;)
+     *                     .value(&#34;value-a&#34;)
+     *                     .build(),
+     *                 ManagedKubernetesTaintArgs.builder()
+     *                     .effect(&#34;NoSchedule&#34;)
+     *                     .key(&#34;key-b&#34;)
+     *                     .value(&#34;value-b&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
+    /**
+     * @return The taint effect.
+     * 
+     * The following example is the definition of taints block:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesTaintArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var k8s = new ManagedKubernetes(&#34;k8s&#34;, ManagedKubernetesArgs.builder()        
+     *             .taints(            
+     *                 ManagedKubernetesTaintArgs.builder()
+     *                     .effect(&#34;NoSchedule&#34;)
+     *                     .key(&#34;key-a&#34;)
+     *                     .value(&#34;value-a&#34;)
+     *                     .build(),
+     *                 ManagedKubernetesTaintArgs.builder()
+     *                     .effect(&#34;NoSchedule&#34;)
+     *                     .key(&#34;key-b&#34;)
+     *                     .value(&#34;value-b&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public Optional<Output<String>> effect() {
         return Optional.ofNullable(this.effect);
     }
 
+    /**
+     * The taint key.
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return The taint key.
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * The taint value.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The taint value.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -62,29 +168,147 @@ public final class ManagedKubernetesTaintArgs extends com.pulumi.resources.Resou
             $ = new ManagedKubernetesTaintArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param effect The taint effect.
+         * 
+         * The following example is the definition of taints block:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.alicloud.cs.ManagedKubernetes;
+         * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+         * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesTaintArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var k8s = new ManagedKubernetes(&#34;k8s&#34;, ManagedKubernetesArgs.builder()        
+         *             .taints(            
+         *                 ManagedKubernetesTaintArgs.builder()
+         *                     .effect(&#34;NoSchedule&#34;)
+         *                     .key(&#34;key-a&#34;)
+         *                     .value(&#34;value-a&#34;)
+         *                     .build(),
+         *                 ManagedKubernetesTaintArgs.builder()
+         *                     .effect(&#34;NoSchedule&#34;)
+         *                     .key(&#34;key-b&#34;)
+         *                     .value(&#34;value-b&#34;)
+         *                     .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(@Nullable Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
+        /**
+         * @param effect The taint effect.
+         * 
+         * The following example is the definition of taints block:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.alicloud.cs.ManagedKubernetes;
+         * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+         * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesTaintArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var k8s = new ManagedKubernetes(&#34;k8s&#34;, ManagedKubernetesArgs.builder()        
+         *             .taints(            
+         *                 ManagedKubernetesTaintArgs.builder()
+         *                     .effect(&#34;NoSchedule&#34;)
+         *                     .key(&#34;key-a&#34;)
+         *                     .value(&#34;value-a&#34;)
+         *                     .build(),
+         *                 ManagedKubernetesTaintArgs.builder()
+         *                     .effect(&#34;NoSchedule&#34;)
+         *                     .key(&#34;key-b&#34;)
+         *                     .value(&#34;value-b&#34;)
+         *                     .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(String effect) {
             return effect(Output.of(effect));
         }
 
+        /**
+         * @param key The taint key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The taint key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value The taint value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The taint value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

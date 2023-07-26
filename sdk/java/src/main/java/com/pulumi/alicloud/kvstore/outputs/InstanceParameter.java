@@ -6,18 +6,52 @@ package com.pulumi.alicloud.kvstore.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceParameter {
-    private String name;
-    private String value;
+    /**
+     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * 
+     * @deprecated
+     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    private @Nullable String name;
+    /**
+     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * 
+     * @deprecated
+     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    private @Nullable String value;
 
     private InstanceParameter() {}
-    public String name() {
-        return this.name;
+    /**
+     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * 
+     * @deprecated
+     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
-    public String value() {
-        return this.value;
+    /**
+     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * 
+     * @deprecated
+     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -29,8 +63,8 @@ public final class InstanceParameter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
-        private String value;
+        private @Nullable String name;
+        private @Nullable String value;
         public Builder() {}
         public Builder(InstanceParameter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -39,13 +73,13 @@ public final class InstanceParameter {
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder value(@Nullable String value) {
+            this.value = value;
             return this;
         }
         public InstanceParameter build() {

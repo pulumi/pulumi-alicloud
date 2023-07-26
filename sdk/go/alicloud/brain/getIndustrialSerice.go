@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetIndustrialSerice(ctx *pulumi.Context, args *GetIndustrialSericeArgs, opts ...pulumi.InvokeOption) (*GetIndustrialSericeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIndustrialSericeResult
 	err := ctx.Invoke("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ import (
 //
 // ```
 func GetCustomRoutingEndpointGroups(ctx *pulumi.Context, args *GetCustomRoutingEndpointGroupsArgs, opts ...pulumi.InvokeOption) (*GetCustomRoutingEndpointGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomRoutingEndpointGroupsResult
 	err := ctx.Invoke("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", args, &rv, opts...)
 	if err != nil {

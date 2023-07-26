@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides ECI Container Group resource.
 //
-// For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/doc-detail/90341.htm).
+// For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/elastic-container-instance/latest/api-eci-2018-08-08-createcontainergroup).
 //
-// > **NOTE:** Available in v1.111.0+.
+// > **NOTE:** Available since v1.111.0.
 //
 // ## Example Usage
 //
@@ -34,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := eci.NewContainerGroup(ctx, "example", &eci.ContainerGroupArgs{
-//				ContainerGroupName: pulumi.String("tf-testacc-eci-gruop"),
+//				ContainerGroupName: pulumi.String("tf-eci-gruop"),
 //				Cpu:                pulumi.Float64(8),
 //				Memory:             pulumi.Float64(16),
 //				RestartPolicy:      pulumi.String("OnFailure"),
@@ -161,39 +162,39 @@ import (
 type ContainerGroup struct {
 	pulumi.CustomResourceState
 
-	// The ACR enterprise edition example properties.
+	// The ACR enterprise edition example properties. See `acrRegistryInfo` below.
 	AcrRegistryInfos ContainerGroupAcrRegistryInfoArrayOutput `pulumi:"acrRegistryInfos"`
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip pulumi.BoolPtrOutput `pulumi:"autoCreateEip"`
-	// Specifies whether to automatically match the image cache. Default value: false.
+	// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
 	AutoMatchImageCache pulumi.BoolPtrOutput `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName pulumi.StringOutput `pulumi:"containerGroupName"`
-	// The list of containers.
+	// The list of containers. See `containers` below.
 	Containers ContainerGroupContainerArrayOutput `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64Output `pulumi:"cpu"`
-	// The structure of dnsConfig.
+	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig ContainerGroupDnsConfigPtrOutput `pulumi:"dnsConfig"`
-	// The security context of the container group.
+	// The security context of the container group. See `eciSecurityContext` below.
 	EciSecurityContext ContainerGroupEciSecurityContextPtrOutput `pulumi:"eciSecurityContext"`
-	// The bandwidth of the EIP. The default value is `5`.
+	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth pulumi.IntPtrOutput `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId pulumi.StringPtrOutput `pulumi:"eipInstanceId"`
-	// HostAliases.
+	// HostAliases. See `hostAliases` below.
 	HostAliases ContainerGroupHostAliasArrayOutput `pulumi:"hostAliases"`
-	// The image registry credential. The details see Block `imageRegistryCredential`.
+	// The image registry credential. See `imageRegistryCredential` below.
 	ImageRegistryCredentials ContainerGroupImageRegistryCredentialArrayOutput `pulumi:"imageRegistryCredentials"`
-	// The list of initContainers.
+	// The list of initContainers. See `initContainers` below.
 	InitContainers ContainerGroupInitContainerArrayOutput `pulumi:"initContainers"`
 	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
 	InsecureRegistry pulumi.StringPtrOutput `pulumi:"insecureRegistry"`
 	// The type of the ECS instance.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
-	// (Available in v1.170.0+) The Public IP of the container group.
+	// (Available since v1.170.0) The Public IP of the container group.
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
-	// (Available in v1.170.0+) The Private IP of the container group.
+	// (Available since v1.170.0) The Private IP of the container group.
 	IntranetIp pulumi.StringOutput `pulumi:"intranetIp"`
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64Output `pulumi:"memory"`
@@ -201,7 +202,7 @@ type ContainerGroup struct {
 	PlainHttpRegistry pulumi.StringPtrOutput `pulumi:"plainHttpRegistry"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
-	// The ID of the resource group.
+	// The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy pulumi.StringOutput `pulumi:"restartPolicy"`
@@ -213,9 +214,10 @@ type ContainerGroup struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The list of volumes.
+	// The list of volumes. See `volumes` below.
 	Volumes ContainerGroupVolumeArrayOutput `pulumi:"volumes"`
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+	// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -240,6 +242,7 @@ func NewContainerGroup(ctx *pulumi.Context,
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ContainerGroup
 	err := ctx.RegisterResource("alicloud:eci/containerGroup:ContainerGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -262,39 +265,39 @@ func GetContainerGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerGroup resources.
 type containerGroupState struct {
-	// The ACR enterprise edition example properties.
+	// The ACR enterprise edition example properties. See `acrRegistryInfo` below.
 	AcrRegistryInfos []ContainerGroupAcrRegistryInfo `pulumi:"acrRegistryInfos"`
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
-	// Specifies whether to automatically match the image cache. Default value: false.
+	// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
 	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
-	// The list of containers.
+	// The list of containers. See `containers` below.
 	Containers []ContainerGroupContainer `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
-	// The structure of dnsConfig.
+	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
-	// The security context of the container group.
+	// The security context of the container group. See `eciSecurityContext` below.
 	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
-	// The bandwidth of the EIP. The default value is `5`.
+	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId *string `pulumi:"eipInstanceId"`
-	// HostAliases.
+	// HostAliases. See `hostAliases` below.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
-	// The image registry credential. The details see Block `imageRegistryCredential`.
+	// The image registry credential. See `imageRegistryCredential` below.
 	ImageRegistryCredentials []ContainerGroupImageRegistryCredential `pulumi:"imageRegistryCredentials"`
-	// The list of initContainers.
+	// The list of initContainers. See `initContainers` below.
 	InitContainers []ContainerGroupInitContainer `pulumi:"initContainers"`
 	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
 	InsecureRegistry *string `pulumi:"insecureRegistry"`
 	// The type of the ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
-	// (Available in v1.170.0+) The Public IP of the container group.
+	// (Available since v1.170.0) The Public IP of the container group.
 	InternetIp *string `pulumi:"internetIp"`
-	// (Available in v1.170.0+) The Private IP of the container group.
+	// (Available since v1.170.0) The Private IP of the container group.
 	IntranetIp *string `pulumi:"intranetIp"`
 	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
@@ -302,7 +305,7 @@ type containerGroupState struct {
 	PlainHttpRegistry *string `pulumi:"plainHttpRegistry"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName *string `pulumi:"ramRoleName"`
-	// The ID of the resource group.
+	// The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
@@ -314,48 +317,49 @@ type containerGroupState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The list of volumes.
+	// The list of volumes. See `volumes` below.
 	Volumes []ContainerGroupVolume `pulumi:"volumes"`
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+	// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ContainerGroupState struct {
-	// The ACR enterprise edition example properties.
+	// The ACR enterprise edition example properties. See `acrRegistryInfo` below.
 	AcrRegistryInfos ContainerGroupAcrRegistryInfoArrayInput
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip pulumi.BoolPtrInput
-	// Specifies whether to automatically match the image cache. Default value: false.
+	// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
 	AutoMatchImageCache pulumi.BoolPtrInput
 	// The name of the container group.
 	ContainerGroupName pulumi.StringPtrInput
-	// The list of containers.
+	// The list of containers. See `containers` below.
 	Containers ContainerGroupContainerArrayInput
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
-	// The structure of dnsConfig.
+	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig ContainerGroupDnsConfigPtrInput
-	// The security context of the container group.
+	// The security context of the container group. See `eciSecurityContext` below.
 	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
-	// The bandwidth of the EIP. The default value is `5`.
+	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth pulumi.IntPtrInput
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId pulumi.StringPtrInput
-	// HostAliases.
+	// HostAliases. See `hostAliases` below.
 	HostAliases ContainerGroupHostAliasArrayInput
-	// The image registry credential. The details see Block `imageRegistryCredential`.
+	// The image registry credential. See `imageRegistryCredential` below.
 	ImageRegistryCredentials ContainerGroupImageRegistryCredentialArrayInput
-	// The list of initContainers.
+	// The list of initContainers. See `initContainers` below.
 	InitContainers ContainerGroupInitContainerArrayInput
 	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
 	InsecureRegistry pulumi.StringPtrInput
 	// The type of the ECS instance.
 	InstanceType pulumi.StringPtrInput
-	// (Available in v1.170.0+) The Public IP of the container group.
+	// (Available since v1.170.0) The Public IP of the container group.
 	InternetIp pulumi.StringPtrInput
-	// (Available in v1.170.0+) The Private IP of the container group.
+	// (Available since v1.170.0) The Private IP of the container group.
 	IntranetIp pulumi.StringPtrInput
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
@@ -363,7 +367,7 @@ type ContainerGroupState struct {
 	PlainHttpRegistry pulumi.StringPtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrInput
-	// The ID of the resource group.
+	// The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy pulumi.StringPtrInput
@@ -375,9 +379,10 @@ type ContainerGroupState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// The list of volumes.
+	// The list of volumes. See `volumes` below.
 	Volumes ContainerGroupVolumeArrayInput
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+	// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
 	VswitchId pulumi.StringPtrInput
 	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId pulumi.StringPtrInput
@@ -388,31 +393,31 @@ func (ContainerGroupState) ElementType() reflect.Type {
 }
 
 type containerGroupArgs struct {
-	// The ACR enterprise edition example properties.
+	// The ACR enterprise edition example properties. See `acrRegistryInfo` below.
 	AcrRegistryInfos []ContainerGroupAcrRegistryInfo `pulumi:"acrRegistryInfos"`
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
-	// Specifies whether to automatically match the image cache. Default value: false.
+	// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
 	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName string `pulumi:"containerGroupName"`
-	// The list of containers.
+	// The list of containers. See `containers` below.
 	Containers []ContainerGroupContainer `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
-	// The structure of dnsConfig.
+	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
-	// The security context of the container group.
+	// The security context of the container group. See `eciSecurityContext` below.
 	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
-	// The bandwidth of the EIP. The default value is `5`.
+	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId *string `pulumi:"eipInstanceId"`
-	// HostAliases.
+	// HostAliases. See `hostAliases` below.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
-	// The image registry credential. The details see Block `imageRegistryCredential`.
+	// The image registry credential. See `imageRegistryCredential` below.
 	ImageRegistryCredentials []ContainerGroupImageRegistryCredential `pulumi:"imageRegistryCredentials"`
-	// The list of initContainers.
+	// The list of initContainers. See `initContainers` below.
 	InitContainers []ContainerGroupInitContainer `pulumi:"initContainers"`
 	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
 	InsecureRegistry *string `pulumi:"insecureRegistry"`
@@ -424,7 +429,7 @@ type containerGroupArgs struct {
 	PlainHttpRegistry *string `pulumi:"plainHttpRegistry"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName *string `pulumi:"ramRoleName"`
-	// The ID of the resource group.
+	// The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
@@ -434,9 +439,10 @@ type containerGroupArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The list of volumes.
+	// The list of volumes. See `volumes` below.
 	Volumes []ContainerGroupVolume `pulumi:"volumes"`
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+	// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
 	VswitchId string `pulumi:"vswitchId"`
 	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId *string `pulumi:"zoneId"`
@@ -444,31 +450,31 @@ type containerGroupArgs struct {
 
 // The set of arguments for constructing a ContainerGroup resource.
 type ContainerGroupArgs struct {
-	// The ACR enterprise edition example properties.
+	// The ACR enterprise edition example properties. See `acrRegistryInfo` below.
 	AcrRegistryInfos ContainerGroupAcrRegistryInfoArrayInput
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip pulumi.BoolPtrInput
-	// Specifies whether to automatically match the image cache. Default value: false.
+	// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
 	AutoMatchImageCache pulumi.BoolPtrInput
 	// The name of the container group.
 	ContainerGroupName pulumi.StringInput
-	// The list of containers.
+	// The list of containers. See `containers` below.
 	Containers ContainerGroupContainerArrayInput
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
-	// The structure of dnsConfig.
+	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig ContainerGroupDnsConfigPtrInput
-	// The security context of the container group.
+	// The security context of the container group. See `eciSecurityContext` below.
 	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
-	// The bandwidth of the EIP. The default value is `5`.
+	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth pulumi.IntPtrInput
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId pulumi.StringPtrInput
-	// HostAliases.
+	// HostAliases. See `hostAliases` below.
 	HostAliases ContainerGroupHostAliasArrayInput
-	// The image registry credential. The details see Block `imageRegistryCredential`.
+	// The image registry credential. See `imageRegistryCredential` below.
 	ImageRegistryCredentials ContainerGroupImageRegistryCredentialArrayInput
-	// The list of initContainers.
+	// The list of initContainers. See `initContainers` below.
 	InitContainers ContainerGroupInitContainerArrayInput
 	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
 	InsecureRegistry pulumi.StringPtrInput
@@ -480,7 +486,7 @@ type ContainerGroupArgs struct {
 	PlainHttpRegistry pulumi.StringPtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrInput
-	// The ID of the resource group.
+	// The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy pulumi.StringPtrInput
@@ -490,9 +496,10 @@ type ContainerGroupArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// The list of volumes.
+	// The list of volumes. See `volumes` below.
 	Volumes ContainerGroupVolumeArrayInput
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+	// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
 	VswitchId pulumi.StringInput
 	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId pulumi.StringPtrInput
@@ -585,7 +592,7 @@ func (o ContainerGroupOutput) ToContainerGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ACR enterprise edition example properties.
+// The ACR enterprise edition example properties. See `acrRegistryInfo` below.
 func (o ContainerGroupOutput) AcrRegistryInfos() ContainerGroupAcrRegistryInfoArrayOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupAcrRegistryInfoArrayOutput { return v.AcrRegistryInfos }).(ContainerGroupAcrRegistryInfoArrayOutput)
 }
@@ -595,7 +602,7 @@ func (o ContainerGroupOutput) AutoCreateEip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.BoolPtrOutput { return v.AutoCreateEip }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to automatically match the image cache. Default value: false.
+// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
 func (o ContainerGroupOutput) AutoMatchImageCache() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.BoolPtrOutput { return v.AutoMatchImageCache }).(pulumi.BoolPtrOutput)
 }
@@ -605,7 +612,7 @@ func (o ContainerGroupOutput) ContainerGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.ContainerGroupName }).(pulumi.StringOutput)
 }
 
-// The list of containers.
+// The list of containers. See `containers` below.
 func (o ContainerGroupOutput) Containers() ContainerGroupContainerArrayOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupContainerArrayOutput { return v.Containers }).(ContainerGroupContainerArrayOutput)
 }
@@ -615,17 +622,17 @@ func (o ContainerGroupOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.Float64Output { return v.Cpu }).(pulumi.Float64Output)
 }
 
-// The structure of dnsConfig.
+// The structure of dnsConfig. See `dnsConfig` below.
 func (o ContainerGroupOutput) DnsConfig() ContainerGroupDnsConfigPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupDnsConfigPtrOutput { return v.DnsConfig }).(ContainerGroupDnsConfigPtrOutput)
 }
 
-// The security context of the container group.
+// The security context of the container group. See `eciSecurityContext` below.
 func (o ContainerGroupOutput) EciSecurityContext() ContainerGroupEciSecurityContextPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupEciSecurityContextPtrOutput { return v.EciSecurityContext }).(ContainerGroupEciSecurityContextPtrOutput)
 }
 
-// The bandwidth of the EIP. The default value is `5`.
+// The bandwidth of the EIP. Default value: `5`.
 func (o ContainerGroupOutput) EipBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.IntPtrOutput { return v.EipBandwidth }).(pulumi.IntPtrOutput)
 }
@@ -635,19 +642,19 @@ func (o ContainerGroupOutput) EipInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.EipInstanceId }).(pulumi.StringPtrOutput)
 }
 
-// HostAliases.
+// HostAliases. See `hostAliases` below.
 func (o ContainerGroupOutput) HostAliases() ContainerGroupHostAliasArrayOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupHostAliasArrayOutput { return v.HostAliases }).(ContainerGroupHostAliasArrayOutput)
 }
 
-// The image registry credential. The details see Block `imageRegistryCredential`.
+// The image registry credential. See `imageRegistryCredential` below.
 func (o ContainerGroupOutput) ImageRegistryCredentials() ContainerGroupImageRegistryCredentialArrayOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupImageRegistryCredentialArrayOutput {
 		return v.ImageRegistryCredentials
 	}).(ContainerGroupImageRegistryCredentialArrayOutput)
 }
 
-// The list of initContainers.
+// The list of initContainers. See `initContainers` below.
 func (o ContainerGroupOutput) InitContainers() ContainerGroupInitContainerArrayOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupInitContainerArrayOutput { return v.InitContainers }).(ContainerGroupInitContainerArrayOutput)
 }
@@ -662,12 +669,12 @@ func (o ContainerGroupOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
-// (Available in v1.170.0+) The Public IP of the container group.
+// (Available since v1.170.0) The Public IP of the container group.
 func (o ContainerGroupOutput) InternetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
 }
 
-// (Available in v1.170.0+) The Private IP of the container group.
+// (Available since v1.170.0) The Private IP of the container group.
 func (o ContainerGroupOutput) IntranetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.IntranetIp }).(pulumi.StringOutput)
 }
@@ -687,7 +694,7 @@ func (o ContainerGroupOutput) RamRoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the resource group.
+// The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
 func (o ContainerGroupOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -714,12 +721,13 @@ func (o ContainerGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The list of volumes.
+// The list of volumes. See `volumes` below.
 func (o ContainerGroupOutput) Volumes() ContainerGroupVolumeArrayOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupVolumeArrayOutput { return v.Volumes }).(ContainerGroupVolumeArrayOutput)
 }
 
 // The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
 func (o ContainerGroupOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }

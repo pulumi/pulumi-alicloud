@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +76,7 @@ func NewMscSubWebhook(ctx *pulumi.Context,
 	if args.WebhookName == nil {
 		return nil, errors.New("invalid value for required argument 'WebhookName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MscSubWebhook
 	err := ctx.RegisterResource("alicloud:index/mscSubWebhook:MscSubWebhook", name, args, &resource, opts...)
 	if err != nil {

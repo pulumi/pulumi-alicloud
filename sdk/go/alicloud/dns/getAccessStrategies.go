@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +50,7 @@ import (
 //
 // ```
 func GetAccessStrategies(ctx *pulumi.Context, args *GetAccessStrategiesArgs, opts ...pulumi.InvokeOption) (*GetAccessStrategiesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessStrategiesResult
 	err := ctx.Invoke("alicloud:dns/getAccessStrategies:getAccessStrategies", args, &rv, opts...)
 	if err != nil {

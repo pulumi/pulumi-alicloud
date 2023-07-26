@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -93,6 +94,7 @@ func NewTransitRouter(ctx *pulumi.Context,
 	if args.CenId == nil {
 		return nil, errors.New("invalid value for required argument 'CenId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TransitRouter
 	err := ctx.RegisterResource("alicloud:cen/transitRouter:TransitRouter", name, args, &resource, opts...)
 	if err != nil {

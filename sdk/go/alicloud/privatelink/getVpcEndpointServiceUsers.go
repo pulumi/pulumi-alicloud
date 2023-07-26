@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetVpcEndpointServiceUsers(ctx *pulumi.Context, args *GetVpcEndpointServiceUsersArgs, opts ...pulumi.InvokeOption) (*GetVpcEndpointServiceUsersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcEndpointServiceUsersResult
 	err := ctx.Invoke("alicloud:privatelink/getVpcEndpointServiceUsers:getVpcEndpointServiceUsers", args, &rv, opts...)
 	if err != nil {

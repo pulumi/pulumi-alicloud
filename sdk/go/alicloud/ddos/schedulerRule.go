@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewSchedulerRule(ctx *pulumi.Context,
 	if args.Rules == nil {
 		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SchedulerRule
 	err := ctx.RegisterResource("alicloud:ddos/schedulerRule:SchedulerRule", name, args, &resource, opts...)
 	if err != nil {

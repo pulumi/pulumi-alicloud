@@ -44,14 +44,14 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The resource type of should shared, valid value
+     * The resource type of should shared. Valid values:
      * 
      */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
     /**
-     * @return The resource type of should shared, valid value
+     * @return The resource type of should shared. Valid values:
      * 
      */
     public Output<String> resourceType() {
@@ -127,7 +127,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceType The resource type of should shared, valid value
+         * @param resourceType The resource type of should shared. Valid values:
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceType The resource type of should shared, valid value
+         * @param resourceType The resource type of should shared. Valid values:
          * 
          * @return builder
          * 

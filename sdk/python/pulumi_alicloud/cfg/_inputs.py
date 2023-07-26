@@ -27,7 +27,7 @@ class AggregateCompliancePackConfigRuleArgs:
                  config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]] = None):
         """
         :param pulumi.Input[str] managed_rule_identifier: The Managed Rule Identifier.
-        :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of parameter rules.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of parameter rules. See `config_rule_parameters` below.
         """
         pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
@@ -49,7 +49,7 @@ class AggregateCompliancePackConfigRuleArgs:
     @pulumi.getter(name="configRuleParameters")
     def config_rule_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]:
         """
-        A list of parameter rules.
+        A list of parameter rules. See `config_rule_parameters` below.
         """
         return pulumi.get(self, "config_rule_parameters")
 
@@ -179,7 +179,7 @@ class CompliancePackConfigRuleArgs:
                  config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]] = None):
         """
         :param pulumi.Input[str] managed_rule_identifier: The Managed Rule Identifier.
-        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of Config Rule Parameters.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of Config Rule Parameters. See `config_rule_parameters` below.
         """
         pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
@@ -201,7 +201,7 @@ class CompliancePackConfigRuleArgs:
     @pulumi.getter(name="configRuleParameters")
     def config_rule_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]:
         """
-        A list of Config Rule Parameters.
+        A list of Config Rule Parameters. See `config_rule_parameters` below.
         """
         return pulumi.get(self, "config_rule_parameters")
 

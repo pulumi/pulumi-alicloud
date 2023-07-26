@@ -23,43 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/doc-detail/212056.htm).
  * 
- * &gt; **NOTE:** Available in v1.136.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.arms.PrometheusAlertRule;
- * import com.pulumi.alicloud.arms.PrometheusAlertRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new PrometheusAlertRule(&#34;example&#34;, PrometheusAlertRuleArgs.builder()        
- *             .clusterId(&#34;example_value&#34;)
- *             .duration(&#34;example_value&#34;)
- *             .expression(&#34;example_value&#34;)
- *             .message(&#34;example_value&#34;)
- *             .prometheusAlertRuleName(&#34;example_value&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.136.0.
  * 
  * ## Import
  * 
@@ -73,14 +37,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:arms/prometheusAlertRule:PrometheusAlertRule")
 public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
     /**
-     * The annotations of the alert rule.. See the following `Block annotations`.
+     * The annotations of the alert rule. See `annotations` below.
      * 
      */
     @Export(name="annotations", type=List.class, parameters={PrometheusAlertRuleAnnotation.class})
     private Output</* @Nullable */ List<PrometheusAlertRuleAnnotation>> annotations;
 
     /**
-     * @return The annotations of the alert rule.. See the following `Block annotations`.
+     * @return The annotations of the alert rule. See `annotations` below.
      * 
      */
     public Output<Optional<List<PrometheusAlertRuleAnnotation>>> annotations() {
@@ -143,14 +107,14 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
         return this.expression;
     }
     /**
-     * The labels of the resource. See the following `Block labels`.
+     * The labels of the resource. See `labels` below.
      * 
      */
     @Export(name="labels", type=List.class, parameters={PrometheusAlertRuleLabel.class})
     private Output</* @Nullable */ List<PrometheusAlertRuleLabel>> labels;
 
     /**
-     * @return The labels of the resource. See the following `Block labels`.
+     * @return The labels of the resource. See `labels` below.
      * 
      */
     public Output<Optional<List<PrometheusAlertRuleLabel>>> labels() {

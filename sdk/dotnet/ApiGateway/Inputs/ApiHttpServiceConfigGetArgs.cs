@@ -18,17 +18,20 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        /// <summary>
+        /// The name of aone.
+        /// </summary>
         [Input("aoneName")]
         public Input<string>? AoneName { get; set; }
 
         /// <summary>
-        /// The method of the api, including 'GET','POST','PUT' etc.
+        /// The http method of backend service.
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
 
         /// <summary>
-        /// The request path of the api.
+        /// The path of backend service.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

@@ -18,12 +18,12 @@ public final class AlarmEscalationsInfo {
      */
     private @Nullable String comparisonOperator;
     /**
-     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
+     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
      * 
      */
     private @Nullable String statistics;
     /**
-     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
+     * @return Critical level alarm threshold value, which must be a numeric value currently.
      * 
      */
     private @Nullable String threshold;
@@ -42,14 +42,14 @@ public final class AlarmEscalationsInfo {
         return Optional.ofNullable(this.comparisonOperator);
     }
     /**
-     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
+     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
      * 
      */
     public Optional<String> statistics() {
         return Optional.ofNullable(this.statistics);
     }
     /**
-     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
+     * @return Critical level alarm threshold value, which must be a numeric value currently.
      * 
      */
     public Optional<String> threshold() {

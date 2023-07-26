@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func GetPrivateZones(ctx *pulumi.Context, args *GetPrivateZonesArgs, opts ...pulumi.InvokeOption) (*GetPrivateZonesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrivateZonesResult
 	err := ctx.Invoke("alicloud:cen/getPrivateZones:getPrivateZones", args, &rv, opts...)
 	if err != nil {

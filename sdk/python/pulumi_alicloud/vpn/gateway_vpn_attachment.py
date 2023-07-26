@@ -33,13 +33,13 @@ class GatewayVpnAttachmentArgs:
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
         :param pulumi.Input[str] local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param pulumi.Input[str] remote_subnet: The CIDR block of the on-premises data center.
-        :param pulumi.Input['GatewayVpnAttachmentBgpConfigArgs'] bgp_config: Bgp configuration information. See the following `Block bgp_config`.
+        :param pulumi.Input['GatewayVpnAttachmentBgpConfigArgs'] bgp_config: Bgp configuration information. See `bgp_config` below.
         :param pulumi.Input[bool] effect_immediately: Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         :param pulumi.Input[bool] enable_dpd: Whether to enable the DPD (peer survival detection) function.
         :param pulumi.Input[bool] enable_nat_traversal: Allow NAT penetration.
-        :param pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs'] health_check_config: Health check configuration information. See the following `Block health_check_config`.
-        :param pulumi.Input['GatewayVpnAttachmentIkeConfigArgs'] ike_config: Configuration negotiated in the second stage. See the following `Block ike_config`.
-        :param pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs'] ipsec_config: Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        :param pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs'] health_check_config: Health check configuration information. See `health_check_config` below.
+        :param pulumi.Input['GatewayVpnAttachmentIkeConfigArgs'] ike_config: Configuration negotiated in the second stage. See `ike_config` below.
+        :param pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs'] ipsec_config: Configuration negotiated in the second stage. See `ipsec_config` below.
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Valid values: `public`, `private`.
         :param pulumi.Input[str] vpn_attachment_name: The name of the vpn attachment.
         """
@@ -105,7 +105,7 @@ class GatewayVpnAttachmentArgs:
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> Optional[pulumi.Input['GatewayVpnAttachmentBgpConfigArgs']]:
         """
-        Bgp configuration information. See the following `Block bgp_config`.
+        Bgp configuration information. See `bgp_config` below.
         """
         return pulumi.get(self, "bgp_config")
 
@@ -153,7 +153,7 @@ class GatewayVpnAttachmentArgs:
     @pulumi.getter(name="healthCheckConfig")
     def health_check_config(self) -> Optional[pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs']]:
         """
-        Health check configuration information. See the following `Block health_check_config`.
+        Health check configuration information. See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
@@ -165,7 +165,7 @@ class GatewayVpnAttachmentArgs:
     @pulumi.getter(name="ikeConfig")
     def ike_config(self) -> Optional[pulumi.Input['GatewayVpnAttachmentIkeConfigArgs']]:
         """
-        Configuration negotiated in the second stage. See the following `Block ike_config`.
+        Configuration negotiated in the second stage. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
 
@@ -177,7 +177,7 @@ class GatewayVpnAttachmentArgs:
     @pulumi.getter(name="ipsecConfig")
     def ipsec_config(self) -> Optional[pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs']]:
         """
-        Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        Configuration negotiated in the second stage. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
 
@@ -229,15 +229,15 @@ class _GatewayVpnAttachmentState:
                  vpn_attachment_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GatewayVpnAttachment resources.
-        :param pulumi.Input['GatewayVpnAttachmentBgpConfigArgs'] bgp_config: Bgp configuration information. See the following `Block bgp_config`.
+        :param pulumi.Input['GatewayVpnAttachmentBgpConfigArgs'] bgp_config: Bgp configuration information. See `bgp_config` below.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
         :param pulumi.Input[bool] effect_immediately: Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         :param pulumi.Input[bool] enable_dpd: Whether to enable the DPD (peer survival detection) function.
         :param pulumi.Input[bool] enable_nat_traversal: Allow NAT penetration.
-        :param pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs'] health_check_config: Health check configuration information. See the following `Block health_check_config`.
-        :param pulumi.Input['GatewayVpnAttachmentIkeConfigArgs'] ike_config: Configuration negotiated in the second stage. See the following `Block ike_config`.
+        :param pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs'] health_check_config: Health check configuration information. See `health_check_config` below.
+        :param pulumi.Input['GatewayVpnAttachmentIkeConfigArgs'] ike_config: Configuration negotiated in the second stage. See `ike_config` below.
         :param pulumi.Input[str] internet_ip: The VPN gateway IP.
-        :param pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs'] ipsec_config: Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        :param pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs'] ipsec_config: Configuration negotiated in the second stage. See `ipsec_config` below.
         :param pulumi.Input[str] local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Valid values: `public`, `private`.
         :param pulumi.Input[str] remote_subnet: The CIDR block of the on-premises data center.
@@ -277,7 +277,7 @@ class _GatewayVpnAttachmentState:
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> Optional[pulumi.Input['GatewayVpnAttachmentBgpConfigArgs']]:
         """
-        Bgp configuration information. See the following `Block bgp_config`.
+        Bgp configuration information. See `bgp_config` below.
         """
         return pulumi.get(self, "bgp_config")
 
@@ -337,7 +337,7 @@ class _GatewayVpnAttachmentState:
     @pulumi.getter(name="healthCheckConfig")
     def health_check_config(self) -> Optional[pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs']]:
         """
-        Health check configuration information. See the following `Block health_check_config`.
+        Health check configuration information. See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
@@ -349,7 +349,7 @@ class _GatewayVpnAttachmentState:
     @pulumi.getter(name="ikeConfig")
     def ike_config(self) -> Optional[pulumi.Input['GatewayVpnAttachmentIkeConfigArgs']]:
         """
-        Configuration negotiated in the second stage. See the following `Block ike_config`.
+        Configuration negotiated in the second stage. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
 
@@ -373,7 +373,7 @@ class _GatewayVpnAttachmentState:
     @pulumi.getter(name="ipsecConfig")
     def ipsec_config(self) -> Optional[pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs']]:
         """
-        Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        Configuration negotiated in the second stage. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
 
@@ -465,7 +465,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
 
         For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
 
-        > **NOTE:** Available in v1.181.0+.
+        > **NOTE:** Available since v1.181.0.
 
         ## Example Usage
 
@@ -475,10 +475,14 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
             ip_address="42.104.22.210",
             asn="45014",
-            description="testAccVpnConnectionDesc")
+            description=name)
         default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
             customer_gateway_id=default_customer_gateway.id,
             network_type="public",
@@ -518,10 +522,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             ),
             enable_dpd=True,
             enable_nat_traversal=True,
-            vpn_attachment_name=var["name"])
-        vpn_attachments = alicloud.vpn.get_gateway_vpn_attachments(ids=[alicloud_vpn_gateway_vpn_attachment["vpn_attachment1"]["id"]])
-        pulumi.export("localId", vpn_attachments.attachments[0].ike_configs[0].local_id)
-        pulumi.export("internetIp", vpn_attachments.attachments[0].internet_ip)
+            vpn_attachment_name=name)
         ```
 
         ## Import
@@ -534,14 +535,14 @@ class GatewayVpnAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentBgpConfigArgs']] bgp_config: Bgp configuration information. See the following `Block bgp_config`.
+        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentBgpConfigArgs']] bgp_config: Bgp configuration information. See `bgp_config` below.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
         :param pulumi.Input[bool] effect_immediately: Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         :param pulumi.Input[bool] enable_dpd: Whether to enable the DPD (peer survival detection) function.
         :param pulumi.Input[bool] enable_nat_traversal: Allow NAT penetration.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']] health_check_config: Health check configuration information. See the following `Block health_check_config`.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']] ike_config: Configuration negotiated in the second stage. See the following `Block ike_config`.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']] ipsec_config: Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']] health_check_config: Health check configuration information. See `health_check_config` below.
+        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']] ike_config: Configuration negotiated in the second stage. See `ike_config` below.
+        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']] ipsec_config: Configuration negotiated in the second stage. See `ipsec_config` below.
         :param pulumi.Input[str] local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Valid values: `public`, `private`.
         :param pulumi.Input[str] remote_subnet: The CIDR block of the on-premises data center.
@@ -558,7 +559,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
 
         For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
 
-        > **NOTE:** Available in v1.181.0+.
+        > **NOTE:** Available since v1.181.0.
 
         ## Example Usage
 
@@ -568,10 +569,14 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
             ip_address="42.104.22.210",
             asn="45014",
-            description="testAccVpnConnectionDesc")
+            description=name)
         default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
             customer_gateway_id=default_customer_gateway.id,
             network_type="public",
@@ -611,10 +616,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             ),
             enable_dpd=True,
             enable_nat_traversal=True,
-            vpn_attachment_name=var["name"])
-        vpn_attachments = alicloud.vpn.get_gateway_vpn_attachments(ids=[alicloud_vpn_gateway_vpn_attachment["vpn_attachment1"]["id"]])
-        pulumi.export("localId", vpn_attachments.attachments[0].ike_configs[0].local_id)
-        pulumi.export("internetIp", vpn_attachments.attachments[0].internet_ip)
+            vpn_attachment_name=name)
         ```
 
         ## Import
@@ -712,15 +714,15 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentBgpConfigArgs']] bgp_config: Bgp configuration information. See the following `Block bgp_config`.
+        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentBgpConfigArgs']] bgp_config: Bgp configuration information. See `bgp_config` below.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
         :param pulumi.Input[bool] effect_immediately: Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         :param pulumi.Input[bool] enable_dpd: Whether to enable the DPD (peer survival detection) function.
         :param pulumi.Input[bool] enable_nat_traversal: Allow NAT penetration.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']] health_check_config: Health check configuration information. See the following `Block health_check_config`.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']] ike_config: Configuration negotiated in the second stage. See the following `Block ike_config`.
+        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']] health_check_config: Health check configuration information. See `health_check_config` below.
+        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']] ike_config: Configuration negotiated in the second stage. See `ike_config` below.
         :param pulumi.Input[str] internet_ip: The VPN gateway IP.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']] ipsec_config: Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']] ipsec_config: Configuration negotiated in the second stage. See `ipsec_config` below.
         :param pulumi.Input[str] local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Valid values: `public`, `private`.
         :param pulumi.Input[str] remote_subnet: The CIDR block of the on-premises data center.
@@ -751,7 +753,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Output['outputs.GatewayVpnAttachmentBgpConfig']:
         """
-        Bgp configuration information. See the following `Block bgp_config`.
+        Bgp configuration information. See `bgp_config` below.
         """
         return pulumi.get(self, "bgp_config")
 
@@ -791,7 +793,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckConfig")
     def health_check_config(self) -> pulumi.Output['outputs.GatewayVpnAttachmentHealthCheckConfig']:
         """
-        Health check configuration information. See the following `Block health_check_config`.
+        Health check configuration information. See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
@@ -799,7 +801,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
     @pulumi.getter(name="ikeConfig")
     def ike_config(self) -> pulumi.Output['outputs.GatewayVpnAttachmentIkeConfig']:
         """
-        Configuration negotiated in the second stage. See the following `Block ike_config`.
+        Configuration negotiated in the second stage. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
 
@@ -815,7 +817,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
     @pulumi.getter(name="ipsecConfig")
     def ipsec_config(self) -> pulumi.Output['outputs.GatewayVpnAttachmentIpsecConfig']:
         """
-        Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        Configuration negotiated in the second stage. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
 

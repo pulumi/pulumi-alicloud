@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -109,6 +110,7 @@ func NewNetworkAclAttachment(ctx *pulumi.Context,
 	if args.Resources == nil {
 		return nil, errors.New("invalid value for required argument 'Resources'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkAclAttachment
 	err := ctx.RegisterResource("alicloud:vpc/networkAclAttachment:NetworkAclAttachment", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetHoneypotImages(ctx *pulumi.Context, args *GetHoneypotImagesArgs, opts ...pulumi.InvokeOption) (*GetHoneypotImagesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHoneypotImagesResult
 	err := ctx.Invoke("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", args, &rv, opts...)
 	if err != nil {

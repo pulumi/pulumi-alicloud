@@ -11,31 +11,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolTaint {
+    /**
+     * @return The scheduling policy.
+     * 
+     */
     private @Nullable String effect;
     /**
-     * @return The label key.
+     * @return The key of a taint.
      * 
      */
     private String key;
     /**
-     * @return The label value.
+     * @return The value of a taint.
      * 
      */
     private @Nullable String value;
 
     private NodePoolTaint() {}
+    /**
+     * @return The scheduling policy.
+     * 
+     */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return The label key.
+     * @return The key of a taint.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return The label value.
+     * @return The value of a taint.
      * 
      */
     public Optional<String> value() {

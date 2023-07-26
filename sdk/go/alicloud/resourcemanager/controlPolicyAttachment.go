@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Resource Manager Control Policy Attachment resource.
 //
-// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://help.aliyun.com/document_detail/208330.html).
+// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-doc-resourcedirectorymaster-2022-04-19-api-doc-attachcontrolpolicy).
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
 //
 // ## Example Usage
 //
@@ -28,20 +29,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleResourceDirectory, err := resourcemanager.NewResourceDirectory(ctx, "exampleResourceDirectory", &resourcemanager.ResourceDirectoryArgs{
-//				Status: pulumi.String("Enabled"),
-//			})
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
 //			exampleControlPolicy, err := resourcemanager.NewControlPolicy(ctx, "exampleControlPolicy", &resourcemanager.ControlPolicyArgs{
-//				ControlPolicyName: pulumi.String("tf-testAccName"),
-//				Description:       pulumi.String("tf-testAccRDControlPolicy"),
+//				ControlPolicyName: pulumi.String(name),
+//				Description:       pulumi.String(name),
 //				EffectScope:       pulumi.String("RAM"),
 //				PolicyDocument: pulumi.String(`  {
 //	    "Version": "1",
@@ -66,7 +67,7 @@ import (
 //				return err
 //			}
 //			exampleFolder, err := resourcemanager.NewFolder(ctx, "exampleFolder", &resourcemanager.FolderArgs{
-//				FolderName: pulumi.String("tf-testAccName"),
+//				FolderName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -74,9 +75,7 @@ import (
 //			_, err = resourcemanager.NewControlPolicyAttachment(ctx, "exampleControlPolicyAttachment", &resourcemanager.ControlPolicyAttachmentArgs{
 //				PolicyId: exampleControlPolicy.ID(),
 //				TargetId: exampleFolder.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				exampleResourceDirectory,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -117,6 +116,7 @@ func NewControlPolicyAttachment(ctx *pulumi.Context,
 	if args.TargetId == nil {
 		return nil, errors.New("invalid value for required argument 'TargetId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ControlPolicyAttachment
 	err := ctx.RegisterResource("alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment", name, args, &resource, opts...)
 	if err != nil {

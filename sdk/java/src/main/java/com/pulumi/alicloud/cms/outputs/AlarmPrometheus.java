@@ -30,7 +30,7 @@ public final class AlarmPrometheus {
      */
     private @Nullable String promQl;
     /**
-     * @return Critical level alarm retry times. Default to 3.
+     * @return The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
      * 
      */
     private @Nullable Integer times;
@@ -58,7 +58,7 @@ public final class AlarmPrometheus {
         return Optional.ofNullable(this.promQl);
     }
     /**
-     * @return Critical level alarm retry times. Default to 3.
+     * @return The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
      * 
      */
     public Optional<Integer> times() {

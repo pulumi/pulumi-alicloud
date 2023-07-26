@@ -17,7 +17,6 @@ class EcsDiskArgs:
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
-                 dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -75,8 +74,6 @@ class EcsDiskArgs:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if category is not None:
             pulumi.set(__self__, "category", category)
-        if dedicated_block_storage_cluster_id is not None:
-            pulumi.set(__self__, "dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
         if delete_auto_snapshot is not None:
             pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if delete_with_instance is not None:
@@ -158,15 +155,6 @@ class EcsDiskArgs:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
-
-    @property
-    @pulumi.getter(name="dedicatedBlockStorageClusterId")
-    def dedicated_block_storage_cluster_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "dedicated_block_storage_cluster_id")
-
-    @dedicated_block_storage_cluster_id.setter
-    def dedicated_block_storage_cluster_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dedicated_block_storage_cluster_id", value)
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
@@ -429,7 +417,6 @@ class _EcsDiskState:
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
-                 dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -489,8 +476,6 @@ class _EcsDiskState:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if category is not None:
             pulumi.set(__self__, "category", category)
-        if dedicated_block_storage_cluster_id is not None:
-            pulumi.set(__self__, "dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
         if delete_auto_snapshot is not None:
             pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if delete_with_instance is not None:
@@ -574,15 +559,6 @@ class _EcsDiskState:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
-
-    @property
-    @pulumi.getter(name="dedicatedBlockStorageClusterId")
-    def dedicated_block_storage_cluster_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "dedicated_block_storage_cluster_id")
-
-    @dedicated_block_storage_cluster_id.setter
-    def dedicated_block_storage_cluster_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dedicated_block_storage_cluster_id", value)
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
@@ -859,7 +835,6 @@ class EcsDisk(pulumi.CustomResource):
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
-                 dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -951,7 +926,6 @@ class EcsDisk(pulumi.CustomResource):
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
-                 dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -988,7 +962,6 @@ class EcsDisk(pulumi.CustomResource):
                 pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["category"] = category
-            __props__.__dict__["dedicated_block_storage_cluster_id"] = dedicated_block_storage_cluster_id
             __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
             __props__.__dict__["delete_with_instance"] = delete_with_instance
             __props__.__dict__["description"] = description
@@ -1027,7 +1000,6 @@ class EcsDisk(pulumi.CustomResource):
             advanced_features: Optional[pulumi.Input[str]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             category: Optional[pulumi.Input[str]] = None,
-            dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
             delete_with_instance: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1090,7 +1062,6 @@ class EcsDisk(pulumi.CustomResource):
         __props__.__dict__["advanced_features"] = advanced_features
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["category"] = category
-        __props__.__dict__["dedicated_block_storage_cluster_id"] = dedicated_block_storage_cluster_id
         __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
         __props__.__dict__["delete_with_instance"] = delete_with_instance
         __props__.__dict__["description"] = description
@@ -1138,11 +1109,6 @@ class EcsDisk(pulumi.CustomResource):
         Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
-
-    @property
-    @pulumi.getter(name="dedicatedBlockStorageClusterId")
-    def dedicated_block_storage_cluster_id(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "dedicated_block_storage_cluster_id")
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")

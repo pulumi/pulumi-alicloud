@@ -201,9 +201,9 @@ class MonitorGroup(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Monitor Group resource.
 
-        For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/doc-detail/115030.htm).
+        For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroup).
 
-        > **NOTE:** Available in v1.113.0+.
+        > **NOTE:** Available since v1.113.0.
 
         ## Example Usage
 
@@ -213,14 +213,14 @@ class MonitorGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-testaccmonitorgroup")
+        example = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-example-accmonitorgroup")
         default2 = alicloud.cms.MonitorGroup("default2",
             contact_groups=["your_contact_groups"],
             resource_group_id="your_resource_group_id",
             resource_group_name="resource_group_name",
             tags={
                 "Created": "TF",
-                "For": "Acceptance-test",
+                "For": "Acceptance-example",
             })
         ```
 
@@ -249,9 +249,9 @@ class MonitorGroup(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Monitor Group resource.
 
-        For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/doc-detail/115030.htm).
+        For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroup).
 
-        > **NOTE:** Available in v1.113.0+.
+        > **NOTE:** Available since v1.113.0.
 
         ## Example Usage
 
@@ -261,14 +261,14 @@ class MonitorGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-testaccmonitorgroup")
+        example = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-example-accmonitorgroup")
         default2 = alicloud.cms.MonitorGroup("default2",
             contact_groups=["your_contact_groups"],
             resource_group_id="your_resource_group_id",
             resource_group_name="resource_group_name",
             tags={
                 "Created": "TF",
-                "For": "Acceptance-test",
+                "For": "Acceptance-example",
             })
         ```
 

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Bastion Host Host Group and how to use it, see [What is Host Group](https://www.alibabacloud.com/help/en/doc-detail/204307.htm).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Example Usage
  * 
@@ -30,6 +30,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.bastionhost.Instance;
+ * import com.pulumi.alicloud.bastionhost.InstanceArgs;
  * import com.pulumi.alicloud.bastionhost.HostGroup;
  * import com.pulumi.alicloud.bastionhost.HostGroupArgs;
  * import java.util.List;
@@ -45,9 +55,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HostGroup(&#34;example&#34;, HostGroupArgs.builder()        
- *             .hostGroupName(&#34;example_value&#34;)
- *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .description(name)
+ *             .licenseCode(&#34;bhah_ent_50_asset&#34;)
+ *             .planCode(&#34;cloudbastion&#34;)
+ *             .storage(&#34;5&#34;)
+ *             .bandwidth(&#34;5&#34;)
+ *             .period(&#34;1&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *         var defaultHostGroup = new HostGroup(&#34;defaultHostGroup&#34;, HostGroupArgs.builder()        
+ *             .hostGroupName(name)
+ *             .instanceId(defaultInstance.id())
  *             .build());
  * 
  *     }

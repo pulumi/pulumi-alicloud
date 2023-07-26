@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -114,6 +115,7 @@ func NewK8sApplication(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource K8sApplication
 	err := ctx.RegisterResource("alicloud:edas/k8sApplication:K8sApplication", name, args, &resource, opts...)
 	if err != nil {

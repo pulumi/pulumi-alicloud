@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ import (
 //
 // ```
 func GetDirectories(ctx *pulumi.Context, args *GetDirectoriesArgs, opts ...pulumi.InvokeOption) (*GetDirectoriesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDirectoriesResult
 	err := ctx.Invoke("alicloud:cloudsso/getDirectories:getDirectories", args, &rv, opts...)
 	if err != nil {

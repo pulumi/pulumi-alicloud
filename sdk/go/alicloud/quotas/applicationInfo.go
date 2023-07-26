@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ func NewApplicationInfo(ctx *pulumi.Context,
 	if args.Reason == nil {
 		return nil, errors.New("invalid value for required argument 'Reason'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApplicationInfo
 	err := ctx.RegisterResource("alicloud:quotas/applicationInfo:ApplicationInfo", name, args, &resource, opts...)
 	if err != nil {

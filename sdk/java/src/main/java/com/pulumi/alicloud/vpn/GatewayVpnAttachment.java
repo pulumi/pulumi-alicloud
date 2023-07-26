@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
  * 
- * &gt; **NOTE:** Available in v1.181.0+.
+ * &gt; **NOTE:** Available since v1.181.0.
  * 
  * ## Example Usage
  * 
@@ -43,8 +43,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
- * import com.pulumi.alicloud.vpn.VpnFunctions;
- * import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,10 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
  *             .ipAddress(&#34;42.104.22.210&#34;)
  *             .asn(&#34;45014&#34;)
- *             .description(&#34;testAccVpnConnectionDesc&#34;)
+ *             .description(name)
  *             .build());
  * 
  *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
@@ -103,15 +103,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .enableDpd(true)
  *             .enableNatTraversal(true)
- *             .vpnAttachmentName(var_.name())
+ *             .vpnAttachmentName(name)
  *             .build());
  * 
- *         final var vpnAttachments = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
- *             .ids(alicloud_vpn_gateway_vpn_attachment.vpn_attachment1().id())
- *             .build());
- * 
- *         ctx.export(&#34;localId&#34;, vpnAttachments.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].ikeConfigs()[0].localId()));
- *         ctx.export(&#34;internetIp&#34;, vpnAttachments.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].internetIp()));
  *     }
  * }
  * ```
@@ -128,14 +122,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment")
 public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Bgp configuration information. See the following `Block bgp_config`.
+     * Bgp configuration information. See `bgp_config` below.
      * 
      */
     @Export(name="bgpConfig", type=GatewayVpnAttachmentBgpConfig.class, parameters={})
     private Output<GatewayVpnAttachmentBgpConfig> bgpConfig;
 
     /**
-     * @return Bgp configuration information. See the following `Block bgp_config`.
+     * @return Bgp configuration information. See `bgp_config` below.
      * 
      */
     public Output<GatewayVpnAttachmentBgpConfig> bgpConfig() {
@@ -198,28 +192,28 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
         return this.enableNatTraversal;
     }
     /**
-     * Health check configuration information. See the following `Block health_check_config`.
+     * Health check configuration information. See `health_check_config` below.
      * 
      */
     @Export(name="healthCheckConfig", type=GatewayVpnAttachmentHealthCheckConfig.class, parameters={})
     private Output<GatewayVpnAttachmentHealthCheckConfig> healthCheckConfig;
 
     /**
-     * @return Health check configuration information. See the following `Block health_check_config`.
+     * @return Health check configuration information. See `health_check_config` below.
      * 
      */
     public Output<GatewayVpnAttachmentHealthCheckConfig> healthCheckConfig() {
         return this.healthCheckConfig;
     }
     /**
-     * Configuration negotiated in the second stage. See the following `Block ike_config`.
+     * Configuration negotiated in the second stage. See `ike_config` below.
      * 
      */
     @Export(name="ikeConfig", type=GatewayVpnAttachmentIkeConfig.class, parameters={})
     private Output<GatewayVpnAttachmentIkeConfig> ikeConfig;
 
     /**
-     * @return Configuration negotiated in the second stage. See the following `Block ike_config`.
+     * @return Configuration negotiated in the second stage. See `ike_config` below.
      * 
      */
     public Output<GatewayVpnAttachmentIkeConfig> ikeConfig() {
@@ -240,14 +234,14 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
         return this.internetIp;
     }
     /**
-     * Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+     * Configuration negotiated in the second stage. See `ipsec_config` below.
      * 
      */
     @Export(name="ipsecConfig", type=GatewayVpnAttachmentIpsecConfig.class, parameters={})
     private Output<GatewayVpnAttachmentIpsecConfig> ipsecConfig;
 
     /**
-     * @return Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+     * @return Configuration negotiated in the second stage. See `ipsec_config` below.
      * 
      */
     public Output<GatewayVpnAttachmentIpsecConfig> ipsecConfig() {

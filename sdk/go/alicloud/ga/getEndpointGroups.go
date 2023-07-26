@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetEndpointGroups(ctx *pulumi.Context, args *GetEndpointGroupsArgs, opts ...pulumi.InvokeOption) (*GetEndpointGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEndpointGroupsResult
 	err := ctx.Invoke("alicloud:ga/getEndpointGroups:getEndpointGroups", args, &rv, opts...)
 	if err != nil {

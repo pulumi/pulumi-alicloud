@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in 1.82.0+
 func GetDeployGroups(ctx *pulumi.Context, args *GetDeployGroupsArgs, opts ...pulumi.InvokeOption) (*GetDeployGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDeployGroupsResult
 	err := ctx.Invoke("alicloud:edas/getDeployGroups:getDeployGroups", args, &rv, opts...)
 	if err != nil {

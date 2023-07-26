@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ga
     /// <summary>
     /// Provides a Global Accelerator (GA) Acl entry attachment resource.
     /// 
-    /// For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-addentriestoacl).
+    /// For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
     /// 
     /// &gt; **NOTE:** Available since v1.190.0.
     /// 

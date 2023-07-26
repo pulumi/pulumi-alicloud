@@ -32,14 +32,14 @@ public final class ContainerGroupContainerReadinessProbeHttpGetArgs extends com.
     }
 
     /**
-     * The port number. Valid values: 1 to 65535.
+     * The port number. Valid values: `1` to `65535`.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port number. Valid values: 1 to 65535.
+     * @return The port number. Valid values: `1` to `65535`.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -109,7 +109,7 @@ public final class ContainerGroupContainerReadinessProbeHttpGetArgs extends com.
         }
 
         /**
-         * @param port The port number. Valid values: 1 to 65535.
+         * @param port The port number. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ContainerGroupContainerReadinessProbeHttpGetArgs extends com.
         }
 
         /**
-         * @param port The port number. Valid values: 1 to 65535.
+         * @param port The port number. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 

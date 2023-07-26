@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/204503.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.133.0+.
+    /// &gt; **NOTE:** Available since v1.133.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,25 +28,74 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var local = new AliCloud.BastionHost.User("local", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         InstanceId = "example_value",
-    ///         Mobile = "13312345678",
-    ///         MobileCountryCode = "CN",
-    ///         Password = "YourPassword-123",
-    ///         Source = "Local",
-    ///         UserName = "my-local-user",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var ram = new AliCloud.BastionHost.User("ram", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         InstanceId = "example_value",
-    ///         Mobile = "13312345678",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.BastionHost.Instance("defaultInstance", new()
+    ///     {
+    ///         Description = name,
+    ///         LicenseCode = "bhah_ent_50_asset",
+    ///         PlanCode = "cloudbastion",
+    ///         Storage = "5",
+    ///         Bandwidth = "5",
+    ///         Period = 1,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var localUser = new AliCloud.BastionHost.User("localUser", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
     ///         MobileCountryCode = "CN",
+    ///         Mobile = "13312345678",
     ///         Password = "YourPassword-123",
+    ///         Source = "Local",
+    ///         UserName = $"{name}_local_user",
+    ///     });
+    /// 
+    ///     var user = new AliCloud.Ram.User("user", new()
+    ///     {
+    ///         DisplayName = $"{name}_bastionhost_user",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var ramUser = new AliCloud.BastionHost.User("ramUser", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
     ///         Source = "Ram",
-    ///         SourceUserId = "1234567890",
-    ///         UserName = "my-ram-user",
+    ///         SourceUserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         UserName = user.Name,
     ///     });
     /// 
     /// });
@@ -119,7 +168,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> MobileCountryCode { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -268,7 +317,7 @@ namespace Pulumi.AliCloud.BastionHost
         private Input<string>? _password;
 
         /// <summary>
-        /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         /// </summary>
         public Input<string>? Password
         {
@@ -376,7 +425,7 @@ namespace Pulumi.AliCloud.BastionHost
         private Input<string>? _password;
 
         /// <summary>
-        /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         /// </summary>
         public Input<string>? Password
         {

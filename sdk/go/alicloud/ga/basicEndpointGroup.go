@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Basic Endpoint Group resource.
 //
-// For information about Global Accelerator (GA) Basic Endpoint Group and how to use it, see [What is Basic Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createbasicendpointgroup).
+// For information about Global Accelerator (GA) Basic Endpoint Group and how to use it, see [What is Basic Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicendpointgroup).
 //
 // > **NOTE:** Available since v1.194.0.
 //
@@ -149,6 +150,7 @@ func NewBasicEndpointGroup(ctx *pulumi.Context,
 	if args.EndpointGroupRegion == nil {
 		return nil, errors.New("invalid value for required argument 'EndpointGroupRegion'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BasicEndpointGroup
 	err := ctx.RegisterResource("alicloud:ga/basicEndpointGroup:BasicEndpointGroup", name, args, &resource, opts...)
 	if err != nil {

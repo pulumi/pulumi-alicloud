@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetEcsKeyPairs(ctx *pulumi.Context, args *GetEcsKeyPairsArgs, opts ...pulumi.InvokeOption) (*GetEcsKeyPairsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsKeyPairsResult
 	err := ctx.Invoke("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args, &rv, opts...)
 	if err != nil {

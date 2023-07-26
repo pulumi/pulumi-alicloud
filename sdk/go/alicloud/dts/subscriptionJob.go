@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -276,6 +277,7 @@ func NewSubscriptionJob(ctx *pulumi.Context,
 	if args.SourceEndpointRegion == nil {
 		return nil, errors.New("invalid value for required argument 'SourceEndpointRegion'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SubscriptionJob
 	err := ctx.RegisterResource("alicloud:dts/subscriptionJob:SubscriptionJob", name, args, &resource, opts...)
 	if err != nil {

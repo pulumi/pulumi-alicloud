@@ -200,7 +200,37 @@ class EndpointAclPolicy(pulumi.CustomResource):
 
         For information about CR Endpoint Acl Policy and how to use it, see [What is Endpoint Acl Policy](https://www.alibabacloud.com/help/doc-detail/145275.htm).
 
-        > **NOTE:** Available in v1.139.0+.
+        > **NOTE:** Available since v1.139.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        default_endpoint_acl_service = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
+            enable=True,
+            instance_id=default_registry_enterprise_instance.id,
+            module_name="Registry")
+        default_endpoint_acl_policy = alicloud.cr.EndpointAclPolicy("defaultEndpointAclPolicy",
+            instance_id=default_endpoint_acl_service.instance_id,
+            entry="192.168.1.0/24",
+            description=name,
+            module_name="Registry",
+            endpoint_type="internet")
+        ```
 
         ## Import
 
@@ -229,7 +259,37 @@ class EndpointAclPolicy(pulumi.CustomResource):
 
         For information about CR Endpoint Acl Policy and how to use it, see [What is Endpoint Acl Policy](https://www.alibabacloud.com/help/doc-detail/145275.htm).
 
-        > **NOTE:** Available in v1.139.0+.
+        > **NOTE:** Available since v1.139.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        default_endpoint_acl_service = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
+            enable=True,
+            instance_id=default_registry_enterprise_instance.id,
+            module_name="Registry")
+        default_endpoint_acl_policy = alicloud.cr.EndpointAclPolicy("defaultEndpointAclPolicy",
+            instance_id=default_endpoint_acl_service.instance_id,
+            entry="192.168.1.0/24",
+            description=name,
+            module_name="Registry",
+            endpoint_type="internet")
+        ```
 
         ## Import
 

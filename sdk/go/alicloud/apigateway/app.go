@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +27,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.NewApp(ctx, "apiTest", &apigateway.AppArgs{
-//				Description: pulumi.String("description of the app"),
+//			_, err := apigateway.NewApp(ctx, "example", &apigateway.AppArgs{
+//				Description: pulumi.String("tf_example"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,6 +66,7 @@ func NewApp(ctx *pulumi.Context,
 		args = &AppArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource App
 	err := ctx.RegisterResource("alicloud:apigateway/app:App", name, args, &resource, opts...)
 	if err != nil {

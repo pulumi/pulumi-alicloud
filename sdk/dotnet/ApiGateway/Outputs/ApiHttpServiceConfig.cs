@@ -17,13 +17,16 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// The address of backend service.
         /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The name of aone.
+        /// </summary>
         public readonly string? AoneName;
         /// <summary>
-        /// The method of the api, including 'GET','POST','PUT' etc.
+        /// The http method of backend service.
         /// </summary>
         public readonly string Method;
         /// <summary>
-        /// The request path of the api.
+        /// The path of backend service.
         /// </summary>
         public readonly string Path;
         /// <summary>

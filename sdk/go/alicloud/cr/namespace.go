@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,6 +80,7 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.DefaultVisibility == nil {
 		return nil, errors.New("invalid value for required argument 'DefaultVisibility'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Namespace
 	err := ctx.RegisterResource("alicloud:cr/namespace:Namespace", name, args, &resource, opts...)
 	if err != nil {

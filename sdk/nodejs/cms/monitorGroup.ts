@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Monitor Service Monitor Group resource.
  *
- * For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/doc-detail/115030.htm).
+ * For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroup).
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *
@@ -19,14 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cms.MonitorGroup("example", {monitorGroupName: "tf-testaccmonitorgroup"});
+ * const example = new alicloud.cms.MonitorGroup("example", {monitorGroupName: "tf-example-accmonitorgroup"});
  * const default2 = new alicloud.cms.MonitorGroup("default2", {
  *     contactGroups: ["your_contact_groups"],
  *     resourceGroupId: "your_resource_group_id",
  *     resourceGroupName: "resource_group_name",
  *     tags: {
  *         Created: "TF",
- *         For: "Acceptance-test",
+ *         For: "Acceptance-example",
  *     },
  * });
  * ```

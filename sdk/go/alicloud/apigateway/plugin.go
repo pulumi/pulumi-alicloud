@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/latest/create-an-plugin).
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -34,13 +35,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigateway.NewPlugin(ctx, "default", &apigateway.PluginArgs{
-//				Description: pulumi.Any(_var.Name),
-//				PluginName:  pulumi.Any(_var.Name),
+//				Description: pulumi.String("tf_example"),
 //				PluginData:  pulumi.String("{\"allowOrigins\": \"api.foo.com\",\"allowMethods\": \"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\",\"allowHeaders\": \"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\",\"exposeHeaders\": \"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\",\"maxAge\": 172800,\"allowCredentials\": true}"),
+//				PluginName:  pulumi.String("tf_example"),
 //				PluginType:  pulumi.String("cors"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Acceptance-test"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
@@ -98,6 +99,7 @@ func NewPlugin(ctx *pulumi.Context,
 	if args.PluginType == nil {
 		return nil, errors.New("invalid value for required argument 'PluginType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Plugin
 	err := ctx.RegisterResource("alicloud:apigateway/plugin:Plugin", name, args, &resource, opts...)
 	if err != nil {

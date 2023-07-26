@@ -17,14 +17,18 @@ public final class ApiHttpServiceConfig {
      * 
      */
     private String address;
+    /**
+     * @return The name of aone.
+     * 
+     */
     private @Nullable String aoneName;
     /**
-     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+     * @return The http method of backend service.
      * 
      */
     private String method;
     /**
-     * @return The request path of the api.
+     * @return The path of backend service.
      * 
      */
     private String path;
@@ -42,18 +46,22 @@ public final class ApiHttpServiceConfig {
     public String address() {
         return this.address;
     }
+    /**
+     * @return The name of aone.
+     * 
+     */
     public Optional<String> aoneName() {
         return Optional.ofNullable(this.aoneName);
     }
     /**
-     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+     * @return The http method of backend service.
      * 
      */
     public String method() {
         return this.method;
     }
     /**
-     * @return The request path of the api.
+     * @return The path of backend service.
      * 
      */
     public String path() {

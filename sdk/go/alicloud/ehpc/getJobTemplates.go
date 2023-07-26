@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +52,7 @@ import (
 //
 // ```
 func GetJobTemplates(ctx *pulumi.Context, args *GetJobTemplatesArgs, opts ...pulumi.InvokeOption) (*GetJobTemplatesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetJobTemplatesResult
 	err := ctx.Invoke("alicloud:ehpc/getJobTemplates:getJobTemplates", args, &rv, opts...)
 	if err != nil {

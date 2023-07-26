@@ -15,14 +15,14 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
     public static final DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs Empty = new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs();
 
     /**
-     * Sets the dispatch rule. See the following `Block label_match_expressions`.
+     * Sets the dispatch rule. See `label_match_expressions` below.
      * 
      */
     @Import(name="labelMatchExpressions", required=true)
     private Output<List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs>> labelMatchExpressions;
 
     /**
-     * @return Sets the dispatch rule. See the following `Block label_match_expressions`.
+     * @return Sets the dispatch rule. See `label_match_expressions` below.
      * 
      */
     public Output<List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs>> labelMatchExpressions() {
@@ -54,7 +54,7 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
         }
 
         /**
-         * @param labelMatchExpressions Sets the dispatch rule. See the following `Block label_match_expressions`.
+         * @param labelMatchExpressions Sets the dispatch rule. See `label_match_expressions` below.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
         }
 
         /**
-         * @param labelMatchExpressions Sets the dispatch rule. See the following `Block label_match_expressions`.
+         * @param labelMatchExpressions Sets the dispatch rule. See `label_match_expressions` below.
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
         }
 
         /**
-         * @param labelMatchExpressions Sets the dispatch rule. See the following `Block label_match_expressions`.
+         * @param labelMatchExpressions Sets the dispatch rule. See `label_match_expressions` below.
          * 
          * @return builder
          * 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in v1.157.0+.
 func GetShardingNetworkPrivateAddresses(ctx *pulumi.Context, args *GetShardingNetworkPrivateAddressesArgs, opts ...pulumi.InvokeOption) (*GetShardingNetworkPrivateAddressesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetShardingNetworkPrivateAddressesResult
 	err := ctx.Invoke("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args, &rv, opts...)
 	if err != nil {

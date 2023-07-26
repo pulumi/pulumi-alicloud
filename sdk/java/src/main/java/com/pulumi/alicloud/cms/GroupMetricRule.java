@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Monitor Service Group Metric Rule resource.
  * 
- * For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/doc-detail/114943.htm).
+ * For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putgroupmetricrule).
  * 
- * &gt; **NOTE:** Available in v1.104.0+.
+ * &gt; **NOTE:** Available since v1.104.0.
  * 
  * ## Example Usage
  * 
@@ -34,7 +34,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomUuid;
+ * import com.pulumi.alicloud.cms.AlarmContactGroup;
+ * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+ * import com.pulumi.alicloud.cms.MonitorGroup;
+ * import com.pulumi.alicloud.cms.MonitorGroupArgs;
  * import com.pulumi.alicloud.cms.GroupMetricRule;
  * import com.pulumi.alicloud.cms.GroupMetricRuleArgs;
  * import com.pulumi.alicloud.cms.inputs.GroupMetricRuleEscalationsArgs;
@@ -53,17 +56,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var thisRandomUuid = new RandomUuid(&#34;thisRandomUuid&#34;);
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+ *             .alarmContactGroupName(name)
+ *             .describe(name)
+ *             .build());
  * 
- *         var thisGroupMetricRule = new GroupMetricRule(&#34;thisGroupMetricRule&#34;, GroupMetricRuleArgs.builder()        
- *             .groupId(&#34;539****&#34;)
- *             .ruleId(thisRandomUuid.id())
+ *         var defaultMonitorGroup = new MonitorGroup(&#34;defaultMonitorGroup&#34;, MonitorGroupArgs.builder()        
+ *             .monitorGroupName(name)
+ *             .contactGroups(defaultAlarmContactGroup.id())
+ *             .build());
+ * 
+ *         var this_ = new GroupMetricRule(&#34;this&#34;, GroupMetricRuleArgs.builder()        
+ *             .groupId(defaultMonitorGroup.id())
+ *             .groupMetricRuleName(name)
  *             .category(&#34;ecs&#34;)
- *             .namespace(&#34;acs_ecs_dashboard&#34;)
  *             .metricName(&#34;cpu_total&#34;)
+ *             .namespace(&#34;acs_ecs_dashboard&#34;)
+ *             .ruleId(name)
  *             .period(&#34;60&#34;)
- *             .groupMetricRuleName(&#34;tf-testacc-rule-name&#34;)
- *             .emailSubject(&#34;tf-testacc-rule-name-warning&#34;)
  *             .interval(&#34;3600&#34;)
  *             .silenceTime(85800)
  *             .noEffectiveInterval(&#34;00:00-05:30&#34;)
@@ -170,14 +182,14 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
         return this.emailSubject;
     }
     /**
-     * Alarm level. See the following `Block escalations`.
+     * Alarm level. See `escalations` below.
      * 
      */
     @Export(name="escalations", type=GroupMetricRuleEscalations.class, parameters={})
     private Output<GroupMetricRuleEscalations> escalations;
 
     /**
-     * @return Alarm level. See the following `Block escalations`.
+     * @return Alarm level. See `escalations` below.
      * 
      */
     public Output<GroupMetricRuleEscalations> escalations() {
@@ -324,14 +336,14 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * The information about the resource for which alerts are triggered. See `targets` below.
      * 
      */
     @Export(name="targets", type=List.class, parameters={GroupMetricRuleTarget.class})
     private Output<List<GroupMetricRuleTarget>> targets;
 
     /**
-     * @return The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * @return The information about the resource for which alerts are triggered. See `targets` below.
      * 
      */
     public Output<List<GroupMetricRuleTarget>> targets() {

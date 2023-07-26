@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const apiTest = new alicloud.apigateway.App("apiTest", {description: "description of the app"});
+ * const example = new alicloud.apigateway.App("example", {description: "tf_example"});
  * ```
  *
  * ## Import

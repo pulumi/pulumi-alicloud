@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AliasRoutingConfig struct {
 	// A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
@@ -1870,6 +1873,1533 @@ func (o ServiceVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type V2FunctionCode struct {
+	// The OSS bucket name of the function code package.
+	OssBucketName *string `pulumi:"ossBucketName"`
+	// The OSS object name of the function code package.
+	OssObjectName *string `pulumi:"ossObjectName"`
+	// Upload the base64 encoding of the code zip package directly in the request body.
+	ZipFile *string `pulumi:"zipFile"`
+}
+
+// V2FunctionCodeInput is an input type that accepts V2FunctionCodeArgs and V2FunctionCodeOutput values.
+// You can construct a concrete instance of `V2FunctionCodeInput` via:
+//
+//	V2FunctionCodeArgs{...}
+type V2FunctionCodeInput interface {
+	pulumi.Input
+
+	ToV2FunctionCodeOutput() V2FunctionCodeOutput
+	ToV2FunctionCodeOutputWithContext(context.Context) V2FunctionCodeOutput
+}
+
+type V2FunctionCodeArgs struct {
+	// The OSS bucket name of the function code package.
+	OssBucketName pulumi.StringPtrInput `pulumi:"ossBucketName"`
+	// The OSS object name of the function code package.
+	OssObjectName pulumi.StringPtrInput `pulumi:"ossObjectName"`
+	// Upload the base64 encoding of the code zip package directly in the request body.
+	ZipFile pulumi.StringPtrInput `pulumi:"zipFile"`
+}
+
+func (V2FunctionCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCode)(nil)).Elem()
+}
+
+func (i V2FunctionCodeArgs) ToV2FunctionCodeOutput() V2FunctionCodeOutput {
+	return i.ToV2FunctionCodeOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCodeArgs) ToV2FunctionCodeOutputWithContext(ctx context.Context) V2FunctionCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCodeOutput)
+}
+
+func (i V2FunctionCodeArgs) ToV2FunctionCodePtrOutput() V2FunctionCodePtrOutput {
+	return i.ToV2FunctionCodePtrOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCodeArgs) ToV2FunctionCodePtrOutputWithContext(ctx context.Context) V2FunctionCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCodeOutput).ToV2FunctionCodePtrOutputWithContext(ctx)
+}
+
+// V2FunctionCodePtrInput is an input type that accepts V2FunctionCodeArgs, V2FunctionCodePtr and V2FunctionCodePtrOutput values.
+// You can construct a concrete instance of `V2FunctionCodePtrInput` via:
+//
+//	        V2FunctionCodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2FunctionCodePtrInput interface {
+	pulumi.Input
+
+	ToV2FunctionCodePtrOutput() V2FunctionCodePtrOutput
+	ToV2FunctionCodePtrOutputWithContext(context.Context) V2FunctionCodePtrOutput
+}
+
+type v2functionCodePtrType V2FunctionCodeArgs
+
+func V2FunctionCodePtr(v *V2FunctionCodeArgs) V2FunctionCodePtrInput {
+	return (*v2functionCodePtrType)(v)
+}
+
+func (*v2functionCodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCode)(nil)).Elem()
+}
+
+func (i *v2functionCodePtrType) ToV2FunctionCodePtrOutput() V2FunctionCodePtrOutput {
+	return i.ToV2FunctionCodePtrOutputWithContext(context.Background())
+}
+
+func (i *v2functionCodePtrType) ToV2FunctionCodePtrOutputWithContext(ctx context.Context) V2FunctionCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCodePtrOutput)
+}
+
+type V2FunctionCodeOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCode)(nil)).Elem()
+}
+
+func (o V2FunctionCodeOutput) ToV2FunctionCodeOutput() V2FunctionCodeOutput {
+	return o
+}
+
+func (o V2FunctionCodeOutput) ToV2FunctionCodeOutputWithContext(ctx context.Context) V2FunctionCodeOutput {
+	return o
+}
+
+func (o V2FunctionCodeOutput) ToV2FunctionCodePtrOutput() V2FunctionCodePtrOutput {
+	return o.ToV2FunctionCodePtrOutputWithContext(context.Background())
+}
+
+func (o V2FunctionCodeOutput) ToV2FunctionCodePtrOutputWithContext(ctx context.Context) V2FunctionCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2FunctionCode) *V2FunctionCode {
+		return &v
+	}).(V2FunctionCodePtrOutput)
+}
+
+// The OSS bucket name of the function code package.
+func (o V2FunctionCodeOutput) OssBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCode) *string { return v.OssBucketName }).(pulumi.StringPtrOutput)
+}
+
+// The OSS object name of the function code package.
+func (o V2FunctionCodeOutput) OssObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCode) *string { return v.OssObjectName }).(pulumi.StringPtrOutput)
+}
+
+// Upload the base64 encoding of the code zip package directly in the request body.
+func (o V2FunctionCodeOutput) ZipFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCode) *string { return v.ZipFile }).(pulumi.StringPtrOutput)
+}
+
+type V2FunctionCodePtrOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCode)(nil)).Elem()
+}
+
+func (o V2FunctionCodePtrOutput) ToV2FunctionCodePtrOutput() V2FunctionCodePtrOutput {
+	return o
+}
+
+func (o V2FunctionCodePtrOutput) ToV2FunctionCodePtrOutputWithContext(ctx context.Context) V2FunctionCodePtrOutput {
+	return o
+}
+
+func (o V2FunctionCodePtrOutput) Elem() V2FunctionCodeOutput {
+	return o.ApplyT(func(v *V2FunctionCode) V2FunctionCode {
+		if v != nil {
+			return *v
+		}
+		var ret V2FunctionCode
+		return ret
+	}).(V2FunctionCodeOutput)
+}
+
+// The OSS bucket name of the function code package.
+func (o V2FunctionCodePtrOutput) OssBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OssBucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OSS object name of the function code package.
+func (o V2FunctionCodePtrOutput) OssObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OssObjectName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Upload the base64 encoding of the code zip package directly in the request body.
+func (o V2FunctionCodePtrOutput) ZipFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZipFile
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2FunctionCustomContainerConfig struct {
+	// Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
+	AccelerationType *string `pulumi:"accelerationType"`
+	// Container startup parameters.
+	Args *string `pulumi:"args"`
+	// Container start command, equivalent to Docker ENTRYPOINT.
+	Command *string `pulumi:"command"`
+	// Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
+	Image *string `pulumi:"image"`
+	// Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
+	WebServerMode *bool `pulumi:"webServerMode"`
+}
+
+// V2FunctionCustomContainerConfigInput is an input type that accepts V2FunctionCustomContainerConfigArgs and V2FunctionCustomContainerConfigOutput values.
+// You can construct a concrete instance of `V2FunctionCustomContainerConfigInput` via:
+//
+//	V2FunctionCustomContainerConfigArgs{...}
+type V2FunctionCustomContainerConfigInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomContainerConfigOutput() V2FunctionCustomContainerConfigOutput
+	ToV2FunctionCustomContainerConfigOutputWithContext(context.Context) V2FunctionCustomContainerConfigOutput
+}
+
+type V2FunctionCustomContainerConfigArgs struct {
+	// Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
+	AccelerationType pulumi.StringPtrInput `pulumi:"accelerationType"`
+	// Container startup parameters.
+	Args pulumi.StringPtrInput `pulumi:"args"`
+	// Container start command, equivalent to Docker ENTRYPOINT.
+	Command pulumi.StringPtrInput `pulumi:"command"`
+	// Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
+	WebServerMode pulumi.BoolPtrInput `pulumi:"webServerMode"`
+}
+
+func (V2FunctionCustomContainerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (i V2FunctionCustomContainerConfigArgs) ToV2FunctionCustomContainerConfigOutput() V2FunctionCustomContainerConfigOutput {
+	return i.ToV2FunctionCustomContainerConfigOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomContainerConfigArgs) ToV2FunctionCustomContainerConfigOutputWithContext(ctx context.Context) V2FunctionCustomContainerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomContainerConfigOutput)
+}
+
+func (i V2FunctionCustomContainerConfigArgs) ToV2FunctionCustomContainerConfigPtrOutput() V2FunctionCustomContainerConfigPtrOutput {
+	return i.ToV2FunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomContainerConfigArgs) ToV2FunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomContainerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomContainerConfigOutput).ToV2FunctionCustomContainerConfigPtrOutputWithContext(ctx)
+}
+
+// V2FunctionCustomContainerConfigPtrInput is an input type that accepts V2FunctionCustomContainerConfigArgs, V2FunctionCustomContainerConfigPtr and V2FunctionCustomContainerConfigPtrOutput values.
+// You can construct a concrete instance of `V2FunctionCustomContainerConfigPtrInput` via:
+//
+//	        V2FunctionCustomContainerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2FunctionCustomContainerConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomContainerConfigPtrOutput() V2FunctionCustomContainerConfigPtrOutput
+	ToV2FunctionCustomContainerConfigPtrOutputWithContext(context.Context) V2FunctionCustomContainerConfigPtrOutput
+}
+
+type v2functionCustomContainerConfigPtrType V2FunctionCustomContainerConfigArgs
+
+func V2FunctionCustomContainerConfigPtr(v *V2FunctionCustomContainerConfigArgs) V2FunctionCustomContainerConfigPtrInput {
+	return (*v2functionCustomContainerConfigPtrType)(v)
+}
+
+func (*v2functionCustomContainerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (i *v2functionCustomContainerConfigPtrType) ToV2FunctionCustomContainerConfigPtrOutput() V2FunctionCustomContainerConfigPtrOutput {
+	return i.ToV2FunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2functionCustomContainerConfigPtrType) ToV2FunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomContainerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomContainerConfigPtrOutput)
+}
+
+type V2FunctionCustomContainerConfigOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomContainerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (o V2FunctionCustomContainerConfigOutput) ToV2FunctionCustomContainerConfigOutput() V2FunctionCustomContainerConfigOutput {
+	return o
+}
+
+func (o V2FunctionCustomContainerConfigOutput) ToV2FunctionCustomContainerConfigOutputWithContext(ctx context.Context) V2FunctionCustomContainerConfigOutput {
+	return o
+}
+
+func (o V2FunctionCustomContainerConfigOutput) ToV2FunctionCustomContainerConfigPtrOutput() V2FunctionCustomContainerConfigPtrOutput {
+	return o.ToV2FunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2FunctionCustomContainerConfigOutput) ToV2FunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomContainerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2FunctionCustomContainerConfig) *V2FunctionCustomContainerConfig {
+		return &v
+	}).(V2FunctionCustomContainerConfigPtrOutput)
+}
+
+// Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
+func (o V2FunctionCustomContainerConfigOutput) AccelerationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomContainerConfig) *string { return v.AccelerationType }).(pulumi.StringPtrOutput)
+}
+
+// Container startup parameters.
+func (o V2FunctionCustomContainerConfigOutput) Args() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomContainerConfig) *string { return v.Args }).(pulumi.StringPtrOutput)
+}
+
+// Container start command, equivalent to Docker ENTRYPOINT.
+func (o V2FunctionCustomContainerConfigOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomContainerConfig) *string { return v.Command }).(pulumi.StringPtrOutput)
+}
+
+// Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
+func (o V2FunctionCustomContainerConfigOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomContainerConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
+func (o V2FunctionCustomContainerConfigOutput) WebServerMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomContainerConfig) *bool { return v.WebServerMode }).(pulumi.BoolPtrOutput)
+}
+
+type V2FunctionCustomContainerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomContainerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (o V2FunctionCustomContainerConfigPtrOutput) ToV2FunctionCustomContainerConfigPtrOutput() V2FunctionCustomContainerConfigPtrOutput {
+	return o
+}
+
+func (o V2FunctionCustomContainerConfigPtrOutput) ToV2FunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomContainerConfigPtrOutput {
+	return o
+}
+
+func (o V2FunctionCustomContainerConfigPtrOutput) Elem() V2FunctionCustomContainerConfigOutput {
+	return o.ApplyT(func(v *V2FunctionCustomContainerConfig) V2FunctionCustomContainerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2FunctionCustomContainerConfig
+		return ret
+	}).(V2FunctionCustomContainerConfigOutput)
+}
+
+// Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
+func (o V2FunctionCustomContainerConfigPtrOutput) AccelerationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccelerationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container startup parameters.
+func (o V2FunctionCustomContainerConfigPtrOutput) Args() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container start command, equivalent to Docker ENTRYPOINT.
+func (o V2FunctionCustomContainerConfigPtrOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Command
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
+func (o V2FunctionCustomContainerConfigPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
+func (o V2FunctionCustomContainerConfigPtrOutput) WebServerMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomContainerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WebServerMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+type V2FunctionCustomDns struct {
+	// DNS resolver configuration parameter list. See `dnsOptions` below.
+	DnsOptions []V2FunctionCustomDnsDnsOption `pulumi:"dnsOptions"`
+	// List of IP addresses of DNS servers.
+	NameServers []string `pulumi:"nameServers"`
+	// List of DNS search domains.
+	Searches []string `pulumi:"searches"`
+}
+
+// V2FunctionCustomDnsInput is an input type that accepts V2FunctionCustomDnsArgs and V2FunctionCustomDnsOutput values.
+// You can construct a concrete instance of `V2FunctionCustomDnsInput` via:
+//
+//	V2FunctionCustomDnsArgs{...}
+type V2FunctionCustomDnsInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomDnsOutput() V2FunctionCustomDnsOutput
+	ToV2FunctionCustomDnsOutputWithContext(context.Context) V2FunctionCustomDnsOutput
+}
+
+type V2FunctionCustomDnsArgs struct {
+	// DNS resolver configuration parameter list. See `dnsOptions` below.
+	DnsOptions V2FunctionCustomDnsDnsOptionArrayInput `pulumi:"dnsOptions"`
+	// List of IP addresses of DNS servers.
+	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
+	// List of DNS search domains.
+	Searches pulumi.StringArrayInput `pulumi:"searches"`
+}
+
+func (V2FunctionCustomDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomDns)(nil)).Elem()
+}
+
+func (i V2FunctionCustomDnsArgs) ToV2FunctionCustomDnsOutput() V2FunctionCustomDnsOutput {
+	return i.ToV2FunctionCustomDnsOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomDnsArgs) ToV2FunctionCustomDnsOutputWithContext(ctx context.Context) V2FunctionCustomDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomDnsOutput)
+}
+
+func (i V2FunctionCustomDnsArgs) ToV2FunctionCustomDnsPtrOutput() V2FunctionCustomDnsPtrOutput {
+	return i.ToV2FunctionCustomDnsPtrOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomDnsArgs) ToV2FunctionCustomDnsPtrOutputWithContext(ctx context.Context) V2FunctionCustomDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomDnsOutput).ToV2FunctionCustomDnsPtrOutputWithContext(ctx)
+}
+
+// V2FunctionCustomDnsPtrInput is an input type that accepts V2FunctionCustomDnsArgs, V2FunctionCustomDnsPtr and V2FunctionCustomDnsPtrOutput values.
+// You can construct a concrete instance of `V2FunctionCustomDnsPtrInput` via:
+//
+//	        V2FunctionCustomDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2FunctionCustomDnsPtrInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomDnsPtrOutput() V2FunctionCustomDnsPtrOutput
+	ToV2FunctionCustomDnsPtrOutputWithContext(context.Context) V2FunctionCustomDnsPtrOutput
+}
+
+type v2functionCustomDnsPtrType V2FunctionCustomDnsArgs
+
+func V2FunctionCustomDnsPtr(v *V2FunctionCustomDnsArgs) V2FunctionCustomDnsPtrInput {
+	return (*v2functionCustomDnsPtrType)(v)
+}
+
+func (*v2functionCustomDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCustomDns)(nil)).Elem()
+}
+
+func (i *v2functionCustomDnsPtrType) ToV2FunctionCustomDnsPtrOutput() V2FunctionCustomDnsPtrOutput {
+	return i.ToV2FunctionCustomDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *v2functionCustomDnsPtrType) ToV2FunctionCustomDnsPtrOutputWithContext(ctx context.Context) V2FunctionCustomDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomDnsPtrOutput)
+}
+
+type V2FunctionCustomDnsOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomDns)(nil)).Elem()
+}
+
+func (o V2FunctionCustomDnsOutput) ToV2FunctionCustomDnsOutput() V2FunctionCustomDnsOutput {
+	return o
+}
+
+func (o V2FunctionCustomDnsOutput) ToV2FunctionCustomDnsOutputWithContext(ctx context.Context) V2FunctionCustomDnsOutput {
+	return o
+}
+
+func (o V2FunctionCustomDnsOutput) ToV2FunctionCustomDnsPtrOutput() V2FunctionCustomDnsPtrOutput {
+	return o.ToV2FunctionCustomDnsPtrOutputWithContext(context.Background())
+}
+
+func (o V2FunctionCustomDnsOutput) ToV2FunctionCustomDnsPtrOutputWithContext(ctx context.Context) V2FunctionCustomDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2FunctionCustomDns) *V2FunctionCustomDns {
+		return &v
+	}).(V2FunctionCustomDnsPtrOutput)
+}
+
+// DNS resolver configuration parameter list. See `dnsOptions` below.
+func (o V2FunctionCustomDnsOutput) DnsOptions() V2FunctionCustomDnsDnsOptionArrayOutput {
+	return o.ApplyT(func(v V2FunctionCustomDns) []V2FunctionCustomDnsDnsOption { return v.DnsOptions }).(V2FunctionCustomDnsDnsOptionArrayOutput)
+}
+
+// List of IP addresses of DNS servers.
+func (o V2FunctionCustomDnsOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2FunctionCustomDns) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+// List of DNS search domains.
+func (o V2FunctionCustomDnsOutput) Searches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2FunctionCustomDns) []string { return v.Searches }).(pulumi.StringArrayOutput)
+}
+
+type V2FunctionCustomDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCustomDns)(nil)).Elem()
+}
+
+func (o V2FunctionCustomDnsPtrOutput) ToV2FunctionCustomDnsPtrOutput() V2FunctionCustomDnsPtrOutput {
+	return o
+}
+
+func (o V2FunctionCustomDnsPtrOutput) ToV2FunctionCustomDnsPtrOutputWithContext(ctx context.Context) V2FunctionCustomDnsPtrOutput {
+	return o
+}
+
+func (o V2FunctionCustomDnsPtrOutput) Elem() V2FunctionCustomDnsOutput {
+	return o.ApplyT(func(v *V2FunctionCustomDns) V2FunctionCustomDns {
+		if v != nil {
+			return *v
+		}
+		var ret V2FunctionCustomDns
+		return ret
+	}).(V2FunctionCustomDnsOutput)
+}
+
+// DNS resolver configuration parameter list. See `dnsOptions` below.
+func (o V2FunctionCustomDnsPtrOutput) DnsOptions() V2FunctionCustomDnsDnsOptionArrayOutput {
+	return o.ApplyT(func(v *V2FunctionCustomDns) []V2FunctionCustomDnsDnsOption {
+		if v == nil {
+			return nil
+		}
+		return v.DnsOptions
+	}).(V2FunctionCustomDnsDnsOptionArrayOutput)
+}
+
+// List of IP addresses of DNS servers.
+func (o V2FunctionCustomDnsPtrOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2FunctionCustomDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NameServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of DNS search domains.
+func (o V2FunctionCustomDnsPtrOutput) Searches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2FunctionCustomDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Searches
+	}).(pulumi.StringArrayOutput)
+}
+
+type V2FunctionCustomDnsDnsOption struct {
+	// DNS option name.
+	Name *string `pulumi:"name"`
+	// DNS option value.
+	Value *string `pulumi:"value"`
+}
+
+// V2FunctionCustomDnsDnsOptionInput is an input type that accepts V2FunctionCustomDnsDnsOptionArgs and V2FunctionCustomDnsDnsOptionOutput values.
+// You can construct a concrete instance of `V2FunctionCustomDnsDnsOptionInput` via:
+//
+//	V2FunctionCustomDnsDnsOptionArgs{...}
+type V2FunctionCustomDnsDnsOptionInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomDnsDnsOptionOutput() V2FunctionCustomDnsDnsOptionOutput
+	ToV2FunctionCustomDnsDnsOptionOutputWithContext(context.Context) V2FunctionCustomDnsDnsOptionOutput
+}
+
+type V2FunctionCustomDnsDnsOptionArgs struct {
+	// DNS option name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// DNS option value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (V2FunctionCustomDnsDnsOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomDnsDnsOption)(nil)).Elem()
+}
+
+func (i V2FunctionCustomDnsDnsOptionArgs) ToV2FunctionCustomDnsDnsOptionOutput() V2FunctionCustomDnsDnsOptionOutput {
+	return i.ToV2FunctionCustomDnsDnsOptionOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomDnsDnsOptionArgs) ToV2FunctionCustomDnsDnsOptionOutputWithContext(ctx context.Context) V2FunctionCustomDnsDnsOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomDnsDnsOptionOutput)
+}
+
+// V2FunctionCustomDnsDnsOptionArrayInput is an input type that accepts V2FunctionCustomDnsDnsOptionArray and V2FunctionCustomDnsDnsOptionArrayOutput values.
+// You can construct a concrete instance of `V2FunctionCustomDnsDnsOptionArrayInput` via:
+//
+//	V2FunctionCustomDnsDnsOptionArray{ V2FunctionCustomDnsDnsOptionArgs{...} }
+type V2FunctionCustomDnsDnsOptionArrayInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomDnsDnsOptionArrayOutput() V2FunctionCustomDnsDnsOptionArrayOutput
+	ToV2FunctionCustomDnsDnsOptionArrayOutputWithContext(context.Context) V2FunctionCustomDnsDnsOptionArrayOutput
+}
+
+type V2FunctionCustomDnsDnsOptionArray []V2FunctionCustomDnsDnsOptionInput
+
+func (V2FunctionCustomDnsDnsOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2FunctionCustomDnsDnsOption)(nil)).Elem()
+}
+
+func (i V2FunctionCustomDnsDnsOptionArray) ToV2FunctionCustomDnsDnsOptionArrayOutput() V2FunctionCustomDnsDnsOptionArrayOutput {
+	return i.ToV2FunctionCustomDnsDnsOptionArrayOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomDnsDnsOptionArray) ToV2FunctionCustomDnsDnsOptionArrayOutputWithContext(ctx context.Context) V2FunctionCustomDnsDnsOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomDnsDnsOptionArrayOutput)
+}
+
+type V2FunctionCustomDnsDnsOptionOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomDnsDnsOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomDnsDnsOption)(nil)).Elem()
+}
+
+func (o V2FunctionCustomDnsDnsOptionOutput) ToV2FunctionCustomDnsDnsOptionOutput() V2FunctionCustomDnsDnsOptionOutput {
+	return o
+}
+
+func (o V2FunctionCustomDnsDnsOptionOutput) ToV2FunctionCustomDnsDnsOptionOutputWithContext(ctx context.Context) V2FunctionCustomDnsDnsOptionOutput {
+	return o
+}
+
+// DNS option name.
+func (o V2FunctionCustomDnsDnsOptionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomDnsDnsOption) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// DNS option value.
+func (o V2FunctionCustomDnsDnsOptionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomDnsDnsOption) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type V2FunctionCustomDnsDnsOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomDnsDnsOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2FunctionCustomDnsDnsOption)(nil)).Elem()
+}
+
+func (o V2FunctionCustomDnsDnsOptionArrayOutput) ToV2FunctionCustomDnsDnsOptionArrayOutput() V2FunctionCustomDnsDnsOptionArrayOutput {
+	return o
+}
+
+func (o V2FunctionCustomDnsDnsOptionArrayOutput) ToV2FunctionCustomDnsDnsOptionArrayOutputWithContext(ctx context.Context) V2FunctionCustomDnsDnsOptionArrayOutput {
+	return o
+}
+
+func (o V2FunctionCustomDnsDnsOptionArrayOutput) Index(i pulumi.IntInput) V2FunctionCustomDnsDnsOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2FunctionCustomDnsDnsOption {
+		return vs[0].([]V2FunctionCustomDnsDnsOption)[vs[1].(int)]
+	}).(V2FunctionCustomDnsDnsOptionOutput)
+}
+
+type V2FunctionCustomHealthCheckConfig struct {
+	// The threshold for the number of health check failures. The system considers the check failed after the health check fails.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// Container custom health check URL address.
+	HttpGetUrl *string `pulumi:"httpGetUrl"`
+	// Delay from container startup to initiation of health check.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// Health check cycle.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// Health check timeout.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// V2FunctionCustomHealthCheckConfigInput is an input type that accepts V2FunctionCustomHealthCheckConfigArgs and V2FunctionCustomHealthCheckConfigOutput values.
+// You can construct a concrete instance of `V2FunctionCustomHealthCheckConfigInput` via:
+//
+//	V2FunctionCustomHealthCheckConfigArgs{...}
+type V2FunctionCustomHealthCheckConfigInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomHealthCheckConfigOutput() V2FunctionCustomHealthCheckConfigOutput
+	ToV2FunctionCustomHealthCheckConfigOutputWithContext(context.Context) V2FunctionCustomHealthCheckConfigOutput
+}
+
+type V2FunctionCustomHealthCheckConfigArgs struct {
+	// The threshold for the number of health check failures. The system considers the check failed after the health check fails.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// Container custom health check URL address.
+	HttpGetUrl pulumi.StringPtrInput `pulumi:"httpGetUrl"`
+	// Delay from container startup to initiation of health check.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// Health check cycle.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// Health check timeout.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (V2FunctionCustomHealthCheckConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomHealthCheckConfig)(nil)).Elem()
+}
+
+func (i V2FunctionCustomHealthCheckConfigArgs) ToV2FunctionCustomHealthCheckConfigOutput() V2FunctionCustomHealthCheckConfigOutput {
+	return i.ToV2FunctionCustomHealthCheckConfigOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomHealthCheckConfigArgs) ToV2FunctionCustomHealthCheckConfigOutputWithContext(ctx context.Context) V2FunctionCustomHealthCheckConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomHealthCheckConfigOutput)
+}
+
+func (i V2FunctionCustomHealthCheckConfigArgs) ToV2FunctionCustomHealthCheckConfigPtrOutput() V2FunctionCustomHealthCheckConfigPtrOutput {
+	return i.ToV2FunctionCustomHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomHealthCheckConfigArgs) ToV2FunctionCustomHealthCheckConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomHealthCheckConfigOutput).ToV2FunctionCustomHealthCheckConfigPtrOutputWithContext(ctx)
+}
+
+// V2FunctionCustomHealthCheckConfigPtrInput is an input type that accepts V2FunctionCustomHealthCheckConfigArgs, V2FunctionCustomHealthCheckConfigPtr and V2FunctionCustomHealthCheckConfigPtrOutput values.
+// You can construct a concrete instance of `V2FunctionCustomHealthCheckConfigPtrInput` via:
+//
+//	        V2FunctionCustomHealthCheckConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2FunctionCustomHealthCheckConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomHealthCheckConfigPtrOutput() V2FunctionCustomHealthCheckConfigPtrOutput
+	ToV2FunctionCustomHealthCheckConfigPtrOutputWithContext(context.Context) V2FunctionCustomHealthCheckConfigPtrOutput
+}
+
+type v2functionCustomHealthCheckConfigPtrType V2FunctionCustomHealthCheckConfigArgs
+
+func V2FunctionCustomHealthCheckConfigPtr(v *V2FunctionCustomHealthCheckConfigArgs) V2FunctionCustomHealthCheckConfigPtrInput {
+	return (*v2functionCustomHealthCheckConfigPtrType)(v)
+}
+
+func (*v2functionCustomHealthCheckConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCustomHealthCheckConfig)(nil)).Elem()
+}
+
+func (i *v2functionCustomHealthCheckConfigPtrType) ToV2FunctionCustomHealthCheckConfigPtrOutput() V2FunctionCustomHealthCheckConfigPtrOutput {
+	return i.ToV2FunctionCustomHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2functionCustomHealthCheckConfigPtrType) ToV2FunctionCustomHealthCheckConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomHealthCheckConfigPtrOutput)
+}
+
+type V2FunctionCustomHealthCheckConfigOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomHealthCheckConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomHealthCheckConfig)(nil)).Elem()
+}
+
+func (o V2FunctionCustomHealthCheckConfigOutput) ToV2FunctionCustomHealthCheckConfigOutput() V2FunctionCustomHealthCheckConfigOutput {
+	return o
+}
+
+func (o V2FunctionCustomHealthCheckConfigOutput) ToV2FunctionCustomHealthCheckConfigOutputWithContext(ctx context.Context) V2FunctionCustomHealthCheckConfigOutput {
+	return o
+}
+
+func (o V2FunctionCustomHealthCheckConfigOutput) ToV2FunctionCustomHealthCheckConfigPtrOutput() V2FunctionCustomHealthCheckConfigPtrOutput {
+	return o.ToV2FunctionCustomHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2FunctionCustomHealthCheckConfigOutput) ToV2FunctionCustomHealthCheckConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomHealthCheckConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2FunctionCustomHealthCheckConfig) *V2FunctionCustomHealthCheckConfig {
+		return &v
+	}).(V2FunctionCustomHealthCheckConfigPtrOutput)
+}
+
+// The threshold for the number of health check failures. The system considers the check failed after the health check fails.
+func (o V2FunctionCustomHealthCheckConfigOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomHealthCheckConfig) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Container custom health check URL address.
+func (o V2FunctionCustomHealthCheckConfigOutput) HttpGetUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomHealthCheckConfig) *string { return v.HttpGetUrl }).(pulumi.StringPtrOutput)
+}
+
+// Delay from container startup to initiation of health check.
+func (o V2FunctionCustomHealthCheckConfigOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomHealthCheckConfig) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// Health check cycle.
+func (o V2FunctionCustomHealthCheckConfigOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomHealthCheckConfig) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
+func (o V2FunctionCustomHealthCheckConfigOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomHealthCheckConfig) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Health check timeout.
+func (o V2FunctionCustomHealthCheckConfigOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2FunctionCustomHealthCheckConfig) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type V2FunctionCustomHealthCheckConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomHealthCheckConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCustomHealthCheckConfig)(nil)).Elem()
+}
+
+func (o V2FunctionCustomHealthCheckConfigPtrOutput) ToV2FunctionCustomHealthCheckConfigPtrOutput() V2FunctionCustomHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o V2FunctionCustomHealthCheckConfigPtrOutput) ToV2FunctionCustomHealthCheckConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o V2FunctionCustomHealthCheckConfigPtrOutput) Elem() V2FunctionCustomHealthCheckConfigOutput {
+	return o.ApplyT(func(v *V2FunctionCustomHealthCheckConfig) V2FunctionCustomHealthCheckConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2FunctionCustomHealthCheckConfig
+		return ret
+	}).(V2FunctionCustomHealthCheckConfigOutput)
+}
+
+// The threshold for the number of health check failures. The system considers the check failed after the health check fails.
+func (o V2FunctionCustomHealthCheckConfigPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Container custom health check URL address.
+func (o V2FunctionCustomHealthCheckConfigPtrOutput) HttpGetUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomHealthCheckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGetUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Delay from container startup to initiation of health check.
+func (o V2FunctionCustomHealthCheckConfigPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Health check cycle.
+func (o V2FunctionCustomHealthCheckConfigPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
+func (o V2FunctionCustomHealthCheckConfigPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Health check timeout.
+func (o V2FunctionCustomHealthCheckConfigPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2FunctionCustomHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type V2FunctionCustomRuntimeConfig struct {
+	// Parameters received by the start entry command.
+	Args []string `pulumi:"args"`
+	// List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
+	Commands []string `pulumi:"commands"`
+}
+
+// V2FunctionCustomRuntimeConfigInput is an input type that accepts V2FunctionCustomRuntimeConfigArgs and V2FunctionCustomRuntimeConfigOutput values.
+// You can construct a concrete instance of `V2FunctionCustomRuntimeConfigInput` via:
+//
+//	V2FunctionCustomRuntimeConfigArgs{...}
+type V2FunctionCustomRuntimeConfigInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomRuntimeConfigOutput() V2FunctionCustomRuntimeConfigOutput
+	ToV2FunctionCustomRuntimeConfigOutputWithContext(context.Context) V2FunctionCustomRuntimeConfigOutput
+}
+
+type V2FunctionCustomRuntimeConfigArgs struct {
+	// Parameters received by the start entry command.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (V2FunctionCustomRuntimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomRuntimeConfig)(nil)).Elem()
+}
+
+func (i V2FunctionCustomRuntimeConfigArgs) ToV2FunctionCustomRuntimeConfigOutput() V2FunctionCustomRuntimeConfigOutput {
+	return i.ToV2FunctionCustomRuntimeConfigOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomRuntimeConfigArgs) ToV2FunctionCustomRuntimeConfigOutputWithContext(ctx context.Context) V2FunctionCustomRuntimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomRuntimeConfigOutput)
+}
+
+func (i V2FunctionCustomRuntimeConfigArgs) ToV2FunctionCustomRuntimeConfigPtrOutput() V2FunctionCustomRuntimeConfigPtrOutput {
+	return i.ToV2FunctionCustomRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2FunctionCustomRuntimeConfigArgs) ToV2FunctionCustomRuntimeConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomRuntimeConfigOutput).ToV2FunctionCustomRuntimeConfigPtrOutputWithContext(ctx)
+}
+
+// V2FunctionCustomRuntimeConfigPtrInput is an input type that accepts V2FunctionCustomRuntimeConfigArgs, V2FunctionCustomRuntimeConfigPtr and V2FunctionCustomRuntimeConfigPtrOutput values.
+// You can construct a concrete instance of `V2FunctionCustomRuntimeConfigPtrInput` via:
+//
+//	        V2FunctionCustomRuntimeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2FunctionCustomRuntimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2FunctionCustomRuntimeConfigPtrOutput() V2FunctionCustomRuntimeConfigPtrOutput
+	ToV2FunctionCustomRuntimeConfigPtrOutputWithContext(context.Context) V2FunctionCustomRuntimeConfigPtrOutput
+}
+
+type v2functionCustomRuntimeConfigPtrType V2FunctionCustomRuntimeConfigArgs
+
+func V2FunctionCustomRuntimeConfigPtr(v *V2FunctionCustomRuntimeConfigArgs) V2FunctionCustomRuntimeConfigPtrInput {
+	return (*v2functionCustomRuntimeConfigPtrType)(v)
+}
+
+func (*v2functionCustomRuntimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCustomRuntimeConfig)(nil)).Elem()
+}
+
+func (i *v2functionCustomRuntimeConfigPtrType) ToV2FunctionCustomRuntimeConfigPtrOutput() V2FunctionCustomRuntimeConfigPtrOutput {
+	return i.ToV2FunctionCustomRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2functionCustomRuntimeConfigPtrType) ToV2FunctionCustomRuntimeConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionCustomRuntimeConfigPtrOutput)
+}
+
+type V2FunctionCustomRuntimeConfigOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomRuntimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionCustomRuntimeConfig)(nil)).Elem()
+}
+
+func (o V2FunctionCustomRuntimeConfigOutput) ToV2FunctionCustomRuntimeConfigOutput() V2FunctionCustomRuntimeConfigOutput {
+	return o
+}
+
+func (o V2FunctionCustomRuntimeConfigOutput) ToV2FunctionCustomRuntimeConfigOutputWithContext(ctx context.Context) V2FunctionCustomRuntimeConfigOutput {
+	return o
+}
+
+func (o V2FunctionCustomRuntimeConfigOutput) ToV2FunctionCustomRuntimeConfigPtrOutput() V2FunctionCustomRuntimeConfigPtrOutput {
+	return o.ToV2FunctionCustomRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2FunctionCustomRuntimeConfigOutput) ToV2FunctionCustomRuntimeConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomRuntimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2FunctionCustomRuntimeConfig) *V2FunctionCustomRuntimeConfig {
+		return &v
+	}).(V2FunctionCustomRuntimeConfigPtrOutput)
+}
+
+// Parameters received by the start entry command.
+func (o V2FunctionCustomRuntimeConfigOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2FunctionCustomRuntimeConfig) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
+func (o V2FunctionCustomRuntimeConfigOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2FunctionCustomRuntimeConfig) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type V2FunctionCustomRuntimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionCustomRuntimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionCustomRuntimeConfig)(nil)).Elem()
+}
+
+func (o V2FunctionCustomRuntimeConfigPtrOutput) ToV2FunctionCustomRuntimeConfigPtrOutput() V2FunctionCustomRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o V2FunctionCustomRuntimeConfigPtrOutput) ToV2FunctionCustomRuntimeConfigPtrOutputWithContext(ctx context.Context) V2FunctionCustomRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o V2FunctionCustomRuntimeConfigPtrOutput) Elem() V2FunctionCustomRuntimeConfigOutput {
+	return o.ApplyT(func(v *V2FunctionCustomRuntimeConfig) V2FunctionCustomRuntimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2FunctionCustomRuntimeConfig
+		return ret
+	}).(V2FunctionCustomRuntimeConfigOutput)
+}
+
+// Parameters received by the start entry command.
+func (o V2FunctionCustomRuntimeConfigPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2FunctionCustomRuntimeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
+func (o V2FunctionCustomRuntimeConfigPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2FunctionCustomRuntimeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type V2FunctionInstanceLifecycleConfig struct {
+	// PreFreeze function configuration. See `preFreeze` below.
+	PreFreeze *V2FunctionInstanceLifecycleConfigPreFreeze `pulumi:"preFreeze"`
+	// PreStop function configuration. See `preStop` below.
+	PreStop *V2FunctionInstanceLifecycleConfigPreStop `pulumi:"preStop"`
+}
+
+// V2FunctionInstanceLifecycleConfigInput is an input type that accepts V2FunctionInstanceLifecycleConfigArgs and V2FunctionInstanceLifecycleConfigOutput values.
+// You can construct a concrete instance of `V2FunctionInstanceLifecycleConfigInput` via:
+//
+//	V2FunctionInstanceLifecycleConfigArgs{...}
+type V2FunctionInstanceLifecycleConfigInput interface {
+	pulumi.Input
+
+	ToV2FunctionInstanceLifecycleConfigOutput() V2FunctionInstanceLifecycleConfigOutput
+	ToV2FunctionInstanceLifecycleConfigOutputWithContext(context.Context) V2FunctionInstanceLifecycleConfigOutput
+}
+
+type V2FunctionInstanceLifecycleConfigArgs struct {
+	// PreFreeze function configuration. See `preFreeze` below.
+	PreFreeze V2FunctionInstanceLifecycleConfigPreFreezePtrInput `pulumi:"preFreeze"`
+	// PreStop function configuration. See `preStop` below.
+	PreStop V2FunctionInstanceLifecycleConfigPreStopPtrInput `pulumi:"preStop"`
+}
+
+func (V2FunctionInstanceLifecycleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionInstanceLifecycleConfig)(nil)).Elem()
+}
+
+func (i V2FunctionInstanceLifecycleConfigArgs) ToV2FunctionInstanceLifecycleConfigOutput() V2FunctionInstanceLifecycleConfigOutput {
+	return i.ToV2FunctionInstanceLifecycleConfigOutputWithContext(context.Background())
+}
+
+func (i V2FunctionInstanceLifecycleConfigArgs) ToV2FunctionInstanceLifecycleConfigOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionInstanceLifecycleConfigOutput)
+}
+
+func (i V2FunctionInstanceLifecycleConfigArgs) ToV2FunctionInstanceLifecycleConfigPtrOutput() V2FunctionInstanceLifecycleConfigPtrOutput {
+	return i.ToV2FunctionInstanceLifecycleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2FunctionInstanceLifecycleConfigArgs) ToV2FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionInstanceLifecycleConfigOutput).ToV2FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx)
+}
+
+// V2FunctionInstanceLifecycleConfigPtrInput is an input type that accepts V2FunctionInstanceLifecycleConfigArgs, V2FunctionInstanceLifecycleConfigPtr and V2FunctionInstanceLifecycleConfigPtrOutput values.
+// You can construct a concrete instance of `V2FunctionInstanceLifecycleConfigPtrInput` via:
+//
+//	        V2FunctionInstanceLifecycleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2FunctionInstanceLifecycleConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2FunctionInstanceLifecycleConfigPtrOutput() V2FunctionInstanceLifecycleConfigPtrOutput
+	ToV2FunctionInstanceLifecycleConfigPtrOutputWithContext(context.Context) V2FunctionInstanceLifecycleConfigPtrOutput
+}
+
+type v2functionInstanceLifecycleConfigPtrType V2FunctionInstanceLifecycleConfigArgs
+
+func V2FunctionInstanceLifecycleConfigPtr(v *V2FunctionInstanceLifecycleConfigArgs) V2FunctionInstanceLifecycleConfigPtrInput {
+	return (*v2functionInstanceLifecycleConfigPtrType)(v)
+}
+
+func (*v2functionInstanceLifecycleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionInstanceLifecycleConfig)(nil)).Elem()
+}
+
+func (i *v2functionInstanceLifecycleConfigPtrType) ToV2FunctionInstanceLifecycleConfigPtrOutput() V2FunctionInstanceLifecycleConfigPtrOutput {
+	return i.ToV2FunctionInstanceLifecycleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2functionInstanceLifecycleConfigPtrType) ToV2FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionInstanceLifecycleConfigPtrOutput)
+}
+
+type V2FunctionInstanceLifecycleConfigOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionInstanceLifecycleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionInstanceLifecycleConfig)(nil)).Elem()
+}
+
+func (o V2FunctionInstanceLifecycleConfigOutput) ToV2FunctionInstanceLifecycleConfigOutput() V2FunctionInstanceLifecycleConfigOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigOutput) ToV2FunctionInstanceLifecycleConfigOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigOutput) ToV2FunctionInstanceLifecycleConfigPtrOutput() V2FunctionInstanceLifecycleConfigPtrOutput {
+	return o.ToV2FunctionInstanceLifecycleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2FunctionInstanceLifecycleConfigOutput) ToV2FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2FunctionInstanceLifecycleConfig) *V2FunctionInstanceLifecycleConfig {
+		return &v
+	}).(V2FunctionInstanceLifecycleConfigPtrOutput)
+}
+
+// PreFreeze function configuration. See `preFreeze` below.
+func (o V2FunctionInstanceLifecycleConfigOutput) PreFreeze() V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return o.ApplyT(func(v V2FunctionInstanceLifecycleConfig) *V2FunctionInstanceLifecycleConfigPreFreeze {
+		return v.PreFreeze
+	}).(V2FunctionInstanceLifecycleConfigPreFreezePtrOutput)
+}
+
+// PreStop function configuration. See `preStop` below.
+func (o V2FunctionInstanceLifecycleConfigOutput) PreStop() V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o.ApplyT(func(v V2FunctionInstanceLifecycleConfig) *V2FunctionInstanceLifecycleConfigPreStop { return v.PreStop }).(V2FunctionInstanceLifecycleConfigPreStopPtrOutput)
+}
+
+type V2FunctionInstanceLifecycleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionInstanceLifecycleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionInstanceLifecycleConfig)(nil)).Elem()
+}
+
+func (o V2FunctionInstanceLifecycleConfigPtrOutput) ToV2FunctionInstanceLifecycleConfigPtrOutput() V2FunctionInstanceLifecycleConfigPtrOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPtrOutput) ToV2FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPtrOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPtrOutput) Elem() V2FunctionInstanceLifecycleConfigOutput {
+	return o.ApplyT(func(v *V2FunctionInstanceLifecycleConfig) V2FunctionInstanceLifecycleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2FunctionInstanceLifecycleConfig
+		return ret
+	}).(V2FunctionInstanceLifecycleConfigOutput)
+}
+
+// PreFreeze function configuration. See `preFreeze` below.
+func (o V2FunctionInstanceLifecycleConfigPtrOutput) PreFreeze() V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return o.ApplyT(func(v *V2FunctionInstanceLifecycleConfig) *V2FunctionInstanceLifecycleConfigPreFreeze {
+		if v == nil {
+			return nil
+		}
+		return v.PreFreeze
+	}).(V2FunctionInstanceLifecycleConfigPreFreezePtrOutput)
+}
+
+// PreStop function configuration. See `preStop` below.
+func (o V2FunctionInstanceLifecycleConfigPtrOutput) PreStop() V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o.ApplyT(func(v *V2FunctionInstanceLifecycleConfig) *V2FunctionInstanceLifecycleConfigPreStop {
+		if v == nil {
+			return nil
+		}
+		return v.PreStop
+	}).(V2FunctionInstanceLifecycleConfigPreStopPtrOutput)
+}
+
+type V2FunctionInstanceLifecycleConfigPreFreeze struct {
+	// entry point of function.
+	Handler *string `pulumi:"handler"`
+	// max running time of function.
+	Timeout *int `pulumi:"timeout"`
+}
+
+// V2FunctionInstanceLifecycleConfigPreFreezeInput is an input type that accepts V2FunctionInstanceLifecycleConfigPreFreezeArgs and V2FunctionInstanceLifecycleConfigPreFreezeOutput values.
+// You can construct a concrete instance of `V2FunctionInstanceLifecycleConfigPreFreezeInput` via:
+//
+//	V2FunctionInstanceLifecycleConfigPreFreezeArgs{...}
+type V2FunctionInstanceLifecycleConfigPreFreezeInput interface {
+	pulumi.Input
+
+	ToV2FunctionInstanceLifecycleConfigPreFreezeOutput() V2FunctionInstanceLifecycleConfigPreFreezeOutput
+	ToV2FunctionInstanceLifecycleConfigPreFreezeOutputWithContext(context.Context) V2FunctionInstanceLifecycleConfigPreFreezeOutput
+}
+
+type V2FunctionInstanceLifecycleConfigPreFreezeArgs struct {
+	// entry point of function.
+	Handler pulumi.StringPtrInput `pulumi:"handler"`
+	// max running time of function.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (V2FunctionInstanceLifecycleConfigPreFreezeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreFreeze)(nil)).Elem()
+}
+
+func (i V2FunctionInstanceLifecycleConfigPreFreezeArgs) ToV2FunctionInstanceLifecycleConfigPreFreezeOutput() V2FunctionInstanceLifecycleConfigPreFreezeOutput {
+	return i.ToV2FunctionInstanceLifecycleConfigPreFreezeOutputWithContext(context.Background())
+}
+
+func (i V2FunctionInstanceLifecycleConfigPreFreezeArgs) ToV2FunctionInstanceLifecycleConfigPreFreezeOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreFreezeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionInstanceLifecycleConfigPreFreezeOutput)
+}
+
+func (i V2FunctionInstanceLifecycleConfigPreFreezeArgs) ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutput() V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return i.ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutputWithContext(context.Background())
+}
+
+func (i V2FunctionInstanceLifecycleConfigPreFreezeArgs) ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionInstanceLifecycleConfigPreFreezeOutput).ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutputWithContext(ctx)
+}
+
+// V2FunctionInstanceLifecycleConfigPreFreezePtrInput is an input type that accepts V2FunctionInstanceLifecycleConfigPreFreezeArgs, V2FunctionInstanceLifecycleConfigPreFreezePtr and V2FunctionInstanceLifecycleConfigPreFreezePtrOutput values.
+// You can construct a concrete instance of `V2FunctionInstanceLifecycleConfigPreFreezePtrInput` via:
+//
+//	        V2FunctionInstanceLifecycleConfigPreFreezeArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2FunctionInstanceLifecycleConfigPreFreezePtrInput interface {
+	pulumi.Input
+
+	ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutput() V2FunctionInstanceLifecycleConfigPreFreezePtrOutput
+	ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutputWithContext(context.Context) V2FunctionInstanceLifecycleConfigPreFreezePtrOutput
+}
+
+type v2functionInstanceLifecycleConfigPreFreezePtrType V2FunctionInstanceLifecycleConfigPreFreezeArgs
+
+func V2FunctionInstanceLifecycleConfigPreFreezePtr(v *V2FunctionInstanceLifecycleConfigPreFreezeArgs) V2FunctionInstanceLifecycleConfigPreFreezePtrInput {
+	return (*v2functionInstanceLifecycleConfigPreFreezePtrType)(v)
+}
+
+func (*v2functionInstanceLifecycleConfigPreFreezePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionInstanceLifecycleConfigPreFreeze)(nil)).Elem()
+}
+
+func (i *v2functionInstanceLifecycleConfigPreFreezePtrType) ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutput() V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return i.ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutputWithContext(context.Background())
+}
+
+func (i *v2functionInstanceLifecycleConfigPreFreezePtrType) ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionInstanceLifecycleConfigPreFreezePtrOutput)
+}
+
+type V2FunctionInstanceLifecycleConfigPreFreezeOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionInstanceLifecycleConfigPreFreezeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreFreeze)(nil)).Elem()
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreFreezeOutput) ToV2FunctionInstanceLifecycleConfigPreFreezeOutput() V2FunctionInstanceLifecycleConfigPreFreezeOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreFreezeOutput) ToV2FunctionInstanceLifecycleConfigPreFreezeOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreFreezeOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreFreezeOutput) ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutput() V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return o.ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutputWithContext(context.Background())
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreFreezeOutput) ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2FunctionInstanceLifecycleConfigPreFreeze) *V2FunctionInstanceLifecycleConfigPreFreeze {
+		return &v
+	}).(V2FunctionInstanceLifecycleConfigPreFreezePtrOutput)
+}
+
+// entry point of function.
+func (o V2FunctionInstanceLifecycleConfigPreFreezeOutput) Handler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionInstanceLifecycleConfigPreFreeze) *string { return v.Handler }).(pulumi.StringPtrOutput)
+}
+
+// max running time of function.
+func (o V2FunctionInstanceLifecycleConfigPreFreezeOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2FunctionInstanceLifecycleConfigPreFreeze) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type V2FunctionInstanceLifecycleConfigPreFreezePtrOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionInstanceLifecycleConfigPreFreezePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionInstanceLifecycleConfigPreFreeze)(nil)).Elem()
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreFreezePtrOutput) ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutput() V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreFreezePtrOutput) ToV2FunctionInstanceLifecycleConfigPreFreezePtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreFreezePtrOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreFreezePtrOutput) Elem() V2FunctionInstanceLifecycleConfigPreFreezeOutput {
+	return o.ApplyT(func(v *V2FunctionInstanceLifecycleConfigPreFreeze) V2FunctionInstanceLifecycleConfigPreFreeze {
+		if v != nil {
+			return *v
+		}
+		var ret V2FunctionInstanceLifecycleConfigPreFreeze
+		return ret
+	}).(V2FunctionInstanceLifecycleConfigPreFreezeOutput)
+}
+
+// entry point of function.
+func (o V2FunctionInstanceLifecycleConfigPreFreezePtrOutput) Handler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionInstanceLifecycleConfigPreFreeze) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Handler
+	}).(pulumi.StringPtrOutput)
+}
+
+// max running time of function.
+func (o V2FunctionInstanceLifecycleConfigPreFreezePtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2FunctionInstanceLifecycleConfigPreFreeze) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+type V2FunctionInstanceLifecycleConfigPreStop struct {
+	// entry point of function.
+	Handler *string `pulumi:"handler"`
+	// max running time of function.
+	Timeout *int `pulumi:"timeout"`
+}
+
+// V2FunctionInstanceLifecycleConfigPreStopInput is an input type that accepts V2FunctionInstanceLifecycleConfigPreStopArgs and V2FunctionInstanceLifecycleConfigPreStopOutput values.
+// You can construct a concrete instance of `V2FunctionInstanceLifecycleConfigPreStopInput` via:
+//
+//	V2FunctionInstanceLifecycleConfigPreStopArgs{...}
+type V2FunctionInstanceLifecycleConfigPreStopInput interface {
+	pulumi.Input
+
+	ToV2FunctionInstanceLifecycleConfigPreStopOutput() V2FunctionInstanceLifecycleConfigPreStopOutput
+	ToV2FunctionInstanceLifecycleConfigPreStopOutputWithContext(context.Context) V2FunctionInstanceLifecycleConfigPreStopOutput
+}
+
+type V2FunctionInstanceLifecycleConfigPreStopArgs struct {
+	// entry point of function.
+	Handler pulumi.StringPtrInput `pulumi:"handler"`
+	// max running time of function.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (V2FunctionInstanceLifecycleConfigPreStopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreStop)(nil)).Elem()
+}
+
+func (i V2FunctionInstanceLifecycleConfigPreStopArgs) ToV2FunctionInstanceLifecycleConfigPreStopOutput() V2FunctionInstanceLifecycleConfigPreStopOutput {
+	return i.ToV2FunctionInstanceLifecycleConfigPreStopOutputWithContext(context.Background())
+}
+
+func (i V2FunctionInstanceLifecycleConfigPreStopArgs) ToV2FunctionInstanceLifecycleConfigPreStopOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreStopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionInstanceLifecycleConfigPreStopOutput)
+}
+
+func (i V2FunctionInstanceLifecycleConfigPreStopArgs) ToV2FunctionInstanceLifecycleConfigPreStopPtrOutput() V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return i.ToV2FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(context.Background())
+}
+
+func (i V2FunctionInstanceLifecycleConfigPreStopArgs) ToV2FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionInstanceLifecycleConfigPreStopOutput).ToV2FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx)
+}
+
+// V2FunctionInstanceLifecycleConfigPreStopPtrInput is an input type that accepts V2FunctionInstanceLifecycleConfigPreStopArgs, V2FunctionInstanceLifecycleConfigPreStopPtr and V2FunctionInstanceLifecycleConfigPreStopPtrOutput values.
+// You can construct a concrete instance of `V2FunctionInstanceLifecycleConfigPreStopPtrInput` via:
+//
+//	        V2FunctionInstanceLifecycleConfigPreStopArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2FunctionInstanceLifecycleConfigPreStopPtrInput interface {
+	pulumi.Input
+
+	ToV2FunctionInstanceLifecycleConfigPreStopPtrOutput() V2FunctionInstanceLifecycleConfigPreStopPtrOutput
+	ToV2FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(context.Context) V2FunctionInstanceLifecycleConfigPreStopPtrOutput
+}
+
+type v2functionInstanceLifecycleConfigPreStopPtrType V2FunctionInstanceLifecycleConfigPreStopArgs
+
+func V2FunctionInstanceLifecycleConfigPreStopPtr(v *V2FunctionInstanceLifecycleConfigPreStopArgs) V2FunctionInstanceLifecycleConfigPreStopPtrInput {
+	return (*v2functionInstanceLifecycleConfigPreStopPtrType)(v)
+}
+
+func (*v2functionInstanceLifecycleConfigPreStopPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionInstanceLifecycleConfigPreStop)(nil)).Elem()
+}
+
+func (i *v2functionInstanceLifecycleConfigPreStopPtrType) ToV2FunctionInstanceLifecycleConfigPreStopPtrOutput() V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return i.ToV2FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(context.Background())
+}
+
+func (i *v2functionInstanceLifecycleConfigPreStopPtrType) ToV2FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionInstanceLifecycleConfigPreStopPtrOutput)
+}
+
+type V2FunctionInstanceLifecycleConfigPreStopOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionInstanceLifecycleConfigPreStopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreStop)(nil)).Elem()
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreStopOutput) ToV2FunctionInstanceLifecycleConfigPreStopOutput() V2FunctionInstanceLifecycleConfigPreStopOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreStopOutput) ToV2FunctionInstanceLifecycleConfigPreStopOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreStopOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreStopOutput) ToV2FunctionInstanceLifecycleConfigPreStopPtrOutput() V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o.ToV2FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(context.Background())
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreStopOutput) ToV2FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2FunctionInstanceLifecycleConfigPreStop) *V2FunctionInstanceLifecycleConfigPreStop {
+		return &v
+	}).(V2FunctionInstanceLifecycleConfigPreStopPtrOutput)
+}
+
+// entry point of function.
+func (o V2FunctionInstanceLifecycleConfigPreStopOutput) Handler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2FunctionInstanceLifecycleConfigPreStop) *string { return v.Handler }).(pulumi.StringPtrOutput)
+}
+
+// max running time of function.
+func (o V2FunctionInstanceLifecycleConfigPreStopOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2FunctionInstanceLifecycleConfigPreStop) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type V2FunctionInstanceLifecycleConfigPreStopPtrOutput struct{ *pulumi.OutputState }
+
+func (V2FunctionInstanceLifecycleConfigPreStopPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2FunctionInstanceLifecycleConfigPreStop)(nil)).Elem()
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreStopPtrOutput) ToV2FunctionInstanceLifecycleConfigPreStopPtrOutput() V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreStopPtrOutput) ToV2FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx context.Context) V2FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o
+}
+
+func (o V2FunctionInstanceLifecycleConfigPreStopPtrOutput) Elem() V2FunctionInstanceLifecycleConfigPreStopOutput {
+	return o.ApplyT(func(v *V2FunctionInstanceLifecycleConfigPreStop) V2FunctionInstanceLifecycleConfigPreStop {
+		if v != nil {
+			return *v
+		}
+		var ret V2FunctionInstanceLifecycleConfigPreStop
+		return ret
+	}).(V2FunctionInstanceLifecycleConfigPreStopOutput)
+}
+
+// entry point of function.
+func (o V2FunctionInstanceLifecycleConfigPreStopPtrOutput) Handler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2FunctionInstanceLifecycleConfigPreStop) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Handler
+	}).(pulumi.StringPtrOutput)
+}
+
+// max running time of function.
+func (o V2FunctionInstanceLifecycleConfigPreStopPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2FunctionInstanceLifecycleConfigPreStop) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetCustomDomainsDomain struct {
 	// The account id.
 	AccountId string `pulumi:"accountId"`
@@ -3427,6 +4957,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTracingConfigPtrInput)(nil)).Elem(), ServiceTracingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceVpcConfigInput)(nil)).Elem(), ServiceVpcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceVpcConfigPtrInput)(nil)).Elem(), ServiceVpcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCodeInput)(nil)).Elem(), V2FunctionCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCodePtrInput)(nil)).Elem(), V2FunctionCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomContainerConfigInput)(nil)).Elem(), V2FunctionCustomContainerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomContainerConfigPtrInput)(nil)).Elem(), V2FunctionCustomContainerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomDnsInput)(nil)).Elem(), V2FunctionCustomDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomDnsPtrInput)(nil)).Elem(), V2FunctionCustomDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomDnsDnsOptionInput)(nil)).Elem(), V2FunctionCustomDnsDnsOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomDnsDnsOptionArrayInput)(nil)).Elem(), V2FunctionCustomDnsDnsOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomHealthCheckConfigInput)(nil)).Elem(), V2FunctionCustomHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomHealthCheckConfigPtrInput)(nil)).Elem(), V2FunctionCustomHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomRuntimeConfigInput)(nil)).Elem(), V2FunctionCustomRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionCustomRuntimeConfigPtrInput)(nil)).Elem(), V2FunctionCustomRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionInstanceLifecycleConfigInput)(nil)).Elem(), V2FunctionInstanceLifecycleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPtrInput)(nil)).Elem(), V2FunctionInstanceLifecycleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreFreezeInput)(nil)).Elem(), V2FunctionInstanceLifecycleConfigPreFreezeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreFreezePtrInput)(nil)).Elem(), V2FunctionInstanceLifecycleConfigPreFreezeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreStopInput)(nil)).Elem(), V2FunctionInstanceLifecycleConfigPreStopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreStopPtrInput)(nil)).Elem(), V2FunctionInstanceLifecycleConfigPreStopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainInput)(nil)).Elem(), GetCustomDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainArrayInput)(nil)).Elem(), GetCustomDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainCertConfigInput)(nil)).Elem(), GetCustomDomainsDomainCertConfigArgs{})
@@ -3471,6 +5019,24 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTracingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceVpcConfigOutput{})
 	pulumi.RegisterOutputType(ServiceVpcConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2FunctionCodeOutput{})
+	pulumi.RegisterOutputType(V2FunctionCodePtrOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomContainerConfigOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomContainerConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomDnsOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomDnsPtrOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomDnsDnsOptionOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomDnsDnsOptionArrayOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomHealthCheckConfigOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomHealthCheckConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomRuntimeConfigOutput{})
+	pulumi.RegisterOutputType(V2FunctionCustomRuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2FunctionInstanceLifecycleConfigOutput{})
+	pulumi.RegisterOutputType(V2FunctionInstanceLifecycleConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2FunctionInstanceLifecycleConfigPreFreezeOutput{})
+	pulumi.RegisterOutputType(V2FunctionInstanceLifecycleConfigPreFreezePtrOutput{})
+	pulumi.RegisterOutputType(V2FunctionInstanceLifecycleConfigPreStopOutput{})
+	pulumi.RegisterOutputType(V2FunctionInstanceLifecycleConfigPreStopPtrOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainCertConfigOutput{})

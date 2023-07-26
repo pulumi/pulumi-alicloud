@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetSubnets(ctx *pulumi.Context, args *GetSubnetsArgs, opts ...pulumi.InvokeOption) (*GetSubnetsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubnetsResult
 	err := ctx.Invoke("alicloud:eflo/getSubnets:getSubnets", args, &rv, opts...)
 	if err != nil {

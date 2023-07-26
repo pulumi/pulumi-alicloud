@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetAccessPoints(ctx *pulumi.Context, args *GetAccessPointsArgs, opts ...pulumi.InvokeOption) (*GetAccessPointsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessPointsResult
 	err := ctx.Invoke("alicloud:expressconnect/getAccessPoints:getAccessPoints", args, &rv, opts...)
 	if err != nil {

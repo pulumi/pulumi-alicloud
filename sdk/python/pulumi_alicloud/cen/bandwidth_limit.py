@@ -193,17 +193,12 @@ class BandwidthLimit(pulumi.CustomResource):
             instance_id=example_instance.id,
             bandwidth_package_id=example_bandwidth_package.id)
         example_bandwidth_limit = alicloud.cen.BandwidthLimit("exampleBandwidthLimit",
-            instance_id=example_instance.id,
+            instance_id=example_bandwidth_package_attachment.instance_id,
             region_ids=[
-                region1,
-                region2,
+                example1.child_instance_region_id,
+                example2.child_instance_region_id,
             ],
-            bandwidth_limit=4,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    example_bandwidth_package_attachment,
-                    example2,
-                    example1,
-                ]))
+            bandwidth_limit=4)
         ```
 
         ## Import
@@ -284,17 +279,12 @@ class BandwidthLimit(pulumi.CustomResource):
             instance_id=example_instance.id,
             bandwidth_package_id=example_bandwidth_package.id)
         example_bandwidth_limit = alicloud.cen.BandwidthLimit("exampleBandwidthLimit",
-            instance_id=example_instance.id,
+            instance_id=example_bandwidth_package_attachment.instance_id,
             region_ids=[
-                region1,
-                region2,
+                example1.child_instance_region_id,
+                example2.child_instance_region_id,
             ],
-            bandwidth_limit=4,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    example_bandwidth_package_attachment,
-                    example2,
-                    example1,
-                ]))
+            bandwidth_limit=4)
         ```
 
         ## Import

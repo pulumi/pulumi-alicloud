@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetAccountAliases(ctx *pulumi.Context, args *GetAccountAliasesArgs, opts ...pulumi.InvokeOption) (*GetAccountAliasesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountAliasesResult
 	err := ctx.Invoke("alicloud:ram/getAccountAliases:getAccountAliases", args, &rv, opts...)
 	if err != nil {

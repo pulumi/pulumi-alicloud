@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Config Aggregate Compliance Pack resource.
  * 
- * For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+ * For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregatecompliancepack).
  * 
- * &gt; **NOTE:** Available in v1.124.0+.
+ * &gt; **NOTE:** Available since v1.124.0.
  * 
  * ## Example Usage
  * 
@@ -35,9 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
  * import com.pulumi.alicloud.cfg.Aggregator;
  * import com.pulumi.alicloud.cfg.AggregatorArgs;
  * import com.pulumi.alicloud.cfg.inputs.AggregatorAggregatorAccountArgs;
@@ -60,44 +58,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_name&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform_example&#34;);
+ *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+ *             .status(&#34;CreateSuccess&#34;)
  *             .build());
- * 
- *         final var defaultInstances = EcsFunctions.getInstances();
  * 
  *         var defaultAggregator = new Aggregator(&#34;defaultAggregator&#34;, AggregatorArgs.builder()        
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
- *                 .accountId(&#34;140278452670****&#34;)
- *                 .accountName(&#34;test-2&#34;)
+ *                 .accountId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].accountId()))
+ *                 .accountName(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].displayName()))
  *                 .accountType(&#34;ResourceDirectory&#34;)
  *                 .build())
- *             .aggregatorName(&#34;tf-testaccaggregator&#34;)
- *             .description(&#34;tf-testaccaggregator&#34;)
+ *             .aggregatorName(name)
+ *             .description(name)
+ *             .aggregatorType(&#34;CUSTOM&#34;)
  *             .build());
  * 
  *         var defaultAggregateConfigRule = new AggregateConfigRule(&#34;defaultAggregateConfigRule&#34;, AggregateConfigRuleArgs.builder()        
+ *             .aggregateConfigRuleName(&#34;contains-tag&#34;)
  *             .aggregatorId(defaultAggregator.id())
- *             .aggregateConfigRuleName(name)
- *             .sourceOwner(&#34;ALIYUN&#34;)
- *             .sourceIdentifier(&#34;ecs-cpu-min-count-limit&#34;)
  *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
- *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
+ *             .sourceOwner(&#34;ALIYUN&#34;)
+ *             .sourceIdentifier(&#34;contains-tag&#34;)
  *             .riskLevel(1)
- *             .description(name)
- *             .excludeResourceIdsScope(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
- *             .inputParameters(Map.of(&#34;cpuCount&#34;, &#34;4&#34;))
- *             .regionIdsScope(&#34;cn-hangzhou&#34;)
- *             .resourceGroupIdsScope(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
- *             .tagKeyScope(&#34;tFTest&#34;)
- *             .tagValueScope(&#34;forTF 123&#34;)
+ *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
+ *             .inputParameters(Map.ofEntries(
+ *                 Map.entry(&#34;key&#34;, &#34;example&#34;),
+ *                 Map.entry(&#34;value&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
  *         var defaultAggregateCompliancePack = new AggregateCompliancePack(&#34;defaultAggregateCompliancePack&#34;, AggregateCompliancePackArgs.builder()        
- *             .aggregateCompliancePackName(&#34;tf-testaccConfig1234&#34;)
+ *             .aggregateCompliancePackName(name)
  *             .aggregatorId(defaultAggregator.id())
- *             .description(&#34;tf-testaccConfig1234&#34;)
+ *             .description(name)
  *             .riskLevel(1)
  *             .configRuleIds(AggregateCompliancePackConfigRuleIdArgs.builder()
  *                 .configRuleId(defaultAggregateConfigRule.configRuleId())
@@ -162,21 +156,21 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.compliancePackTemplateId);
     }
     /**
-     * A list of Config Rule IDs.
+     * A list of Config Rule IDs. See `config_rule_ids` below.
      * 
      */
     @Export(name="configRuleIds", type=List.class, parameters={AggregateCompliancePackConfigRuleId.class})
     private Output</* @Nullable */ List<AggregateCompliancePackConfigRuleId>> configRuleIds;
 
     /**
-     * @return A list of Config Rule IDs.
+     * @return A list of Config Rule IDs. See `config_rule_ids` below.
      * 
      */
     public Output<Optional<List<AggregateCompliancePackConfigRuleId>>> configRuleIds() {
         return Codegen.optional(this.configRuleIds);
     }
     /**
-     * A list of Config Rules.
+     * A list of Config Rules. See `config_rules` below.
      * 
      * @deprecated
      * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
@@ -187,7 +181,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
     private Output</* @Nullable */ List<AggregateCompliancePackConfigRule>> configRules;
 
     /**
-     * @return A list of Config Rules.
+     * @return A list of Config Rules. See `config_rules` below.
      * 
      */
     public Output<Optional<List<AggregateCompliancePackConfigRule>>> configRules() {

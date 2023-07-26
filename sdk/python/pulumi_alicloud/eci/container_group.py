@@ -44,31 +44,32 @@ class ContainerGroupArgs:
         """
         The set of arguments for constructing a ContainerGroup resource.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]] acr_registry_infos: The ACR enterprise edition example properties.
+               **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
         :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
-        :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: false.
+        :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
-        :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig.
-        :param pulumi.Input['ContainerGroupEciSecurityContextArgs'] eci_security_context: The security context of the container group.
-        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. The default value is `5`.
+        :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input['ContainerGroupEciSecurityContextArgs'] eci_security_context: The security context of the container group. See `eci_security_context` below.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below.
         :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]] volumes: The list of volumes.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
         pulumi.set(__self__, "container_group_name", container_group_name)
@@ -134,7 +135,7 @@ class ContainerGroupArgs:
     @pulumi.getter
     def containers(self) -> pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]:
         """
-        The list of containers.
+        The list of containers. See `containers` below.
         """
         return pulumi.get(self, "containers")
 
@@ -159,6 +160,7 @@ class ContainerGroupArgs:
     def vswitch_id(self) -> pulumi.Input[str]:
         """
         The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+        **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -170,7 +172,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="acrRegistryInfos")
     def acr_registry_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]:
         """
-        The ACR enterprise edition example properties.
+        The ACR enterprise edition example properties. See `acr_registry_info` below.
         """
         return pulumi.get(self, "acr_registry_infos")
 
@@ -194,7 +196,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="autoMatchImageCache")
     def auto_match_image_cache(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to automatically match the image cache. Default value: false.
+        Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "auto_match_image_cache")
 
@@ -218,7 +220,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="dnsConfig")
     def dns_config(self) -> Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]:
         """
-        The structure of dnsConfig.
+        The structure of dnsConfig. See `dns_config` below.
         """
         return pulumi.get(self, "dns_config")
 
@@ -230,7 +232,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="eciSecurityContext")
     def eci_security_context(self) -> Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']]:
         """
-        The security context of the container group.
+        The security context of the container group. See `eci_security_context` below.
         """
         return pulumi.get(self, "eci_security_context")
 
@@ -242,7 +244,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="eipBandwidth")
     def eip_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The bandwidth of the EIP. The default value is `5`.
+        The bandwidth of the EIP. Default value: `5`.
         """
         return pulumi.get(self, "eip_bandwidth")
 
@@ -266,7 +268,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="hostAliases")
     def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]:
         """
-        HostAliases.
+        HostAliases. See `host_aliases` below.
         """
         return pulumi.get(self, "host_aliases")
 
@@ -278,7 +280,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]:
         """
-        The image registry credential. The details see Block `image_registry_credential`.
+        The image registry credential. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 
@@ -290,7 +292,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="initContainers")
     def init_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]:
         """
-        The list of initContainers.
+        The list of initContainers. See `init_containers` below.
         """
         return pulumi.get(self, "init_containers")
 
@@ -362,7 +364,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -400,7 +402,7 @@ class ContainerGroupArgs:
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]:
         """
-        The list of volumes.
+        The list of volumes. See `volumes` below.
         """
         return pulumi.get(self, "volumes")
 
@@ -454,35 +456,36 @@ class _ContainerGroupState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ContainerGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]] acr_registry_infos: The ACR enterprise edition example properties.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
         :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
-        :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: false.
+        :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
-        :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig.
-        :param pulumi.Input['ContainerGroupEciSecurityContextArgs'] eci_security_context: The security context of the container group.
-        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. The default value is `5`.
+        :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input['ContainerGroupEciSecurityContextArgs'] eci_security_context: The security context of the container group. See `eci_security_context` below.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below.
         :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
-        :param pulumi.Input[str] internet_ip: (Available in v1.170.0+) The Public IP of the container group.
-        :param pulumi.Input[str] intranet_ip: (Available in v1.170.0+) The Private IP of the container group.
+        :param pulumi.Input[str] internet_ip: (Available since v1.170.0) The Public IP of the container group.
+        :param pulumi.Input[str] intranet_ip: (Available since v1.170.0) The Private IP of the container group.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[str] status: The status of container group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]] volumes: The list of volumes.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+               **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
         if acr_registry_infos is not None:
@@ -546,7 +549,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="acrRegistryInfos")
     def acr_registry_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]:
         """
-        The ACR enterprise edition example properties.
+        The ACR enterprise edition example properties. See `acr_registry_info` below.
         """
         return pulumi.get(self, "acr_registry_infos")
 
@@ -570,7 +573,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="autoMatchImageCache")
     def auto_match_image_cache(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to automatically match the image cache. Default value: false.
+        Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "auto_match_image_cache")
 
@@ -594,7 +597,7 @@ class _ContainerGroupState:
     @pulumi.getter
     def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]]:
         """
-        The list of containers.
+        The list of containers. See `containers` below.
         """
         return pulumi.get(self, "containers")
 
@@ -618,7 +621,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="dnsConfig")
     def dns_config(self) -> Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]:
         """
-        The structure of dnsConfig.
+        The structure of dnsConfig. See `dns_config` below.
         """
         return pulumi.get(self, "dns_config")
 
@@ -630,7 +633,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="eciSecurityContext")
     def eci_security_context(self) -> Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']]:
         """
-        The security context of the container group.
+        The security context of the container group. See `eci_security_context` below.
         """
         return pulumi.get(self, "eci_security_context")
 
@@ -642,7 +645,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="eipBandwidth")
     def eip_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The bandwidth of the EIP. The default value is `5`.
+        The bandwidth of the EIP. Default value: `5`.
         """
         return pulumi.get(self, "eip_bandwidth")
 
@@ -666,7 +669,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="hostAliases")
     def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]:
         """
-        HostAliases.
+        HostAliases. See `host_aliases` below.
         """
         return pulumi.get(self, "host_aliases")
 
@@ -678,7 +681,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]:
         """
-        The image registry credential. The details see Block `image_registry_credential`.
+        The image registry credential. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 
@@ -690,7 +693,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="initContainers")
     def init_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]:
         """
-        The list of initContainers.
+        The list of initContainers. See `init_containers` below.
         """
         return pulumi.get(self, "init_containers")
 
@@ -726,7 +729,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="internetIp")
     def internet_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in v1.170.0+) The Public IP of the container group.
+        (Available since v1.170.0) The Public IP of the container group.
         """
         return pulumi.get(self, "internet_ip")
 
@@ -738,7 +741,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="intranetIp")
     def intranet_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in v1.170.0+) The Private IP of the container group.
+        (Available since v1.170.0) The Private IP of the container group.
         """
         return pulumi.get(self, "intranet_ip")
 
@@ -786,7 +789,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -848,7 +851,7 @@ class _ContainerGroupState:
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]:
         """
-        The list of volumes.
+        The list of volumes. See `volumes` below.
         """
         return pulumi.get(self, "volumes")
 
@@ -861,6 +864,7 @@ class _ContainerGroupState:
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+        **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -915,9 +919,9 @@ class ContainerGroup(pulumi.CustomResource):
         """
         Provides ECI Container Group resource.
 
-        For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/doc-detail/90341.htm).
+        For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/elastic-container-instance/latest/api-eci-2018-08-08-createcontainergroup).
 
-        > **NOTE:** Available in v1.111.0+.
+        > **NOTE:** Available since v1.111.0.
 
         ## Example Usage
 
@@ -928,7 +932,7 @@ class ContainerGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.eci.ContainerGroup("example",
-            container_group_name="tf-testacc-eci-gruop",
+            container_group_name="tf-eci-gruop",
             cpu=8,
             memory=16,
             restart_policy="OnFailure",
@@ -1021,32 +1025,33 @@ class ContainerGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupAcrRegistryInfoArgs']]]] acr_registry_infos: The ACR enterprise edition example properties.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupAcrRegistryInfoArgs']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
         :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
-        :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: false.
+        :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']] eci_security_context: The security context of the container group.
-        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. The default value is `5`.
+        :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']] eci_security_context: The security context of the container group. See `eci_security_context` below.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below.
         :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]] volumes: The list of volumes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+               **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
         ...
@@ -1058,9 +1063,9 @@ class ContainerGroup(pulumi.CustomResource):
         """
         Provides ECI Container Group resource.
 
-        For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/doc-detail/90341.htm).
+        For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/elastic-container-instance/latest/api-eci-2018-08-08-createcontainergroup).
 
-        > **NOTE:** Available in v1.111.0+.
+        > **NOTE:** Available since v1.111.0.
 
         ## Example Usage
 
@@ -1071,7 +1076,7 @@ class ContainerGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.eci.ContainerGroup("example",
-            container_group_name="tf-testacc-eci-gruop",
+            container_group_name="tf-eci-gruop",
             cpu=8,
             memory=16,
             restart_policy="OnFailure",
@@ -1292,35 +1297,36 @@ class ContainerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupAcrRegistryInfoArgs']]]] acr_registry_infos: The ACR enterprise edition example properties.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupAcrRegistryInfoArgs']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
         :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
-        :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: false.
+        :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']] eci_security_context: The security context of the container group.
-        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. The default value is `5`.
+        :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']] eci_security_context: The security context of the container group. See `eci_security_context` below.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below.
         :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
-        :param pulumi.Input[str] internet_ip: (Available in v1.170.0+) The Public IP of the container group.
-        :param pulumi.Input[str] intranet_ip: (Available in v1.170.0+) The Private IP of the container group.
+        :param pulumi.Input[str] internet_ip: (Available since v1.170.0) The Public IP of the container group.
+        :param pulumi.Input[str] intranet_ip: (Available since v1.170.0) The Private IP of the container group.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[str] status: The status of container group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]] volumes: The list of volumes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+               **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1361,7 +1367,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="acrRegistryInfos")
     def acr_registry_infos(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerGroupAcrRegistryInfo']]]:
         """
-        The ACR enterprise edition example properties.
+        The ACR enterprise edition example properties. See `acr_registry_info` below.
         """
         return pulumi.get(self, "acr_registry_infos")
 
@@ -1377,7 +1383,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="autoMatchImageCache")
     def auto_match_image_cache(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to automatically match the image cache. Default value: false.
+        Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "auto_match_image_cache")
 
@@ -1393,7 +1399,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter
     def containers(self) -> pulumi.Output[Sequence['outputs.ContainerGroupContainer']]:
         """
-        The list of containers.
+        The list of containers. See `containers` below.
         """
         return pulumi.get(self, "containers")
 
@@ -1409,7 +1415,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="dnsConfig")
     def dns_config(self) -> pulumi.Output[Optional['outputs.ContainerGroupDnsConfig']]:
         """
-        The structure of dnsConfig.
+        The structure of dnsConfig. See `dns_config` below.
         """
         return pulumi.get(self, "dns_config")
 
@@ -1417,7 +1423,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="eciSecurityContext")
     def eci_security_context(self) -> pulumi.Output[Optional['outputs.ContainerGroupEciSecurityContext']]:
         """
-        The security context of the container group.
+        The security context of the container group. See `eci_security_context` below.
         """
         return pulumi.get(self, "eci_security_context")
 
@@ -1425,7 +1431,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="eipBandwidth")
     def eip_bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
-        The bandwidth of the EIP. The default value is `5`.
+        The bandwidth of the EIP. Default value: `5`.
         """
         return pulumi.get(self, "eip_bandwidth")
 
@@ -1441,7 +1447,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="hostAliases")
     def host_aliases(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerGroupHostAlias']]]:
         """
-        HostAliases.
+        HostAliases. See `host_aliases` below.
         """
         return pulumi.get(self, "host_aliases")
 
@@ -1449,7 +1455,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerGroupImageRegistryCredential']]]:
         """
-        The image registry credential. The details see Block `image_registry_credential`.
+        The image registry credential. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 
@@ -1457,7 +1463,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="initContainers")
     def init_containers(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerGroupInitContainer']]]:
         """
-        The list of initContainers.
+        The list of initContainers. See `init_containers` below.
         """
         return pulumi.get(self, "init_containers")
 
@@ -1481,7 +1487,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="internetIp")
     def internet_ip(self) -> pulumi.Output[str]:
         """
-        (Available in v1.170.0+) The Public IP of the container group.
+        (Available since v1.170.0) The Public IP of the container group.
         """
         return pulumi.get(self, "internet_ip")
 
@@ -1489,7 +1495,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="intranetIp")
     def intranet_ip(self) -> pulumi.Output[str]:
         """
-        (Available in v1.170.0+) The Private IP of the container group.
+        (Available since v1.170.0) The Private IP of the container group.
         """
         return pulumi.get(self, "intranet_ip")
 
@@ -1521,7 +1527,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the resource group.
+        The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1563,7 +1569,7 @@ class ContainerGroup(pulumi.CustomResource):
     @pulumi.getter
     def volumes(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerGroupVolume']]]:
         """
-        The list of volumes.
+        The list of volumes. See `volumes` below.
         """
         return pulumi.get(self, "volumes")
 
@@ -1572,6 +1578,7 @@ class ContainerGroup(pulumi.CustomResource):
     def vswitch_id(self) -> pulumi.Output[str]:
         """
         The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+        **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         """
         return pulumi.get(self, "vswitch_id")
 

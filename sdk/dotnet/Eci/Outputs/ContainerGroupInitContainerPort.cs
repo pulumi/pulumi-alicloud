@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupInitContainerPort
     {
         /// <summary>
-        /// The port number. Valid values: 1 to 65535.
+        /// The port number. Valid values: `1` to `65535`.
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Valid values: TCP and UDP.
+        /// The type of the protocol. Valid values: `TCP` and `UDP`.
         /// </summary>
         public readonly string? Protocol;
 

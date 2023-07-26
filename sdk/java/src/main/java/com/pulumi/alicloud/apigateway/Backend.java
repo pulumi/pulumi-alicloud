@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Api Gateway Backend resource.
  * 
- * For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/zh/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
+ * For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
  * 
- * &gt; **NOTE:** Available in v1.181.0+.
+ * &gt; **NOTE:** Available since v1.181.0.
  * 
  * ## Example Usage
  * 
@@ -47,10 +47,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name1 = config.get(&#34;name1&#34;).orElse(&#34;tf-testAccBackend&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var default_ = new Backend(&#34;default&#34;, BackendArgs.builder()        
- *             .backendName(var_.name())
- *             .description(var_.name())
+ *             .backendName(name)
+ *             .description(name)
  *             .backendType(&#34;HTTP&#34;)
  *             .build());
  * 

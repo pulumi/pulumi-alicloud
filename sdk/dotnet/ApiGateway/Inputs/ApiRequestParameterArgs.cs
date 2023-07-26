@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string>? DefaultValue { get; set; }
 
         /// <summary>
-        /// The description of the api. Defaults to null.
+        /// The description of parameter.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> InService { get; set; } = null!;
 
         /// <summary>
-        /// The name of the api gateway api. Defaults to null.
+        /// Request's parameter name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

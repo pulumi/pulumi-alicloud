@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a DBFS Snapshot resource.
 //
-// For information about DBFS Snapshot and how to use it, see [What is Snapshot](https://help.aliyun.com/document_detail/149726.html).
+// For information about DBFS Snapshot and how to use it.
 //
-// > **NOTE:** Available in v1.156.0+.
+// > **NOTE:** Available since v1.156.0.
 //
 // ## Example Usage
 //
@@ -30,79 +31,92 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
 //			zoneId := "cn-hangzhou-i"
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(zoneId),
+//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(zoneId),
+//				InstanceTypeFamily: pulumi.StringRef("ecs.g7se"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				Description: pulumi.String("tf test"),
-//				VpcId:       *pulumi.String(defaultNetworks.Ids[0]),
+//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				InstanceType: pulumi.StringRef(exampleInstanceTypes.InstanceTypes[len(exampleInstanceTypes.InstanceTypes)-1].Id),
+//				NameRegex:    pulumi.StringRef("^aliyun_2"),
+//				Owners:       pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				Owners:     pulumi.StringRef("system"),
-//				NameRegex:  pulumi.StringRef("^centos_8"),
-//				MostRecent: pulumi.BoolRef(true),
-//			}, nil)
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      pulumi.String(zoneId),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				ImageId:            *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceName:       pulumi.Any(_var.Name),
-//				InstanceType:       pulumi.String("ecs.g7se.large"),
-//				AvailabilityZone:   pulumi.String(zoneId),
-//				VswitchId:          *pulumi.String(defaultSwitches.Ids[0]),
-//				SystemDiskCategory: pulumi.String("cloud_essd"),
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: pulumi.String(zoneId),
+//				InstanceName:     pulumi.String(name),
+//				ImageId:          *pulumi.String(exampleImages.Images[1].Id),
+//				InstanceType:     exampleInstanceTypes.InstanceTypes[len(exampleInstanceTypes.InstanceTypes)-1].Id,
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					exampleSecurityGroup.ID(),
 //				},
+//				VswitchId:          exampleSwitch.ID(),
+//				SystemDiskCategory: pulumi.String("cloud_essd"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databasefilesystem.NewInstance(ctx, "defaultDatabasefilesystem/instanceInstance", &databasefilesystem.InstanceArgs{
+//			_, err = databasefilesystem.NewInstance(ctx, "exampleDatabasefilesystem/instanceInstance", &databasefilesystem.InstanceArgs{
 //				Category:         pulumi.String("standard"),
-//				ZoneId:           defaultInstance.AvailabilityZone,
+//				ZoneId:           pulumi.String(zoneId),
 //				PerformanceLevel: pulumi.String("PL1"),
-//				InstanceName:     pulumi.Any(_var.Name),
+//				InstanceName:     pulumi.String(name),
 //				Size:             pulumi.Int(100),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceAttachment, err := databasefilesystem.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &databasefilesystem.InstanceAttachmentArgs{
-//				EcsId:      defaultInstance.ID(),
-//				InstanceId: defaultDatabasefilesystem / instanceInstance.Id,
+//			exampleInstanceAttachment, err := databasefilesystem.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &databasefilesystem.InstanceAttachmentArgs{
+//				EcsId:      exampleInstance.ID(),
+//				InstanceId: exampleDatabasefilesystem / instanceInstance.Id,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databasefilesystem.NewSnapshot(ctx, "example", &databasefilesystem.SnapshotArgs{
-//				InstanceId:    pulumi.Any(data.Alicloud_dbfs_instances.Default.Ids[0]),
-//				SnapshotName:  pulumi.String("example_value"),
-//				Description:   pulumi.String("example_value"),
+//			_, err = databasefilesystem.NewSnapshot(ctx, "exampleSnapshot", &databasefilesystem.SnapshotArgs{
+//				InstanceId:    exampleInstanceAttachment.InstanceId,
+//				SnapshotName:  pulumi.String(name),
+//				Description:   pulumi.String(name),
 //				RetentionDays: pulumi.Int(30),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultInstanceAttachment,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -148,6 +162,7 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Snapshot
 	err := ctx.RegisterResource("alicloud:databasefilesystem/snapshot:Snapshot", name, args, &resource, opts...)
 	if err != nil {

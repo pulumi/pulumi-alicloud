@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Config Aggregate Delivery resource.
 //
-// For information about Cloud Config Aggregate Delivery and how to use it, see [What is Aggregate Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/delivery-destination-services-overview).
+// For information about Cloud Config Aggregate Delivery and how to use it, see [What is Aggregate Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigdeliverychannel).
 //
-// > **NOTE:** Available in v1.172.0+.
+// > **NOTE:** Available since v1.172.0.
 //
 // ## Import
 //
@@ -76,6 +77,7 @@ func NewAggregateDelivery(ctx *pulumi.Context,
 	if args.DeliveryChannelType == nil {
 		return nil, errors.New("invalid value for required argument 'DeliveryChannelType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AggregateDelivery
 	err := ctx.RegisterResource("alicloud:cfg/aggregateDelivery:AggregateDelivery", name, args, &resource, opts...)
 	if err != nil {

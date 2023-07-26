@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Endpoint Group resource.
 //
-// For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/doc-detail/153259.htm).
+// For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createendpointgroup).
 //
 // > **NOTE:** Available since v1.113.0.
 //
@@ -198,6 +199,7 @@ func NewEndpointGroup(ctx *pulumi.Context,
 	if args.ListenerId == nil {
 		return nil, errors.New("invalid value for required argument 'ListenerId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EndpointGroup
 	err := ctx.RegisterResource("alicloud:ga/endpointGroup:EndpointGroup", name, args, &resource, opts...)
 	if err != nil {

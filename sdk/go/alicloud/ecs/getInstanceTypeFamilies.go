@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetInstanceTypeFamilies(ctx *pulumi.Context, args *GetInstanceTypeFamiliesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypeFamiliesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceTypeFamiliesResult
 	err := ctx.Invoke("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args, &rv, opts...)
 	if err != nil {

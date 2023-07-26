@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +66,7 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args.VpcRegionId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcRegionId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Endpoint
 	err := ctx.RegisterResource("alicloud:pvtz/endpoint:Endpoint", name, args, &resource, opts...)
 	if err != nil {

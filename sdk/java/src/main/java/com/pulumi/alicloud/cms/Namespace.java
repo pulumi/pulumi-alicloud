@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Monitor Service Namespace resource.
  * 
- * For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+ * For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitornamespace).
  * 
- * &gt; **NOTE:** Available in v1.171.0+.
+ * &gt; **NOTE:** Available since v1.171.0.
  * 
  * ## Example Usage
  * 
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
- *             .namespace(&#34;example-value&#34;)
+ *             .namespace(&#34;tf_example&#34;)
  *             .specification(&#34;cms.s1.large&#34;)
  *             .build());
  * 

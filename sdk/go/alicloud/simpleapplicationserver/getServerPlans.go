@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetServerPlans(ctx *pulumi.Context, args *GetServerPlansArgs, opts ...pulumi.InvokeOption) (*GetServerPlansResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerPlansResult
 	err := ctx.Invoke("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args, &rv, opts...)
 	if err != nil {

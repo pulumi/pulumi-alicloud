@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,6 +84,7 @@ func NewEditingProject(ctx *pulumi.Context,
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EditingProject
 	err := ctx.RegisterResource("alicloud:vod/editingProject:EditingProject", name, args, &resource, opts...)
 	if err != nil {

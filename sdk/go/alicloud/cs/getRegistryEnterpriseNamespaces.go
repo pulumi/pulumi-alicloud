@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetRegistryEnterpriseNamespaces(ctx *pulumi.Context, args *GetRegistryEnterpriseNamespacesArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseNamespacesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistryEnterpriseNamespacesResult
 	err := ctx.Invoke("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args, &rv, opts...)
 	if err != nil {

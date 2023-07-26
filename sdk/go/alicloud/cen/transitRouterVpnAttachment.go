@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -192,6 +193,7 @@ func NewTransitRouterVpnAttachment(ctx *pulumi.Context,
 	if args.Zones == nil {
 		return nil, errors.New("invalid value for required argument 'Zones'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TransitRouterVpnAttachment
 	err := ctx.RegisterResource("alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment", name, args, &resource, opts...)
 	if err != nil {

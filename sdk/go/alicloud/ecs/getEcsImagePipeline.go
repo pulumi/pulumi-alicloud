@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func LookupEcsImagePipeline(ctx *pulumi.Context, args *LookupEcsImagePipelineArgs, opts ...pulumi.InvokeOption) (*LookupEcsImagePipelineResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEcsImagePipelineResult
 	err := ctx.Invoke("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args, &rv, opts...)
 	if err != nil {

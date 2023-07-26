@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -110,6 +111,7 @@ func NewQosCar(ctx *pulumi.Context,
 	if args.QosId == nil {
 		return nil, errors.New("invalid value for required argument 'QosId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource QosCar
 	err := ctx.RegisterResource("alicloud:rocketmq/qosCar:QosCar", name, args, &resource, opts...)
 	if err != nil {

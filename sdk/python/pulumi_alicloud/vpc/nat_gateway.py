@@ -340,7 +340,7 @@ class _NatGatewayState:
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] snat_table_ids: The nat gateway will auto create a snat item.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
-        :param pulumi.Input[str] status: (Available in 1.121.0+) The status of NAT gateway.
+        :param pulumi.Input[str] status: (Available since v1.121.0) The status of NAT gateway.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of NAT gateway.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
@@ -585,7 +585,7 @@ class _NatGatewayState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.121.0+) The status of NAT gateway.
+        (Available since v1.121.0) The status of NAT gateway.
         """
         return pulumi.get(self, "status")
 
@@ -819,7 +819,7 @@ class NatGateway(pulumi.CustomResource):
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] snat_table_ids: The nat gateway will auto create a snat item.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
-        :param pulumi.Input[str] status: (Available in 1.121.0+) The status of NAT gateway.
+        :param pulumi.Input[str] status: (Available since v1.121.0) The status of NAT gateway.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of NAT gateway.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
@@ -985,7 +985,7 @@ class NatGateway(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        (Available in 1.121.0+) The status of NAT gateway.
+        (Available since v1.121.0) The status of NAT gateway.
         """
         return pulumi.get(self, "status")
 

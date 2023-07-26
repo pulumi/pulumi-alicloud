@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetNasBackupPlans(ctx *pulumi.Context, args *GetNasBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetNasBackupPlansResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNasBackupPlansResult
 	err := ctx.Invoke("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,8 +69,7 @@ type Disk struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
-	Category                       pulumi.StringPtrOutput `pulumi:"category"`
-	DedicatedBlockStorageClusterId pulumi.StringPtrOutput `pulumi:"dedicatedBlockStorageClusterId"`
+	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
 	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
 	// Indicates whether the disk is released together with the instance: Default value: false.
@@ -117,6 +117,7 @@ func NewDisk(ctx *pulumi.Context,
 		args = &DiskArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Disk
 	err := ctx.RegisterResource("alicloud:ecs/disk:Disk", name, args, &resource, opts...)
 	if err != nil {
@@ -145,8 +146,7 @@ type diskState struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
-	Category                       *string `pulumi:"category"`
-	DedicatedBlockStorageClusterId *string `pulumi:"dedicatedBlockStorageClusterId"`
+	Category *string `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
 	// Indicates whether the disk is released together with the instance: Default value: false.
@@ -194,8 +194,7 @@ type DiskState struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
 	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
-	Category                       pulumi.StringPtrInput
-	DedicatedBlockStorageClusterId pulumi.StringPtrInput
+	Category pulumi.StringPtrInput
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
 	// Indicates whether the disk is released together with the instance: Default value: false.
@@ -247,8 +246,7 @@ type diskArgs struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
-	Category                       *string `pulumi:"category"`
-	DedicatedBlockStorageClusterId *string `pulumi:"dedicatedBlockStorageClusterId"`
+	Category *string `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
 	// Indicates whether the disk is released together with the instance: Default value: false.
@@ -295,8 +293,7 @@ type DiskArgs struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
 	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
-	Category                       pulumi.StringPtrInput
-	DedicatedBlockStorageClusterId pulumi.StringPtrInput
+	Category pulumi.StringPtrInput
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
 	// Indicates whether the disk is released together with the instance: Default value: false.
@@ -436,10 +433,6 @@ func (o DiskOutput) AvailabilityZone() pulumi.StringOutput {
 // Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
 func (o DiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-func (o DiskOutput) DedicatedBlockStorageClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.DedicatedBlockStorageClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.

@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Arms.Inputs
 
     public sealed class DispatchRuleGroupRuleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the group rule.
+        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,6 +107,7 @@ func NewSecurityPolicy(ctx *pulumi.Context,
 	if args.TlsVersions == nil {
 		return nil, errors.New("invalid value for required argument 'TlsVersions'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecurityPolicy
 	err := ctx.RegisterResource("alicloud:nlb/securityPolicy:SecurityPolicy", name, args, &resource, opts...)
 	if err != nil {

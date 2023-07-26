@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetCharacterSetNames(ctx *pulumi.Context, args *GetCharacterSetNamesArgs, opts ...pulumi.InvokeOption) (*GetCharacterSetNamesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCharacterSetNamesResult
 	err := ctx.Invoke("alicloud:rds/getCharacterSetNames:getCharacterSetNames", args, &rv, opts...)
 	if err != nil {

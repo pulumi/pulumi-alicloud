@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiGroup = new Group(&#34;apiGroup&#34;, GroupArgs.builder()        
- *             .description(&#34;description of the api group&#34;)
+ *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
+ *             .description(&#34;tf_example&#34;)
  *             .build());
  * 
  *     }

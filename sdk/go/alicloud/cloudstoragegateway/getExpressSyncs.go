@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetExpressSyncs(ctx *pulumi.Context, args *GetExpressSyncsArgs, opts ...pulumi.InvokeOption) (*GetExpressSyncsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExpressSyncsResult
 	err := ctx.Invoke("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args, &rv, opts...)
 	if err != nil {

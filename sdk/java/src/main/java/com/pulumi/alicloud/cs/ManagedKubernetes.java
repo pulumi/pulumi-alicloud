@@ -41,14 +41,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/managedKubernetes:ManagedKubernetes")
 public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. Detailed below.
      * 
      */
     @Export(name="addons", type=List.class, parameters={ManagedKubernetesAddon.class})
     private Output</* @Nullable */ List<ManagedKubernetesAddon>> addons;
 
     /**
-     * @return The addon you want to install in cluster.
+     * @return The addon you want to install in cluster. Detailed below.
      * 
      */
     public Output<Optional<List<ManagedKubernetesAddon>>> addons() {
@@ -355,7 +355,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.imageId);
     }
     /**
-     * Install cloud monitor agent on ECS. Default to `true`.
+     * (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
      * 
      * @deprecated
      * Field &#39;install_cloud_monitor&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;install_cloud_monitor&#39; to replace it
@@ -363,14 +363,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it */
     @Export(name="installCloudMonitor", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> installCloudMonitor;
+    private Output<Boolean> installCloudMonitor;
 
     /**
-     * @return Install cloud monitor agent on ECS. Default to `true`.
+     * @return (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
      * 
      */
-    public Output<Optional<Boolean>> installCloudMonitor() {
-        return Codegen.optional(this.installCloudMonitor);
+    public Output<Boolean> installCloudMonitor() {
+        return this.installCloudMonitor;
     }
     /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -719,14 +719,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retainResources);
     }
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
      * 
      */
     @Export(name="rrsaMetadata", type=ManagedKubernetesRrsaMetadata.class, parameters={})
     private Output<ManagedKubernetesRrsaMetadata> rrsaMetadata;
 
     /**
-     * @return (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * @return (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
      * 
      */
     public Output<ManagedKubernetesRrsaMetadata> rrsaMetadata() {
@@ -793,7 +793,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceCidr);
     }
     /**
-     * The ID of load balancer.
+     * (Deprecated) The ID of load balancer.
      * 
      * @deprecated
      * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
@@ -804,7 +804,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     private Output<String> slbId;
 
     /**
-     * @return The ID of load balancer.
+     * @return (Deprecated) The ID of load balancer.
      * 
      */
     public Output<String> slbId() {
@@ -1001,7 +1001,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.workerAutoRenewPeriod;
     }
     /**
-     * The data disk category of worker, use `worker_data_disks` to instead it.
+     * (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -1012,14 +1012,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> workerDataDiskCategory;
 
     /**
-     * @return The data disk category of worker, use `worker_data_disks` to instead it.
+     * @return (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      */
     public Output<Optional<String>> workerDataDiskCategory() {
         return Codegen.optional(this.workerDataDiskCategory);
     }
     /**
-     * The data disk size of worker, use `worker_data_disks` to instead it.
+     * (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.size&#39; to replace it
@@ -1030,14 +1030,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> workerDataDiskSize;
 
     /**
-     * @return The data disk size of worker, use `worker_data_disks` to instead it.
+     * @return (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
      * 
      */
     public Output<Optional<Integer>> workerDataDiskSize() {
         return Codegen.optional(this.workerDataDiskSize);
     }
     /**
-     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
      * 
      * @deprecated
      * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks&#39; to replace it
@@ -1048,7 +1048,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<ManagedKubernetesWorkerDataDisk>> workerDataDisks;
 
     /**
-     * @return (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+     * @return (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
      * 
      */
     public Output<Optional<List<ManagedKubernetesWorkerDataDisk>>> workerDataDisks() {

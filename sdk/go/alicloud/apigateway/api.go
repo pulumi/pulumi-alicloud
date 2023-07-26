@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,21 +28,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			apiGroup, err := apigateway.NewGroup(ctx, "apiGroup", &apigateway.GroupArgs{
-//				Description: pulumi.String("description of the api group"),
+//			exampleGroup, err := apigateway.NewGroup(ctx, "exampleGroup", &apigateway.GroupArgs{
+//				Description: pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigateway.NewApi(ctx, "apiGatewayApi", &apigateway.ApiArgs{
-//				GroupId:         apiGroup.ID(),
-//				Description:     pulumi.String("your description"),
+//			_, err = apigateway.NewApi(ctx, "exampleApi", &apigateway.ApiArgs{
+//				GroupId:         exampleGroup.ID(),
+//				Description:     pulumi.String("tf-example"),
 //				AuthType:        pulumi.String("APP"),
 //				ForceNonceCheck: pulumi.Bool(false),
 //				RequestConfig: &apigateway.ApiRequestConfigArgs{
 //					Protocol: pulumi.String("HTTP"),
 //					Method:   pulumi.String("GET"),
-//					Path:     pulumi.String("/test/path1"),
+//					Path:     pulumi.String("/example/path"),
 //					Mode:     pulumi.String("MAPPING"),
 //				},
 //				ServiceType: pulumi.String("HTTP"),
@@ -54,12 +55,12 @@ import (
 //				},
 //				RequestParameters: apigateway.ApiRequestParameterArray{
 //					&apigateway.ApiRequestParameterArgs{
-//						Name:        pulumi.String("aaa"),
+//						Name:        pulumi.String("example"),
 //						Type:        pulumi.String("STRING"),
 //						Required:    pulumi.String("OPTIONAL"),
 //						In:          pulumi.String("QUERY"),
 //						InService:   pulumi.String("QUERY"),
-//						NameService: pulumi.String("testparams"),
+//						NameService: pulumi.String("exampleservice"),
 //					},
 //				},
 //				StageNames: pulumi.StringArray{
@@ -92,33 +93,33 @@ type Api struct {
 	ApiId pulumi.StringOutput `pulumi:"apiId"`
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType pulumi.StringOutput `pulumi:"authType"`
-	// constant_parameters defines the constant parameters of the api.
+	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters ApiConstantParameterArrayOutput `pulumi:"constantParameters"`
 	// The description of the api. Defaults to null.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+	// fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
 	FcServiceConfig ApiFcServiceConfigPtrOutput `pulumi:"fcServiceConfig"`
 	// Whether to prevent API replay attack. Default value: `false`.
 	ForceNonceCheck pulumi.BoolOutput `pulumi:"forceNonceCheck"`
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// http_service_config defines the config when serviceType selected 'HTTP'.
+	// http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
 	HttpServiceConfig ApiHttpServiceConfigPtrOutput `pulumi:"httpServiceConfig"`
-	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
 	HttpVpcServiceConfig ApiHttpVpcServiceConfigPtrOutput `pulumi:"httpVpcServiceConfig"`
-	// http_service_config defines the config when serviceType selected 'MOCK'.
+	// http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
 	MockServiceConfig ApiMockServiceConfigPtrOutput `pulumi:"mockServiceConfig"`
 	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Request_config defines how users can send requests to your API.
+	// Request_config defines how users can send requests to your API. See `requestConfig` below.
 	RequestConfig ApiRequestConfigOutput `pulumi:"requestConfig"`
-	// request_parameters defines the request parameters of the api.
+	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters ApiRequestParameterArrayOutput `pulumi:"requestParameters"`
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType pulumi.StringOutput `pulumi:"serviceType"`
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames pulumi.StringArrayOutput `pulumi:"stageNames"`
-	// system_parameters defines the system parameters of the api.
+	// system_parameters defines the system parameters of the api. See `systemParameters` below.
 	SystemParameters ApiSystemParameterArrayOutput `pulumi:"systemParameters"`
 }
 
@@ -144,6 +145,7 @@ func NewApi(ctx *pulumi.Context,
 	if args.ServiceType == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Api
 	err := ctx.RegisterResource("alicloud:apigateway/api:Api", name, args, &resource, opts...)
 	if err != nil {
@@ -170,33 +172,33 @@ type apiState struct {
 	ApiId *string `pulumi:"apiId"`
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType *string `pulumi:"authType"`
-	// constant_parameters defines the constant parameters of the api.
+	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters []ApiConstantParameter `pulumi:"constantParameters"`
 	// The description of the api. Defaults to null.
 	Description *string `pulumi:"description"`
-	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+	// fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
 	FcServiceConfig *ApiFcServiceConfig `pulumi:"fcServiceConfig"`
 	// Whether to prevent API replay attack. Default value: `false`.
 	ForceNonceCheck *bool `pulumi:"forceNonceCheck"`
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId *string `pulumi:"groupId"`
-	// http_service_config defines the config when serviceType selected 'HTTP'.
+	// http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
 	HttpServiceConfig *ApiHttpServiceConfig `pulumi:"httpServiceConfig"`
-	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
 	HttpVpcServiceConfig *ApiHttpVpcServiceConfig `pulumi:"httpVpcServiceConfig"`
-	// http_service_config defines the config when serviceType selected 'MOCK'.
+	// http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
 	MockServiceConfig *ApiMockServiceConfig `pulumi:"mockServiceConfig"`
 	// The name of the api gateway api. Defaults to null.
 	Name *string `pulumi:"name"`
-	// Request_config defines how users can send requests to your API.
+	// Request_config defines how users can send requests to your API. See `requestConfig` below.
 	RequestConfig *ApiRequestConfig `pulumi:"requestConfig"`
-	// request_parameters defines the request parameters of the api.
+	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters []ApiRequestParameter `pulumi:"requestParameters"`
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType *string `pulumi:"serviceType"`
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames []string `pulumi:"stageNames"`
-	// system_parameters defines the system parameters of the api.
+	// system_parameters defines the system parameters of the api. See `systemParameters` below.
 	SystemParameters []ApiSystemParameter `pulumi:"systemParameters"`
 }
 
@@ -205,33 +207,33 @@ type ApiState struct {
 	ApiId pulumi.StringPtrInput
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType pulumi.StringPtrInput
-	// constant_parameters defines the constant parameters of the api.
+	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters ApiConstantParameterArrayInput
 	// The description of the api. Defaults to null.
 	Description pulumi.StringPtrInput
-	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+	// fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
 	FcServiceConfig ApiFcServiceConfigPtrInput
 	// Whether to prevent API replay attack. Default value: `false`.
 	ForceNonceCheck pulumi.BoolPtrInput
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId pulumi.StringPtrInput
-	// http_service_config defines the config when serviceType selected 'HTTP'.
+	// http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
 	HttpServiceConfig ApiHttpServiceConfigPtrInput
-	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
 	HttpVpcServiceConfig ApiHttpVpcServiceConfigPtrInput
-	// http_service_config defines the config when serviceType selected 'MOCK'.
+	// http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
 	MockServiceConfig ApiMockServiceConfigPtrInput
 	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringPtrInput
-	// Request_config defines how users can send requests to your API.
+	// Request_config defines how users can send requests to your API. See `requestConfig` below.
 	RequestConfig ApiRequestConfigPtrInput
-	// request_parameters defines the request parameters of the api.
+	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters ApiRequestParameterArrayInput
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType pulumi.StringPtrInput
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames pulumi.StringArrayInput
-	// system_parameters defines the system parameters of the api.
+	// system_parameters defines the system parameters of the api. See `systemParameters` below.
 	SystemParameters ApiSystemParameterArrayInput
 }
 
@@ -242,33 +244,33 @@ func (ApiState) ElementType() reflect.Type {
 type apiArgs struct {
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType string `pulumi:"authType"`
-	// constant_parameters defines the constant parameters of the api.
+	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters []ApiConstantParameter `pulumi:"constantParameters"`
 	// The description of the api. Defaults to null.
 	Description string `pulumi:"description"`
-	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+	// fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
 	FcServiceConfig *ApiFcServiceConfig `pulumi:"fcServiceConfig"`
 	// Whether to prevent API replay attack. Default value: `false`.
 	ForceNonceCheck *bool `pulumi:"forceNonceCheck"`
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId string `pulumi:"groupId"`
-	// http_service_config defines the config when serviceType selected 'HTTP'.
+	// http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
 	HttpServiceConfig *ApiHttpServiceConfig `pulumi:"httpServiceConfig"`
-	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
 	HttpVpcServiceConfig *ApiHttpVpcServiceConfig `pulumi:"httpVpcServiceConfig"`
-	// http_service_config defines the config when serviceType selected 'MOCK'.
+	// http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
 	MockServiceConfig *ApiMockServiceConfig `pulumi:"mockServiceConfig"`
 	// The name of the api gateway api. Defaults to null.
 	Name *string `pulumi:"name"`
-	// Request_config defines how users can send requests to your API.
+	// Request_config defines how users can send requests to your API. See `requestConfig` below.
 	RequestConfig ApiRequestConfig `pulumi:"requestConfig"`
-	// request_parameters defines the request parameters of the api.
+	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters []ApiRequestParameter `pulumi:"requestParameters"`
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType string `pulumi:"serviceType"`
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames []string `pulumi:"stageNames"`
-	// system_parameters defines the system parameters of the api.
+	// system_parameters defines the system parameters of the api. See `systemParameters` below.
 	SystemParameters []ApiSystemParameter `pulumi:"systemParameters"`
 }
 
@@ -276,33 +278,33 @@ type apiArgs struct {
 type ApiArgs struct {
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType pulumi.StringInput
-	// constant_parameters defines the constant parameters of the api.
+	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters ApiConstantParameterArrayInput
 	// The description of the api. Defaults to null.
 	Description pulumi.StringInput
-	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+	// fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
 	FcServiceConfig ApiFcServiceConfigPtrInput
 	// Whether to prevent API replay attack. Default value: `false`.
 	ForceNonceCheck pulumi.BoolPtrInput
 	// The api gateway that the api belongs to. Defaults to null.
 	GroupId pulumi.StringInput
-	// http_service_config defines the config when serviceType selected 'HTTP'.
+	// http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
 	HttpServiceConfig ApiHttpServiceConfigPtrInput
-	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+	// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
 	HttpVpcServiceConfig ApiHttpVpcServiceConfigPtrInput
-	// http_service_config defines the config when serviceType selected 'MOCK'.
+	// http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
 	MockServiceConfig ApiMockServiceConfigPtrInput
 	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringPtrInput
-	// Request_config defines how users can send requests to your API.
+	// Request_config defines how users can send requests to your API. See `requestConfig` below.
 	RequestConfig ApiRequestConfigInput
-	// request_parameters defines the request parameters of the api.
+	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters ApiRequestParameterArrayInput
 	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
 	ServiceType pulumi.StringInput
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames pulumi.StringArrayInput
-	// system_parameters defines the system parameters of the api.
+	// system_parameters defines the system parameters of the api. See `systemParameters` below.
 	SystemParameters ApiSystemParameterArrayInput
 }
 
@@ -403,7 +405,7 @@ func (o ApiOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.AuthType }).(pulumi.StringOutput)
 }
 
-// constant_parameters defines the constant parameters of the api.
+// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 func (o ApiOutput) ConstantParameters() ApiConstantParameterArrayOutput {
 	return o.ApplyT(func(v *Api) ApiConstantParameterArrayOutput { return v.ConstantParameters }).(ApiConstantParameterArrayOutput)
 }
@@ -413,7 +415,7 @@ func (o ApiOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+// fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
 func (o ApiOutput) FcServiceConfig() ApiFcServiceConfigPtrOutput {
 	return o.ApplyT(func(v *Api) ApiFcServiceConfigPtrOutput { return v.FcServiceConfig }).(ApiFcServiceConfigPtrOutput)
 }
@@ -428,17 +430,17 @@ func (o ApiOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// http_service_config defines the config when serviceType selected 'HTTP'.
+// http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
 func (o ApiOutput) HttpServiceConfig() ApiHttpServiceConfigPtrOutput {
 	return o.ApplyT(func(v *Api) ApiHttpServiceConfigPtrOutput { return v.HttpServiceConfig }).(ApiHttpServiceConfigPtrOutput)
 }
 
-// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
 func (o ApiOutput) HttpVpcServiceConfig() ApiHttpVpcServiceConfigPtrOutput {
 	return o.ApplyT(func(v *Api) ApiHttpVpcServiceConfigPtrOutput { return v.HttpVpcServiceConfig }).(ApiHttpVpcServiceConfigPtrOutput)
 }
 
-// http_service_config defines the config when serviceType selected 'MOCK'.
+// http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
 func (o ApiOutput) MockServiceConfig() ApiMockServiceConfigPtrOutput {
 	return o.ApplyT(func(v *Api) ApiMockServiceConfigPtrOutput { return v.MockServiceConfig }).(ApiMockServiceConfigPtrOutput)
 }
@@ -448,12 +450,12 @@ func (o ApiOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Request_config defines how users can send requests to your API.
+// Request_config defines how users can send requests to your API. See `requestConfig` below.
 func (o ApiOutput) RequestConfig() ApiRequestConfigOutput {
 	return o.ApplyT(func(v *Api) ApiRequestConfigOutput { return v.RequestConfig }).(ApiRequestConfigOutput)
 }
 
-// request_parameters defines the request parameters of the api.
+// request_parameters defines the request parameters of the api. See `requestParameters` below.
 func (o ApiOutput) RequestParameters() ApiRequestParameterArrayOutput {
 	return o.ApplyT(func(v *Api) ApiRequestParameterArrayOutput { return v.RequestParameters }).(ApiRequestParameterArrayOutput)
 }
@@ -468,7 +470,7 @@ func (o ApiOutput) StageNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringArrayOutput { return v.StageNames }).(pulumi.StringArrayOutput)
 }
 
-// system_parameters defines the system parameters of the api.
+// system_parameters defines the system parameters of the api. See `systemParameters` below.
 func (o ApiOutput) SystemParameters() ApiSystemParameterArrayOutput {
 	return o.ApplyT(func(v *Api) ApiSystemParameterArrayOutput { return v.SystemParameters }).(ApiSystemParameterArrayOutput)
 }

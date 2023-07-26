@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetAlidnsDomainGroups(ctx *pulumi.Context, args *GetAlidnsDomainGroupsArgs, opts ...pulumi.InvokeOption) (*GetAlidnsDomainGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlidnsDomainGroupsResult
 	err := ctx.Invoke("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // Deprecated: This function has been deprecated in favour of the getEipAddresses function
 func GetEips(ctx *pulumi.Context, args *GetEipsArgs, opts ...pulumi.InvokeOption) (*GetEipsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEipsResult
 	err := ctx.Invoke("alicloud:ecs/getEips:getEips", args, &rv, opts...)
 	if err != nil {

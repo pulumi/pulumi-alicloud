@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Basic Endpoint resource.
  * 
- * For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicendpoint).
+ * For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicendpoint).
  * 
  * &gt; **NOTE:** Available since v1.194.0.
  * 

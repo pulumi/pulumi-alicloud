@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,6 +107,7 @@ func NewEipSegmentAddress(ctx *pulumi.Context,
 	if args.EipMask == nil {
 		return nil, errors.New("invalid value for required argument 'EipMask'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EipSegmentAddress
 	err := ctx.RegisterResource("alicloud:ecs/eipSegmentAddress:EipSegmentAddress", name, args, &resource, opts...)
 	if err != nil {

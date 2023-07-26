@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
     [OutputType]
     public sealed class ApiMockServiceConfig
     {
+        /// <summary>
+        /// The name of aone.
+        /// </summary>
         public readonly string? AoneName;
         /// <summary>
         /// The result of the mock service.

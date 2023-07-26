@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -93,6 +94,7 @@ func NewRealTimeLogDelivery(ctx *pulumi.Context,
 	if args.SlsRegion == nil {
 		return nil, errors.New("invalid value for required argument 'SlsRegion'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RealTimeLogDelivery
 	err := ctx.RegisterResource("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery", name, args, &resource, opts...)
 	if err != nil {

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// The port number. Valid values: 1 to 65535.
+        /// The port number. Valid values: `1` to `65535`.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

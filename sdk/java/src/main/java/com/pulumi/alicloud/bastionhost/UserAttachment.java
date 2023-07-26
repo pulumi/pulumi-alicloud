@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Bastion Host User Attachment resource to add user to one user group.
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Example Usage
  * 
@@ -27,6 +27,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.bastionhost.Instance;
+ * import com.pulumi.alicloud.bastionhost.InstanceArgs;
+ * import com.pulumi.alicloud.bastionhost.UserGroup;
+ * import com.pulumi.alicloud.bastionhost.UserGroupArgs;
+ * import com.pulumi.alicloud.bastionhost.User;
+ * import com.pulumi.alicloud.bastionhost.UserArgs;
  * import com.pulumi.alicloud.bastionhost.UserAttachment;
  * import com.pulumi.alicloud.bastionhost.UserAttachmentArgs;
  * import java.util.List;
@@ -42,10 +56,57 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new UserAttachment(&#34;example&#34;, UserAttachmentArgs.builder()        
- *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
- *             .userGroupId(&#34;10&#34;)
- *             .userId(&#34;100&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .description(name)
+ *             .licenseCode(&#34;bhah_ent_50_asset&#34;)
+ *             .planCode(&#34;cloudbastion&#34;)
+ *             .storage(&#34;5&#34;)
+ *             .bandwidth(&#34;5&#34;)
+ *             .period(&#34;1&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *         var defaultUserGroup = new UserGroup(&#34;defaultUserGroup&#34;, UserGroupArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .userGroupName(name)
+ *             .build());
+ * 
+ *         var localUser = new User(&#34;localUser&#34;, UserArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .mobileCountryCode(&#34;CN&#34;)
+ *             .mobile(&#34;13312345678&#34;)
+ *             .password(&#34;YourPassword-123&#34;)
+ *             .source(&#34;Local&#34;)
+ *             .userName(String.format(&#34;%s_local_user&#34;, name))
+ *             .build());
+ * 
+ *         var defaultUserAttachment = new UserAttachment(&#34;defaultUserAttachment&#34;, UserAttachmentArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .userGroupId(defaultUserGroup.userGroupId())
+ *             .userId(localUser.userId())
  *             .build());
  * 
  *     }

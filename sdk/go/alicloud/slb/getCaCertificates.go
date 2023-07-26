@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,7 @@ import (
 //
 // ```
 func GetCaCertificates(ctx *pulumi.Context, args *GetCaCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCaCertificatesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCaCertificatesResult
 	err := ctx.Invoke("alicloud:slb/getCaCertificates:getCaCertificates", args, &rv, opts...)
 	if err != nil {

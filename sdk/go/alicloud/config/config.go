@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
 // console.
@@ -51,7 +54,7 @@ func GetEcsRoleName(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "ALICLOUD_ECS_ROLE_NAME"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "ALICLOUD_ECS_ROLE_NAME"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -92,7 +95,7 @@ func GetProfile(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "ALICLOUD_PROFILE"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "ALICLOUD_PROFILE"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -108,7 +111,7 @@ func GetRegion(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "ALICLOUD_REGION"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "ALICLOUD_REGION"); d != nil {
 		value = d.(string)
 	}
 	return value

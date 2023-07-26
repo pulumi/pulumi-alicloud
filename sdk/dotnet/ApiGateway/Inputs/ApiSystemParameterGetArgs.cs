@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
     public sealed class ApiSystemParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        /// System parameter location; values: 'HEAD' and 'QUERY'.
         /// </summary>
         [Input("in", required: true)]
         public Input<string> In { get; set; } = null!;
 
         /// <summary>
-        /// The name of the api gateway api. Defaults to null.
+        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

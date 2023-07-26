@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupHostAlias
     {
         /// <summary>
-        /// Adds a host name.
+        /// The information about the host.
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
-        /// Adds an IP address.
+        /// The IP address of the host.
         /// </summary>
         public readonly string? Ip;
 

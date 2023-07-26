@@ -15,14 +15,14 @@ public final class DispatchRuleLabelMatchExpressionGridArgs extends com.pulumi.r
     public static final DispatchRuleLabelMatchExpressionGridArgs Empty = new DispatchRuleLabelMatchExpressionGridArgs();
 
     /**
-     * Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+     * Sets the dispatch rule. See `label_match_expression_groups` below.
      * 
      */
     @Import(name="labelMatchExpressionGroups", required=true)
     private Output<List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs>> labelMatchExpressionGroups;
 
     /**
-     * @return Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+     * @return Sets the dispatch rule. See `label_match_expression_groups` below.
      * 
      */
     public Output<List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs>> labelMatchExpressionGroups() {
@@ -54,7 +54,7 @@ public final class DispatchRuleLabelMatchExpressionGridArgs extends com.pulumi.r
         }
 
         /**
-         * @param labelMatchExpressionGroups Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+         * @param labelMatchExpressionGroups Sets the dispatch rule. See `label_match_expression_groups` below.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class DispatchRuleLabelMatchExpressionGridArgs extends com.pulumi.r
         }
 
         /**
-         * @param labelMatchExpressionGroups Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+         * @param labelMatchExpressionGroups Sets the dispatch rule. See `label_match_expression_groups` below.
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class DispatchRuleLabelMatchExpressionGridArgs extends com.pulumi.r
         }
 
         /**
-         * @param labelMatchExpressionGroups Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+         * @param labelMatchExpressionGroups Sets the dispatch rule. See `label_match_expression_groups` below.
          * 
          * @return builder
          * 

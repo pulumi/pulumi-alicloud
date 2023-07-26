@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -115,17 +116,13 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewBandwidthLimit(ctx, "exampleBandwidthLimit", &cen.BandwidthLimitArgs{
-//				InstanceId: exampleInstance.ID(),
+//				InstanceId: exampleBandwidthPackageAttachment.InstanceId,
 //				RegionIds: pulumi.StringArray{
-//					pulumi.String(region1),
-//					pulumi.String(region2),
+//					example1.ChildInstanceRegionId,
+//					example2.ChildInstanceRegionId,
 //				},
 //				BandwidthLimit: pulumi.Int(4),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				exampleBandwidthPackageAttachment,
-//				example2,
-//				example1,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -173,6 +170,7 @@ func NewBandwidthLimit(ctx *pulumi.Context,
 	if args.RegionIds == nil {
 		return nil, errors.New("invalid value for required argument 'RegionIds'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BandwidthLimit
 	err := ctx.RegisterResource("alicloud:cen/bandwidthLimit:BandwidthLimit", name, args, &resource, opts...)
 	if err != nil {

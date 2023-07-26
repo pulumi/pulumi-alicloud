@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Monitor Service Group Metric Rule resource.
  *
- * For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/doc-detail/114943.htm).
+ * For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putgroupmetricrule).
  *
- * > **NOTE:** Available in v1.104.0+.
+ * > **NOTE:** Available since v1.104.0.
  *
  * ## Example Usage
  *
@@ -20,18 +20,25 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
- * const thisRandomUuid = new random.RandomUuid("thisRandomUuid", {});
- * const thisGroupMetricRule = new alicloud.cms.GroupMetricRule("thisGroupMetricRule", {
- *     groupId: "539****",
- *     ruleId: thisRandomUuid.id,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
+ *     alarmContactGroupName: name,
+ *     describe: name,
+ * });
+ * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("defaultMonitorGroup", {
+ *     monitorGroupName: name,
+ *     contactGroups: [defaultAlarmContactGroup.id],
+ * });
+ * const _this = new alicloud.cms.GroupMetricRule("this", {
+ *     groupId: defaultMonitorGroup.id,
+ *     groupMetricRuleName: name,
  *     category: "ecs",
- *     namespace: "acs_ecs_dashboard",
  *     metricName: "cpu_total",
+ *     namespace: "acs_ecs_dashboard",
+ *     ruleId: name,
  *     period: 60,
- *     groupMetricRuleName: "tf-testacc-rule-name",
- *     emailSubject: "tf-testacc-rule-name-warning",
  *     interval: "3600",
  *     silenceTime: 85800,
  *     noEffectiveInterval: "00:00-05:30",
@@ -110,7 +117,7 @@ export class GroupMetricRule extends pulumi.CustomResource {
      */
     public readonly emailSubject!: pulumi.Output<string>;
     /**
-     * Alarm level. See the following `Block escalations`.
+     * Alarm level. See `escalations` below.
      */
     public readonly escalations!: pulumi.Output<outputs.cms.GroupMetricRuleEscalations>;
     /**
@@ -154,7 +161,7 @@ export class GroupMetricRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * The information about the resource for which alerts are triggered. See `targets` below.
      */
     public readonly targets!: pulumi.Output<outputs.cms.GroupMetricRuleTarget[]>;
     /**
@@ -265,7 +272,7 @@ export interface GroupMetricRuleState {
      */
     emailSubject?: pulumi.Input<string>;
     /**
-     * Alarm level. See the following `Block escalations`.
+     * Alarm level. See `escalations` below.
      */
     escalations?: pulumi.Input<inputs.cms.GroupMetricRuleEscalations>;
     /**
@@ -309,7 +316,7 @@ export interface GroupMetricRuleState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * The information about the resource for which alerts are triggered. See `targets` below.
      */
     targets?: pulumi.Input<pulumi.Input<inputs.cms.GroupMetricRuleTarget>[]>;
     /**
@@ -343,7 +350,7 @@ export interface GroupMetricRuleArgs {
      */
     emailSubject?: pulumi.Input<string>;
     /**
-     * Alarm level. See the following `Block escalations`.
+     * Alarm level. See `escalations` below.
      */
     escalations: pulumi.Input<inputs.cms.GroupMetricRuleEscalations>;
     /**
@@ -383,7 +390,7 @@ export interface GroupMetricRuleArgs {
      */
     silenceTime?: pulumi.Input<number>;
     /**
-     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * The information about the resource for which alerts are triggered. See `targets` below.
      */
     targets?: pulumi.Input<pulumi.Input<inputs.cms.GroupMetricRuleTarget>[]>;
     /**

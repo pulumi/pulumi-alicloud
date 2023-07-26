@@ -31,14 +31,14 @@ public final class MonitorGroupInstancesArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Instance information added to the Cms Group.
+     * Instance information added to the Cms Group. See `instances` below.
      * 
      */
     @Import(name="instances", required=true)
     private Output<List<MonitorGroupInstancesInstanceArgs>> instances;
 
     /**
-     * @return Instance information added to the Cms Group.
+     * @return Instance information added to the Cms Group. See `instances` below.
      * 
      */
     public Output<List<MonitorGroupInstancesInstanceArgs>> instances() {
@@ -92,7 +92,7 @@ public final class MonitorGroupInstancesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instances Instance information added to the Cms Group.
+         * @param instances Instance information added to the Cms Group. See `instances` below.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class MonitorGroupInstancesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instances Instance information added to the Cms Group.
+         * @param instances Instance information added to the Cms Group. See `instances` below.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class MonitorGroupInstancesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instances Instance information added to the Cms Group.
+         * @param instances Instance information added to the Cms Group. See `instances` below.
          * 
          * @return builder
          * 

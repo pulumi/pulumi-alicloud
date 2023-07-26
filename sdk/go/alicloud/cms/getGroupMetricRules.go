@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetGroupMetricRules(ctx *pulumi.Context, args *GetGroupMetricRulesArgs, opts ...pulumi.InvokeOption) (*GetGroupMetricRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupMetricRulesResult
 	err := ctx.Invoke("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args, &rv, opts...)
 	if err != nil {

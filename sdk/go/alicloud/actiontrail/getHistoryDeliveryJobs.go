@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +56,7 @@ import (
 //
 // ```
 func GetHistoryDeliveryJobs(ctx *pulumi.Context, args *GetHistoryDeliveryJobsArgs, opts ...pulumi.InvokeOption) (*GetHistoryDeliveryJobsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHistoryDeliveryJobsResult
 	err := ctx.Invoke("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -101,6 +102,7 @@ import (
 //
 // ```
 func GetNatIps(ctx *pulumi.Context, args *GetNatIpsArgs, opts ...pulumi.InvokeOption) (*GetNatIpsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNatIpsResult
 	err := ctx.Invoke("alicloud:vpc/getNatIps:getNatIps", args, &rv, opts...)
 	if err != nil {

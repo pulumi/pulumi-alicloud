@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Config Aggregate Config Rule resource.
 //
-// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
+// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigrule).
 //
-// > **NOTE:** Available in v1.124.0+.
+// > **NOTE:** Available since v1.124.0.
 //
 // ## Example Usage
 //
@@ -27,38 +28,53 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAggregator, err := cfg.NewAggregator(ctx, "exampleAggregator", &cfg.AggregatorArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
+//				Status: pulumi.StringRef("CreateSuccess"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAggregator, err := cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   pulumi.String("140278452670****"),
-//						AccountName: pulumi.String("test-2"),
+//						AccountId:   *pulumi.String(defaultAccounts.Accounts[0].AccountId),
+//						AccountName: *pulumi.String(defaultAccounts.Accounts[0].DisplayName),
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},
-//				AggregatorName: pulumi.String("tf-testaccaggregator"),
-//				Description:    pulumi.String("tf-testaccaggregator"),
+//				AggregatorName: pulumi.String(name),
+//				Description:    pulumi.String(name),
+//				AggregatorType: pulumi.String("CUSTOM"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cfg.NewAggregateConfigRule(ctx, "exampleAggregateConfigRule", &cfg.AggregateConfigRuleArgs{
-//				AggregateConfigRuleName: pulumi.String("tf-testaccconfig1234"),
-//				AggregatorId:            exampleAggregator.ID(),
+//			_, err = cfg.NewAggregateConfigRule(ctx, "defaultAggregateConfigRule", &cfg.AggregateConfigRuleArgs{
+//				AggregateConfigRuleName: pulumi.String("contains-tag"),
+//				AggregatorId:            defaultAggregator.ID(),
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
 //				SourceOwner:             pulumi.String("ALIYUN"),
-//				SourceIdentifier:        pulumi.String("ecs-cpu-min-count-limit"),
+//				SourceIdentifier:        pulumi.String("contains-tag"),
 //				RiskLevel:               pulumi.Int(1),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::ECS::Instance"),
 //				},
 //				InputParameters: pulumi.AnyMap{
-//					"cpuCount": pulumi.Any("4"),
+//					"key":   pulumi.Any("example"),
+//					"value": pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
@@ -86,7 +102,7 @@ type AggregateConfigRule struct {
 	AggregateConfigRuleName pulumi.StringOutput `pulumi:"aggregateConfigRuleName"`
 	// The Aggregator Id.
 	AggregatorId pulumi.StringOutput `pulumi:"aggregatorId"`
-	// (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+	// (Available since v1.141.0) The rule ID of Aggregate Config Rule.
 	ConfigRuleId pulumi.StringOutput `pulumi:"configRuleId"`
 	// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
 	ConfigRuleTriggerTypes pulumi.StringOutput `pulumi:"configRuleTriggerTypes"`
@@ -146,6 +162,7 @@ func NewAggregateConfigRule(ctx *pulumi.Context,
 	if args.SourceOwner == nil {
 		return nil, errors.New("invalid value for required argument 'SourceOwner'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AggregateConfigRule
 	err := ctx.RegisterResource("alicloud:cfg/aggregateConfigRule:AggregateConfigRule", name, args, &resource, opts...)
 	if err != nil {
@@ -172,7 +189,7 @@ type aggregateConfigRuleState struct {
 	AggregateConfigRuleName *string `pulumi:"aggregateConfigRuleName"`
 	// The Aggregator Id.
 	AggregatorId *string `pulumi:"aggregatorId"`
-	// (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+	// (Available since v1.141.0) The rule ID of Aggregate Config Rule.
 	ConfigRuleId *string `pulumi:"configRuleId"`
 	// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
 	ConfigRuleTriggerTypes *string `pulumi:"configRuleTriggerTypes"`
@@ -209,7 +226,7 @@ type AggregateConfigRuleState struct {
 	AggregateConfigRuleName pulumi.StringPtrInput
 	// The Aggregator Id.
 	AggregatorId pulumi.StringPtrInput
-	// (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+	// (Available since v1.141.0) The rule ID of Aggregate Config Rule.
 	ConfigRuleId pulumi.StringPtrInput
 	// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
 	ConfigRuleTriggerTypes pulumi.StringPtrInput
@@ -413,7 +430,7 @@ func (o AggregateConfigRuleOutput) AggregatorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.AggregatorId }).(pulumi.StringOutput)
 }
 
-// (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+// (Available since v1.141.0) The rule ID of Aggregate Config Rule.
 func (o AggregateConfigRuleOutput) ConfigRuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.ConfigRuleId }).(pulumi.StringOutput)
 }

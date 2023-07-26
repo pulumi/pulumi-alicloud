@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetDataCenters(ctx *pulumi.Context, args *GetDataCentersArgs, opts ...pulumi.InvokeOption) (*GetDataCentersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDataCentersResult
 	err := ctx.Invoke("alicloud:cassandra/getDataCenters:getDataCenters", args, &rv, opts...)
 	if err != nil {

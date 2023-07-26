@@ -70,9 +70,6 @@ namespace Pulumi.AliCloud.Ecs
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
 
-        [Output("dedicatedBlockStorageClusterId")]
-        public Output<string?> DedicatedBlockStorageClusterId { get; private set; } = null!;
-
         /// <summary>
         /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
         /// </summary>
@@ -240,9 +237,6 @@ namespace Pulumi.AliCloud.Ecs
         [Input("category")]
         public Input<string>? Category { get; set; }
 
-        [Input("dedicatedBlockStorageClusterId")]
-        public Input<string>? DedicatedBlockStorageClusterId { get; set; }
-
         /// <summary>
         /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
         /// </summary>
@@ -371,9 +365,6 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
-
-        [Input("dedicatedBlockStorageClusterId")]
-        public Input<string>? DedicatedBlockStorageClusterId { get; set; }
 
         /// <summary>
         /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.

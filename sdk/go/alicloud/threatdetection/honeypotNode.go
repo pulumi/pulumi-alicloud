@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,6 +89,7 @@ func NewHoneypotNode(ctx *pulumi.Context,
 	if args.NodeName == nil {
 		return nil, errors.New("invalid value for required argument 'NodeName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HoneypotNode
 	err := ctx.RegisterResource("alicloud:threatdetection/honeypotNode:HoneypotNode", name, args, &resource, opts...)
 	if err != nil {

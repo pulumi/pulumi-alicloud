@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +68,7 @@ import (
 //
 // ```
 func GetBgpPeers(ctx *pulumi.Context, args *GetBgpPeersArgs, opts ...pulumi.InvokeOption) (*GetBgpPeersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBgpPeersResult
 	err := ctx.Invoke("alicloud:vpc/getBgpPeers:getBgpPeers", args, &rv, opts...)
 	if err != nil {

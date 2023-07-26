@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Config Aggregator resource.
  * 
- * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/doc-detail/211197.html).
+ * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
  * 
- * &gt; **NOTE:** Available in v1.124.0+.
+ * &gt; **NOTE:** Available since v1.124.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
  * import com.pulumi.alicloud.cfg.Aggregator;
  * import com.pulumi.alicloud.cfg.AggregatorArgs;
  * import com.pulumi.alicloud.cfg.inputs.AggregatorAggregatorAccountArgs;
@@ -47,14 +49,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Aggregator(&#34;example&#34;, AggregatorArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+ *             .status(&#34;CreateSuccess&#34;)
+ *             .build());
+ * 
+ *         var defaultAggregator = new Aggregator(&#34;defaultAggregator&#34;, AggregatorArgs.builder()        
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
- *                 .accountId(&#34;123968452689****&#34;)
- *                 .accountName(&#34;tf-testacc1234&#34;)
+ *                 .accountId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].accountId()))
+ *                 .accountName(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].displayName()))
  *                 .accountType(&#34;ResourceDirectory&#34;)
  *                 .build())
- *             .aggregatorName(&#34;tf-testaccConfigAggregator1234&#34;)
- *             .description(&#34;tf-testaccConfigAggregator1234&#34;)
+ *             .aggregatorName(name)
+ *             .description(name)
+ *             .aggregatorType(&#34;CUSTOM&#34;)
  *             .build());
  * 
  *     }
@@ -73,14 +82,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cfg/aggregator:Aggregator")
 public class Aggregator extends com.pulumi.resources.CustomResource {
     /**
-     * The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+     * The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
      * 
      */
     @Export(name="aggregatorAccounts", type=List.class, parameters={AggregatorAggregatorAccount.class})
     private Output<List<AggregatorAggregatorAccount>> aggregatorAccounts;
 
     /**
-     * @return The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+     * @return The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
      * 
      */
     public Output<List<AggregatorAggregatorAccount>> aggregatorAccounts() {

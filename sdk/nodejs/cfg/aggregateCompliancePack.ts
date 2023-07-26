@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Config Aggregate Compliance Pack resource.
  *
- * For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+ * For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregatecompliancepack).
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *
@@ -22,42 +22,37 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "example_name";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     status: "OK",
+ * const name = config.get("name") || "terraform_example";
+ * const defaultAccounts = alicloud.resourcemanager.getAccounts({
+ *     status: "CreateSuccess",
  * });
- * const defaultInstances = alicloud.ecs.getInstances({});
  * const defaultAggregator = new alicloud.cfg.Aggregator("defaultAggregator", {
  *     aggregatorAccounts: [{
- *         accountId: "140278452670****",
- *         accountName: "test-2",
+ *         accountId: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.accountId),
+ *         accountName: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.displayName),
  *         accountType: "ResourceDirectory",
  *     }],
- *     aggregatorName: "tf-testaccaggregator",
- *     description: "tf-testaccaggregator",
+ *     aggregatorName: name,
+ *     description: name,
+ *     aggregatorType: "CUSTOM",
  * });
  * const defaultAggregateConfigRule = new alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule", {
+ *     aggregateConfigRuleName: "contains-tag",
  *     aggregatorId: defaultAggregator.id,
- *     aggregateConfigRuleName: name,
- *     sourceOwner: "ALIYUN",
- *     sourceIdentifier: "ecs-cpu-min-count-limit",
  *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
- *     resourceTypesScopes: ["ACS::ECS::Instance"],
+ *     sourceOwner: "ALIYUN",
+ *     sourceIdentifier: "contains-tag",
  *     riskLevel: 1,
- *     description: name,
- *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
+ *     resourceTypesScopes: ["ACS::ECS::Instance"],
  *     inputParameters: {
- *         cpuCount: "4",
+ *         key: "example",
+ *         value: "example",
  *     },
- *     regionIdsScope: "cn-hangzhou",
- *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- *     tagKeyScope: "tFTest",
- *     tagValueScope: "forTF 123",
  * });
  * const defaultAggregateCompliancePack = new alicloud.cfg.AggregateCompliancePack("defaultAggregateCompliancePack", {
- *     aggregateCompliancePackName: "tf-testaccConfig1234",
+ *     aggregateCompliancePackName: name,
  *     aggregatorId: defaultAggregator.id,
- *     description: "tf-testaccConfig1234",
+ *     description: name,
  *     riskLevel: 1,
  *     configRuleIds: [{
  *         configRuleId: defaultAggregateConfigRule.configRuleId,
@@ -114,11 +109,11 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
      */
     public readonly compliancePackTemplateId!: pulumi.Output<string | undefined>;
     /**
-     * A list of Config Rule IDs.
+     * A list of Config Rule IDs. See `configRuleIds` below.
      */
     public readonly configRuleIds!: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRuleId[] | undefined>;
     /**
-     * A list of Config Rules.
+     * A list of Config Rules. See `configRules` below.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */
@@ -202,11 +197,11 @@ export interface AggregateCompliancePackState {
      */
     compliancePackTemplateId?: pulumi.Input<string>;
     /**
-     * A list of Config Rule IDs.
+     * A list of Config Rule IDs. See `configRuleIds` below.
      */
     configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
     /**
-     * A list of Config Rules.
+     * A list of Config Rules. See `configRules` below.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */
@@ -242,11 +237,11 @@ export interface AggregateCompliancePackArgs {
      */
     compliancePackTemplateId?: pulumi.Input<string>;
     /**
-     * A list of Config Rule IDs.
+     * A list of Config Rule IDs. See `configRuleIds` below.
      */
     configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
     /**
-     * A list of Config Rules.
+     * A list of Config Rules. See `configRules` below.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */

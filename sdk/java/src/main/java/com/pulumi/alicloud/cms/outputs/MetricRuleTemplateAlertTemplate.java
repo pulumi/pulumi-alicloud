@@ -18,7 +18,7 @@ public final class MetricRuleTemplateAlertTemplate {
      */
     private String category;
     /**
-     * @return The information about the trigger condition based on the alert level. See the following `Block escalations`.
+     * @return The information about the trigger condition based on the alert level. See `escalations` below.
      * 
      */
     private @Nullable MetricRuleTemplateAlertTemplateEscalations escalations;
@@ -56,7 +56,7 @@ public final class MetricRuleTemplateAlertTemplate {
         return this.category;
     }
     /**
-     * @return The information about the trigger condition based on the alert level. See the following `Block escalations`.
+     * @return The information about the trigger condition based on the alert level. See `escalations` below.
      * 
      */
     public Optional<MetricRuleTemplateAlertTemplateEscalations> escalations() {

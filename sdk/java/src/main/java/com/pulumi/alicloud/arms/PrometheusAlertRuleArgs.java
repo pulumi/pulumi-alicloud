@@ -19,14 +19,14 @@ public final class PrometheusAlertRuleArgs extends com.pulumi.resources.Resource
     public static final PrometheusAlertRuleArgs Empty = new PrometheusAlertRuleArgs();
 
     /**
-     * The annotations of the alert rule.. See the following `Block annotations`.
+     * The annotations of the alert rule. See `annotations` below.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<List<PrometheusAlertRuleAnnotationArgs>> annotations;
 
     /**
-     * @return The annotations of the alert rule.. See the following `Block annotations`.
+     * @return The annotations of the alert rule. See `annotations` below.
      * 
      */
     public Optional<Output<List<PrometheusAlertRuleAnnotationArgs>>> annotations() {
@@ -94,14 +94,14 @@ public final class PrometheusAlertRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The labels of the resource. See the following `Block labels`.
+     * The labels of the resource. See `labels` below.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<List<PrometheusAlertRuleLabelArgs>> labels;
 
     /**
-     * @return The labels of the resource. See the following `Block labels`.
+     * @return The labels of the resource. See `labels` below.
      * 
      */
     public Optional<Output<List<PrometheusAlertRuleLabelArgs>>> labels() {
@@ -202,7 +202,7 @@ public final class PrometheusAlertRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param annotations The annotations of the alert rule.. See the following `Block annotations`.
+         * @param annotations The annotations of the alert rule. See `annotations` below.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class PrometheusAlertRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param annotations The annotations of the alert rule.. See the following `Block annotations`.
+         * @param annotations The annotations of the alert rule. See `annotations` below.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class PrometheusAlertRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param annotations The annotations of the alert rule.. See the following `Block annotations`.
+         * @param annotations The annotations of the alert rule. See `annotations` below.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class PrometheusAlertRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels The labels of the resource. See the following `Block labels`.
+         * @param labels The labels of the resource. See `labels` below.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class PrometheusAlertRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels The labels of the resource. See the following `Block labels`.
+         * @param labels The labels of the resource. See `labels` below.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class PrometheusAlertRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels The labels of the resource. See the following `Block labels`.
+         * @param labels The labels of the resource. See `labels` below.
          * 
          * @return builder
          * 

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,6 +91,7 @@ func NewEr(ctx *pulumi.Context,
 	if args.ErName == nil {
 		return nil, errors.New("invalid value for required argument 'ErName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Er
 	err := ctx.RegisterResource("alicloud:dcdn/er:Er", name, args, &resource, opts...)
 	if err != nil {

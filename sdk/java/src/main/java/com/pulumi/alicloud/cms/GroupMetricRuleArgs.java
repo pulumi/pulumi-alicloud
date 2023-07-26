@@ -95,14 +95,14 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Alarm level. See the following `Block escalations`.
+     * Alarm level. See `escalations` below.
      * 
      */
     @Import(name="escalations", required=true)
     private Output<GroupMetricRuleEscalationsArgs> escalations;
 
     /**
-     * @return Alarm level. See the following `Block escalations`.
+     * @return Alarm level. See `escalations` below.
      * 
      */
     public Output<GroupMetricRuleEscalationsArgs> escalations() {
@@ -245,14 +245,14 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * The information about the resource for which alerts are triggered. See `targets` below.
      * 
      */
     @Import(name="targets")
     private @Nullable Output<List<GroupMetricRuleTargetArgs>> targets;
 
     /**
-     * @return The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * @return The information about the resource for which alerts are triggered. See `targets` below.
      * 
      */
     public Optional<Output<List<GroupMetricRuleTargetArgs>>> targets() {
@@ -420,7 +420,7 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param escalations Alarm level. See the following `Block escalations`.
+         * @param escalations Alarm level. See `escalations` below.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param escalations Alarm level. See the following `Block escalations`.
+         * @param escalations Alarm level. See `escalations` below.
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param targets The information about the resource for which alerts are triggered. See the following `Block targets`.
+         * @param targets The information about the resource for which alerts are triggered. See `targets` below.
          * 
          * @return builder
          * 
@@ -641,7 +641,7 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param targets The information about the resource for which alerts are triggered. See the following `Block targets`.
+         * @param targets The information about the resource for which alerts are triggered. See `targets` below.
          * 
          * @return builder
          * 
@@ -651,7 +651,7 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param targets The information about the resource for which alerts are triggered. See the following `Block targets`.
+         * @param targets The information about the resource for which alerts are triggered. See `targets` below.
          * 
          * @return builder
          * 

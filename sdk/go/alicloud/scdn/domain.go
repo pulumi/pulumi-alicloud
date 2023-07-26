@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,6 +100,7 @@ func NewDomain(ctx *pulumi.Context,
 	if args.Sources == nil {
 		return nil, errors.New("invalid value for required argument 'Sources'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Domain
 	err := ctx.RegisterResource("alicloud:scdn/domain:Domain", name, args, &resource, opts...)
 	if err != nil {

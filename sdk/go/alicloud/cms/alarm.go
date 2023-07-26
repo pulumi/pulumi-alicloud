@@ -8,11 +8,14 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
-// Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+// Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+//
+// > **NOTE:** Available since v1.9.1.
 //
 // ## Example Usage
 //
@@ -25,28 +28,101 @@ import (
 //
 //	"fmt"
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cms.NewAlarm(ctx, "basic", &cms.AlarmArgs{
-//				ContactGroups: pulumi.StringArray{
-//					pulumi.String("test-group"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				InstanceName:     pulumi.String(name),
+//				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				SecurityGroups: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
 //				},
-//				EffectiveInterval: pulumi.String("0:00-2:00"),
+//				VswitchId: defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//				AlarmContactGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewAlarm(ctx, "defaultAlarm", &cms.AlarmArgs{
+//				Project: pulumi.String("acs_ecs_dashboard"),
+//				Metric:  pulumi.String("disk_writebytes"),
+//				MetricDimensions: defaultInstance.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("[{\"instanceId\":\"%v\",\"device\":\"/dev/vda1\"}]", id), nil
+//				}).(pulumi.StringOutput),
 //				EscalationsCritical: &cms.AlarmEscalationsCriticalArgs{
-//					ComparisonOperator: pulumi.String("<="),
 //					Statistics:         pulumi.String("Average"),
+//					ComparisonOperator: pulumi.String("<="),
 //					Threshold:          pulumi.String("35"),
 //					Times:              pulumi.Int(2),
 //				},
-//				MetricDimensions: pulumi.String("[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]"),
-//				Period:           pulumi.Int(900),
-//				Project:          pulumi.String("acs_ecs_dashboard"),
-//				Webhook:          pulumi.String(fmt.Sprintf("https://%v.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/", data.Alicloud_account.Current.Id)),
+//				Period: pulumi.Int(900),
+//				ContactGroups: pulumi.StringArray{
+//					defaultAlarmContactGroup.AlarmContactGroupName,
+//				},
+//				EffectiveInterval: pulumi.String("06:00-20:00"),
 //			})
 //			if err != nil {
 //				return err
@@ -83,11 +159,11 @@ type Alarm struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
-	// A configuration of critical alarm (documented below).
+	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical AlarmEscalationsCriticalPtrOutput `pulumi:"escalationsCritical"`
-	// A configuration of critical info (documented below).
+	// A configuration of critical info. See `escalationsInfo` below.
 	EscalationsInfo AlarmEscalationsInfoPtrOutput `pulumi:"escalationsInfo"`
-	// A configuration of critical warn (documented below).
+	// A configuration of critical warn. See `escalationsWarn` below.
 	EscalationsWarn AlarmEscalationsWarnPtrOutput `pulumi:"escalationsWarn"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringOutput `pulumi:"metric"`
@@ -104,7 +180,7 @@ type Alarm struct {
 	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses AlarmPrometheusArrayOutput `pulumi:"prometheuses"`
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
@@ -150,6 +226,7 @@ func NewAlarm(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Alarm
 	err := ctx.RegisterResource("alicloud:cms/alarm:Alarm", name, args, &resource, opts...)
 	if err != nil {
@@ -186,11 +263,11 @@ type alarmState struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
-	// A configuration of critical alarm (documented below).
+	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical *AlarmEscalationsCritical `pulumi:"escalationsCritical"`
-	// A configuration of critical info (documented below).
+	// A configuration of critical info. See `escalationsInfo` below.
 	EscalationsInfo *AlarmEscalationsInfo `pulumi:"escalationsInfo"`
-	// A configuration of critical warn (documented below).
+	// A configuration of critical warn. See `escalationsWarn` below.
 	EscalationsWarn *AlarmEscalationsWarn `pulumi:"escalationsWarn"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric *string `pulumi:"metric"`
@@ -207,7 +284,7 @@ type alarmState struct {
 	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project *string `pulumi:"project"`
-	// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses []AlarmPrometheus `pulumi:"prometheuses"`
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime *int `pulumi:"silenceTime"`
@@ -252,11 +329,11 @@ type AlarmState struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
-	// A configuration of critical alarm (documented below).
+	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical AlarmEscalationsCriticalPtrInput
-	// A configuration of critical info (documented below).
+	// A configuration of critical info. See `escalationsInfo` below.
 	EscalationsInfo AlarmEscalationsInfoPtrInput
-	// A configuration of critical warn (documented below).
+	// A configuration of critical warn. See `escalationsWarn` below.
 	EscalationsWarn AlarmEscalationsWarnPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringPtrInput
@@ -273,7 +350,7 @@ type AlarmState struct {
 	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project pulumi.StringPtrInput
-	// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses AlarmPrometheusArrayInput
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime pulumi.IntPtrInput
@@ -322,11 +399,11 @@ type alarmArgs struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
-	// A configuration of critical alarm (documented below).
+	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical *AlarmEscalationsCritical `pulumi:"escalationsCritical"`
-	// A configuration of critical info (documented below).
+	// A configuration of critical info. See `escalationsInfo` below.
 	EscalationsInfo *AlarmEscalationsInfo `pulumi:"escalationsInfo"`
-	// A configuration of critical warn (documented below).
+	// A configuration of critical warn. See `escalationsWarn` below.
 	EscalationsWarn *AlarmEscalationsWarn `pulumi:"escalationsWarn"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric string `pulumi:"metric"`
@@ -343,7 +420,7 @@ type alarmArgs struct {
 	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project string `pulumi:"project"`
-	// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses []AlarmPrometheus `pulumi:"prometheuses"`
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime *int `pulumi:"silenceTime"`
@@ -387,11 +464,11 @@ type AlarmArgs struct {
 	//
 	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
-	// A configuration of critical alarm (documented below).
+	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical AlarmEscalationsCriticalPtrInput
-	// A configuration of critical info (documented below).
+	// A configuration of critical info. See `escalationsInfo` below.
 	EscalationsInfo AlarmEscalationsInfoPtrInput
-	// A configuration of critical warn (documented below).
+	// A configuration of critical warn. See `escalationsWarn` below.
 	EscalationsWarn AlarmEscalationsWarnPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringInput
@@ -408,7 +485,7 @@ type AlarmArgs struct {
 	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project pulumi.StringInput
-	// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses AlarmPrometheusArrayInput
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime pulumi.IntPtrInput
@@ -552,17 +629,17 @@ func (o AlarmOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
 }
 
-// A configuration of critical alarm (documented below).
+// A configuration of critical alarm. See `escalationsCritical` below.
 func (o AlarmOutput) EscalationsCritical() AlarmEscalationsCriticalPtrOutput {
 	return o.ApplyT(func(v *Alarm) AlarmEscalationsCriticalPtrOutput { return v.EscalationsCritical }).(AlarmEscalationsCriticalPtrOutput)
 }
 
-// A configuration of critical info (documented below).
+// A configuration of critical info. See `escalationsInfo` below.
 func (o AlarmOutput) EscalationsInfo() AlarmEscalationsInfoPtrOutput {
 	return o.ApplyT(func(v *Alarm) AlarmEscalationsInfoPtrOutput { return v.EscalationsInfo }).(AlarmEscalationsInfoPtrOutput)
 }
 
-// A configuration of critical warn (documented below).
+// A configuration of critical warn. See `escalationsWarn` below.
 func (o AlarmOutput) EscalationsWarn() AlarmEscalationsWarnPtrOutput {
 	return o.ApplyT(func(v *Alarm) AlarmEscalationsWarnPtrOutput { return v.EscalationsWarn }).(AlarmEscalationsWarnPtrOutput)
 }
@@ -600,7 +677,7 @@ func (o AlarmOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 func (o AlarmOutput) Prometheuses() AlarmPrometheusArrayOutput {
 	return o.ApplyT(func(v *Alarm) AlarmPrometheusArrayOutput { return v.Prometheuses }).(AlarmPrometheusArrayOutput)
 }

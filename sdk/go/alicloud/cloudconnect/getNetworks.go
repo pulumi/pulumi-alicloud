@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +51,7 @@ import (
 // }
 // ```
 func GetNetworks(ctx *pulumi.Context, args *GetNetworksArgs, opts ...pulumi.InvokeOption) (*GetNetworksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworksResult
 	err := ctx.Invoke("alicloud:cloudconnect/getNetworks:getNetworks", args, &rv, opts...)
 	if err != nil {

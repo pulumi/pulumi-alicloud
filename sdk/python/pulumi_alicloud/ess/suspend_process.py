@@ -147,9 +147,8 @@ class SuspendProcess(pulumi.CustomResource):
             active=True,
             enable=True)
         default_suspend_process = alicloud.ess.SuspendProcess("defaultSuspendProcess",
-            scaling_group_id=default_scaling_group.id,
-            process="ScaleIn",
-            opts=pulumi.ResourceOptions(depends_on=[default_scaling_configuration]))
+            scaling_group_id=default_scaling_configuration.scaling_group_id,
+            process="ScaleIn")
         ```
 
         ## Import
@@ -221,9 +220,8 @@ class SuspendProcess(pulumi.CustomResource):
             active=True,
             enable=True)
         default_suspend_process = alicloud.ess.SuspendProcess("defaultSuspendProcess",
-            scaling_group_id=default_scaling_group.id,
-            process="ScaleIn",
-            opts=pulumi.ResourceOptions(depends_on=[default_scaling_configuration]))
+            scaling_group_id=default_scaling_configuration.scaling_group_id,
+            process="ScaleIn")
         ```
 
         ## Import

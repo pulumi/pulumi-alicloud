@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetEnhancedNatAvailableZones(ctx *pulumi.Context, args *GetEnhancedNatAvailableZonesArgs, opts ...pulumi.InvokeOption) (*GetEnhancedNatAvailableZonesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnhancedNatAvailableZonesResult
 	err := ctx.Invoke("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args, &rv, opts...)
 	if err != nil {

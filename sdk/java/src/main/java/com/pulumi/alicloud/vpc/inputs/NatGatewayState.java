@@ -266,14 +266,14 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.121.0+) The status of NAT gateway.
+     * (Available since v1.121.0) The status of NAT gateway.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in 1.121.0+) The status of NAT gateway.
+     * @return (Available since v1.121.0) The status of NAT gateway.
      * 
      */
     public Optional<Output<String>> status() {
@@ -711,7 +711,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.121.0+) The status of NAT gateway.
+         * @param status (Available since v1.121.0) The status of NAT gateway.
          * 
          * @return builder
          * 
@@ -722,7 +722,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.121.0+) The status of NAT gateway.
+         * @param status (Available since v1.121.0) The status of NAT gateway.
          * 
          * @return builder
          * 

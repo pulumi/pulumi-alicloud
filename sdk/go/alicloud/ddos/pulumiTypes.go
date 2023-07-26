@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type DomainResourceProxyType struct {
 	// the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.

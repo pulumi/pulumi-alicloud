@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Monitor Service Hybrid Monitor Fc Task and how to use it, see [What is Hybrid Monitor Fc Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
  * 
- * &gt; **NOTE:** Available in v1.179.0+.
+ * &gt; **NOTE:** Available since v1.179.0.
  * 
  * ## Example Usage
  * 
@@ -29,6 +29,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.cms.Namespace;
+ * import com.pulumi.alicloud.cms.NamespaceArgs;
  * import com.pulumi.alicloud.cms.HybridMonitorFcTask;
  * import com.pulumi.alicloud.cms.HybridMonitorFcTaskArgs;
  * import java.util.List;
@@ -44,10 +47,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HybridMonitorFcTask(&#34;example&#34;, HybridMonitorFcTaskArgs.builder()        
- *             .namespace(&#34;example_value&#34;)
- *             .targetUserId(&#34;example_value&#34;)
- *             .yarmConfig(&#34;example_value&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
+ *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *             .description(name)
+ *             .namespace(name)
+ *             .specification(&#34;cms.s1.large&#34;)
+ *             .build());
+ * 
+ *         var defaultHybridMonitorFcTask = new HybridMonitorFcTask(&#34;defaultHybridMonitorFcTask&#34;, HybridMonitorFcTaskArgs.builder()        
+ *             .namespace(defaultNamespace.id())
+ *             .yarmConfig(&#34;&#34;&#34;
+ * products:
+ * - namespace: acs_ecs_dashboard
+ *   metric_info:
+ *   - metric_list:
+ *     - cpu_total
+ *     - cpu_idle
+ *     - diskusage_utilization
+ *     - CPUUtilization
+ *     - DiskReadBPS
+ *     - InternetOut
+ *     - IntranetOut
+ *     - cpu_system
+ * - namespace: acs_rds_dashboard
+ *   metric_info:
+ *   - metric_list:
+ *     - MySQL_QPS
+ *     - MySQL_TPS
+ *             &#34;&#34;&#34;)
+ *             .targetUserId(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
  *             .build());
  * 
  *     }

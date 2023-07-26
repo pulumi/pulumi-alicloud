@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,6 +112,7 @@ func NewQuotaAlarm(ctx *pulumi.Context,
 	if args.QuotaAlarmName == nil {
 		return nil, errors.New("invalid value for required argument 'QuotaAlarmName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource QuotaAlarm
 	err := ctx.RegisterResource("alicloud:quotas/quotaAlarm:QuotaAlarm", name, args, &resource, opts...)
 	if err != nil {

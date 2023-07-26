@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
  * 
+ * &gt; **NOTE:** Available since v1.48.0.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -42,7 +44,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.rds.ReadOnlyInstanceArgs;
  * import com.pulumi.alicloud.rds.ReadWriteSplittingConnection;
  * import com.pulumi.alicloud.rds.ReadWriteSplittingConnectionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -113,12 +114,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleReadWriteSplittingConnection = new ReadWriteSplittingConnection(&#34;exampleReadWriteSplittingConnection&#34;, ReadWriteSplittingConnectionArgs.builder()        
- *             .instanceId(exampleInstance.id())
+ *             .instanceId(exampleReadOnlyInstance.masterDbInstanceId())
  *             .connectionPrefix(&#34;example-con-123&#34;)
  *             .distributionType(&#34;Standard&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(exampleReadOnlyInstance)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

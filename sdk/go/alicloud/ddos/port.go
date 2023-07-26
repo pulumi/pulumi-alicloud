@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -104,6 +105,7 @@ func NewPort(ctx *pulumi.Context,
 	if args.RealServers == nil {
 		return nil, errors.New("invalid value for required argument 'RealServers'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Port
 	err := ctx.RegisterResource("alicloud:ddos/port:Port", name, args, &resource, opts...)
 	if err != nil {

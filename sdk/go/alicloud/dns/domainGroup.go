@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,6 +70,7 @@ func NewDomainGroup(ctx *pulumi.Context,
 		args = &DomainGroupArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DomainGroup
 	err := ctx.RegisterResource("alicloud:dns/domainGroup:DomainGroup", name, args, &resource, opts...)
 	if err != nil {

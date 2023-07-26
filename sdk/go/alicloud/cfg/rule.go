@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Config Rule resource.
 //
-// For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/).
+// For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigrule).
 //
-// > **NOTE:** Available in v1.204.0+.
+// > **NOTE:** Available since v1.204.0.
 //
 // ## Example Usage
 //
@@ -27,31 +28,38 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfg.NewRule(ctx, "default", &cfg.RuleArgs{
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewRule(ctx, "defaultRule", &cfg.RuleArgs{
+//				Description:             pulumi.String("If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant."),
+//				SourceOwner:             pulumi.String("ALIYUN"),
+//				SourceIdentifier:        pulumi.String("contains-tag"),
+//				RiskLevel:               pulumi.Int(1),
+//				TagValueScope:           pulumi.String("example-value"),
+//				TagKeyScope:             pulumi.String("example-key"),
+//				ExcludeResourceIdsScope: pulumi.String("example-resource_id"),
+//				RegionIdsScope:          pulumi.String("cn-hangzhou"),
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
-//				Description:             pulumi.String("关联的资源类型下实体资源均已有指定标签，存在没有指定标签的资源则视为“不合规”。"),
-//				ExcludeResourceIdsScope: pulumi.String("test"),
-//				InputParameters: pulumi.AnyMap{
-//					"foo": pulumi.Any("terraform"),
-//					"var": pulumi.Any("terraform"),
-//				},
-//				RegionIdsScope:        pulumi.String("cn-hangzhou"),
-//				ResourceGroupIdsScope: pulumi.String("rg-acfmvoh45rhcfly"),
+//				ResourceGroupIdsScope:   *pulumi.String(defaultResourceGroups.Ids[0]),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::RDS::DBInstance"),
 //				},
-//				RiskLevel:        pulumi.Int(1),
-//				RuleName:         pulumi.String("tf-cicd-rule-by-required-tags"),
-//				SourceIdentifier: pulumi.String("required-tags"),
-//				SourceOwner:      pulumi.String("ALIYUN"),
-//				TagKeyScope:      pulumi.String("test"),
-//				TagValueScope:    pulumi.String("test"),
+//				RuleName: pulumi.String("contains-tag"),
+//				InputParameters: pulumi.AnyMap{
+//					"key":   pulumi.Any("example"),
+//					"value": pulumi.Any("example"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -155,6 +163,7 @@ func NewRule(ctx *pulumi.Context,
 	if args.SourceOwner == nil {
 		return nil, errors.New("invalid value for required argument 'SourceOwner'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Rule
 	err := ctx.RegisterResource("alicloud:cfg/rule:Rule", name, args, &resource, opts...)
 	if err != nil {

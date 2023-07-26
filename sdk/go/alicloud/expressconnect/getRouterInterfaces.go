@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 // }
 // ```
 func GetRouterInterfaces(ctx *pulumi.Context, args *GetRouterInterfacesArgs, opts ...pulumi.InvokeOption) (*GetRouterInterfacesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRouterInterfacesResult
 	err := ctx.Invoke("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", args, &rv, opts...)
 	if err != nil {

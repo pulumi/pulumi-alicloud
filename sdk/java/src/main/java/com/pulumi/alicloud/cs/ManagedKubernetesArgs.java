@@ -27,14 +27,14 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     public static final ManagedKubernetesArgs Empty = new ManagedKubernetesArgs();
 
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. Detailed below.
      * 
      */
     @Import(name="addons")
     private @Nullable Output<List<ManagedKubernetesAddonArgs>> addons;
 
     /**
-     * @return The addon you want to install in cluster.
+     * @return The addon you want to install in cluster. Detailed below.
      * 
      */
     public Optional<Output<List<ManagedKubernetesAddonArgs>>> addons() {
@@ -348,7 +348,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Install cloud monitor agent on ECS. Default to `true`.
+     * (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
      * 
      * @deprecated
      * Field &#39;install_cloud_monitor&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;install_cloud_monitor&#39; to replace it
@@ -359,7 +359,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Boolean> installCloudMonitor;
 
     /**
-     * @return Install cloud monitor agent on ECS. Default to `true`.
+     * @return (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
      * 
      * @deprecated
      * Field &#39;install_cloud_monitor&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;install_cloud_monitor&#39; to replace it
@@ -765,14 +765,14 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
      * 
      */
     @Import(name="rrsaMetadata")
     private @Nullable Output<ManagedKubernetesRrsaMetadataArgs> rrsaMetadata;
 
     /**
-     * @return (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * @return (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
      * 
      */
     public Optional<Output<ManagedKubernetesRrsaMetadataArgs>> rrsaMetadata() {
@@ -1021,7 +1021,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The data disk category of worker, use `worker_data_disks` to instead it.
+     * (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -1032,7 +1032,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> workerDataDiskCategory;
 
     /**
-     * @return The data disk category of worker, use `worker_data_disks` to instead it.
+     * @return (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -1044,7 +1044,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The data disk size of worker, use `worker_data_disks` to instead it.
+     * (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.size&#39; to replace it
@@ -1055,7 +1055,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> workerDataDiskSize;
 
     /**
-     * @return The data disk size of worker, use `worker_data_disks` to instead it.
+     * @return (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.size&#39; to replace it
@@ -1067,7 +1067,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
      * 
      * @deprecated
      * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks&#39; to replace it
@@ -1078,7 +1078,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<List<ManagedKubernetesWorkerDataDiskArgs>> workerDataDisks;
 
     /**
-     * @return (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+     * @return (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
      * 
      * @deprecated
      * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks&#39; to replace it
@@ -1404,7 +1404,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param addons The addon you want to install in cluster.
+         * @param addons The addon you want to install in cluster. Detailed below.
          * 
          * @return builder
          * 
@@ -1415,7 +1415,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param addons The addon you want to install in cluster.
+         * @param addons The addon you want to install in cluster. Detailed below.
          * 
          * @return builder
          * 
@@ -1425,7 +1425,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param addons The addon you want to install in cluster.
+         * @param addons The addon you want to install in cluster. Detailed below.
          * 
          * @return builder
          * 
@@ -1869,7 +1869,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param installCloudMonitor Install cloud monitor agent on ECS. Default to `true`.
+         * @param installCloudMonitor (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
          * 
          * @return builder
          * 
@@ -1884,7 +1884,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param installCloudMonitor Install cloud monitor agent on ECS. Default to `true`.
+         * @param installCloudMonitor (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
          * 
          * @return builder
          * 
@@ -2444,7 +2444,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rrsaMetadata (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+         * @param rrsaMetadata (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
          * 
          * @return builder
          * 
@@ -2455,7 +2455,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rrsaMetadata (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+         * @param rrsaMetadata (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
          * 
          * @return builder
          * 
@@ -2798,7 +2798,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDiskCategory The data disk category of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskCategory (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -2813,7 +2813,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDiskCategory The data disk category of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskCategory (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -2827,7 +2827,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDiskSize The data disk size of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskSize (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -2842,7 +2842,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDiskSize The data disk size of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskSize (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -2856,7 +2856,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDisks (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+         * @param workerDataDisks (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
          * 
          * @return builder
          * 
@@ -2871,7 +2871,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDisks (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+         * @param workerDataDisks (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
          * 
          * @return builder
          * 
@@ -2885,7 +2885,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDisks (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+         * @param workerDataDisks (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
          * 
          * @return builder
          * 

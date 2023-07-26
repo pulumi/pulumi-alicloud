@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetPermission(ctx *pulumi.Context, args *GetPermissionArgs, opts ...pulumi.InvokeOption) (*GetPermissionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPermissionResult
 	err := ctx.Invoke("alicloud:kvstore/getPermission:getPermission", args, &rv, opts...)
 	if err != nil {

@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Accelerator Spare Ip Attachment resource.
 //
-// For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createspareips).
+// For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createspareips).
 //
 // > **NOTE:** Available since v1.167.0.
 //
@@ -112,6 +113,7 @@ func NewAcceleratorSpareIpAttachment(ctx *pulumi.Context,
 	if args.SpareIp == nil {
 		return nil, errors.New("invalid value for required argument 'SpareIp'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AcceleratorSpareIpAttachment
 	err := ctx.RegisterResource("alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment", name, args, &resource, opts...)
 	if err != nil {

@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Api Gateway Log Config resource.
 //
-// For information about Api Gateway Log Config and how to use it, see [What is Log Config](https://help.aliyun.com/document_detail/400392.html).
+// For information about Api Gateway Log Config and how to use it, see [What is Log Config](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createlogconfig).
 //
-// > **NOTE:** Available in v1.185.0+.
+// > **NOTE:** Available since v1.185.0.
 //
 // ## Example Usage
 //
@@ -27,19 +28,81 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.NewLogConfig(ctx, "default", &apigateway.LogConfigArgs{
-//				LogType:     pulumi.String("PROVIDER"),
-//				SlsLogStore: pulumi.String("example_value"),
-//				SlsProject:  pulumi.String("example_value"),
-//			})
+//			defaultLogConfigs, err := apigateway.GetLogConfigs(ctx, &apigateway.GetLogConfigsArgs{
+//				LogType: pulumi.StringRef("PROVIDER"),
+//			}, nil)
 //			if err != nil {
 //				return err
+//			}
+//			var tmp0 float64
+//			if len(defaultLogConfigs.Configs) > 0 {
+//				tmp0 = 0
+//			} else {
+//				tmp0 = 1
+//			}
+//			count := tmp0
+//			var defaultRandomInteger []*random.RandomInteger
+//			for index := 0; index < count; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := random.NewRandomInteger(ctx, fmt.Sprintf("defaultRandomInteger-%v", key0), &random.RandomIntegerArgs{
+//					Max: pulumi.Int(99999),
+//					Min: pulumi.Int(10000),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultRandomInteger = append(defaultRandomInteger, __res)
+//			}
+//			var exampleProject []*log.Project
+//			for index := 0; index < count; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := log.NewProject(ctx, fmt.Sprintf("exampleProject-%v", key0), &log.ProjectArgs{
+//					Description: pulumi.String("terraform-example"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleProject = append(exampleProject, __res)
+//			}
+//			var exampleStore []*log.Store
+//			for index := 0; index < count; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := log.NewStore(ctx, fmt.Sprintf("exampleStore-%v", key0), &log.StoreArgs{
+//					Project:            exampleProject[0].Name,
+//					ShardCount:         pulumi.Int(3),
+//					AutoSplit:          pulumi.Bool(true),
+//					MaxSplitShardCount: pulumi.Int(60),
+//					AppendMeta:         pulumi.Bool(true),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleStore = append(exampleStore, __res)
+//			}
+//			var exampleLogConfig []*apigateway.LogConfig
+//			for index := 0; index < count; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := apigateway.NewLogConfig(ctx, fmt.Sprintf("exampleLogConfig-%v", key0), &apigateway.LogConfigArgs{
+//					SlsProject:  exampleProject[0].Name,
+//					SlsLogStore: exampleStore[0].Name,
+//					LogType:     pulumi.String("PROVIDER"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleLogConfig = append(exampleLogConfig, __res)
 //			}
 //			return nil
 //		})
@@ -83,6 +146,7 @@ func NewLogConfig(ctx *pulumi.Context,
 	if args.SlsProject == nil {
 		return nil, errors.New("invalid value for required argument 'SlsProject'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LogConfig
 	err := ctx.RegisterResource("alicloud:apigateway/logConfig:LogConfig", name, args, &resource, opts...)
 	if err != nil {

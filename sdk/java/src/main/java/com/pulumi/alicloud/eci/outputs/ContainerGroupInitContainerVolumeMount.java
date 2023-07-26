@@ -23,7 +23,7 @@ public final class ContainerGroupInitContainerVolumeMount {
      */
     private @Nullable String name;
     /**
-     * @return Default to `false`.
+     * @return Specifies whether the mount path is read-only. Default value: `false`.
      * 
      */
     private @Nullable Boolean readOnly;
@@ -44,7 +44,7 @@ public final class ContainerGroupInitContainerVolumeMount {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Default to `false`.
+     * @return Specifies whether the mount path is read-only. Default value: `false`.
      * 
      */
     public Optional<Boolean> readOnly() {

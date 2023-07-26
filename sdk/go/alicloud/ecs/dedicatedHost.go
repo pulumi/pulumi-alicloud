@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +78,7 @@ func NewDedicatedHost(ctx *pulumi.Context,
 	if args.DedicatedHostType == nil {
 		return nil, errors.New("invalid value for required argument 'DedicatedHostType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DedicatedHost
 	err := ctx.RegisterResource("alicloud:ecs/dedicatedHost:DedicatedHost", name, args, &resource, opts...)
 	if err != nil {

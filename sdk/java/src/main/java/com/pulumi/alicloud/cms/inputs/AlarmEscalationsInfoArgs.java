@@ -32,14 +32,14 @@ public final class AlarmEscalationsInfoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
+     * Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
      * 
      */
     @Import(name="statistics")
     private @Nullable Output<String> statistics;
 
     /**
-     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
+     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
      * 
      */
     public Optional<Output<String>> statistics() {
@@ -47,14 +47,14 @@ public final class AlarmEscalationsInfoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
+     * Critical level alarm threshold value, which must be a numeric value currently.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<String> threshold;
 
     /**
-     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
+     * @return Critical level alarm threshold value, which must be a numeric value currently.
      * 
      */
     public Optional<Output<String>> threshold() {
@@ -125,7 +125,7 @@ public final class AlarmEscalationsInfoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statistics It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
+         * @param statistics Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class AlarmEscalationsInfoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statistics It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
+         * @param statistics Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class AlarmEscalationsInfoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param threshold It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
+         * @param threshold Critical level alarm threshold value, which must be a numeric value currently.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class AlarmEscalationsInfoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param threshold It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
+         * @param threshold Critical level alarm threshold value, which must be a numeric value currently.
          * 
          * @return builder
          * 

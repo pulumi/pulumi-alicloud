@@ -21,7 +21,7 @@ class KubernetesPermissionArgs:
         """
         The set of arguments for constructing a KubernetesPermission resource.
         :param pulumi.Input[str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]] permissions: A list of user permission.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]] permissions: A list of user permission. See `permissions` below.
         """
         pulumi.set(__self__, "uid", uid)
         if permissions is not None:
@@ -43,7 +43,7 @@ class KubernetesPermissionArgs:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]:
         """
-        A list of user permission.
+        A list of user permission. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 
@@ -59,7 +59,7 @@ class _KubernetesPermissionState:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KubernetesPermission resources.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]] permissions: A list of user permission.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]] permissions: A list of user permission. See `permissions` below.
         :param pulumi.Input[str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         if permissions is not None:
@@ -71,7 +71,7 @@ class _KubernetesPermissionState:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]:
         """
-        A list of user permission.
+        A list of user permission. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 
@@ -104,7 +104,7 @@ class KubernetesPermission(pulumi.CustomResource):
         Create a KubernetesPermission resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesPermissionPermissionArgs']]]] permissions: A list of user permission.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesPermissionPermissionArgs']]]] permissions: A list of user permission. See `permissions` below.
         :param pulumi.Input[str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         ...
@@ -164,7 +164,7 @@ class KubernetesPermission(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesPermissionPermissionArgs']]]] permissions: A list of user permission.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesPermissionPermissionArgs']]]] permissions: A list of user permission. See `permissions` below.
         :param pulumi.Input[str] uid: The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -179,7 +179,7 @@ class KubernetesPermission(pulumi.CustomResource):
     @pulumi.getter
     def permissions(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesPermissionPermission']]]:
         """
-        A list of user permission.
+        A list of user permission. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 

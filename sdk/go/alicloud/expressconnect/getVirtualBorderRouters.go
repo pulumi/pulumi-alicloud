@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,6 +70,7 @@ import (
 //
 // ```
 func GetVirtualBorderRouters(ctx *pulumi.Context, args *GetVirtualBorderRoutersArgs, opts ...pulumi.InvokeOption) (*GetVirtualBorderRoutersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualBorderRoutersResult
 	err := ctx.Invoke("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args, &rv, opts...)
 	if err != nil {

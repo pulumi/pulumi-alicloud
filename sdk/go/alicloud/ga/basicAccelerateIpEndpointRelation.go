@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation resource.
 //
-// For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicaccelerateipendpointrelation).
+// For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerateipendpointrelation).
 //
 // > **NOTE:** Available since v1.194.0.
 //
@@ -195,6 +196,7 @@ func NewBasicAccelerateIpEndpointRelation(ctx *pulumi.Context,
 	if args.EndpointId == nil {
 		return nil, errors.New("invalid value for required argument 'EndpointId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BasicAccelerateIpEndpointRelation
 	err := ctx.RegisterResource("alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation", name, args, &resource, opts...)
 	if err != nil {

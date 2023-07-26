@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetAgents(ctx *pulumi.Context, args *GetAgentsArgs, opts ...pulumi.InvokeOption) (*GetAgentsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAgentsResult
 	err := ctx.Invoke("alicloud:chatbot/getAgents:getAgents", args, &rv, opts...)
 	if err != nil {

@@ -36,18 +36,18 @@ class ApiArgs:
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
         :param pulumi.Input[str] description: The description of the api. Defaults to null.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
-        :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API.
+        :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api.
-        :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
+        :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
-        :param pulumi.Input['ApiHttpServiceConfigArgs'] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
-        :param pulumi.Input['ApiHttpVpcServiceConfigArgs'] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
-        :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
+        :param pulumi.Input['ApiHttpServiceConfigArgs'] http_service_config: http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
+        :param pulumi.Input['ApiHttpVpcServiceConfigArgs'] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
+        :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         pulumi.set(__self__, "auth_type", auth_type)
         pulumi.set(__self__, "description", description)
@@ -115,7 +115,7 @@ class ApiArgs:
     @pulumi.getter(name="requestConfig")
     def request_config(self) -> pulumi.Input['ApiRequestConfigArgs']:
         """
-        Request_config defines how users can send requests to your API.
+        Request_config defines how users can send requests to your API. See `request_config` below.
         """
         return pulumi.get(self, "request_config")
 
@@ -139,7 +139,7 @@ class ApiArgs:
     @pulumi.getter(name="constantParameters")
     def constant_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]]:
         """
-        constant_parameters defines the constant parameters of the api.
+        constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         """
         return pulumi.get(self, "constant_parameters")
 
@@ -151,7 +151,7 @@ class ApiArgs:
     @pulumi.getter(name="fcServiceConfig")
     def fc_service_config(self) -> Optional[pulumi.Input['ApiFcServiceConfigArgs']]:
         """
-        fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         """
         return pulumi.get(self, "fc_service_config")
 
@@ -175,7 +175,7 @@ class ApiArgs:
     @pulumi.getter(name="httpServiceConfig")
     def http_service_config(self) -> Optional[pulumi.Input['ApiHttpServiceConfigArgs']]:
         """
-        http_service_config defines the config when service_type selected 'HTTP'.
+        http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
         """
         return pulumi.get(self, "http_service_config")
 
@@ -187,7 +187,7 @@ class ApiArgs:
     @pulumi.getter(name="httpVpcServiceConfig")
     def http_vpc_service_config(self) -> Optional[pulumi.Input['ApiHttpVpcServiceConfigArgs']]:
         """
-        http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
+        http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
         """
         return pulumi.get(self, "http_vpc_service_config")
 
@@ -199,7 +199,7 @@ class ApiArgs:
     @pulumi.getter(name="mockServiceConfig")
     def mock_service_config(self) -> Optional[pulumi.Input['ApiMockServiceConfigArgs']]:
         """
-        http_service_config defines the config when service_type selected 'MOCK'.
+        http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         """
         return pulumi.get(self, "mock_service_config")
 
@@ -223,7 +223,7 @@ class ApiArgs:
     @pulumi.getter(name="requestParameters")
     def request_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]]]:
         """
-        request_parameters defines the request parameters of the api.
+        request_parameters defines the request parameters of the api. See `request_parameters` below.
         """
         return pulumi.get(self, "request_parameters")
 
@@ -247,7 +247,7 @@ class ApiArgs:
     @pulumi.getter(name="systemParameters")
     def system_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]]:
         """
-        system_parameters defines the system parameters of the api.
+        system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         return pulumi.get(self, "system_parameters")
 
@@ -279,20 +279,20 @@ class _ApiState:
         Input properties used for looking up and filtering Api resources.
         :param pulumi.Input[str] api_id: The ID of the api of api gateway.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input[str] description: The description of the api. Defaults to null.
-        :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
-        :param pulumi.Input['ApiHttpServiceConfigArgs'] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
-        :param pulumi.Input['ApiHttpVpcServiceConfigArgs'] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
-        :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
+        :param pulumi.Input['ApiHttpServiceConfigArgs'] http_service_config: http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
+        :param pulumi.Input['ApiHttpVpcServiceConfigArgs'] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
+        :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
-        :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api.
+        :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         if api_id is not None:
             pulumi.set(__self__, "api_id", api_id)
@@ -355,7 +355,7 @@ class _ApiState:
     @pulumi.getter(name="constantParameters")
     def constant_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]]:
         """
-        constant_parameters defines the constant parameters of the api.
+        constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         """
         return pulumi.get(self, "constant_parameters")
 
@@ -379,7 +379,7 @@ class _ApiState:
     @pulumi.getter(name="fcServiceConfig")
     def fc_service_config(self) -> Optional[pulumi.Input['ApiFcServiceConfigArgs']]:
         """
-        fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         """
         return pulumi.get(self, "fc_service_config")
 
@@ -415,7 +415,7 @@ class _ApiState:
     @pulumi.getter(name="httpServiceConfig")
     def http_service_config(self) -> Optional[pulumi.Input['ApiHttpServiceConfigArgs']]:
         """
-        http_service_config defines the config when service_type selected 'HTTP'.
+        http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
         """
         return pulumi.get(self, "http_service_config")
 
@@ -427,7 +427,7 @@ class _ApiState:
     @pulumi.getter(name="httpVpcServiceConfig")
     def http_vpc_service_config(self) -> Optional[pulumi.Input['ApiHttpVpcServiceConfigArgs']]:
         """
-        http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
+        http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
         """
         return pulumi.get(self, "http_vpc_service_config")
 
@@ -439,7 +439,7 @@ class _ApiState:
     @pulumi.getter(name="mockServiceConfig")
     def mock_service_config(self) -> Optional[pulumi.Input['ApiMockServiceConfigArgs']]:
         """
-        http_service_config defines the config when service_type selected 'MOCK'.
+        http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         """
         return pulumi.get(self, "mock_service_config")
 
@@ -463,7 +463,7 @@ class _ApiState:
     @pulumi.getter(name="requestConfig")
     def request_config(self) -> Optional[pulumi.Input['ApiRequestConfigArgs']]:
         """
-        Request_config defines how users can send requests to your API.
+        Request_config defines how users can send requests to your API. See `request_config` below.
         """
         return pulumi.get(self, "request_config")
 
@@ -475,7 +475,7 @@ class _ApiState:
     @pulumi.getter(name="requestParameters")
     def request_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]]]:
         """
-        request_parameters defines the request parameters of the api.
+        request_parameters defines the request parameters of the api. See `request_parameters` below.
         """
         return pulumi.get(self, "request_parameters")
 
@@ -511,7 +511,7 @@ class _ApiState:
     @pulumi.getter(name="systemParameters")
     def system_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]]:
         """
-        system_parameters defines the system parameters of the api.
+        system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         return pulumi.get(self, "system_parameters")
 
@@ -550,16 +550,16 @@ class Api(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        api_group = alicloud.apigateway.Group("apiGroup", description="description of the api group")
-        api_gateway_api = alicloud.apigateway.Api("apiGatewayApi",
-            group_id=api_group.id,
-            description="your description",
+        example_group = alicloud.apigateway.Group("exampleGroup", description="tf-example")
+        example_api = alicloud.apigateway.Api("exampleApi",
+            group_id=example_group.id,
+            description="tf-example",
             auth_type="APP",
             force_nonce_check=False,
             request_config=alicloud.apigateway.ApiRequestConfigArgs(
                 protocol="HTTP",
                 method="GET",
-                path="/test/path1",
+                path="/example/path",
                 mode="MAPPING",
             ),
             service_type="HTTP",
@@ -571,12 +571,12 @@ class Api(pulumi.CustomResource):
                 aone_name="cloudapi-openapi",
             ),
             request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-                name="aaa",
+                name="example",
                 type="STRING",
                 required="OPTIONAL",
                 in_="QUERY",
                 in_service="QUERY",
-                name_service="testparams",
+                name_service="exampleservice",
             )],
             stage_names=[
                 "RELEASE",
@@ -595,20 +595,20 @@ class Api(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input[str] description: The description of the api. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
-        :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
-        :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
+        :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
+        :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
+        :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
+        :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         ...
     @overload
@@ -625,16 +625,16 @@ class Api(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        api_group = alicloud.apigateway.Group("apiGroup", description="description of the api group")
-        api_gateway_api = alicloud.apigateway.Api("apiGatewayApi",
-            group_id=api_group.id,
-            description="your description",
+        example_group = alicloud.apigateway.Group("exampleGroup", description="tf-example")
+        example_api = alicloud.apigateway.Api("exampleApi",
+            group_id=example_group.id,
+            description="tf-example",
             auth_type="APP",
             force_nonce_check=False,
             request_config=alicloud.apigateway.ApiRequestConfigArgs(
                 protocol="HTTP",
                 method="GET",
-                path="/test/path1",
+                path="/example/path",
                 mode="MAPPING",
             ),
             service_type="HTTP",
@@ -646,12 +646,12 @@ class Api(pulumi.CustomResource):
                 aone_name="cloudapi-openapi",
             ),
             request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-                name="aaa",
+                name="example",
                 type="STRING",
                 required="OPTIONAL",
                 in_="QUERY",
                 in_service="QUERY",
-                name_service="testparams",
+                name_service="exampleservice",
             )],
             stage_names=[
                 "RELEASE",
@@ -767,20 +767,20 @@ class Api(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: The ID of the api of api gateway.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input[str] description: The description of the api. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
-        :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
-        :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
+        :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
+        :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
+        :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
+        :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -824,7 +824,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="constantParameters")
     def constant_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.ApiConstantParameter']]]:
         """
-        constant_parameters defines the constant parameters of the api.
+        constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         """
         return pulumi.get(self, "constant_parameters")
 
@@ -840,7 +840,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="fcServiceConfig")
     def fc_service_config(self) -> pulumi.Output[Optional['outputs.ApiFcServiceConfig']]:
         """
-        fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         """
         return pulumi.get(self, "fc_service_config")
 
@@ -864,7 +864,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="httpServiceConfig")
     def http_service_config(self) -> pulumi.Output[Optional['outputs.ApiHttpServiceConfig']]:
         """
-        http_service_config defines the config when service_type selected 'HTTP'.
+        http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
         """
         return pulumi.get(self, "http_service_config")
 
@@ -872,7 +872,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="httpVpcServiceConfig")
     def http_vpc_service_config(self) -> pulumi.Output[Optional['outputs.ApiHttpVpcServiceConfig']]:
         """
-        http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
+        http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
         """
         return pulumi.get(self, "http_vpc_service_config")
 
@@ -880,7 +880,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="mockServiceConfig")
     def mock_service_config(self) -> pulumi.Output[Optional['outputs.ApiMockServiceConfig']]:
         """
-        http_service_config defines the config when service_type selected 'MOCK'.
+        http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         """
         return pulumi.get(self, "mock_service_config")
 
@@ -896,7 +896,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="requestConfig")
     def request_config(self) -> pulumi.Output['outputs.ApiRequestConfig']:
         """
-        Request_config defines how users can send requests to your API.
+        Request_config defines how users can send requests to your API. See `request_config` below.
         """
         return pulumi.get(self, "request_config")
 
@@ -904,7 +904,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="requestParameters")
     def request_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.ApiRequestParameter']]]:
         """
-        request_parameters defines the request parameters of the api.
+        request_parameters defines the request parameters of the api. See `request_parameters` below.
         """
         return pulumi.get(self, "request_parameters")
 
@@ -928,7 +928,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="systemParameters")
     def system_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.ApiSystemParameter']]]:
         """
-        system_parameters defines the system parameters of the api.
+        system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         return pulumi.get(self, "system_parameters")
 

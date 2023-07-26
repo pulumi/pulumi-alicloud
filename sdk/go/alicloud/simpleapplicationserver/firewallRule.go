@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ func NewFirewallRule(ctx *pulumi.Context,
 	if args.RuleProtocol == nil {
 		return nil, errors.New("invalid value for required argument 'RuleProtocol'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallRule
 	err := ctx.RegisterResource("alicloud:simpleapplicationserver/firewallRule:FirewallRule", name, args, &resource, opts...)
 	if err != nil {

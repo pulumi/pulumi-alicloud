@@ -235,7 +235,7 @@ class IpSet(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Ip Set resource.
 
-        For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/doc-detail/153246.htm).
+        For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createipsets).
 
         > **NOTE:** Available since v1.113.0.
 
@@ -297,7 +297,7 @@ class IpSet(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Ip Set resource.
 
-        For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/doc-detail/153246.htm).
+        For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createipsets).
 
         > **NOTE:** Available since v1.113.0.
 

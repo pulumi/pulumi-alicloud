@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetEcsNetworkInterfaces(ctx *pulumi.Context, args *GetEcsNetworkInterfacesArgs, opts ...pulumi.InvokeOption) (*GetEcsNetworkInterfacesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsNetworkInterfacesResult
 	err := ctx.Invoke("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args, &rv, opts...)
 	if err != nil {

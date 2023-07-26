@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Monitor Service Monitor Group resource.
  * 
- * For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/doc-detail/115030.htm).
+ * For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroup).
  * 
- * &gt; **NOTE:** Available in v1.113.0+.
+ * &gt; **NOTE:** Available since v1.113.0.
  * 
  * ## Example Usage
  * 
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new MonitorGroup(&#34;example&#34;, MonitorGroupArgs.builder()        
- *             .monitorGroupName(&#34;tf-testaccmonitorgroup&#34;)
+ *             .monitorGroupName(&#34;tf-example-accmonitorgroup&#34;)
  *             .build());
  * 
  *         var default2 = new MonitorGroup(&#34;default2&#34;, MonitorGroupArgs.builder()        
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .resourceGroupName(&#34;resource_group_name&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Acceptance-test&#34;)
+ *                 Map.entry(&#34;For&#34;, &#34;Acceptance-example&#34;)
  *             ))
  *             .build());
  * 

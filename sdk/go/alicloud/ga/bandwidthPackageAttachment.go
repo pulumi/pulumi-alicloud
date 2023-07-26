@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Bandwidth Package Attachment resource.
 //
-// For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/bandwidthpackageaddaccelerator).
+// For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-bandwidthpackageaddaccelerator).
 //
 // > **NOTE:** Available since v1.113.0.
 //
@@ -100,6 +101,7 @@ func NewBandwidthPackageAttachment(ctx *pulumi.Context,
 	if args.BandwidthPackageId == nil {
 		return nil, errors.New("invalid value for required argument 'BandwidthPackageId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BandwidthPackageAttachment
 	err := ctx.RegisterResource("alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment", name, args, &resource, opts...)
 	if err != nil {

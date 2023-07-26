@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Config Aggregate Config Rule resource.
  *
- * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
+ * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigrule).
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *
@@ -19,25 +19,32 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleAggregator = new alicloud.cfg.Aggregator("exampleAggregator", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultAccounts = alicloud.resourcemanager.getAccounts({
+ *     status: "CreateSuccess",
+ * });
+ * const defaultAggregator = new alicloud.cfg.Aggregator("defaultAggregator", {
  *     aggregatorAccounts: [{
- *         accountId: "140278452670****",
- *         accountName: "test-2",
+ *         accountId: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.accountId),
+ *         accountName: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.displayName),
  *         accountType: "ResourceDirectory",
  *     }],
- *     aggregatorName: "tf-testaccaggregator",
- *     description: "tf-testaccaggregator",
+ *     aggregatorName: name,
+ *     description: name,
+ *     aggregatorType: "CUSTOM",
  * });
- * const exampleAggregateConfigRule = new alicloud.cfg.AggregateConfigRule("exampleAggregateConfigRule", {
- *     aggregateConfigRuleName: "tf-testaccconfig1234",
- *     aggregatorId: exampleAggregator.id,
+ * const defaultAggregateConfigRule = new alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule", {
+ *     aggregateConfigRuleName: "contains-tag",
+ *     aggregatorId: defaultAggregator.id,
  *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
  *     sourceOwner: "ALIYUN",
- *     sourceIdentifier: "ecs-cpu-min-count-limit",
+ *     sourceIdentifier: "contains-tag",
  *     riskLevel: 1,
  *     resourceTypesScopes: ["ACS::ECS::Instance"],
  *     inputParameters: {
- *         cpuCount: "4",
+ *         key: "example",
+ *         value: "example",
  *     },
  * });
  * ```
@@ -87,7 +94,7 @@ export class AggregateConfigRule extends pulumi.CustomResource {
      */
     public readonly aggregatorId!: pulumi.Output<string>;
     /**
-     * (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+     * (Available since v1.141.0) The rule ID of Aggregate Config Rule.
      */
     public /*out*/ readonly configRuleId!: pulumi.Output<string>;
     /**
@@ -236,7 +243,7 @@ export interface AggregateConfigRuleState {
      */
     aggregatorId?: pulumi.Input<string>;
     /**
-     * (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+     * (Available since v1.141.0) The rule ID of Aggregate Config Rule.
      */
     configRuleId?: pulumi.Input<string>;
     /**

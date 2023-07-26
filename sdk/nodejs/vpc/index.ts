@@ -50,6 +50,16 @@ export type ForwardEntry = import("./forwardEntry").ForwardEntry;
 export const ForwardEntry: typeof import("./forwardEntry").ForwardEntry = null as any;
 utilities.lazyLoad(exports, ["ForwardEntry"], () => require("./forwardEntry"));
 
+export { GatewayEndpointArgs, GatewayEndpointState } from "./gatewayEndpoint";
+export type GatewayEndpoint = import("./gatewayEndpoint").GatewayEndpoint;
+export const GatewayEndpoint: typeof import("./gatewayEndpoint").GatewayEndpoint = null as any;
+utilities.lazyLoad(exports, ["GatewayEndpoint"], () => require("./gatewayEndpoint"));
+
+export { GatewayEndpointRouteTableAttachmentArgs, GatewayEndpointRouteTableAttachmentState } from "./gatewayEndpointRouteTableAttachment";
+export type GatewayEndpointRouteTableAttachment = import("./gatewayEndpointRouteTableAttachment").GatewayEndpointRouteTableAttachment;
+export const GatewayEndpointRouteTableAttachment: typeof import("./gatewayEndpointRouteTableAttachment").GatewayEndpointRouteTableAttachment = null as any;
+utilities.lazyLoad(exports, ["GatewayEndpointRouteTableAttachment"], () => require("./gatewayEndpointRouteTableAttachment"));
+
 export { GatewayRouteTableAttachmentArgs, GatewayRouteTableAttachmentState } from "./gatewayRouteTableAttachment";
 export type GatewayRouteTableAttachment = import("./gatewayRouteTableAttachment").GatewayRouteTableAttachment;
 export const GatewayRouteTableAttachment: typeof import("./gatewayRouteTableAttachment").GatewayRouteTableAttachment = null as any;
@@ -448,6 +458,10 @@ const _module = {
                 return new FlowLog(name, <any>undefined, { urn })
             case "alicloud:vpc/forwardEntry:ForwardEntry":
                 return new ForwardEntry(name, <any>undefined, { urn })
+            case "alicloud:vpc/gatewayEndpoint:GatewayEndpoint":
+                return new GatewayEndpoint(name, <any>undefined, { urn })
+            case "alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment":
+                return new GatewayEndpointRouteTableAttachment(name, <any>undefined, { urn })
             case "alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment":
                 return new GatewayRouteTableAttachment(name, <any>undefined, { urn })
             case "alicloud:vpc/hAVip:HAVip":
@@ -538,6 +552,8 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/dhcpOptionsSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/dhcpOptionsSetAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/flowLog", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/forwardEntry", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/gatewayEndpoint", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/gatewayEndpointRouteTableAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/gatewayRouteTableAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVipAttachment", _module)

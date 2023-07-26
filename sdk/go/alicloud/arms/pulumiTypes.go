@@ -7,10 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+var _ = internal.GetEnvOrDefault
+
 type DispatchRuleGroupRule struct {
+	// The ID of the group rule.
 	GroupId *int `pulumi:"groupId"`
 	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
 	GroupInterval int `pulumi:"groupInterval"`
@@ -34,6 +38,7 @@ type DispatchRuleGroupRuleInput interface {
 }
 
 type DispatchRuleGroupRuleArgs struct {
+	// The ID of the group rule.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
 	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
 	GroupInterval pulumi.IntInput `pulumi:"groupInterval"`
@@ -96,6 +101,7 @@ func (o DispatchRuleGroupRuleOutput) ToDispatchRuleGroupRuleOutputWithContext(ct
 	return o
 }
 
+// The ID of the group rule.
 func (o DispatchRuleGroupRuleOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DispatchRuleGroupRule) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
@@ -141,7 +147,7 @@ func (o DispatchRuleGroupRuleArrayOutput) Index(i pulumi.IntInput) DispatchRuleG
 }
 
 type DispatchRuleLabelMatchExpressionGrid struct {
-	// Sets the dispatch rule. See the following `Block labelMatchExpressionGroups`.
+	// Sets the dispatch rule. See `labelMatchExpressionGroups` below.
 	LabelMatchExpressionGroups []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup `pulumi:"labelMatchExpressionGroups"`
 }
 
@@ -157,7 +163,7 @@ type DispatchRuleLabelMatchExpressionGridInput interface {
 }
 
 type DispatchRuleLabelMatchExpressionGridArgs struct {
-	// Sets the dispatch rule. See the following `Block labelMatchExpressionGroups`.
+	// Sets the dispatch rule. See `labelMatchExpressionGroups` below.
 	LabelMatchExpressionGroups DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput `pulumi:"labelMatchExpressionGroups"`
 }
 
@@ -212,7 +218,7 @@ func (o DispatchRuleLabelMatchExpressionGridOutput) ToDispatchRuleLabelMatchExpr
 	return o
 }
 
-// Sets the dispatch rule. See the following `Block labelMatchExpressionGroups`.
+// Sets the dispatch rule. See `labelMatchExpressionGroups` below.
 func (o DispatchRuleLabelMatchExpressionGridOutput) LabelMatchExpressionGroups() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
 	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGrid) []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
 		return v.LabelMatchExpressionGroups
@@ -240,7 +246,7 @@ func (o DispatchRuleLabelMatchExpressionGridArrayOutput) Index(i pulumi.IntInput
 }
 
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup struct {
-	// Sets the dispatch rule. See the following `Block labelMatchExpressions`.
+	// Sets the dispatch rule. See `labelMatchExpressions` below.
 	LabelMatchExpressions []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression `pulumi:"labelMatchExpressions"`
 }
 
@@ -256,7 +262,7 @@ type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput interfac
 }
 
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs struct {
-	// Sets the dispatch rule. See the following `Block labelMatchExpressions`.
+	// Sets the dispatch rule. See `labelMatchExpressions` below.
 	LabelMatchExpressions DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput `pulumi:"labelMatchExpressions"`
 }
 
@@ -311,7 +317,7 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToD
 	return o
 }
 
-// Sets the dispatch rule. See the following `Block labelMatchExpressions`.
+// Sets the dispatch rule. See `labelMatchExpressions` below.
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) LabelMatchExpressions() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
 	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup) []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
 		return v.LabelMatchExpressions
@@ -492,7 +498,7 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchE
 type DispatchRuleNotifyRule struct {
 	// The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
 	NotifyChannels []string `pulumi:"notifyChannels"`
-	// Sets the notification object. See the following `Block notifyObjects`.
+	// Sets the notification object. See `notifyObjects` below.
 	NotifyObjects []DispatchRuleNotifyRuleNotifyObject `pulumi:"notifyObjects"`
 }
 
@@ -510,7 +516,7 @@ type DispatchRuleNotifyRuleInput interface {
 type DispatchRuleNotifyRuleArgs struct {
 	// The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
 	NotifyChannels pulumi.StringArrayInput `pulumi:"notifyChannels"`
-	// Sets the notification object. See the following `Block notifyObjects`.
+	// Sets the notification object. See `notifyObjects` below.
 	NotifyObjects DispatchRuleNotifyRuleNotifyObjectArrayInput `pulumi:"notifyObjects"`
 }
 
@@ -570,7 +576,7 @@ func (o DispatchRuleNotifyRuleOutput) NotifyChannels() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v DispatchRuleNotifyRule) []string { return v.NotifyChannels }).(pulumi.StringArrayOutput)
 }
 
-// Sets the notification object. See the following `Block notifyObjects`.
+// Sets the notification object. See `notifyObjects` below.
 func (o DispatchRuleNotifyRuleOutput) NotifyObjects() DispatchRuleNotifyRuleNotifyObjectArrayOutput {
 	return o.ApplyT(func(v DispatchRuleNotifyRule) []DispatchRuleNotifyRuleNotifyObject { return v.NotifyObjects }).(DispatchRuleNotifyRuleNotifyObjectArrayOutput)
 }
@@ -711,9 +717,9 @@ func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type PrometheusAlertRuleAnnotation struct {
-	// The name of the label.
+	// The name of the annotation.
 	Name *string `pulumi:"name"`
-	// The value of the label.
+	// The value of the annotation.
 	Value *string `pulumi:"value"`
 }
 
@@ -729,9 +735,9 @@ type PrometheusAlertRuleAnnotationInput interface {
 }
 
 type PrometheusAlertRuleAnnotationArgs struct {
-	// The name of the label.
+	// The name of the annotation.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the label.
+	// The value of the annotation.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -786,12 +792,12 @@ func (o PrometheusAlertRuleAnnotationOutput) ToPrometheusAlertRuleAnnotationOutp
 	return o
 }
 
-// The name of the label.
+// The name of the annotation.
 func (o PrometheusAlertRuleAnnotationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrometheusAlertRuleAnnotation) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The value of the label.
+// The value of the annotation.
 func (o PrometheusAlertRuleAnnotationOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrometheusAlertRuleAnnotation) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

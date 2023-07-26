@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,6 +61,7 @@ func NewAccessConfigurationProvisioning(ctx *pulumi.Context,
 	if args.TargetType == nil {
 		return nil, errors.New("invalid value for required argument 'TargetType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessConfigurationProvisioning
 	err := ctx.RegisterResource("alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning", name, args, &resource, opts...)
 	if err != nil {

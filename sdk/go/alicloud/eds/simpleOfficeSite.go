@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,6 +101,7 @@ func NewSimpleOfficeSite(ctx *pulumi.Context,
 	if args.CidrBlock == nil {
 		return nil, errors.New("invalid value for required argument 'CidrBlock'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SimpleOfficeSite
 	err := ctx.RegisterResource("alicloud:eds/simpleOfficeSite:SimpleOfficeSite", name, args, &resource, opts...)
 	if err != nil {

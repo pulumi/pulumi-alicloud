@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetProtocols(ctx *pulumi.Context, args *GetProtocolsArgs, opts ...pulumi.InvokeOption) (*GetProtocolsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProtocolsResult
 	err := ctx.Invoke("alicloud:nas/getProtocols:getProtocols", args, &rv, opts...)
 	if err != nil {

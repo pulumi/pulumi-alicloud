@@ -391,7 +391,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     @Import(name="deletionProtection")
@@ -402,7 +402,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -852,6 +852,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * 
+     */
+    @Import(name="roleArn")
+    private @Nullable Output<String> roleArn;
+
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * 
+     */
+    public Optional<Output<String>> roleArn() {
+        return Optional.ofNullable(this.roleArn);
     }
 
     /**
@@ -1425,6 +1440,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.releasedKeepPolicy = $.releasedKeepPolicy;
         this.replicationAcl = $.replicationAcl;
         this.resourceGroupId = $.resourceGroupId;
+        this.roleArn = $.roleArn;
         this.securityGroupId = $.securityGroupId;
         this.securityGroupIds = $.securityGroupIds;
         this.securityIpMode = $.securityIpMode;
@@ -1960,7 +1976,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - true: delete protect.
          * - false: no delete protect.
          * 
-         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
          * 
          * @return builder
          * 
@@ -1975,7 +1991,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - true: delete protect.
          * - false: no delete protect.
          * 
-         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
          * 
          * @return builder
          * 
@@ -2585,6 +2601,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(@Nullable Output<String> roleArn) {
+            $.roleArn = roleArn;
+            return this;
+        }
+
+        /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(String roleArn) {
+            return roleArn(Output.of(roleArn));
         }
 
         /**

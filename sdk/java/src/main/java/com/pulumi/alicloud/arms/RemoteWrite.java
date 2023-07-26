@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusremotewrite).
  * 
- * &gt; **NOTE:** Available in v1.204.0+.
+ * &gt; **NOTE:** Available since v1.204.0.
  * 
  * ## Example Usage
  * 
@@ -29,6 +29,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.arms.Prometheus;
+ * import com.pulumi.alicloud.arms.PrometheusArgs;
  * import com.pulumi.alicloud.arms.RemoteWrite;
  * import com.pulumi.alicloud.arms.RemoteWriteArgs;
  * import java.util.List;
@@ -44,8 +56,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RemoteWrite(&#34;default&#34;, RemoteWriteArgs.builder()        
- *             .clusterId(&#34;your_cluster_id&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()).length() - 1].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+ *             .clusterType(&#34;ecs&#34;)
+ *             .grafanaInstanceId(&#34;free&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .clusterName(defaultNetwork.id().applyValue(id -&gt; String.format(&#34;%s-%s&#34;, name,id)))
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+ *             ))
+ *             .build());
+ * 
+ *         var defaultRemoteWrite = new RemoteWrite(&#34;defaultRemoteWrite&#34;, RemoteWriteArgs.builder()        
+ *             .clusterId(defaultPrometheus.id())
  *             .remoteWriteYaml(&#34;&#34;&#34;
  * remote_write:
  * - name: ArmsRemoteWrite
@@ -57,7 +107,6 @@ import javax.annotation.Nullable;
  *     regex: si-6e2ca86444db4e55a7c1
  *     replacement: $1
  *     action: keep
- * 
  *             &#34;&#34;&#34;)
  *             .build());
  * 

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,6 +92,7 @@ func NewOrder(ctx *pulumi.Context,
 	if args.ProductCode == nil {
 		return nil, errors.New("invalid value for required argument 'ProductCode'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Order
 	err := ctx.RegisterResource("alicloud:marketplace/order:Order", name, args, &resource, opts...)
 	if err != nil {

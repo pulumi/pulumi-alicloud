@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -26,16 +27,68 @@ import (
 //
 //	"fmt"
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := bastionhost.NewInstance(ctx, "defaultInstance", &bastionhost.InstanceArgs{
+//				Description: pulumi.String(name),
+//				LicenseCode: pulumi.String("bhah_ent_50_asset"),
+//				PlanCode:    pulumi.String("cloudbastion"),
+//				Storage:     pulumi.String("5"),
+//				Bandwidth:   pulumi.String("5"),
+//				Period:      pulumi.Int(1),
+//				VswitchId:   defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
-//				InstanceId:         pulumi.String("bastionhost-cn-tl32bh0no30"),
-//				HostName:           pulumi.Any(_var.Name),
+//				InstanceId:         defaultInstance.ID(),
+//				HostName:           pulumi.String(name),
 //				ActiveAddressType:  pulumi.String("Private"),
 //				HostPrivateAddress: pulumi.String("172.16.0.10"),
 //				OsType:             pulumi.String("Linux"),
@@ -44,42 +97,34 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			var defaultHostAccount []*bastionhost.HostAccount
-//			for index := 0; index < 3; index++ {
-//				key0 := index
-//				val0 := index
-//				__res, err := bastionhost.NewHostAccount(ctx, fmt.Sprintf("defaultHostAccount-%v", key0), &bastionhost.HostAccountArgs{
-//					InstanceId:      defaultHost.InstanceId,
-//					HostAccountName: pulumi.String(fmt.Sprintf("example_value-%v", val0)),
-//					HostId:          defaultHost.HostId,
-//					ProtocolName:    pulumi.String("SSH"),
-//					Password:        pulumi.String("YourPassword12345"),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				defaultHostAccount = append(defaultHostAccount, __res)
-//			}
-//			defaultUser, err := bastionhost.NewUser(ctx, "defaultUser", &bastionhost.UserArgs{
-//				InstanceId:        defaultHost.InstanceId,
-//				MobileCountryCode: pulumi.String("CN"),
-//				Mobile:            pulumi.String("13312345678"),
-//				Password:          pulumi.String("YourPassword-123"),
-//				Source:            pulumi.String("Local"),
-//				UserName:          pulumi.String("my-local-user"),
+//			defaultHostAccount, err := bastionhost.NewHostAccount(ctx, "defaultHostAccount", &bastionhost.HostAccountArgs{
+//				HostAccountName: pulumi.String(name),
+//				HostId:          defaultHost.HostId,
+//				InstanceId:      defaultHost.InstanceId,
+//				ProtocolName:    pulumi.String("SSH"),
+//				Password:        pulumi.String("YourPassword12345"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			var splat0 pulumi.StringArray
-//			for _, val0 := range defaultHostAccount {
-//				splat0 = append(splat0, val0.HostAccountId)
+//			localUser, err := bastionhost.NewUser(ctx, "localUser", &bastionhost.UserArgs{
+//				InstanceId:        defaultInstance.ID(),
+//				MobileCountryCode: pulumi.String("CN"),
+//				Mobile:            pulumi.String("13312345678"),
+//				Password:          pulumi.String("YourPassword-123"),
+//				Source:            pulumi.String("Local"),
+//				UserName:          pulumi.String(fmt.Sprintf("%v_local_user", name)),
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			_, err = bastionhost.NewHostAccountUserAttachment(ctx, "defaultHostAccountUserAttachment", &bastionhost.HostAccountUserAttachmentArgs{
-//				InstanceId:     defaultHost.InstanceId,
-//				UserId:         defaultUser.UserId,
-//				HostId:         defaultHost.HostId,
-//				HostAccountIds: splat0,
+//				InstanceId: defaultHost.InstanceId,
+//				UserId:     localUser.UserId,
+//				HostId:     defaultHost.HostId,
+//				HostAccountIds: pulumi.StringArray{
+//					defaultHostAccount.HostAccountId,
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -131,6 +176,7 @@ func NewHostAccountUserAttachment(ctx *pulumi.Context,
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HostAccountUserAttachment
 	err := ctx.RegisterResource("alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment", name, args, &resource, opts...)
 	if err != nil {

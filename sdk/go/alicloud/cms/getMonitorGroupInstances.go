@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupMonitorGroupInstances(ctx *pulumi.Context, args *LookupMonitorGroupInstancesArgs, opts ...pulumi.InvokeOption) (*LookupMonitorGroupInstancesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitorGroupInstancesResult
 	err := ctx.Invoke("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args, &rv, opts...)
 	if err != nil {

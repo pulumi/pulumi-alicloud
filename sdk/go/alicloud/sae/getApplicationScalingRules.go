@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetApplicationScalingRules(ctx *pulumi.Context, args *GetApplicationScalingRulesArgs, opts ...pulumi.InvokeOption) (*GetApplicationScalingRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationScalingRulesResult
 	err := ctx.Invoke("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", args, &rv, opts...)
 	if err != nil {

@@ -21,14 +21,14 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     public static final GatewayVpnAttachmentState Empty = new GatewayVpnAttachmentState();
 
     /**
-     * Bgp configuration information. See the following `Block bgp_config`.
+     * Bgp configuration information. See `bgp_config` below.
      * 
      */
     @Import(name="bgpConfig")
     private @Nullable Output<GatewayVpnAttachmentBgpConfigArgs> bgpConfig;
 
     /**
-     * @return Bgp configuration information. See the following `Block bgp_config`.
+     * @return Bgp configuration information. See `bgp_config` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentBgpConfigArgs>> bgpConfig() {
@@ -96,14 +96,14 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Health check configuration information. See the following `Block health_check_config`.
+     * Health check configuration information. See `health_check_config` below.
      * 
      */
     @Import(name="healthCheckConfig")
     private @Nullable Output<GatewayVpnAttachmentHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return Health check configuration information. See the following `Block health_check_config`.
+     * @return Health check configuration information. See `health_check_config` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentHealthCheckConfigArgs>> healthCheckConfig() {
@@ -111,14 +111,14 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configuration negotiated in the second stage. See the following `Block ike_config`.
+     * Configuration negotiated in the second stage. See `ike_config` below.
      * 
      */
     @Import(name="ikeConfig")
     private @Nullable Output<GatewayVpnAttachmentIkeConfigArgs> ikeConfig;
 
     /**
-     * @return Configuration negotiated in the second stage. See the following `Block ike_config`.
+     * @return Configuration negotiated in the second stage. See `ike_config` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentIkeConfigArgs>> ikeConfig() {
@@ -141,14 +141,14 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+     * Configuration negotiated in the second stage. See `ipsec_config` below.
      * 
      */
     @Import(name="ipsecConfig")
     private @Nullable Output<GatewayVpnAttachmentIpsecConfigArgs> ipsecConfig;
 
     /**
-     * @return Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+     * @return Configuration negotiated in the second stage. See `ipsec_config` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentIpsecConfigArgs>> ipsecConfig() {
@@ -268,7 +268,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bgpConfig Bgp configuration information. See the following `Block bgp_config`.
+         * @param bgpConfig Bgp configuration information. See `bgp_config` below.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bgpConfig Bgp configuration information. See the following `Block bgp_config`.
+         * @param bgpConfig Bgp configuration information. See `bgp_config` below.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param healthCheckConfig Health check configuration information. See the following `Block health_check_config`.
+         * @param healthCheckConfig Health check configuration information. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param healthCheckConfig Health check configuration information. See the following `Block health_check_config`.
+         * @param healthCheckConfig Health check configuration information. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ikeConfig Configuration negotiated in the second stage. See the following `Block ike_config`.
+         * @param ikeConfig Configuration negotiated in the second stage. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ikeConfig Configuration negotiated in the second stage. See the following `Block ike_config`.
+         * @param ikeConfig Configuration negotiated in the second stage. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecConfig Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+         * @param ipsecConfig Configuration negotiated in the second stage. See `ipsec_config` below.
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecConfig Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+         * @param ipsecConfig Configuration negotiated in the second stage. See `ipsec_config` below.
          * 
          * @return builder
          * 

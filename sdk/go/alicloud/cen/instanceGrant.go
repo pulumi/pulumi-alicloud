@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,13 +95,11 @@ import (
 //			}
 //			_, err = cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
 //				InstanceId:            exampleInstance.ID(),
-//				ChildInstanceId:       childAccountNetwork.ID(),
+//				ChildInstanceId:       childAccountInstanceGrant.ChildInstanceId,
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: *pulumi.String(_default.Regions[0].Id),
 //				ChildInstanceOwnerId:  *pulumi.String(childAccountAccount.Id),
-//			}, pulumi.Provider(alicloud.Your_account), pulumi.DependsOn([]pulumi.Resource{
-//				childAccountInstanceGrant,
-//			}))
+//			}, pulumi.Provider(alicloud.Your_account))
 //			if err != nil {
 //				return err
 //			}
@@ -146,6 +145,7 @@ func NewInstanceGrant(ctx *pulumi.Context,
 	if args.ChildInstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'ChildInstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceGrant
 	err := ctx.RegisterResource("alicloud:cen/instanceGrant:InstanceGrant", name, args, &resource, opts...)
 	if err != nil {

@@ -202,6 +202,21 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    @Import(name="promotionOptionNo")
+    private @Nullable Output<String> promotionOptionNo;
+
+    /**
+     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    public Optional<Output<String>> promotionOptionNo() {
+        return Optional.ofNullable(this.promotionOptionNo);
+    }
+
+    /**
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
      * 
      */
@@ -276,6 +291,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         this.description = $.description;
         this.duration = $.duration;
         this.paymentType = $.paymentType;
+        this.promotionOptionNo = $.promotionOptionNo;
         this.ratio = $.ratio;
         this.renewalStatus = $.renewalStatus;
         this.tags = $.tags;
@@ -552,6 +568,27 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionOptionNo(@Nullable Output<String> promotionOptionNo) {
+            $.promotionOptionNo = promotionOptionNo;
+            return this;
+        }
+
+        /**
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionOptionNo(String promotionOptionNo) {
+            return promotionOptionNo(Output.of(promotionOptionNo));
         }
 
         /**

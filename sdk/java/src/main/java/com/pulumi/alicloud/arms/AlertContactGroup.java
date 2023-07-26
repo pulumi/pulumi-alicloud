@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Application Real-Time Monitoring Service (ARMS) Alert Contact Group resource.
  * 
- * For information about Application Real-Time Monitoring Service (ARMS) Alert Contact Group and how to use it, see [What is Alert Contact Group](https://www.alibabacloud.com/help/zh/doc-detail/130677.htm).
+ * For information about Application Real-Time Monitoring Service (ARMS) Alert Contact Group and how to use it, see [What is Alert Contact Group](https://www.alibabacloud.com/help/en/doc-detail/130677.htm).
  * 
- * &gt; **NOTE:** Available in v1.131.0+.
+ * &gt; **NOTE:** Available since v1.131.0.
  * 
  * ## Example Usage
  * 

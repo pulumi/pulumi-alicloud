@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetWafPolicies(ctx *pulumi.Context, args *GetWafPoliciesArgs, opts ...pulumi.InvokeOption) (*GetWafPoliciesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWafPoliciesResult
 	err := ctx.Invoke("alicloud:dcdn/getWafPolicies:getWafPolicies", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in 1.37.0+.
 func GetNatGateways(ctx *pulumi.Context, args *GetNatGatewaysArgs, opts ...pulumi.InvokeOption) (*GetNatGatewaysResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNatGatewaysResult
 	err := ctx.Invoke("alicloud:vpc/getNatGateways:getNatGateways", args, &rv, opts...)
 	if err != nil {

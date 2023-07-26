@@ -48,14 +48,14 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+     * The label generates a matching expression that applies the grouping. See `match_express` below.
      * 
      */
     @Import(name="matchExpresses")
     private @Nullable Output<List<DynamicTagGroupMatchExpressArgs>> matchExpresses;
 
     /**
-     * @return The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+     * @return The label generates a matching expression that applies the grouping. See `match_express` below.
      * 
      */
     public Optional<Output<List<DynamicTagGroupMatchExpressArgs>>> matchExpresses() {
@@ -189,7 +189,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpresses The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+         * @param matchExpresses The label generates a matching expression that applies the grouping. See `match_express` below.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpresses The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+         * @param matchExpresses The label generates a matching expression that applies the grouping. See `match_express` below.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpresses The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+         * @param matchExpresses The label generates a matching expression that applies the grouping. See `match_express` below.
          * 
          * @return builder
          * 

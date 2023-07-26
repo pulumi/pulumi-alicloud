@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Monitor Service Metric Rule Template resource.
  * 
- * For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/doc-detail/114984.html).
+ * For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmetricruletemplate).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Example Usage
  * 
@@ -51,9 +51,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var example = new MetricRuleTemplate(&#34;example&#34;, MetricRuleTemplateArgs.builder()        
+ *             .metricRuleTemplateName(name)
  *             .alertTemplates(MetricRuleTemplateAlertTemplateArgs.builder()
  *                 .category(&#34;ecs&#34;)
+ *                 .metricName(&#34;cpu_total&#34;)
+ *                 .namespace(&#34;acs_ecs_dashboard&#34;)
+ *                 .ruleName(&#34;tf_example&#34;)
  *                 .escalations(MetricRuleTemplateAlertTemplateEscalationsArgs.builder()
  *                     .critical(MetricRuleTemplateAlertTemplateEscalationsCriticalArgs.builder()
  *                         .comparisonOperator(&#34;GreaterThanThreshold&#34;)
@@ -62,11 +68,7 @@ import javax.annotation.Nullable;
  *                         .times(&#34;3&#34;)
  *                         .build())
  *                     .build())
- *                 .metricName(&#34;cpu_total&#34;)
- *                 .namespace(&#34;acs_ecs_dashboard&#34;)
- *                 .ruleName(&#34;tf_testAcc_new&#34;)
  *                 .build())
- *             .metricRuleTemplateName(&#34;example_value&#34;)
  *             .build());
  * 
  *     }
@@ -85,14 +87,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/metricRuleTemplate:MetricRuleTemplate")
 public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+     * The details of alert rules that are generated based on the alert template. See `alert_templates` below.
      * 
      */
     @Export(name="alertTemplates", type=List.class, parameters={MetricRuleTemplateAlertTemplate.class})
     private Output</* @Nullable */ List<MetricRuleTemplateAlertTemplate>> alertTemplates;
 
     /**
-     * @return The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+     * @return The details of alert rules that are generated based on the alert template. See `alert_templates` below.
      * 
      */
     public Output<Optional<List<MetricRuleTemplateAlertTemplate>>> alertTemplates() {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetGreyTagRoutes(ctx *pulumi.Context, args *GetGreyTagRoutesArgs, opts ...pulumi.InvokeOption) (*GetGreyTagRoutesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGreyTagRoutesResult
 	err := ctx.Invoke("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args, &rv, opts...)
 	if err != nil {

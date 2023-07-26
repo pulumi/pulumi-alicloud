@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetBaseInstances(ctx *pulumi.Context, args *GetBaseInstancesArgs, opts ...pulumi.InvokeOption) (*GetBaseInstancesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBaseInstancesResult
 	err := ctx.Invoke("alicloud:ocean/getBaseInstances:getBaseInstances", args, &rv, opts...)
 	if err != nil {

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Cloud Config Aggregate Compliance Pack resource.
     /// 
-    /// For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+    /// For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregatecompliancepack).
     /// 
-    /// &gt; **NOTE:** Available in v1.124.0+.
+    /// &gt; **NOTE:** Available since v1.124.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,13 +29,11 @@ namespace Pulumi.AliCloud.Cfg
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example_name";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform_example";
+    ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke(new()
     ///     {
-    ///         Status = "OK",
+    ///         Status = "CreateSuccess",
     ///     });
-    /// 
-    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke();
     /// 
     ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("defaultAggregator", new()
     ///     {
@@ -43,44 +41,40 @@ namespace Pulumi.AliCloud.Cfg
     ///         {
     ///             new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
     ///             {
-    ///                 AccountId = "140278452670****",
-    ///                 AccountName = "test-2",
+    ///                 AccountId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountId),
+    ///                 AccountName = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.DisplayName),
     ///                 AccountType = "ResourceDirectory",
     ///             },
     ///         },
-    ///         AggregatorName = "tf-testaccaggregator",
-    ///         Description = "tf-testaccaggregator",
+    ///         AggregatorName = name,
+    ///         Description = name,
+    ///         AggregatorType = "CUSTOM",
     ///     });
     /// 
     ///     var defaultAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("defaultAggregateConfigRule", new()
     ///     {
+    ///         AggregateConfigRuleName = "contains-tag",
     ///         AggregatorId = defaultAggregator.Id,
-    ///         AggregateConfigRuleName = name,
-    ///         SourceOwner = "ALIYUN",
-    ///         SourceIdentifier = "ecs-cpu-min-count-limit",
     ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///         SourceOwner = "ALIYUN",
+    ///         SourceIdentifier = "contains-tag",
+    ///         RiskLevel = 1,
     ///         ResourceTypesScopes = new[]
     ///         {
     ///             "ACS::ECS::Instance",
     ///         },
-    ///         RiskLevel = 1,
-    ///         Description = name,
-    ///         ExcludeResourceIdsScope = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
     ///         InputParameters = 
     ///         {
-    ///             { "cpuCount", "4" },
+    ///             { "key", "example" },
+    ///             { "value", "example" },
     ///         },
-    ///         RegionIdsScope = "cn-hangzhou",
-    ///         ResourceGroupIdsScope = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         TagKeyScope = "tFTest",
-    ///         TagValueScope = "forTF 123",
     ///     });
     /// 
     ///     var defaultAggregateCompliancePack = new AliCloud.Cfg.AggregateCompliancePack("defaultAggregateCompliancePack", new()
     ///     {
-    ///         AggregateCompliancePackName = "tf-testaccConfig1234",
+    ///         AggregateCompliancePackName = name,
     ///         AggregatorId = defaultAggregator.Id,
-    ///         Description = "tf-testaccConfig1234",
+    ///         Description = name,
     ///         RiskLevel = 1,
     ///         ConfigRuleIds = new[]
     ///         {
@@ -124,13 +118,13 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> CompliancePackTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Config Rule IDs.
+        /// A list of Config Rule IDs. See `config_rule_ids` below.
         /// </summary>
         [Output("configRuleIds")]
         public Output<ImmutableArray<Outputs.AggregateCompliancePackConfigRuleId>> ConfigRuleIds { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Config Rules.
+        /// A list of Config Rules. See `config_rules` below.
         /// </summary>
         [Output("configRules")]
         public Output<ImmutableArray<Outputs.AggregateCompliancePackConfigRule>> ConfigRules { get; private set; } = null!;
@@ -221,7 +215,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleIdArgs>? _configRuleIds;
 
         /// <summary>
-        /// A list of Config Rule IDs.
+        /// A list of Config Rule IDs. See `config_rule_ids` below.
         /// </summary>
         public InputList<Inputs.AggregateCompliancePackConfigRuleIdArgs> ConfigRuleIds
         {
@@ -233,7 +227,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules.
+        /// A list of Config Rules. See `config_rules` below.
         /// </summary>
         [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
         public InputList<Inputs.AggregateCompliancePackConfigRuleArgs> ConfigRules
@@ -284,7 +278,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleIdGetArgs>? _configRuleIds;
 
         /// <summary>
-        /// A list of Config Rule IDs.
+        /// A list of Config Rule IDs. See `config_rule_ids` below.
         /// </summary>
         public InputList<Inputs.AggregateCompliancePackConfigRuleIdGetArgs> ConfigRuleIds
         {
@@ -296,7 +290,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules.
+        /// A list of Config Rules. See `config_rules` below.
         /// </summary>
         [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
         public InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs> ConfigRules

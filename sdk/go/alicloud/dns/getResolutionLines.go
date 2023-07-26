@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetResolutionLines(ctx *pulumi.Context, args *GetResolutionLinesArgs, opts ...pulumi.InvokeOption) (*GetResolutionLinesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResolutionLinesResult
 	err := ctx.Invoke("alicloud:dns/getResolutionLines:getResolutionLines", args, &rv, opts...)
 	if err != nil {

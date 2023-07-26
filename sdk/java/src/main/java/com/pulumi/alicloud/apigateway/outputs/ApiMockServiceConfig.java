@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApiMockServiceConfig {
+    /**
+     * @return The name of aone.
+     * 
+     */
     private @Nullable String aoneName;
     /**
      * @return The result of the mock service.
@@ -19,6 +23,10 @@ public final class ApiMockServiceConfig {
     private String result;
 
     private ApiMockServiceConfig() {}
+    /**
+     * @return The name of aone.
+     * 
+     */
     public Optional<String> aoneName() {
         return Optional.ofNullable(this.aoneName);
     }

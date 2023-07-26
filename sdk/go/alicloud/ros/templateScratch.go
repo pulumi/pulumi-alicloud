@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewTemplateScratch(ctx *pulumi.Context,
 	if args.TemplateScratchType == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateScratchType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TemplateScratch
 	err := ctx.RegisterResource("alicloud:ros/templateScratch:TemplateScratch", name, args, &resource, opts...)
 	if err != nil {

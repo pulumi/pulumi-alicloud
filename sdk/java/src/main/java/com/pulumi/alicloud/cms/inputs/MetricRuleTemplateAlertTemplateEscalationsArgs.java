@@ -18,14 +18,14 @@ public final class MetricRuleTemplateAlertTemplateEscalationsArgs extends com.pu
     public static final MetricRuleTemplateAlertTemplateEscalationsArgs Empty = new MetricRuleTemplateAlertTemplateEscalationsArgs();
 
     /**
-     * The condition for triggering critical-level alerts. See the following `Block critical`.
+     * The condition for triggering critical-level alerts. See `critical` below.
      * 
      */
     @Import(name="critical")
     private @Nullable Output<MetricRuleTemplateAlertTemplateEscalationsCriticalArgs> critical;
 
     /**
-     * @return The condition for triggering critical-level alerts. See the following `Block critical`.
+     * @return The condition for triggering critical-level alerts. See `critical` below.
      * 
      */
     public Optional<Output<MetricRuleTemplateAlertTemplateEscalationsCriticalArgs>> critical() {
@@ -33,14 +33,14 @@ public final class MetricRuleTemplateAlertTemplateEscalationsArgs extends com.pu
     }
 
     /**
-     * The condition for triggering info-level alerts. See the following `Block info`.
+     * The condition for triggering info-level alerts. See `info` below.
      * 
      */
     @Import(name="info")
     private @Nullable Output<MetricRuleTemplateAlertTemplateEscalationsInfoArgs> info;
 
     /**
-     * @return The condition for triggering info-level alerts. See the following `Block info`.
+     * @return The condition for triggering info-level alerts. See `info` below.
      * 
      */
     public Optional<Output<MetricRuleTemplateAlertTemplateEscalationsInfoArgs>> info() {
@@ -48,14 +48,14 @@ public final class MetricRuleTemplateAlertTemplateEscalationsArgs extends com.pu
     }
 
     /**
-     * The condition for triggering warn-level alerts. See the following `Block warn`.
+     * The condition for triggering warn-level alerts. See `warn` below.
      * 
      */
     @Import(name="warn")
     private @Nullable Output<MetricRuleTemplateAlertTemplateEscalationsWarnArgs> warn;
 
     /**
-     * @return The condition for triggering warn-level alerts. See the following `Block warn`.
+     * @return The condition for triggering warn-level alerts. See `warn` below.
      * 
      */
     public Optional<Output<MetricRuleTemplateAlertTemplateEscalationsWarnArgs>> warn() {
@@ -89,7 +89,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsArgs extends com.pu
         }
 
         /**
-         * @param critical The condition for triggering critical-level alerts. See the following `Block critical`.
+         * @param critical The condition for triggering critical-level alerts. See `critical` below.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsArgs extends com.pu
         }
 
         /**
-         * @param critical The condition for triggering critical-level alerts. See the following `Block critical`.
+         * @param critical The condition for triggering critical-level alerts. See `critical` below.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsArgs extends com.pu
         }
 
         /**
-         * @param info The condition for triggering info-level alerts. See the following `Block info`.
+         * @param info The condition for triggering info-level alerts. See `info` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsArgs extends com.pu
         }
 
         /**
-         * @param info The condition for triggering info-level alerts. See the following `Block info`.
+         * @param info The condition for triggering info-level alerts. See `info` below.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsArgs extends com.pu
         }
 
         /**
-         * @param warn The condition for triggering warn-level alerts. See the following `Block warn`.
+         * @param warn The condition for triggering warn-level alerts. See `warn` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsArgs extends com.pu
         }
 
         /**
-         * @param warn The condition for triggering warn-level alerts. See the following `Block warn`.
+         * @param warn The condition for triggering warn-level alerts. See `warn` below.
          * 
          * @return builder
          * 

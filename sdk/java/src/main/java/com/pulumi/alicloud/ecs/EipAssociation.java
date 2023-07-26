@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
  * 
+ * &gt; **NOTE:** Available since v1.117.0.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -34,21 +36,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
- * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.ecs.EipAddress;
+ * import com.pulumi.alicloud.ecs.EipAddressArgs;
  * import com.pulumi.alicloud.ecs.EipAssociation;
  * import com.pulumi.alicloud.ecs.EipAssociationArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,50 +64,59 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultZones = AlicloudFunctions.getZones();
- * 
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Instance&#34;)
  *             .build());
  * 
- *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
- *             .vpcId(vpc.id())
- *             .cidrBlock(&#34;10.1.1.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(vpc)
- *                 .build());
- * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
- *             .mostRecent(true)
+ *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
- *             .description(&#34;New security group&#34;)
- *             .vpcId(vpc.id())
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
- *         var ecsInstance = new Instance(&#34;ecsInstance&#34;, InstanceArgs.builder()        
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .securityGroups(group.id())
- *             .vswitchId(vsw.id())
- *             .instanceName(&#34;hello&#34;)
- *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest-instance&#34;))
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var eip = new EipAddress(&#34;eip&#34;);
+ *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
  * 
- *         var eipAsso = new EipAssociation(&#34;eipAsso&#34;, EipAssociationArgs.builder()        
- *             .allocationId(eip.id())
- *             .instanceId(ecsInstance.id())
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceName(name)
+ *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(exampleSecurityGroup.id())
+ *             .vswitchId(exampleSwitch.id())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .build());
+ * 
+ *         var exampleEipAddress = new EipAddress(&#34;exampleEipAddress&#34;, EipAddressArgs.builder()        
+ *             .addressName(name)
+ *             .build());
+ * 
+ *         var exampleEipAssociation = new EipAssociation(&#34;exampleEipAssociation&#34;, EipAssociationArgs.builder()        
+ *             .allocationId(exampleEipAddress.id())
+ *             .instanceId(exampleInstance.id())
  *             .build());
  * 
  *     }

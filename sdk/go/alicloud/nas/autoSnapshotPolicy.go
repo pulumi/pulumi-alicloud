@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -102,6 +103,7 @@ func NewAutoSnapshotPolicy(ctx *pulumi.Context,
 	if args.TimePoints == nil {
 		return nil, errors.New("invalid value for required argument 'TimePoints'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AutoSnapshotPolicy
 	err := ctx.RegisterResource("alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +17,7 @@ import (
 //
 // Deprecated: DataSource has been renamed to `getTrails`
 func GetTrailsDeprecated(ctx *pulumi.Context, args *GetTrailsDeprecatedArgs, opts ...pulumi.InvokeOption) (*GetTrailsDeprecatedResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrailsDeprecatedResult
 	err := ctx.Invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args, &rv, opts...)
 	if err != nil {

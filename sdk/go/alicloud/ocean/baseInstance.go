@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -134,6 +135,7 @@ func NewBaseInstance(ctx *pulumi.Context,
 	if args.Zones == nil {
 		return nil, errors.New("invalid value for required argument 'Zones'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BaseInstance
 	err := ctx.RegisterResource("alicloud:ocean/baseInstance:BaseInstance", name, args, &resource, opts...)
 	if err != nil {

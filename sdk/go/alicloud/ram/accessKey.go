@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -122,6 +123,7 @@ func NewAccessKey(ctx *pulumi.Context,
 		"secret",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessKey
 	err := ctx.RegisterResource("alicloud:ram/accessKey:AccessKey", name, args, &resource, opts...)
 	if err != nil {

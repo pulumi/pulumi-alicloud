@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
     /// 
-    /// &gt; **NOTE:** Available in v1.181.0+.
+    /// &gt; **NOTE:** Available since v1.181.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,13 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
     ///     {
     ///         IpAddress = "42.104.22.210",
     ///         Asn = "45014",
-    ///         Description = "testAccVpnConnectionDesc",
+    ///         Description = name,
     ///     });
     /// 
     ///     var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", new()
@@ -79,22 +81,9 @@ namespace Pulumi.AliCloud.Vpn
     ///         },
     ///         EnableDpd = true,
     ///         EnableNatTraversal = true,
-    ///         VpnAttachmentName = @var.Name,
+    ///         VpnAttachmentName = name,
     ///     });
     /// 
-    ///     var vpnAttachments = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
-    ///     {
-    ///         Ids = new[]
-    ///         {
-    ///             alicloud_vpn_gateway_vpn_attachment.Vpn_attachment1.Id,
-    ///         },
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["localId"] = vpnAttachments.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.IkeConfigs[0]?.LocalId),
-    ///         ["internetIp"] = vpnAttachments.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.InternetIp),
-    ///     };
     /// });
     /// ```
     /// 
@@ -110,7 +99,7 @@ namespace Pulumi.AliCloud.Vpn
     public partial class GatewayVpnAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Bgp configuration information. See the following `Block bgp_config`.
+        /// Bgp configuration information. See `bgp_config` below.
         /// </summary>
         [Output("bgpConfig")]
         public Output<Outputs.GatewayVpnAttachmentBgpConfig> BgpConfig { get; private set; } = null!;
@@ -140,13 +129,13 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool> EnableNatTraversal { get; private set; } = null!;
 
         /// <summary>
-        /// Health check configuration information. See the following `Block health_check_config`.
+        /// Health check configuration information. See `health_check_config` below.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.GatewayVpnAttachmentHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration negotiated in the second stage. See the following `Block ike_config`.
+        /// Configuration negotiated in the second stage. See `ike_config` below.
         /// </summary>
         [Output("ikeConfig")]
         public Output<Outputs.GatewayVpnAttachmentIkeConfig> IkeConfig { get; private set; } = null!;
@@ -158,7 +147,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> InternetIp { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        /// Configuration negotiated in the second stage. See `ipsec_config` below.
         /// </summary>
         [Output("ipsecConfig")]
         public Output<Outputs.GatewayVpnAttachmentIpsecConfig> IpsecConfig { get; private set; } = null!;
@@ -240,7 +229,7 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class GatewayVpnAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bgp configuration information. See the following `Block bgp_config`.
+        /// Bgp configuration information. See `bgp_config` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.GatewayVpnAttachmentBgpConfigArgs>? BgpConfig { get; set; }
@@ -270,19 +259,19 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// Health check configuration information. See the following `Block health_check_config`.
+        /// Health check configuration information. See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.GatewayVpnAttachmentHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// Configuration negotiated in the second stage. See the following `Block ike_config`.
+        /// Configuration negotiated in the second stage. See `ike_config` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.GatewayVpnAttachmentIkeConfigArgs>? IkeConfig { get; set; }
 
         /// <summary>
-        /// Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        /// Configuration negotiated in the second stage. See `ipsec_config` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.GatewayVpnAttachmentIpsecConfigArgs>? IpsecConfig { get; set; }
@@ -320,7 +309,7 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class GatewayVpnAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bgp configuration information. See the following `Block bgp_config`.
+        /// Bgp configuration information. See `bgp_config` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.GatewayVpnAttachmentBgpConfigGetArgs>? BgpConfig { get; set; }
@@ -350,13 +339,13 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// Health check configuration information. See the following `Block health_check_config`.
+        /// Health check configuration information. See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.GatewayVpnAttachmentHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// Configuration negotiated in the second stage. See the following `Block ike_config`.
+        /// Configuration negotiated in the second stage. See `ike_config` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.GatewayVpnAttachmentIkeConfigGetArgs>? IkeConfig { get; set; }
@@ -368,7 +357,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? InternetIp { get; set; }
 
         /// <summary>
-        /// Configuration negotiated in the second stage. See the following `Block ipsec_config`.
+        /// Configuration negotiated in the second stage. See `ipsec_config` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.GatewayVpnAttachmentIpsecConfigGetArgs>? IpsecConfig { get; set; }

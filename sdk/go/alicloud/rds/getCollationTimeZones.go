@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetCollationTimeZones(ctx *pulumi.Context, args *GetCollationTimeZonesArgs, opts ...pulumi.InvokeOption) (*GetCollationTimeZonesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCollationTimeZonesResult
 	err := ctx.Invoke("alicloud:rds/getCollationTimeZones:getCollationTimeZones", args, &rv, opts...)
 	if err != nil {

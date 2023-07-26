@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetSynchronizationJobs(ctx *pulumi.Context, args *GetSynchronizationJobsArgs, opts ...pulumi.InvokeOption) (*GetSynchronizationJobsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSynchronizationJobsResult
 	err := ctx.Invoke("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args, &rv, opts...)
 	if err != nil {

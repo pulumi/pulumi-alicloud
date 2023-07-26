@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 // }
 // ```
 func GetCapacityReservations(ctx *pulumi.Context, args *GetCapacityReservationsArgs, opts ...pulumi.InvokeOption) (*GetCapacityReservationsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCapacityReservationsResult
 	err := ctx.Invoke("alicloud:ecs/getCapacityReservations:getCapacityReservations", args, &rv, opts...)
 	if err != nil {

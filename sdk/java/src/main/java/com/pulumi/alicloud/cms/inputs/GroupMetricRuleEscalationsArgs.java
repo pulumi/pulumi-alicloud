@@ -18,14 +18,14 @@ public final class GroupMetricRuleEscalationsArgs extends com.pulumi.resources.R
     public static final GroupMetricRuleEscalationsArgs Empty = new GroupMetricRuleEscalationsArgs();
 
     /**
-     * The critical level.
+     * The critical level. See `critical` below.
      * 
      */
     @Import(name="critical")
     private @Nullable Output<GroupMetricRuleEscalationsCriticalArgs> critical;
 
     /**
-     * @return The critical level.
+     * @return The critical level. See `critical` below.
      * 
      */
     public Optional<Output<GroupMetricRuleEscalationsCriticalArgs>> critical() {
@@ -33,14 +33,14 @@ public final class GroupMetricRuleEscalationsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The info level.
+     * The info level. See `info` below.
      * 
      */
     @Import(name="info")
     private @Nullable Output<GroupMetricRuleEscalationsInfoArgs> info;
 
     /**
-     * @return The info level.
+     * @return The info level. See `info` below.
      * 
      */
     public Optional<Output<GroupMetricRuleEscalationsInfoArgs>> info() {
@@ -48,14 +48,14 @@ public final class GroupMetricRuleEscalationsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The warn level.
+     * The warn level. See `warn` below.
      * 
      */
     @Import(name="warn")
     private @Nullable Output<GroupMetricRuleEscalationsWarnArgs> warn;
 
     /**
-     * @return The warn level.
+     * @return The warn level. See `warn` below.
      * 
      */
     public Optional<Output<GroupMetricRuleEscalationsWarnArgs>> warn() {
@@ -89,7 +89,7 @@ public final class GroupMetricRuleEscalationsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param critical The critical level.
+         * @param critical The critical level. See `critical` below.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class GroupMetricRuleEscalationsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param critical The critical level.
+         * @param critical The critical level. See `critical` below.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GroupMetricRuleEscalationsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param info The info level.
+         * @param info The info level. See `info` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GroupMetricRuleEscalationsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param info The info level.
+         * @param info The info level. See `info` below.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GroupMetricRuleEscalationsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param warn The warn level.
+         * @param warn The warn level. See `warn` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class GroupMetricRuleEscalationsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param warn The warn level.
+         * @param warn The warn level. See `warn` below.
          * 
          * @return builder
          * 

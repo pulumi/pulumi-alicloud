@@ -35,7 +35,9 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+               If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
@@ -45,9 +47,9 @@ class InstanceArgs:
                and you can use tolist to convert it to a list.
         :param pulumi.Input[str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
         :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
@@ -88,7 +90,9 @@ class InstanceArgs:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[str]:
         """
-        The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        The bandwidth of Cloud Bastionhost instance.
+        If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+        If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -175,7 +179,7 @@ class InstanceArgs:
     @pulumi.getter(name="adAuthServers")
     def ad_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]]:
         """
-        The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        The AD auth server of the Instance. See `ad_auth_server` below.
         """
         return pulumi.get(self, "ad_auth_servers")
 
@@ -199,7 +203,7 @@ class InstanceArgs:
     @pulumi.getter(name="ldapAuthServers")
     def ldap_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]]:
         """
-        The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        The LDAP auth server of the Instance. See `ldap_auth_server` below.
         """
         return pulumi.get(self, "ldap_auth_servers")
 
@@ -312,11 +316,13 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
-        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
+        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+               If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -372,7 +378,7 @@ class _InstanceState:
     @pulumi.getter(name="adAuthServers")
     def ad_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]]:
         """
-        The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        The AD auth server of the Instance. See `ad_auth_server` below.
         """
         return pulumi.get(self, "ad_auth_servers")
 
@@ -384,7 +390,9 @@ class _InstanceState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        The bandwidth of Cloud Bastionhost instance.
+        If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+        If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -420,7 +428,7 @@ class _InstanceState:
     @pulumi.getter(name="ldapAuthServers")
     def ldap_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]]:
         """
-        The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        The LDAP auth server of the Instance. See `ldap_auth_server` below.
         """
         return pulumi.get(self, "ldap_auth_servers")
 
@@ -608,11 +616,13 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
-        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
+        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+               If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -750,11 +760,13 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
-        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
+        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+               If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -798,7 +810,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="adAuthServers")
     def ad_auth_servers(self) -> pulumi.Output[Sequence['outputs.InstanceAdAuthServer']]:
         """
-        The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        The AD auth server of the Instance. See `ad_auth_server` below.
         """
         return pulumi.get(self, "ad_auth_servers")
 
@@ -806,7 +818,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[str]:
         """
-        The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        The bandwidth of Cloud Bastionhost instance.
+        If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+        If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -830,7 +844,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="ldapAuthServers")
     def ldap_auth_servers(self) -> pulumi.Output[Sequence['outputs.InstanceLdapAuthServer']]:
         """
-        The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        The LDAP auth server of the Instance. See `ldap_auth_server` below.
         """
         return pulumi.get(self, "ldap_auth_servers")
 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetSlots(ctx *pulumi.Context, args *GetSlotsArgs, opts ...pulumi.InvokeOption) (*GetSlotsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSlotsResult
 	err := ctx.Invoke("alicloud:rds/getSlots:getSlots", args, &rv, opts...)
 	if err != nil {

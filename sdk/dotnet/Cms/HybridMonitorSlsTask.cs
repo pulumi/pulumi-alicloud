@@ -14,107 +14,7 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// For information about Cloud Monitor Service Hybrid Monitor Sls Task and how to use it, see [What is Hybrid Monitor Sls Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
     /// 
-    /// &gt; **NOTE:** Available in v1.179.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var defaultSlsGroup = new AliCloud.Cms.SlsGroup("defaultSlsGroup", new()
-    ///     {
-    ///         SlsGroupConfigs = new[]
-    ///         {
-    ///             new AliCloud.Cms.Inputs.SlsGroupSlsGroupConfigArgs
-    ///             {
-    ///                 SlsUserId = @this.Apply(@this =&gt; @this.Apply(getAccountResult =&gt; getAccountResult.Id)),
-    ///                 SlsLogstore = "Logstore-ECS",
-    ///                 SlsProject = "aliyun-project",
-    ///                 SlsRegion = "cn-hangzhou",
-    ///             },
-    ///         },
-    ///         SlsGroupDescription = "example_value",
-    ///         SlsGroupName = "example_value",
-    ///     });
-    /// 
-    ///     var defaultNamespace = new AliCloud.Cms.Namespace("defaultNamespace", new()
-    ///     {
-    ///         Description = @var.Name,
-    ///         NamespaceName = "example-value",
-    ///         Specification = "cms.s1.large",
-    ///     });
-    /// 
-    ///     var defaultHybridMonitorSlsTask = new AliCloud.Cms.HybridMonitorSlsTask("defaultHybridMonitorSlsTask", new()
-    ///     {
-    ///         SlsProcessConfig = new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigArgs
-    ///         {
-    ///             Filter = new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterArgs
-    ///             {
-    ///                 Relation = "and",
-    ///                 Filters = new[]
-    ///                 {
-    ///                     new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs
-    ///                     {
-    ///                         Operator = "=",
-    ///                         Value = "200",
-    ///                         SlsKeyName = "code",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Statistics = new[]
-    ///             {
-    ///                 new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigStatisticArgs
-    ///                 {
-    ///                     Function = "count",
-    ///                     Alias = "level_count",
-    ///                     SlsKeyName = "name",
-    ///                     ParameterOne = "200",
-    ///                     ParameterTwo = "299",
-    ///                 },
-    ///             },
-    ///             GroupBies = new[]
-    ///             {
-    ///                 new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigGroupByArgs
-    ///                 {
-    ///                     Alias = "code",
-    ///                     SlsKeyName = "ApiResult",
-    ///                 },
-    ///             },
-    ///             Expresses = new[]
-    ///             {
-    ///                 new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigExpressArgs
-    ///                 {
-    ///                     Express = "success_count",
-    ///                     Alias = "SuccRate",
-    ///                 },
-    ///             },
-    ///         },
-    ///         TaskName = "example_value",
-    ///         Namespace = defaultNamespace.Id,
-    ///         Description = "example_value",
-    ///         CollectInterval = 60,
-    ///         CollectTargetType = defaultSlsGroup.Id,
-    ///         AttachLabels = new[]
-    ///         {
-    ///             new AliCloud.Cms.Inputs.HybridMonitorSlsTaskAttachLabelArgs
-    ///             {
-    ///                 Name = "app_service",
-    ///                 Value = "testValue",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.179.0.
     /// 
     /// ## Import
     /// 
@@ -128,7 +28,7 @@ namespace Pulumi.AliCloud.Cms
     public partial class HybridMonitorSlsTask : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The label of the monitoring task. See the following `Block attach_labels`.
+        /// The label of the monitoring task. See `attach_labels` below.
         /// </summary>
         [Output("attachLabels")]
         public Output<ImmutableArray<Outputs.HybridMonitorSlsTaskAttachLabel>> AttachLabels { get; private set; } = null!;
@@ -158,7 +58,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        /// The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         /// </summary>
         [Output("slsProcessConfig")]
         public Output<Outputs.HybridMonitorSlsTaskSlsProcessConfig> SlsProcessConfig { get; private set; } = null!;
@@ -219,7 +119,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.HybridMonitorSlsTaskAttachLabelArgs>? _attachLabels;
 
         /// <summary>
-        /// The label of the monitoring task. See the following `Block attach_labels`.
+        /// The label of the monitoring task. See `attach_labels` below.
         /// </summary>
         public InputList<Inputs.HybridMonitorSlsTaskAttachLabelArgs> AttachLabels
         {
@@ -252,7 +152,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string> Namespace { get; set; } = null!;
 
         /// <summary>
-        /// The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        /// The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         /// </summary>
         [Input("slsProcessConfig", required: true)]
         public Input<Inputs.HybridMonitorSlsTaskSlsProcessConfigArgs> SlsProcessConfig { get; set; } = null!;
@@ -275,7 +175,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.HybridMonitorSlsTaskAttachLabelGetArgs>? _attachLabels;
 
         /// <summary>
-        /// The label of the monitoring task. See the following `Block attach_labels`.
+        /// The label of the monitoring task. See `attach_labels` below.
         /// </summary>
         public InputList<Inputs.HybridMonitorSlsTaskAttachLabelGetArgs> AttachLabels
         {
@@ -308,7 +208,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        /// The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         /// </summary>
         [Input("slsProcessConfig")]
         public Input<Inputs.HybridMonitorSlsTaskSlsProcessConfigGetArgs>? SlsProcessConfig { get; set; }

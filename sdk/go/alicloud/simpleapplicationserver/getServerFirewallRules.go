@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetServerFirewallRules(ctx *pulumi.Context, args *GetServerFirewallRulesArgs, opts ...pulumi.InvokeOption) (*GetServerFirewallRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerFirewallRulesResult
 	err := ctx.Invoke("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args, &rv, opts...)
 	if err != nil {

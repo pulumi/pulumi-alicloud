@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type OtsBackupPlanOtsDetail struct {
 	// The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.

@@ -13,14 +13,20 @@ namespace Pulumi.AliCloud.KVStore.Outputs
     [OutputType]
     public sealed class InstanceParameter
     {
-        public readonly string Name;
-        public readonly string Value;
+        /// <summary>
+        /// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        /// </summary>
+        public readonly string? Value;
 
         [OutputConstructor]
         private InstanceParameter(
-            string name,
+            string? name,
 
-            string value)
+            string? value)
         {
             Name = name;
             Value = value;

@@ -16,50 +16,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HybridMonitorSlsTaskSlsProcessConfig {
     /**
-     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
     private @Nullable List<HybridMonitorSlsTaskSlsProcessConfigExpress> expresses;
     /**
-     * @return The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+     * @return The conditions that are used to filter logs imported from Log Service. See `filter` below.
      * 
      */
     private @Nullable HybridMonitorSlsTaskSlsProcessConfigFilter filter;
     /**
-     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
+     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
      * 
      */
     private @Nullable List<HybridMonitorSlsTaskSlsProcessConfigGroupBy> groupBies;
     /**
-     * @return The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+     * @return The method that is used to aggregate logs imported from Log Service. See `statistics` below.
      * 
      */
     private @Nullable List<HybridMonitorSlsTaskSlsProcessConfigStatistic> statistics;
 
     private HybridMonitorSlsTaskSlsProcessConfig() {}
     /**
-     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
     public List<HybridMonitorSlsTaskSlsProcessConfigExpress> expresses() {
         return this.expresses == null ? List.of() : this.expresses;
     }
     /**
-     * @return The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+     * @return The conditions that are used to filter logs imported from Log Service. See `filter` below.
      * 
      */
     public Optional<HybridMonitorSlsTaskSlsProcessConfigFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
+     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
      * 
      */
     public List<HybridMonitorSlsTaskSlsProcessConfigGroupBy> groupBies() {
         return this.groupBies == null ? List.of() : this.groupBies;
     }
     /**
-     * @return The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+     * @return The method that is used to aggregate logs imported from Log Service. See `statistics` below.
      * 
      */
     public List<HybridMonitorSlsTaskSlsProcessConfigStatistic> statistics() {

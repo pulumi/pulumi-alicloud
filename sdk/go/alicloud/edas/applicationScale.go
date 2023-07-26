@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,6 +77,7 @@ func NewApplicationScale(ctx *pulumi.Context,
 	if args.EcuInfos == nil {
 		return nil, errors.New("invalid value for required argument 'EcuInfos'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApplicationScale
 	err := ctx.RegisterResource("alicloud:edas/applicationScale:ApplicationScale", name, args, &resource, opts...)
 	if err != nil {

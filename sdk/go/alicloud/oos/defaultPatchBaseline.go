@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,6 +83,7 @@ func NewDefaultPatchBaseline(ctx *pulumi.Context,
 	if args.PatchBaselineName == nil {
 		return nil, errors.New("invalid value for required argument 'PatchBaselineName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DefaultPatchBaseline
 	err := ctx.RegisterResource("alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline", name, args, &resource, opts...)
 	if err != nil {

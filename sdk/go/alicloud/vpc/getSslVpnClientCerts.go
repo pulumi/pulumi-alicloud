@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetSslVpnClientCerts(ctx *pulumi.Context, args *GetSslVpnClientCertsArgs, opts ...pulumi.InvokeOption) (*GetSslVpnClientCertsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSslVpnClientCertsResult
 	err := ctx.Invoke("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", args, &rv, opts...)
 	if err != nil {

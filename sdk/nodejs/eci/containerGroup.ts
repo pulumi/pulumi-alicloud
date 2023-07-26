@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides ECI Container Group resource.
  *
- * For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/doc-detail/90341.htm).
+ * For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/elastic-container-instance/latest/api-eci-2018-08-08-createcontainergroup).
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.eci.ContainerGroup("example", {
- *     containerGroupName: "tf-testacc-eci-gruop",
+ *     containerGroupName: "tf-eci-gruop",
  *     cpu: 8,
  *     memory: 16,
  *     restartPolicy: "OnFailure",
@@ -143,7 +143,7 @@ export class ContainerGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The ACR enterprise edition example properties.
+     * The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      */
     public readonly acrRegistryInfos!: pulumi.Output<outputs.eci.ContainerGroupAcrRegistryInfo[] | undefined>;
     /**
@@ -151,7 +151,7 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly autoCreateEip!: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies whether to automatically match the image cache. Default value: false.
+     * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      */
     public readonly autoMatchImageCache!: pulumi.Output<boolean | undefined>;
     /**
@@ -159,7 +159,7 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly containerGroupName!: pulumi.Output<string>;
     /**
-     * The list of containers.
+     * The list of containers. See `containers` below.
      */
     public readonly containers!: pulumi.Output<outputs.eci.ContainerGroupContainer[]>;
     /**
@@ -167,15 +167,15 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly cpu!: pulumi.Output<number>;
     /**
-     * The structure of dnsConfig.
+     * The structure of dnsConfig. See `dnsConfig` below.
      */
     public readonly dnsConfig!: pulumi.Output<outputs.eci.ContainerGroupDnsConfig | undefined>;
     /**
-     * The security context of the container group.
+     * The security context of the container group. See `eciSecurityContext` below.
      */
     public readonly eciSecurityContext!: pulumi.Output<outputs.eci.ContainerGroupEciSecurityContext | undefined>;
     /**
-     * The bandwidth of the EIP. The default value is `5`.
+     * The bandwidth of the EIP. Default value: `5`.
      */
     public readonly eipBandwidth!: pulumi.Output<number | undefined>;
     /**
@@ -183,15 +183,15 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly eipInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * HostAliases.
+     * HostAliases. See `hostAliases` below.
      */
     public readonly hostAliases!: pulumi.Output<outputs.eci.ContainerGroupHostAlias[] | undefined>;
     /**
-     * The image registry credential. The details see Block `imageRegistryCredential`.
+     * The image registry credential. See `imageRegistryCredential` below.
      */
     public readonly imageRegistryCredentials!: pulumi.Output<outputs.eci.ContainerGroupImageRegistryCredential[] | undefined>;
     /**
-     * The list of initContainers.
+     * The list of initContainers. See `initContainers` below.
      */
     public readonly initContainers!: pulumi.Output<outputs.eci.ContainerGroupInitContainer[] | undefined>;
     /**
@@ -203,11 +203,11 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
-     * (Available in v1.170.0+) The Public IP of the container group.
+     * (Available since v1.170.0) The Public IP of the container group.
      */
     public /*out*/ readonly internetIp!: pulumi.Output<string>;
     /**
-     * (Available in v1.170.0+) The Private IP of the container group.
+     * (Available since v1.170.0) The Private IP of the container group.
      */
     public /*out*/ readonly intranetIp!: pulumi.Output<string>;
     /**
@@ -223,7 +223,7 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly ramRoleName!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
@@ -245,11 +245,12 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The list of volumes.
+     * The list of volumes. See `volumes` below.
      */
     public readonly volumes!: pulumi.Output<outputs.eci.ContainerGroupVolume[] | undefined>;
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
@@ -351,7 +352,7 @@ export class ContainerGroup extends pulumi.CustomResource {
  */
 export interface ContainerGroupState {
     /**
-     * The ACR enterprise edition example properties.
+     * The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      */
     acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupAcrRegistryInfo>[]>;
     /**
@@ -359,7 +360,7 @@ export interface ContainerGroupState {
      */
     autoCreateEip?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to automatically match the image cache. Default value: false.
+     * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      */
     autoMatchImageCache?: pulumi.Input<boolean>;
     /**
@@ -367,7 +368,7 @@ export interface ContainerGroupState {
      */
     containerGroupName?: pulumi.Input<string>;
     /**
-     * The list of containers.
+     * The list of containers. See `containers` below.
      */
     containers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[]>;
     /**
@@ -375,15 +376,15 @@ export interface ContainerGroupState {
      */
     cpu?: pulumi.Input<number>;
     /**
-     * The structure of dnsConfig.
+     * The structure of dnsConfig. See `dnsConfig` below.
      */
     dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
     /**
-     * The security context of the container group.
+     * The security context of the container group. See `eciSecurityContext` below.
      */
     eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
     /**
-     * The bandwidth of the EIP. The default value is `5`.
+     * The bandwidth of the EIP. Default value: `5`.
      */
     eipBandwidth?: pulumi.Input<number>;
     /**
@@ -391,15 +392,15 @@ export interface ContainerGroupState {
      */
     eipInstanceId?: pulumi.Input<string>;
     /**
-     * HostAliases.
+     * HostAliases. See `hostAliases` below.
      */
     hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
     /**
-     * The image registry credential. The details see Block `imageRegistryCredential`.
+     * The image registry credential. See `imageRegistryCredential` below.
      */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
     /**
-     * The list of initContainers.
+     * The list of initContainers. See `initContainers` below.
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[]>;
     /**
@@ -411,11 +412,11 @@ export interface ContainerGroupState {
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * (Available in v1.170.0+) The Public IP of the container group.
+     * (Available since v1.170.0) The Public IP of the container group.
      */
     internetIp?: pulumi.Input<string>;
     /**
-     * (Available in v1.170.0+) The Private IP of the container group.
+     * (Available since v1.170.0) The Private IP of the container group.
      */
     intranetIp?: pulumi.Input<string>;
     /**
@@ -431,7 +432,7 @@ export interface ContainerGroupState {
      */
     ramRoleName?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -453,11 +454,12 @@ export interface ContainerGroupState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The list of volumes.
+     * The list of volumes. See `volumes` below.
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[]>;
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -471,7 +473,7 @@ export interface ContainerGroupState {
  */
 export interface ContainerGroupArgs {
     /**
-     * The ACR enterprise edition example properties.
+     * The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      */
     acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupAcrRegistryInfo>[]>;
     /**
@@ -479,7 +481,7 @@ export interface ContainerGroupArgs {
      */
     autoCreateEip?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to automatically match the image cache. Default value: false.
+     * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      */
     autoMatchImageCache?: pulumi.Input<boolean>;
     /**
@@ -487,7 +489,7 @@ export interface ContainerGroupArgs {
      */
     containerGroupName: pulumi.Input<string>;
     /**
-     * The list of containers.
+     * The list of containers. See `containers` below.
      */
     containers: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[]>;
     /**
@@ -495,15 +497,15 @@ export interface ContainerGroupArgs {
      */
     cpu?: pulumi.Input<number>;
     /**
-     * The structure of dnsConfig.
+     * The structure of dnsConfig. See `dnsConfig` below.
      */
     dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
     /**
-     * The security context of the container group.
+     * The security context of the container group. See `eciSecurityContext` below.
      */
     eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
     /**
-     * The bandwidth of the EIP. The default value is `5`.
+     * The bandwidth of the EIP. Default value: `5`.
      */
     eipBandwidth?: pulumi.Input<number>;
     /**
@@ -511,15 +513,15 @@ export interface ContainerGroupArgs {
      */
     eipInstanceId?: pulumi.Input<string>;
     /**
-     * HostAliases.
+     * HostAliases. See `hostAliases` below.
      */
     hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
     /**
-     * The image registry credential. The details see Block `imageRegistryCredential`.
+     * The image registry credential. See `imageRegistryCredential` below.
      */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
     /**
-     * The list of initContainers.
+     * The list of initContainers. See `initContainers` below.
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[]>;
     /**
@@ -543,7 +545,7 @@ export interface ContainerGroupArgs {
      */
     ramRoleName?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -561,11 +563,12 @@ export interface ContainerGroupArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The list of volumes.
+     * The list of volumes. See `volumes` below.
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[]>;
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
      */
     vswitchId: pulumi.Input<string>;
     /**

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -122,6 +123,7 @@ func NewFileset(ctx *pulumi.Context,
 	if args.FileSystemPath == nil {
 		return nil, errors.New("invalid value for required argument 'FileSystemPath'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Fileset
 	err := ctx.RegisterResource("alicloud:nas/fileset:Fileset", name, args, &resource, opts...)
 	if err != nil {

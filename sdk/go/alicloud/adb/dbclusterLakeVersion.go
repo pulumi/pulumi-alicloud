@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -171,6 +172,7 @@ func NewDBClusterLakeVersion(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DBClusterLakeVersion
 	err := ctx.RegisterResource("alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetCrossRegions(ctx *pulumi.Context, args *GetCrossRegionsArgs, opts ...pulumi.InvokeOption) (*GetCrossRegionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCrossRegionsResult
 	err := ctx.Invoke("alicloud:rds/getCrossRegions:getCrossRegions", args, &rv, opts...)
 	if err != nil {

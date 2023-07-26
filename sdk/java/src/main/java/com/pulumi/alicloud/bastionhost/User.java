@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/204503.htm).
  * 
- * &gt; **NOTE:** Available in v1.133.0+.
+ * &gt; **NOTE:** Available since v1.133.0.
  * 
  * ## Example Usage
  * 
@@ -31,8 +31,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.bastionhost.Instance;
+ * import com.pulumi.alicloud.bastionhost.InstanceArgs;
  * import com.pulumi.alicloud.bastionhost.User;
  * import com.pulumi.alicloud.bastionhost.UserArgs;
+ * import com.pulumi.alicloud.ram.User;
+ * import com.pulumi.alicloud.ram.UserArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,23 +58,63 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var local = new User(&#34;local&#34;, UserArgs.builder()        
- *             .instanceId(&#34;example_value&#34;)
- *             .mobile(&#34;13312345678&#34;)
- *             .mobileCountryCode(&#34;CN&#34;)
- *             .password(&#34;YourPassword-123&#34;)
- *             .source(&#34;Local&#34;)
- *             .userName(&#34;my-local-user&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var ram = new User(&#34;ram&#34;, UserArgs.builder()        
- *             .instanceId(&#34;example_value&#34;)
- *             .mobile(&#34;13312345678&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .description(name)
+ *             .licenseCode(&#34;bhah_ent_50_asset&#34;)
+ *             .planCode(&#34;cloudbastion&#34;)
+ *             .storage(&#34;5&#34;)
+ *             .bandwidth(&#34;5&#34;)
+ *             .period(&#34;1&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *         var localUser = new User(&#34;localUser&#34;, UserArgs.builder()        
+ *             .instanceId(defaultInstance.id())
  *             .mobileCountryCode(&#34;CN&#34;)
+ *             .mobile(&#34;13312345678&#34;)
  *             .password(&#34;YourPassword-123&#34;)
+ *             .source(&#34;Local&#34;)
+ *             .userName(String.format(&#34;%s_local_user&#34;, name))
+ *             .build());
+ * 
+ *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .displayName(String.format(&#34;%s_bastionhost_user&#34;, name))
+ *             .mobile(&#34;86-18688888888&#34;)
+ *             .email(&#34;hello.uuu@aaa.com&#34;)
+ *             .comments(&#34;yoyoyo&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
+ *         var ramUser = new User(&#34;ramUser&#34;, UserArgs.builder()        
+ *             .instanceId(defaultInstance.id())
  *             .source(&#34;Ram&#34;)
- *             .sourceUserId(&#34;1234567890&#34;)
- *             .userName(&#34;my-ram-user&#34;)
+ *             .sourceUserId(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .userName(user.name())
  *             .build());
  * 
  *     }
@@ -203,14 +255,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.mobileCountryCode;
     }
     /**
-     * Specify the New User&#39;s Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+     * Specify the New User&#39;s Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
      * 
      */
     @Export(name="password", type=String.class, parameters={})
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return Specify the New User&#39;s Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+     * @return Specify the New User&#39;s Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
      * 
      */
     public Output<Optional<String>> password() {

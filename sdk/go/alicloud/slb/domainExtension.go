@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -208,6 +209,7 @@ func NewDomainExtension(ctx *pulumi.Context,
 	if args.ServerCertificateId == nil {
 		return nil, errors.New("invalid value for required argument 'ServerCertificateId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DomainExtension
 	err := ctx.RegisterResource("alicloud:slb/domainExtension:DomainExtension", name, args, &resource, opts...)
 	if err != nil {

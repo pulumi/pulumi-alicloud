@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetEventSources(ctx *pulumi.Context, args *GetEventSourcesArgs, opts ...pulumi.InvokeOption) (*GetEventSourcesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEventSourcesResult
 	err := ctx.Invoke("alicloud:eventbridge/getEventSources:getEventSources", args, &rv, opts...)
 	if err != nil {

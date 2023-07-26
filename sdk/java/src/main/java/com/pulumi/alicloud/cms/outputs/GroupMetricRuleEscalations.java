@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GroupMetricRuleEscalations {
     /**
-     * @return The critical level.
+     * @return The critical level. See `critical` below.
      * 
      */
     private @Nullable GroupMetricRuleEscalationsCritical critical;
     /**
-     * @return The info level.
+     * @return The info level. See `info` below.
      * 
      */
     private @Nullable GroupMetricRuleEscalationsInfo info;
     /**
-     * @return The warn level.
+     * @return The warn level. See `warn` below.
      * 
      */
     private @Nullable GroupMetricRuleEscalationsWarn warn;
 
     private GroupMetricRuleEscalations() {}
     /**
-     * @return The critical level.
+     * @return The critical level. See `critical` below.
      * 
      */
     public Optional<GroupMetricRuleEscalationsCritical> critical() {
         return Optional.ofNullable(this.critical);
     }
     /**
-     * @return The info level.
+     * @return The info level. See `info` below.
      * 
      */
     public Optional<GroupMetricRuleEscalationsInfo> info() {
         return Optional.ofNullable(this.info);
     }
     /**
-     * @return The warn level.
+     * @return The warn level. See `warn` below.
      * 
      */
     public Optional<GroupMetricRuleEscalationsWarn> warn() {

@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Monitor Service Event Rule and how to use it, see [What is Event Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/puteventrule).
  * 
- * &gt; **NOTE:** Available in v1.182.0+.
+ * &gt; **NOTE:** Available since v1.182.0.
  * 
  * ## Example Usage
  * 
@@ -50,14 +50,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var default_ = new MonitorGroup(&#34;default&#34;, MonitorGroupArgs.builder()        
- *             .monitorGroupName(&#34;example_value&#34;)
+ *             .monitorGroupName(name)
  *             .build());
  * 
  *         var example = new EventRule(&#34;example&#34;, EventRuleArgs.builder()        
- *             .ruleName(&#34;example_value&#34;)
+ *             .ruleName(name)
  *             .groupId(default_.id())
- *             .description(&#34;example_value&#34;)
+ *             .description(name)
  *             .status(&#34;ENABLED&#34;)
  *             .eventPattern(EventRuleEventPatternArgs.builder()
  *                 .product(&#34;ecs&#34;)
@@ -99,14 +101,14 @@ public class EventRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+     * Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
      * 
      */
     @Export(name="eventPattern", type=EventRuleEventPattern.class, parameters={})
     private Output<EventRuleEventPattern> eventPattern;
 
     /**
-     * @return Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+     * @return Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
      * 
      */
     public Output<EventRuleEventPattern> eventPattern() {

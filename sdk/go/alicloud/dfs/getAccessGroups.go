@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetAccessGroups(ctx *pulumi.Context, args *GetAccessGroupsArgs, opts ...pulumi.InvokeOption) (*GetAccessGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessGroupsResult
 	err := ctx.Invoke("alicloud:dfs/getAccessGroups:getAccessGroups", args, &rv, opts...)
 	if err != nil {

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Default to `false`.
+        /// Specifies whether the mount path is read-only. Default value: `false`.
         /// </summary>
         public readonly bool? ReadOnly;
 

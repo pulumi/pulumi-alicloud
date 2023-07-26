@@ -31,14 +31,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpressArgs extends com.p
     }
 
     /**
-     * The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+     * The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
      * 
      */
     @Import(name="express")
     private @Nullable Output<String> express;
 
     /**
-     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
      * 
      */
     public Optional<Output<String>> express() {
@@ -92,7 +92,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpressArgs extends com.p
         }
 
         /**
-         * @param express The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+         * @param express The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpressArgs extends com.p
         }
 
         /**
-         * @param express The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+         * @param express The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
          * 
          * @return builder
          * 

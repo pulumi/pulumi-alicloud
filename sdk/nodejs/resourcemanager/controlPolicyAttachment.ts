@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager Control Policy Attachment resource.
  *
- * For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://help.aliyun.com/document_detail/208330.html).
+ * For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-doc-resourcedirectorymaster-2022-04-19-api-doc-attachcontrolpolicy).
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Enable the control policy
- * const exampleResourceDirectory = new alicloud.resourcemanager.ResourceDirectory("exampleResourceDirectory", {status: "Enabled"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const exampleControlPolicy = new alicloud.resourcemanager.ControlPolicy("exampleControlPolicy", {
- *     controlPolicyName: "tf-testAccName",
- *     description: "tf-testAccRDControlPolicy",
+ *     controlPolicyName: name,
+ *     description: name,
  *     effectScope: "RAM",
  *     policyDocument: `  {
  *     "Version": "1",
@@ -42,12 +42,10 @@ import * as utilities from "../utilities";
  *   }
  * `,
  * });
- * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: "tf-testAccName"});
+ * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: name});
  * const exampleControlPolicyAttachment = new alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment", {
  *     policyId: exampleControlPolicy.id,
  *     targetId: exampleFolder.id,
- * }, {
- *     dependsOn: [exampleResourceDirectory],
  * });
  * ```
  *

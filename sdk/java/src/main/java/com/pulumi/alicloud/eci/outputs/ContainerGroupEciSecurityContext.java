@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupEciSecurityContext {
     /**
-     * @return system.
+     * @return Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
      * 
      */
     private @Nullable List<ContainerGroupEciSecurityContextSysctl> sysctls;
 
     private ContainerGroupEciSecurityContext() {}
     /**
-     * @return system.
+     * @return Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
      * 
      */
     public List<ContainerGroupEciSecurityContextSysctl> sysctls() {

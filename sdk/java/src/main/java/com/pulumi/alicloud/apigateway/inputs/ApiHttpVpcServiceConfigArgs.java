@@ -16,22 +16,30 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
 
     public static final ApiHttpVpcServiceConfigArgs Empty = new ApiHttpVpcServiceConfigArgs();
 
+    /**
+     * The name of aone.
+     * 
+     */
     @Import(name="aoneName")
     private @Nullable Output<String> aoneName;
 
+    /**
+     * @return The name of aone.
+     * 
+     */
     public Optional<Output<String>> aoneName() {
         return Optional.ofNullable(this.aoneName);
     }
 
     /**
-     * The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+     * The http method of backend service.
      * 
      */
     @Import(name="method", required=true)
     private Output<String> method;
 
     /**
-     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+     * @return The http method of backend service.
      * 
      */
     public Output<String> method() {
@@ -39,14 +47,14 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the api gateway api. Defaults to null.
+     * The name of vpc instance.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the api gateway api. Defaults to null.
+     * @return The name of vpc instance.
      * 
      */
     public Output<String> name() {
@@ -54,14 +62,14 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The request path of the api.
+     * The path of backend service.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return The request path of the api.
+     * @return The path of backend service.
      * 
      */
     public Output<String> path() {
@@ -69,14 +77,14 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Backend service time-out time; unit: millisecond.
+     * Backend service time-out time. Unit: millisecond.
      * 
      */
     @Import(name="timeout", required=true)
     private Output<Integer> timeout;
 
     /**
-     * @return Backend service time-out time; unit: millisecond.
+     * @return Backend service time-out time. Unit: millisecond.
      * 
      */
     public Output<Integer> timeout() {
@@ -111,17 +119,29 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
             $ = new ApiHttpVpcServiceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aoneName The name of aone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aoneName(@Nullable Output<String> aoneName) {
             $.aoneName = aoneName;
             return this;
         }
 
+        /**
+         * @param aoneName The name of aone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aoneName(String aoneName) {
             return aoneName(Output.of(aoneName));
         }
 
         /**
-         * @param method The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+         * @param method The http method of backend service.
          * 
          * @return builder
          * 
@@ -132,7 +152,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param method The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+         * @param method The http method of backend service.
          * 
          * @return builder
          * 
@@ -142,7 +162,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the api gateway api. Defaults to null.
+         * @param name The name of vpc instance.
          * 
          * @return builder
          * 
@@ -153,7 +173,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the api gateway api. Defaults to null.
+         * @param name The name of vpc instance.
          * 
          * @return builder
          * 
@@ -163,7 +183,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param path The request path of the api.
+         * @param path The path of backend service.
          * 
          * @return builder
          * 
@@ -174,7 +194,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param path The request path of the api.
+         * @param path The path of backend service.
          * 
          * @return builder
          * 
@@ -184,7 +204,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param timeout Backend service time-out time; unit: millisecond.
+         * @param timeout Backend service time-out time. Unit: millisecond.
          * 
          * @return builder
          * 
@@ -195,7 +215,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param timeout Backend service time-out time; unit: millisecond.
+         * @param timeout Backend service time-out time. Unit: millisecond.
          * 
          * @return builder
          * 

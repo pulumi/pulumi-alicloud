@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -107,6 +108,7 @@ func NewWafPolicyDomainAttachment(ctx *pulumi.Context,
 	if args.PolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WafPolicyDomainAttachment
 	err := ctx.RegisterResource("alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment", name, args, &resource, opts...)
 	if err != nil {

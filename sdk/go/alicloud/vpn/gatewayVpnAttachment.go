@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
 //
-// > **NOTE:** Available in v1.181.0+.
+// > **NOTE:** Available since v1.181.0.
 //
 // ## Example Usage
 //
@@ -26,76 +27,75 @@ import (
 //
 // import (
 //
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
-// IpAddress: pulumi.String("42.104.22.210"),
-// Asn: pulumi.String("45014"),
-// Description: pulumi.String("testAccVpnConnectionDesc"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = vpn.NewGatewayVpnAttachment(ctx, "defaultGatewayVpnAttachment", &vpn.GatewayVpnAttachmentArgs{
-// CustomerGatewayId: defaultCustomerGateway.ID(),
-// NetworkType: pulumi.String("public"),
-// LocalSubnet: pulumi.String("0.0.0.0/0"),
-// RemoteSubnet: pulumi.String("0.0.0.0/0"),
-// EffectImmediately: pulumi.Bool(false),
-// IkeConfig: &vpn.GatewayVpnAttachmentIkeConfigArgs{
-// IkeAuthAlg: pulumi.String("md5"),
-// IkeEncAlg: pulumi.String("des"),
-// IkeVersion: pulumi.String("ikev2"),
-// IkeMode: pulumi.String("main"),
-// IkeLifetime: pulumi.Int(86400),
-// Psk: pulumi.String("tf-testvpn2"),
-// IkePfs: pulumi.String("group1"),
-// RemoteId: pulumi.String("testbob2"),
-// LocalId: pulumi.String("testalice2"),
-// },
-// IpsecConfig: &vpn.GatewayVpnAttachmentIpsecConfigArgs{
-// IpsecPfs: pulumi.String("group5"),
-// IpsecEncAlg: pulumi.String("des"),
-// IpsecAuthAlg: pulumi.String("md5"),
-// IpsecLifetime: pulumi.Int(86400),
-// },
-// BgpConfig: &vpn.GatewayVpnAttachmentBgpConfigArgs{
-// Enable: pulumi.Bool(true),
-// LocalAsn: pulumi.Int(45014),
-// TunnelCidr: pulumi.String("169.254.11.0/30"),
-// LocalBgpIp: pulumi.String("169.254.11.1"),
-// },
-// HealthCheckConfig: &vpn.GatewayVpnAttachmentHealthCheckConfigArgs{
-// Enable: pulumi.Bool(true),
-// Sip: pulumi.String("192.168.1.1"),
-// Dip: pulumi.String("10.0.0.1"),
-// Interval: pulumi.Int(10),
-// Retry: pulumi.Int(10),
-// Policy: pulumi.String("revoke_route"),
-// },
-// EnableDpd: pulumi.Bool(true),
-// EnableNatTraversal: pulumi.Bool(true),
-// VpnAttachmentName: pulumi.Any(_var.Name),
-// })
-// if err != nil {
-// return err
-// }
-// vpnAttachments, err := vpn.GetGatewayVpnAttachments(ctx, &vpn.GetGatewayVpnAttachmentsArgs{
-// Ids: interface{}{
-// alicloud_vpn_gateway_vpn_attachment.Vpn_attachment1.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("localId", vpnAttachments.Attachments[0].IkeConfigs[0].LocalId)
-// ctx.Export("internetIp", vpnAttachments.Attachments[0].InternetIp)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
+//				IpAddress:   pulumi.String("42.104.22.210"),
+//				Asn:         pulumi.String("45014"),
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewGatewayVpnAttachment(ctx, "defaultGatewayVpnAttachment", &vpn.GatewayVpnAttachmentArgs{
+//				CustomerGatewayId: defaultCustomerGateway.ID(),
+//				NetworkType:       pulumi.String("public"),
+//				LocalSubnet:       pulumi.String("0.0.0.0/0"),
+//				RemoteSubnet:      pulumi.String("0.0.0.0/0"),
+//				EffectImmediately: pulumi.Bool(false),
+//				IkeConfig: &vpn.GatewayVpnAttachmentIkeConfigArgs{
+//					IkeAuthAlg:  pulumi.String("md5"),
+//					IkeEncAlg:   pulumi.String("des"),
+//					IkeVersion:  pulumi.String("ikev2"),
+//					IkeMode:     pulumi.String("main"),
+//					IkeLifetime: pulumi.Int(86400),
+//					Psk:         pulumi.String("tf-testvpn2"),
+//					IkePfs:      pulumi.String("group1"),
+//					RemoteId:    pulumi.String("testbob2"),
+//					LocalId:     pulumi.String("testalice2"),
+//				},
+//				IpsecConfig: &vpn.GatewayVpnAttachmentIpsecConfigArgs{
+//					IpsecPfs:      pulumi.String("group5"),
+//					IpsecEncAlg:   pulumi.String("des"),
+//					IpsecAuthAlg:  pulumi.String("md5"),
+//					IpsecLifetime: pulumi.Int(86400),
+//				},
+//				BgpConfig: &vpn.GatewayVpnAttachmentBgpConfigArgs{
+//					Enable:     pulumi.Bool(true),
+//					LocalAsn:   pulumi.Int(45014),
+//					TunnelCidr: pulumi.String("169.254.11.0/30"),
+//					LocalBgpIp: pulumi.String("169.254.11.1"),
+//				},
+//				HealthCheckConfig: &vpn.GatewayVpnAttachmentHealthCheckConfigArgs{
+//					Enable:   pulumi.Bool(true),
+//					Sip:      pulumi.String("192.168.1.1"),
+//					Dip:      pulumi.String("10.0.0.1"),
+//					Interval: pulumi.Int(10),
+//					Retry:    pulumi.Int(10),
+//					Policy:   pulumi.String("revoke_route"),
+//				},
+//				EnableDpd:          pulumi.Bool(true),
+//				EnableNatTraversal: pulumi.Bool(true),
+//				VpnAttachmentName:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -110,7 +110,7 @@ import (
 type GatewayVpnAttachment struct {
 	pulumi.CustomResourceState
 
-	// Bgp configuration information. See the following `Block bgpConfig`.
+	// Bgp configuration information. See `bgpConfig` below.
 	BgpConfig GatewayVpnAttachmentBgpConfigOutput `pulumi:"bgpConfig"`
 	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
 	CustomerGatewayId pulumi.StringOutput `pulumi:"customerGatewayId"`
@@ -120,13 +120,13 @@ type GatewayVpnAttachment struct {
 	EnableDpd pulumi.BoolOutput `pulumi:"enableDpd"`
 	// Allow NAT penetration.
 	EnableNatTraversal pulumi.BoolOutput `pulumi:"enableNatTraversal"`
-	// Health check configuration information. See the following `Block healthCheckConfig`.
+	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig GatewayVpnAttachmentHealthCheckConfigOutput `pulumi:"healthCheckConfig"`
-	// Configuration negotiated in the second stage. See the following `Block ikeConfig`.
+	// Configuration negotiated in the second stage. See `ikeConfig` below.
 	IkeConfig GatewayVpnAttachmentIkeConfigOutput `pulumi:"ikeConfig"`
 	// The VPN gateway IP.
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
-	// Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
+	// Configuration negotiated in the second stage. See `ipsecConfig` below.
 	IpsecConfig GatewayVpnAttachmentIpsecConfigOutput `pulumi:"ipsecConfig"`
 	// The CIDR block of the virtual private cloud (VPC).
 	LocalSubnet pulumi.StringOutput `pulumi:"localSubnet"`
@@ -156,6 +156,7 @@ func NewGatewayVpnAttachment(ctx *pulumi.Context,
 	if args.RemoteSubnet == nil {
 		return nil, errors.New("invalid value for required argument 'RemoteSubnet'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GatewayVpnAttachment
 	err := ctx.RegisterResource("alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment", name, args, &resource, opts...)
 	if err != nil {
@@ -178,7 +179,7 @@ func GetGatewayVpnAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GatewayVpnAttachment resources.
 type gatewayVpnAttachmentState struct {
-	// Bgp configuration information. See the following `Block bgpConfig`.
+	// Bgp configuration information. See `bgpConfig` below.
 	BgpConfig *GatewayVpnAttachmentBgpConfig `pulumi:"bgpConfig"`
 	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
@@ -188,13 +189,13 @@ type gatewayVpnAttachmentState struct {
 	EnableDpd *bool `pulumi:"enableDpd"`
 	// Allow NAT penetration.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
-	// Health check configuration information. See the following `Block healthCheckConfig`.
+	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig *GatewayVpnAttachmentHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// Configuration negotiated in the second stage. See the following `Block ikeConfig`.
+	// Configuration negotiated in the second stage. See `ikeConfig` below.
 	IkeConfig *GatewayVpnAttachmentIkeConfig `pulumi:"ikeConfig"`
 	// The VPN gateway IP.
 	InternetIp *string `pulumi:"internetIp"`
-	// Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
+	// Configuration negotiated in the second stage. See `ipsecConfig` below.
 	IpsecConfig *GatewayVpnAttachmentIpsecConfig `pulumi:"ipsecConfig"`
 	// The CIDR block of the virtual private cloud (VPC).
 	LocalSubnet *string `pulumi:"localSubnet"`
@@ -209,7 +210,7 @@ type gatewayVpnAttachmentState struct {
 }
 
 type GatewayVpnAttachmentState struct {
-	// Bgp configuration information. See the following `Block bgpConfig`.
+	// Bgp configuration information. See `bgpConfig` below.
 	BgpConfig GatewayVpnAttachmentBgpConfigPtrInput
 	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
 	CustomerGatewayId pulumi.StringPtrInput
@@ -219,13 +220,13 @@ type GatewayVpnAttachmentState struct {
 	EnableDpd pulumi.BoolPtrInput
 	// Allow NAT penetration.
 	EnableNatTraversal pulumi.BoolPtrInput
-	// Health check configuration information. See the following `Block healthCheckConfig`.
+	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig GatewayVpnAttachmentHealthCheckConfigPtrInput
-	// Configuration negotiated in the second stage. See the following `Block ikeConfig`.
+	// Configuration negotiated in the second stage. See `ikeConfig` below.
 	IkeConfig GatewayVpnAttachmentIkeConfigPtrInput
 	// The VPN gateway IP.
 	InternetIp pulumi.StringPtrInput
-	// Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
+	// Configuration negotiated in the second stage. See `ipsecConfig` below.
 	IpsecConfig GatewayVpnAttachmentIpsecConfigPtrInput
 	// The CIDR block of the virtual private cloud (VPC).
 	LocalSubnet pulumi.StringPtrInput
@@ -244,7 +245,7 @@ func (GatewayVpnAttachmentState) ElementType() reflect.Type {
 }
 
 type gatewayVpnAttachmentArgs struct {
-	// Bgp configuration information. See the following `Block bgpConfig`.
+	// Bgp configuration information. See `bgpConfig` below.
 	BgpConfig *GatewayVpnAttachmentBgpConfig `pulumi:"bgpConfig"`
 	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
@@ -254,11 +255,11 @@ type gatewayVpnAttachmentArgs struct {
 	EnableDpd *bool `pulumi:"enableDpd"`
 	// Allow NAT penetration.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
-	// Health check configuration information. See the following `Block healthCheckConfig`.
+	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig *GatewayVpnAttachmentHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// Configuration negotiated in the second stage. See the following `Block ikeConfig`.
+	// Configuration negotiated in the second stage. See `ikeConfig` below.
 	IkeConfig *GatewayVpnAttachmentIkeConfig `pulumi:"ikeConfig"`
-	// Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
+	// Configuration negotiated in the second stage. See `ipsecConfig` below.
 	IpsecConfig *GatewayVpnAttachmentIpsecConfig `pulumi:"ipsecConfig"`
 	// The CIDR block of the virtual private cloud (VPC).
 	LocalSubnet string `pulumi:"localSubnet"`
@@ -272,7 +273,7 @@ type gatewayVpnAttachmentArgs struct {
 
 // The set of arguments for constructing a GatewayVpnAttachment resource.
 type GatewayVpnAttachmentArgs struct {
-	// Bgp configuration information. See the following `Block bgpConfig`.
+	// Bgp configuration information. See `bgpConfig` below.
 	BgpConfig GatewayVpnAttachmentBgpConfigPtrInput
 	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
 	CustomerGatewayId pulumi.StringInput
@@ -282,11 +283,11 @@ type GatewayVpnAttachmentArgs struct {
 	EnableDpd pulumi.BoolPtrInput
 	// Allow NAT penetration.
 	EnableNatTraversal pulumi.BoolPtrInput
-	// Health check configuration information. See the following `Block healthCheckConfig`.
+	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig GatewayVpnAttachmentHealthCheckConfigPtrInput
-	// Configuration negotiated in the second stage. See the following `Block ikeConfig`.
+	// Configuration negotiated in the second stage. See `ikeConfig` below.
 	IkeConfig GatewayVpnAttachmentIkeConfigPtrInput
-	// Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
+	// Configuration negotiated in the second stage. See `ipsecConfig` below.
 	IpsecConfig GatewayVpnAttachmentIpsecConfigPtrInput
 	// The CIDR block of the virtual private cloud (VPC).
 	LocalSubnet pulumi.StringInput
@@ -385,7 +386,7 @@ func (o GatewayVpnAttachmentOutput) ToGatewayVpnAttachmentOutputWithContext(ctx 
 	return o
 }
 
-// Bgp configuration information. See the following `Block bgpConfig`.
+// Bgp configuration information. See `bgpConfig` below.
 func (o GatewayVpnAttachmentOutput) BgpConfig() GatewayVpnAttachmentBgpConfigOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentBgpConfigOutput { return v.BgpConfig }).(GatewayVpnAttachmentBgpConfigOutput)
 }
@@ -410,12 +411,12 @@ func (o GatewayVpnAttachmentOutput) EnableNatTraversal() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.BoolOutput { return v.EnableNatTraversal }).(pulumi.BoolOutput)
 }
 
-// Health check configuration information. See the following `Block healthCheckConfig`.
+// Health check configuration information. See `healthCheckConfig` below.
 func (o GatewayVpnAttachmentOutput) HealthCheckConfig() GatewayVpnAttachmentHealthCheckConfigOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentHealthCheckConfigOutput { return v.HealthCheckConfig }).(GatewayVpnAttachmentHealthCheckConfigOutput)
 }
 
-// Configuration negotiated in the second stage. See the following `Block ikeConfig`.
+// Configuration negotiated in the second stage. See `ikeConfig` below.
 func (o GatewayVpnAttachmentOutput) IkeConfig() GatewayVpnAttachmentIkeConfigOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentIkeConfigOutput { return v.IkeConfig }).(GatewayVpnAttachmentIkeConfigOutput)
 }
@@ -425,7 +426,7 @@ func (o GatewayVpnAttachmentOutput) InternetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
 }
 
-// Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
+// Configuration negotiated in the second stage. See `ipsecConfig` below.
 func (o GatewayVpnAttachmentOutput) IpsecConfig() GatewayVpnAttachmentIpsecConfigOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentIpsecConfigOutput { return v.IpsecConfig }).(GatewayVpnAttachmentIpsecConfigOutput)
 }

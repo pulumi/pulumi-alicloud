@@ -7,12 +7,21 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+var _ = internal.GetEnvOrDefault
+
 type InstanceParameter struct {
-	Name  string `pulumi:"name"`
-	Value string `pulumi:"value"`
+	// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+	//
+	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
+	Name *string `pulumi:"name"`
+	// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+	//
+	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
+	Value *string `pulumi:"value"`
 }
 
 // InstanceParameterInput is an input type that accepts InstanceParameterArgs and InstanceParameterOutput values.
@@ -27,8 +36,14 @@ type InstanceParameterInput interface {
 }
 
 type InstanceParameterArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
-	Value pulumi.StringInput `pulumi:"value"`
+	// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+	//
+	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+	//
+	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (InstanceParameterArgs) ElementType() reflect.Type {
@@ -82,12 +97,18 @@ func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx contex
 	return o
 }
 
-func (o InstanceParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
+// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+//
+// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
+func (o InstanceParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceParameterOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceParameter) string { return v.Value }).(pulumi.StringOutput)
+// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+//
+// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
+func (o InstanceParameterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type InstanceParameterArrayOutput struct{ *pulumi.OutputState }

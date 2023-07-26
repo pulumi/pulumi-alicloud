@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetAppTemplates(ctx *pulumi.Context, args *GetAppTemplatesArgs, opts ...pulumi.InvokeOption) (*GetAppTemplatesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppTemplatesResult
 	err := ctx.Invoke("alicloud:imp/getAppTemplates:getAppTemplates", args, &rv, opts...)
 	if err != nil {

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// For information about Bastion Host Host Account Share Key Attachment and how to use it, see [What is Host Account Share Key Attachment](https://www.alibabacloud.com/help/en/bastion-host/latest/attachhostaccountstohostsharekey).
     /// 
-    /// &gt; **NOTE:** Available in v1.165.0+.
+    /// &gt; **NOTE:** Available since v1.165.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,20 +29,49 @@ namespace Pulumi.AliCloud.BastionHost
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfacc_host_account_share_key_attachment";
-    ///     var defaultInstances = AliCloud.BastionHost.GetInstances.Invoke();
-    /// 
-    ///     var defaultHostShareKey = new AliCloud.BastionHost.HostShareKey("defaultHostShareKey", new()
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         HostShareKeyName = "example_name",
-    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-    ///         PassPhrase = "example_value",
-    ///         PrivateKey = "example_value",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.BastionHost.Instance("defaultInstance", new()
+    ///     {
+    ///         Description = name,
+    ///         LicenseCode = "bhah_ent_50_asset",
+    ///         PlanCode = "cloudbastion",
+    ///         Storage = "5",
+    ///         Bandwidth = "5",
+    ///         Period = 1,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
     ///     });
     /// 
     ///     var defaultHost = new AliCloud.BastionHost.Host("defaultHost", new()
     ///     {
-    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         InstanceId = defaultInstance.Id,
     ///         HostName = name,
     ///         ActiveAddressType = "Private",
     ///         HostPrivateAddress = "172.16.0.10",
@@ -52,16 +81,25 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     ///     var defaultHostAccount = new AliCloud.BastionHost.HostAccount("defaultHostAccount", new()
     ///     {
-    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
     ///         HostAccountName = name,
     ///         HostId = defaultHost.HostId,
+    ///         InstanceId = defaultHost.InstanceId,
     ///         ProtocolName = "SSH",
     ///         Password = "YourPassword12345",
     ///     });
     /// 
+    ///     var privateKey = config.Get("privateKey") ?? "LS0tLS1CR*******";
+    ///     var defaultHostShareKey = new AliCloud.BastionHost.HostShareKey("defaultHostShareKey", new()
+    ///     {
+    ///         HostShareKeyName = name,
+    ///         InstanceId = defaultInstance.Id,
+    ///         PassPhrase = "NTIxeGlubXU=",
+    ///         PrivateKey = privateKey,
+    ///     });
+    /// 
     ///     var defaultHostAccountShareKeyAttachment = new AliCloud.BastionHost.HostAccountShareKeyAttachment("defaultHostAccountShareKeyAttachment", new()
     ///     {
-    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///         InstanceId = defaultInstance.Id,
     ///         HostShareKeyId = defaultHostShareKey.HostShareKeyId,
     ///         HostAccountId = defaultHostAccount.HostAccountId,
     ///     });

@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Application Real-Time Monitoring Service (ARMS) Alert Contact resource.
  * 
- * For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://www.alibabacloud.com/help/en/doc-detail/42953.htm).
+ * For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/createalertcontact).
  * 
- * &gt; **NOTE:** Available in v1.129.0+.
+ * &gt; **NOTE:** Available since v1.129.0.
  * 
  * ## Example Usage
  * 

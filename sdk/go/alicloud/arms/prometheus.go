@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-createprometheusinstance).
 //
-// > **NOTE:** Available in v1.203.0+.
+// > **NOTE:** Available since v1.203.0.
 //
 // ## Example Usage
 //
@@ -28,25 +29,48 @@ import (
 //
 //	"fmt"
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("your_name_regex"),
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      defaultZones.Zones[len(defaultZones.Zones)-1].Id,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -54,20 +78,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			_, err = arms.NewPrometheus(ctx, "defaultPrometheus", &arms.PrometheusArgs{
 //				ClusterType:       pulumi.String("ecs"),
 //				GrafanaInstanceId: pulumi.String("free"),
-//				VpcId:             *pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:         *pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:             defaultNetwork.ID(),
+//				VswitchId:         defaultSwitch.ID(),
 //				SecurityGroupId:   defaultSecurityGroup.ID(),
-//				ClusterName:       pulumi.String(fmt.Sprintf("%v-%v", _var.Name, defaultNetworks.Ids[0])),
-//				ResourceGroupId:   *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ClusterName: defaultNetwork.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, id), nil
+//				}).(pulumi.StringOutput),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Prometheus"),
@@ -129,6 +149,7 @@ func NewPrometheus(ctx *pulumi.Context,
 	if args.GrafanaInstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'GrafanaInstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Prometheus
 	err := ctx.RegisterResource("alicloud:arms/prometheus:Prometheus", name, args, &resource, opts...)
 	if err != nil {

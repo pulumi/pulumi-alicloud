@@ -17,7 +17,7 @@ public final class ApiRequestParameter {
      */
     private @Nullable String defaultValue;
     /**
-     * @return The description of the api. Defaults to null.
+     * @return The description of parameter.
      * 
      */
     private @Nullable String description;
@@ -32,7 +32,7 @@ public final class ApiRequestParameter {
      */
     private String inService;
     /**
-     * @return The name of the api gateway api. Defaults to null.
+     * @return Request&#39;s parameter name.
      * 
      */
     private String name;
@@ -61,7 +61,7 @@ public final class ApiRequestParameter {
         return Optional.ofNullable(this.defaultValue);
     }
     /**
-     * @return The description of the api. Defaults to null.
+     * @return The description of parameter.
      * 
      */
     public Optional<String> description() {
@@ -82,7 +82,7 @@ public final class ApiRequestParameter {
         return this.inService;
     }
     /**
-     * @return The name of the api gateway api. Defaults to null.
+     * @return Request&#39;s parameter name.
      * 
      */
     public String name() {

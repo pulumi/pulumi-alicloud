@@ -10,503 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// The managed cluster configuration,
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-test";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
-    ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 2,
-    ///         MemorySize = 4,
-    ///         KubernetesNodeRole = "Worker",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.1.0.0/21",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "10.1.1.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new()
-    ///     {
-    ///         KeyPairName = name,
-    ///     });
-    /// 
-    ///     var defaultManagedKubernetes = new List&lt;AliCloud.CS.ManagedKubernetes&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; (1 == true); rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         defaultManagedKubernetes.Add(new AliCloud.CS.ManagedKubernetes($"defaultManagedKubernetes-{range.Value}", new()
-    ///         {
-    ///             ClusterSpec = "ack.pro.small",
-    ///             IsEnterpriseSecurityGroup = true,
-    ///             PodCidr = "172.20.0.0/16",
-    ///             ServiceCidr = "172.21.0.0/20",
-    ///             WorkerVswitchIds = new[]
-    ///             {
-    ///                 defaultSwitch.Id,
-    ///             },
-    ///         }));
-    ///     }
-    /// });
-    /// ```
-    /// 
-    /// Create a node pool.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = alicloud_key_pair.Default.Key_name,
-    ///         DesiredSize = 1,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// The parameter `node_count` are deprecated from version 1.158.0，but it can still works. If you want to use the new parameter `desired_size` instead, you can update it as follows. for more information of `desired_size`, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3).
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = alicloud_key_pair.Default.Key_name,
-    ///         DesiredSize = 1,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud.cs.ManagedKubernetes`.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = alicloud_key_pair.Default.Key_name,
-    ///         DesiredSize = 1,
-    ///         Management = new AliCloud.CS.Inputs.NodePoolManagementArgs
-    ///         {
-    ///             AutoRepair = true,
-    ///             AutoUpgrade = true,
-    ///             Surge = 1,
-    ///             MaxUnavailable = 1,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Enable automatic scaling for the node pool. `scaling_config` is required.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = alicloud_key_pair.Default.Key_name,
-    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
-    ///         {
-    ///             MinSize = 1,
-    ///             MaxSize = 10,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Enable automatic scaling for managed node pool.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = alicloud_key_pair.Default.Key_name,
-    ///         Management = new AliCloud.CS.Inputs.NodePoolManagementArgs
-    ///         {
-    ///             AutoRepair = true,
-    ///             AutoUpgrade = true,
-    ///             Surge = 1,
-    ///             MaxUnavailable = 1,
-    ///         },
-    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
-    ///         {
-    ///             MinSize = 1,
-    ///             MaxSize = 10,
-    ///             Type = "cpu",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             alicloud_cs_autoscaling_config.Default,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Create a `PrePaid` node pool.
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = alicloud_key_pair.Default.Key_name,
-    ///         InstanceChargeType = "PrePaid",
-    ///         Period = 1,
-    ///         PeriodUnit = "Month",
-    ///         AutoRenew = true,
-    ///         AutoRenewPeriod = 1,
-    ///         InstallCloudMonitor = true,
-    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
-    ///         {
-    ///             MinSize = 1,
-    ///             MaxSize = 10,
-    ///             Type = "cpu",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Create a node pool with spot instance.
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = alicloud_key_pair.Default.Key_name,
-    ///         DesiredSize = 1,
-    ///         SpotStrategy = "SpotWithPriceLimit",
-    ///         SpotPriceLimits = new[]
-    ///         {
-    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
-    ///             {
-    ///                 InstanceType = data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///                 PriceLimit = "0.70",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Use Spot instances to create a node pool with auto-scaling enabled
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = alicloud_key_pair.Default.Key_name,
-    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
-    ///         {
-    ///             MinSize = 1,
-    ///             MaxSize = 10,
-    ///             Type = "spot",
-    ///         },
-    ///         SpotStrategy = "SpotWithPriceLimit",
-    ///         SpotPriceLimits = new[]
-    ///         {
-    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
-    ///             {
-    ///                 InstanceType = data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///                 PriceLimit = "0.70",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Create a node pool with platform as Windows
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         InstanceChargeType = "PostPaid",
-    ///         DesiredSize = 1,
-    ///         Password = "Hello1234",
-    ///         Platform = "Windows",
-    ///         ImageId = window_image_id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Add an existing node to the node pool
-    /// 
-    /// In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         InstanceChargeType = "PostPaid",
-    ///         Instances = new[]
-    ///         {
-    ///             "instance_id_01",
-    ///             "instance_id_02",
-    ///             "instance_id_03",
-    ///         },
-    ///         FormatDisk = false,
-    ///         KeepInstanceName = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Create a node pool with customized kubelet parameters
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             alicloud_vswitch.Default.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         InstanceChargeType = "PostPaid",
-    ///         DesiredSize = 3,
-    ///         KubeletConfiguration = new AliCloud.CS.Inputs.NodePoolKubeletConfigurationArgs
-    ///         {
-    ///             RegistryPullQps = "10",
-    ///             RegistryBurst = "5",
-    ///             EventRecordQps = "10",
-    ///             EventBurst = "5",
-    ///             EvictionHard = 
-    ///             {
-    ///                 { "memory.available", "1024Mi" },
-    ///                 { "nodefs.available", "10%" },
-    ///                 { "nodefs.inodesFree", "1000" },
-    ///                 { "imagefs.available", "10%" },
-    ///                 { "imagefs.inodesFree", "1000" },
-    ///                 { "allocatableMemory.available", "2048" },
-    ///                 { "pid.available", "1000" },
-    ///             },
-    ///             SystemReserved = 
-    ///             {
-    ///                 { "cpu", "1" },
-    ///                 { "memory", "1Gi" },
-    ///                 { "ephemeral-storage", "10Gi" },
-    ///             },
-    ///             KubeReserved = 
-    ///             {
-    ///                 { "cpu", "500m" },
-    ///                 { "memory", "1Gi" },
-    ///             },
-    ///         },
-    ///         RollingPolicy = new AliCloud.CS.Inputs.NodePoolRollingPolicyArgs
-    ///         {
-    ///             MaxParallelism = 1,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
@@ -549,7 +52,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> CpuPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.NodePoolDataDisk>> DataDisks { get; private set; } = null!;
@@ -645,19 +148,19 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        /// Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
         /// </summary>
         [Output("kubeletConfiguration")]
         public Output<Outputs.NodePoolKubeletConfiguration?> KubeletConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.NodePoolLabel>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+        /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
         /// </summary>
         [Output("management")]
         public Output<Outputs.NodePoolManagement?> Management { get; private set; } = null!;
@@ -675,7 +178,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+        /// Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example "customized,aliyun.com-,ip,-test", if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
         /// </summary>
         [Output("nodeNameMode")]
         public Output<string> NodeNameMode { get; private set; } = null!;
@@ -723,13 +226,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
         /// </summary>
         [Output("rollingPolicy")]
         public Output<Outputs.NodePoolRollingPolicy?> RollingPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
         /// </summary>
         [Output("rolloutPolicy")]
         public Output<Outputs.NodePoolRolloutPolicy?> RolloutPolicy { get; private set; } = null!;
@@ -747,13 +250,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string> RuntimeVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+        /// Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         /// </summary>
         [Output("scalingConfig")]
         public Output<Outputs.NodePoolScalingConfig?> ScalingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.105.0+) Id of the Scaling Group.
+        /// The scaling group id.
         /// </summary>
         [Output("scalingGroupId")]
         public Output<string> ScalingGroupId { get; private set; } = null!;
@@ -784,7 +287,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> SocEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
         /// </summary>
         [Output("spotPriceLimits")]
         public Output<ImmutableArray<Outputs.NodePoolSpotPriceLimit>> SpotPriceLimits { get; private set; } = null!;
@@ -844,7 +347,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.NodePoolTaint>> Taints { get; private set; } = null!;
@@ -957,7 +460,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
         /// </summary>
         public InputList<Inputs.NodePoolDataDiskArgs> DataDisks
         {
@@ -1074,7 +577,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        /// Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
         /// </summary>
         [Input("kubeletConfiguration")]
         public Input<Inputs.NodePoolKubeletConfigurationArgs>? KubeletConfiguration { get; set; }
@@ -1083,7 +586,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolLabelArgs>? _labels;
 
         /// <summary>
-        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
         /// </summary>
         public InputList<Inputs.NodePoolLabelArgs> Labels
         {
@@ -1092,7 +595,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+        /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
         /// </summary>
         [Input("management")]
         public Input<Inputs.NodePoolManagementArgs>? Management { get; set; }
@@ -1110,7 +613,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+        /// Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example "customized,aliyun.com-,ip,-test", if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
         /// </summary>
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
@@ -1180,13 +683,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
         /// </summary>
         [Input("rollingPolicy")]
         public Input<Inputs.NodePoolRollingPolicyArgs>? RollingPolicy { get; set; }
 
         /// <summary>
-        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
         /// </summary>
         [Input("rolloutPolicy")]
         public Input<Inputs.NodePoolRolloutPolicyArgs>? RolloutPolicy { get; set; }
@@ -1204,7 +707,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? RuntimeVersion { get; set; }
 
         /// <summary>
-        /// Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+        /// Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.NodePoolScalingConfigArgs>? ScalingConfig { get; set; }
@@ -1244,7 +747,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolSpotPriceLimitArgs>? _spotPriceLimits;
 
         /// <summary>
-        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
         /// </summary>
         public InputList<Inputs.NodePoolSpotPriceLimitArgs> SpotPriceLimits
         {
@@ -1316,7 +819,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolTaintArgs>? _taints;
 
         /// <summary>
-        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         /// </summary>
         public InputList<Inputs.NodePoolTaintArgs> Taints
         {
@@ -1390,7 +893,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
         /// </summary>
         public InputList<Inputs.NodePoolDataDiskGetArgs> DataDisks
         {
@@ -1507,7 +1010,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        /// Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
         /// </summary>
         [Input("kubeletConfiguration")]
         public Input<Inputs.NodePoolKubeletConfigurationGetArgs>? KubeletConfiguration { get; set; }
@@ -1516,7 +1019,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolLabelGetArgs>? _labels;
 
         /// <summary>
-        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+        /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
         /// </summary>
         public InputList<Inputs.NodePoolLabelGetArgs> Labels
         {
@@ -1525,7 +1028,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+        /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
         /// </summary>
         [Input("management")]
         public Input<Inputs.NodePoolManagementGetArgs>? Management { get; set; }
@@ -1543,7 +1046,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+        /// Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example "customized,aliyun.com-,ip,-test", if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
         /// </summary>
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
@@ -1613,13 +1116,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
         /// </summary>
         [Input("rollingPolicy")]
         public Input<Inputs.NodePoolRollingPolicyGetArgs>? RollingPolicy { get; set; }
 
         /// <summary>
-        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
         /// </summary>
         [Input("rolloutPolicy")]
         public Input<Inputs.NodePoolRolloutPolicyGetArgs>? RolloutPolicy { get; set; }
@@ -1637,13 +1140,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? RuntimeVersion { get; set; }
 
         /// <summary>
-        /// Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+        /// Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.NodePoolScalingConfigGetArgs>? ScalingConfig { get; set; }
 
         /// <summary>
-        /// (Available in 1.105.0+) Id of the Scaling Group.
+        /// The scaling group id.
         /// </summary>
         [Input("scalingGroupId")]
         public Input<string>? ScalingGroupId { get; set; }
@@ -1683,7 +1186,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolSpotPriceLimitGetArgs>? _spotPriceLimits;
 
         /// <summary>
-        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
         /// </summary>
         public InputList<Inputs.NodePoolSpotPriceLimitGetArgs> SpotPriceLimits
         {
@@ -1755,7 +1258,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolTaintGetArgs>? _taints;
 
         /// <summary>
-        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         /// </summary>
         public InputList<Inputs.NodePoolTaintGetArgs> Taints
         {

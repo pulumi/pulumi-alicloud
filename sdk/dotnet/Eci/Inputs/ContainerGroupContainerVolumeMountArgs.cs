@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Default to `false`.
+        /// Specifies whether the mount path is read-only. Default value: `false`.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }

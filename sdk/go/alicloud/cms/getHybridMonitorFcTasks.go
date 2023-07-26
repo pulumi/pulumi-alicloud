@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func GetHybridMonitorFcTasks(ctx *pulumi.Context, args *GetHybridMonitorFcTasksArgs, opts ...pulumi.InvokeOption) (*GetHybridMonitorFcTasksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHybridMonitorFcTasksResult
 	err := ctx.Invoke("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -112,6 +113,7 @@ import (
 //
 // ```
 func GetDesktops(ctx *pulumi.Context, args *GetDesktopsArgs, opts ...pulumi.InvokeOption) (*GetDesktopsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDesktopsResult
 	err := ctx.Invoke("alicloud:eds/getDesktops:getDesktops", args, &rv, opts...)
 	if err != nil {

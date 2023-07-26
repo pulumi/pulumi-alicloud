@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetAdConnectorOfficeSites(ctx *pulumi.Context, args *GetAdConnectorOfficeSitesArgs, opts ...pulumi.InvokeOption) (*GetAdConnectorOfficeSitesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAdConnectorOfficeSitesResult
 	err := ctx.Invoke("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args, &rv, opts...)
 	if err != nil {

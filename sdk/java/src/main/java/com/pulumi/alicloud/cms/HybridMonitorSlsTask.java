@@ -23,100 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Monitor Service Hybrid Monitor Sls Task and how to use it, see [What is Hybrid Monitor Sls Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
  * 
- * &gt; **NOTE:** Available in v1.179.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.cms.SlsGroup;
- * import com.pulumi.alicloud.cms.SlsGroupArgs;
- * import com.pulumi.alicloud.cms.inputs.SlsGroupSlsGroupConfigArgs;
- * import com.pulumi.alicloud.cms.Namespace;
- * import com.pulumi.alicloud.cms.NamespaceArgs;
- * import com.pulumi.alicloud.cms.HybridMonitorSlsTask;
- * import com.pulumi.alicloud.cms.HybridMonitorSlsTaskArgs;
- * import com.pulumi.alicloud.cms.inputs.HybridMonitorSlsTaskSlsProcessConfigArgs;
- * import com.pulumi.alicloud.cms.inputs.HybridMonitorSlsTaskSlsProcessConfigFilterArgs;
- * import com.pulumi.alicloud.cms.inputs.HybridMonitorSlsTaskAttachLabelArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var this = AlicloudFunctions.getAccount();
- * 
- *         var defaultSlsGroup = new SlsGroup(&#34;defaultSlsGroup&#34;, SlsGroupArgs.builder()        
- *             .slsGroupConfigs(SlsGroupSlsGroupConfigArgs.builder()
- *                 .slsUserId(this_.id())
- *                 .slsLogstore(&#34;Logstore-ECS&#34;)
- *                 .slsProject(&#34;aliyun-project&#34;)
- *                 .slsRegion(&#34;cn-hangzhou&#34;)
- *                 .build())
- *             .slsGroupDescription(&#34;example_value&#34;)
- *             .slsGroupName(&#34;example_value&#34;)
- *             .build());
- * 
- *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .description(var_.name())
- *             .namespace(&#34;example-value&#34;)
- *             .specification(&#34;cms.s1.large&#34;)
- *             .build());
- * 
- *         var defaultHybridMonitorSlsTask = new HybridMonitorSlsTask(&#34;defaultHybridMonitorSlsTask&#34;, HybridMonitorSlsTaskArgs.builder()        
- *             .slsProcessConfig(HybridMonitorSlsTaskSlsProcessConfigArgs.builder()
- *                 .filter(HybridMonitorSlsTaskSlsProcessConfigFilterArgs.builder()
- *                     .relation(&#34;and&#34;)
- *                     .filters(HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs.builder()
- *                         .operator(&#34;=&#34;)
- *                         .value(&#34;200&#34;)
- *                         .slsKeyName(&#34;code&#34;)
- *                         .build())
- *                     .build())
- *                 .statistics(HybridMonitorSlsTaskSlsProcessConfigStatisticArgs.builder()
- *                     .function(&#34;count&#34;)
- *                     .alias(&#34;level_count&#34;)
- *                     .slsKeyName(&#34;name&#34;)
- *                     .parameterOne(&#34;200&#34;)
- *                     .parameterTwo(&#34;299&#34;)
- *                     .build())
- *                 .groupBies(HybridMonitorSlsTaskSlsProcessConfigGroupByArgs.builder()
- *                     .alias(&#34;code&#34;)
- *                     .slsKeyName(&#34;ApiResult&#34;)
- *                     .build())
- *                 .expresses(HybridMonitorSlsTaskSlsProcessConfigExpressArgs.builder()
- *                     .express(&#34;success_count&#34;)
- *                     .alias(&#34;SuccRate&#34;)
- *                     .build())
- *                 .build())
- *             .taskName(&#34;example_value&#34;)
- *             .namespace(defaultNamespace.id())
- *             .description(&#34;example_value&#34;)
- *             .collectInterval(60)
- *             .collectTargetType(defaultSlsGroup.id())
- *             .attachLabels(HybridMonitorSlsTaskAttachLabelArgs.builder()
- *                 .name(&#34;app_service&#34;)
- *                 .value(&#34;testValue&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.179.0.
  * 
  * ## Import
  * 
@@ -130,14 +37,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask")
 public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
     /**
-     * The label of the monitoring task. See the following `Block attach_labels`.
+     * The label of the monitoring task. See `attach_labels` below.
      * 
      */
     @Export(name="attachLabels", type=List.class, parameters={HybridMonitorSlsTaskAttachLabel.class})
     private Output</* @Nullable */ List<HybridMonitorSlsTaskAttachLabel>> attachLabels;
 
     /**
-     * @return The label of the monitoring task. See the following `Block attach_labels`.
+     * @return The label of the monitoring task. See `attach_labels` below.
      * 
      */
     public Output<Optional<List<HybridMonitorSlsTaskAttachLabel>>> attachLabels() {
@@ -200,14 +107,14 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
         return this.namespace;
     }
     /**
-     * The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+     * The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
      * 
      */
     @Export(name="slsProcessConfig", type=HybridMonitorSlsTaskSlsProcessConfig.class, parameters={})
     private Output<HybridMonitorSlsTaskSlsProcessConfig> slsProcessConfig;
 
     /**
-     * @return The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+     * @return The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
      * 
      */
     public Output<HybridMonitorSlsTaskSlsProcessConfig> slsProcessConfig() {

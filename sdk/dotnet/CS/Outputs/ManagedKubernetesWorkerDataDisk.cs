@@ -18,17 +18,23 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? AutoSnapshotPolicyId;
         /// <summary>
-        /// The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        /// (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         /// </summary>
         public readonly string? Category;
+        /// <summary>
+        /// The mount point of data disk N.
+        /// </summary>
         public readonly string? Device;
         /// <summary>
-        /// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        /// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         /// </summary>
         public readonly string? Encrypted;
+        /// <summary>
+        /// The ID of the Key Management Service (KMS) key to use for data disk N.
+        /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -36,9 +42,12 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>
-        /// The size of a data disk, at least 40. Unit: GiB.
+        /// (Optional)The size of a data disk, at least 40. Unit: GiB.
         /// </summary>
         public readonly string? Size;
+        /// <summary>
+        /// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+        /// </summary>
         public readonly string? SnapshotId;
 
         [OutputConstructor]

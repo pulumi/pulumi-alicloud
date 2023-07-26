@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in 1.196.0+
 func GetVirtualPhysicalConnections(ctx *pulumi.Context, args *GetVirtualPhysicalConnectionsArgs, opts ...pulumi.InvokeOption) (*GetVirtualPhysicalConnectionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualPhysicalConnectionsResult
 	err := ctx.Invoke("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args, &rv, opts...)
 	if err != nil {

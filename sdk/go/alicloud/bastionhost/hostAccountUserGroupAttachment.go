@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user group.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -24,18 +25,68 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := bastionhost.NewInstance(ctx, "defaultInstance", &bastionhost.InstanceArgs{
+//				Description: pulumi.String(name),
+//				LicenseCode: pulumi.String("bhah_ent_50_asset"),
+//				PlanCode:    pulumi.String("cloudbastion"),
+//				Storage:     pulumi.String("5"),
+//				Bandwidth:   pulumi.String("5"),
+//				Period:      pulumi.Int(1),
+//				VswitchId:   defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
-//				InstanceId:         pulumi.String("bastionhost-cn-tl32bh0no30"),
-//				HostName:           pulumi.Any(_var.Name),
+//				InstanceId:         defaultInstance.ID(),
+//				HostName:           pulumi.String(name),
 //				ActiveAddressType:  pulumi.String("Private"),
 //				HostPrivateAddress: pulumi.String("172.16.0.10"),
 //				OsType:             pulumi.String("Linux"),
@@ -44,38 +95,30 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			var defaultHostAccount []*bastionhost.HostAccount
-//			for index := 0; index < 3; index++ {
-//				key0 := index
-//				val0 := index
-//				__res, err := bastionhost.NewHostAccount(ctx, fmt.Sprintf("defaultHostAccount-%v", key0), &bastionhost.HostAccountArgs{
-//					InstanceId:      defaultHost.InstanceId,
-//					HostAccountName: pulumi.String(fmt.Sprintf("example_value-%v", val0)),
-//					HostId:          defaultHost.HostId,
-//					ProtocolName:    pulumi.String("SSH"),
-//					Password:        pulumi.String("YourPassword12345"),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				defaultHostAccount = append(defaultHostAccount, __res)
-//			}
-//			defaultUserGroup, err := bastionhost.NewUserGroup(ctx, "defaultUserGroup", &bastionhost.UserGroupArgs{
-//				InstanceId:    pulumi.String("bastionhost-cn-tl32bh0no30"),
-//				UserGroupName: pulumi.Any(_var.Name),
+//			defaultHostAccount, err := bastionhost.NewHostAccount(ctx, "defaultHostAccount", &bastionhost.HostAccountArgs{
+//				HostAccountName: pulumi.String(name),
+//				HostId:          defaultHost.HostId,
+//				InstanceId:      defaultHost.InstanceId,
+//				ProtocolName:    pulumi.String("SSH"),
+//				Password:        pulumi.String("YourPassword12345"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			var splat0 pulumi.StringArray
-//			for _, val0 := range defaultHostAccount {
-//				splat0 = append(splat0, val0.HostAccountId)
+//			defaultUserGroup, err := bastionhost.NewUserGroup(ctx, "defaultUserGroup", &bastionhost.UserGroupArgs{
+//				InstanceId:    defaultHost.InstanceId,
+//				UserGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			_, err = bastionhost.NewHostAccountUserGroupAttachment(ctx, "defaultHostAccountUserGroupAttachment", &bastionhost.HostAccountUserGroupAttachmentArgs{
-//				InstanceId:     defaultHost.InstanceId,
-//				UserGroupId:    defaultUserGroup.UserGroupId,
-//				HostId:         defaultHost.HostId,
-//				HostAccountIds: splat0,
+//				InstanceId:  defaultHost.InstanceId,
+//				UserGroupId: defaultUserGroup.UserGroupId,
+//				HostId:      defaultHost.HostId,
+//				HostAccountIds: pulumi.StringArray{
+//					defaultHostAccount.HostAccountId,
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -127,6 +170,7 @@ func NewHostAccountUserGroupAttachment(ctx *pulumi.Context,
 	if args.UserGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'UserGroupId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HostAccountUserGroupAttachment
 	err := ctx.RegisterResource("alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment", name, args, &resource, opts...)
 	if err != nil {

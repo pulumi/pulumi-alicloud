@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 // }
 // ```
 func GetVpds(ctx *pulumi.Context, args *GetVpdsArgs, opts ...pulumi.InvokeOption) (*GetVpdsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpdsResult
 	err := ctx.Invoke("alicloud:eflo/getVpds:getVpds", args, &rv, opts...)
 	if err != nil {

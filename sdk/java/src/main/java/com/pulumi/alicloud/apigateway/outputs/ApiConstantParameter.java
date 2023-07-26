@@ -12,17 +12,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApiConstantParameter {
     /**
-     * @return The description of the api. Defaults to null.
+     * @return The description of Constant parameter.
      * 
      */
     private @Nullable String description;
     /**
-     * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
+     * @return Constant parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
      * 
      */
     private String in;
     /**
-     * @return The name of the api gateway api. Defaults to null.
+     * @return Constant parameter name.
      * 
      */
     private String name;
@@ -34,21 +34,21 @@ public final class ApiConstantParameter {
 
     private ApiConstantParameter() {}
     /**
-     * @return The description of the api. Defaults to null.
+     * @return The description of Constant parameter.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
+     * @return Constant parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
      * 
      */
     public String in() {
         return this.in;
     }
     /**
-     * @return The name of the api gateway api. Defaults to null.
+     * @return Constant parameter name.
      * 
      */
     public String name() {

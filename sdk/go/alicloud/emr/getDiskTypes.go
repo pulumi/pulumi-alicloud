@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetDiskTypes(ctx *pulumi.Context, args *GetDiskTypesArgs, opts ...pulumi.InvokeOption) (*GetDiskTypesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDiskTypesResult
 	err := ctx.Invoke("alicloud:emr/getDiskTypes:getDiskTypes", args, &rv, opts...)
 	if err != nil {

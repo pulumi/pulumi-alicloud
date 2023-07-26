@@ -410,7 +410,7 @@ class GatewayVpnAttachmentBgpConfigArgs:
                  local_bgp_ip: Optional[pulumi.Input[str]] = None,
                  tunnel_cidr: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] enable: Specifies whether to enable health checks.
+        :param pulumi.Input[bool] enable: Whether to enable BGP.
         :param pulumi.Input[int] local_asn: The ASN on the Alibaba Cloud side.
         :param pulumi.Input[str] local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
         :param pulumi.Input[str] tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
@@ -428,7 +428,7 @@ class GatewayVpnAttachmentBgpConfigArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable health checks.
+        Whether to enable BGP.
         """
         return pulumi.get(self, "enable")
 

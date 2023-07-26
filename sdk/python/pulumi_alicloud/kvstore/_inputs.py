@@ -16,27 +16,51 @@ __all__ = [
 @pulumi.input_type
 class InstanceParameterArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 value: pulumi.Input[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        :param pulumi.Input[str] value: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        """
+        if name is not None:
+            warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
+            pulumi.log.warn("""value is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        """
+        warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: pulumi.Input[str]):
+    def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        """
+        warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
+        pulumi.log.warn("""value is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
+
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[str]):
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
 

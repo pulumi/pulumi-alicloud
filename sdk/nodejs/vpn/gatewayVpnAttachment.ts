@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0.
  *
  * ## Example Usage
  *
@@ -21,10 +21,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {
  *     ipAddress: "42.104.22.210",
  *     asn: "45014",
- *     description: "testAccVpnConnectionDesc",
+ *     description: name,
  * });
  * const defaultGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", {
  *     customerGatewayId: defaultCustomerGateway.id,
@@ -65,13 +67,8 @@ import * as utilities from "../utilities";
  *     },
  *     enableDpd: true,
  *     enableNatTraversal: true,
- *     vpnAttachmentName: _var.name,
+ *     vpnAttachmentName: name,
  * });
- * const vpnAttachments = alicloud.vpn.getGatewayVpnAttachments({
- *     ids: [alicloud_vpn_gateway_vpn_attachment.vpn_attachment1.id],
- * });
- * export const localId = vpnAttachments.then(vpnAttachments => vpnAttachments.attachments?.[0]?.ikeConfigs?.[0]?.localId);
- * export const internetIp = vpnAttachments.then(vpnAttachments => vpnAttachments.attachments?.[0]?.internetIp);
  * ```
  *
  * ## Import
@@ -111,7 +108,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Bgp configuration information. See the following `Block bgpConfig`.
+     * Bgp configuration information. See `bgpConfig` below.
      */
     public readonly bgpConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentBgpConfig>;
     /**
@@ -131,11 +128,11 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
      */
     public readonly enableNatTraversal!: pulumi.Output<boolean>;
     /**
-     * Health check configuration information. See the following `Block healthCheckConfig`.
+     * Health check configuration information. See `healthCheckConfig` below.
      */
     public readonly healthCheckConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentHealthCheckConfig>;
     /**
-     * Configuration negotiated in the second stage. See the following `Block ikeConfig`.
+     * Configuration negotiated in the second stage. See `ikeConfig` below.
      */
     public readonly ikeConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIkeConfig>;
     /**
@@ -143,7 +140,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly internetIp!: pulumi.Output<string>;
     /**
-     * Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
+     * Configuration negotiated in the second stage. See `ipsecConfig` below.
      */
     public readonly ipsecConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIpsecConfig>;
     /**
@@ -230,7 +227,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
  */
 export interface GatewayVpnAttachmentState {
     /**
-     * Bgp configuration information. See the following `Block bgpConfig`.
+     * Bgp configuration information. See `bgpConfig` below.
      */
     bgpConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentBgpConfig>;
     /**
@@ -250,11 +247,11 @@ export interface GatewayVpnAttachmentState {
      */
     enableNatTraversal?: pulumi.Input<boolean>;
     /**
-     * Health check configuration information. See the following `Block healthCheckConfig`.
+     * Health check configuration information. See `healthCheckConfig` below.
      */
     healthCheckConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentHealthCheckConfig>;
     /**
-     * Configuration negotiated in the second stage. See the following `Block ikeConfig`.
+     * Configuration negotiated in the second stage. See `ikeConfig` below.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIkeConfig>;
     /**
@@ -262,7 +259,7 @@ export interface GatewayVpnAttachmentState {
      */
     internetIp?: pulumi.Input<string>;
     /**
-     * Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
+     * Configuration negotiated in the second stage. See `ipsecConfig` below.
      */
     ipsecConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIpsecConfig>;
     /**
@@ -292,7 +289,7 @@ export interface GatewayVpnAttachmentState {
  */
 export interface GatewayVpnAttachmentArgs {
     /**
-     * Bgp configuration information. See the following `Block bgpConfig`.
+     * Bgp configuration information. See `bgpConfig` below.
      */
     bgpConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentBgpConfig>;
     /**
@@ -312,15 +309,15 @@ export interface GatewayVpnAttachmentArgs {
      */
     enableNatTraversal?: pulumi.Input<boolean>;
     /**
-     * Health check configuration information. See the following `Block healthCheckConfig`.
+     * Health check configuration information. See `healthCheckConfig` below.
      */
     healthCheckConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentHealthCheckConfig>;
     /**
-     * Configuration negotiated in the second stage. See the following `Block ikeConfig`.
+     * Configuration negotiated in the second stage. See `ikeConfig` below.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIkeConfig>;
     /**
-     * Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
+     * Configuration negotiated in the second stage. See `ipsecConfig` below.
      */
     ipsecConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIpsecConfig>;
     /**

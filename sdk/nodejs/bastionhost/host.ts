@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Bastion Host Host and how to use it, see [What is Host](https://www.alibabacloud.com/help/en/doc-detail/201330.htm).
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,37 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.bastionhost.Host("example", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.bastionhost.Instance("defaultInstance", {
+ *     description: name,
+ *     licenseCode: "bhah_ent_50_asset",
+ *     planCode: "cloudbastion",
+ *     storage: "5",
+ *     bandwidth: "5",
+ *     period: 1,
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ * });
+ * const defaultHost = new alicloud.bastionhost.Host("defaultHost", {
+ *     instanceId: defaultInstance.id,
+ *     hostName: name,
  *     activeAddressType: "Private",
- *     hostName: "example_value",
  *     hostPrivateAddress: "172.16.0.10",
- *     instanceId: "bastionhost-cn-tl3xxxxxxx",
  *     osType: "Linux",
  *     source: "Local",
  * });

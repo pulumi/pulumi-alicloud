@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Config Rule resource.
     /// 
-    /// For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/).
+    /// For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigrule).
     /// 
-    /// &gt; **NOTE:** Available in v1.204.0+.
+    /// &gt; **NOTE:** Available since v1.204.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,28 +28,33 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Cfg.Rule("default", new()
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
-    ///         Description = "关联的资源类型下实体资源均已有指定标签，存在没有指定标签的资源则视为“不合规”。",
-    ///         ExcludeResourceIdsScope = "test",
-    ///         InputParameters = 
-    ///         {
-    ///             { "foo", "terraform" },
-    ///             { "var", "terraform" },
-    ///         },
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new()
+    ///     {
+    ///         Description = "If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
+    ///         SourceOwner = "ALIYUN",
+    ///         SourceIdentifier = "contains-tag",
+    ///         RiskLevel = 1,
+    ///         TagValueScope = "example-value",
+    ///         TagKeyScope = "example-key",
+    ///         ExcludeResourceIdsScope = "example-resource_id",
     ///         RegionIdsScope = "cn-hangzhou",
-    ///         ResourceGroupIdsScope = "rg-acfmvoh45rhcfly",
+    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///         ResourceGroupIdsScope = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         ResourceTypesScopes = new[]
     ///         {
     ///             "ACS::RDS::DBInstance",
     ///         },
-    ///         RiskLevel = 1,
-    ///         RuleName = "tf-cicd-rule-by-required-tags",
-    ///         SourceIdentifier = "required-tags",
-    ///         SourceOwner = "ALIYUN",
-    ///         TagKeyScope = "test",
-    ///         TagValueScope = "test",
+    ///         RuleName = "contains-tag",
+    ///         InputParameters = 
+    ///         {
+    ///             { "key", "example" },
+    ///             { "value", "example" },
+    ///         },
     ///     });
     /// 
     /// });

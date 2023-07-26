@@ -17,14 +17,14 @@ public final class ContainerGroupHostAliasArgs extends com.pulumi.resources.Reso
     public static final ContainerGroupHostAliasArgs Empty = new ContainerGroupHostAliasArgs();
 
     /**
-     * Adds a host name.
+     * The information about the host.
      * 
      */
     @Import(name="hostnames")
     private @Nullable Output<List<String>> hostnames;
 
     /**
-     * @return Adds a host name.
+     * @return The information about the host.
      * 
      */
     public Optional<Output<List<String>>> hostnames() {
@@ -32,14 +32,14 @@ public final class ContainerGroupHostAliasArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Adds an IP address.
+     * The IP address of the host.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return Adds an IP address.
+     * @return The IP address of the host.
      * 
      */
     public Optional<Output<String>> ip() {
@@ -72,7 +72,7 @@ public final class ContainerGroupHostAliasArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostnames Adds a host name.
+         * @param hostnames The information about the host.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ContainerGroupHostAliasArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostnames Adds a host name.
+         * @param hostnames The information about the host.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ContainerGroupHostAliasArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostnames Adds a host name.
+         * @param hostnames The information about the host.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ContainerGroupHostAliasArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ip Adds an IP address.
+         * @param ip The IP address of the host.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ContainerGroupHostAliasArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ip Adds an IP address.
+         * @param ip The IP address of the host.
          * 
          * @return builder
          * 

@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Api Gateway Log Config resource.
  * 
- * For information about Api Gateway Log Config and how to use it, see [What is Log Config](https://help.aliyun.com/document_detail/400392.html).
+ * For information about Api Gateway Log Config and how to use it, see [What is Log Config](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createlogconfig).
  * 
- * &gt; **NOTE:** Available in v1.185.0+.
+ * &gt; **NOTE:** Available since v1.185.0.
  * 
  * ## Example Usage
  * 
@@ -29,8 +29,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+ * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
  * import com.pulumi.alicloud.apigateway.LogConfig;
  * import com.pulumi.alicloud.apigateway.LogConfigArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,12 +53,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new LogConfig(&#34;default&#34;, LogConfigArgs.builder()        
+ *         final var defaultLogConfigs = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
  *             .logType(&#34;PROVIDER&#34;)
- *             .slsLogStore(&#34;example_value&#34;)
- *             .slsProject(&#34;example_value&#34;)
  *             .build());
  * 
+ *         final var count = defaultLogConfigs.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()).length() &gt; 0 ? 0 : 1;
+ * 
+ *         for (var i = 0; i &lt; count; i++) {
+ *             new RandomInteger(&#34;defaultRandomInteger-&#34; + i, RandomIntegerArgs.builder()            
+ *                 .max(99999)
+ *                 .min(10000)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; count; i++) {
+ *             new Project(&#34;exampleProject-&#34; + i, ProjectArgs.builder()            
+ *                 .description(&#34;terraform-example&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; count; i++) {
+ *             new Store(&#34;exampleStore-&#34; + i, StoreArgs.builder()            
+ *                 .project(exampleProject[0].name())
+ *                 .shardCount(3)
+ *                 .autoSplit(true)
+ *                 .maxSplitShardCount(60)
+ *                 .appendMeta(true)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; count; i++) {
+ *             new LogConfig(&#34;exampleLogConfig-&#34; + i, LogConfigArgs.builder()            
+ *                 .slsProject(exampleProject[0].name())
+ *                 .slsLogStore(exampleStore[0].name())
+ *                 .logType(&#34;PROVIDER&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
  *     }
  * }
  * ```

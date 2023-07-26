@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -164,6 +165,7 @@ func NewGtmInstance(ctx *pulumi.Context,
 	if args.SmsNotificationCount == nil {
 		return nil, errors.New("invalid value for required argument 'SmsNotificationCount'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GtmInstance
 	err := ctx.RegisterResource("alicloud:dns/gtmInstance:GtmInstance", name, args, &resource, opts...)
 	if err != nil {

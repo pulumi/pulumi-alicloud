@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Monitor Service Metric Rule Template resource.
  *
- * For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/doc-detail/114984.html).
+ * For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmetricruletemplate).
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -21,9 +21,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const example = new alicloud.cms.MetricRuleTemplate("example", {
+ *     metricRuleTemplateName: name,
  *     alertTemplates: [{
  *         category: "ecs",
+ *         metricName: "cpu_total",
+ *         namespace: "acs_ecs_dashboard",
+ *         ruleName: "tf_example",
  *         escalations: {
  *             critical: {
  *                 comparisonOperator: "GreaterThanThreshold",
@@ -32,11 +38,7 @@ import * as utilities from "../utilities";
  *                 times: "3",
  *             },
  *         },
- *         metricName: "cpu_total",
- *         namespace: "acs_ecs_dashboard",
- *         ruleName: "tf_testAcc_new",
  *     }],
- *     metricRuleTemplateName: "example_value",
  * });
  * ```
  *
@@ -77,7 +79,7 @@ export class MetricRuleTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+     * The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
      */
     public readonly alertTemplates!: pulumi.Output<outputs.cms.MetricRuleTemplateAlertTemplate[] | undefined>;
     /**
@@ -176,7 +178,7 @@ export class MetricRuleTemplate extends pulumi.CustomResource {
  */
 export interface MetricRuleTemplateState {
     /**
-     * The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+     * The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
      */
     alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[]>;
     /**
@@ -230,7 +232,7 @@ export interface MetricRuleTemplateState {
  */
 export interface MetricRuleTemplateArgs {
     /**
-     * The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+     * The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
      */
     alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[]>;
     /**

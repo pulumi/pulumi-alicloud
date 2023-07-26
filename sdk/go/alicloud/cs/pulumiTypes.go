@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type ApplicationService struct {
 	Id      *string `pulumi:"id"`
@@ -1415,8 +1418,11 @@ func (o KubernetesAddonTypeArrayOutput) Index(i pulumi.IntInput) KubernetesAddon
 }
 
 type KubernetesAutoscalerNodepool struct {
-	Id     *string `pulumi:"id"`
+	// The scaling group id of the groups configured for cluster-autoscaler.
+	Id *string `pulumi:"id"`
+	// The labels for the nodes in scaling group.
 	Labels *string `pulumi:"labels"`
+	// The taints for the nodes in scaling group.
 	Taints *string `pulumi:"taints"`
 }
 
@@ -1432,8 +1438,11 @@ type KubernetesAutoscalerNodepoolInput interface {
 }
 
 type KubernetesAutoscalerNodepoolArgs struct {
-	Id     pulumi.StringPtrInput `pulumi:"id"`
+	// The scaling group id of the groups configured for cluster-autoscaler.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The labels for the nodes in scaling group.
 	Labels pulumi.StringPtrInput `pulumi:"labels"`
+	// The taints for the nodes in scaling group.
 	Taints pulumi.StringPtrInput `pulumi:"taints"`
 }
 
@@ -1488,14 +1497,17 @@ func (o KubernetesAutoscalerNodepoolOutput) ToKubernetesAutoscalerNodepoolOutput
 	return o
 }
 
+// The scaling group id of the groups configured for cluster-autoscaler.
 func (o KubernetesAutoscalerNodepoolOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAutoscalerNodepool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The labels for the nodes in scaling group.
 func (o KubernetesAutoscalerNodepoolOutput) Labels() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAutoscalerNodepool) *string { return v.Labels }).(pulumi.StringPtrOutput)
 }
 
+// The taints for the nodes in scaling group.
 func (o KubernetesAutoscalerNodepoolOutput) Taints() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAutoscalerNodepool) *string { return v.Taints }).(pulumi.StringPtrOutput)
 }
@@ -2684,9 +2696,23 @@ func (o KubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) KubernetesWork
 }
 
 type ManagedKubernetesAddon struct {
-	Config   *string `pulumi:"config"`
-	Disabled *bool   `pulumi:"disabled"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// If this parameter is left empty, no configurations are required.
+	Config *string `pulumi:"config"`
+	// It specifies whether to disable automatic installation.
+	//
+	// It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+	//
+	// You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+	//
+	// `logtail-ds` - You can specify `IngressDashboardEnabled` and `slsProjectName` in config. If you switch on `IngressDashboardEnabled` and `slsProjectName`,then logtail-ds would use `slsProjectName` as default log store.
+	//
+	// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+	//
+	// The `main.tf`:
+	//
+	// The `varibales.tf`:
+	Disabled *bool `pulumi:"disabled"`
+	// This parameter specifies the name of the component.
 	Name *string `pulumi:"name"`
 }
 
@@ -2702,9 +2728,23 @@ type ManagedKubernetesAddonInput interface {
 }
 
 type ManagedKubernetesAddonArgs struct {
-	Config   pulumi.StringPtrInput `pulumi:"config"`
-	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// If this parameter is left empty, no configurations are required.
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	// It specifies whether to disable automatic installation.
+	//
+	// It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+	//
+	// You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+	//
+	// `logtail-ds` - You can specify `IngressDashboardEnabled` and `slsProjectName` in config. If you switch on `IngressDashboardEnabled` and `slsProjectName`,then logtail-ds would use `slsProjectName` as default log store.
+	//
+	// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+	//
+	// The `main.tf`:
+	//
+	// The `varibales.tf`:
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// This parameter specifies the name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -2759,15 +2799,29 @@ func (o ManagedKubernetesAddonOutput) ToManagedKubernetesAddonOutputWithContext(
 	return o
 }
 
+// If this parameter is left empty, no configurations are required.
 func (o ManagedKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
+// It specifies whether to disable automatic installation.
+//
+// It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+//
+// You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+//
+// `logtail-ds` - You can specify `IngressDashboardEnabled` and `slsProjectName` in config. If you switch on `IngressDashboardEnabled` and `slsProjectName`,then logtail-ds would use `slsProjectName` as default log store.
+//
+// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+//
+// The `main.tf`:
+//
+// The `varibales.tf`:
 func (o ManagedKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// This parameter specifies the name of the component.
 func (o ManagedKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3772,9 +3826,46 @@ func (o ManagedKubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type ManagedKubernetesTaint struct {
+	// The taint effect.
+	//
+	// The following example is the definition of taints block:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
+	// 			Taints: cs.ManagedKubernetesTaintArray{
+	// 				&cs.ManagedKubernetesTaintArgs{
+	// 					Effect: pulumi.String("NoSchedule"),
+	// 					Key:    pulumi.String("key-a"),
+	// 					Value:  pulumi.String("value-a"),
+	// 				},
+	// 				&cs.ManagedKubernetesTaintArgs{
+	// 					Effect: pulumi.String("NoSchedule"),
+	// 					Key:    pulumi.String("key-b"),
+	// 					Value:  pulumi.String("value-b"),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Effect *string `pulumi:"effect"`
-	Key    *string `pulumi:"key"`
-	Value  *string `pulumi:"value"`
+	// The taint key.
+	Key *string `pulumi:"key"`
+	// The taint value.
+	Value *string `pulumi:"value"`
 }
 
 // ManagedKubernetesTaintInput is an input type that accepts ManagedKubernetesTaintArgs and ManagedKubernetesTaintOutput values.
@@ -3789,9 +3880,46 @@ type ManagedKubernetesTaintInput interface {
 }
 
 type ManagedKubernetesTaintArgs struct {
+	// The taint effect.
+	//
+	// The following example is the definition of taints block:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
+	// 			Taints: cs.ManagedKubernetesTaintArray{
+	// 				&cs.ManagedKubernetesTaintArgs{
+	// 					Effect: pulumi.String("NoSchedule"),
+	// 					Key:    pulumi.String("key-a"),
+	// 					Value:  pulumi.String("value-a"),
+	// 				},
+	// 				&cs.ManagedKubernetesTaintArgs{
+	// 					Effect: pulumi.String("NoSchedule"),
+	// 					Key:    pulumi.String("key-b"),
+	// 					Value:  pulumi.String("value-b"),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	Key    pulumi.StringPtrInput `pulumi:"key"`
-	Value  pulumi.StringPtrInput `pulumi:"value"`
+	// The taint key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The taint value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ManagedKubernetesTaintArgs) ElementType() reflect.Type {
@@ -3845,14 +3973,54 @@ func (o ManagedKubernetesTaintOutput) ToManagedKubernetesTaintOutputWithContext(
 	return o
 }
 
+// The taint effect.
+//
+// The following example is the definition of taints block:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
+//				Taints: cs.ManagedKubernetesTaintArray{
+//					&cs.ManagedKubernetesTaintArgs{
+//						Effect: pulumi.String("NoSchedule"),
+//						Key:    pulumi.String("key-a"),
+//						Value:  pulumi.String("value-a"),
+//					},
+//					&cs.ManagedKubernetesTaintArgs{
+//						Effect: pulumi.String("NoSchedule"),
+//						Key:    pulumi.String("key-b"),
+//						Value:  pulumi.String("value-b"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ManagedKubernetesTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
+// The taint key.
 func (o ManagedKubernetesTaintOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The taint value.
 func (o ManagedKubernetesTaintOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -3880,18 +4048,21 @@ func (o ManagedKubernetesTaintArrayOutput) Index(i pulumi.IntInput) ManagedKuber
 type ManagedKubernetesWorkerDataDisk struct {
 	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	// (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
-	Device   *string `pulumi:"device"`
-	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	// The mount point of data disk N.
+	Device *string `pulumi:"device"`
+	// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted *string `pulumi:"encrypted"`
-	KmsKeyId  *string `pulumi:"kmsKeyId"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The ID of the Key Management Service (KMS) key to use for data disk N.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
 	Name *string `pulumi:"name"`
 	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The size of a data disk, at least 40. Unit: GiB.
-	Size       *string `pulumi:"size"`
+	// (Optional)The size of a data disk, at least 40. Unit: GiB.
+	Size *string `pulumi:"size"`
+	// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
 	SnapshotId *string `pulumi:"snapshotId"`
 }
 
@@ -3909,18 +4080,21 @@ type ManagedKubernetesWorkerDataDiskInput interface {
 type ManagedKubernetesWorkerDataDiskArgs struct {
 	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	// (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	Device   pulumi.StringPtrInput `pulumi:"device"`
-	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	// The mount point of data disk N.
+	Device pulumi.StringPtrInput `pulumi:"device"`
+	// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
-	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The ID of the Key Management Service (KMS) key to use for data disk N.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// The size of a data disk, at least 40. Unit: GiB.
-	Size       pulumi.StringPtrInput `pulumi:"size"`
+	// (Optional)The size of a data disk, at least 40. Unit: GiB.
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
@@ -3980,25 +4154,27 @@ func (o ManagedKubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.Str
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+// (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 func (o ManagedKubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// The mount point of data disk N.
 func (o ManagedKubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 func (o ManagedKubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Key Management Service (KMS) key to use for data disk N.
 func (o ManagedKubernetesWorkerDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
 func (o ManagedKubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4008,11 +4184,12 @@ func (o ManagedKubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringP
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// The size of a data disk, at least 40. Unit: GiB.
+// (Optional)The size of a data disk, at least 40. Unit: GiB.
 func (o ManagedKubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
 func (o ManagedKubernetesWorkerDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -4153,20 +4330,23 @@ func (o ManagedKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) Managed
 }
 
 type NodePoolDataDisk struct {
+	// The ID of the automatic snapshot policy that you want to apply to the system disk.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
 	Category *string `pulumi:"category"`
-	Device   *string `pulumi:"device"`
+	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+	Device *string `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted *string `pulumi:"encrypted"`
 	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The name of node pool.
+	// The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 	Name *string `pulumi:"name"`
 	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
-	Size       *int    `pulumi:"size"`
+	Size *int `pulumi:"size"`
+	// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
 	SnapshotId *string `pulumi:"snapshotId"`
 }
 
@@ -4182,20 +4362,23 @@ type NodePoolDataDiskInput interface {
 }
 
 type NodePoolDataDiskArgs struct {
+	// The ID of the automatic snapshot policy that you want to apply to the system disk.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	Device   pulumi.StringPtrInput `pulumi:"device"`
+	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+	Device pulumi.StringPtrInput `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
 	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The name of node pool.
+	// The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
-	Size       pulumi.IntPtrInput    `pulumi:"size"`
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
@@ -4250,6 +4433,7 @@ func (o NodePoolDataDiskOutput) ToNodePoolDataDiskOutputWithContext(ctx context.
 	return o
 }
 
+// The ID of the automatic snapshot policy that you want to apply to the system disk.
 func (o NodePoolDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -4259,6 +4443,7 @@ func (o NodePoolDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
 func (o NodePoolDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
@@ -4273,7 +4458,7 @@ func (o NodePoolDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The name of node pool.
+// The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 func (o NodePoolDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4288,6 +4473,7 @@ func (o NodePoolDataDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
 func (o NodePoolDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -5609,10 +5795,11 @@ func (o NodePoolSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) NodePoolSpot
 }
 
 type NodePoolTaint struct {
+	// The scheduling policy.
 	Effect *string `pulumi:"effect"`
-	// The label key.
+	// The key of a taint.
 	Key string `pulumi:"key"`
-	// The label value.
+	// The value of a taint.
 	Value *string `pulumi:"value"`
 }
 
@@ -5628,10 +5815,11 @@ type NodePoolTaintInput interface {
 }
 
 type NodePoolTaintArgs struct {
+	// The scheduling policy.
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	// The label key.
+	// The key of a taint.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The label value.
+	// The value of a taint.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5686,16 +5874,17 @@ func (o NodePoolTaintOutput) ToNodePoolTaintOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The scheduling policy.
 func (o NodePoolTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
-// The label key.
+// The key of a taint.
 func (o NodePoolTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The label value.
+// The value of a taint.
 func (o NodePoolTaintOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

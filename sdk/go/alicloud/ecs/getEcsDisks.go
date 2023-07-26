@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetEcsDisks(ctx *pulumi.Context, args *GetEcsDisksArgs, opts ...pulumi.InvokeOption) (*GetEcsDisksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsDisksResult
 	err := ctx.Invoke("alicloud:ecs/getEcsDisks:getEcsDisks", args, &rv, opts...)
 	if err != nil {

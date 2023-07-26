@@ -261,14 +261,14 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
         return this.specification;
     }
     /**
-     * (Available in 1.121.0+) The status of NAT gateway.
+     * (Available since v1.121.0) The status of NAT gateway.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return (Available in 1.121.0+) The status of NAT gateway.
+     * @return (Available since v1.121.0) The status of NAT gateway.
      * 
      */
     public Output<String> status() {

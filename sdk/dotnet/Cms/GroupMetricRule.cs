@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cms
     /// <summary>
     /// Provides a Cloud Monitor Service Group Metric Rule resource.
     /// 
-    /// For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/doc-detail/114943.htm).
+    /// For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putgroupmetricrule).
     /// 
-    /// &gt; **NOTE:** Available in v1.104.0+.
+    /// &gt; **NOTE:** Available since v1.104.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,22 +25,35 @@ namespace Pulumi.AliCloud.Cms
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisRandomUuid = new Random.RandomUuid("thisRandomUuid");
-    /// 
-    ///     var thisGroupMetricRule = new AliCloud.Cms.GroupMetricRule("thisGroupMetricRule", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
     ///     {
-    ///         GroupId = "539****",
-    ///         RuleId = thisRandomUuid.Id,
+    ///         AlarmContactGroupName = name,
+    ///         Describe = name,
+    ///     });
+    /// 
+    ///     var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("defaultMonitorGroup", new()
+    ///     {
+    ///         MonitorGroupName = name,
+    ///         ContactGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var @this = new AliCloud.Cms.GroupMetricRule("this", new()
+    ///     {
+    ///         GroupId = defaultMonitorGroup.Id,
+    ///         GroupMetricRuleName = name,
     ///         Category = "ecs",
-    ///         Namespace = "acs_ecs_dashboard",
     ///         MetricName = "cpu_total",
+    ///         Namespace = "acs_ecs_dashboard",
+    ///         RuleId = name,
     ///         Period = 60,
-    ///         GroupMetricRuleName = "tf-testacc-rule-name",
-    ///         EmailSubject = "tf-testacc-rule-name-warning",
     ///         Interval = "3600",
     ///         SilenceTime = 85800,
     ///         NoEffectiveInterval = "00:00-05:30",
@@ -109,7 +122,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> EmailSubject { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm level. See the following `Block escalations`.
+        /// Alarm level. See `escalations` below.
         /// </summary>
         [Output("escalations")]
         public Output<Outputs.GroupMetricRuleEscalations> Escalations { get; private set; } = null!;
@@ -175,7 +188,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the resource for which alerts are triggered. See the following `Block targets`.
+        /// The information about the resource for which alerts are triggered. See `targets` below.
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.GroupMetricRuleTarget>> Targets { get; private set; } = null!;
@@ -263,7 +276,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EmailSubject { get; set; }
 
         /// <summary>
-        /// Alarm level. See the following `Block escalations`.
+        /// Alarm level. See `escalations` below.
         /// </summary>
         [Input("escalations", required: true)]
         public Input<Inputs.GroupMetricRuleEscalationsArgs> Escalations { get; set; } = null!;
@@ -326,7 +339,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.GroupMetricRuleTargetArgs>? _targets;
 
         /// <summary>
-        /// The information about the resource for which alerts are triggered. See the following `Block targets`.
+        /// The information about the resource for which alerts are triggered. See `targets` below.
         /// </summary>
         public InputList<Inputs.GroupMetricRuleTargetArgs> Targets
         {
@@ -379,7 +392,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EmailSubject { get; set; }
 
         /// <summary>
-        /// Alarm level. See the following `Block escalations`.
+        /// Alarm level. See `escalations` below.
         /// </summary>
         [Input("escalations")]
         public Input<Inputs.GroupMetricRuleEscalationsGetArgs>? Escalations { get; set; }
@@ -448,7 +461,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.GroupMetricRuleTargetGetArgs>? _targets;
 
         /// <summary>
-        /// The information about the resource for which alerts are triggered. See the following `Block targets`.
+        /// The information about the resource for which alerts are triggered. See `targets` below.
         /// </summary>
         public InputList<Inputs.GroupMetricRuleTargetGetArgs> Targets
         {

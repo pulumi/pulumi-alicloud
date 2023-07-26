@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +17,7 @@ import (
 //
 // > **NOTE:** Available in v1.187.0+.
 func GetSearchIndexes(ctx *pulumi.Context, args *GetSearchIndexesArgs, opts ...pulumi.InvokeOption) (*GetSearchIndexesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSearchIndexesResult
 	err := ctx.Invoke("alicloud:ots/getSearchIndexes:getSearchIndexes", args, &rv, opts...)
 	if err != nil {

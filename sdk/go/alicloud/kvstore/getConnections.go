@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in v1.101.0+.
 func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulumi.InvokeOption) (*GetConnectionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConnectionsResult
 	err := ctx.Invoke("alicloud:kvstore/getConnections:getConnections", args, &rv, opts...)
 	if err != nil {

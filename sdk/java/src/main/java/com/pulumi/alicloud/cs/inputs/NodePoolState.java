@@ -105,14 +105,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<NodePoolDataDiskArgs>> dataDisks;
 
     /**
-     * @return The data disk configurations of worker nodes, such as the disk type and disk size.
+     * @return The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
      * 
      */
     public Optional<Output<List<NodePoolDataDiskArgs>>> dataDisks() {
@@ -345,14 +345,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
      * 
      */
     @Import(name="kubeletConfiguration")
     private @Nullable Output<NodePoolKubeletConfigurationArgs> kubeletConfiguration;
 
     /**
-     * @return Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * @return Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
      * 
      */
     public Optional<Output<NodePoolKubeletConfigurationArgs>> kubeletConfiguration() {
@@ -360,14 +360,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<List<NodePoolLabelArgs>> labels;
 
     /**
-     * @return A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+     * @return A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
      * 
      */
     public Optional<Output<List<NodePoolLabelArgs>>> labels() {
@@ -375,14 +375,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+     * Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
      * 
      */
     @Import(name="management")
     private @Nullable Output<NodePoolManagementArgs> management;
 
     /**
-     * @return Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+     * @return Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
      * 
      */
     public Optional<Output<NodePoolManagementArgs>> management() {
@@ -428,14 +428,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+     * Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
      * 
      */
     @Import(name="nodeNameMode")
     private @Nullable Output<String> nodeNameMode;
 
     /**
-     * @return Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+     * @return Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
      * 
      */
     public Optional<Output<String>> nodeNameMode() {
@@ -556,14 +556,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
      * 
      */
     @Import(name="rollingPolicy")
     private @Nullable Output<NodePoolRollingPolicyArgs> rollingPolicy;
 
     /**
-     * @return Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * @return Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
      * 
      */
     public Optional<Output<NodePoolRollingPolicyArgs>> rollingPolicy() {
@@ -571,7 +571,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
      * 
      * @deprecated
      * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
@@ -582,7 +582,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<NodePoolRolloutPolicyArgs> rolloutPolicy;
 
     /**
-     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
      * 
      * @deprecated
      * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
@@ -624,14 +624,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+     * Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      * 
      */
     @Import(name="scalingConfig")
     private @Nullable Output<NodePoolScalingConfigArgs> scalingConfig;
 
     /**
-     * @return Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+     * @return Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      * 
      */
     public Optional<Output<NodePoolScalingConfigArgs>> scalingConfig() {
@@ -639,14 +639,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.105.0+) Id of the Scaling Group.
+     * The scaling group id.
      * 
      */
     @Import(name="scalingGroupId")
     private @Nullable Output<String> scalingGroupId;
 
     /**
-     * @return (Available in 1.105.0+) Id of the Scaling Group.
+     * @return The scaling group id.
      * 
      */
     public Optional<Output<String>> scalingGroupId() {
@@ -724,14 +724,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+     * The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
      * 
      */
     @Import(name="spotPriceLimits")
     private @Nullable Output<List<NodePoolSpotPriceLimitArgs>> spotPriceLimits;
 
     /**
-     * @return The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+     * @return The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
      * 
      */
     public Optional<Output<List<NodePoolSpotPriceLimitArgs>>> spotPriceLimits() {
@@ -874,14 +874,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+     * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<NodePoolTaintArgs>> taints;
 
     /**
-     * @return A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+     * @return A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
      * 
      */
     public Optional<Output<List<NodePoolTaintArgs>>> taints() {
@@ -1136,7 +1136,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The data disk configurations of worker nodes, such as the disk type and disk size.
+         * @param dataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1147,7 +1147,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The data disk configurations of worker nodes, such as the disk type and disk size.
+         * @param dataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1157,7 +1157,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The data disk configurations of worker nodes, such as the disk type and disk size.
+         * @param dataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1502,7 +1502,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
          * 
          * @return builder
          * 
@@ -1513,7 +1513,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
          * 
          * @return builder
          * 
@@ -1523,7 +1523,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
          * 
          * @return builder
          * 
@@ -1534,7 +1534,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
          * 
          * @return builder
          * 
@@ -1544,7 +1544,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
          * 
          * @return builder
          * 
@@ -1554,7 +1554,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param management Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+         * @param management Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
          * 
          * @return builder
          * 
@@ -1565,7 +1565,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param management Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+         * @param management Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
          * 
          * @return builder
          * 
@@ -1625,7 +1625,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNameMode Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+         * @param nodeNameMode Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
          * 
          * @return builder
          * 
@@ -1636,7 +1636,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNameMode Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+         * @param nodeNameMode Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
          * 
          * @return builder
          * 
@@ -1821,7 +1821,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rollingPolicy Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+         * @param rollingPolicy Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
          * 
          * @return builder
          * 
@@ -1832,7 +1832,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rollingPolicy Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+         * @param rollingPolicy Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
          * 
          * @return builder
          * 
@@ -1842,7 +1842,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
          * 
          * @return builder
          * 
@@ -1857,7 +1857,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
          * 
          * @return builder
          * 
@@ -1913,7 +1913,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingConfig Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+         * @param scalingConfig Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
          * 
          * @return builder
          * 
@@ -1924,7 +1924,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingConfig Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+         * @param scalingConfig Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
          * 
          * @return builder
          * 
@@ -1934,7 +1934,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingGroupId (Available in 1.105.0+) Id of the Scaling Group.
+         * @param scalingGroupId The scaling group id.
          * 
          * @return builder
          * 
@@ -1945,7 +1945,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingGroupId (Available in 1.105.0+) Id of the Scaling Group.
+         * @param scalingGroupId The scaling group id.
          * 
          * @return builder
          * 
@@ -2059,7 +2059,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPriceLimits The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+         * @param spotPriceLimits The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
          * 
          * @return builder
          * 
@@ -2070,7 +2070,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPriceLimits The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+         * @param spotPriceLimits The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
          * 
          * @return builder
          * 
@@ -2080,7 +2080,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPriceLimits The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+         * @param spotPriceLimits The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
          * 
          * @return builder
          * 
@@ -2279,7 +2279,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+         * @param taints A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
          * 
          * @return builder
          * 
@@ -2290,7 +2290,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+         * @param taints A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
          * 
          * @return builder
          * 
@@ -2300,7 +2300,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+         * @param taints A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
          * 
          * @return builder
          * 

@@ -178,7 +178,7 @@ export class Instance extends pulumi.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -323,6 +323,10 @@ export class Instance extends pulumi.CustomResource {
      * The ID of resource group which the DB instance belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     */
+    public readonly roleArn!: pulumi.Output<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
@@ -553,6 +557,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["releasedKeepPolicy"] = state ? state.releasedKeepPolicy : undefined;
             resourceInputs["replicationAcl"] = state ? state.replicationAcl : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["securityIpMode"] = state ? state.securityIpMode : undefined;
@@ -639,6 +644,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["releasedKeepPolicy"] = args ? args.releasedKeepPolicy : undefined;
             resourceInputs["replicationAcl"] = args ? args.replicationAcl : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["securityIpMode"] = args ? args.securityIpMode : undefined;
@@ -817,7 +823,7 @@ export interface InstanceState {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -962,6 +968,10 @@ export interface InstanceState {
      * The ID of resource group which the DB instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     */
+    roleArn?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
@@ -1262,7 +1272,7 @@ export interface InstanceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -1407,6 +1417,10 @@ export interface InstanceArgs {
      * The ID of resource group which the DB instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     */
+    roleArn?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *

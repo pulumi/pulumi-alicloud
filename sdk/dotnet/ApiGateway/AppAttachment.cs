@@ -22,11 +22,64 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new AliCloud.ApiGateway.AppAttachment("foo", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform_example";
+    ///     var exampleGroup = new AliCloud.ApiGateway.Group("exampleGroup", new()
     ///     {
-    ///         ApiId = "d29d25b9cfdf4742b1a3f6537299a749",
-    ///         AppId = "20898181",
-    ///         GroupId = "aaef8cdbb404420f9398a74ed1db7fff",
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var exampleApi = new AliCloud.ApiGateway.Api("exampleApi", new()
+    ///     {
+    ///         GroupId = exampleGroup.Id,
+    ///         Description = name,
+    ///         AuthType = "APP",
+    ///         ForceNonceCheck = false,
+    ///         RequestConfig = new AliCloud.ApiGateway.Inputs.ApiRequestConfigArgs
+    ///         {
+    ///             Protocol = "HTTP",
+    ///             Method = "GET",
+    ///             Path = "/example/path",
+    ///             Mode = "MAPPING",
+    ///         },
+    ///         ServiceType = "HTTP",
+    ///         HttpServiceConfig = new AliCloud.ApiGateway.Inputs.ApiHttpServiceConfigArgs
+    ///         {
+    ///             Address = "http://apigateway-backend.alicloudapi.com:8080",
+    ///             Method = "GET",
+    ///             Path = "/web/cloudapi",
+    ///             Timeout = 12,
+    ///             AoneName = "cloudapi-openapi",
+    ///         },
+    ///         RequestParameters = new[]
+    ///         {
+    ///             new AliCloud.ApiGateway.Inputs.ApiRequestParameterArgs
+    ///             {
+    ///                 Name = "example",
+    ///                 Type = "STRING",
+    ///                 Required = "OPTIONAL",
+    ///                 In = "QUERY",
+    ///                 InService = "QUERY",
+    ///                 NameService = "exampleservice",
+    ///             },
+    ///         },
+    ///         StageNames = new[]
+    ///         {
+    ///             "RELEASE",
+    ///             "TEST",
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleApp = new AliCloud.ApiGateway.App("exampleApp", new()
+    ///     {
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var exampleAppAttachment = new AliCloud.ApiGateway.AppAttachment("exampleAppAttachment", new()
+    ///     {
+    ///         ApiId = exampleApi.ApiId,
+    ///         GroupId = exampleGroup.Id,
+    ///         AppId = exampleApp.Id,
     ///         StageName = "PRE",
     ///     });
     /// 

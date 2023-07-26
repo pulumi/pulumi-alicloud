@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,6 +97,7 @@ func NewAccessRule(ctx *pulumi.Context,
 	if args.SourceCidrIp == nil {
 		return nil, errors.New("invalid value for required argument 'SourceCidrIp'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessRule
 	err := ctx.RegisterResource("alicloud:nas/accessRule:AccessRule", name, args, &resource, opts...)
 	if err != nil {

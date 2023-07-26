@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Arms.Inputs
     public sealed class PrometheusAlertRuleAnnotationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the label.
+        /// The name of the annotation.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The value of the label.
+        /// The value of the annotation.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

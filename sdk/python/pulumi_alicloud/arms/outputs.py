@@ -73,6 +73,7 @@ class DispatchRuleGroupRule(dict):
         :param int group_interval: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
         :param int group_wait_time: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
         :param Sequence[str] grouping_fields: The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+        :param int group_id: The ID of the group rule.
         :param int repeat_interval: The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
         """
         pulumi.set(__self__, "group_interval", group_interval)
@@ -110,6 +111,9 @@ class DispatchRuleGroupRule(dict):
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[int]:
+        """
+        The ID of the group rule.
+        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -143,7 +147,7 @@ class DispatchRuleLabelMatchExpressionGrid(dict):
     def __init__(__self__, *,
                  label_match_expression_groups: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup']):
         """
-        :param Sequence['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs'] label_match_expression_groups: Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+        :param Sequence['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs'] label_match_expression_groups: Sets the dispatch rule. See `label_match_expression_groups` below.
         """
         pulumi.set(__self__, "label_match_expression_groups", label_match_expression_groups)
 
@@ -151,7 +155,7 @@ class DispatchRuleLabelMatchExpressionGrid(dict):
     @pulumi.getter(name="labelMatchExpressionGroups")
     def label_match_expression_groups(self) -> Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup']:
         """
-        Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+        Sets the dispatch rule. See `label_match_expression_groups` below.
         """
         return pulumi.get(self, "label_match_expression_groups")
 
@@ -178,7 +182,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup(dict):
     def __init__(__self__, *,
                  label_match_expressions: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression']):
         """
-        :param Sequence['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs'] label_match_expressions: Sets the dispatch rule. See the following `Block label_match_expressions`.
+        :param Sequence['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs'] label_match_expressions: Sets the dispatch rule. See `label_match_expressions` below.
         """
         pulumi.set(__self__, "label_match_expressions", label_match_expressions)
 
@@ -186,7 +190,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup(dict):
     @pulumi.getter(name="labelMatchExpressions")
     def label_match_expressions(self) -> Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression']:
         """
-        Sets the dispatch rule. See the following `Block label_match_expressions`.
+        Sets the dispatch rule. See `label_match_expressions` below.
         """
         return pulumi.get(self, "label_match_expressions")
 
@@ -277,7 +281,7 @@ class DispatchRuleNotifyRule(dict):
                  notify_objects: Sequence['outputs.DispatchRuleNotifyRuleNotifyObject']):
         """
         :param Sequence[str] notify_channels: The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
-        :param Sequence['DispatchRuleNotifyRuleNotifyObjectArgs'] notify_objects: Sets the notification object. See the following `Block notify_objects`.
+        :param Sequence['DispatchRuleNotifyRuleNotifyObjectArgs'] notify_objects: Sets the notification object. See `notify_objects` below.
         """
         pulumi.set(__self__, "notify_channels", notify_channels)
         pulumi.set(__self__, "notify_objects", notify_objects)
@@ -294,7 +298,7 @@ class DispatchRuleNotifyRule(dict):
     @pulumi.getter(name="notifyObjects")
     def notify_objects(self) -> Sequence['outputs.DispatchRuleNotifyRuleNotifyObject']:
         """
-        Sets the notification object. See the following `Block notify_objects`.
+        Sets the notification object. See `notify_objects` below.
         """
         return pulumi.get(self, "notify_objects")
 
@@ -364,8 +368,8 @@ class PrometheusAlertRuleAnnotation(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: The name of the label.
-        :param str value: The value of the label.
+        :param str name: The name of the annotation.
+        :param str value: The value of the annotation.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -376,7 +380,7 @@ class PrometheusAlertRuleAnnotation(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the label.
+        The name of the annotation.
         """
         return pulumi.get(self, "name")
 
@@ -384,7 +388,7 @@ class PrometheusAlertRuleAnnotation(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the label.
+        The value of the annotation.
         """
         return pulumi.get(self, "value")
 

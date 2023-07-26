@@ -248,6 +248,8 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         """
         Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
 
+        > **NOTE:** Available since v1.48.0.
+
         ## Example Usage
 
         ```python
@@ -294,10 +296,9 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             instance_name="terraform-example-readonly",
             vswitch_id=example_switch.id)
         example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection",
-            instance_id=example_instance.id,
+            instance_id=example_read_only_instance.master_db_instance_id,
             connection_prefix="example-con-123",
-            distribution_type="Standard",
-            opts=pulumi.ResourceOptions(depends_on=[example_read_only_instance]))
+            distribution_type="Standard")
         ```
 
         > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
@@ -328,6 +329,8 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         """
         Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
 
+        > **NOTE:** Available since v1.48.0.
+
         ## Example Usage
 
         ```python
@@ -374,10 +377,9 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             instance_name="terraform-example-readonly",
             vswitch_id=example_switch.id)
         example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection",
-            instance_id=example_instance.id,
+            instance_id=example_read_only_instance.master_db_instance_id,
             connection_prefix="example-con-123",
-            distribution_type="Standard",
-            opts=pulumi.ResourceOptions(depends_on=[example_read_only_instance]))
+            distribution_type="Standard")
         ```
 
         > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.

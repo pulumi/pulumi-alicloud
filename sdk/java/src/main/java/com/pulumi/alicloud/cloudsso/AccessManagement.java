@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
  * 
- * &gt; **NOTE:** Available in v1.145.0+.
+ * &gt; **NOTE:** Available since v1.145.0.
  * 
  * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  * 

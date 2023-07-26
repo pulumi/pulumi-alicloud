@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -229,6 +230,7 @@ func NewAlarm(ctx *pulumi.Context,
 	if args.Threshold == nil {
 		return nil, errors.New("invalid value for required argument 'Threshold'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Alarm
 	err := ctx.RegisterResource("alicloud:ess/alarm:Alarm", name, args, &resource, opts...)
 	if err != nil {

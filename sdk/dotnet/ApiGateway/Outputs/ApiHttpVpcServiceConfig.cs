@@ -13,21 +13,24 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
     [OutputType]
     public sealed class ApiHttpVpcServiceConfig
     {
+        /// <summary>
+        /// The name of aone.
+        /// </summary>
         public readonly string? AoneName;
         /// <summary>
-        /// The method of the api, including 'GET','POST','PUT' etc.
+        /// The http method of backend service.
         /// </summary>
         public readonly string Method;
         /// <summary>
-        /// The name of the api gateway api. Defaults to null.
+        /// The name of vpc instance.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The request path of the api.
+        /// The path of backend service.
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// Backend service time-out time; unit: millisecond.
+        /// Backend service time-out time. Unit: millisecond.
         /// </summary>
         public readonly int Timeout;
 

@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Config Rule resource.
  * 
- * For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/).
+ * For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigrule).
  * 
- * &gt; **NOTE:** Available in v1.204.0+.
+ * &gt; **NOTE:** Available since v1.204.0.
  * 
  * ## Example Usage
  * 
@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.cfg.Rule;
  * import com.pulumi.alicloud.cfg.RuleArgs;
  * import java.util.List;
@@ -50,23 +52,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Rule(&#34;default&#34;, RuleArgs.builder()        
- *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
- *             .description(&#34;关联的资源类型下实体资源均已有指定标签，存在没有指定标签的资源则视为“不合规”。&#34;)
- *             .excludeResourceIdsScope(&#34;test&#34;)
- *             .inputParameters(Map.ofEntries(
- *                 Map.entry(&#34;foo&#34;, &#34;terraform&#34;),
- *                 Map.entry(&#34;var&#34;, &#34;terraform&#34;)
- *             ))
- *             .regionIdsScope(&#34;cn-hangzhou&#34;)
- *             .resourceGroupIdsScope(&#34;rg-acfmvoh45rhcfly&#34;)
- *             .resourceTypesScopes(&#34;ACS::RDS::DBInstance&#34;)
- *             .riskLevel(1)
- *             .ruleName(&#34;tf-cicd-rule-by-required-tags&#34;)
- *             .sourceIdentifier(&#34;required-tags&#34;)
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+ *             .description(&#34;If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.&#34;)
  *             .sourceOwner(&#34;ALIYUN&#34;)
- *             .tagKeyScope(&#34;test&#34;)
- *             .tagValueScope(&#34;test&#34;)
+ *             .sourceIdentifier(&#34;contains-tag&#34;)
+ *             .riskLevel(1)
+ *             .tagValueScope(&#34;example-value&#34;)
+ *             .tagKeyScope(&#34;example-key&#34;)
+ *             .excludeResourceIdsScope(&#34;example-resource_id&#34;)
+ *             .regionIdsScope(&#34;cn-hangzhou&#34;)
+ *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
+ *             .resourceGroupIdsScope(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceTypesScopes(&#34;ACS::RDS::DBInstance&#34;)
+ *             .ruleName(&#34;contains-tag&#34;)
+ *             .inputParameters(Map.ofEntries(
+ *                 Map.entry(&#34;key&#34;, &#34;example&#34;),
+ *                 Map.entry(&#34;value&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
  *     }

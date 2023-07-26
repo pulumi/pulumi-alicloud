@@ -3284,6 +3284,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ens/instance",
+  "fqn": "pulumi_alicloud.ens",
+  "classes": {
+   "alicloud:ens/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ens/keyPair",
   "fqn": "pulumi_alicloud.ens",
   "classes": {
@@ -3536,6 +3544,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.fc",
   "classes": {
    "alicloud:fc/trigger:Trigger": "Trigger"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "fc/v2Function",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v2Function:V2Function": "V2Function"
   }
  },
  {
@@ -5960,6 +5976,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/forwardEntry:ForwardEntry": "ForwardEntry"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/gatewayEndpoint",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/gatewayEndpoint:GatewayEndpoint": "GatewayEndpoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/gatewayEndpointRouteTableAttachment",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment": "GatewayEndpointRouteTableAttachment"
   }
  },
  {

@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Config Compliance Pack resource.
 //
-// For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+// For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createcompliancepack).
 //
-// > **NOTE:** Available in v1.124.0+.
+// > **NOTE:** Available since v1.124.0.
 //
 // ## Example Usage
 //
@@ -26,9 +27,8 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -37,45 +37,36 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "example_name"
+//			name := "tf-example-config"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultInstances, err := ecs.GetInstances(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-//				Status: pulumi.StringRef("OK"),
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultRule, err := cfg.NewRule(ctx, "defaultRule", &cfg.RuleArgs{
-//				RuleName:         pulumi.String(name),
-//				Description:      pulumi.String(name),
-//				SourceIdentifier: pulumi.String("ecs-instances-in-vpc"),
-//				SourceOwner:      pulumi.String("ALIYUN"),
+//				Description:            pulumi.String("If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant."),
+//				SourceOwner:            pulumi.String("ALIYUN"),
+//				SourceIdentifier:       pulumi.String("oss-bucket-public-read-prohibited"),
+//				RiskLevel:              pulumi.Int(1),
+//				TagKeyScope:            pulumi.String("For"),
+//				TagValueScope:          pulumi.String("example"),
+//				RegionIdsScope:         *pulumi.String(defaultRegions.Regions[0].Id),
+//				ConfigRuleTriggerTypes: pulumi.String("ConfigurationItemChangeNotification"),
 //				ResourceTypesScopes: pulumi.StringArray{
-//					pulumi.String("ACS::ECS::Instance"),
+//					pulumi.String("ACS::OSS::Bucket"),
 //				},
-//				RiskLevel:               pulumi.Int(1),
-//				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
-//				TagKeyScope:             pulumi.String("tfTest"),
-//				TagValueScope:           pulumi.String("tfTest 123"),
-//				ResourceGroupIdsScope:   *pulumi.String(defaultResourceGroups.Ids[0]),
-//				ExcludeResourceIdsScope: *pulumi.String(defaultInstances.Instances[0].Id),
-//				RegionIdsScope:          pulumi.String("cn-hangzhou"),
-//				InputParameters: pulumi.AnyMap{
-//					"vpcIds": *pulumi.String(defaultInstances.Instances[0].VpcId),
-//				},
+//				RuleName: pulumi.String("oss-bucket-public-read-prohibited"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cfg.NewCompliancePack(ctx, "defaultCompliancePack", &cfg.CompliancePackArgs{
-//				CompliancePackName: pulumi.String("tf-testaccConfig1234"),
-//				Description:        pulumi.String("tf-testaccConfig1234"),
+//				CompliancePackName: pulumi.String(name),
+//				Description:        pulumi.String(name),
 //				RiskLevel:          pulumi.Int(1),
 //				ConfigRuleIds: cfg.CompliancePackConfigRuleIdArray{
 //					&cfg.CompliancePackConfigRuleIdArgs{
@@ -108,9 +99,9 @@ type CompliancePack struct {
 	CompliancePackName pulumi.StringOutput `pulumi:"compliancePackName"`
 	// Compliance Package Template Id.
 	CompliancePackTemplateId pulumi.StringPtrOutput `pulumi:"compliancePackTemplateId"`
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds CompliancePackConfigRuleIdArrayOutput `pulumi:"configRuleIds"`
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules CompliancePackConfigRuleArrayOutput `pulumi:"configRules"`
@@ -138,6 +129,7 @@ func NewCompliancePack(ctx *pulumi.Context,
 	if args.RiskLevel == nil {
 		return nil, errors.New("invalid value for required argument 'RiskLevel'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CompliancePack
 	err := ctx.RegisterResource("alicloud:cfg/compliancePack:CompliancePack", name, args, &resource, opts...)
 	if err != nil {
@@ -164,9 +156,9 @@ type compliancePackState struct {
 	CompliancePackName *string `pulumi:"compliancePackName"`
 	// Compliance Package Template Id.
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds []CompliancePackConfigRuleId `pulumi:"configRuleIds"`
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules []CompliancePackConfigRule `pulumi:"configRules"`
@@ -183,9 +175,9 @@ type CompliancePackState struct {
 	CompliancePackName pulumi.StringPtrInput
 	// Compliance Package Template Id.
 	CompliancePackTemplateId pulumi.StringPtrInput
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds CompliancePackConfigRuleIdArrayInput
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules CompliancePackConfigRuleArrayInput
@@ -206,9 +198,9 @@ type compliancePackArgs struct {
 	CompliancePackName string `pulumi:"compliancePackName"`
 	// Compliance Package Template Id.
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds []CompliancePackConfigRuleId `pulumi:"configRuleIds"`
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules []CompliancePackConfigRule `pulumi:"configRules"`
@@ -224,9 +216,9 @@ type CompliancePackArgs struct {
 	CompliancePackName pulumi.StringInput
 	// Compliance Package Template Id.
 	CompliancePackTemplateId pulumi.StringPtrInput
-	// A list of Config Rule IDs.
+	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds CompliancePackConfigRuleIdArrayInput
-	// A list of Config Rules.
+	// A list of Config Rules. See `configRules` below.
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules CompliancePackConfigRuleArrayInput
@@ -333,12 +325,12 @@ func (o CompliancePackOutput) CompliancePackTemplateId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *CompliancePack) pulumi.StringPtrOutput { return v.CompliancePackTemplateId }).(pulumi.StringPtrOutput)
 }
 
-// A list of Config Rule IDs.
+// A list of Config Rule IDs. See `configRuleIds` below.
 func (o CompliancePackOutput) ConfigRuleIds() CompliancePackConfigRuleIdArrayOutput {
 	return o.ApplyT(func(v *CompliancePack) CompliancePackConfigRuleIdArrayOutput { return v.ConfigRuleIds }).(CompliancePackConfigRuleIdArrayOutput)
 }
 
-// A list of Config Rules.
+// A list of Config Rules. See `configRules` below.
 //
 // Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 func (o CompliancePackOutput) ConfigRules() CompliancePackConfigRuleArrayOutput {

@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Custom Routing Endpoint resource.
 //
-// For information about Global Accelerator (GA) Custom Routing Endpoint and how to use it, see [What is Custom Routing Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpoints).
+// For information about Global Accelerator (GA) Custom Routing Endpoint and how to use it, see [What is Custom Routing Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createcustomroutingendpoints).
 //
 // > **NOTE:** Available since v1.197.0.
 //
@@ -173,6 +174,7 @@ func NewCustomRoutingEndpoint(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomRoutingEndpoint
 	err := ctx.RegisterResource("alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint", name, args, &resource, opts...)
 	if err != nil {

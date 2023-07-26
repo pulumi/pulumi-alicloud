@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms
 {
     /// <summary>
-    /// Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/doc-detail/114923.htm).
+    /// Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontact).
     /// 
-    /// &gt; **NOTE:** Available in v1.99.0+.
+    /// &gt; **NOTE:** Available since v1.99.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,9 +29,9 @@ namespace Pulumi.AliCloud.Cms
     ///     // If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
     ///     var example = new AliCloud.Cms.AlarmContact("example", new()
     ///     {
-    ///         AlarmContactName = "zhangsan",
+    ///         AlarmContactName = "terraform-example",
     ///         ChannelsMail = "terraform@test.com",
-    ///         Describe = "For Test",
+    ///         Describe = "For example",
     ///     });
     /// 
     /// });
@@ -48,8 +48,8 @@ namespace Pulumi.AliCloud.Cms
     ///     // If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
     ///     var example = new AliCloud.Cms.AlarmContact("example", new()
     ///     {
-    ///         AlarmContactName = "zhangsan",
-    ///         Describe = "For Test",
+    ///         AlarmContactName = "tf-example",
+    ///         Describe = "For example",
     ///         ChannelsMail = "terraform@test.com",
     ///     });
     /// 

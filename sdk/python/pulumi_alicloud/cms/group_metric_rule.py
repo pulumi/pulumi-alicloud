@@ -36,7 +36,7 @@ class GroupMetricRuleArgs:
         """
         The set of arguments for constructing a GroupMetricRule resource.
         :param pulumi.Input[str] category: The abbreviation of the service name.
-        :param pulumi.Input['GroupMetricRuleEscalationsArgs'] escalations: Alarm level. See the following `Block escalations`.
+        :param pulumi.Input['GroupMetricRuleEscalationsArgs'] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] group_metric_rule_name: The name of the alert rule.
         :param pulumi.Input[str] metric_name: The name of the metric.
@@ -50,7 +50,7 @@ class GroupMetricRuleArgs:
         :param pulumi.Input[str] no_effective_interval: The time period during which the alert rule is ineffective.
         :param pulumi.Input[int] period: The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
         :param pulumi.Input[int] silence_time: The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]] targets: The information about the resource for which alerts are triggered. See the following `Block targets`.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The callback URL.
         """
         pulumi.set(__self__, "category", category)
@@ -97,7 +97,7 @@ class GroupMetricRuleArgs:
     @pulumi.getter
     def escalations(self) -> pulumi.Input['GroupMetricRuleEscalationsArgs']:
         """
-        Alarm level. See the following `Block escalations`.
+        Alarm level. See `escalations` below.
         """
         return pulumi.get(self, "escalations")
 
@@ -265,7 +265,7 @@ class GroupMetricRuleArgs:
     @pulumi.getter
     def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]:
         """
-        The information about the resource for which alerts are triggered. See the following `Block targets`.
+        The information about the resource for which alerts are triggered. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
@@ -314,7 +314,7 @@ class _GroupMetricRuleState:
         :param pulumi.Input[str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param pulumi.Input[str] effective_interval: The time period during which the alert rule is effective.
         :param pulumi.Input[str] email_subject: The subject of the alert notification email.                                         .
-        :param pulumi.Input['GroupMetricRuleEscalationsArgs'] escalations: Alarm level. See the following `Block escalations`.
+        :param pulumi.Input['GroupMetricRuleEscalationsArgs'] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] group_metric_rule_name: The name of the alert rule.
         :param pulumi.Input[str] interval: The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
@@ -325,7 +325,7 @@ class _GroupMetricRuleState:
         :param pulumi.Input[str] rule_id: The ID of the alert rule.
         :param pulumi.Input[int] silence_time: The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
         :param pulumi.Input[str] status: The status of Group Metric Rule.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]] targets: The information about the resource for which alerts are triggered. See the following `Block targets`.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The callback URL.
         """
         if category is not None:
@@ -429,7 +429,7 @@ class _GroupMetricRuleState:
     @pulumi.getter
     def escalations(self) -> Optional[pulumi.Input['GroupMetricRuleEscalationsArgs']]:
         """
-        Alarm level. See the following `Block escalations`.
+        Alarm level. See `escalations` below.
         """
         return pulumi.get(self, "escalations")
 
@@ -561,7 +561,7 @@ class _GroupMetricRuleState:
     @pulumi.getter
     def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]:
         """
-        The information about the resource for which alerts are triggered. See the following `Block targets`.
+        The information about the resource for which alerts are triggered. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
@@ -608,9 +608,9 @@ class GroupMetricRule(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Group Metric Rule resource.
 
-        For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/doc-detail/114943.htm).
+        For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putgroupmetricrule).
 
-        > **NOTE:** Available in v1.104.0+.
+        > **NOTE:** Available since v1.104.0.
 
         ## Example Usage
 
@@ -619,18 +619,25 @@ class GroupMetricRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
-        this_random_uuid = random.RandomUuid("thisRandomUuid")
-        this_group_metric_rule = alicloud.cms.GroupMetricRule("thisGroupMetricRule",
-            group_id="539****",
-            rule_id=this_random_uuid.id,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+            alarm_contact_group_name=name,
+            describe=name)
+        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
+            monitor_group_name=name,
+            contact_groups=[default_alarm_contact_group.id])
+        this = alicloud.cms.GroupMetricRule("this",
+            group_id=default_monitor_group.id,
+            group_metric_rule_name=name,
             category="ecs",
-            namespace="acs_ecs_dashboard",
             metric_name="cpu_total",
+            namespace="acs_ecs_dashboard",
+            rule_id=name,
             period=60,
-            group_metric_rule_name="tf-testacc-rule-name",
-            email_subject="tf-testacc-rule-name-warning",
             interval="3600",
             silence_time=85800,
             no_effective_interval="00:00-05:30",
@@ -666,7 +673,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param pulumi.Input[str] effective_interval: The time period during which the alert rule is effective.
         :param pulumi.Input[str] email_subject: The subject of the alert notification email.                                         .
-        :param pulumi.Input[pulumi.InputType['GroupMetricRuleEscalationsArgs']] escalations: Alarm level. See the following `Block escalations`.
+        :param pulumi.Input[pulumi.InputType['GroupMetricRuleEscalationsArgs']] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] group_metric_rule_name: The name of the alert rule.
         :param pulumi.Input[str] interval: The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
@@ -676,7 +683,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[int] period: The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
         :param pulumi.Input[str] rule_id: The ID of the alert rule.
         :param pulumi.Input[int] silence_time: The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMetricRuleTargetArgs']]]] targets: The information about the resource for which alerts are triggered. See the following `Block targets`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMetricRuleTargetArgs']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The callback URL.
         """
         ...
@@ -688,9 +695,9 @@ class GroupMetricRule(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Group Metric Rule resource.
 
-        For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/doc-detail/114943.htm).
+        For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putgroupmetricrule).
 
-        > **NOTE:** Available in v1.104.0+.
+        > **NOTE:** Available since v1.104.0.
 
         ## Example Usage
 
@@ -699,18 +706,25 @@ class GroupMetricRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
-        this_random_uuid = random.RandomUuid("thisRandomUuid")
-        this_group_metric_rule = alicloud.cms.GroupMetricRule("thisGroupMetricRule",
-            group_id="539****",
-            rule_id=this_random_uuid.id,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+            alarm_contact_group_name=name,
+            describe=name)
+        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
+            monitor_group_name=name,
+            contact_groups=[default_alarm_contact_group.id])
+        this = alicloud.cms.GroupMetricRule("this",
+            group_id=default_monitor_group.id,
+            group_metric_rule_name=name,
             category="ecs",
-            namespace="acs_ecs_dashboard",
             metric_name="cpu_total",
+            namespace="acs_ecs_dashboard",
+            rule_id=name,
             period=60,
-            group_metric_rule_name="tf-testacc-rule-name",
-            email_subject="tf-testacc-rule-name-warning",
             interval="3600",
             silence_time=85800,
             no_effective_interval="00:00-05:30",
@@ -852,7 +866,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param pulumi.Input[str] effective_interval: The time period during which the alert rule is effective.
         :param pulumi.Input[str] email_subject: The subject of the alert notification email.                                         .
-        :param pulumi.Input[pulumi.InputType['GroupMetricRuleEscalationsArgs']] escalations: Alarm level. See the following `Block escalations`.
+        :param pulumi.Input[pulumi.InputType['GroupMetricRuleEscalationsArgs']] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] group_metric_rule_name: The name of the alert rule.
         :param pulumi.Input[str] interval: The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
@@ -863,7 +877,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[str] rule_id: The ID of the alert rule.
         :param pulumi.Input[int] silence_time: The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
         :param pulumi.Input[str] status: The status of Group Metric Rule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMetricRuleTargetArgs']]]] targets: The information about the resource for which alerts are triggered. See the following `Block targets`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMetricRuleTargetArgs']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The callback URL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -934,7 +948,7 @@ class GroupMetricRule(pulumi.CustomResource):
     @pulumi.getter
     def escalations(self) -> pulumi.Output['outputs.GroupMetricRuleEscalations']:
         """
-        Alarm level. See the following `Block escalations`.
+        Alarm level. See `escalations` below.
         """
         return pulumi.get(self, "escalations")
 
@@ -1022,7 +1036,7 @@ class GroupMetricRule(pulumi.CustomResource):
     @pulumi.getter
     def targets(self) -> pulumi.Output[Sequence['outputs.GroupMetricRuleTarget']]:
         """
-        The information about the resource for which alerts are triggered. See the following `Block targets`.
+        The information about the resource for which alerts are triggered. See `targets` below.
         """
         return pulumi.get(self, "targets")
 

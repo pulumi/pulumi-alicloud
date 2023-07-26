@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetRouteMaps(ctx *pulumi.Context, args *GetRouteMapsArgs, opts ...pulumi.InvokeOption) (*GetRouteMapsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRouteMapsResult
 	err := ctx.Invoke("alicloud:cen/getRouteMaps:getRouteMaps", args, &rv, opts...)
 	if err != nil {

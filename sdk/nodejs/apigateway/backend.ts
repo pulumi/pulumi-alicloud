@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Api Gateway Backend resource.
  *
- * For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/zh/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
+ * For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0.
  *
  * ## Example Usage
  *
@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name1 = config.get("name1") || "tf-testAccBackend";
+ * const name = config.get("name") || "tf_example";
  * const _default = new alicloud.apigateway.Backend("default", {
- *     backendName: _var.name,
- *     description: _var.name,
+ *     backendName: name,
+ *     description: name,
  *     backendType: "HTTP",
  * });
  * ```

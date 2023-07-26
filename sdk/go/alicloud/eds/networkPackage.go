@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,6 +97,7 @@ func NewNetworkPackage(ctx *pulumi.Context,
 	if args.OfficeSiteId == nil {
 		return nil, errors.New("invalid value for required argument 'OfficeSiteId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkPackage
 	err := ctx.RegisterResource("alicloud:eds/networkPackage:NetworkPackage", name, args, &resource, opts...)
 	if err != nil {

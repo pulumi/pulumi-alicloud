@@ -8,10 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
+//
+// > **NOTE:** Available since v1.48.0.
 //
 // ## Example Usage
 //
@@ -102,12 +105,10 @@ import (
 //				return err
 //			}
 //			_, err = rds.NewReadWriteSplittingConnection(ctx, "exampleReadWriteSplittingConnection", &rds.ReadWriteSplittingConnectionArgs{
-//				InstanceId:       exampleInstance.ID(),
+//				InstanceId:       exampleReadOnlyInstance.MasterDbInstanceId,
 //				ConnectionPrefix: pulumi.String("example-con-123"),
 //				DistributionType: pulumi.String("Standard"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				exampleReadOnlyInstance,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -160,6 +161,7 @@ func NewReadWriteSplittingConnection(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ReadWriteSplittingConnection
 	err := ctx.RegisterResource("alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection", name, args, &resource, opts...)
 	if err != nil {

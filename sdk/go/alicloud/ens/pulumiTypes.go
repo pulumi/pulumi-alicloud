@@ -7,8 +7,266 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
+
+type InstanceDataDisk struct {
+	// Type of dataDisk
+	// - cloud_efficiency：High-efficiency cloud disk
+	// - cloud_ssd：Full flash cloud disk
+	// - local_hdd：Local hdd disk
+	// - local_ssd：Local disk ssd.
+	Category *string `pulumi:"category"`
+	// Data disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+	Size *int `pulumi:"size"`
+}
+
+// InstanceDataDiskInput is an input type that accepts InstanceDataDiskArgs and InstanceDataDiskOutput values.
+// You can construct a concrete instance of `InstanceDataDiskInput` via:
+//
+//	InstanceDataDiskArgs{...}
+type InstanceDataDiskInput interface {
+	pulumi.Input
+
+	ToInstanceDataDiskOutput() InstanceDataDiskOutput
+	ToInstanceDataDiskOutputWithContext(context.Context) InstanceDataDiskOutput
+}
+
+type InstanceDataDiskArgs struct {
+	// Type of dataDisk
+	// - cloud_efficiency：High-efficiency cloud disk
+	// - cloud_ssd：Full flash cloud disk
+	// - local_hdd：Local hdd disk
+	// - local_ssd：Local disk ssd.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Data disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (InstanceDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDataDisk)(nil)).Elem()
+}
+
+func (i InstanceDataDiskArgs) ToInstanceDataDiskOutput() InstanceDataDiskOutput {
+	return i.ToInstanceDataDiskOutputWithContext(context.Background())
+}
+
+func (i InstanceDataDiskArgs) ToInstanceDataDiskOutputWithContext(ctx context.Context) InstanceDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDataDiskOutput)
+}
+
+// InstanceDataDiskArrayInput is an input type that accepts InstanceDataDiskArray and InstanceDataDiskArrayOutput values.
+// You can construct a concrete instance of `InstanceDataDiskArrayInput` via:
+//
+//	InstanceDataDiskArray{ InstanceDataDiskArgs{...} }
+type InstanceDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToInstanceDataDiskArrayOutput() InstanceDataDiskArrayOutput
+	ToInstanceDataDiskArrayOutputWithContext(context.Context) InstanceDataDiskArrayOutput
+}
+
+type InstanceDataDiskArray []InstanceDataDiskInput
+
+func (InstanceDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceDataDisk)(nil)).Elem()
+}
+
+func (i InstanceDataDiskArray) ToInstanceDataDiskArrayOutput() InstanceDataDiskArrayOutput {
+	return i.ToInstanceDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceDataDiskArray) ToInstanceDataDiskArrayOutputWithContext(ctx context.Context) InstanceDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDataDiskArrayOutput)
+}
+
+type InstanceDataDiskOutput struct{ *pulumi.OutputState }
+
+func (InstanceDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDataDisk)(nil)).Elem()
+}
+
+func (o InstanceDataDiskOutput) ToInstanceDataDiskOutput() InstanceDataDiskOutput {
+	return o
+}
+
+func (o InstanceDataDiskOutput) ToInstanceDataDiskOutputWithContext(ctx context.Context) InstanceDataDiskOutput {
+	return o
+}
+
+// Type of dataDisk
+// - cloud_efficiency：High-efficiency cloud disk
+// - cloud_ssd：Full flash cloud disk
+// - local_hdd：Local hdd disk
+// - local_ssd：Local disk ssd.
+func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Data disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+func (o InstanceDataDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type InstanceDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceDataDisk)(nil)).Elem()
+}
+
+func (o InstanceDataDiskArrayOutput) ToInstanceDataDiskArrayOutput() InstanceDataDiskArrayOutput {
+	return o
+}
+
+func (o InstanceDataDiskArrayOutput) ToInstanceDataDiskArrayOutputWithContext(ctx context.Context) InstanceDataDiskArrayOutput {
+	return o
+}
+
+func (o InstanceDataDiskArrayOutput) Index(i pulumi.IntInput) InstanceDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDataDisk {
+		return vs[0].([]InstanceDataDisk)[vs[1].(int)]
+	}).(InstanceDataDiskOutput)
+}
+
+type InstanceSystemDisk struct {
+	// System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+	Size *int `pulumi:"size"`
+}
+
+// InstanceSystemDiskInput is an input type that accepts InstanceSystemDiskArgs and InstanceSystemDiskOutput values.
+// You can construct a concrete instance of `InstanceSystemDiskInput` via:
+//
+//	InstanceSystemDiskArgs{...}
+type InstanceSystemDiskInput interface {
+	pulumi.Input
+
+	ToInstanceSystemDiskOutput() InstanceSystemDiskOutput
+	ToInstanceSystemDiskOutputWithContext(context.Context) InstanceSystemDiskOutput
+}
+
+type InstanceSystemDiskArgs struct {
+	// System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (InstanceSystemDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSystemDisk)(nil)).Elem()
+}
+
+func (i InstanceSystemDiskArgs) ToInstanceSystemDiskOutput() InstanceSystemDiskOutput {
+	return i.ToInstanceSystemDiskOutputWithContext(context.Background())
+}
+
+func (i InstanceSystemDiskArgs) ToInstanceSystemDiskOutputWithContext(ctx context.Context) InstanceSystemDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSystemDiskOutput)
+}
+
+func (i InstanceSystemDiskArgs) ToInstanceSystemDiskPtrOutput() InstanceSystemDiskPtrOutput {
+	return i.ToInstanceSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceSystemDiskArgs) ToInstanceSystemDiskPtrOutputWithContext(ctx context.Context) InstanceSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSystemDiskOutput).ToInstanceSystemDiskPtrOutputWithContext(ctx)
+}
+
+// InstanceSystemDiskPtrInput is an input type that accepts InstanceSystemDiskArgs, InstanceSystemDiskPtr and InstanceSystemDiskPtrOutput values.
+// You can construct a concrete instance of `InstanceSystemDiskPtrInput` via:
+//
+//	        InstanceSystemDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceSystemDiskPtrInput interface {
+	pulumi.Input
+
+	ToInstanceSystemDiskPtrOutput() InstanceSystemDiskPtrOutput
+	ToInstanceSystemDiskPtrOutputWithContext(context.Context) InstanceSystemDiskPtrOutput
+}
+
+type instanceSystemDiskPtrType InstanceSystemDiskArgs
+
+func InstanceSystemDiskPtr(v *InstanceSystemDiskArgs) InstanceSystemDiskPtrInput {
+	return (*instanceSystemDiskPtrType)(v)
+}
+
+func (*instanceSystemDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSystemDisk)(nil)).Elem()
+}
+
+func (i *instanceSystemDiskPtrType) ToInstanceSystemDiskPtrOutput() InstanceSystemDiskPtrOutput {
+	return i.ToInstanceSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceSystemDiskPtrType) ToInstanceSystemDiskPtrOutputWithContext(ctx context.Context) InstanceSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSystemDiskPtrOutput)
+}
+
+type InstanceSystemDiskOutput struct{ *pulumi.OutputState }
+
+func (InstanceSystemDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSystemDisk)(nil)).Elem()
+}
+
+func (o InstanceSystemDiskOutput) ToInstanceSystemDiskOutput() InstanceSystemDiskOutput {
+	return o
+}
+
+func (o InstanceSystemDiskOutput) ToInstanceSystemDiskOutputWithContext(ctx context.Context) InstanceSystemDiskOutput {
+	return o
+}
+
+func (o InstanceSystemDiskOutput) ToInstanceSystemDiskPtrOutput() InstanceSystemDiskPtrOutput {
+	return o.ToInstanceSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSystemDiskOutput) ToInstanceSystemDiskPtrOutputWithContext(ctx context.Context) InstanceSystemDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSystemDisk) *InstanceSystemDisk {
+		return &v
+	}).(InstanceSystemDiskPtrOutput)
+}
+
+// System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+func (o InstanceSystemDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type InstanceSystemDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSystemDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSystemDisk)(nil)).Elem()
+}
+
+func (o InstanceSystemDiskPtrOutput) ToInstanceSystemDiskPtrOutput() InstanceSystemDiskPtrOutput {
+	return o
+}
+
+func (o InstanceSystemDiskPtrOutput) ToInstanceSystemDiskPtrOutputWithContext(ctx context.Context) InstanceSystemDiskPtrOutput {
+	return o
+}
+
+func (o InstanceSystemDiskPtrOutput) Elem() InstanceSystemDiskOutput {
+	return o.ApplyT(func(v *InstanceSystemDisk) InstanceSystemDisk {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceSystemDisk
+		return ret
+	}).(InstanceSystemDiskOutput)
+}
+
+// System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+func (o InstanceSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceSystemDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
 
 type GetKeyPairsPair struct {
 	// The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
@@ -144,8 +402,16 @@ func (o GetKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsPairOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskInput)(nil)).Elem(), InstanceDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskArrayInput)(nil)).Elem(), InstanceDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSystemDiskInput)(nil)).Elem(), InstanceSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSystemDiskPtrInput)(nil)).Elem(), InstanceSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInput)(nil)).Elem(), GetKeyPairsPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairArrayInput)(nil)).Elem(), GetKeyPairsPairArray{})
+	pulumi.RegisterOutputType(InstanceDataDiskOutput{})
+	pulumi.RegisterOutputType(InstanceDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(InstanceSystemDiskOutput{})
+	pulumi.RegisterOutputType(InstanceSystemDiskPtrOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairArrayOutput{})
 }

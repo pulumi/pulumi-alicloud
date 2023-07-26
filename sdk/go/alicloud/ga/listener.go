@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Listener resource.
 //
-// For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createlistener).
+// For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createlistener).
 //
 // > **NOTE:** Available since v1.111.0.
 //
@@ -130,6 +131,7 @@ func NewListener(ctx *pulumi.Context,
 	if args.PortRanges == nil {
 		return nil, errors.New("invalid value for required argument 'PortRanges'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Listener
 	err := ctx.RegisterResource("alicloud:ga/listener:Listener", name, args, &resource, opts...)
 	if err != nil {

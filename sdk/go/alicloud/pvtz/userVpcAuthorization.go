@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +76,7 @@ func NewUserVpcAuthorization(ctx *pulumi.Context,
 	if args.AuthorizedUserId == nil {
 		return nil, errors.New("invalid value for required argument 'AuthorizedUserId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserVpcAuthorization
 	err := ctx.RegisterResource("alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization", name, args, &resource, opts...)
 	if err != nil {

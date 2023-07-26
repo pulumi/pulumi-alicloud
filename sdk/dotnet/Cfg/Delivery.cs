@@ -14,7 +14,55 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-doc-config-2020-09-07-api-doc-createconfigdeliverychannel).
     /// 
-    /// &gt; **NOTE:** Available since v1.171.0+.
+    /// &gt; **NOTE:** Available since v1.171.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example-sls";
+    ///     var thisAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var thisRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
+    /// 
+    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     {
+    ///         Project = defaultProject.Name,
+    ///     });
+    /// 
+    ///     var defaultDelivery = new AliCloud.Cfg.Delivery("defaultDelivery", new()
+    ///     {
+    ///         ConfigurationItemChangeNotification = true,
+    ///         NonCompliantNotification = true,
+    ///         DeliveryChannelName = name,
+    ///         DeliveryChannelTargetArn = Output.Tuple(thisRegions, thisAccount, defaultProject.Name, defaultStore.Name).Apply(values =&gt;
+    ///         {
+    ///             var thisRegions = values.Item1;
+    ///             var thisAccount = values.Item2;
+    ///             var defaultProjectName = values.Item3;
+    ///             var defaultStoreName = values.Item4;
+    ///             return $"acs:log:{thisRegions.Apply(getRegionsResult =&gt; getRegionsResult.Ids[0])}:{thisAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{defaultProjectName}/logstore/{defaultStoreName}";
+    ///         }),
+    ///         DeliveryChannelType = "SLS",
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

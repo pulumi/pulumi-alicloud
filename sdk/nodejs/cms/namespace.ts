@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Monitor Service Namespace resource.
  *
- * For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+ * For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitornamespace).
  *
- * > **NOTE:** Available in v1.171.0+.
+ * > **NOTE:** Available since v1.171.0.
  *
  * ## Example Usage
  *
@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.cms.Namespace("example", {
- *     namespace: "example-value",
+ *     namespace: "tf_example",
  *     specification: "cms.s1.large",
  * });
  * ```

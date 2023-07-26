@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,6 +112,7 @@ func NewSchedule(ctx *pulumi.Context,
 	if args.ScheduleName == nil {
 		return nil, errors.New("invalid value for required argument 'ScheduleName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Schedule
 	err := ctx.RegisterResource("alicloud:fnf/schedule:Schedule", name, args, &resource, opts...)
 	if err != nil {

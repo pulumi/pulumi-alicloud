@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Config Rule resource.
  *
- * For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/).
+ * For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigrule).
  *
- * > **NOTE:** Available in v1.204.0+.
+ * > **NOTE:** Available since v1.204.0.
  *
  * ## Example Usage
  *
@@ -21,23 +21,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.cfg.Rule("default", {
- *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
- *     description: "关联的资源类型下实体资源均已有指定标签，存在没有指定标签的资源则视为“不合规”。",
- *     excludeResourceIdsScope: "test",
- *     inputParameters: {
- *         foo: "terraform",
- *         "var": "terraform",
- *     },
- *     regionIdsScope: "cn-hangzhou",
- *     resourceGroupIdsScope: "rg-acfmvoh45rhcfly",
- *     resourceTypesScopes: ["ACS::RDS::DBInstance"],
- *     riskLevel: 1,
- *     ruleName: "tf-cicd-rule-by-required-tags",
- *     sourceIdentifier: "required-tags",
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultRule = new alicloud.cfg.Rule("defaultRule", {
+ *     description: "If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
  *     sourceOwner: "ALIYUN",
- *     tagKeyScope: "test",
- *     tagValueScope: "test",
+ *     sourceIdentifier: "contains-tag",
+ *     riskLevel: 1,
+ *     tagValueScope: "example-value",
+ *     tagKeyScope: "example-key",
+ *     excludeResourceIdsScope: "example-resource_id",
+ *     regionIdsScope: "cn-hangzhou",
+ *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
+ *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceTypesScopes: ["ACS::RDS::DBInstance"],
+ *     ruleName: "contains-tag",
+ *     inputParameters: {
+ *         key: "example",
+ *         value: "example",
+ *     },
  * });
  * ```
  *

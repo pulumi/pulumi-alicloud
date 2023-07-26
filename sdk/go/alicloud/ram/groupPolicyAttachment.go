@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -110,6 +111,7 @@ func NewGroupPolicyAttachment(ctx *pulumi.Context,
 	if args.PolicyType == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GroupPolicyAttachment
 	err := ctx.RegisterResource("alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment", name, args, &resource, opts...)
 	if err != nil {

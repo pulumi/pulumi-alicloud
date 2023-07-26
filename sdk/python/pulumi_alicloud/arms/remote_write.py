@@ -118,7 +118,7 @@ class RemoteWrite(pulumi.CustomResource):
 
         For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusremotewrite).
 
-        > **NOTE:** Available in v1.204.0+.
+        > **NOTE:** Available since v1.204.0.
 
         ## Example Usage
 
@@ -128,8 +128,35 @@ class RemoteWrite(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.arms.RemoteWrite("default",
-            cluster_id="your_cluster_id",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[len(default_zones.zones) - 1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
+            cluster_type="ecs",
+            grafana_instance_id="free",
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            security_group_id=default_security_group.id,
+            cluster_name=default_network.id.apply(lambda id: f"{name}-{id}"),
+            resource_group_id=default_resource_groups.groups[0].id,
+            tags={
+                "Created": "TF",
+                "For": "Prometheus",
+            })
+        default_remote_write = alicloud.arms.RemoteWrite("defaultRemoteWrite",
+            cluster_id=default_prometheus.id,
             remote_write_yaml=\"\"\"remote_write:
         - name: ArmsRemoteWrite
           url: http://47.96.227.137:8080/prometheus/xxx/yyy/cn-hangzhou/api/v3/write
@@ -140,7 +167,6 @@ class RemoteWrite(pulumi.CustomResource):
             regex: si-6e2ca86444db4e55a7c1
             replacement: $1
             action: keep
-
         \"\"\")
         ```
 
@@ -168,7 +194,7 @@ class RemoteWrite(pulumi.CustomResource):
 
         For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusremotewrite).
 
-        > **NOTE:** Available in v1.204.0+.
+        > **NOTE:** Available since v1.204.0.
 
         ## Example Usage
 
@@ -178,8 +204,35 @@ class RemoteWrite(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.arms.RemoteWrite("default",
-            cluster_id="your_cluster_id",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[len(default_zones.zones) - 1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
+            cluster_type="ecs",
+            grafana_instance_id="free",
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            security_group_id=default_security_group.id,
+            cluster_name=default_network.id.apply(lambda id: f"{name}-{id}"),
+            resource_group_id=default_resource_groups.groups[0].id,
+            tags={
+                "Created": "TF",
+                "For": "Prometheus",
+            })
+        default_remote_write = alicloud.arms.RemoteWrite("defaultRemoteWrite",
+            cluster_id=default_prometheus.id,
             remote_write_yaml=\"\"\"remote_write:
         - name: ArmsRemoteWrite
           url: http://47.96.227.137:8080/prometheus/xxx/yyy/cn-hangzhou/api/v3/write
@@ -190,7 +243,6 @@ class RemoteWrite(pulumi.CustomResource):
             regex: si-6e2ca86444db4e55a7c1
             replacement: $1
             action: keep
-
         \"\"\")
         ```
 

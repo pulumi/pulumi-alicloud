@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -117,6 +118,7 @@ func NewRamDirectory(ctx *pulumi.Context,
 	if args.VswitchIds == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchIds'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RamDirectory
 	err := ctx.RegisterResource("alicloud:eds/ramDirectory:RamDirectory", name, args, &resource, opts...)
 	if err != nil {

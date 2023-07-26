@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 // }
 // ```
 func GetAutoSnapShotPolicies(ctx *pulumi.Context, args *GetAutoSnapShotPoliciesArgs, opts ...pulumi.InvokeOption) (*GetAutoSnapShotPoliciesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAutoSnapShotPoliciesResult
 	err := ctx.Invoke("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args, &rv, opts...)
 	if err != nil {

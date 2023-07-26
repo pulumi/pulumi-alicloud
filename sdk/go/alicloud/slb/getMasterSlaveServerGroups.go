@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in 1.54.0+
 func GetMasterSlaveServerGroups(ctx *pulumi.Context, args *GetMasterSlaveServerGroupsArgs, opts ...pulumi.InvokeOption) (*GetMasterSlaveServerGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMasterSlaveServerGroupsResult
 	err := ctx.Invoke("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args, &rv, opts...)
 	if err != nil {

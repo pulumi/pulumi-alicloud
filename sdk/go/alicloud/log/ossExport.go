@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -187,6 +188,7 @@ func NewOssExport(ctx *pulumi.Context,
 	if args.TimeZone == nil {
 		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OssExport
 	err := ctx.RegisterResource("alicloud:log/ossExport:OssExport", name, args, &resource, opts...)
 	if err != nil {

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ga
     /// <summary>
     /// Provides a Global Accelerator (GA) Additional Certificate resource.
     /// 
-    /// For information about Global Accelerator (GA) Additional Certificate and how to use it, see [What is Additional Certificate](https://www.alibabacloud.com/help/en/doc-detail/302356.html).
+    /// For information about Global Accelerator (GA) Additional Certificate and how to use it, see [What is Additional Certificate](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-associateadditionalcertificateswithlistener).
     /// 
     /// &gt; **NOTE:** Available since v1.150.0.
     /// 

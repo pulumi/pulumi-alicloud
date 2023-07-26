@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,6 +95,7 @@ import (
 //
 // ```
 func GetSnatEntries(ctx *pulumi.Context, args *GetSnatEntriesArgs, opts ...pulumi.InvokeOption) (*GetSnatEntriesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSnatEntriesResult
 	err := ctx.Invoke("alicloud:vpc/getSnatEntries:getSnatEntries", args, &rv, opts...)
 	if err != nil {

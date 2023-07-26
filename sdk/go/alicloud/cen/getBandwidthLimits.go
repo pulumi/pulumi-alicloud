@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetBandwidthLimits(ctx *pulumi.Context, args *GetBandwidthLimitsArgs, opts ...pulumi.InvokeOption) (*GetBandwidthLimitsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBandwidthLimitsResult
 	err := ctx.Invoke("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args, &rv, opts...)
 	if err != nil {

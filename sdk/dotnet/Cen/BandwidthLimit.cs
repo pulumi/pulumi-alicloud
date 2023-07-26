@@ -99,21 +99,13 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var exampleBandwidthLimit = new AliCloud.Cen.BandwidthLimit("exampleBandwidthLimit", new()
     ///     {
-    ///         InstanceId = exampleInstance.Id,
+    ///         InstanceId = exampleBandwidthPackageAttachment.InstanceId,
     ///         RegionIds = new[]
     ///         {
-    ///             region1,
-    ///             region2,
+    ///             example1.ChildInstanceRegionId,
+    ///             example2.ChildInstanceRegionId,
     ///         },
     ///         Limit = 4,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             exampleBandwidthPackageAttachment,
-    ///             example2,
-    ///             example1,
-    ///         },
     ///     });
     /// 
     /// });

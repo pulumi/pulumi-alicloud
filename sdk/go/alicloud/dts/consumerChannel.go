@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -217,6 +218,7 @@ func NewConsumerChannel(ctx *pulumi.Context,
 	if args.DtsInstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'DtsInstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConsumerChannel
 	err := ctx.RegisterResource("alicloud:dts/consumerChannel:ConsumerChannel", name, args, &resource, opts...)
 	if err != nil {

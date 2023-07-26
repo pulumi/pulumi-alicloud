@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -223,6 +224,7 @@ func NewLaunchTemplate(ctx *pulumi.Context,
 		args = &LaunchTemplateArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LaunchTemplate
 	err := ctx.RegisterResource("alicloud:ecs/launchTemplate:LaunchTemplate", name, args, &resource, opts...)
 	if err != nil {

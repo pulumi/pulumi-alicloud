@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,6 +95,7 @@ func NewVpcEndpointLinkedVpc(ctx *pulumi.Context,
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VpcEndpointLinkedVpc
 	err := ctx.RegisterResource("alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc", name, args, &resource, opts...)
 	if err != nil {

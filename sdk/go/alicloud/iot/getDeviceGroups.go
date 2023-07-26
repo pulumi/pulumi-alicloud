@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetDeviceGroups(ctx *pulumi.Context, args *GetDeviceGroupsArgs, opts ...pulumi.InvokeOption) (*GetDeviceGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDeviceGroupsResult
 	err := ctx.Invoke("alicloud:iot/getDeviceGroups:getDeviceGroups", args, &rv, opts...)
 	if err != nil {

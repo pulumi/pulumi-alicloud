@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in v1.147.0+.
 func GetHostEcsLevelInfos(ctx *pulumi.Context, args *GetHostEcsLevelInfosArgs, opts ...pulumi.InvokeOption) (*GetHostEcsLevelInfosResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostEcsLevelInfosResult
 	err := ctx.Invoke("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args, &rv, opts...)
 	if err != nil {

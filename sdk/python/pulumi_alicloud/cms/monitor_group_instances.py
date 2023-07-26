@@ -21,7 +21,7 @@ class MonitorGroupInstancesArgs:
         """
         The set of arguments for constructing a MonitorGroupInstances resource.
         :param pulumi.Input[str] group_id: The id of Cms Group.
-        :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group. See `instances` below.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "instances", instances)
@@ -42,7 +42,7 @@ class MonitorGroupInstancesArgs:
     @pulumi.getter
     def instances(self) -> pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]:
         """
-        Instance information added to the Cms Group.
+        Instance information added to the Cms Group. See `instances` below.
         """
         return pulumi.get(self, "instances")
 
@@ -59,7 +59,7 @@ class _MonitorGroupInstancesState:
         """
         Input properties used for looking up and filtering MonitorGroupInstances resources.
         :param pulumi.Input[str] group_id: The id of Cms Group.
-        :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group. See `instances` below.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -82,7 +82,7 @@ class _MonitorGroupInstancesState:
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]]:
         """
-        Instance information added to the Cms Group.
+        Instance information added to the Cms Group. See `instances` below.
         """
         return pulumi.get(self, "instances")
 
@@ -102,9 +102,9 @@ class MonitorGroupInstances(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Monitor Group Instances resource.
 
-        For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/doc-detail/115031.htm).
+        For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroupinstances).
 
-        > **NOTE:** Available in v1.115.0+.
+        > **NOTE:** Available since v1.115.0.
 
         ## Example Usage
 
@@ -114,16 +114,21 @@ class MonitorGroupInstances(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="tf-testacc-vpcname",
+            vpc_name=name,
             cidr_block="192.168.0.0/16")
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name="tf-testaccmonitorgroup")
+        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name=name)
+        default_regions = alicloud.get_regions(current=True)
         example = alicloud.cms.MonitorGroupInstances("example",
             group_id=default_monitor_group.id,
             instances=[alicloud.cms.MonitorGroupInstancesInstanceArgs(
                 instance_id=default_network.id,
-                instance_name="tf-testacc-vpcname",
-                region_id="cn-hangzhou",
+                instance_name=name,
+                region_id=default_regions.regions[0].id,
                 category="vpc",
             )])
         ```
@@ -139,7 +144,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The id of Cms Group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]] instances: Instance information added to the Cms Group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]] instances: Instance information added to the Cms Group. See `instances` below.
         """
         ...
     @overload
@@ -150,9 +155,9 @@ class MonitorGroupInstances(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Monitor Group Instances resource.
 
-        For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/doc-detail/115031.htm).
+        For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroupinstances).
 
-        > **NOTE:** Available in v1.115.0+.
+        > **NOTE:** Available since v1.115.0.
 
         ## Example Usage
 
@@ -162,16 +167,21 @@ class MonitorGroupInstances(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="tf-testacc-vpcname",
+            vpc_name=name,
             cidr_block="192.168.0.0/16")
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name="tf-testaccmonitorgroup")
+        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name=name)
+        default_regions = alicloud.get_regions(current=True)
         example = alicloud.cms.MonitorGroupInstances("example",
             group_id=default_monitor_group.id,
             instances=[alicloud.cms.MonitorGroupInstancesInstanceArgs(
                 instance_id=default_network.id,
-                instance_name="tf-testacc-vpcname",
-                region_id="cn-hangzhou",
+                instance_name=name,
+                region_id=default_regions.regions[0].id,
                 category="vpc",
             )])
         ```
@@ -236,7 +246,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The id of Cms Group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]] instances: Instance information added to the Cms Group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]] instances: Instance information added to the Cms Group. See `instances` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -258,7 +268,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
     @pulumi.getter
     def instances(self) -> pulumi.Output[Sequence['outputs.MonitorGroupInstancesInstance']]:
         """
-        Instance information added to the Cms Group.
+        Instance information added to the Cms Group. See `instances` below.
         """
         return pulumi.get(self, "instances")
 

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,6 +86,7 @@ func NewVault(ctx *pulumi.Context,
 	if args.VaultName == nil {
 		return nil, errors.New("invalid value for required argument 'VaultName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vault
 	err := ctx.RegisterResource("alicloud:hbr/vault:Vault", name, args, &resource, opts...)
 	if err != nil {

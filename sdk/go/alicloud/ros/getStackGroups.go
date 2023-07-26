@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetStackGroups(ctx *pulumi.Context, args *GetStackGroupsArgs, opts ...pulumi.InvokeOption) (*GetStackGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStackGroupsResult
 	err := ctx.Invoke("alicloud:ros/getStackGroups:getStackGroups", args, &rv, opts...)
 	if err != nil {

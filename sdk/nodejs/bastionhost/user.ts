@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/204503.htm).
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -19,22 +19,53 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const local = new alicloud.bastionhost.User("local", {
- *     instanceId: "example_value",
- *     mobile: "13312345678",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.bastionhost.Instance("defaultInstance", {
+ *     description: name,
+ *     licenseCode: "bhah_ent_50_asset",
+ *     planCode: "cloudbastion",
+ *     storage: "5",
+ *     bandwidth: "5",
+ *     period: 1,
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ * });
+ * const localUser = new alicloud.bastionhost.User("localUser", {
+ *     instanceId: defaultInstance.id,
  *     mobileCountryCode: "CN",
+ *     mobile: "13312345678",
  *     password: "YourPassword-123",
  *     source: "Local",
- *     userName: "my-local-user",
+ *     userName: `${name}_local_user`,
  * });
- * const ram = new alicloud.bastionhost.User("ram", {
- *     instanceId: "example_value",
- *     mobile: "13312345678",
- *     mobileCountryCode: "CN",
- *     password: "YourPassword-123",
+ * const user = new alicloud.ram.User("user", {
+ *     displayName: `${name}_bastionhost_user`,
+ *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ *     force: true,
+ * });
+ * const defaultAccount = alicloud.getAccount({});
+ * const ramUser = new alicloud.bastionhost.User("ramUser", {
+ *     instanceId: defaultInstance.id,
  *     source: "Ram",
- *     sourceUserId: "1234567890",
- *     userName: "my-ram-user",
+ *     sourceUserId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     userName: user.name,
  * });
  * ```
  *
@@ -118,7 +149,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly mobileCountryCode!: pulumi.Output<string>;
     /**
-     * Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+     * Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -251,7 +282,7 @@ export interface UserState {
      */
     mobileCountryCode?: pulumi.Input<string>;
     /**
-     * Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+     * Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
      */
     password?: pulumi.Input<string>;
     /**
@@ -329,7 +360,7 @@ export interface UserArgs {
      */
     mobileCountryCode?: pulumi.Input<string>;
     /**
-     * Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+     * Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
      */
     password?: pulumi.Input<string>;
     /**

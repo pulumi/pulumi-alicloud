@@ -18,5 +18,6 @@ from .get_zones import *
 from .layer_version import *
 from .service import *
 from .trigger import *
+from .v2_function import *
 from ._inputs import *
 from . import outputs

@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MetricRuleTemplateAlertTemplateEscalations {
     /**
-     * @return The condition for triggering critical-level alerts. See the following `Block critical`.
+     * @return The condition for triggering critical-level alerts. See `critical` below.
      * 
      */
     private @Nullable MetricRuleTemplateAlertTemplateEscalationsCritical critical;
     /**
-     * @return The condition for triggering info-level alerts. See the following `Block info`.
+     * @return The condition for triggering info-level alerts. See `info` below.
      * 
      */
     private @Nullable MetricRuleTemplateAlertTemplateEscalationsInfo info;
     /**
-     * @return The condition for triggering warn-level alerts. See the following `Block warn`.
+     * @return The condition for triggering warn-level alerts. See `warn` below.
      * 
      */
     private @Nullable MetricRuleTemplateAlertTemplateEscalationsWarn warn;
 
     private MetricRuleTemplateAlertTemplateEscalations() {}
     /**
-     * @return The condition for triggering critical-level alerts. See the following `Block critical`.
+     * @return The condition for triggering critical-level alerts. See `critical` below.
      * 
      */
     public Optional<MetricRuleTemplateAlertTemplateEscalationsCritical> critical() {
         return Optional.ofNullable(this.critical);
     }
     /**
-     * @return The condition for triggering info-level alerts. See the following `Block info`.
+     * @return The condition for triggering info-level alerts. See `info` below.
      * 
      */
     public Optional<MetricRuleTemplateAlertTemplateEscalationsInfo> info() {
         return Optional.ofNullable(this.info);
     }
     /**
-     * @return The condition for triggering warn-level alerts. See the following `Block warn`.
+     * @return The condition for triggering warn-level alerts. See `warn` below.
      * 
      */
     public Optional<MetricRuleTemplateAlertTemplateEscalationsWarn> warn() {

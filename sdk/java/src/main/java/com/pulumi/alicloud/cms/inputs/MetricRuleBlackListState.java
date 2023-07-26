@@ -154,14 +154,14 @@ public final class MetricRuleBlackListState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Monitoring metrics in the instance.See the following `Block Metrics`.
+     * Monitoring metrics in the instance. See `metrics` below.
      * 
      */
     @Import(name="metrics")
     private @Nullable Output<List<MetricRuleBlackListMetricArgs>> metrics;
 
     /**
-     * @return Monitoring metrics in the instance.See the following `Block Metrics`.
+     * @return Monitoring metrics in the instance. See `metrics` below.
      * 
      */
     public Optional<Output<List<MetricRuleBlackListMetricArgs>>> metrics() {
@@ -465,7 +465,7 @@ public final class MetricRuleBlackListState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param metrics Monitoring metrics in the instance.See the following `Block Metrics`.
+         * @param metrics Monitoring metrics in the instance. See `metrics` below.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class MetricRuleBlackListState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param metrics Monitoring metrics in the instance.See the following `Block Metrics`.
+         * @param metrics Monitoring metrics in the instance. See `metrics` below.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class MetricRuleBlackListState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param metrics Monitoring metrics in the instance.See the following `Block Metrics`.
+         * @param metrics Monitoring metrics in the instance. See `metrics` below.
          * 
          * @return builder
          * 

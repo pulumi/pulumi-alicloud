@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -139,6 +140,7 @@ func NewShardingNetworkPublicAddress(ctx *pulumi.Context,
 	if args.NodeId == nil {
 		return nil, errors.New("invalid value for required argument 'NodeId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ShardingNetworkPublicAddress
 	err := ctx.RegisterResource("alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress", name, args, &resource, opts...)
 	if err != nil {

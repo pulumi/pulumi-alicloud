@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -200,6 +201,7 @@ func NewServerGroup(ctx *pulumi.Context,
 		args = &ServerGroupArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerGroup
 	err := ctx.RegisterResource("alicloud:alb/serverGroup:ServerGroup", name, args, &resource, opts...)
 	if err != nil {

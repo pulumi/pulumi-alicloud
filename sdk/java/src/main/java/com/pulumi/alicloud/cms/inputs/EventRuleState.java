@@ -33,14 +33,14 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+     * Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
      * 
      */
     @Import(name="eventPattern")
     private @Nullable Output<EventRuleEventPatternArgs> eventPattern;
 
     /**
-     * @return Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+     * @return Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
      * 
      */
     public Optional<Output<EventRuleEventPatternArgs>> eventPattern() {
@@ -158,7 +158,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventPattern Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+         * @param eventPattern Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventPattern Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+         * @param eventPattern Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
          * 
          * @return builder
          * 

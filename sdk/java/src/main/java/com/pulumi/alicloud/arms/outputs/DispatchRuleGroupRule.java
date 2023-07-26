@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DispatchRuleGroupRule {
+    /**
+     * @return The ID of the group rule.
+     * 
+     */
     private @Nullable Integer groupId;
     /**
      * @return The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
@@ -36,6 +40,10 @@ public final class DispatchRuleGroupRule {
     private @Nullable Integer repeatInterval;
 
     private DispatchRuleGroupRule() {}
+    /**
+     * @return The ID of the group rule.
+     * 
+     */
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }

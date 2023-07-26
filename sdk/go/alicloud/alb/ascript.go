@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +72,7 @@ func NewAScript(ctx *pulumi.Context,
 	if args.ScriptContent == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptContent'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AScript
 	err := ctx.RegisterResource("alicloud:alb/aScript:AScript", name, args, &resource, opts...)
 	if err != nil {

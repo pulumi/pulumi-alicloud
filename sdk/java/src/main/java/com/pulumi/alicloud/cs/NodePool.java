@@ -29,574 +29,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * The managed cluster configuration,
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.ecs.KeyPair;
- * import com.pulumi.alicloud.ecs.KeyPairArgs;
- * import com.pulumi.alicloud.cs.ManagedKubernetes;
- * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-test&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
- *             .build());
- * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .cpuCoreCount(2)
- *             .memorySize(4)
- *             .kubernetesNodeRole(&#34;Worker&#34;)
- *             .build());
- * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;10.1.0.0/21&#34;)
- *             .build());
- * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(name)
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;10.1.1.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build());
- * 
- *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
- *             .keyPairName(name)
- *             .build());
- * 
- *         for (var i = 0; i &lt; (1 == true); i++) {
- *             new ManagedKubernetes(&#34;defaultManagedKubernetes-&#34; + i, ManagedKubernetesArgs.builder()            
- *                 .clusterSpec(&#34;ack.pro.small&#34;)
- *                 .isEnterpriseSecurityGroup(true)
- *                 .podCidr(&#34;172.20.0.0/16&#34;)
- *                 .serviceCidr(&#34;172.21.0.0/20&#34;)
- *                 .workerVswitchIds(defaultSwitch.id())
- *                 .build());
- * 
- *         
- * }
- *     }
- * }
- * ```
- * 
- * Create a node pool.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .keyName(alicloud_key_pair.default().key_name())
- *             .desiredSize(1)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * The parameter `node_count` are deprecated from version 1.158.0，but it can still works. If you want to use the new parameter `desired_size` instead, you can update it as follows. for more information of `desired_size`, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3).
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .keyName(alicloud_key_pair.default().key_name())
- *             .desiredSize(1)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud.cs.ManagedKubernetes`.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .keyName(alicloud_key_pair.default().key_name())
- *             .desiredSize(1)
- *             .management(NodePoolManagementArgs.builder()
- *                 .autoRepair(true)
- *                 .autoUpgrade(true)
- *                 .surge(1)
- *                 .maxUnavailable(1)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Enable automatic scaling for the node pool. `scaling_config` is required.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .keyName(alicloud_key_pair.default().key_name())
- *             .scalingConfig(NodePoolScalingConfigArgs.builder()
- *                 .minSize(1)
- *                 .maxSize(10)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Enable automatic scaling for managed node pool.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .keyName(alicloud_key_pair.default().key_name())
- *             .management(NodePoolManagementArgs.builder()
- *                 .autoRepair(true)
- *                 .autoUpgrade(true)
- *                 .surge(1)
- *                 .maxUnavailable(1)
- *                 .build())
- *             .scalingConfig(NodePoolScalingConfigArgs.builder()
- *                 .minSize(1)
- *                 .maxSize(10)
- *                 .type(&#34;cpu&#34;)
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(alicloud_cs_autoscaling_config.default())
- *                 .build());
- * 
- *     }
- * }
- * ```
- * 
- * Create a `PrePaid` node pool.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .keyName(alicloud_key_pair.default().key_name())
- *             .instanceChargeType(&#34;PrePaid&#34;)
- *             .period(1)
- *             .periodUnit(&#34;Month&#34;)
- *             .autoRenew(true)
- *             .autoRenewPeriod(1)
- *             .installCloudMonitor(true)
- *             .scalingConfig(NodePoolScalingConfigArgs.builder()
- *                 .minSize(1)
- *                 .maxSize(10)
- *                 .type(&#34;cpu&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Create a node pool with spot instance.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .keyName(alicloud_key_pair.default().key_name())
- *             .desiredSize(1)
- *             .spotStrategy(&#34;SpotWithPriceLimit&#34;)
- *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
- *                 .instanceType(data.alicloud_instance_types().default().instance_types()[0].id())
- *                 .priceLimit(&#34;0.70&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Use Spot instances to create a node pool with auto-scaling enabled
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .keyName(alicloud_key_pair.default().key_name())
- *             .scalingConfig(NodePoolScalingConfigArgs.builder()
- *                 .minSize(1)
- *                 .maxSize(10)
- *                 .type(&#34;spot&#34;)
- *                 .build())
- *             .spotStrategy(&#34;SpotWithPriceLimit&#34;)
- *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
- *                 .instanceType(data.alicloud_instance_types().default().instance_types()[0].id())
- *                 .priceLimit(&#34;0.70&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Create a node pool with platform as Windows
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .desiredSize(1)
- *             .password(&#34;Hello1234&#34;)
- *             .platform(&#34;Windows&#34;)
- *             .imageId(window_image_id)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Add an existing node to the node pool
- * 
- * In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instances(            
- *                 &#34;instance_id_01&#34;,
- *                 &#34;instance_id_02&#34;,
- *                 &#34;instance_id_03&#34;)
- *             .formatDisk(false)
- *             .keepInstanceName(true)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Create a node pool with customized kubelet parameters
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolRollingPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
- *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
- *             .vswitchIds(alicloud_vswitch.default().id())
- *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskSize(40)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .desiredSize(3)
- *             .kubeletConfiguration(NodePoolKubeletConfigurationArgs.builder()
- *                 .registryPullQps(10)
- *                 .registryBurst(5)
- *                 .eventRecordQps(10)
- *                 .eventBurst(5)
- *                 .evictionHard(Map.ofEntries(
- *                     Map.entry(&#34;memory.available&#34;, &#34;1024Mi&#34;),
- *                     Map.entry(&#34;nodefs.available&#34;, &#34;10%&#34;),
- *                     Map.entry(&#34;nodefs.inodesFree&#34;, &#34;1000&#34;),
- *                     Map.entry(&#34;imagefs.available&#34;, &#34;10%&#34;),
- *                     Map.entry(&#34;imagefs.inodesFree&#34;, &#34;1000&#34;),
- *                     Map.entry(&#34;allocatableMemory.available&#34;, &#34;2048&#34;),
- *                     Map.entry(&#34;pid.available&#34;, &#34;1000&#34;)
- *                 ))
- *                 .systemReserved(Map.ofEntries(
- *                     Map.entry(&#34;cpu&#34;, &#34;1&#34;),
- *                     Map.entry(&#34;memory&#34;, &#34;1Gi&#34;),
- *                     Map.entry(&#34;ephemeral-storage&#34;, &#34;10Gi&#34;)
- *                 ))
- *                 .kubeReserved(Map.ofEntries(
- *                     Map.entry(&#34;cpu&#34;, &#34;500m&#34;),
- *                     Map.entry(&#34;memory&#34;, &#34;1Gi&#34;)
- *                 ))
- *                 .build())
- *             .rollingPolicy(NodePoolRollingPolicyArgs.builder()
- *                 .maxParallelism(1)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
@@ -679,14 +111,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cpuPolicy);
     }
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
      * 
      */
     @Export(name="dataDisks", type=List.class, parameters={NodePoolDataDisk.class})
     private Output</* @Nullable */ List<NodePoolDataDisk>> dataDisks;
 
     /**
-     * @return The data disk configurations of worker nodes, such as the disk type and disk size.
+     * @return The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
      * 
      */
     public Output<Optional<List<NodePoolDataDisk>>> dataDisks() {
@@ -903,42 +335,42 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
      * 
      */
     @Export(name="kubeletConfiguration", type=NodePoolKubeletConfiguration.class, parameters={})
     private Output</* @Nullable */ NodePoolKubeletConfiguration> kubeletConfiguration;
 
     /**
-     * @return Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * @return Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
      * 
      */
     public Output<Optional<NodePoolKubeletConfiguration>> kubeletConfiguration() {
         return Codegen.optional(this.kubeletConfiguration);
     }
     /**
-     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
      * 
      */
     @Export(name="labels", type=List.class, parameters={NodePoolLabel.class})
     private Output</* @Nullable */ List<NodePoolLabel>> labels;
 
     /**
-     * @return A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+     * @return A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
      * 
      */
     public Output<Optional<List<NodePoolLabel>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+     * Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
      * 
      */
     @Export(name="management", type=NodePoolManagement.class, parameters={})
     private Output</* @Nullable */ NodePoolManagement> management;
 
     /**
-     * @return Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+     * @return Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
      * 
      */
     public Output<Optional<NodePoolManagement>> management() {
@@ -977,14 +409,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.nodeCount;
     }
     /**
-     * Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+     * Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
      * 
      */
     @Export(name="nodeNameMode", type=String.class, parameters={})
     private Output<String> nodeNameMode;
 
     /**
-     * @return Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+     * @return Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
      * 
      */
     public Output<String> nodeNameMode() {
@@ -1093,21 +525,21 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
      * 
      */
     @Export(name="rollingPolicy", type=NodePoolRollingPolicy.class, parameters={})
     private Output</* @Nullable */ NodePoolRollingPolicy> rollingPolicy;
 
     /**
-     * @return Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * @return Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
      * 
      */
     public Output<Optional<NodePoolRollingPolicy>> rollingPolicy() {
         return Codegen.optional(this.rollingPolicy);
     }
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
      * 
      * @deprecated
      * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
@@ -1118,7 +550,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ NodePoolRolloutPolicy> rolloutPolicy;
 
     /**
-     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
      * 
      */
     public Output<Optional<NodePoolRolloutPolicy>> rolloutPolicy() {
@@ -1153,28 +585,28 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.runtimeVersion;
     }
     /**
-     * Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+     * Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      * 
      */
     @Export(name="scalingConfig", type=NodePoolScalingConfig.class, parameters={})
     private Output</* @Nullable */ NodePoolScalingConfig> scalingConfig;
 
     /**
-     * @return Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+     * @return Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      * 
      */
     public Output<Optional<NodePoolScalingConfig>> scalingConfig() {
         return Codegen.optional(this.scalingConfig);
     }
     /**
-     * (Available in 1.105.0+) Id of the Scaling Group.
+     * The scaling group id.
      * 
      */
     @Export(name="scalingGroupId", type=String.class, parameters={})
     private Output<String> scalingGroupId;
 
     /**
-     * @return (Available in 1.105.0+) Id of the Scaling Group.
+     * @return The scaling group id.
      * 
      */
     public Output<String> scalingGroupId() {
@@ -1243,14 +675,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.socEnabled);
     }
     /**
-     * The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+     * The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
      * 
      */
     @Export(name="spotPriceLimits", type=List.class, parameters={NodePoolSpotPriceLimit.class})
     private Output</* @Nullable */ List<NodePoolSpotPriceLimit>> spotPriceLimits;
 
     /**
-     * @return The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+     * @return The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
      * 
      */
     public Output<Optional<List<NodePoolSpotPriceLimit>>> spotPriceLimits() {
@@ -1383,14 +815,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+     * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
      * 
      */
     @Export(name="taints", type=List.class, parameters={NodePoolTaint.class})
     private Output</* @Nullable */ List<NodePoolTaint>> taints;
 
     /**
-     * @return A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+     * @return A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
      * 
      */
     public Output<Optional<List<NodePoolTaint>>> taints() {

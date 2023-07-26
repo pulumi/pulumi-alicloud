@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in v1.149.0+.
 func GetChartNamespaces(ctx *pulumi.Context, args *GetChartNamespacesArgs, opts ...pulumi.InvokeOption) (*GetChartNamespacesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetChartNamespacesResult
 	err := ctx.Invoke("alicloud:cr/getChartNamespaces:getChartNamespaces", args, &rv, opts...)
 	if err != nil {

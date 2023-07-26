@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,6 +89,7 @@ func NewIpv4CidrBlock(ctx *pulumi.Context,
 	if args.VpcId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ipv4CidrBlock
 	err := ctx.RegisterResource("alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock", name, args, &resource, opts...)
 	if err != nil {

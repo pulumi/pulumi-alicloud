@@ -65,18 +65,12 @@ import * as utilities from "../utilities";
  *     bandwidthPackageId: exampleBandwidthPackage.id,
  * });
  * const exampleBandwidthLimit = new alicloud.cen.BandwidthLimit("exampleBandwidthLimit", {
- *     instanceId: exampleInstance.id,
+ *     instanceId: exampleBandwidthPackageAttachment.instanceId,
  *     regionIds: [
- *         region1,
- *         region2,
+ *         example1.childInstanceRegionId,
+ *         example2.childInstanceRegionId,
  *     ],
  *     bandwidthLimit: 4,
- * }, {
- *     dependsOn: [
- *         exampleBandwidthPackageAttachment,
- *         example2,
- *         example1,
- *     ],
  * });
  * ```
  *

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -141,6 +142,7 @@ func NewProvisionedProduct(ctx *pulumi.Context,
 	if args.StackRegionId == nil {
 		return nil, errors.New("invalid value for required argument 'StackRegionId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProvisionedProduct
 	err := ctx.RegisterResource("alicloud:servicecatalog/provisionedProduct:ProvisionedProduct", name, args, &resource, opts...)
 	if err != nil {

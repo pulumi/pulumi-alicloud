@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,20 +66,21 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.EcsRoleName == nil {
-		if d := getEnvOrDefault(nil, nil, "ALICLOUD_ECS_ROLE_NAME"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ALICLOUD_ECS_ROLE_NAME"); d != nil {
 			args.EcsRoleName = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.Profile == nil {
-		if d := getEnvOrDefault(nil, nil, "ALICLOUD_PROFILE"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ALICLOUD_PROFILE"); d != nil {
 			args.Profile = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.Region == nil {
-		if d := getEnvOrDefault(nil, nil, "ALICLOUD_REGION"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ALICLOUD_REGION"); d != nil {
 			args.Region = pulumi.StringPtr(d.(string))
 		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:alicloud", name, args, &resource, opts...)
 	if err != nil {

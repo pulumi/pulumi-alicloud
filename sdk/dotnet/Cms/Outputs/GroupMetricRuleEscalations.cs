@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class GroupMetricRuleEscalations
     {
         /// <summary>
-        /// The critical level.
+        /// The critical level. See `critical` below.
         /// </summary>
         public readonly Outputs.GroupMetricRuleEscalationsCritical? Critical;
         /// <summary>
-        /// The info level.
+        /// The info level. See `info` below.
         /// </summary>
         public readonly Outputs.GroupMetricRuleEscalationsInfo? Info;
         /// <summary>
-        /// The warn level.
+        /// The warn level. See `warn` below.
         /// </summary>
         public readonly Outputs.GroupMetricRuleEscalationsWarn? Warn;
 

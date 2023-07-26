@@ -9,9 +9,119 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator (GA) Forwarding Rule resource.
  *
- * For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
+ * For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
  *
  * > **NOTE:** Available since v1.120.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const exampleAccelerator = new alicloud.ga.Accelerator("exampleAccelerator", {
+ *     duration: 3,
+ *     spec: "2",
+ *     acceleratorName: name,
+ *     autoUseCoupon: false,
+ *     description: name,
+ *     autoRenewDuration: 2,
+ *     renewalStatus: "AutoRenewal",
+ * });
+ * const exampleBandwidthPackage = new alicloud.ga.BandwidthPackage("exampleBandwidthPackage", {
+ *     type: "Basic",
+ *     bandwidth: 20,
+ *     bandwidthType: "Basic",
+ *     duration: "1",
+ *     autoPay: true,
+ *     paymentType: "Subscription",
+ *     autoUseCoupon: false,
+ *     bandwidthPackageName: name,
+ *     description: name,
+ * });
+ * const exampleBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
+ *     acceleratorId: exampleAccelerator.id,
+ *     bandwidthPackageId: exampleBandwidthPackage.id,
+ * });
+ * const exampleListener = new alicloud.ga.Listener("exampleListener", {
+ *     acceleratorId: exampleBandwidthPackageAttachment.acceleratorId,
+ *     clientAffinity: "SOURCE_IP",
+ *     description: name,
+ *     protocol: "HTTP",
+ *     proxyProtocol: true,
+ *     portRanges: [{
+ *         fromPort: 60,
+ *         toPort: 60,
+ *     }],
+ * });
+ * const exampleIpSet = new alicloud.ga.IpSet("exampleIpSet", {
+ *     accelerateRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     acceleratorId: exampleBandwidthPackageAttachment.acceleratorId,
+ *     bandwidth: 20,
+ * });
+ * const exampleEipAddress = new alicloud.ecs.EipAddress("exampleEipAddress", {
+ *     bandwidth: "10",
+ *     internetChargeType: "PayByBandwidth",
+ * });
+ * const virtual = new alicloud.ga.EndpointGroup("virtual", {
+ *     acceleratorId: exampleAccelerator.id,
+ *     endpointConfigurations: [{
+ *         endpoint: exampleEipAddress.ipAddress,
+ *         type: "PublicIp",
+ *         weight: 20,
+ *         enableClientipPreservation: true,
+ *     }],
+ *     endpointGroupRegion: _default.then(_default => _default.regions?.[0]?.id),
+ *     listenerId: exampleListener.id,
+ *     description: name,
+ *     endpointGroupType: "virtual",
+ *     endpointRequestProtocol: "HTTPS",
+ *     healthCheckIntervalSeconds: 4,
+ *     healthCheckPath: "/path",
+ *     thresholdCount: 4,
+ *     trafficPercentage: 20,
+ *     portOverrides: {
+ *         endpointPort: 80,
+ *         listenerPort: 60,
+ *     },
+ * });
+ * const exampleForwardingRule = new alicloud.ga.ForwardingRule("exampleForwardingRule", {
+ *     acceleratorId: exampleAccelerator.id,
+ *     listenerId: exampleListener.id,
+ *     ruleConditions: [
+ *         {
+ *             ruleConditionType: "Path",
+ *             pathConfig: {
+ *                 values: ["/testpathconfig"],
+ *             },
+ *         },
+ *         {
+ *             ruleConditionType: "Host",
+ *             hostConfigs: [{
+ *                 values: ["www.test.com"],
+ *             }],
+ *         },
+ *     ],
+ *     ruleActions: [{
+ *         order: 40,
+ *         ruleActionType: "ForwardGroup",
+ *         forwardGroupConfig: {
+ *             serverGroupTuples: [{
+ *                 endpointGroupId: virtual.id,
+ *             }],
+ *         },
+ *     }],
+ *     priority: 2,
+ *     forwardingRuleName: name,
+ * });
+ * ```
  *
  * ## Import
  *

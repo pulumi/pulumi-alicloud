@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -176,6 +177,7 @@ func NewExpressSync(ctx *pulumi.Context,
 	if args.ExpressSyncName == nil {
 		return nil, errors.New("invalid value for required argument 'ExpressSyncName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ExpressSync
 	err := ctx.RegisterResource("alicloud:cloudstoragegateway/expressSync:ExpressSync", name, args, &resource, opts...)
 	if err != nil {

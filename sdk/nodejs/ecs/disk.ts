@@ -78,7 +78,6 @@ export class Disk extends pulumi.CustomResource {
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
     public readonly category!: pulumi.Output<string | undefined>;
-    public readonly dedicatedBlockStorageClusterId!: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
      */
@@ -160,7 +159,6 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["advancedFeatures"] = state ? state.advancedFeatures : undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["dedicatedBlockStorageClusterId"] = state ? state.dedicatedBlockStorageClusterId : undefined;
             resourceInputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
             resourceInputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -188,7 +186,6 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["advancedFeatures"] = args ? args.advancedFeatures : undefined;
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["dedicatedBlockStorageClusterId"] = args ? args.dedicatedBlockStorageClusterId : undefined;
             resourceInputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
             resourceInputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -232,7 +229,6 @@ export interface DiskState {
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
     category?: pulumi.Input<string>;
-    dedicatedBlockStorageClusterId?: pulumi.Input<string>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
      */
@@ -314,7 +310,6 @@ export interface DiskArgs {
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
     category?: pulumi.Input<string>;
-    dedicatedBlockStorageClusterId?: pulumi.Input<string>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
      */

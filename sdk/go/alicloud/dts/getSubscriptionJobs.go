@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetSubscriptionJobs(ctx *pulumi.Context, args *GetSubscriptionJobsArgs, opts ...pulumi.InvokeOption) (*GetSubscriptionJobsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubscriptionJobsResult
 	err := ctx.Invoke("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args, &rv, opts...)
 	if err != nil {

@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesAutoscalerNodepool {
+    /**
+     * @return The scaling group id of the groups configured for cluster-autoscaler.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return The labels for the nodes in scaling group.
+     * 
+     */
     private @Nullable String labels;
+    /**
+     * @return The taints for the nodes in scaling group.
+     * 
+     */
     private @Nullable String taints;
 
     private KubernetesAutoscalerNodepool() {}
+    /**
+     * @return The scaling group id of the groups configured for cluster-autoscaler.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The labels for the nodes in scaling group.
+     * 
+     */
     public Optional<String> labels() {
         return Optional.ofNullable(this.labels);
     }
+    /**
+     * @return The taints for the nodes in scaling group.
+     * 
+     */
     public Optional<String> taints() {
         return Optional.ofNullable(this.taints);
     }

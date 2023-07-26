@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -155,6 +156,7 @@ func NewVirtualNode(ctx *pulumi.Context,
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VirtualNode
 	err := ctx.RegisterResource("alicloud:eci/virtualNode:VirtualNode", name, args, &resource, opts...)
 	if err != nil {

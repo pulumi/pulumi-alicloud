@@ -12,55 +12,63 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApiHttpVpcServiceConfig {
+    /**
+     * @return The name of aone.
+     * 
+     */
     private @Nullable String aoneName;
     /**
-     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+     * @return The http method of backend service.
      * 
      */
     private String method;
     /**
-     * @return The name of the api gateway api. Defaults to null.
+     * @return The name of vpc instance.
      * 
      */
     private String name;
     /**
-     * @return The request path of the api.
+     * @return The path of backend service.
      * 
      */
     private String path;
     /**
-     * @return Backend service time-out time; unit: millisecond.
+     * @return Backend service time-out time. Unit: millisecond.
      * 
      */
     private Integer timeout;
 
     private ApiHttpVpcServiceConfig() {}
+    /**
+     * @return The name of aone.
+     * 
+     */
     public Optional<String> aoneName() {
         return Optional.ofNullable(this.aoneName);
     }
     /**
-     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+     * @return The http method of backend service.
      * 
      */
     public String method() {
         return this.method;
     }
     /**
-     * @return The name of the api gateway api. Defaults to null.
+     * @return The name of vpc instance.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The request path of the api.
+     * @return The path of backend service.
      * 
      */
     public String path() {
         return this.path;
     }
     /**
-     * @return Backend service time-out time; unit: millisecond.
+     * @return Backend service time-out time. Unit: millisecond.
      * 
      */
     public Integer timeout() {

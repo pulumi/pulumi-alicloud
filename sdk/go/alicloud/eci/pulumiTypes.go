@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type ContainerGroupAcrRegistryInfo struct {
 	// The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
@@ -137,31 +140,33 @@ func (o ContainerGroupAcrRegistryInfoArrayOutput) Index(i pulumi.IntInput) Conta
 type ContainerGroupContainer struct {
 	// The arguments passed to the commands.
 	Args []string `pulumi:"args"`
-	// The commands run by the init container.
+	// Commands to be executed inside the container when performing health checks using the command line method.
 	Commands []string `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container. Default value: `0`.
 	Cpu *float64 `pulumi:"cpu"`
-	// The structure of environmentVars.
+	// The structure of environmentVars. See `environmentVars` below.
 	EnvironmentVars []ContainerGroupContainerEnvironmentVar `pulumi:"environmentVars"`
-	// The number GPUs.
+	// The number GPUs. Default value: `0`.
 	Gpu *int `pulumi:"gpu"`
 	// The image of the container.
 	Image string `pulumi:"image"`
-	// The restart policy of the image.
+	// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// The health check of the container.
+	// The health check of the container. See `livenessProbe` below.
 	LivenessProbes []ContainerGroupContainerLivenessProbe `pulumi:"livenessProbes"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container. Default value: `0`.
 	Memory *float64 `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name string `pulumi:"name"`
-	// The structure of port.
+	// The structure of port. See `ports` below.
 	Ports []ContainerGroupContainerPort `pulumi:"ports"`
-	// The health check of the container.
+	// The health check of the container. See `readinessProbe` below.
 	ReadinessProbes []ContainerGroupContainerReadinessProbe `pulumi:"readinessProbes"`
-	Ready           *bool                                   `pulumi:"ready"`
-	RestartCount    *int                                    `pulumi:"restartCount"`
-	// The structure of volumeMounts.
+	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	Ready *bool `pulumi:"ready"`
+	// (Available since v1.208.0) The number of times that the container restarted.
+	RestartCount *int `pulumi:"restartCount"`
+	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts []ContainerGroupContainerVolumeMount `pulumi:"volumeMounts"`
 	// The working directory of the container.
 	WorkingDir *string `pulumi:"workingDir"`
@@ -181,31 +186,33 @@ type ContainerGroupContainerInput interface {
 type ContainerGroupContainerArgs struct {
 	// The arguments passed to the commands.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// The commands run by the init container.
+	// Commands to be executed inside the container when performing health checks using the command line method.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container. Default value: `0`.
 	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
-	// The structure of environmentVars.
+	// The structure of environmentVars. See `environmentVars` below.
 	EnvironmentVars ContainerGroupContainerEnvironmentVarArrayInput `pulumi:"environmentVars"`
-	// The number GPUs.
+	// The number GPUs. Default value: `0`.
 	Gpu pulumi.IntPtrInput `pulumi:"gpu"`
 	// The image of the container.
 	Image pulumi.StringInput `pulumi:"image"`
-	// The restart policy of the image.
+	// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// The health check of the container.
+	// The health check of the container. See `livenessProbe` below.
 	LivenessProbes ContainerGroupContainerLivenessProbeArrayInput `pulumi:"livenessProbes"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container. Default value: `0`.
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The structure of port.
+	// The structure of port. See `ports` below.
 	Ports ContainerGroupContainerPortArrayInput `pulumi:"ports"`
-	// The health check of the container.
+	// The health check of the container. See `readinessProbe` below.
 	ReadinessProbes ContainerGroupContainerReadinessProbeArrayInput `pulumi:"readinessProbes"`
-	Ready           pulumi.BoolPtrInput                             `pulumi:"ready"`
-	RestartCount    pulumi.IntPtrInput                              `pulumi:"restartCount"`
-	// The structure of volumeMounts.
+	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	Ready pulumi.BoolPtrInput `pulumi:"ready"`
+	// (Available since v1.208.0) The number of times that the container restarted.
+	RestartCount pulumi.IntPtrInput `pulumi:"restartCount"`
+	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts ContainerGroupContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// The working directory of the container.
 	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
@@ -267,22 +274,22 @@ func (o ContainerGroupContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// The commands run by the init container.
+// Commands to be executed inside the container when performing health checks using the command line method.
 func (o ContainerGroupContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container group.
+// The amount of CPU resources allocated to the container. Default value: `0`.
 func (o ContainerGroupContainerOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
-// The structure of environmentVars.
+// The structure of environmentVars. See `environmentVars` below.
 func (o ContainerGroupContainerOutput) EnvironmentVars() ContainerGroupContainerEnvironmentVarArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) []ContainerGroupContainerEnvironmentVar { return v.EnvironmentVars }).(ContainerGroupContainerEnvironmentVarArrayOutput)
 }
 
-// The number GPUs.
+// The number GPUs. Default value: `0`.
 func (o ContainerGroupContainerOutput) Gpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *int { return v.Gpu }).(pulumi.IntPtrOutput)
 }
@@ -292,45 +299,47 @@ func (o ContainerGroupContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// The restart policy of the image.
+// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
 func (o ContainerGroupContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The health check of the container.
+// The health check of the container. See `livenessProbe` below.
 func (o ContainerGroupContainerOutput) LivenessProbes() ContainerGroupContainerLivenessProbeArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) []ContainerGroupContainerLivenessProbe { return v.LivenessProbes }).(ContainerGroupContainerLivenessProbeArrayOutput)
 }
 
-// The amount of memory resources allocated to the container group.
+// The amount of memory resources allocated to the container. Default value: `0`.
 func (o ContainerGroupContainerOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
-// The name of the volume.
+// The name of the mounted volume.
 func (o ContainerGroupContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The structure of port.
+// The structure of port. See `ports` below.
 func (o ContainerGroupContainerOutput) Ports() ContainerGroupContainerPortArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) []ContainerGroupContainerPort { return v.Ports }).(ContainerGroupContainerPortArrayOutput)
 }
 
-// The health check of the container.
+// The health check of the container. See `readinessProbe` below.
 func (o ContainerGroupContainerOutput) ReadinessProbes() ContainerGroupContainerReadinessProbeArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) []ContainerGroupContainerReadinessProbe { return v.ReadinessProbes }).(ContainerGroupContainerReadinessProbeArrayOutput)
 }
 
+// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
 func (o ContainerGroupContainerOutput) Ready() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *bool { return v.Ready }).(pulumi.BoolPtrOutput)
 }
 
+// (Available since v1.208.0) The number of times that the container restarted.
 func (o ContainerGroupContainerOutput) RestartCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *int { return v.RestartCount }).(pulumi.IntPtrOutput)
 }
 
-// The structure of volumeMounts.
+// The structure of volumeMounts. See `volumeMounts` below.
 func (o ContainerGroupContainerOutput) VolumeMounts() ContainerGroupContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) []ContainerGroupContainerVolumeMount { return v.VolumeMounts }).(ContainerGroupContainerVolumeMountArrayOutput)
 }
@@ -363,7 +372,7 @@ func (o ContainerGroupContainerArrayOutput) Index(i pulumi.IntInput) ContainerGr
 type ContainerGroupContainerEnvironmentVar struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value *string `pulumi:"value"`
 }
 
@@ -381,7 +390,7 @@ type ContainerGroupContainerEnvironmentVarInput interface {
 type ContainerGroupContainerEnvironmentVarArgs struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -441,7 +450,7 @@ func (o ContainerGroupContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ContainerGroupContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
+// The variable value of the security context that the container group runs.
 func (o ContainerGroupContainerEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -467,11 +476,11 @@ func (o ContainerGroupContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ContainerGroupContainerLivenessProbe struct {
-	// Health check using command line method.
+	// Health check using command line method. See `exec` below.
 	Execs []ContainerGroupContainerLivenessProbeExec `pulumi:"execs"`
 	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 	FailureThreshold *int `pulumi:"failureThreshold"`
-	// Health check using HTTP request method.
+	// Health check using HTTP request method. See `httpGet` below.
 	HttpGets []ContainerGroupContainerLivenessProbeHttpGet `pulumi:"httpGets"`
 	// Check the time to start execution, calculated from the completion of container startup.
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
@@ -479,7 +488,7 @@ type ContainerGroupContainerLivenessProbe struct {
 	PeriodSeconds *int `pulumi:"periodSeconds"`
 	// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
 	SuccessThreshold *int `pulumi:"successThreshold"`
-	// Health check using TCP socket method.
+	// Health check using TCP socket method. See `tcpSocket` below.
 	TcpSockets []ContainerGroupContainerLivenessProbeTcpSocket `pulumi:"tcpSockets"`
 	// Check the timeout, the default is 1 second, the minimum is 1 second.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
@@ -497,11 +506,11 @@ type ContainerGroupContainerLivenessProbeInput interface {
 }
 
 type ContainerGroupContainerLivenessProbeArgs struct {
-	// Health check using command line method.
+	// Health check using command line method. See `exec` below.
 	Execs ContainerGroupContainerLivenessProbeExecArrayInput `pulumi:"execs"`
 	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// Health check using HTTP request method.
+	// Health check using HTTP request method. See `httpGet` below.
 	HttpGets ContainerGroupContainerLivenessProbeHttpGetArrayInput `pulumi:"httpGets"`
 	// Check the time to start execution, calculated from the completion of container startup.
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
@@ -509,7 +518,7 @@ type ContainerGroupContainerLivenessProbeArgs struct {
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
 	// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
-	// Health check using TCP socket method.
+	// Health check using TCP socket method. See `tcpSocket` below.
 	TcpSockets ContainerGroupContainerLivenessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
 	// Check the timeout, the default is 1 second, the minimum is 1 second.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
@@ -566,7 +575,7 @@ func (o ContainerGroupContainerLivenessProbeOutput) ToContainerGroupContainerLiv
 	return o
 }
 
-// Health check using command line method.
+// Health check using command line method. See `exec` below.
 func (o ContainerGroupContainerLivenessProbeOutput) Execs() ContainerGroupContainerLivenessProbeExecArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) []ContainerGroupContainerLivenessProbeExec {
 		return v.Execs
@@ -578,7 +587,7 @@ func (o ContainerGroupContainerLivenessProbeOutput) FailureThreshold() pulumi.In
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Health check using HTTP request method.
+// Health check using HTTP request method. See `httpGet` below.
 func (o ContainerGroupContainerLivenessProbeOutput) HttpGets() ContainerGroupContainerLivenessProbeHttpGetArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) []ContainerGroupContainerLivenessProbeHttpGet {
 		return v.HttpGets
@@ -600,7 +609,7 @@ func (o ContainerGroupContainerLivenessProbeOutput) SuccessThreshold() pulumi.In
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Health check using TCP socket method.
+// Health check using TCP socket method. See `tcpSocket` below.
 func (o ContainerGroupContainerLivenessProbeOutput) TcpSockets() ContainerGroupContainerLivenessProbeTcpSocketArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) []ContainerGroupContainerLivenessProbeTcpSocket {
 		return v.TcpSockets
@@ -732,7 +741,7 @@ func (o ContainerGroupContainerLivenessProbeExecArrayOutput) Index(i pulumi.IntI
 type ContainerGroupContainerLivenessProbeHttpGet struct {
 	// The relative file path.
 	Path *string `pulumi:"path"`
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port *int `pulumi:"port"`
 	// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 	Scheme *string `pulumi:"scheme"`
@@ -752,7 +761,7 @@ type ContainerGroupContainerLivenessProbeHttpGetInput interface {
 type ContainerGroupContainerLivenessProbeHttpGetArgs struct {
 	// The relative file path.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
@@ -814,7 +823,7 @@ func (o ContainerGroupContainerLivenessProbeHttpGetOutput) Path() pulumi.StringP
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The port number. Valid values: 1 to 65535.
+// The port number. Valid values: `1` to `65535`.
 func (o ContainerGroupContainerLivenessProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -845,7 +854,7 @@ func (o ContainerGroupContainerLivenessProbeHttpGetArrayOutput) Index(i pulumi.I
 }
 
 type ContainerGroupContainerLivenessProbeTcpSocket struct {
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port *int `pulumi:"port"`
 }
 
@@ -861,7 +870,7 @@ type ContainerGroupContainerLivenessProbeTcpSocketInput interface {
 }
 
 type ContainerGroupContainerLivenessProbeTcpSocketArgs struct {
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -916,7 +925,7 @@ func (o ContainerGroupContainerLivenessProbeTcpSocketOutput) ToContainerGroupCon
 	return o
 }
 
-// The port number. Valid values: 1 to 65535.
+// The port number. Valid values: `1` to `65535`.
 func (o ContainerGroupContainerLivenessProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -942,9 +951,9 @@ func (o ContainerGroupContainerLivenessProbeTcpSocketArrayOutput) Index(i pulumi
 }
 
 type ContainerGroupContainerPort struct {
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port *int `pulumi:"port"`
-	// Valid values: TCP and UDP.
+	// The type of the protocol. Valid values: `TCP` and `UDP`.
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -960,9 +969,9 @@ type ContainerGroupContainerPortInput interface {
 }
 
 type ContainerGroupContainerPortArgs struct {
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Valid values: TCP and UDP.
+	// The type of the protocol. Valid values: `TCP` and `UDP`.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -1017,12 +1026,12 @@ func (o ContainerGroupContainerPortOutput) ToContainerGroupContainerPortOutputWi
 	return o
 }
 
-// The port number. Valid values: 1 to 65535.
+// The port number. Valid values: `1` to `65535`.
 func (o ContainerGroupContainerPortOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerPort) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Valid values: TCP and UDP.
+// The type of the protocol. Valid values: `TCP` and `UDP`.
 func (o ContainerGroupContainerPortOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -1048,11 +1057,11 @@ func (o ContainerGroupContainerPortArrayOutput) Index(i pulumi.IntInput) Contain
 }
 
 type ContainerGroupContainerReadinessProbe struct {
-	// Health check using command line method.
+	// Health check using command line method. See `exec` below.
 	Execs []ContainerGroupContainerReadinessProbeExec `pulumi:"execs"`
 	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 	FailureThreshold *int `pulumi:"failureThreshold"`
-	// Health check using HTTP request method.
+	// Health check using HTTP request method. See `httpGet` below.
 	HttpGets []ContainerGroupContainerReadinessProbeHttpGet `pulumi:"httpGets"`
 	// Check the time to start execution, calculated from the completion of container startup.
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
@@ -1060,7 +1069,7 @@ type ContainerGroupContainerReadinessProbe struct {
 	PeriodSeconds *int `pulumi:"periodSeconds"`
 	// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
 	SuccessThreshold *int `pulumi:"successThreshold"`
-	// Health check using TCP socket method.
+	// Health check using TCP socket method. See `tcpSocket` below.
 	TcpSockets []ContainerGroupContainerReadinessProbeTcpSocket `pulumi:"tcpSockets"`
 	// Check the timeout, the default is 1 second, the minimum is 1 second.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
@@ -1078,11 +1087,11 @@ type ContainerGroupContainerReadinessProbeInput interface {
 }
 
 type ContainerGroupContainerReadinessProbeArgs struct {
-	// Health check using command line method.
+	// Health check using command line method. See `exec` below.
 	Execs ContainerGroupContainerReadinessProbeExecArrayInput `pulumi:"execs"`
 	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// Health check using HTTP request method.
+	// Health check using HTTP request method. See `httpGet` below.
 	HttpGets ContainerGroupContainerReadinessProbeHttpGetArrayInput `pulumi:"httpGets"`
 	// Check the time to start execution, calculated from the completion of container startup.
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
@@ -1090,7 +1099,7 @@ type ContainerGroupContainerReadinessProbeArgs struct {
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
 	// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
-	// Health check using TCP socket method.
+	// Health check using TCP socket method. See `tcpSocket` below.
 	TcpSockets ContainerGroupContainerReadinessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
 	// Check the timeout, the default is 1 second, the minimum is 1 second.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
@@ -1147,7 +1156,7 @@ func (o ContainerGroupContainerReadinessProbeOutput) ToContainerGroupContainerRe
 	return o
 }
 
-// Health check using command line method.
+// Health check using command line method. See `exec` below.
 func (o ContainerGroupContainerReadinessProbeOutput) Execs() ContainerGroupContainerReadinessProbeExecArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) []ContainerGroupContainerReadinessProbeExec {
 		return v.Execs
@@ -1159,7 +1168,7 @@ func (o ContainerGroupContainerReadinessProbeOutput) FailureThreshold() pulumi.I
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Health check using HTTP request method.
+// Health check using HTTP request method. See `httpGet` below.
 func (o ContainerGroupContainerReadinessProbeOutput) HttpGets() ContainerGroupContainerReadinessProbeHttpGetArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) []ContainerGroupContainerReadinessProbeHttpGet {
 		return v.HttpGets
@@ -1181,7 +1190,7 @@ func (o ContainerGroupContainerReadinessProbeOutput) SuccessThreshold() pulumi.I
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Health check using TCP socket method.
+// Health check using TCP socket method. See `tcpSocket` below.
 func (o ContainerGroupContainerReadinessProbeOutput) TcpSockets() ContainerGroupContainerReadinessProbeTcpSocketArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) []ContainerGroupContainerReadinessProbeTcpSocket {
 		return v.TcpSockets
@@ -1313,7 +1322,7 @@ func (o ContainerGroupContainerReadinessProbeExecArrayOutput) Index(i pulumi.Int
 type ContainerGroupContainerReadinessProbeHttpGet struct {
 	// The relative file path.
 	Path *string `pulumi:"path"`
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port *int `pulumi:"port"`
 	// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 	Scheme *string `pulumi:"scheme"`
@@ -1333,7 +1342,7 @@ type ContainerGroupContainerReadinessProbeHttpGetInput interface {
 type ContainerGroupContainerReadinessProbeHttpGetArgs struct {
 	// The relative file path.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
@@ -1395,7 +1404,7 @@ func (o ContainerGroupContainerReadinessProbeHttpGetOutput) Path() pulumi.String
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The port number. Valid values: 1 to 65535.
+// The port number. Valid values: `1` to `65535`.
 func (o ContainerGroupContainerReadinessProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -1426,7 +1435,7 @@ func (o ContainerGroupContainerReadinessProbeHttpGetArrayOutput) Index(i pulumi.
 }
 
 type ContainerGroupContainerReadinessProbeTcpSocket struct {
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port *int `pulumi:"port"`
 }
 
@@ -1442,7 +1451,7 @@ type ContainerGroupContainerReadinessProbeTcpSocketInput interface {
 }
 
 type ContainerGroupContainerReadinessProbeTcpSocketArgs struct {
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -1497,7 +1506,7 @@ func (o ContainerGroupContainerReadinessProbeTcpSocketOutput) ToContainerGroupCo
 	return o
 }
 
-// The port number. Valid values: 1 to 65535.
+// The port number. Valid values: `1` to `65535`.
 func (o ContainerGroupContainerReadinessProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -1527,7 +1536,7 @@ type ContainerGroupContainerVolumeMount struct {
 	MountPath *string `pulumi:"mountPath"`
 	// The name of the volume.
 	Name *string `pulumi:"name"`
-	// Default to `false`.
+	// Specifies whether the mount path is read-only. Default value: `false`.
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
@@ -1547,7 +1556,7 @@ type ContainerGroupContainerVolumeMountArgs struct {
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
 	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Default to `false`.
+	// Specifies whether the mount path is read-only. Default value: `false`.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 }
 
@@ -1612,7 +1621,7 @@ func (o ContainerGroupContainerVolumeMountOutput) Name() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ContainerGroupContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Default to `false`.
+// Specifies whether the mount path is read-only. Default value: `false`.
 func (o ContainerGroupContainerVolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerVolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -1640,7 +1649,7 @@ func (o ContainerGroupContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) 
 type ContainerGroupDnsConfig struct {
 	// The list of DNS server IP addresses.
 	NameServers []string `pulumi:"nameServers"`
-	// The structure of options.
+	// The structure of options. See `options` below.
 	Options []ContainerGroupDnsConfigOption `pulumi:"options"`
 	// The list of DNS lookup domains.
 	Searches []string `pulumi:"searches"`
@@ -1660,7 +1669,7 @@ type ContainerGroupDnsConfigInput interface {
 type ContainerGroupDnsConfigArgs struct {
 	// The list of DNS server IP addresses.
 	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
-	// The structure of options.
+	// The structure of options. See `options` below.
 	Options ContainerGroupDnsConfigOptionArrayInput `pulumi:"options"`
 	// The list of DNS lookup domains.
 	Searches pulumi.StringArrayInput `pulumi:"searches"`
@@ -1748,7 +1757,7 @@ func (o ContainerGroupDnsConfigOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerGroupDnsConfig) []string { return v.NameServers }).(pulumi.StringArrayOutput)
 }
 
-// The structure of options.
+// The structure of options. See `options` below.
 func (o ContainerGroupDnsConfigOutput) Options() ContainerGroupDnsConfigOptionArrayOutput {
 	return o.ApplyT(func(v ContainerGroupDnsConfig) []ContainerGroupDnsConfigOption { return v.Options }).(ContainerGroupDnsConfigOptionArrayOutput)
 }
@@ -1792,7 +1801,7 @@ func (o ContainerGroupDnsConfigPtrOutput) NameServers() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// The structure of options.
+// The structure of options. See `options` below.
 func (o ContainerGroupDnsConfigPtrOutput) Options() ContainerGroupDnsConfigOptionArrayOutput {
 	return o.ApplyT(func(v *ContainerGroupDnsConfig) []ContainerGroupDnsConfigOption {
 		if v == nil {
@@ -1815,7 +1824,7 @@ func (o ContainerGroupDnsConfigPtrOutput) Searches() pulumi.StringArrayOutput {
 type ContainerGroupDnsConfigOption struct {
 	// The name of the volume.
 	Name *string `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value *string `pulumi:"value"`
 }
 
@@ -1833,7 +1842,7 @@ type ContainerGroupDnsConfigOptionInput interface {
 type ContainerGroupDnsConfigOptionArgs struct {
 	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1893,7 +1902,7 @@ func (o ContainerGroupDnsConfigOptionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupDnsConfigOption) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
+// The variable value of the security context that the container group runs.
 func (o ContainerGroupDnsConfigOptionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupDnsConfigOption) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1919,7 +1928,7 @@ func (o ContainerGroupDnsConfigOptionArrayOutput) Index(i pulumi.IntInput) Conta
 }
 
 type ContainerGroupEciSecurityContext struct {
-	// system.
+	// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
 	Sysctls []ContainerGroupEciSecurityContextSysctl `pulumi:"sysctls"`
 }
 
@@ -1935,7 +1944,7 @@ type ContainerGroupEciSecurityContextInput interface {
 }
 
 type ContainerGroupEciSecurityContextArgs struct {
-	// system.
+	// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
 	Sysctls ContainerGroupEciSecurityContextSysctlArrayInput `pulumi:"sysctls"`
 }
 
@@ -2016,7 +2025,7 @@ func (o ContainerGroupEciSecurityContextOutput) ToContainerGroupEciSecurityConte
 	}).(ContainerGroupEciSecurityContextPtrOutput)
 }
 
-// system.
+// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
 func (o ContainerGroupEciSecurityContextOutput) Sysctls() ContainerGroupEciSecurityContextSysctlArrayOutput {
 	return o.ApplyT(func(v ContainerGroupEciSecurityContext) []ContainerGroupEciSecurityContextSysctl { return v.Sysctls }).(ContainerGroupEciSecurityContextSysctlArrayOutput)
 }
@@ -2045,7 +2054,7 @@ func (o ContainerGroupEciSecurityContextPtrOutput) Elem() ContainerGroupEciSecur
 	}).(ContainerGroupEciSecurityContextOutput)
 }
 
-// system.
+// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
 func (o ContainerGroupEciSecurityContextPtrOutput) Sysctls() ContainerGroupEciSecurityContextSysctlArrayOutput {
 	return o.ApplyT(func(v *ContainerGroupEciSecurityContext) []ContainerGroupEciSecurityContextSysctl {
 		if v == nil {
@@ -2058,7 +2067,7 @@ func (o ContainerGroupEciSecurityContextPtrOutput) Sysctls() ContainerGroupEciSe
 type ContainerGroupEciSecurityContextSysctl struct {
 	// The name of the volume.
 	Name *string `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value *string `pulumi:"value"`
 }
 
@@ -2076,7 +2085,7 @@ type ContainerGroupEciSecurityContextSysctlInput interface {
 type ContainerGroupEciSecurityContextSysctlArgs struct {
 	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2136,7 +2145,7 @@ func (o ContainerGroupEciSecurityContextSysctlOutput) Name() pulumi.StringPtrOut
 	return o.ApplyT(func(v ContainerGroupEciSecurityContextSysctl) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
+// The variable value of the security context that the container group runs.
 func (o ContainerGroupEciSecurityContextSysctlOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupEciSecurityContextSysctl) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2162,9 +2171,9 @@ func (o ContainerGroupEciSecurityContextSysctlArrayOutput) Index(i pulumi.IntInp
 }
 
 type ContainerGroupHostAlias struct {
-	// Adds a host name.
+	// The information about the host.
 	Hostnames []string `pulumi:"hostnames"`
-	// Adds an IP address.
+	// The IP address of the host.
 	Ip *string `pulumi:"ip"`
 }
 
@@ -2180,9 +2189,9 @@ type ContainerGroupHostAliasInput interface {
 }
 
 type ContainerGroupHostAliasArgs struct {
-	// Adds a host name.
+	// The information about the host.
 	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
-	// Adds an IP address.
+	// The IP address of the host.
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
 }
 
@@ -2237,12 +2246,12 @@ func (o ContainerGroupHostAliasOutput) ToContainerGroupHostAliasOutputWithContex
 	return o
 }
 
-// Adds a host name.
+// The information about the host.
 func (o ContainerGroupHostAliasOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerGroupHostAlias) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
-// Adds an IP address.
+// The IP address of the host.
 func (o ContainerGroupHostAliasOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupHostAlias) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
@@ -2387,25 +2396,27 @@ type ContainerGroupInitContainer struct {
 	Args []string `pulumi:"args"`
 	// The commands run by the init container.
 	Commands []string `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container. Default value: `0`.
 	Cpu *float64 `pulumi:"cpu"`
-	// The structure of environmentVars.
+	// The structure of environmentVars. See `environmentVars` below.
 	EnvironmentVars []ContainerGroupInitContainerEnvironmentVar `pulumi:"environmentVars"`
-	// The number GPUs.
+	// The number GPUs. Default value: `0`.
 	Gpu *int `pulumi:"gpu"`
 	// The image of the container.
 	Image *string `pulumi:"image"`
-	// The restart policy of the image.
+	// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container. Default value: `0`.
 	Memory *float64 `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name *string `pulumi:"name"`
-	// The structure of port.
-	Ports        []ContainerGroupInitContainerPort `pulumi:"ports"`
-	Ready        *bool                             `pulumi:"ready"`
-	RestartCount *int                              `pulumi:"restartCount"`
-	// The structure of volumeMounts.
+	// The structure of port. See `ports` below.
+	Ports []ContainerGroupInitContainerPort `pulumi:"ports"`
+	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	Ready *bool `pulumi:"ready"`
+	// (Available since v1.208.0) The number of times that the container restarted.
+	RestartCount *int `pulumi:"restartCount"`
+	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts []ContainerGroupInitContainerVolumeMount `pulumi:"volumeMounts"`
 	// The working directory of the container.
 	WorkingDir *string `pulumi:"workingDir"`
@@ -2427,25 +2438,27 @@ type ContainerGroupInitContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// The commands run by the init container.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container. Default value: `0`.
 	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
-	// The structure of environmentVars.
+	// The structure of environmentVars. See `environmentVars` below.
 	EnvironmentVars ContainerGroupInitContainerEnvironmentVarArrayInput `pulumi:"environmentVars"`
-	// The number GPUs.
+	// The number GPUs. Default value: `0`.
 	Gpu pulumi.IntPtrInput `pulumi:"gpu"`
 	// The image of the container.
 	Image pulumi.StringPtrInput `pulumi:"image"`
-	// The restart policy of the image.
+	// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container. Default value: `0`.
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The structure of port.
-	Ports        ContainerGroupInitContainerPortArrayInput `pulumi:"ports"`
-	Ready        pulumi.BoolPtrInput                       `pulumi:"ready"`
-	RestartCount pulumi.IntPtrInput                        `pulumi:"restartCount"`
-	// The structure of volumeMounts.
+	// The structure of port. See `ports` below.
+	Ports ContainerGroupInitContainerPortArrayInput `pulumi:"ports"`
+	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	Ready pulumi.BoolPtrInput `pulumi:"ready"`
+	// (Available since v1.208.0) The number of times that the container restarted.
+	RestartCount pulumi.IntPtrInput `pulumi:"restartCount"`
+	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts ContainerGroupInitContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// The working directory of the container.
 	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
@@ -2512,19 +2525,19 @@ func (o ContainerGroupInitContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container group.
+// The amount of CPU resources allocated to the container. Default value: `0`.
 func (o ContainerGroupInitContainerOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
-// The structure of environmentVars.
+// The structure of environmentVars. See `environmentVars` below.
 func (o ContainerGroupInitContainerOutput) EnvironmentVars() ContainerGroupInitContainerEnvironmentVarArrayOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) []ContainerGroupInitContainerEnvironmentVar {
 		return v.EnvironmentVars
 	}).(ContainerGroupInitContainerEnvironmentVarArrayOutput)
 }
 
-// The number GPUs.
+// The number GPUs. Default value: `0`.
 func (o ContainerGroupInitContainerOutput) Gpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *int { return v.Gpu }).(pulumi.IntPtrOutput)
 }
@@ -2534,35 +2547,37 @@ func (o ContainerGroupInitContainerOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// The restart policy of the image.
+// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
 func (o ContainerGroupInitContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The amount of memory resources allocated to the container group.
+// The amount of memory resources allocated to the container. Default value: `0`.
 func (o ContainerGroupInitContainerOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
-// The name of the volume.
+// The name of the mounted volume.
 func (o ContainerGroupInitContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The structure of port.
+// The structure of port. See `ports` below.
 func (o ContainerGroupInitContainerOutput) Ports() ContainerGroupInitContainerPortArrayOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) []ContainerGroupInitContainerPort { return v.Ports }).(ContainerGroupInitContainerPortArrayOutput)
 }
 
+// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
 func (o ContainerGroupInitContainerOutput) Ready() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *bool { return v.Ready }).(pulumi.BoolPtrOutput)
 }
 
+// (Available since v1.208.0) The number of times that the container restarted.
 func (o ContainerGroupInitContainerOutput) RestartCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *int { return v.RestartCount }).(pulumi.IntPtrOutput)
 }
 
-// The structure of volumeMounts.
+// The structure of volumeMounts. See `volumeMounts` below.
 func (o ContainerGroupInitContainerOutput) VolumeMounts() ContainerGroupInitContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) []ContainerGroupInitContainerVolumeMount { return v.VolumeMounts }).(ContainerGroupInitContainerVolumeMountArrayOutput)
 }
@@ -2595,7 +2610,7 @@ func (o ContainerGroupInitContainerArrayOutput) Index(i pulumi.IntInput) Contain
 type ContainerGroupInitContainerEnvironmentVar struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value *string `pulumi:"value"`
 }
 
@@ -2613,7 +2628,7 @@ type ContainerGroupInitContainerEnvironmentVarInput interface {
 type ContainerGroupInitContainerEnvironmentVarArgs struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2673,7 +2688,7 @@ func (o ContainerGroupInitContainerEnvironmentVarOutput) Key() pulumi.StringPtrO
 	return o.ApplyT(func(v ContainerGroupInitContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
+// The variable value of the security context that the container group runs.
 func (o ContainerGroupInitContainerEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainerEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2699,9 +2714,9 @@ func (o ContainerGroupInitContainerEnvironmentVarArrayOutput) Index(i pulumi.Int
 }
 
 type ContainerGroupInitContainerPort struct {
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port *int `pulumi:"port"`
-	// Valid values: TCP and UDP.
+	// The type of the protocol. Valid values: `TCP` and `UDP`.
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -2717,9 +2732,9 @@ type ContainerGroupInitContainerPortInput interface {
 }
 
 type ContainerGroupInitContainerPortArgs struct {
-	// The port number. Valid values: 1 to 65535.
+	// The port number. Valid values: `1` to `65535`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Valid values: TCP and UDP.
+	// The type of the protocol. Valid values: `TCP` and `UDP`.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -2774,12 +2789,12 @@ func (o ContainerGroupInitContainerPortOutput) ToContainerGroupInitContainerPort
 	return o
 }
 
-// The port number. Valid values: 1 to 65535.
+// The port number. Valid values: `1` to `65535`.
 func (o ContainerGroupInitContainerPortOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainerPort) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Valid values: TCP and UDP.
+// The type of the protocol. Valid values: `TCP` and `UDP`.
 func (o ContainerGroupInitContainerPortOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -2809,7 +2824,7 @@ type ContainerGroupInitContainerVolumeMount struct {
 	MountPath *string `pulumi:"mountPath"`
 	// The name of the volume.
 	Name *string `pulumi:"name"`
-	// Default to `false`.
+	// Specifies whether the mount path is read-only. Default value: `false`.
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
@@ -2829,7 +2844,7 @@ type ContainerGroupInitContainerVolumeMountArgs struct {
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
 	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Default to `false`.
+	// Specifies whether the mount path is read-only. Default value: `false`.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 }
 
@@ -2894,7 +2909,7 @@ func (o ContainerGroupInitContainerVolumeMountOutput) Name() pulumi.StringPtrOut
 	return o.ApplyT(func(v ContainerGroupInitContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Default to `false`.
+// Specifies whether the mount path is read-only. Default value: `false`.
 func (o ContainerGroupInitContainerVolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainerVolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -2920,7 +2935,8 @@ func (o ContainerGroupInitContainerVolumeMountArrayOutput) Index(i pulumi.IntInp
 }
 
 type ContainerGroupVolume struct {
-	// ConfigFileVolumeConfigFileToPaths.
+	// The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+	// > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
 	ConfigFileVolumeConfigFileToPaths []ContainerGroupVolumeConfigFileVolumeConfigFileToPath `pulumi:"configFileVolumeConfigFileToPaths"`
 	// The ID of DiskVolume.
 	DiskVolumeDiskId *string `pulumi:"diskVolumeDiskId"`
@@ -2936,11 +2952,9 @@ type ContainerGroupVolume struct {
 	Name *string `pulumi:"name"`
 	// The path to the NFS volume.
 	NfsVolumePath *string `pulumi:"nfsVolumePath"`
-	// The nfs volume read only. Default to `false`.
+	// The nfs volume read only. Default value: `false`.
 	NfsVolumeReadOnly *bool `pulumi:"nfsVolumeReadOnly"`
 	// The address of the NFS server.
-	//
-	// > **NOTE:** Every volumes mounted must have name and type attributes.
 	NfsVolumeServer *string `pulumi:"nfsVolumeServer"`
 	// The type of the volume.
 	Type *string `pulumi:"type"`
@@ -2958,7 +2972,8 @@ type ContainerGroupVolumeInput interface {
 }
 
 type ContainerGroupVolumeArgs struct {
-	// ConfigFileVolumeConfigFileToPaths.
+	// The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+	// > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
 	ConfigFileVolumeConfigFileToPaths ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayInput `pulumi:"configFileVolumeConfigFileToPaths"`
 	// The ID of DiskVolume.
 	DiskVolumeDiskId pulumi.StringPtrInput `pulumi:"diskVolumeDiskId"`
@@ -2974,11 +2989,9 @@ type ContainerGroupVolumeArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The path to the NFS volume.
 	NfsVolumePath pulumi.StringPtrInput `pulumi:"nfsVolumePath"`
-	// The nfs volume read only. Default to `false`.
+	// The nfs volume read only. Default value: `false`.
 	NfsVolumeReadOnly pulumi.BoolPtrInput `pulumi:"nfsVolumeReadOnly"`
 	// The address of the NFS server.
-	//
-	// > **NOTE:** Every volumes mounted must have name and type attributes.
 	NfsVolumeServer pulumi.StringPtrInput `pulumi:"nfsVolumeServer"`
 	// The type of the volume.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -3035,7 +3048,8 @@ func (o ContainerGroupVolumeOutput) ToContainerGroupVolumeOutputWithContext(ctx 
 	return o
 }
 
-// ConfigFileVolumeConfigFileToPaths.
+// The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+// > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
 func (o ContainerGroupVolumeOutput) ConfigFileVolumeConfigFileToPaths() ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput {
 	return o.ApplyT(func(v ContainerGroupVolume) []ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
 		return v.ConfigFileVolumeConfigFileToPaths
@@ -3077,14 +3091,12 @@ func (o ContainerGroupVolumeOutput) NfsVolumePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupVolume) *string { return v.NfsVolumePath }).(pulumi.StringPtrOutput)
 }
 
-// The nfs volume read only. Default to `false`.
+// The nfs volume read only. Default value: `false`.
 func (o ContainerGroupVolumeOutput) NfsVolumeReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupVolume) *bool { return v.NfsVolumeReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 // The address of the NFS server.
-//
-// > **NOTE:** Every volumes mounted must have name and type attributes.
 func (o ContainerGroupVolumeOutput) NfsVolumeServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupVolume) *string { return v.NfsVolumeServer }).(pulumi.StringPtrOutput)
 }

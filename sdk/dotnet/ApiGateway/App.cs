@@ -22,9 +22,9 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var apiTest = new AliCloud.ApiGateway.App("apiTest", new()
+    ///     var example = new AliCloud.ApiGateway.App("example", new()
     ///     {
-    ///         Description = "description of the app",
+    ///         Description = "tf_example",
     ///     });
     /// 
     /// });

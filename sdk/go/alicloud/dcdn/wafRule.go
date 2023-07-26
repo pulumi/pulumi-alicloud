@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -143,6 +144,7 @@ func NewWafRule(ctx *pulumi.Context,
 	if args.RuleName == nil {
 		return nil, errors.New("invalid value for required argument 'RuleName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WafRule
 	err := ctx.RegisterResource("alicloud:dcdn/wafRule:WafRule", name, args, &resource, opts...)
 	if err != nil {

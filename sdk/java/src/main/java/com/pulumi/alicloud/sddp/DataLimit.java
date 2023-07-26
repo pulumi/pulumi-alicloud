@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Data Security Center Data Limit and how to use it, see [What is Data Limit](https://www.alibabacloud.com/help/en/doc-detail/158987.html).
  * 
- * &gt; **NOTE:** Available in v1.159.0+.
+ * &gt; **NOTE:** Available since v1.159.0.
  * 
  * ## Import
  * 

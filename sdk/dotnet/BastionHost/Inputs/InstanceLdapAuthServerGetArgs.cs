@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.BastionHost.Inputs
     public sealed class InstanceLdapAuthServerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The username of the account that is used for the AD server.
+        /// The username of the account that is used for the LDAP server.
         /// </summary>
         [Input("account", required: true)]
         public Input<string> Account { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.BastionHost.Inputs
         public Input<string> BaseDn { get; set; } = null!;
 
         /// <summary>
-        /// The field that is used to indicate the email address of a user on the AD server.
+        /// The field that is used to indicate the email address of a user on the LDAP server.
         /// </summary>
         [Input("emailMapping")]
         public Input<string>? EmailMapping { get; set; }
@@ -49,13 +49,13 @@ namespace Pulumi.AliCloud.BastionHost.Inputs
         public Input<string>? LoginNameMapping { get; set; }
 
         /// <summary>
-        /// The field that is used to indicate the mobile phone number of a user on the AD server.
+        /// The field that is used to indicate the mobile phone number of a user on the LDAP server.
         /// </summary>
         [Input("mobileMapping")]
         public Input<string>? MobileMapping { get; set; }
 
         /// <summary>
-        /// The field that is used to indicate the name of a user on the AD server.
+        /// The field that is used to indicate the name of a user on the LDAP server.
         /// </summary>
         [Input("nameMapping")]
         public Input<string>? NameMapping { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.BastionHost.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the account that is used for the AD server.
+        /// The password of the account that is used for the LDAP server.
         /// </summary>
         public Input<string>? Password
         {
@@ -77,19 +77,19 @@ namespace Pulumi.AliCloud.BastionHost.Inputs
         }
 
         /// <summary>
-        /// The port that is used to access the AD server.
+        /// The port that is used to access the LDAP server.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// The address of the AD server.
+        /// The address of the LDAP server.
         /// </summary>
         [Input("server", required: true)]
         public Input<string> Server { get; set; } = null!;
 
         /// <summary>
-        /// The address of the secondary AD server.
+        /// The address of the secondary LDAP server.
         /// </summary>
         [Input("standbyServer")]
         public Input<string>? StandbyServer { get; set; }

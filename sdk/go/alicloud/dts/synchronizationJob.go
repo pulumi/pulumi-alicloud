@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -163,6 +164,7 @@ func NewSynchronizationJob(ctx *pulumi.Context,
 	if args.StructureInitialization == nil {
 		return nil, errors.New("invalid value for required argument 'StructureInitialization'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SynchronizationJob
 	err := ctx.RegisterResource("alicloud:dts/synchronizationJob:SynchronizationJob", name, args, &resource, opts...)
 	if err != nil {

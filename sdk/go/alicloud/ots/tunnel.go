@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -140,6 +141,7 @@ func NewTunnel(ctx *pulumi.Context,
 	if args.TunnelType == nil {
 		return nil, errors.New("invalid value for required argument 'TunnelType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Tunnel
 	err := ctx.RegisterResource("alicloud:ots/tunnel:Tunnel", name, args, &resource, opts...)
 	if err != nil {

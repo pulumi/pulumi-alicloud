@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,116 @@ import (
 //
 // For information about Cloud Monitor Service Metric Rule Black List and how to use it, see [What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist).
 //
-// > **NOTE:** Available in v1.194.0+.
+// > **NOTE:** Available since v1.194.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				InstanceName:     pulumi.String(name),
+//				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				SecurityGroups: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				VswitchId: defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewMetricRuleBlackList(ctx, "defaultMetricRuleBlackList", &cms.MetricRuleBlackListArgs{
+//				Instances: pulumi.StringArray{
+//					defaultInstance.ID().ApplyT(func(id string) (string, error) {
+//						return fmt.Sprintf("{\"instancceId\":\"%v\"}", id), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				Metrics: cms.MetricRuleBlackListMetricArray{
+//					&cms.MetricRuleBlackListMetricArgs{
+//						MetricName: pulumi.String("disk_utilization"),
+//					},
+//				},
+//				Category:                pulumi.String("ecs"),
+//				EnableEndTime:           pulumi.String("1799443209000"),
+//				Namespace:               pulumi.String("acs_ecs_dashboard"),
+//				EnableStartTime:         pulumi.String("1689243209000"),
+//				MetricRuleBlackListName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -47,7 +157,7 @@ type MetricRuleBlackList struct {
 	MetricRuleBlackListId pulumi.StringOutput `pulumi:"metricRuleBlackListId"`
 	// The name of the alert blacklist policy.
 	MetricRuleBlackListName pulumi.StringOutput `pulumi:"metricRuleBlackListName"`
-	// Monitoring metrics in the instance.See the following `Block Metrics`.
+	// Monitoring metrics in the instance. See `metrics` below.
 	Metrics MetricRuleBlackListMetricArrayOutput `pulumi:"metrics"`
 	// The data namespace of the cloud service.
 	Namespace pulumi.StringOutput `pulumi:"namespace"`
@@ -78,6 +188,7 @@ func NewMetricRuleBlackList(ctx *pulumi.Context,
 	if args.Namespace == nil {
 		return nil, errors.New("invalid value for required argument 'Namespace'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MetricRuleBlackList
 	err := ctx.RegisterResource("alicloud:cms/metricRuleBlackList:MetricRuleBlackList", name, args, &resource, opts...)
 	if err != nil {
@@ -118,7 +229,7 @@ type metricRuleBlackListState struct {
 	MetricRuleBlackListId *string `pulumi:"metricRuleBlackListId"`
 	// The name of the alert blacklist policy.
 	MetricRuleBlackListName *string `pulumi:"metricRuleBlackListName"`
-	// Monitoring metrics in the instance.See the following `Block Metrics`.
+	// Monitoring metrics in the instance. See `metrics` below.
 	Metrics []MetricRuleBlackListMetric `pulumi:"metrics"`
 	// The data namespace of the cloud service.
 	Namespace *string `pulumi:"namespace"`
@@ -149,7 +260,7 @@ type MetricRuleBlackListState struct {
 	MetricRuleBlackListId pulumi.StringPtrInput
 	// The name of the alert blacklist policy.
 	MetricRuleBlackListName pulumi.StringPtrInput
-	// Monitoring metrics in the instance.See the following `Block Metrics`.
+	// Monitoring metrics in the instance. See `metrics` below.
 	Metrics MetricRuleBlackListMetricArrayInput
 	// The data namespace of the cloud service.
 	Namespace pulumi.StringPtrInput
@@ -180,7 +291,7 @@ type metricRuleBlackListArgs struct {
 	IsEnable *bool `pulumi:"isEnable"`
 	// The name of the alert blacklist policy.
 	MetricRuleBlackListName string `pulumi:"metricRuleBlackListName"`
-	// Monitoring metrics in the instance.See the following `Block Metrics`.
+	// Monitoring metrics in the instance. See `metrics` below.
 	Metrics []MetricRuleBlackListMetric `pulumi:"metrics"`
 	// The data namespace of the cloud service.
 	Namespace string `pulumi:"namespace"`
@@ -206,7 +317,7 @@ type MetricRuleBlackListArgs struct {
 	IsEnable pulumi.BoolPtrInput
 	// The name of the alert blacklist policy.
 	MetricRuleBlackListName pulumi.StringInput
-	// Monitoring metrics in the instance.See the following `Block Metrics`.
+	// Monitoring metrics in the instance. See `metrics` below.
 	Metrics MetricRuleBlackListMetricArrayInput
 	// The data namespace of the cloud service.
 	Namespace pulumi.StringInput
@@ -348,7 +459,7 @@ func (o MetricRuleBlackListOutput) MetricRuleBlackListName() pulumi.StringOutput
 	return o.ApplyT(func(v *MetricRuleBlackList) pulumi.StringOutput { return v.MetricRuleBlackListName }).(pulumi.StringOutput)
 }
 
-// Monitoring metrics in the instance.See the following `Block Metrics`.
+// Monitoring metrics in the instance. See `metrics` below.
 func (o MetricRuleBlackListOutput) Metrics() MetricRuleBlackListMetricArrayOutput {
 	return o.ApplyT(func(v *MetricRuleBlackList) MetricRuleBlackListMetricArrayOutput { return v.Metrics }).(MetricRuleBlackListMetricArrayOutput)
 }

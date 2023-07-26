@@ -16,9 +16,17 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
 
     public static final NodePoolDataDiskArgs Empty = new NodePoolDataDiskArgs();
 
+    /**
+     * The ID of the automatic snapshot policy that you want to apply to the system disk.
+     * 
+     */
     @Import(name="autoSnapshotPolicyId")
     private @Nullable Output<String> autoSnapshotPolicyId;
 
+    /**
+     * @return The ID of the automatic snapshot policy that you want to apply to the system disk.
+     * 
+     */
     public Optional<Output<String>> autoSnapshotPolicyId() {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
@@ -38,9 +46,17 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.category);
     }
 
+    /**
+     * The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
@@ -76,14 +92,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of node pool.
+     * The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of node pool.
+     * @return The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      * 
      */
     public Optional<Output<String>> name() {
@@ -120,9 +136,17 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.size);
     }
 
+    /**
+     * The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+     * 
+     */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
+    /**
+     * @return The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+     * 
+     */
     public Optional<Output<String>> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }
@@ -159,11 +183,23 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
             $ = new NodePoolDataDiskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoSnapshotPolicyId The ID of the automatic snapshot policy that you want to apply to the system disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoSnapshotPolicyId(@Nullable Output<String> autoSnapshotPolicyId) {
             $.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
 
+        /**
+         * @param autoSnapshotPolicyId The ID of the automatic snapshot policy that you want to apply to the system disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoSnapshotPolicyId(String autoSnapshotPolicyId) {
             return autoSnapshotPolicyId(Output.of(autoSnapshotPolicyId));
         }
@@ -189,11 +225,23 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
             return category(Output.of(category));
         }
 
+        /**
+         * @param device The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }
@@ -241,7 +289,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of node pool.
+         * @param name The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -252,7 +300,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of node pool.
+         * @param name The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -303,11 +351,23 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
             return size(Output.of(size));
         }
 
+        /**
+         * @param snapshotId The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotId(@Nullable Output<String> snapshotId) {
             $.snapshotId = snapshotId;
             return this;
         }
 
+        /**
+         * @param snapshotId The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotId(String snapshotId) {
             return snapshotId(Output.of(snapshotId));
         }

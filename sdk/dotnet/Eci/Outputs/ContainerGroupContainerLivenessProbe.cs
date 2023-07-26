@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupContainerLivenessProbe
     {
         /// <summary>
-        /// Health check using command line method.
+        /// Health check using command line method. See `exec` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerLivenessProbeExec> Execs;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly int? FailureThreshold;
         /// <summary>
-        /// Health check using HTTP request method.
+        /// Health check using HTTP request method. See `http_get` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerLivenessProbeHttpGet> HttpGets;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly int? SuccessThreshold;
         /// <summary>
-        /// Health check using TCP socket method.
+        /// Health check using TCP socket method. See `tcp_socket` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerLivenessProbeTcpSocket> TcpSockets;
         /// <summary>

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetChartRepositories(ctx *pulumi.Context, args *GetChartRepositoriesArgs, opts ...pulumi.InvokeOption) (*GetChartRepositoriesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetChartRepositoriesResult
 	err := ctx.Invoke("alicloud:cr/getChartRepositories:getChartRepositories", args, &rv, opts...)
 	if err != nil {

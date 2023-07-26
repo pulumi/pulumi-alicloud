@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// For information about Bastion Host User Group and how to use it, see [What is User Group](https://www.alibabacloud.com/help/doc-detail/204596.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.132.0+.
+    /// &gt; **NOTE:** Available since v1.132.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,51 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.BastionHost.UserGroup("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         InstanceId = "example_value",
-    ///         UserGroupName = "example_value",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.BastionHost.Instance("defaultInstance", new()
+    ///     {
+    ///         Description = name,
+    ///         LicenseCode = "bhah_ent_50_asset",
+    ///         PlanCode = "cloudbastion",
+    ///         Storage = "5",
+    ///         Bandwidth = "5",
+    ///         Period = 1,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultUserGroup = new AliCloud.BastionHost.UserGroup("defaultUserGroup", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         UserGroupName = name,
     ///     });
     /// 
     /// });

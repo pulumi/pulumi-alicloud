@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetOpenApiPricingModules(ctx *pulumi.Context, args *GetOpenApiPricingModulesArgs, opts ...pulumi.InvokeOption) (*GetOpenApiPricingModulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenApiPricingModulesResult
 	err := ctx.Invoke("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args, &rv, opts...)
 	if err != nil {

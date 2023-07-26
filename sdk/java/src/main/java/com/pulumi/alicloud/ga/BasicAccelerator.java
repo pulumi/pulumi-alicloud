@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Basic Accelerator resource.
  * 
- * For information about Global Accelerator (GA) Basic Accelerator and how to use it, see [What is Basic Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/createbasicaccelerator).
+ * For information about Global Accelerator (GA) Basic Accelerator and how to use it, see [What is Basic Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerator).
  * 
  * &gt; **NOTE:** Available since v1.194.0.
  * 

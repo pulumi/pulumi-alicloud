@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -262,6 +263,7 @@ func NewScalingConfiguration(ctx *pulumi.Context,
 	if args.ScalingGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'ScalingGroupId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ScalingConfiguration
 	err := ctx.RegisterResource("alicloud:ess/scalingConfiguration:ScalingConfiguration", name, args, &resource, opts...)
 	if err != nil {

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string? DefaultValue;
         /// <summary>
-        /// The description of the api. Defaults to null.
+        /// The description of parameter.
         /// </summary>
         public readonly string? Description;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string InService;
         /// <summary>
-        /// The name of the api gateway api. Defaults to null.
+        /// Request's parameter name.
         /// </summary>
         public readonly string Name;
         /// <summary>

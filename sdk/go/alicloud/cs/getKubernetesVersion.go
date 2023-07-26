@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -124,6 +125,7 @@ import (
 //
 // ```
 func GetKubernetesVersion(ctx *pulumi.Context, args *GetKubernetesVersionArgs, opts ...pulumi.InvokeOption) (*GetKubernetesVersionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesVersionResult
 	err := ctx.Invoke("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args, &rv, opts...)
 	if err != nil {

@@ -12,12 +12,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolDataDisk {
+    /**
+     * @return The ID of the automatic snapshot policy that you want to apply to the system disk.
+     * 
+     */
     private @Nullable String autoSnapshotPolicyId;
     /**
      * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
      * 
      */
     private @Nullable String category;
+    /**
+     * @return The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+     * 
+     */
     private @Nullable String device;
     /**
      * @return Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
@@ -30,7 +38,7 @@ public final class NodePoolDataDisk {
      */
     private @Nullable String kmsKeyId;
     /**
-     * @return The name of node pool.
+     * @return The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      * 
      */
     private @Nullable String name;
@@ -44,9 +52,17 @@ public final class NodePoolDataDisk {
      * 
      */
     private @Nullable Integer size;
+    /**
+     * @return The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+     * 
+     */
     private @Nullable String snapshotId;
 
     private NodePoolDataDisk() {}
+    /**
+     * @return The ID of the automatic snapshot policy that you want to apply to the system disk.
+     * 
+     */
     public Optional<String> autoSnapshotPolicyId() {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
@@ -57,6 +73,10 @@ public final class NodePoolDataDisk {
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+     * 
+     */
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
@@ -75,7 +95,7 @@ public final class NodePoolDataDisk {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The name of node pool.
+     * @return The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      * 
      */
     public Optional<String> name() {
@@ -95,6 +115,10 @@ public final class NodePoolDataDisk {
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }
+    /**
+     * @return The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+     * 
+     */
     public Optional<String> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }

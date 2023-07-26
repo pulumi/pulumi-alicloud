@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetMscSubSubscriptions(ctx *pulumi.Context, args *GetMscSubSubscriptionsArgs, opts ...pulumi.InvokeOption) (*GetMscSubSubscriptionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMscSubSubscriptionsResult
 	err := ctx.Invoke("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args, &rv, opts...)
 	if err != nil {

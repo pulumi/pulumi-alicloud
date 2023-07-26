@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in v1.146.0+.
 func GetPatchBaselines(ctx *pulumi.Context, args *GetPatchBaselinesArgs, opts ...pulumi.InvokeOption) (*GetPatchBaselinesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPatchBaselinesResult
 	err := ctx.Invoke("alicloud:oos/getPatchBaselines:getPatchBaselines", args, &rv, opts...)
 	if err != nil {

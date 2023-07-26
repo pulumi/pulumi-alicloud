@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eci
     /// <summary>
     /// Provides ECI Container Group resource.
     /// 
-    /// For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/doc-detail/90341.htm).
+    /// For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/elastic-container-instance/latest/api-eci-2018-08-08-createcontainergroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.111.0+.
+    /// &gt; **NOTE:** Available since v1.111.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Eci
     /// {
     ///     var example = new AliCloud.Eci.ContainerGroup("example", new()
     ///     {
-    ///         ContainerGroupName = "tf-testacc-eci-gruop",
+    ///         ContainerGroupName = "tf-eci-gruop",
     ///         Cpu = 8,
     ///         Memory = 16,
     ///         RestartPolicy = "OnFailure",
@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Eci
     public partial class ContainerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ACR enterprise edition example properties.
+        /// The ACR enterprise edition example properties. See `acr_registry_info` below.
         /// </summary>
         [Output("acrRegistryInfos")]
         public Output<ImmutableArray<Outputs.ContainerGroupAcrRegistryInfo>> AcrRegistryInfos { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<bool?> AutoCreateEip { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to automatically match the image cache. Default value: false.
+        /// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         /// </summary>
         [Output("autoMatchImageCache")]
         public Output<bool?> AutoMatchImageCache { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<string> ContainerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The list of containers.
+        /// The list of containers. See `containers` below.
         /// </summary>
         [Output("containers")]
         public Output<ImmutableArray<Outputs.ContainerGroupContainer>> Containers { get; private set; } = null!;
@@ -217,19 +217,19 @@ namespace Pulumi.AliCloud.Eci
         public Output<double> Cpu { get; private set; } = null!;
 
         /// <summary>
-        /// The structure of dnsConfig.
+        /// The structure of dnsConfig. See `dns_config` below.
         /// </summary>
         [Output("dnsConfig")]
         public Output<Outputs.ContainerGroupDnsConfig?> DnsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The security context of the container group.
+        /// The security context of the container group. See `eci_security_context` below.
         /// </summary>
         [Output("eciSecurityContext")]
         public Output<Outputs.ContainerGroupEciSecurityContext?> EciSecurityContext { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth of the EIP. The default value is `5`.
+        /// The bandwidth of the EIP. Default value: `5`.
         /// </summary>
         [Output("eipBandwidth")]
         public Output<int?> EipBandwidth { get; private set; } = null!;
@@ -241,19 +241,19 @@ namespace Pulumi.AliCloud.Eci
         public Output<string?> EipInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// HostAliases.
+        /// HostAliases. See `host_aliases` below.
         /// </summary>
         [Output("hostAliases")]
         public Output<ImmutableArray<Outputs.ContainerGroupHostAlias>> HostAliases { get; private set; } = null!;
 
         /// <summary>
-        /// The image registry credential. The details see Block `image_registry_credential`.
+        /// The image registry credential. See `image_registry_credential` below.
         /// </summary>
         [Output("imageRegistryCredentials")]
         public Output<ImmutableArray<Outputs.ContainerGroupImageRegistryCredential>> ImageRegistryCredentials { get; private set; } = null!;
 
         /// <summary>
-        /// The list of initContainers.
+        /// The list of initContainers. See `init_containers` below.
         /// </summary>
         [Output("initContainers")]
         public Output<ImmutableArray<Outputs.ContainerGroupInitContainer>> InitContainers { get; private set; } = null!;
@@ -271,13 +271,13 @@ namespace Pulumi.AliCloud.Eci
         public Output<string?> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.170.0+) The Public IP of the container group.
+        /// (Available since v1.170.0) The Public IP of the container group.
         /// </summary>
         [Output("internetIp")]
         public Output<string> InternetIp { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.170.0+) The Private IP of the container group.
+        /// (Available since v1.170.0) The Private IP of the container group.
         /// </summary>
         [Output("intranetIp")]
         public Output<string> IntranetIp { get; private set; } = null!;
@@ -301,7 +301,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<string?> RamRoleName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -333,13 +333,14 @@ namespace Pulumi.AliCloud.Eci
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The list of volumes.
+        /// The list of volumes. See `volumes` below.
         /// </summary>
         [Output("volumes")]
         public Output<ImmutableArray<Outputs.ContainerGroupVolume>> Volumes { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+        /// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -400,7 +401,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupAcrRegistryInfoArgs>? _acrRegistryInfos;
 
         /// <summary>
-        /// The ACR enterprise edition example properties.
+        /// The ACR enterprise edition example properties. See `acr_registry_info` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupAcrRegistryInfoArgs> AcrRegistryInfos
         {
@@ -415,7 +416,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<bool>? AutoCreateEip { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically match the image cache. Default value: false.
+        /// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         /// </summary>
         [Input("autoMatchImageCache")]
         public Input<bool>? AutoMatchImageCache { get; set; }
@@ -430,7 +431,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupContainerArgs>? _containers;
 
         /// <summary>
-        /// The list of containers.
+        /// The list of containers. See `containers` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerArgs> Containers
         {
@@ -445,19 +446,19 @@ namespace Pulumi.AliCloud.Eci
         public Input<double>? Cpu { get; set; }
 
         /// <summary>
-        /// The structure of dnsConfig.
+        /// The structure of dnsConfig. See `dns_config` below.
         /// </summary>
         [Input("dnsConfig")]
         public Input<Inputs.ContainerGroupDnsConfigArgs>? DnsConfig { get; set; }
 
         /// <summary>
-        /// The security context of the container group.
+        /// The security context of the container group. See `eci_security_context` below.
         /// </summary>
         [Input("eciSecurityContext")]
         public Input<Inputs.ContainerGroupEciSecurityContextArgs>? EciSecurityContext { get; set; }
 
         /// <summary>
-        /// The bandwidth of the EIP. The default value is `5`.
+        /// The bandwidth of the EIP. Default value: `5`.
         /// </summary>
         [Input("eipBandwidth")]
         public Input<int>? EipBandwidth { get; set; }
@@ -472,7 +473,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupHostAliasArgs>? _hostAliases;
 
         /// <summary>
-        /// HostAliases.
+        /// HostAliases. See `host_aliases` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupHostAliasArgs> HostAliases
         {
@@ -484,7 +485,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupImageRegistryCredentialArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The image registry credential. The details see Block `image_registry_credential`.
+        /// The image registry credential. See `image_registry_credential` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupImageRegistryCredentialArgs> ImageRegistryCredentials
         {
@@ -496,7 +497,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupInitContainerArgs>? _initContainers;
 
         /// <summary>
-        /// The list of initContainers.
+        /// The list of initContainers. See `init_containers` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerArgs> InitContainers
         {
@@ -535,7 +536,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? RamRoleName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -570,7 +571,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupVolumeArgs>? _volumes;
 
         /// <summary>
-        /// The list of volumes.
+        /// The list of volumes. See `volumes` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupVolumeArgs> Volumes
         {
@@ -580,6 +581,7 @@ namespace Pulumi.AliCloud.Eci
 
         /// <summary>
         /// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+        /// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
@@ -602,7 +604,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupAcrRegistryInfoGetArgs>? _acrRegistryInfos;
 
         /// <summary>
-        /// The ACR enterprise edition example properties.
+        /// The ACR enterprise edition example properties. See `acr_registry_info` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupAcrRegistryInfoGetArgs> AcrRegistryInfos
         {
@@ -617,7 +619,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<bool>? AutoCreateEip { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically match the image cache. Default value: false.
+        /// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         /// </summary>
         [Input("autoMatchImageCache")]
         public Input<bool>? AutoMatchImageCache { get; set; }
@@ -632,7 +634,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupContainerGetArgs>? _containers;
 
         /// <summary>
-        /// The list of containers.
+        /// The list of containers. See `containers` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerGetArgs> Containers
         {
@@ -647,19 +649,19 @@ namespace Pulumi.AliCloud.Eci
         public Input<double>? Cpu { get; set; }
 
         /// <summary>
-        /// The structure of dnsConfig.
+        /// The structure of dnsConfig. See `dns_config` below.
         /// </summary>
         [Input("dnsConfig")]
         public Input<Inputs.ContainerGroupDnsConfigGetArgs>? DnsConfig { get; set; }
 
         /// <summary>
-        /// The security context of the container group.
+        /// The security context of the container group. See `eci_security_context` below.
         /// </summary>
         [Input("eciSecurityContext")]
         public Input<Inputs.ContainerGroupEciSecurityContextGetArgs>? EciSecurityContext { get; set; }
 
         /// <summary>
-        /// The bandwidth of the EIP. The default value is `5`.
+        /// The bandwidth of the EIP. Default value: `5`.
         /// </summary>
         [Input("eipBandwidth")]
         public Input<int>? EipBandwidth { get; set; }
@@ -674,7 +676,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupHostAliasGetArgs>? _hostAliases;
 
         /// <summary>
-        /// HostAliases.
+        /// HostAliases. See `host_aliases` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupHostAliasGetArgs> HostAliases
         {
@@ -686,7 +688,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupImageRegistryCredentialGetArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The image registry credential. The details see Block `image_registry_credential`.
+        /// The image registry credential. See `image_registry_credential` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupImageRegistryCredentialGetArgs> ImageRegistryCredentials
         {
@@ -698,7 +700,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupInitContainerGetArgs>? _initContainers;
 
         /// <summary>
-        /// The list of initContainers.
+        /// The list of initContainers. See `init_containers` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerGetArgs> InitContainers
         {
@@ -719,13 +721,13 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// (Available in v1.170.0+) The Public IP of the container group.
+        /// (Available since v1.170.0) The Public IP of the container group.
         /// </summary>
         [Input("internetIp")]
         public Input<string>? InternetIp { get; set; }
 
         /// <summary>
-        /// (Available in v1.170.0+) The Private IP of the container group.
+        /// (Available since v1.170.0) The Private IP of the container group.
         /// </summary>
         [Input("intranetIp")]
         public Input<string>? IntranetIp { get; set; }
@@ -749,7 +751,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? RamRoleName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -790,7 +792,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ContainerGroupVolumeGetArgs>? _volumes;
 
         /// <summary>
-        /// The list of volumes.
+        /// The list of volumes. See `volumes` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupVolumeGetArgs> Volumes
         {
@@ -800,6 +802,7 @@ namespace Pulumi.AliCloud.Eci
 
         /// <summary>
         /// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+        /// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

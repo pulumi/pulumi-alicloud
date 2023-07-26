@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cms
     /// <summary>
     /// Provides a Cloud Monitor Service Namespace resource.
     /// 
-    /// For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+    /// For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitornamespace).
     /// 
-    /// &gt; **NOTE:** Available in v1.171.0+.
+    /// &gt; **NOTE:** Available since v1.171.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var example = new AliCloud.Cms.Namespace("example", new()
     ///     {
-    ///         NamespaceName = "example-value",
+    ///         NamespaceName = "tf_example",
     ///         Specification = "cms.s1.large",
     ///     });
     /// 

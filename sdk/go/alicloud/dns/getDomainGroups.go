@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetDomainGroups(ctx *pulumi.Context, args *GetDomainGroupsArgs, opts ...pulumi.InvokeOption) (*GetDomainGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainGroupsResult
 	err := ctx.Invoke("alicloud:dns/getDomainGroups:getDomainGroups", args, &rv, opts...)
 	if err != nil {

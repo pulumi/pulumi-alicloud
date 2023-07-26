@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -159,6 +160,7 @@ func NewBasicThreshold(ctx *pulumi.Context,
 	if args.Pps == nil {
 		return nil, errors.New("invalid value for required argument 'Pps'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BasicThreshold
 	err := ctx.RegisterResource("alicloud:ddos/basicThreshold:BasicThreshold", name, args, &resource, opts...)
 	if err != nil {

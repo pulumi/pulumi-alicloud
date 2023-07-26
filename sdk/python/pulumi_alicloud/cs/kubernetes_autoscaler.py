@@ -28,9 +28,7 @@ class KubernetesAutoscalerArgs:
         :param pulumi.Input[str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]] nodepools: * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-               * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-               * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]] nodepools: The list of the node pools. See `nodepools` below.
         :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -94,9 +92,7 @@ class KubernetesAutoscalerArgs:
     @pulumi.getter
     def nodepools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]]:
         """
-        * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-        * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-        * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        The list of the node pools. See `nodepools` below.
         """
         return pulumi.get(self, "nodepools")
 
@@ -131,9 +127,7 @@ class _KubernetesAutoscalerState:
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]] nodepools: * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-               * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-               * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]] nodepools: The list of the node pools. See `nodepools` below.
         :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
         """
@@ -190,9 +184,7 @@ class _KubernetesAutoscalerState:
     @pulumi.getter
     def nodepools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]]:
         """
-        * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-        * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-        * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        The list of the node pools. See `nodepools` below.
         """
         return pulumi.get(self, "nodepools")
 
@@ -238,67 +230,13 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                  utilization: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        cluster-autoscaler in Kubernetes Cluster.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "autoscaler"
-        default_networks = alicloud.vpc.get_networks()
-        default_images = alicloud.ecs.get_images(owners="system",
-            name_regex="^centos_7",
-            most_recent=True)
-        default_managed_kubernetes_clusters = alicloud.cs.get_managed_kubernetes_clusters()
-        default_instance_types = alicloud.ecs.get_instance_types(cpu_core_count=2,
-            memory_size=4)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.vpcs[0].id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            scaling_group_name=name,
-            min_size=var["min_size"],
-            max_size=var["max_size"],
-            vswitch_ids=[default_networks.vpcs[0].vswitch_ids[0]],
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ])
-        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
-            image_id=default_images.images[0].id,
-            security_group_id=default_security_group.id,
-            scaling_group_id=default_scaling_group.id,
-            instance_type=default_instance_types.instance_types[0].id,
-            internet_charge_type="PayByTraffic",
-            force_delete=True,
-            enable=True,
-            active=True)
-        default_kubernetes_autoscaler = alicloud.cs.KubernetesAutoscaler("defaultKubernetesAutoscaler",
-            cluster_id=default_managed_kubernetes_clusters.clusters[0].id,
-            nodepools=[alicloud.cs.KubernetesAutoscalerNodepoolArgs(
-                id=default_scaling_group.id,
-                labels="a=b",
-            )],
-            utilization=var["utilization"],
-            cool_down_duration=var["cool_down_duration"],
-            defer_scale_in_duration=var["defer_scale_in_duration"],
-            opts=pulumi.ResourceOptions(depends_on=[
-                    alicloud_ess_scaling_group["defalut"],
-                    default_scaling_configuration,
-                ]))
-        ```
-
+        Create a KubernetesAutoscaler resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]] nodepools: * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-               * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-               * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]] nodepools: The list of the node pools. See `nodepools` below.
         :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
         """
@@ -309,59 +247,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                  args: KubernetesAutoscalerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        cluster-autoscaler in Kubernetes Cluster.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "autoscaler"
-        default_networks = alicloud.vpc.get_networks()
-        default_images = alicloud.ecs.get_images(owners="system",
-            name_regex="^centos_7",
-            most_recent=True)
-        default_managed_kubernetes_clusters = alicloud.cs.get_managed_kubernetes_clusters()
-        default_instance_types = alicloud.ecs.get_instance_types(cpu_core_count=2,
-            memory_size=4)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.vpcs[0].id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            scaling_group_name=name,
-            min_size=var["min_size"],
-            max_size=var["max_size"],
-            vswitch_ids=[default_networks.vpcs[0].vswitch_ids[0]],
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ])
-        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
-            image_id=default_images.images[0].id,
-            security_group_id=default_security_group.id,
-            scaling_group_id=default_scaling_group.id,
-            instance_type=default_instance_types.instance_types[0].id,
-            internet_charge_type="PayByTraffic",
-            force_delete=True,
-            enable=True,
-            active=True)
-        default_kubernetes_autoscaler = alicloud.cs.KubernetesAutoscaler("defaultKubernetesAutoscaler",
-            cluster_id=default_managed_kubernetes_clusters.clusters[0].id,
-            nodepools=[alicloud.cs.KubernetesAutoscalerNodepoolArgs(
-                id=default_scaling_group.id,
-                labels="a=b",
-            )],
-            utilization=var["utilization"],
-            cool_down_duration=var["cool_down_duration"],
-            defer_scale_in_duration=var["defer_scale_in_duration"],
-            opts=pulumi.ResourceOptions(depends_on=[
-                    alicloud_ess_scaling_group["defalut"],
-                    default_scaling_configuration,
-                ]))
-        ```
-
+        Create a KubernetesAutoscaler resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KubernetesAutoscalerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -432,9 +318,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]] nodepools: * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-               * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-               * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]] nodepools: The list of the node pools. See `nodepools` below.
         :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
         """
@@ -478,9 +362,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
     @pulumi.getter
     def nodepools(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesAutoscalerNodepool']]]:
         """
-        * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-        * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-        * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        The list of the node pools. See `nodepools` below.
         """
         return pulumi.get(self, "nodepools")
 

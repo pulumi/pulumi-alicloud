@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // Deprecated: alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
 func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOption) (*GetTablesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTablesResult
 	err := ctx.Invoke("alicloud:oss/getTables:getTables", args, &rv, opts...)
 	if err != nil {

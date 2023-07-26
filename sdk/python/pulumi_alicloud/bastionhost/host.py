@@ -379,7 +379,7 @@ class Host(pulumi.CustomResource):
 
         For information about Bastion Host Host and how to use it, see [What is Host](https://www.alibabacloud.com/help/en/doc-detail/201330.htm).
 
-        > **NOTE:** Available in v1.135.0+.
+        > **NOTE:** Available since v1.135.0.
 
         ## Example Usage
 
@@ -389,11 +389,34 @@ class Host(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.bastionhost.Host("example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        default_host = alicloud.bastionhost.Host("defaultHost",
+            instance_id=default_instance.id,
+            host_name=name,
             active_address_type="Private",
-            host_name="example_value",
             host_private_address="172.16.0.10",
-            instance_id="bastionhost-cn-tl3xxxxxxx",
             os_type="Linux",
             source="Local")
         ```
@@ -430,7 +453,7 @@ class Host(pulumi.CustomResource):
 
         For information about Bastion Host Host and how to use it, see [What is Host](https://www.alibabacloud.com/help/en/doc-detail/201330.htm).
 
-        > **NOTE:** Available in v1.135.0+.
+        > **NOTE:** Available since v1.135.0.
 
         ## Example Usage
 
@@ -440,11 +463,34 @@ class Host(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.bastionhost.Host("example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        default_host = alicloud.bastionhost.Host("defaultHost",
+            instance_id=default_instance.id,
+            host_name=name,
             active_address_type="Private",
-            host_name="example_value",
             host_private_address="172.16.0.10",
-            instance_id="bastionhost-cn-tl3xxxxxxx",
             os_type="Linux",
             source="Local")
         ```

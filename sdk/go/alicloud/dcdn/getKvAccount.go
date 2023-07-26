@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetKvAccount(ctx *pulumi.Context, args *GetKvAccountArgs, opts ...pulumi.InvokeOption) (*GetKvAccountResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKvAccountResult
 	err := ctx.Invoke("alicloud:dcdn/getKvAccount:getKvAccount", args, &rv, opts...)
 	if err != nil {

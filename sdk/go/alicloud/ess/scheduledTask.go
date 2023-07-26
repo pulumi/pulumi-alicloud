@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ func NewScheduledTask(ctx *pulumi.Context,
 		args = &ScheduledTaskArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ScheduledTask
 	err := ctx.RegisterResource("alicloud:ess/scheduledTask:ScheduledTask", name, args, &resource, opts...)
 	if err != nil {

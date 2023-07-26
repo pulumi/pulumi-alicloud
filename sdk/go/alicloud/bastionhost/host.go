@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Bastion Host Host and how to use it, see [What is Host](https://www.alibabacloud.com/help/en/doc-detail/201330.htm).
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -26,18 +27,70 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bastionhost.NewHost(ctx, "example", &bastionhost.HostArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := bastionhost.NewInstance(ctx, "defaultInstance", &bastionhost.InstanceArgs{
+//				Description: pulumi.String(name),
+//				LicenseCode: pulumi.String("bhah_ent_50_asset"),
+//				PlanCode:    pulumi.String("cloudbastion"),
+//				Storage:     pulumi.String("5"),
+//				Bandwidth:   pulumi.String("5"),
+//				Period:      pulumi.Int(1),
+//				VswitchId:   defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
+//				InstanceId:         defaultInstance.ID(),
+//				HostName:           pulumi.String(name),
 //				ActiveAddressType:  pulumi.String("Private"),
-//				HostName:           pulumi.String("example_value"),
 //				HostPrivateAddress: pulumi.String("172.16.0.10"),
-//				InstanceId:         pulumi.String("bastionhost-cn-tl3xxxxxxx"),
 //				OsType:             pulumi.String("Linux"),
 //				Source:             pulumi.String("Local"),
 //			})
@@ -108,6 +161,7 @@ func NewHost(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Host
 	err := ctx.RegisterResource("alicloud:bastionhost/host:Host", name, args, &resource, opts...)
 	if err != nil {

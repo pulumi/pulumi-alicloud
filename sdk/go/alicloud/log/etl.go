@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -213,6 +214,7 @@ func NewEtl(ctx *pulumi.Context,
 		"accessKeySecret",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Etl
 	err := ctx.RegisterResource("alicloud:log/etl:Etl", name, args, &resource, opts...)
 	if err != nil {

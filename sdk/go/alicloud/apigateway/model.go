@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Api Gateway Model resource.
 //
-// For information about Api Gateway Model and how to use it, see [What is Model](https://help.aliyun.com/document_detail/400372.html).
+// For information about Api Gateway Model and how to use it, see [What is Model](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createmodel).
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -92,6 +93,7 @@ func NewModel(ctx *pulumi.Context,
 	if args.Schema == nil {
 		return nil, errors.New("invalid value for required argument 'Schema'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Model
 	err := ctx.RegisterResource("alicloud:apigateway/model:Model", name, args, &resource, opts...)
 	if err != nil {

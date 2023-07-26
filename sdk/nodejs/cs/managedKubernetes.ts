@@ -44,7 +44,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     }
 
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. Detailed below.
      */
     public readonly addons!: pulumi.Output<outputs.cs.ManagedKubernetesAddon[] | undefined>;
     /**
@@ -138,11 +138,11 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
-     * Install cloud monitor agent on ECS. Default to `true`.
+     * (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
      *
      * @deprecated Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it
      */
-    public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
+    public readonly installCloudMonitor!: pulumi.Output<boolean>;
     /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
@@ -250,7 +250,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly retainResources!: pulumi.Output<string[] | undefined>;
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
      */
     public readonly rrsaMetadata!: pulumi.Output<outputs.cs.ManagedKubernetesRrsaMetadata>;
     /**
@@ -272,7 +272,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
     /**
-     * The ID of load balancer.
+     * (Deprecated) The ID of load balancer.
      *
      * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
      */
@@ -337,19 +337,19 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly workerAutoRenewPeriod!: pulumi.Output<number>;
     /**
-     * The data disk category of worker, use `workerDataDisks` to instead it.
+     * (Optional) The data disk category of worker, use `workerDataDisks` to instead it.
      *
      * @deprecated Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it
      */
     public readonly workerDataDiskCategory!: pulumi.Output<string | undefined>;
     /**
-     * The data disk size of worker, use `workerDataDisks` to instead it.
+     * (Optional) The data disk size of worker, use `workerDataDisks` to instead it.
      *
      * @deprecated Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it
      */
     public readonly workerDataDiskSize!: pulumi.Output<number | undefined>;
     /**
-     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
      *
      * @deprecated Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it
      */
@@ -610,7 +610,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
  */
 export interface ManagedKubernetesState {
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. Detailed below.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesAddon>[]>;
     /**
@@ -704,7 +704,7 @@ export interface ManagedKubernetesState {
      */
     imageId?: pulumi.Input<string>;
     /**
-     * Install cloud monitor agent on ECS. Default to `true`.
+     * (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
      *
      * @deprecated Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it
      */
@@ -816,7 +816,7 @@ export interface ManagedKubernetesState {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
      */
     rrsaMetadata?: pulumi.Input<inputs.cs.ManagedKubernetesRrsaMetadata>;
     /**
@@ -838,7 +838,7 @@ export interface ManagedKubernetesState {
      */
     serviceCidr?: pulumi.Input<string>;
     /**
-     * The ID of load balancer.
+     * (Deprecated) The ID of load balancer.
      *
      * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
      */
@@ -903,19 +903,19 @@ export interface ManagedKubernetesState {
      */
     workerAutoRenewPeriod?: pulumi.Input<number>;
     /**
-     * The data disk category of worker, use `workerDataDisks` to instead it.
+     * (Optional) The data disk category of worker, use `workerDataDisks` to instead it.
      *
      * @deprecated Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it
      */
     workerDataDiskCategory?: pulumi.Input<string>;
     /**
-     * The data disk size of worker, use `workerDataDisks` to instead it.
+     * (Optional) The data disk size of worker, use `workerDataDisks` to instead it.
      *
      * @deprecated Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it
      */
     workerDataDiskSize?: pulumi.Input<number>;
     /**
-     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
      *
      * @deprecated Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it
      */
@@ -995,7 +995,7 @@ export interface ManagedKubernetesState {
  */
 export interface ManagedKubernetesArgs {
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. Detailed below.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesAddon>[]>;
     /**
@@ -1081,7 +1081,7 @@ export interface ManagedKubernetesArgs {
      */
     imageId?: pulumi.Input<string>;
     /**
-     * Install cloud monitor agent on ECS. Default to `true`.
+     * (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
      *
      * @deprecated Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it
      */
@@ -1189,7 +1189,7 @@ export interface ManagedKubernetesArgs {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
      */
     rrsaMetadata?: pulumi.Input<inputs.cs.ManagedKubernetesRrsaMetadata>;
     /**
@@ -1258,19 +1258,19 @@ export interface ManagedKubernetesArgs {
      */
     workerAutoRenewPeriod?: pulumi.Input<number>;
     /**
-     * The data disk category of worker, use `workerDataDisks` to instead it.
+     * (Optional) The data disk category of worker, use `workerDataDisks` to instead it.
      *
      * @deprecated Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it
      */
     workerDataDiskCategory?: pulumi.Input<string>;
     /**
-     * The data disk size of worker, use `workerDataDisks` to instead it.
+     * (Optional) The data disk size of worker, use `workerDataDisks` to instead it.
      *
      * @deprecated Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it
      */
     workerDataDiskSize?: pulumi.Input<number>;
     /**
-     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
      *
      * @deprecated Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it
      */

@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
     public sealed class ApiSystemParameter
     {
         /// <summary>
-        /// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        /// System parameter location; values: 'HEAD' and 'QUERY'.
         /// </summary>
         public readonly string In;
         /// <summary>
-        /// The name of the api gateway api. Defaults to null.
+        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         /// </summary>
         public readonly string Name;
         /// <summary>

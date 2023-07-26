@@ -115,7 +115,7 @@ class _SnatEntryState:
         :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
         :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
-        :param pulumi.Input[str] status: (Available in 1.119.1+) The status of snat entry.
+        :param pulumi.Input[str] status: (Available since v1.119.1) The status of snat entry.
         """
         if snat_entry_id is not None:
             pulumi.set(__self__, "snat_entry_id", snat_entry_id)
@@ -208,7 +208,7 @@ class _SnatEntryState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.119.1+) The status of snat entry.
+        (Available since v1.119.1) The status of snat entry.
         """
         return pulumi.get(self, "status")
 
@@ -230,6 +230,45 @@ class SnatEntry(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a snat resource.
+
+        > **NOTE:** Available since v1.119.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
+            vpc_id=default_network.id,
+            nat_gateway_name=name,
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            nat_type="Enhanced")
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
+        default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
+            allocation_id=default_eip_address.id,
+            instance_id=default_nat_gateway.id)
+        default_snat_entry = alicloud.vpc.SnatEntry("defaultSnatEntry",
+            snat_table_id=default_nat_gateway.snat_table_ids,
+            source_vswitch_id=default_switch.id,
+            snat_ip=default_eip_address.ip_address)
+        ```
 
         ## Import
 
@@ -255,6 +294,45 @@ class SnatEntry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a snat resource.
+
+        > **NOTE:** Available since v1.119.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
+            vpc_id=default_network.id,
+            nat_gateway_name=name,
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            nat_type="Enhanced")
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
+        default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
+            allocation_id=default_eip_address.id,
+            instance_id=default_nat_gateway.id)
+        default_snat_entry = alicloud.vpc.SnatEntry("defaultSnatEntry",
+            snat_table_id=default_nat_gateway.snat_table_ids,
+            source_vswitch_id=default_switch.id,
+            snat_ip=default_eip_address.ip_address)
+        ```
 
         ## Import
 
@@ -334,7 +412,7 @@ class SnatEntry(pulumi.CustomResource):
         :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
         :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
-        :param pulumi.Input[str] status: (Available in 1.119.1+) The status of snat entry.
+        :param pulumi.Input[str] status: (Available since v1.119.1) The status of snat entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -401,7 +479,7 @@ class SnatEntry(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        (Available in 1.119.1+) The status of snat entry.
+        (Available since v1.119.1) The status of snat entry.
         """
         return pulumi.get(self, "status")
 

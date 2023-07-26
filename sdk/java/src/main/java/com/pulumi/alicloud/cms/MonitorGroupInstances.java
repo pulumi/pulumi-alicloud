@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Monitor Service Monitor Group Instances resource.
  * 
- * For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/doc-detail/115031.htm).
+ * For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroupinstances).
  * 
- * &gt; **NOTE:** Available in v1.115.0+.
+ * &gt; **NOTE:** Available since v1.115.0.
  * 
  * ## Example Usage
  * 
@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.cms.MonitorGroup;
  * import com.pulumi.alicloud.cms.MonitorGroupArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.cms.MonitorGroupInstances;
  * import com.pulumi.alicloud.cms.MonitorGroupInstancesArgs;
  * import com.pulumi.alicloud.cms.inputs.MonitorGroupInstancesInstanceArgs;
@@ -51,21 +53,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf-testacc-vpcname&#34;)
+ *             .vpcName(name)
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultMonitorGroup = new MonitorGroup(&#34;defaultMonitorGroup&#34;, MonitorGroupArgs.builder()        
- *             .monitorGroupName(&#34;tf-testaccmonitorgroup&#34;)
+ *             .monitorGroupName(name)
+ *             .build());
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
  *         var example = new MonitorGroupInstances(&#34;example&#34;, MonitorGroupInstancesArgs.builder()        
  *             .groupId(defaultMonitorGroup.id())
  *             .instances(MonitorGroupInstancesInstanceArgs.builder()
  *                 .instanceId(defaultNetwork.id())
- *                 .instanceName(&#34;tf-testacc-vpcname&#34;)
- *                 .regionId(&#34;cn-hangzhou&#34;)
+ *                 .instanceName(name)
+ *                 .regionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *                 .category(&#34;vpc&#34;)
  *                 .build())
  *             .build());
@@ -100,14 +108,14 @@ public class MonitorGroupInstances extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
-     * Instance information added to the Cms Group.
+     * Instance information added to the Cms Group. See `instances` below.
      * 
      */
     @Export(name="instances", type=List.class, parameters={MonitorGroupInstancesInstance.class})
     private Output<List<MonitorGroupInstancesInstance>> instances;
 
     /**
-     * @return Instance information added to the Cms Group.
+     * @return Instance information added to the Cms Group. See `instances` below.
      * 
      */
     public Output<List<MonitorGroupInstancesInstance>> instances() {

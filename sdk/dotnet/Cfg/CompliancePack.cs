@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Cloud Config Compliance Pack resource.
     /// 
-    /// For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+    /// For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createcompliancepack).
     /// 
-    /// &gt; **NOTE:** Available in v1.124.0+.
+    /// &gt; **NOTE:** Available since v1.124.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,41 +29,33 @@ namespace Pulumi.AliCloud.Cfg
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example_name";
-    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke();
-    /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf-example-config";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         Status = "OK",
+    ///         Current = true,
     ///     });
     /// 
     ///     var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new()
     ///     {
-    ///         RuleName = name,
-    ///         Description = name,
-    ///         SourceIdentifier = "ecs-instances-in-vpc",
+    ///         Description = "If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
     ///         SourceOwner = "ALIYUN",
+    ///         SourceIdentifier = "oss-bucket-public-read-prohibited",
+    ///         RiskLevel = 1,
+    ///         TagKeyScope = "For",
+    ///         TagValueScope = "example",
+    ///         RegionIdsScope = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
     ///         ResourceTypesScopes = new[]
     ///         {
-    ///             "ACS::ECS::Instance",
+    ///             "ACS::OSS::Bucket",
     ///         },
-    ///         RiskLevel = 1,
-    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
-    ///         TagKeyScope = "tfTest",
-    ///         TagValueScope = "tfTest 123",
-    ///         ResourceGroupIdsScope = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         ExcludeResourceIdsScope = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-    ///         RegionIdsScope = "cn-hangzhou",
-    ///         InputParameters = 
-    ///         {
-    ///             { "vpcIds", defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.VpcId) },
-    ///         },
+    ///         RuleName = "oss-bucket-public-read-prohibited",
     ///     });
     /// 
     ///     var defaultCompliancePack = new AliCloud.Cfg.CompliancePack("defaultCompliancePack", new()
     ///     {
-    ///         CompliancePackName = "tf-testaccConfig1234",
-    ///         Description = "tf-testaccConfig1234",
+    ///         CompliancePackName = name,
+    ///         Description = name,
     ///         RiskLevel = 1,
     ///         ConfigRuleIds = new[]
     ///         {
@@ -101,13 +93,13 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> CompliancePackTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Config Rule IDs.
+        /// A list of Config Rule IDs. See `config_rule_ids` below.
         /// </summary>
         [Output("configRuleIds")]
         public Output<ImmutableArray<Outputs.CompliancePackConfigRuleId>> ConfigRuleIds { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Config Rules.
+        /// A list of Config Rules. See `config_rules` below.
         /// </summary>
         [Output("configRules")]
         public Output<ImmutableArray<Outputs.CompliancePackConfigRule>> ConfigRules { get; private set; } = null!;
@@ -192,7 +184,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.CompliancePackConfigRuleIdArgs>? _configRuleIds;
 
         /// <summary>
-        /// A list of Config Rule IDs.
+        /// A list of Config Rule IDs. See `config_rule_ids` below.
         /// </summary>
         public InputList<Inputs.CompliancePackConfigRuleIdArgs> ConfigRuleIds
         {
@@ -204,7 +196,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.CompliancePackConfigRuleArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules.
+        /// A list of Config Rules. See `config_rules` below.
         /// </summary>
         [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
         public InputList<Inputs.CompliancePackConfigRuleArgs> ConfigRules
@@ -249,7 +241,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.CompliancePackConfigRuleIdGetArgs>? _configRuleIds;
 
         /// <summary>
-        /// A list of Config Rule IDs.
+        /// A list of Config Rule IDs. See `config_rule_ids` below.
         /// </summary>
         public InputList<Inputs.CompliancePackConfigRuleIdGetArgs> ConfigRuleIds
         {
@@ -261,7 +253,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.CompliancePackConfigRuleGetArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules.
+        /// A list of Config Rules. See `config_rules` below.
         /// </summary>
         [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
         public InputList<Inputs.CompliancePackConfigRuleGetArgs> ConfigRules

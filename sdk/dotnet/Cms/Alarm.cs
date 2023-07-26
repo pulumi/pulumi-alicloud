@@ -11,7 +11,9 @@ namespace Pulumi.AliCloud.Cms
 {
     /// <summary>
     /// This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
-    /// Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+    /// Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+    /// 
+    /// &gt; **NOTE:** Available since v1.9.1.
     /// 
     /// ## Example Usage
     /// 
@@ -25,24 +27,81 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basic = new AliCloud.Cms.Alarm("basic", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         ContactGroups = new[]
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "Instance",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceName = name,
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroups = new[]
     ///         {
-    ///             "test-group",
+    ///             defaultSecurityGroup.Id,
     ///         },
-    ///         EffectiveInterval = "0:00-2:00",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     {
+    ///         AlarmContactGroupName = name,
+    ///     });
+    /// 
+    ///     var defaultAlarm = new AliCloud.Cms.Alarm("defaultAlarm", new()
+    ///     {
+    ///         Project = "acs_ecs_dashboard",
+    ///         Metric = "disk_writebytes",
+    ///         MetricDimensions = defaultInstance.Id.Apply(id =&gt; $"[{{\"instanceId\":\"{id}\",\"device\":\"/dev/vda1\"}}]"),
     ///         EscalationsCritical = new AliCloud.Cms.Inputs.AlarmEscalationsCriticalArgs
     ///         {
-    ///             ComparisonOperator = "&lt;=",
     ///             Statistics = "Average",
+    ///             ComparisonOperator = "&lt;=",
     ///             Threshold = "35",
     ///             Times = 2,
     ///         },
-    ///         MetricDimensions = "[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]",
     ///         Period = 900,
-    ///         Project = "acs_ecs_dashboard",
-    ///         Webhook = $"https://{data.Alicloud_account.Current.Id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/",
+    ///         ContactGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.AlarmContactGroupName,
+    ///         },
+    ///         EffectiveInterval = "06:00-20:00",
     ///     });
     /// 
     /// });
@@ -90,19 +149,19 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// A configuration of critical alarm (documented below).
+        /// A configuration of critical alarm. See `escalations_critical` below.
         /// </summary>
         [Output("escalationsCritical")]
         public Output<Outputs.AlarmEscalationsCritical?> EscalationsCritical { get; private set; } = null!;
 
         /// <summary>
-        /// A configuration of critical info (documented below).
+        /// A configuration of critical info. See `escalations_info` below.
         /// </summary>
         [Output("escalationsInfo")]
         public Output<Outputs.AlarmEscalationsInfo?> EscalationsInfo { get; private set; } = null!;
 
         /// <summary>
-        /// A configuration of critical warn (documented below).
+        /// A configuration of critical warn. See `escalations_warn` below.
         /// </summary>
         [Output("escalationsWarn")]
         public Output<Outputs.AlarmEscalationsWarn?> EscalationsWarn { get; private set; } = null!;
@@ -145,7 +204,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        /// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         /// </summary>
         [Output("prometheuses")]
         public Output<ImmutableArray<Outputs.AlarmPrometheus>> Prometheuses { get; private set; } = null!;
@@ -290,19 +349,19 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// A configuration of critical alarm (documented below).
+        /// A configuration of critical alarm. See `escalations_critical` below.
         /// </summary>
         [Input("escalationsCritical")]
         public Input<Inputs.AlarmEscalationsCriticalArgs>? EscalationsCritical { get; set; }
 
         /// <summary>
-        /// A configuration of critical info (documented below).
+        /// A configuration of critical info. See `escalations_info` below.
         /// </summary>
         [Input("escalationsInfo")]
         public Input<Inputs.AlarmEscalationsInfoArgs>? EscalationsInfo { get; set; }
 
         /// <summary>
-        /// A configuration of critical warn (documented below).
+        /// A configuration of critical warn. See `escalations_warn` below.
         /// </summary>
         [Input("escalationsWarn")]
         public Input<Inputs.AlarmEscalationsWarnArgs>? EscalationsWarn { get; set; }
@@ -348,7 +407,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.AlarmPrometheusArgs>? _prometheuses;
 
         /// <summary>
-        /// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        /// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         /// </summary>
         public InputList<Inputs.AlarmPrometheusArgs> Prometheuses
         {
@@ -458,19 +517,19 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// A configuration of critical alarm (documented below).
+        /// A configuration of critical alarm. See `escalations_critical` below.
         /// </summary>
         [Input("escalationsCritical")]
         public Input<Inputs.AlarmEscalationsCriticalGetArgs>? EscalationsCritical { get; set; }
 
         /// <summary>
-        /// A configuration of critical info (documented below).
+        /// A configuration of critical info. See `escalations_info` below.
         /// </summary>
         [Input("escalationsInfo")]
         public Input<Inputs.AlarmEscalationsInfoGetArgs>? EscalationsInfo { get; set; }
 
         /// <summary>
-        /// A configuration of critical warn (documented below).
+        /// A configuration of critical warn. See `escalations_warn` below.
         /// </summary>
         [Input("escalationsWarn")]
         public Input<Inputs.AlarmEscalationsWarnGetArgs>? EscalationsWarn { get; set; }
@@ -516,7 +575,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.AlarmPrometheusGetArgs>? _prometheuses;
 
         /// <summary>
-        /// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        /// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         /// </summary>
         public InputList<Inputs.AlarmPrometheusGetArgs> Prometheuses
         {

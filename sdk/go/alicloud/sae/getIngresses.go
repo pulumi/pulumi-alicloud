@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in v1.137.0+.
 func GetIngresses(ctx *pulumi.Context, args *GetIngressesArgs, opts ...pulumi.InvokeOption) (*GetIngressesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIngressesResult
 	err := ctx.Invoke("alicloud:sae/getIngresses:getIngresses", args, &rv, opts...)
 	if err != nil {

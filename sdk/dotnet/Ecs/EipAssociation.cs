@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
     /// 
+    /// &gt; **NOTE:** Available since v1.117.0.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -29,67 +31,72 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.GetZones.Invoke();
-    /// 
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         CidrBlock = "10.1.0.0/21",
+    ///         AvailableResourceCreation = "Instance",
     ///     });
     /// 
-    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+    ///     var exampleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         VpcId = vpc.Id,
-    ///         CidrBlock = "10.1.1.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             vpc,
-    ///         },
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
-    ///     {
-    ///         NameRegex = "^ubuntu_18.*64",
-    ///         MostRecent = true,
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         Description = "New security group",
-    ///         VpcId = vpc.Id,
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
     ///     {
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Ecs.Instance("exampleInstance", new()
+    ///     {
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceName = name,
+    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroups = new[]
     ///         {
-    ///             @group.Id,
+    ///             exampleSecurityGroup.Id,
     ///         },
-    ///         VswitchId = vsw.Id,
-    ///         InstanceName = "hello",
+    ///         VswitchId = exampleSwitch.Id,
     ///         Tags = 
     ///         {
-    ///             { "Name", "TerraformTest-instance" },
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
-    ///     var eip = new AliCloud.Ecs.EipAddress("eip");
-    /// 
-    ///     var eipAsso = new AliCloud.Ecs.EipAssociation("eipAsso", new()
+    ///     var exampleEipAddress = new AliCloud.Ecs.EipAddress("exampleEipAddress", new()
     ///     {
-    ///         AllocationId = eip.Id,
-    ///         InstanceId = ecsInstance.Id,
+    ///         AddressName = name,
+    ///     });
+    /// 
+    ///     var exampleEipAssociation = new AliCloud.Ecs.EipAssociation("exampleEipAssociation", new()
+    ///     {
+    ///         AllocationId = exampleEipAddress.Id,
+    ///         InstanceId = exampleInstance.Id,
     ///     });
     /// 
     /// });

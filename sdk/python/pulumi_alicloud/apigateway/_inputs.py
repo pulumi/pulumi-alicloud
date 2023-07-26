@@ -28,10 +28,10 @@ class ApiConstantParameterArgs:
                  value: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
+        :param pulumi.Input[str] in_: Constant parameter location; values: 'HEAD' and 'QUERY'.
+        :param pulumi.Input[str] name: Constant parameter name.
         :param pulumi.Input[str] value: Constant parameter value.
-        :param pulumi.Input[str] description: The description of the api. Defaults to null.
+        :param pulumi.Input[str] description: The description of Constant parameter.
         """
         pulumi.set(__self__, "in_", in_)
         pulumi.set(__self__, "name", name)
@@ -43,7 +43,7 @@ class ApiConstantParameterArgs:
     @pulumi.getter(name="in")
     def in_(self) -> pulumi.Input[str]:
         """
-        Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        Constant parameter location; values: 'HEAD' and 'QUERY'.
         """
         return pulumi.get(self, "in_")
 
@@ -55,7 +55,7 @@ class ApiConstantParameterArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the api gateway api. Defaults to null.
+        Constant parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -79,7 +79,7 @@ class ApiConstantParameterArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the api. Defaults to null.
+        The description of Constant parameter.
         """
         return pulumi.get(self, "description")
 
@@ -181,9 +181,10 @@ class ApiHttpServiceConfigArgs:
                  aone_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] address: The address of backend service.
-        :param pulumi.Input[str] method: The method of the api, including 'GET','POST','PUT' etc.
-        :param pulumi.Input[str] path: The request path of the api.
+        :param pulumi.Input[str] method: The http method of backend service.
+        :param pulumi.Input[str] path: The path of backend service.
         :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
+        :param pulumi.Input[str] aone_name: The name of aone.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "method", method)
@@ -208,7 +209,7 @@ class ApiHttpServiceConfigArgs:
     @pulumi.getter
     def method(self) -> pulumi.Input[str]:
         """
-        The method of the api, including 'GET','POST','PUT' etc.
+        The http method of backend service.
         """
         return pulumi.get(self, "method")
 
@@ -220,7 +221,7 @@ class ApiHttpServiceConfigArgs:
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
         """
-        The request path of the api.
+        The path of backend service.
         """
         return pulumi.get(self, "path")
 
@@ -243,6 +244,9 @@ class ApiHttpServiceConfigArgs:
     @property
     @pulumi.getter(name="aoneName")
     def aone_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of aone.
+        """
         return pulumi.get(self, "aone_name")
 
     @aone_name.setter
@@ -259,10 +263,11 @@ class ApiHttpVpcServiceConfigArgs:
                  timeout: pulumi.Input[int],
                  aone_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] method: The method of the api, including 'GET','POST','PUT' etc.
-        :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
-        :param pulumi.Input[str] path: The request path of the api.
-        :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
+        :param pulumi.Input[str] method: The http method of backend service.
+        :param pulumi.Input[str] name: The name of vpc instance.
+        :param pulumi.Input[str] path: The path of backend service.
+        :param pulumi.Input[int] timeout: Backend service time-out time. Unit: millisecond.
+        :param pulumi.Input[str] aone_name: The name of aone.
         """
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "name", name)
@@ -275,7 +280,7 @@ class ApiHttpVpcServiceConfigArgs:
     @pulumi.getter
     def method(self) -> pulumi.Input[str]:
         """
-        The method of the api, including 'GET','POST','PUT' etc.
+        The http method of backend service.
         """
         return pulumi.get(self, "method")
 
@@ -287,7 +292,7 @@ class ApiHttpVpcServiceConfigArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the api gateway api. Defaults to null.
+        The name of vpc instance.
         """
         return pulumi.get(self, "name")
 
@@ -299,7 +304,7 @@ class ApiHttpVpcServiceConfigArgs:
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
         """
-        The request path of the api.
+        The path of backend service.
         """
         return pulumi.get(self, "path")
 
@@ -311,7 +316,7 @@ class ApiHttpVpcServiceConfigArgs:
     @pulumi.getter
     def timeout(self) -> pulumi.Input[int]:
         """
-        Backend service time-out time; unit: millisecond.
+        Backend service time-out time. Unit: millisecond.
         """
         return pulumi.get(self, "timeout")
 
@@ -322,6 +327,9 @@ class ApiHttpVpcServiceConfigArgs:
     @property
     @pulumi.getter(name="aoneName")
     def aone_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of aone.
+        """
         return pulumi.get(self, "aone_name")
 
     @aone_name.setter
@@ -336,6 +344,7 @@ class ApiMockServiceConfigArgs:
                  aone_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] result: The result of the mock service.
+        :param pulumi.Input[str] aone_name: The name of aone.
         """
         pulumi.set(__self__, "result", result)
         if aone_name is not None:
@@ -356,6 +365,9 @@ class ApiMockServiceConfigArgs:
     @property
     @pulumi.getter(name="aoneName")
     def aone_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of aone.
+        """
         return pulumi.get(self, "aone_name")
 
     @aone_name.setter
@@ -460,12 +472,12 @@ class ApiRequestParameterArgs:
         """
         :param pulumi.Input[str] in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         :param pulumi.Input[str] in_service: Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
+        :param pulumi.Input[str] name: Request's parameter name.
         :param pulumi.Input[str] name_service: Backend service's parameter name.
         :param pulumi.Input[str] required: Parameter required or not; values: REQUIRED and OPTIONAL.
         :param pulumi.Input[str] type: Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
         :param pulumi.Input[str] default_value: The default value of the parameter.
-        :param pulumi.Input[str] description: The description of the api. Defaults to null.
+        :param pulumi.Input[str] description: The description of parameter.
         """
         pulumi.set(__self__, "in_", in_)
         pulumi.set(__self__, "in_service", in_service)
@@ -506,7 +518,7 @@ class ApiRequestParameterArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the api gateway api. Defaults to null.
+        Request's parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -566,7 +578,7 @@ class ApiRequestParameterArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the api. Defaults to null.
+        The description of parameter.
         """
         return pulumi.get(self, "description")
 
@@ -582,8 +594,8 @@ class ApiSystemParameterArgs:
                  name: pulumi.Input[str],
                  name_service: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
+        :param pulumi.Input[str] in_: System parameter location; values: 'HEAD' and 'QUERY'.
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input[str] name_service: Backend service's parameter name.
         """
         pulumi.set(__self__, "in_", in_)
@@ -594,7 +606,7 @@ class ApiSystemParameterArgs:
     @pulumi.getter(name="in")
     def in_(self) -> pulumi.Input[str]:
         """
-        Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        System parameter location; values: 'HEAD' and 'QUERY'.
         """
         return pulumi.get(self, "in_")
 
@@ -606,7 +618,7 @@ class ApiSystemParameterArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the api gateway api. Defaults to null.
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 

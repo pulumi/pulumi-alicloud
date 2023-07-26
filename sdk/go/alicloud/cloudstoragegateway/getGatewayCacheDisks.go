@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +60,7 @@ import (
 //
 // ```
 func GetGatewayCacheDisks(ctx *pulumi.Context, args *GetGatewayCacheDisksArgs, opts ...pulumi.InvokeOption) (*GetGatewayCacheDisksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayCacheDisksResult
 	err := ctx.Invoke("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", args, &rv, opts...)
 	if err != nil {

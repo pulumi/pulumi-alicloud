@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Monitor Service Monitor Group Instances resource.
  *
- * For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/doc-detail/115031.htm).
+ * For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroupinstances).
  *
- * > **NOTE:** Available in v1.115.0+.
+ * > **NOTE:** Available since v1.115.0.
  *
  * ## Example Usage
  *
@@ -21,17 +21,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "tf-testacc-vpcname",
+ *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
  * });
- * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("defaultMonitorGroup", {monitorGroupName: "tf-testaccmonitorgroup"});
+ * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("defaultMonitorGroup", {monitorGroupName: name});
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
  * const example = new alicloud.cms.MonitorGroupInstances("example", {
  *     groupId: defaultMonitorGroup.id,
  *     instances: [{
  *         instanceId: defaultNetwork.id,
- *         instanceName: "tf-testacc-vpcname",
- *         regionId: "cn-hangzhou",
+ *         instanceName: name,
+ *         regionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
  *         category: "vpc",
  *     }],
  * });
@@ -78,7 +83,7 @@ export class MonitorGroupInstances extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * Instance information added to the Cms Group.
+     * Instance information added to the Cms Group. See `instances` below.
      */
     public readonly instances!: pulumi.Output<outputs.cms.MonitorGroupInstancesInstance[]>;
 
@@ -122,7 +127,7 @@ export interface MonitorGroupInstancesState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * Instance information added to the Cms Group.
+     * Instance information added to the Cms Group. See `instances` below.
      */
     instances?: pulumi.Input<pulumi.Input<inputs.cms.MonitorGroupInstancesInstance>[]>;
 }
@@ -136,7 +141,7 @@ export interface MonitorGroupInstancesArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * Instance information added to the Cms Group.
+     * Instance information added to the Cms Group. See `instances` below.
      */
     instances: pulumi.Input<pulumi.Input<inputs.cms.MonitorGroupInstancesInstance>[]>;
 }

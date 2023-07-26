@@ -22,6 +22,15 @@ __all__ = [
     'ServiceNasConfigMountPointArgs',
     'ServiceTracingConfigArgs',
     'ServiceVpcConfigArgs',
+    'V2FunctionCodeArgs',
+    'V2FunctionCustomContainerConfigArgs',
+    'V2FunctionCustomDnsArgs',
+    'V2FunctionCustomDnsDnsOptionArgs',
+    'V2FunctionCustomHealthCheckConfigArgs',
+    'V2FunctionCustomRuntimeConfigArgs',
+    'V2FunctionInstanceLifecycleConfigArgs',
+    'V2FunctionInstanceLifecycleConfigPreFreezeArgs',
+    'V2FunctionInstanceLifecycleConfigPreStopArgs',
 ]
 
 @pulumi.input_type
@@ -566,5 +575,500 @@ class ServiceVpcConfigArgs:
     @vpc_id.setter
     def vpc_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc_id", value)
+
+
+@pulumi.input_type
+class V2FunctionCodeArgs:
+    def __init__(__self__, *,
+                 oss_bucket_name: Optional[pulumi.Input[str]] = None,
+                 oss_object_name: Optional[pulumi.Input[str]] = None,
+                 zip_file: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] oss_bucket_name: The OSS bucket name of the function code package.
+        :param pulumi.Input[str] oss_object_name: The OSS object name of the function code package.
+        :param pulumi.Input[str] zip_file: Upload the base64 encoding of the code zip package directly in the request body.
+        """
+        if oss_bucket_name is not None:
+            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+        if oss_object_name is not None:
+            pulumi.set(__self__, "oss_object_name", oss_object_name)
+        if zip_file is not None:
+            pulumi.set(__self__, "zip_file", zip_file)
+
+    @property
+    @pulumi.getter(name="ossBucketName")
+    def oss_bucket_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OSS bucket name of the function code package.
+        """
+        return pulumi.get(self, "oss_bucket_name")
+
+    @oss_bucket_name.setter
+    def oss_bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oss_bucket_name", value)
+
+    @property
+    @pulumi.getter(name="ossObjectName")
+    def oss_object_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OSS object name of the function code package.
+        """
+        return pulumi.get(self, "oss_object_name")
+
+    @oss_object_name.setter
+    def oss_object_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oss_object_name", value)
+
+    @property
+    @pulumi.getter(name="zipFile")
+    def zip_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        Upload the base64 encoding of the code zip package directly in the request body.
+        """
+        return pulumi.get(self, "zip_file")
+
+    @zip_file.setter
+    def zip_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zip_file", value)
+
+
+@pulumi.input_type
+class V2FunctionCustomContainerConfigArgs:
+    def __init__(__self__, *,
+                 acceleration_type: Optional[pulumi.Input[str]] = None,
+                 args: Optional[pulumi.Input[str]] = None,
+                 command: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
+                 web_server_mode: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] acceleration_type: Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
+        :param pulumi.Input[str] args: Container startup parameters.
+        :param pulumi.Input[str] command: Container start command, equivalent to Docker ENTRYPOINT.
+        :param pulumi.Input[str] image: Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
+        :param pulumi.Input[bool] web_server_mode: Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
+        """
+        if acceleration_type is not None:
+            pulumi.set(__self__, "acceleration_type", acceleration_type)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if command is not None:
+            pulumi.set(__self__, "command", command)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if web_server_mode is not None:
+            pulumi.set(__self__, "web_server_mode", web_server_mode)
+
+    @property
+    @pulumi.getter(name="accelerationType")
+    def acceleration_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
+        """
+        return pulumi.get(self, "acceleration_type")
+
+    @acceleration_type.setter
+    def acceleration_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acceleration_type", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container startup parameters.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter
+    def command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container start command, equivalent to Docker ENTRYPOINT.
+        """
+        return pulumi.get(self, "command")
+
+    @command.setter
+    def command(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "command", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter(name="webServerMode")
+    def web_server_mode(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
+        """
+        return pulumi.get(self, "web_server_mode")
+
+    @web_server_mode.setter
+    def web_server_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "web_server_mode", value)
+
+
+@pulumi.input_type
+class V2FunctionCustomDnsArgs:
+    def __init__(__self__, *,
+                 dns_options: Optional[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]] = None,
+                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 searches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]] dns_options: DNS resolver configuration parameter list. See `dns_options` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: List of IP addresses of DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] searches: List of DNS search domains.
+        """
+        if dns_options is not None:
+            pulumi.set(__self__, "dns_options", dns_options)
+        if name_servers is not None:
+            pulumi.set(__self__, "name_servers", name_servers)
+        if searches is not None:
+            pulumi.set(__self__, "searches", searches)
+
+    @property
+    @pulumi.getter(name="dnsOptions")
+    def dns_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]]:
+        """
+        DNS resolver configuration parameter list. See `dns_options` below.
+        """
+        return pulumi.get(self, "dns_options")
+
+    @dns_options.setter
+    def dns_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]]):
+        pulumi.set(self, "dns_options", value)
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IP addresses of DNS servers.
+        """
+        return pulumi.get(self, "name_servers")
+
+    @name_servers.setter
+    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "name_servers", value)
+
+    @property
+    @pulumi.getter
+    def searches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of DNS search domains.
+        """
+        return pulumi.get(self, "searches")
+
+    @searches.setter
+    def searches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "searches", value)
+
+
+@pulumi.input_type
+class V2FunctionCustomDnsDnsOptionArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: DNS option name.
+        :param pulumi.Input[str] value: DNS option value.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        DNS option name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        DNS option value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class V2FunctionCustomHealthCheckConfigArgs:
+    def __init__(__self__, *,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
+                 http_get_url: Optional[pulumi.Input[str]] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 success_threshold: Optional[pulumi.Input[int]] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] failure_threshold: The threshold for the number of health check failures. The system considers the check failed after the health check fails.
+        :param pulumi.Input[str] http_get_url: Container custom health check URL address.
+        :param pulumi.Input[int] initial_delay_seconds: Delay from container startup to initiation of health check.
+        :param pulumi.Input[int] period_seconds: Health check cycle.
+        :param pulumi.Input[int] success_threshold: The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
+        :param pulumi.Input[int] timeout_seconds: Health check timeout.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_get_url is not None:
+            pulumi.set(__self__, "http_get_url", http_get_url)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The threshold for the number of health check failures. The system considers the check failed after the health check fails.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter(name="httpGetUrl")
+    def http_get_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container custom health check URL address.
+        """
+        return pulumi.get(self, "http_get_url")
+
+    @http_get_url.setter
+    def http_get_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_get_url", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Delay from container startup to initiation of health check.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Health check cycle.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Health check timeout.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+@pulumi.input_type
+class V2FunctionCustomRuntimeConfigArgs:
+    def __init__(__self__, *,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Parameters received by the start entry command.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Parameters received by the start entry command.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+@pulumi.input_type
+class V2FunctionInstanceLifecycleConfigArgs:
+    def __init__(__self__, *,
+                 pre_freeze: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs']] = None,
+                 pre_stop: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs']] = None):
+        """
+        :param pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs'] pre_freeze: PreFreeze function configuration. See `pre_freeze` below.
+        :param pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs'] pre_stop: PreStop function configuration. See `pre_stop` below.
+        """
+        if pre_freeze is not None:
+            pulumi.set(__self__, "pre_freeze", pre_freeze)
+        if pre_stop is not None:
+            pulumi.set(__self__, "pre_stop", pre_stop)
+
+    @property
+    @pulumi.getter(name="preFreeze")
+    def pre_freeze(self) -> Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs']]:
+        """
+        PreFreeze function configuration. See `pre_freeze` below.
+        """
+        return pulumi.get(self, "pre_freeze")
+
+    @pre_freeze.setter
+    def pre_freeze(self, value: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs']]):
+        pulumi.set(self, "pre_freeze", value)
+
+    @property
+    @pulumi.getter(name="preStop")
+    def pre_stop(self) -> Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs']]:
+        """
+        PreStop function configuration. See `pre_stop` below.
+        """
+        return pulumi.get(self, "pre_stop")
+
+    @pre_stop.setter
+    def pre_stop(self, value: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs']]):
+        pulumi.set(self, "pre_stop", value)
+
+
+@pulumi.input_type
+class V2FunctionInstanceLifecycleConfigPreFreezeArgs:
+    def __init__(__self__, *,
+                 handler: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] handler: entry point of function.
+        :param pulumi.Input[int] timeout: max running time of function.
+        """
+        if handler is not None:
+            pulumi.set(__self__, "handler", handler)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> Optional[pulumi.Input[str]]:
+        """
+        entry point of function.
+        """
+        return pulumi.get(self, "handler")
+
+    @handler.setter
+    def handler(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "handler", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        max running time of function.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout", value)
+
+
+@pulumi.input_type
+class V2FunctionInstanceLifecycleConfigPreStopArgs:
+    def __init__(__self__, *,
+                 handler: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] handler: entry point of function.
+        :param pulumi.Input[int] timeout: max running time of function.
+        """
+        if handler is not None:
+            pulumi.set(__self__, "handler", handler)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> Optional[pulumi.Input[str]]:
+        """
+        entry point of function.
+        """
+        return pulumi.get(self, "handler")
+
+    @handler.setter
+    def handler(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "handler", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        max running time of function.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout", value)
 
 

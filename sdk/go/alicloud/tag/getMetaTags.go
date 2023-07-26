@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetMetaTags(ctx *pulumi.Context, args *GetMetaTagsArgs, opts ...pulumi.InvokeOption) (*GetMetaTagsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetaTagsResult
 	err := ctx.Invoke("alicloud:tag/getMetaTags:getMetaTags", args, &rv, opts...)
 	if err != nil {

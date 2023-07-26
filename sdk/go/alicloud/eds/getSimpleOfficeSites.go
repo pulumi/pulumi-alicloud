@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetSimpleOfficeSites(ctx *pulumi.Context, args *GetSimpleOfficeSitesArgs, opts ...pulumi.InvokeOption) (*GetSimpleOfficeSitesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSimpleOfficeSitesResult
 	err := ctx.Invoke("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args, &rv, opts...)
 	if err != nil {

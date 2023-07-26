@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -131,6 +132,7 @@ func NewServerGroupServerAttachment(ctx *pulumi.Context,
 	if args.ServerType == nil {
 		return nil, errors.New("invalid value for required argument 'ServerType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerGroupServerAttachment
 	err := ctx.RegisterResource("alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment", name, args, &resource, opts...)
 	if err != nil {

@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Monitor Service Dynamic Tag Group resource.
 //
-// For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/doc-detail/150123.html).
+// For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createdynamictaggroup).
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -78,7 +79,7 @@ type DynamicTagGroup struct {
 	ContactGroupLists pulumi.StringArrayOutput `pulumi:"contactGroupLists"`
 	// The relationship between conditional expressions. Valid values: `and`, `or`.
 	MatchExpressFilterRelation pulumi.StringOutput `pulumi:"matchExpressFilterRelation"`
-	// The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
 	MatchExpresses DynamicTagGroupMatchExpressArrayOutput `pulumi:"matchExpresses"`
 	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -104,6 +105,7 @@ func NewDynamicTagGroup(ctx *pulumi.Context,
 	if args.TagKey == nil {
 		return nil, errors.New("invalid value for required argument 'TagKey'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DynamicTagGroup
 	err := ctx.RegisterResource("alicloud:cms/dynamicTagGroup:DynamicTagGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -130,7 +132,7 @@ type dynamicTagGroupState struct {
 	ContactGroupLists []string `pulumi:"contactGroupLists"`
 	// The relationship between conditional expressions. Valid values: `and`, `or`.
 	MatchExpressFilterRelation *string `pulumi:"matchExpressFilterRelation"`
-	// The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
 	MatchExpresses []DynamicTagGroupMatchExpress `pulumi:"matchExpresses"`
 	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
 	Status *string `pulumi:"status"`
@@ -145,7 +147,7 @@ type DynamicTagGroupState struct {
 	ContactGroupLists pulumi.StringArrayInput
 	// The relationship between conditional expressions. Valid values: `and`, `or`.
 	MatchExpressFilterRelation pulumi.StringPtrInput
-	// The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
 	MatchExpresses DynamicTagGroupMatchExpressArrayInput
 	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
 	Status pulumi.StringPtrInput
@@ -164,7 +166,7 @@ type dynamicTagGroupArgs struct {
 	ContactGroupLists []string `pulumi:"contactGroupLists"`
 	// The relationship between conditional expressions. Valid values: `and`, `or`.
 	MatchExpressFilterRelation *string `pulumi:"matchExpressFilterRelation"`
-	// The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
 	MatchExpresses []DynamicTagGroupMatchExpress `pulumi:"matchExpresses"`
 	// The tag key of the tag.
 	TagKey string `pulumi:"tagKey"`
@@ -178,7 +180,7 @@ type DynamicTagGroupArgs struct {
 	ContactGroupLists pulumi.StringArrayInput
 	// The relationship between conditional expressions. Valid values: `and`, `or`.
 	MatchExpressFilterRelation pulumi.StringPtrInput
-	// The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
 	MatchExpresses DynamicTagGroupMatchExpressArrayInput
 	// The tag key of the tag.
 	TagKey pulumi.StringInput
@@ -283,7 +285,7 @@ func (o DynamicTagGroupOutput) MatchExpressFilterRelation() pulumi.StringOutput 
 	return o.ApplyT(func(v *DynamicTagGroup) pulumi.StringOutput { return v.MatchExpressFilterRelation }).(pulumi.StringOutput)
 }
 
-// The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+// The label generates a matching expression that applies the grouping. See `matchExpress` below.
 func (o DynamicTagGroupOutput) MatchExpresses() DynamicTagGroupMatchExpressArrayOutput {
 	return o.ApplyT(func(v *DynamicTagGroup) DynamicTagGroupMatchExpressArrayOutput { return v.MatchExpresses }).(DynamicTagGroupMatchExpressArrayOutput)
 }

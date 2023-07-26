@@ -151,7 +151,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Hybrid Monitor Fc Task and how to use it, see [What is Hybrid Monitor Fc Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
 
-        > **NOTE:** Available in v1.179.0+.
+        > **NOTE:** Available since v1.179.0.
 
         ## Example Usage
 
@@ -161,10 +161,36 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cms.HybridMonitorFcTask("example",
-            namespace="example_value",
-            target_user_id="example_value",
-            yarm_config="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_account = alicloud.get_account()
+        default_namespace = alicloud.cms.Namespace("defaultNamespace",
+            description=name,
+            namespace=name,
+            specification="cms.s1.large")
+        default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("defaultHybridMonitorFcTask",
+            namespace=default_namespace.id,
+            yarm_config=\"\"\"products:
+        - namespace: acs_ecs_dashboard
+          metric_info:
+          - metric_list:
+            - cpu_total
+            - cpu_idle
+            - diskusage_utilization
+            - CPUUtilization
+            - DiskReadBPS
+            - InternetOut
+            - IntranetOut
+            - cpu_system
+        - namespace: acs_rds_dashboard
+          metric_info:
+          - metric_list:
+            - MySQL_QPS
+            - MySQL_TPS
+        \"\"\",
+            target_user_id=default_account.id)
         ```
 
         ## Import
@@ -192,7 +218,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Hybrid Monitor Fc Task and how to use it, see [What is Hybrid Monitor Fc Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
 
-        > **NOTE:** Available in v1.179.0+.
+        > **NOTE:** Available since v1.179.0.
 
         ## Example Usage
 
@@ -202,10 +228,36 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cms.HybridMonitorFcTask("example",
-            namespace="example_value",
-            target_user_id="example_value",
-            yarm_config="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_account = alicloud.get_account()
+        default_namespace = alicloud.cms.Namespace("defaultNamespace",
+            description=name,
+            namespace=name,
+            specification="cms.s1.large")
+        default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("defaultHybridMonitorFcTask",
+            namespace=default_namespace.id,
+            yarm_config=\"\"\"products:
+        - namespace: acs_ecs_dashboard
+          metric_info:
+          - metric_list:
+            - cpu_total
+            - cpu_idle
+            - diskusage_utilization
+            - CPUUtilization
+            - DiskReadBPS
+            - InternetOut
+            - IntranetOut
+            - cpu_system
+        - namespace: acs_rds_dashboard
+          metric_info:
+          - metric_list:
+            - MySQL_QPS
+            - MySQL_TPS
+        \"\"\",
+            target_user_id=default_account.id)
         ```
 
         ## Import

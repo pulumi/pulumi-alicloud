@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetDedicatedBlockStorageClusters(ctx *pulumi.Context, args *GetDedicatedBlockStorageClustersArgs, opts ...pulumi.InvokeOption) (*GetDedicatedBlockStorageClustersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDedicatedBlockStorageClustersResult
 	err := ctx.Invoke("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args, &rv, opts...)
 	if err != nil {

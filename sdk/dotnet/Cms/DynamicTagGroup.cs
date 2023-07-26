@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cms
     /// <summary>
     /// Provides a Cloud Monitor Service Dynamic Tag Group resource.
     /// 
-    /// For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/doc-detail/150123.html).
+    /// For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createdynamictaggroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.142.0+.
+    /// &gt; **NOTE:** Available since v1.142.0.
     /// 
     /// ## Example Usage
     /// 
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> MatchExpressFilterRelation { get; private set; } = null!;
 
         /// <summary>
-        /// The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        /// The label generates a matching expression that applies the grouping. See `match_express` below.
         /// </summary>
         [Output("matchExpresses")]
         public Output<ImmutableArray<Outputs.DynamicTagGroupMatchExpress>> MatchExpresses { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.DynamicTagGroupMatchExpressArgs>? _matchExpresses;
 
         /// <summary>
-        /// The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        /// The label generates a matching expression that applies the grouping. See `match_express` below.
         /// </summary>
         public InputList<Inputs.DynamicTagGroupMatchExpressArgs> MatchExpresses
         {
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.DynamicTagGroupMatchExpressGetArgs>? _matchExpresses;
 
         /// <summary>
-        /// The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        /// The label generates a matching expression that applies the grouping. See `match_express` below.
         /// </summary>
         public InputList<Inputs.DynamicTagGroupMatchExpressGetArgs> MatchExpresses
         {

@@ -166,9 +166,9 @@ class Backend(pulumi.CustomResource):
         """
         Provides a Api Gateway Backend resource.
 
-        For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/zh/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
+        For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
 
-        > **NOTE:** Available in v1.181.0+.
+        > **NOTE:** Available since v1.181.0.
 
         ## Example Usage
 
@@ -179,12 +179,12 @@ class Backend(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        name1 = config.get("name1")
-        if name1 is None:
-            name1 = "tf-testAccBackend"
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default = alicloud.apigateway.Backend("default",
-            backend_name=var["name"],
-            description=var["name"],
+            backend_name=name,
+            description=name,
             backend_type="HTTP")
         ```
 
@@ -212,9 +212,9 @@ class Backend(pulumi.CustomResource):
         """
         Provides a Api Gateway Backend resource.
 
-        For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/zh/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
+        For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
 
-        > **NOTE:** Available in v1.181.0+.
+        > **NOTE:** Available since v1.181.0.
 
         ## Example Usage
 
@@ -225,12 +225,12 @@ class Backend(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        name1 = config.get("name1")
-        if name1 is None:
-            name1 = "tf-testAccBackend"
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default = alicloud.apigateway.Backend("default",
-            backend_name=var["name"],
-            description=var["name"],
+            backend_name=name,
+            description=name,
             backend_type="HTTP")
         ```
 

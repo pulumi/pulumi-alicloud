@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,15 +24,17 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers InstanceAdAuthServerArrayOutput `pulumi:"adAuthServers"`
-	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	// The bandwidth of Cloud Bastionhost instance.
+	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess pulumi.BoolOutput `pulumi:"enablePublicAccess"`
-	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	// The LDAP auth server of the Instance. See `ldapAuthServer` below.
 	LdapAuthServers InstanceLdapAuthServerArrayOutput `pulumi:"ldapAuthServers"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
@@ -90,6 +93,7 @@ func NewInstance(ctx *pulumi.Context,
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:bastionhost/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -112,15 +116,17 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers []InstanceAdAuthServer `pulumi:"adAuthServers"`
-	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	// The bandwidth of Cloud Bastionhost instance.
+	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description *string `pulumi:"description"`
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess *bool `pulumi:"enablePublicAccess"`
-	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	// The LDAP auth server of the Instance. See `ldapAuthServer` below.
 	LdapAuthServers []InstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode *string `pulumi:"licenseCode"`
@@ -152,15 +158,17 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers InstanceAdAuthServerArrayInput
-	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	// The bandwidth of Cloud Bastionhost instance.
+	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth pulumi.StringPtrInput
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringPtrInput
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess pulumi.BoolPtrInput
-	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	// The LDAP auth server of the Instance. See `ldapAuthServer` below.
 	LdapAuthServers InstanceLdapAuthServerArrayInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringPtrInput
@@ -196,15 +204,17 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers []InstanceAdAuthServer `pulumi:"adAuthServers"`
-	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	// The bandwidth of Cloud Bastionhost instance.
+	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth string `pulumi:"bandwidth"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description string `pulumi:"description"`
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess *bool `pulumi:"enablePublicAccess"`
-	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	// The LDAP auth server of the Instance. See `ldapAuthServer` below.
 	LdapAuthServers []InstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode string `pulumi:"licenseCode"`
@@ -237,15 +247,17 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers InstanceAdAuthServerArrayInput
-	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	// The bandwidth of Cloud Bastionhost instance.
+	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth pulumi.StringInput
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringInput
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess pulumi.BoolPtrInput
-	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	// The LDAP auth server of the Instance. See `ldapAuthServer` below.
 	LdapAuthServers InstanceLdapAuthServerArrayInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringInput
@@ -363,12 +375,14 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// The AD auth server of the Instance. See the following `Block adAuthServer`.
+// The AD auth server of the Instance. See `adAuthServer` below.
 func (o InstanceOutput) AdAuthServers() InstanceAdAuthServerArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceAdAuthServerArrayOutput { return v.AdAuthServers }).(InstanceAdAuthServerArrayOutput)
 }
 
-// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+// The bandwidth of Cloud Bastionhost instance.
+// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
 func (o InstanceOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
 }
@@ -383,7 +397,7 @@ func (o InstanceOutput) EnablePublicAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnablePublicAccess }).(pulumi.BoolOutput)
 }
 
-// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+// The LDAP auth server of the Instance. See `ldapAuthServer` below.
 func (o InstanceOutput) LdapAuthServers() InstanceLdapAuthServerArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceLdapAuthServerArrayOutput { return v.LdapAuthServers }).(InstanceLdapAuthServerArrayOutput)
 }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +60,7 @@ func NewGlobalEventsStorageRegion(ctx *pulumi.Context,
 		args = &GlobalEventsStorageRegionArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GlobalEventsStorageRegion
 	err := ctx.RegisterResource("alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion", name, args, &resource, opts...)
 	if err != nil {

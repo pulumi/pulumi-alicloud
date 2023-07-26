@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ func NewUserPermission(ctx *pulumi.Context,
 	if args.SubAccountUserId == nil {
 		return nil, errors.New("invalid value for required argument 'SubAccountUserId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserPermission
 	err := ctx.RegisterResource("alicloud:servicemesh/userPermission:UserPermission", name, args, &resource, opts...)
 	if err != nil {

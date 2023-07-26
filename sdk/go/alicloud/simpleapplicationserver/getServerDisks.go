@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +74,7 @@ import (
 //
 // ```
 func GetServerDisks(ctx *pulumi.Context, args *GetServerDisksArgs, opts ...pulumi.InvokeOption) (*GetServerDisksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerDisksResult
 	err := ctx.Invoke("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args, &rv, opts...)
 	if err != nil {

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Config Aggregate Delivery resource.
  *
- * For information about Cloud Config Aggregate Delivery and how to use it, see [What is Aggregate Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/delivery-destination-services-overview).
+ * For information about Cloud Config Aggregate Delivery and how to use it, see [What is Aggregate Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigdeliverychannel).
  *
- * > **NOTE:** Available in v1.172.0+.
+ * > **NOTE:** Available since v1.172.0.
  *
  * ## Import
  *

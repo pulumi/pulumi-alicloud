@@ -116,14 +116,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration of critical alarm (documented below).
+     * A configuration of critical alarm. See `escalations_critical` below.
      * 
      */
     @Import(name="escalationsCritical")
     private @Nullable Output<AlarmEscalationsCriticalArgs> escalationsCritical;
 
     /**
-     * @return A configuration of critical alarm (documented below).
+     * @return A configuration of critical alarm. See `escalations_critical` below.
      * 
      */
     public Optional<Output<AlarmEscalationsCriticalArgs>> escalationsCritical() {
@@ -131,14 +131,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration of critical info (documented below).
+     * A configuration of critical info. See `escalations_info` below.
      * 
      */
     @Import(name="escalationsInfo")
     private @Nullable Output<AlarmEscalationsInfoArgs> escalationsInfo;
 
     /**
-     * @return A configuration of critical info (documented below).
+     * @return A configuration of critical info. See `escalations_info` below.
      * 
      */
     public Optional<Output<AlarmEscalationsInfoArgs>> escalationsInfo() {
@@ -146,14 +146,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration of critical warn (documented below).
+     * A configuration of critical warn. See `escalations_warn` below.
      * 
      */
     @Import(name="escalationsWarn")
     private @Nullable Output<AlarmEscalationsWarnArgs> escalationsWarn;
 
     /**
-     * @return A configuration of critical warn (documented below).
+     * @return A configuration of critical warn. See `escalations_warn` below.
      * 
      */
     public Optional<Output<AlarmEscalationsWarnArgs>> escalationsWarn() {
@@ -261,14 +261,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      * 
      */
     @Import(name="prometheuses")
     private @Nullable Output<List<AlarmPrometheusArgs>> prometheuses;
 
     /**
-     * @return The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * @return The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      * 
      */
     public Optional<Output<List<AlarmPrometheusArgs>>> prometheuses() {
@@ -609,7 +609,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsCritical A configuration of critical alarm (documented below).
+         * @param escalationsCritical A configuration of critical alarm. See `escalations_critical` below.
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsCritical A configuration of critical alarm (documented below).
+         * @param escalationsCritical A configuration of critical alarm. See `escalations_critical` below.
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsInfo A configuration of critical info (documented below).
+         * @param escalationsInfo A configuration of critical info. See `escalations_info` below.
          * 
          * @return builder
          * 
@@ -641,7 +641,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsInfo A configuration of critical info (documented below).
+         * @param escalationsInfo A configuration of critical info. See `escalations_info` below.
          * 
          * @return builder
          * 
@@ -651,7 +651,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsWarn A configuration of critical warn (documented below).
+         * @param escalationsWarn A configuration of critical warn. See `escalations_warn` below.
          * 
          * @return builder
          * 
@@ -662,7 +662,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param escalationsWarn A configuration of critical warn (documented below).
+         * @param escalationsWarn A configuration of critical warn. See `escalations_warn` below.
          * 
          * @return builder
          * 
@@ -808,7 +808,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prometheuses The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+         * @param prometheuses The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
          * 
          * @return builder
          * 
@@ -819,7 +819,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prometheuses The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+         * @param prometheuses The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
          * 
          * @return builder
          * 
@@ -829,7 +829,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prometheuses The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+         * @param prometheuses The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
          * 
          * @return builder
          * 

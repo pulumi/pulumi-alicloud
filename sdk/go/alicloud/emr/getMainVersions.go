@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetMainVersions(ctx *pulumi.Context, args *GetMainVersionsArgs, opts ...pulumi.InvokeOption) (*GetMainVersionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMainVersionsResult
 	err := ctx.Invoke("alicloud:emr/getMainVersions:getMainVersions", args, &rv, opts...)
 	if err != nil {

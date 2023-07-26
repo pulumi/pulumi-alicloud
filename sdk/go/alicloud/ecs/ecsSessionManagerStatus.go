@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +78,7 @@ func NewEcsSessionManagerStatus(ctx *pulumi.Context,
 	if args.Status == nil {
 		return nil, errors.New("invalid value for required argument 'Status'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EcsSessionManagerStatus
 	err := ctx.RegisterResource("alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus", name, args, &resource, opts...)
 	if err != nil {

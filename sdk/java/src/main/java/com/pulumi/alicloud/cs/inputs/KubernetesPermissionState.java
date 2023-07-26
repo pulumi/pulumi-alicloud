@@ -18,14 +18,14 @@ public final class KubernetesPermissionState extends com.pulumi.resources.Resour
     public static final KubernetesPermissionState Empty = new KubernetesPermissionState();
 
     /**
-     * A list of user permission.
+     * A list of user permission. See `permissions` below.
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<List<KubernetesPermissionPermissionArgs>> permissions;
 
     /**
-     * @return A list of user permission.
+     * @return A list of user permission. See `permissions` below.
      * 
      */
     public Optional<Output<List<KubernetesPermissionPermissionArgs>>> permissions() {
@@ -73,7 +73,7 @@ public final class KubernetesPermissionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param permissions A list of user permission.
+         * @param permissions A list of user permission. See `permissions` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class KubernetesPermissionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param permissions A list of user permission.
+         * @param permissions A list of user permission. See `permissions` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class KubernetesPermissionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param permissions A list of user permission.
+         * @param permissions A list of user permission. See `permissions` below.
          * 
          * @return builder
          * 

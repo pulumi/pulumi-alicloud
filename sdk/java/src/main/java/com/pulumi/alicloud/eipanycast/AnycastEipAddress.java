@@ -11,16 +11,18 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Eipanycast Anycast Eip Address resource.
+ * Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
  * 
- * For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://help.aliyun.com/document_detail/169284.html).
+ * For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/).
  * 
- * &gt; **NOTE:** Available in v1.113.0+.
+ * &gt; **NOTE:** Available since v1.208.0.
  * 
  * ## Example Usage
  * 
@@ -46,8 +48,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AnycastEipAddress(&#34;example&#34;, AnycastEipAddressArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var default_ = new AnycastEipAddress(&#34;default&#34;, AnycastEipAddressArgs.builder()        
+ *             .anycastEipAddressName(name)
+ *             .description(&#34;test_1&#34;)
+ *             .bandwidth(200)
  *             .serviceLocation(&#34;international&#34;)
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .tags(            
+ *                 Map.ofEntries(
+ *                     Map.entry(&#34;tagKey&#34;, &#34;k1&#34;),
+ *                     Map.entry(&#34;tagValue&#34;, &#34;v1&#34;)
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry(&#34;tagKey&#34;, &#34;k2&#34;),
+ *                     Map.entry(&#34;tagValue&#34;, &#34;v2&#34;)
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry(&#34;tagKey&#34;, &#34;k3&#34;),
+ *                     Map.entry(&#34;tagValue&#34;, &#34;v3&#34;)
+ *                 ))
  *             .build());
  * 
  *     }
@@ -80,18 +102,32 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.anycastEipAddressName);
     }
     /**
-     * The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+     * The peak bandwidth of the Anycast EIP instance, in Mbps.
      * 
      */
     @Export(name="bandwidth", type=Integer.class, parameters={})
     private Output<Integer> bandwidth;
 
     /**
-     * @return The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+     * @return The peak bandwidth of the Anycast EIP instance, in Mbps.
      * 
      */
     public Output<Integer> bandwidth() {
         return this.bandwidth;
+    }
+    /**
+     * Anycast EIP instance creation time.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return Anycast EIP instance creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * Anycast EIP instance description.
@@ -108,60 +144,74 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+     * The billing method of Anycast EIP instance. &#34;PayByBandwidth&#34;: refers to the method of billing based on traffic.
      * 
      */
     @Export(name="internetChargeType", type=String.class, parameters={})
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
-     * @return The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+     * @return The billing method of Anycast EIP instance. &#34;PayByBandwidth&#34;: refers to the method of billing based on traffic.
      * 
      */
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
      * 
      */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output</* @Nullable */ String> paymentType;
 
     /**
-     * @return The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * @return The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
      * 
      */
     public Output<Optional<String>> paymentType() {
         return Codegen.optional(this.paymentType);
     }
     /**
-     * Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+     * Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
      * 
      */
     @Export(name="serviceLocation", type=String.class, parameters={})
     private Output<String> serviceLocation;
 
     /**
-     * @return Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+     * @return Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
      * 
      */
     public Output<String> serviceLocation() {
         return this.serviceLocation;
     }
     /**
-     * The IP status.
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The IP status.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * List of resource-bound tags.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return List of resource-bound tags.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

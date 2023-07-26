@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -119,6 +120,7 @@ func NewTrafficMirrorFilterEgressRule(ctx *pulumi.Context,
 	if args.TrafficMirrorFilterId == nil {
 		return nil, errors.New("invalid value for required argument 'TrafficMirrorFilterId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TrafficMirrorFilterEgressRule
 	err := ctx.RegisterResource("alicloud:vpc/trafficMirrorFilterEgressRule:TrafficMirrorFilterEgressRule", name, args, &resource, opts...)
 	if err != nil {

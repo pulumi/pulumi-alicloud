@@ -6,66 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * cluster-autoscaler in Kubernetes Cluster.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "autoscaler";
- * const defaultNetworks = alicloud.vpc.getNetworks({});
- * const defaultImages = alicloud.ecs.getImages({
- *     owners: "system",
- *     nameRegex: "^centos_7",
- *     mostRecent: true,
- * });
- * const defaultManagedKubernetesClusters = alicloud.cs.getManagedKubernetesClusters({});
- * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
- *     cpuCoreCount: 2,
- *     memorySize: 4,
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.vpcs?.[0]?.id)});
- * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
- *     scalingGroupName: name,
- *     minSize: _var.min_size,
- *     maxSize: _var.max_size,
- *     vswitchIds: [defaultNetworks.then(defaultNetworks => defaultNetworks.vpcs?.[0]?.vswitchIds?.[0])],
- *     removalPolicies: [
- *         "OldestInstance",
- *         "NewestInstance",
- *     ],
- * });
- * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     securityGroupId: defaultSecurityGroup.id,
- *     scalingGroupId: defaultScalingGroup.id,
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
- *     internetChargeType: "PayByTraffic",
- *     forceDelete: true,
- *     enable: true,
- *     active: true,
- * });
- * const defaultKubernetesAutoscaler = new alicloud.cs.KubernetesAutoscaler("defaultKubernetesAutoscaler", {
- *     clusterId: defaultManagedKubernetesClusters.then(defaultManagedKubernetesClusters => defaultManagedKubernetesClusters.clusters?.[0]?.id),
- *     nodepools: [{
- *         id: defaultScalingGroup.id,
- *         labels: "a=b",
- *     }],
- *     utilization: _var.utilization,
- *     coolDownDuration: _var.cool_down_duration,
- *     deferScaleInDuration: _var.defer_scale_in_duration,
- * }, {
- *     dependsOn: [
- *         alicloud_ess_scaling_group.defalut,
- *         defaultScalingConfiguration,
- *     ],
- * });
- * ```
- */
 export class KubernetesAutoscaler extends pulumi.CustomResource {
     /**
      * Get an existing KubernetesAutoscaler resource's state with the given name, ID, and optional extra
@@ -107,9 +47,7 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
      */
     public readonly deferScaleInDuration!: pulumi.Output<string>;
     /**
-     * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-     * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-     * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+     * The list of the node pools. See `nodepools` below.
      */
     public readonly nodepools!: pulumi.Output<outputs.cs.KubernetesAutoscalerNodepool[] | undefined>;
     /**
@@ -183,9 +121,7 @@ export interface KubernetesAutoscalerState {
      */
     deferScaleInDuration?: pulumi.Input<string>;
     /**
-     * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-     * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-     * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+     * The list of the node pools. See `nodepools` below.
      */
     nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
     /**
@@ -215,9 +151,7 @@ export interface KubernetesAutoscalerArgs {
      */
     deferScaleInDuration: pulumi.Input<string>;
     /**
-     * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-     * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-     * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+     * The list of the node pools. See `nodepools` below.
      */
     nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
     /**

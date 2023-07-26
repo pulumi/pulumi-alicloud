@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -117,6 +118,7 @@ func NewRegistryEnterpriseSyncRule(ctx *pulumi.Context,
 	if args.TargetRegionId == nil {
 		return nil, errors.New("invalid value for required argument 'TargetRegionId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegistryEnterpriseSyncRule
 	err := ctx.RegisterResource("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +68,7 @@ func NewQos(ctx *pulumi.Context,
 		args = &QosArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Qos
 	err := ctx.RegisterResource("alicloud:rocketmq/qos:Qos", name, args, &resource, opts...)
 	if err != nil {

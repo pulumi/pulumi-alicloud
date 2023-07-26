@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,6 +97,7 @@ func NewClientUser(ctx *pulumi.Context,
 	if args.UserMail == nil {
 		return nil, errors.New("invalid value for required argument 'UserMail'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClientUser
 	err := ctx.RegisterResource("alicloud:rocketmq/clientUser:ClientUser", name, args, &resource, opts...)
 	if err != nil {

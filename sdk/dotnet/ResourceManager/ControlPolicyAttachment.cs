@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ResourceManager
     /// <summary>
     /// Provides a Resource Manager Control Policy Attachment resource.
     /// 
-    /// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://help.aliyun.com/document_detail/208330.html).
+    /// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-doc-resourcedirectorymaster-2022-04-19-api-doc-attachcontrolpolicy).
     /// 
-    /// &gt; **NOTE:** Available in v1.120.0+.
+    /// &gt; **NOTE:** Available since v1.120.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,16 +28,12 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Enable the control policy
-    ///     var exampleResourceDirectory = new AliCloud.ResourceManager.ResourceDirectory("exampleResourceDirectory", new()
-    ///     {
-    ///         Status = "Enabled",
-    ///     });
-    /// 
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var exampleControlPolicy = new AliCloud.ResourceManager.ControlPolicy("exampleControlPolicy", new()
     ///     {
-    ///         ControlPolicyName = "tf-testAccName",
-    ///         Description = "tf-testAccRDControlPolicy",
+    ///         ControlPolicyName = name,
+    ///         Description = name,
     ///         EffectScope = "RAM",
     ///         PolicyDocument = @"  {
     ///     ""Version"": ""1"",
@@ -59,19 +55,13 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
     ///     {
-    ///         FolderName = "tf-testAccName",
+    ///         FolderName = name,
     ///     });
     /// 
     ///     var exampleControlPolicyAttachment = new AliCloud.ResourceManager.ControlPolicyAttachment("exampleControlPolicyAttachment", new()
     ///     {
     ///         PolicyId = exampleControlPolicy.Id,
     ///         TargetId = exampleFolder.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             exampleResourceDirectory,
-    ///         },
     ///     });
     /// 
     /// });

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Config Compliance Pack resource.
  *
- * For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+ * For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createcompliancepack).
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *
@@ -22,31 +22,25 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "example_name";
- * const defaultInstances = alicloud.ecs.getInstances({});
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     status: "OK",
+ * const name = config.get("name") || "tf-example-config";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
  * });
  * const defaultRule = new alicloud.cfg.Rule("defaultRule", {
- *     ruleName: name,
- *     description: name,
- *     sourceIdentifier: "ecs-instances-in-vpc",
+ *     description: "If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
  *     sourceOwner: "ALIYUN",
- *     resourceTypesScopes: ["ACS::ECS::Instance"],
+ *     sourceIdentifier: "oss-bucket-public-read-prohibited",
  *     riskLevel: 1,
+ *     tagKeyScope: "For",
+ *     tagValueScope: "example",
+ *     regionIdsScope: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
  *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
- *     tagKeyScope: "tfTest",
- *     tagValueScope: "tfTest 123",
- *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.instances?.[0]?.id),
- *     regionIdsScope: "cn-hangzhou",
- *     inputParameters: {
- *         vpcIds: defaultInstances.then(defaultInstances => defaultInstances.instances?.[0]?.vpcId),
- *     },
+ *     resourceTypesScopes: ["ACS::OSS::Bucket"],
+ *     ruleName: "oss-bucket-public-read-prohibited",
  * });
  * const defaultCompliancePack = new alicloud.cfg.CompliancePack("defaultCompliancePack", {
- *     compliancePackName: "tf-testaccConfig1234",
- *     description: "tf-testaccConfig1234",
+ *     compliancePackName: name,
+ *     description: name,
  *     riskLevel: 1,
  *     configRuleIds: [{
  *         configRuleId: defaultRule.id,
@@ -99,11 +93,11 @@ export class CompliancePack extends pulumi.CustomResource {
      */
     public readonly compliancePackTemplateId!: pulumi.Output<string | undefined>;
     /**
-     * A list of Config Rule IDs.
+     * A list of Config Rule IDs. See `configRuleIds` below.
      */
     public readonly configRuleIds!: pulumi.Output<outputs.cfg.CompliancePackConfigRuleId[] | undefined>;
     /**
-     * A list of Config Rules.
+     * A list of Config Rules. See `configRules` below.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */
@@ -178,11 +172,11 @@ export interface CompliancePackState {
      */
     compliancePackTemplateId?: pulumi.Input<string>;
     /**
-     * A list of Config Rule IDs.
+     * A list of Config Rule IDs. See `configRuleIds` below.
      */
     configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
     /**
-     * A list of Config Rules.
+     * A list of Config Rules. See `configRules` below.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */
@@ -214,11 +208,11 @@ export interface CompliancePackArgs {
      */
     compliancePackTemplateId?: pulumi.Input<string>;
     /**
-     * A list of Config Rule IDs.
+     * A list of Config Rule IDs. See `configRuleIds` below.
      */
     configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
     /**
-     * A list of Config Rules.
+     * A list of Config Rules. See `configRules` below.
      *
      * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
      */

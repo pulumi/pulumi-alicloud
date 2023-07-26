@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,49 +16,7 @@ import (
 //
 // For information about Cloud Monitor Service Sls Group and how to use it, see [What is Sls Group](https://www.alibabacloud.com/help/doc-detail/28608.htm).
 //
-// > **NOTE:** Available in v1.171.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := alicloud.GetAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cms.NewSlsGroup(ctx, "default", &cms.SlsGroupArgs{
-//				SlsGroupConfigs: cms.SlsGroupSlsGroupConfigArray{
-//					&cms.SlsGroupSlsGroupConfigArgs{
-//						SlsUserId:   *pulumi.String(this.Id),
-//						SlsLogstore: pulumi.String("Logstore-ECS"),
-//						SlsProject:  pulumi.String("aliyun-project"),
-//						SlsRegion:   pulumi.String("cn-hangzhou"),
-//					},
-//				},
-//				SlsGroupDescription: pulumi.Any(_var.Name),
-//				SlsGroupName:        pulumi.Any(_var.Name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.171.0.
 //
 // ## Import
 //
@@ -71,7 +30,7 @@ import (
 type SlsGroup struct {
 	pulumi.CustomResourceState
 
-	// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+	// The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
 	SlsGroupConfigs SlsGroupSlsGroupConfigArrayOutput `pulumi:"slsGroupConfigs"`
 	// The Description of the Sls Group.
 	SlsGroupDescription pulumi.StringPtrOutput `pulumi:"slsGroupDescription"`
@@ -92,6 +51,7 @@ func NewSlsGroup(ctx *pulumi.Context,
 	if args.SlsGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'SlsGroupName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SlsGroup
 	err := ctx.RegisterResource("alicloud:cms/slsGroup:SlsGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -114,7 +74,7 @@ func GetSlsGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SlsGroup resources.
 type slsGroupState struct {
-	// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+	// The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
 	SlsGroupConfigs []SlsGroupSlsGroupConfig `pulumi:"slsGroupConfigs"`
 	// The Description of the Sls Group.
 	SlsGroupDescription *string `pulumi:"slsGroupDescription"`
@@ -123,7 +83,7 @@ type slsGroupState struct {
 }
 
 type SlsGroupState struct {
-	// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+	// The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
 	SlsGroupConfigs SlsGroupSlsGroupConfigArrayInput
 	// The Description of the Sls Group.
 	SlsGroupDescription pulumi.StringPtrInput
@@ -136,7 +96,7 @@ func (SlsGroupState) ElementType() reflect.Type {
 }
 
 type slsGroupArgs struct {
-	// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+	// The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
 	SlsGroupConfigs []SlsGroupSlsGroupConfig `pulumi:"slsGroupConfigs"`
 	// The Description of the Sls Group.
 	SlsGroupDescription *string `pulumi:"slsGroupDescription"`
@@ -146,7 +106,7 @@ type slsGroupArgs struct {
 
 // The set of arguments for constructing a SlsGroup resource.
 type SlsGroupArgs struct {
-	// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+	// The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
 	SlsGroupConfigs SlsGroupSlsGroupConfigArrayInput
 	// The Description of the Sls Group.
 	SlsGroupDescription pulumi.StringPtrInput
@@ -241,7 +201,7 @@ func (o SlsGroupOutput) ToSlsGroupOutputWithContext(ctx context.Context) SlsGrou
 	return o
 }
 
-// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+// The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
 func (o SlsGroupOutput) SlsGroupConfigs() SlsGroupSlsGroupConfigArrayOutput {
 	return o.ApplyT(func(v *SlsGroup) SlsGroupSlsGroupConfigArrayOutput { return v.SlsGroupConfigs }).(SlsGroupSlsGroupConfigArrayOutput)
 }

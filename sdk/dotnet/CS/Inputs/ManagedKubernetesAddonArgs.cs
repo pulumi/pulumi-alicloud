@@ -12,14 +12,33 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class ManagedKubernetesAddonArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If this parameter is left empty, no configurations are required.
+        /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
 
+        /// <summary>
+        /// It specifies whether to disable automatic installation. 
+        /// 
+        /// It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+        /// 
+        /// You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+        /// 
+        /// `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
+        /// 
+        /// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+        /// 
+        /// The `main.tf`:
+        /// 
+        /// 
+        /// The `varibales.tf`:
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// This parameter specifies the name of the component.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

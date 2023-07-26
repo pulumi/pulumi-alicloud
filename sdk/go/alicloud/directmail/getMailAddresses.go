@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func GetMailAddresses(ctx *pulumi.Context, args *GetMailAddressesArgs, opts ...pulumi.InvokeOption) (*GetMailAddressesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMailAddressesResult
 	err := ctx.Invoke("alicloud:directmail/getMailAddresses:getMailAddresses", args, &rv, opts...)
 	if err != nil {

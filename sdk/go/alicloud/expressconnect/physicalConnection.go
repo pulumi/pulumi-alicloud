@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -129,6 +130,7 @@ func NewPhysicalConnection(ctx *pulumi.Context,
 	if args.LineOperator == nil {
 		return nil, errors.New("invalid value for required argument 'LineOperator'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PhysicalConnection
 	err := ctx.RegisterResource("alicloud:expressconnect/physicalConnection:PhysicalConnection", name, args, &resource, opts...)
 	if err != nil {

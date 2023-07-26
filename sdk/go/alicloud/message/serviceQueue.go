@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,6 +90,7 @@ func NewServiceQueue(ctx *pulumi.Context,
 	if args.QueueName == nil {
 		return nil, errors.New("invalid value for required argument 'QueueName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceQueue
 	err := ctx.RegisterResource("alicloud:message/serviceQueue:ServiceQueue", name, args, &resource, opts...)
 	if err != nil {

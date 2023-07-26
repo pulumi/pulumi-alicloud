@@ -17,14 +17,14 @@ public final class ContainerGroupInitContainerPortArgs extends com.pulumi.resour
     public static final ContainerGroupInitContainerPortArgs Empty = new ContainerGroupInitContainerPortArgs();
 
     /**
-     * The port number. Valid values: 1 to 65535.
+     * The port number. Valid values: `1` to `65535`.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port number. Valid values: 1 to 65535.
+     * @return The port number. Valid values: `1` to `65535`.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -32,14 +32,14 @@ public final class ContainerGroupInitContainerPortArgs extends com.pulumi.resour
     }
 
     /**
-     * Valid values: TCP and UDP.
+     * The type of the protocol. Valid values: `TCP` and `UDP`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Valid values: TCP and UDP.
+     * @return The type of the protocol. Valid values: `TCP` and `UDP`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -72,7 +72,7 @@ public final class ContainerGroupInitContainerPortArgs extends com.pulumi.resour
         }
 
         /**
-         * @param port The port number. Valid values: 1 to 65535.
+         * @param port The port number. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ContainerGroupInitContainerPortArgs extends com.pulumi.resour
         }
 
         /**
-         * @param port The port number. Valid values: 1 to 65535.
+         * @param port The port number. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ContainerGroupInitContainerPortArgs extends com.pulumi.resour
         }
 
         /**
-         * @param protocol Valid values: TCP and UDP.
+         * @param protocol The type of the protocol. Valid values: `TCP` and `UDP`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ContainerGroupInitContainerPortArgs extends com.pulumi.resour
         }
 
         /**
-         * @param protocol Valid values: TCP and UDP.
+         * @param protocol The type of the protocol. Valid values: `TCP` and `UDP`.
          * 
          * @return builder
          * 

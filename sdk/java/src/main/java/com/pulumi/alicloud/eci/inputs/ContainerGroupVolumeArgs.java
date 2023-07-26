@@ -19,14 +19,16 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
     public static final ContainerGroupVolumeArgs Empty = new ContainerGroupVolumeArgs();
 
     /**
-     * ConfigFileVolumeConfigFileToPaths.
+     * The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+     * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */
     @Import(name="configFileVolumeConfigFileToPaths")
     private @Nullable Output<List<ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs>> configFileVolumeConfigFileToPaths;
 
     /**
-     * @return ConfigFileVolumeConfigFileToPaths.
+     * @return The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+     * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */
     public Optional<Output<List<ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs>>> configFileVolumeConfigFileToPaths() {
@@ -139,14 +141,14 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The nfs volume read only. Default to `false`.
+     * The nfs volume read only. Default value: `false`.
      * 
      */
     @Import(name="nfsVolumeReadOnly")
     private @Nullable Output<Boolean> nfsVolumeReadOnly;
 
     /**
-     * @return The nfs volume read only. Default to `false`.
+     * @return The nfs volume read only. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> nfsVolumeReadOnly() {
@@ -156,16 +158,12 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
     /**
      * The address of the NFS server.
      * 
-     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
-     * 
      */
     @Import(name="nfsVolumeServer")
     private @Nullable Output<String> nfsVolumeServer;
 
     /**
      * @return The address of the NFS server.
-     * 
-     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
      * 
      */
     public Optional<Output<String>> nfsVolumeServer() {
@@ -222,7 +220,8 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configFileVolumeConfigFileToPaths ConfigFileVolumeConfigFileToPaths.
+         * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+         * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          * 
          * @return builder
          * 
@@ -233,7 +232,8 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configFileVolumeConfigFileToPaths ConfigFileVolumeConfigFileToPaths.
+         * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+         * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          * 
          * @return builder
          * 
@@ -243,7 +243,8 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configFileVolumeConfigFileToPaths ConfigFileVolumeConfigFileToPaths.
+         * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+         * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          * 
          * @return builder
          * 
@@ -400,7 +401,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nfsVolumeReadOnly The nfs volume read only. Default to `false`.
+         * @param nfsVolumeReadOnly The nfs volume read only. Default value: `false`.
          * 
          * @return builder
          * 
@@ -411,7 +412,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nfsVolumeReadOnly The nfs volume read only. Default to `false`.
+         * @param nfsVolumeReadOnly The nfs volume read only. Default value: `false`.
          * 
          * @return builder
          * 
@@ -423,8 +424,6 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         /**
          * @param nfsVolumeServer The address of the NFS server.
          * 
-         * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
-         * 
          * @return builder
          * 
          */
@@ -435,8 +434,6 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param nfsVolumeServer The address of the NFS server.
-         * 
-         * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
          * 
          * @return builder
          * 

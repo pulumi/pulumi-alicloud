@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// For information about Bastion Host Host Share Key and how to use it, see [What is Host Share Key](https://www.alibabacloud.com/help/en/bastion-host/latest/createhostsharekey).
     /// 
-    /// &gt; **NOTE:** Available in v1.165.0+.
+    /// &gt; **NOTE:** Available since v1.165.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,14 +28,54 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstances = AliCloud.BastionHost.GetInstances.Invoke();
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.BastionHost.Instance("defaultInstance", new()
+    ///     {
+    ///         Description = name,
+    ///         LicenseCode = "bhah_ent_50_asset",
+    ///         PlanCode = "cloudbastion",
+    ///         Storage = "5",
+    ///         Bandwidth = "5",
+    ///         Period = 1,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var privateKey = config.Get("privateKey") ?? "LS0tLS1CR*******";
     ///     var defaultHostShareKey = new AliCloud.BastionHost.HostShareKey("defaultHostShareKey", new()
     ///     {
-    ///         HostShareKeyName = "example_name",
-    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-    ///         PassPhrase = "example_value",
-    ///         PrivateKey = "example_value",
+    ///         HostShareKeyName = name,
+    ///         InstanceId = defaultInstance.Id,
+    ///         PassPhrase = "NTIxeGlubXU=",
+    ///         PrivateKey = privateKey,
     ///     });
     /// 
     /// });

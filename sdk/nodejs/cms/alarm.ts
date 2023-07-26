@@ -8,7 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
- * Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+ * Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+ *
+ * > **NOTE:** Available since v1.9.1.
  *
  * ## Example Usage
  *
@@ -18,19 +20,53 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const basic = new alicloud.cms.Alarm("basic", {
- *     contactGroups: ["test-group"],
- *     effectiveInterval: "0:00-2:00",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceName: name,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup.id],
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {alarmContactGroupName: name});
+ * const defaultAlarm = new alicloud.cms.Alarm("defaultAlarm", {
+ *     project: "acs_ecs_dashboard",
+ *     metric: "disk_writebytes",
+ *     metricDimensions: pulumi.interpolate`[{"instanceId":"${defaultInstance.id}","device":"/dev/vda1"}]`,
  *     escalationsCritical: {
- *         comparisonOperator: "<=",
  *         statistics: "Average",
+ *         comparisonOperator: "<=",
  *         threshold: "35",
  *         times: 2,
  *     },
- *     metricDimensions: "[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]",
  *     period: 900,
- *     project: "acs_ecs_dashboard",
- *     webhook: `https://${data.alicloud_account.current.id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/`,
+ *     contactGroups: [defaultAlarmContactGroup.alarmContactGroupName],
+ *     effectiveInterval: "06:00-20:00",
  * });
  * ```
  *
@@ -95,15 +131,15 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * A configuration of critical alarm (documented below).
+     * A configuration of critical alarm. See `escalationsCritical` below.
      */
     public readonly escalationsCritical!: pulumi.Output<outputs.cms.AlarmEscalationsCritical | undefined>;
     /**
-     * A configuration of critical info (documented below).
+     * A configuration of critical info. See `escalationsInfo` below.
      */
     public readonly escalationsInfo!: pulumi.Output<outputs.cms.AlarmEscalationsInfo | undefined>;
     /**
-     * A configuration of critical warn (documented below).
+     * A configuration of critical warn. See `escalationsWarn` below.
      */
     public readonly escalationsWarn!: pulumi.Output<outputs.cms.AlarmEscalationsWarn | undefined>;
     /**
@@ -134,7 +170,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      */
     public readonly prometheuses!: pulumi.Output<outputs.cms.AlarmPrometheus[] | undefined>;
     /**
@@ -285,15 +321,15 @@ export interface AlarmState {
      */
     endTime?: pulumi.Input<number>;
     /**
-     * A configuration of critical alarm (documented below).
+     * A configuration of critical alarm. See `escalationsCritical` below.
      */
     escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
     /**
-     * A configuration of critical info (documented below).
+     * A configuration of critical info. See `escalationsInfo` below.
      */
     escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
     /**
-     * A configuration of critical warn (documented below).
+     * A configuration of critical warn. See `escalationsWarn` below.
      */
     escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
     /**
@@ -324,7 +360,7 @@ export interface AlarmState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      */
     prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[]>;
     /**
@@ -400,15 +436,15 @@ export interface AlarmArgs {
      */
     endTime?: pulumi.Input<number>;
     /**
-     * A configuration of critical alarm (documented below).
+     * A configuration of critical alarm. See `escalationsCritical` below.
      */
     escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
     /**
-     * A configuration of critical info (documented below).
+     * A configuration of critical info. See `escalationsInfo` below.
      */
     escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
     /**
-     * A configuration of critical warn (documented below).
+     * A configuration of critical warn. See `escalationsWarn` below.
      */
     escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
     /**
@@ -439,7 +475,7 @@ export interface AlarmArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      */
     prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[]>;
     /**

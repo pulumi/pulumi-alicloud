@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -118,6 +119,7 @@ func NewSecretParameter(ctx *pulumi.Context,
 		"value",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretParameter
 	err := ctx.RegisterResource("alicloud:oos/secretParameter:SecretParameter", name, args, &resource, opts...)
 	if err != nil {

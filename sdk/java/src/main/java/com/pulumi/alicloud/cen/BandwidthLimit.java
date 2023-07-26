@@ -118,17 +118,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleBandwidthLimit = new BandwidthLimit(&#34;exampleBandwidthLimit&#34;, BandwidthLimitArgs.builder()        
- *             .instanceId(exampleInstance.id())
+ *             .instanceId(exampleBandwidthPackageAttachment.instanceId())
  *             .regionIds(            
- *                 region1,
- *                 region2)
+ *                 example1.childInstanceRegionId(),
+ *                 example2.childInstanceRegionId())
  *             .bandwidthLimit(4)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     exampleBandwidthPackageAttachment,
- *                     example2,
- *                     example1)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

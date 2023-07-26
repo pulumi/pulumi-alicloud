@@ -214,7 +214,7 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Custom Routing Endpoint Group resource.
 
-        For information about Global Accelerator (GA) Custom Routing Endpoint Group and how to use it, see [What is Custom Routing Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointgroups).
+        For information about Global Accelerator (GA) Custom Routing Endpoint Group and how to use it, see [What is Custom Routing Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createcustomroutingendpointgroups).
 
         > **NOTE:** Available since v1.197.0.
 
@@ -284,7 +284,7 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Custom Routing Endpoint Group resource.
 
-        For information about Global Accelerator (GA) Custom Routing Endpoint Group and how to use it, see [What is Custom Routing Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointgroups).
+        For information about Global Accelerator (GA) Custom Routing Endpoint Group and how to use it, see [What is Custom Routing Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createcustomroutingendpointgroups).
 
         > **NOTE:** Available since v1.197.0.
 

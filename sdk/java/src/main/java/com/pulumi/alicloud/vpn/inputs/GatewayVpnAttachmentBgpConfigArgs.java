@@ -18,14 +18,14 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
     public static final GatewayVpnAttachmentBgpConfigArgs Empty = new GatewayVpnAttachmentBgpConfigArgs();
 
     /**
-     * Specifies whether to enable health checks.
+     * Whether to enable BGP.
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Specifies whether to enable health checks.
+     * @return Whether to enable BGP.
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -105,7 +105,7 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enable Specifies whether to enable health checks.
+         * @param enable Whether to enable BGP.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enable Specifies whether to enable health checks.
+         * @param enable Whether to enable BGP.
          * 
          * @return builder
          * 

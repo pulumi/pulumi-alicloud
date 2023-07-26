@@ -18,7 +18,7 @@ public final class ContainerGroupContainerReadinessProbeHttpGet {
      */
     private @Nullable String path;
     /**
-     * @return The port number. Valid values: 1 to 65535.
+     * @return The port number. Valid values: `1` to `65535`.
      * 
      */
     private @Nullable Integer port;
@@ -37,7 +37,7 @@ public final class ContainerGroupContainerReadinessProbeHttpGet {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return The port number. Valid values: 1 to 65535.
+     * @return The port number. Valid values: `1` to `65535`.
      * 
      */
     public Optional<Integer> port() {

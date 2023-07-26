@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -152,6 +153,7 @@ func NewBinding(ctx *pulumi.Context,
 	if args.VirtualHostName == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualHostName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Binding
 	err := ctx.RegisterResource("alicloud:amqp/binding:Binding", name, args, &resource, opts...)
 	if err != nil {

@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Additional Certificate resource.
 //
-// For information about Global Accelerator (GA) Additional Certificate and how to use it, see [What is Additional Certificate](https://www.alibabacloud.com/help/en/doc-detail/302356.html).
+// For information about Global Accelerator (GA) Additional Certificate and how to use it, see [What is Additional Certificate](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-associateadditionalcertificateswithlistener).
 //
 // > **NOTE:** Available since v1.150.0.
 //
@@ -58,6 +59,7 @@ func NewAdditionalCertificate(ctx *pulumi.Context,
 	if args.ListenerId == nil {
 		return nil, errors.New("invalid value for required argument 'ListenerId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AdditionalCertificate
 	err := ctx.RegisterResource("alicloud:ga/additionalCertificate:AdditionalCertificate", name, args, &resource, opts...)
 	if err != nil {

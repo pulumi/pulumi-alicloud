@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,6 +77,7 @@ func NewApplicationDeployment(ctx *pulumi.Context,
 	if args.WarUrl == nil {
 		return nil, errors.New("invalid value for required argument 'WarUrl'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApplicationDeployment
 	err := ctx.RegisterResource("alicloud:edas/applicationDeployment:ApplicationDeployment", name, args, &resource, opts...)
 	if err != nil {

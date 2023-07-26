@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -101,6 +102,7 @@ func NewAntiBruteForceRule(ctx *pulumi.Context,
 	if args.UuidLists == nil {
 		return nil, errors.New("invalid value for required argument 'UuidLists'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AntiBruteForceRule
 	err := ctx.RegisterResource("alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule", name, args, &resource, opts...)
 	if err != nil {

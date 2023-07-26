@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetReplicationVaultRegions(ctx *pulumi.Context, args *GetReplicationVaultRegionsArgs, opts ...pulumi.InvokeOption) (*GetReplicationVaultRegionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReplicationVaultRegionsResult
 	err := ctx.Invoke("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", args, &rv, opts...)
 	if err != nil {

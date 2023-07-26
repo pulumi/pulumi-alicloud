@@ -52,10 +52,10 @@ class ApiConstantParameter(dict):
                  value: str,
                  description: Optional[str] = None):
         """
-        :param str in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        :param str name: The name of the api gateway api. Defaults to null.
+        :param str in_: Constant parameter location; values: 'HEAD' and 'QUERY'.
+        :param str name: Constant parameter name.
         :param str value: Constant parameter value.
-        :param str description: The description of the api. Defaults to null.
+        :param str description: The description of Constant parameter.
         """
         pulumi.set(__self__, "in_", in_)
         pulumi.set(__self__, "name", name)
@@ -67,7 +67,7 @@ class ApiConstantParameter(dict):
     @pulumi.getter(name="in")
     def in_(self) -> str:
         """
-        Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        Constant parameter location; values: 'HEAD' and 'QUERY'.
         """
         return pulumi.get(self, "in_")
 
@@ -75,7 +75,7 @@ class ApiConstantParameter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the api gateway api. Defaults to null.
+        Constant parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -91,7 +91,7 @@ class ApiConstantParameter(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the api. Defaults to null.
+        The description of Constant parameter.
         """
         return pulumi.get(self, "description")
 
@@ -207,9 +207,10 @@ class ApiHttpServiceConfig(dict):
                  aone_name: Optional[str] = None):
         """
         :param str address: The address of backend service.
-        :param str method: The method of the api, including 'GET','POST','PUT' etc.
-        :param str path: The request path of the api.
+        :param str method: The http method of backend service.
+        :param str path: The path of backend service.
         :param int timeout: Backend service time-out time; unit: millisecond.
+        :param str aone_name: The name of aone.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "method", method)
@@ -230,7 +231,7 @@ class ApiHttpServiceConfig(dict):
     @pulumi.getter
     def method(self) -> str:
         """
-        The method of the api, including 'GET','POST','PUT' etc.
+        The http method of backend service.
         """
         return pulumi.get(self, "method")
 
@@ -238,7 +239,7 @@ class ApiHttpServiceConfig(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        The request path of the api.
+        The path of backend service.
         """
         return pulumi.get(self, "path")
 
@@ -253,6 +254,9 @@ class ApiHttpServiceConfig(dict):
     @property
     @pulumi.getter(name="aoneName")
     def aone_name(self) -> Optional[str]:
+        """
+        The name of aone.
+        """
         return pulumi.get(self, "aone_name")
 
 
@@ -282,10 +286,11 @@ class ApiHttpVpcServiceConfig(dict):
                  timeout: int,
                  aone_name: Optional[str] = None):
         """
-        :param str method: The method of the api, including 'GET','POST','PUT' etc.
-        :param str name: The name of the api gateway api. Defaults to null.
-        :param str path: The request path of the api.
-        :param int timeout: Backend service time-out time; unit: millisecond.
+        :param str method: The http method of backend service.
+        :param str name: The name of vpc instance.
+        :param str path: The path of backend service.
+        :param int timeout: Backend service time-out time. Unit: millisecond.
+        :param str aone_name: The name of aone.
         """
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "name", name)
@@ -298,7 +303,7 @@ class ApiHttpVpcServiceConfig(dict):
     @pulumi.getter
     def method(self) -> str:
         """
-        The method of the api, including 'GET','POST','PUT' etc.
+        The http method of backend service.
         """
         return pulumi.get(self, "method")
 
@@ -306,7 +311,7 @@ class ApiHttpVpcServiceConfig(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the api gateway api. Defaults to null.
+        The name of vpc instance.
         """
         return pulumi.get(self, "name")
 
@@ -314,7 +319,7 @@ class ApiHttpVpcServiceConfig(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        The request path of the api.
+        The path of backend service.
         """
         return pulumi.get(self, "path")
 
@@ -322,13 +327,16 @@ class ApiHttpVpcServiceConfig(dict):
     @pulumi.getter
     def timeout(self) -> int:
         """
-        Backend service time-out time; unit: millisecond.
+        Backend service time-out time. Unit: millisecond.
         """
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter(name="aoneName")
     def aone_name(self) -> Optional[str]:
+        """
+        The name of aone.
+        """
         return pulumi.get(self, "aone_name")
 
 
@@ -356,6 +364,7 @@ class ApiMockServiceConfig(dict):
                  aone_name: Optional[str] = None):
         """
         :param str result: The result of the mock service.
+        :param str aone_name: The name of aone.
         """
         pulumi.set(__self__, "result", result)
         if aone_name is not None:
@@ -372,6 +381,9 @@ class ApiMockServiceConfig(dict):
     @property
     @pulumi.getter(name="aoneName")
     def aone_name(self) -> Optional[str]:
+        """
+        The name of aone.
+        """
         return pulumi.get(self, "aone_name")
 
 
@@ -492,12 +504,12 @@ class ApiRequestParameter(dict):
         """
         :param str in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         :param str in_service: Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        :param str name: The name of the api gateway api. Defaults to null.
+        :param str name: Request's parameter name.
         :param str name_service: Backend service's parameter name.
         :param str required: Parameter required or not; values: REQUIRED and OPTIONAL.
         :param str type: Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
         :param str default_value: The default value of the parameter.
-        :param str description: The description of the api. Defaults to null.
+        :param str description: The description of parameter.
         """
         pulumi.set(__self__, "in_", in_)
         pulumi.set(__self__, "in_service", in_service)
@@ -530,7 +542,7 @@ class ApiRequestParameter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the api gateway api. Defaults to null.
+        Request's parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -570,7 +582,7 @@ class ApiRequestParameter(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the api. Defaults to null.
+        The description of parameter.
         """
         return pulumi.get(self, "description")
 
@@ -601,8 +613,8 @@ class ApiSystemParameter(dict):
                  name: str,
                  name_service: str):
         """
-        :param str in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        :param str name: The name of the api gateway api. Defaults to null.
+        :param str in_: System parameter location; values: 'HEAD' and 'QUERY'.
+        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param str name_service: Backend service's parameter name.
         """
         pulumi.set(__self__, "in_", in_)
@@ -613,7 +625,7 @@ class ApiSystemParameter(dict):
     @pulumi.getter(name="in")
     def in_(self) -> str:
         """
-        Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        System parameter location; values: 'HEAD' and 'QUERY'.
         """
         return pulumi.get(self, "in_")
 
@@ -621,7 +633,7 @@ class ApiSystemParameter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the api gateway api. Defaults to null.
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         """
         return pulumi.get(self, "name")
 

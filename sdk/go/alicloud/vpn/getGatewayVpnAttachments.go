@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +51,7 @@ import (
 //
 // ```
 func GetGatewayVpnAttachments(ctx *pulumi.Context, args *GetGatewayVpnAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetGatewayVpnAttachmentsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayVpnAttachmentsResult
 	err := ctx.Invoke("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args, &rv, opts...)
 	if err != nil {

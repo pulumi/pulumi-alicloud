@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Monitor Service Event Rule and how to use it, see [What is Event Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/puteventrule).
  *
- * > **NOTE:** Available in v1.182.0+.
+ * > **NOTE:** Available since v1.182.0.
  *
  * ## Example Usage
  *
@@ -21,11 +21,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.cms.MonitorGroup("default", {monitorGroupName: "example_value"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = new alicloud.cms.MonitorGroup("default", {monitorGroupName: name});
  * const example = new alicloud.cms.EventRule("example", {
- *     ruleName: "example_value",
+ *     ruleName: name,
  *     groupId: _default.id,
- *     description: "example_value",
+ *     description: name,
  *     status: "ENABLED",
  *     eventPattern: {
  *         product: "ecs",
@@ -79,7 +81,7 @@ export class EventRule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Event mode, used to describe the trigger conditions for this event. See the following `Block eventPattern`.
+     * Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      */
     public readonly eventPattern!: pulumi.Output<outputs.cms.EventRuleEventPattern>;
     /**
@@ -147,7 +149,7 @@ export interface EventRuleState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Event mode, used to describe the trigger conditions for this event. See the following `Block eventPattern`.
+     * Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      */
     eventPattern?: pulumi.Input<inputs.cms.EventRuleEventPattern>;
     /**
@@ -177,7 +179,7 @@ export interface EventRuleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Event mode, used to describe the trigger conditions for this event. See the following `Block eventPattern`.
+     * Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      */
     eventPattern: pulumi.Input<inputs.cms.EventRuleEventPattern>;
     /**

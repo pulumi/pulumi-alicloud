@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -292,6 +293,7 @@ func NewDdrInstance(ctx *pulumi.Context,
 	if args.RestoreType == nil {
 		return nil, errors.New("invalid value for required argument 'RestoreType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DdrInstance
 	err := ctx.RegisterResource("alicloud:rds/ddrInstance:DdrInstance", name, args, &resource, opts...)
 	if err != nil {

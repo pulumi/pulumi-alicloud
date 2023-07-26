@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -204,6 +205,7 @@ func NewBucketReplication(ctx *pulumi.Context,
 	if args.Destination == nil {
 		return nil, errors.New("invalid value for required argument 'Destination'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BucketReplication
 	err := ctx.RegisterResource("alicloud:oss/bucketReplication:BucketReplication", name, args, &resource, opts...)
 	if err != nil {

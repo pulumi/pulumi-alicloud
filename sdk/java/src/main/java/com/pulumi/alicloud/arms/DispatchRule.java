@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://www.alibabacloud.com/help/en/doc-detail/203146.htm).
  * 
- * &gt; **NOTE:** Available in v1.136.0+.
+ * &gt; **NOTE:** Available since v1.136.0.
  * 
  * ## Example Usage
  * 
@@ -147,14 +147,14 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dispatchType);
     }
     /**
-     * Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     @Export(name="groupRules", type=List.class, parameters={DispatchRuleGroupRule.class})
     private Output<List<DispatchRuleGroupRule>> groupRules;
 
     /**
-     * @return Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * @return Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     public Output<List<DispatchRuleGroupRule>> groupRules() {
@@ -175,28 +175,28 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isRecover);
     }
     /**
-     * Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+     * Sets the dispatch rule. See `label_match_expression_grid` below.
      * 
      */
     @Export(name="labelMatchExpressionGrids", type=List.class, parameters={DispatchRuleLabelMatchExpressionGrid.class})
     private Output<List<DispatchRuleLabelMatchExpressionGrid>> labelMatchExpressionGrids;
 
     /**
-     * @return Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+     * @return Sets the dispatch rule. See `label_match_expression_grid` below.
      * 
      */
     public Output<List<DispatchRuleLabelMatchExpressionGrid>> labelMatchExpressionGrids() {
         return this.labelMatchExpressionGrids;
     }
     /**
-     * Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     @Export(name="notifyRules", type=List.class, parameters={DispatchRuleNotifyRule.class})
     private Output<List<DispatchRuleNotifyRule>> notifyRules;
 
     /**
-     * @return Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * @return Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     public Output<List<DispatchRuleNotifyRule>> notifyRules() {

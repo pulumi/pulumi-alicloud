@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,6 +101,7 @@ func NewNasFileSystem(ctx *pulumi.Context,
 	if args.OfficeSiteId == nil {
 		return nil, errors.New("invalid value for required argument 'OfficeSiteId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NasFileSystem
 	err := ctx.RegisterResource("alicloud:eds/nasFileSystem:NasFileSystem", name, args, &resource, opts...)
 	if err != nil {

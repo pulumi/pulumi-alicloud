@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ func NewCustomProperty(ctx *pulumi.Context,
 	if args.PropertyKey == nil {
 		return nil, errors.New("invalid value for required argument 'PropertyKey'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomProperty
 	err := ctx.RegisterResource("alicloud:eds/customProperty:CustomProperty", name, args, &resource, opts...)
 	if err != nil {
