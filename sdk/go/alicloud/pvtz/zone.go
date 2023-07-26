@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,6 +87,7 @@ func NewZone(ctx *pulumi.Context,
 		args = &ZoneArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Zone
 	err := ctx.RegisterResource("alicloud:pvtz/zone:Zone", name, args, &resource, opts...)
 	if err != nil {

@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class KubernetesAutoscalerNodepool
     {
+        /// <summary>
+        /// The scaling group id of the groups configured for cluster-autoscaler.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The labels for the nodes in scaling group.
+        /// </summary>
         public readonly string? Labels;
+        /// <summary>
+        /// The taints for the nodes in scaling group.
+        /// </summary>
         public readonly string? Taints;
 
         [OutputConstructor]

@@ -19,25 +19,31 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        /// (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// The mount point of data disk N.
+        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 
         /// <summary>
-        /// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        /// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         /// </summary>
         [Input("encrypted")]
         public Input<string>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The ID of the Key Management Service (KMS) key to use for data disk N.
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -49,11 +55,14 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// The size of a data disk, at least 40. Unit: GiB.
+        /// (Optional)The size of a data disk, at least 40. Unit: GiB.
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
 
+        /// <summary>
+        /// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+        /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 

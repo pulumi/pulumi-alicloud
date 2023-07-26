@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -182,6 +183,7 @@ func NewEnterpriseInstance(ctx *pulumi.Context,
 		"databasePassword",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnterpriseInstance
 	err := ctx.RegisterResource("alicloud:dms/enterpriseInstance:EnterpriseInstance", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetDispatchRules(ctx *pulumi.Context, args *GetDispatchRulesArgs, opts ...pulumi.InvokeOption) (*GetDispatchRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDispatchRulesResult
 	err := ctx.Invoke("alicloud:arms/getDispatchRules:getDispatchRules", args, &rv, opts...)
 	if err != nil {

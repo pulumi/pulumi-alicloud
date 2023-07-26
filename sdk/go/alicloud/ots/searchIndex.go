@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -196,6 +197,7 @@ func NewSearchIndex(ctx *pulumi.Context,
 	if args.TableName == nil {
 		return nil, errors.New("invalid value for required argument 'TableName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SearchIndex
 	err := ctx.RegisterResource("alicloud:ots/searchIndex:SearchIndex", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult
 	err := ctx.Invoke("alicloud:ros/getRegions:getRegions", args, &rv, opts...)
 	if err != nil {

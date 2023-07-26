@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,6 +95,7 @@ func NewEcsKeyPair(ctx *pulumi.Context,
 		args = &EcsKeyPairArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EcsKeyPair
 	err := ctx.RegisterResource("alicloud:ecs/ecsKeyPair:EcsKeyPair", name, args, &resource, opts...)
 	if err != nil {

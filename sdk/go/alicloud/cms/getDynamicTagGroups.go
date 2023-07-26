@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +74,7 @@ import (
 //
 // ```
 func GetDynamicTagGroups(ctx *pulumi.Context, args *GetDynamicTagGroupsArgs, opts ...pulumi.InvokeOption) (*GetDynamicTagGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDynamicTagGroupsResult
 	err := ctx.Invoke("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args, &rv, opts...)
 	if err != nil {

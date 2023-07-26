@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupHostAlias {
     /**
-     * @return Adds a host name.
+     * @return The information about the host.
      * 
      */
     private @Nullable List<String> hostnames;
     /**
-     * @return Adds an IP address.
+     * @return The IP address of the host.
      * 
      */
     private @Nullable String ip;
 
     private ContainerGroupHostAlias() {}
     /**
-     * @return Adds a host name.
+     * @return The information about the host.
      * 
      */
     public List<String> hostnames() {
         return this.hostnames == null ? List.of() : this.hostnames;
     }
     /**
-     * @return Adds an IP address.
+     * @return The IP address of the host.
      * 
      */
     public Optional<String> ip() {

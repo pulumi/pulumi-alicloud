@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// <summary>
     /// Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user and one host group.
     /// 
-    /// &gt; **NOTE:** Available in v1.135.0+.
+    /// &gt; **NOTE:** Available since v1.135.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,51 +26,91 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.BastionHost.Instance("defaultInstance", new()
+    ///     {
+    ///         Description = name,
+    ///         LicenseCode = "bhah_ent_50_asset",
+    ///         PlanCode = "cloudbastion",
+    ///         Storage = "5",
+    ///         Bandwidth = "5",
+    ///         Period = 1,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var localUser = new AliCloud.BastionHost.User("localUser", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         MobileCountryCode = "CN",
+    ///         Mobile = "13312345678",
+    ///         Password = "YourPassword-123",
+    ///         Source = "Local",
+    ///         UserName = $"{name}_local_user",
+    ///     });
+    /// 
     ///     var defaultHost = new AliCloud.BastionHost.Host("defaultHost", new()
     ///     {
-    ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
-    ///         HostName = @var.Name,
+    ///         InstanceId = defaultInstance.Id,
+    ///         HostName = name,
     ///         ActiveAddressType = "Private",
     ///         HostPrivateAddress = "172.16.0.10",
     ///         OsType = "Linux",
     ///         Source = "Local",
     ///     });
     /// 
-    ///     var defaultHostAccount = new List&lt;AliCloud.BastionHost.HostAccount&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///     var defaultHostAccount = new AliCloud.BastionHost.HostAccount("defaultHostAccount", new()
     ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         defaultHostAccount.Add(new AliCloud.BastionHost.HostAccount($"defaultHostAccount-{range.Value}", new()
-    ///         {
-    ///             InstanceId = defaultHost.InstanceId,
-    ///             HostAccountName = $"example_value-{range.Value}",
-    ///             HostId = defaultHost.HostId,
-    ///             ProtocolName = "SSH",
-    ///             Password = "YourPassword12345",
-    ///         }));
-    ///     }
-    ///     var defaultUser = new AliCloud.BastionHost.User("defaultUser", new()
-    ///     {
+    ///         HostAccountName = name,
+    ///         HostId = defaultHost.HostId,
     ///         InstanceId = defaultHost.InstanceId,
-    ///         MobileCountryCode = "CN",
-    ///         Mobile = "13312345678",
-    ///         Password = "YourPassword-123",
-    ///         Source = "Local",
-    ///         UserName = "my-local-user",
+    ///         ProtocolName = "SSH",
+    ///         Password = "YourPassword12345",
     ///     });
     /// 
     ///     var defaultHostGroup = new AliCloud.BastionHost.HostGroup("defaultHostGroup", new()
     ///     {
-    ///         HostGroupName = "example_value",
-    ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+    ///         HostGroupName = name,
+    ///         InstanceId = defaultInstance.Id,
     ///     });
     /// 
     ///     var defaultHostGroupAccountUserAttachment = new AliCloud.BastionHost.HostGroupAccountUserAttachment("defaultHostGroupAccountUserAttachment", new()
     ///     {
     ///         InstanceId = defaultHost.InstanceId,
-    ///         UserId = defaultUser.UserId,
+    ///         UserId = localUser.UserId,
     ///         HostGroupId = defaultHostGroup.HostGroupId,
-    ///         HostAccountNames = defaultHostAccount.Select(__item =&gt; __item.HostAccountName).ToList(),
+    ///         HostAccountNames = new[]
+    ///         {
+    ///             defaultHostAccount.HostAccountName,
+    ///         },
     ///     });
     /// 
     /// });

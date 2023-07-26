@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +39,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FlowLog{}
 	case "alicloud:vpc/forwardEntry:ForwardEntry":
 		r = &ForwardEntry{}
+	case "alicloud:vpc/gatewayEndpoint:GatewayEndpoint":
+		r = &GatewayEndpoint{}
+	case "alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment":
+		r = &GatewayEndpointRouteTableAttachment{}
 	case "alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment":
 		r = &GatewayRouteTableAttachment{}
 	case "alicloud:vpc/hAVip:HAVip":
@@ -124,7 +128,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 }
 
 func init() {
-	version, err := alicloud.PkgVersion()
+	version, err := internal.PkgVersion()
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
@@ -171,6 +175,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/forwardEntry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/gatewayEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/gatewayEndpointRouteTableAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

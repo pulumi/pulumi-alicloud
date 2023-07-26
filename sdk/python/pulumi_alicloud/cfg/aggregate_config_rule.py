@@ -292,7 +292,7 @@ class _AggregateConfigRuleState:
         Input properties used for looking up and filtering AggregateConfigRule resources.
         :param pulumi.Input[str] aggregate_config_rule_name: The name of the rule.
         :param pulumi.Input[str] aggregator_id: The Aggregator Id.
-        :param pulumi.Input[str] config_rule_id: (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        :param pulumi.Input[str] config_rule_id: (Available since v1.141.0) The rule ID of Aggregate Config Rule.
         :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
@@ -371,7 +371,7 @@ class _AggregateConfigRuleState:
     @pulumi.getter(name="configRuleId")
     def config_rule_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        (Available since v1.141.0) The rule ID of Aggregate Config Rule.
         """
         return pulumi.get(self, "config_rule_id")
 
@@ -573,9 +573,9 @@ class AggregateConfigRule(pulumi.CustomResource):
         """
         Provides a Cloud Config Aggregate Config Rule resource.
 
-        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
+        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigrule).
 
-        > **NOTE:** Available in v1.124.0+.
+        > **NOTE:** Available since v1.124.0.
 
         ## Example Usage
 
@@ -585,24 +585,31 @@ class AggregateConfigRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_aggregator = alicloud.cfg.Aggregator("exampleAggregator",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
             aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id="140278452670****",
-                account_name="test-2",
+                account_id=default_accounts.accounts[0].account_id,
+                account_name=default_accounts.accounts[0].display_name,
                 account_type="ResourceDirectory",
             )],
-            aggregator_name="tf-testaccaggregator",
-            description="tf-testaccaggregator")
-        example_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("exampleAggregateConfigRule",
-            aggregate_config_rule_name="tf-testaccconfig1234",
-            aggregator_id=example_aggregator.id,
+            aggregator_name=name,
+            description=name,
+            aggregator_type="CUSTOM")
+        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule",
+            aggregate_config_rule_name="contains-tag",
+            aggregator_id=default_aggregator.id,
             config_rule_trigger_types="ConfigurationItemChangeNotification",
             source_owner="ALIYUN",
-            source_identifier="ecs-cpu-min-count-limit",
+            source_identifier="contains-tag",
             risk_level=1,
             resource_types_scopes=["ACS::ECS::Instance"],
             input_parameters={
-                "cpuCount": "4",
+                "key": "example",
+                "value": "example",
             })
         ```
 
@@ -642,9 +649,9 @@ class AggregateConfigRule(pulumi.CustomResource):
         """
         Provides a Cloud Config Aggregate Config Rule resource.
 
-        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
+        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigrule).
 
-        > **NOTE:** Available in v1.124.0+.
+        > **NOTE:** Available since v1.124.0.
 
         ## Example Usage
 
@@ -654,24 +661,31 @@ class AggregateConfigRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_aggregator = alicloud.cfg.Aggregator("exampleAggregator",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
             aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id="140278452670****",
-                account_name="test-2",
+                account_id=default_accounts.accounts[0].account_id,
+                account_name=default_accounts.accounts[0].display_name,
                 account_type="ResourceDirectory",
             )],
-            aggregator_name="tf-testaccaggregator",
-            description="tf-testaccaggregator")
-        example_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("exampleAggregateConfigRule",
-            aggregate_config_rule_name="tf-testaccconfig1234",
-            aggregator_id=example_aggregator.id,
+            aggregator_name=name,
+            description=name,
+            aggregator_type="CUSTOM")
+        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule",
+            aggregate_config_rule_name="contains-tag",
+            aggregator_id=default_aggregator.id,
             config_rule_trigger_types="ConfigurationItemChangeNotification",
             source_owner="ALIYUN",
-            source_identifier="ecs-cpu-min-count-limit",
+            source_identifier="contains-tag",
             risk_level=1,
             resource_types_scopes=["ACS::ECS::Instance"],
             input_parameters={
-                "cpuCount": "4",
+                "key": "example",
+                "value": "example",
             })
         ```
 
@@ -790,7 +804,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aggregate_config_rule_name: The name of the rule.
         :param pulumi.Input[str] aggregator_id: The Aggregator Id.
-        :param pulumi.Input[str] config_rule_id: (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        :param pulumi.Input[str] config_rule_id: (Available since v1.141.0) The rule ID of Aggregate Config Rule.
         :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
@@ -849,7 +863,7 @@ class AggregateConfigRule(pulumi.CustomResource):
     @pulumi.getter(name="configRuleId")
     def config_rule_id(self) -> pulumi.Output[str]:
         """
-        (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        (Available since v1.141.0) The rule ID of Aggregate Config Rule.
         """
         return pulumi.get(self, "config_rule_id")
 

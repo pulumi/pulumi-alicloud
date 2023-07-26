@@ -16,14 +16,14 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
     public static final ApiConstantParameterArgs Empty = new ApiConstantParameterArgs();
 
     /**
-     * The description of the api. Defaults to null.
+     * The description of Constant parameter.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the api. Defaults to null.
+     * @return The description of Constant parameter.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
+     * Constant parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
      * 
      */
     @Import(name="in", required=true)
     private Output<String> in;
 
     /**
-     * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
+     * @return Constant parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
      * 
      */
     public Output<String> in() {
@@ -46,14 +46,14 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the api gateway api. Defaults to null.
+     * Constant parameter name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the api gateway api. Defaults to null.
+     * @return Constant parameter name.
      * 
      */
     public Output<String> name() {
@@ -103,7 +103,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The description of the api. Defaults to null.
+         * @param description The description of Constant parameter.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The description of the api. Defaults to null.
+         * @param description The description of Constant parameter.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param in Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
+         * @param in Constant parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param in Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
+         * @param in Constant parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of the api gateway api. Defaults to null.
+         * @param name Constant parameter name.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of the api gateway api. Defaults to null.
+         * @param name Constant parameter name.
          * 
          * @return builder
          * 

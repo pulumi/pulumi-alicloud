@@ -21,7 +21,7 @@ class SlsGroupArgs:
                  sls_group_description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SlsGroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        :param pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         :param pulumi.Input[str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         :param pulumi.Input[str] sls_group_description: The Description of the Sls Group.
         """
@@ -34,7 +34,7 @@ class SlsGroupArgs:
     @pulumi.getter(name="slsGroupConfigs")
     def sls_group_configs(self) -> pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]:
         """
-        The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         """
         return pulumi.get(self, "sls_group_configs")
 
@@ -75,7 +75,7 @@ class _SlsGroupState:
                  sls_group_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SlsGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        :param pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         :param pulumi.Input[str] sls_group_description: The Description of the Sls Group.
         :param pulumi.Input[str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         """
@@ -90,7 +90,7 @@ class _SlsGroupState:
     @pulumi.getter(name="slsGroupConfigs")
     def sls_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]]:
         """
-        The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         """
         return pulumi.get(self, "sls_group_configs")
 
@@ -137,27 +137,7 @@ class SlsGroup(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Sls Group and how to use it, see [What is Sls Group](https://www.alibabacloud.com/help/doc-detail/28608.htm).
 
-        > **NOTE:** Available in v1.171.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        this = alicloud.get_account()
-        default = alicloud.cms.SlsGroup("default",
-            sls_group_configs=[alicloud.cms.SlsGroupSlsGroupConfigArgs(
-                sls_user_id=this.id,
-                sls_logstore="Logstore-ECS",
-                sls_project="aliyun-project",
-                sls_region="cn-hangzhou",
-            )],
-            sls_group_description=var["name"],
-            sls_group_name=var["name"])
-        ```
+        > **NOTE:** Available since v1.171.0.
 
         ## Import
 
@@ -169,7 +149,7 @@ class SlsGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SlsGroupSlsGroupConfigArgs']]]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SlsGroupSlsGroupConfigArgs']]]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         :param pulumi.Input[str] sls_group_description: The Description of the Sls Group.
         :param pulumi.Input[str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         """
@@ -184,27 +164,7 @@ class SlsGroup(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Sls Group and how to use it, see [What is Sls Group](https://www.alibabacloud.com/help/doc-detail/28608.htm).
 
-        > **NOTE:** Available in v1.171.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        this = alicloud.get_account()
-        default = alicloud.cms.SlsGroup("default",
-            sls_group_configs=[alicloud.cms.SlsGroupSlsGroupConfigArgs(
-                sls_user_id=this.id,
-                sls_logstore="Logstore-ECS",
-                sls_project="aliyun-project",
-                sls_region="cn-hangzhou",
-            )],
-            sls_group_description=var["name"],
-            sls_group_name=var["name"])
-        ```
+        > **NOTE:** Available since v1.171.0.
 
         ## Import
 
@@ -268,7 +228,7 @@ class SlsGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SlsGroupSlsGroupConfigArgs']]]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SlsGroupSlsGroupConfigArgs']]]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         :param pulumi.Input[str] sls_group_description: The Description of the Sls Group.
         :param pulumi.Input[str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         """
@@ -285,7 +245,7 @@ class SlsGroup(pulumi.CustomResource):
     @pulumi.getter(name="slsGroupConfigs")
     def sls_group_configs(self) -> pulumi.Output[Sequence['outputs.SlsGroupSlsGroupConfig']]:
         """
-        The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         """
         return pulumi.get(self, "sls_group_configs")
 

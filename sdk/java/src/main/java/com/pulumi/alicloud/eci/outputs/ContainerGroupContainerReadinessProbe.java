@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupContainerReadinessProbe {
     /**
-     * @return Health check using command line method.
+     * @return Health check using command line method. See `exec` below.
      * 
      */
     private @Nullable List<ContainerGroupContainerReadinessProbeExec> execs;
@@ -26,7 +26,7 @@ public final class ContainerGroupContainerReadinessProbe {
      */
     private @Nullable Integer failureThreshold;
     /**
-     * @return Health check using HTTP request method.
+     * @return Health check using HTTP request method. See `http_get` below.
      * 
      */
     private @Nullable List<ContainerGroupContainerReadinessProbeHttpGet> httpGets;
@@ -46,7 +46,7 @@ public final class ContainerGroupContainerReadinessProbe {
      */
     private @Nullable Integer successThreshold;
     /**
-     * @return Health check using TCP socket method.
+     * @return Health check using TCP socket method. See `tcp_socket` below.
      * 
      */
     private @Nullable List<ContainerGroupContainerReadinessProbeTcpSocket> tcpSockets;
@@ -58,7 +58,7 @@ public final class ContainerGroupContainerReadinessProbe {
 
     private ContainerGroupContainerReadinessProbe() {}
     /**
-     * @return Health check using command line method.
+     * @return Health check using command line method. See `exec` below.
      * 
      */
     public List<ContainerGroupContainerReadinessProbeExec> execs() {
@@ -72,7 +72,7 @@ public final class ContainerGroupContainerReadinessProbe {
         return Optional.ofNullable(this.failureThreshold);
     }
     /**
-     * @return Health check using HTTP request method.
+     * @return Health check using HTTP request method. See `http_get` below.
      * 
      */
     public List<ContainerGroupContainerReadinessProbeHttpGet> httpGets() {
@@ -100,7 +100,7 @@ public final class ContainerGroupContainerReadinessProbe {
         return Optional.ofNullable(this.successThreshold);
     }
     /**
-     * @return Health check using TCP socket method.
+     * @return Health check using TCP socket method. See `tcp_socket` below.
      * 
      */
     public List<ContainerGroupContainerReadinessProbeTcpSocket> tcpSockets() {

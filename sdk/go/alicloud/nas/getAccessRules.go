@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE**: Available in 1.35.0+
 func GetAccessRules(ctx *pulumi.Context, args *GetAccessRulesArgs, opts ...pulumi.InvokeOption) (*GetAccessRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessRulesResult
 	err := ctx.Invoke("alicloud:nas/getAccessRules:getAccessRules", args, &rv, opts...)
 	if err != nil {

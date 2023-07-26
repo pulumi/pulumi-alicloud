@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetRamDirectories(ctx *pulumi.Context, args *GetRamDirectoriesArgs, opts ...pulumi.InvokeOption) (*GetRamDirectoriesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRamDirectoriesResult
 	err := ctx.Invoke("alicloud:eds/getRamDirectories:getRamDirectories", args, &rv, opts...)
 	if err != nil {

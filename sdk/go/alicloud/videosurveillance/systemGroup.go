@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -115,6 +116,7 @@ func NewSystemGroup(ctx *pulumi.Context,
 	if args.PushDomain == nil {
 		return nil, errors.New("invalid value for required argument 'PushDomain'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SystemGroup
 	err := ctx.RegisterResource("alicloud:videosurveillance/systemGroup:SystemGroup", name, args, &resource, opts...)
 	if err != nil {

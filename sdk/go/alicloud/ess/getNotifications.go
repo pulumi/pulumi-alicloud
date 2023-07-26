@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetNotifications(ctx *pulumi.Context, args *GetNotificationsArgs, opts ...pulumi.InvokeOption) (*GetNotificationsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNotificationsResult
 	err := ctx.Invoke("alicloud:ess/getNotifications:getNotifications", args, &rv, opts...)
 	if err != nil {

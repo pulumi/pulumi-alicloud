@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Bastion Host Host Account Share Key Attachment and how to use it, see [What is Host Account Share Key Attachment](https://www.alibabacloud.com/help/en/bastion-host/latest/attachhostaccountstohostsharekey).
 //
-// > **NOTE:** Available in v1.165.0+.
+// > **NOTE:** Available since v1.165.0.
 //
 // ## Example Usage
 //
@@ -26,7 +27,10 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -35,25 +39,55 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tfacc_host_account_share_key_attachment"
+//			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultInstances, err := bastionhost.GetInstances(ctx, nil, nil)
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultHostShareKey, err := bastionhost.NewHostShareKey(ctx, "defaultHostShareKey", &bastionhost.HostShareKeyArgs{
-//				HostShareKeyName: pulumi.String("example_name"),
-//				InstanceId:       *pulumi.String(defaultInstances.Instances[0].Id),
-//				PassPhrase:       pulumi.String("example_value"),
-//				PrivateKey:       pulumi.String("example_value"),
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := bastionhost.NewInstance(ctx, "defaultInstance", &bastionhost.InstanceArgs{
+//				Description: pulumi.String(name),
+//				LicenseCode: pulumi.String("bhah_ent_50_asset"),
+//				PlanCode:    pulumi.String("cloudbastion"),
+//				Storage:     pulumi.String("5"),
+//				Bandwidth:   pulumi.String("5"),
+//				Period:      pulumi.Int(1),
+//				VswitchId:   defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
-//				InstanceId:         *pulumi.String(defaultInstances.Ids[0]),
+//				InstanceId:         defaultInstance.ID(),
 //				HostName:           pulumi.String(name),
 //				ActiveAddressType:  pulumi.String("Private"),
 //				HostPrivateAddress: pulumi.String("172.16.0.10"),
@@ -64,17 +98,30 @@ import (
 //				return err
 //			}
 //			defaultHostAccount, err := bastionhost.NewHostAccount(ctx, "defaultHostAccount", &bastionhost.HostAccountArgs{
-//				InstanceId:      *pulumi.String(defaultInstances.Ids[0]),
 //				HostAccountName: pulumi.String(name),
 //				HostId:          defaultHost.HostId,
+//				InstanceId:      defaultHost.InstanceId,
 //				ProtocolName:    pulumi.String("SSH"),
 //				Password:        pulumi.String("YourPassword12345"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			privateKey := "LS0tLS1CR*******"
+//			if param := cfg.Get("privateKey"); param != "" {
+//				privateKey = param
+//			}
+//			defaultHostShareKey, err := bastionhost.NewHostShareKey(ctx, "defaultHostShareKey", &bastionhost.HostShareKeyArgs{
+//				HostShareKeyName: pulumi.String(name),
+//				InstanceId:       defaultInstance.ID(),
+//				PassPhrase:       pulumi.String("NTIxeGlubXU="),
+//				PrivateKey:       pulumi.String(privateKey),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = bastionhost.NewHostAccountShareKeyAttachment(ctx, "defaultHostAccountShareKeyAttachment", &bastionhost.HostAccountShareKeyAttachmentArgs{
-//				InstanceId:     *pulumi.String(defaultInstances.Instances[0].Id),
+//				InstanceId:     defaultInstance.ID(),
 //				HostShareKeyId: defaultHostShareKey.HostShareKeyId,
 //				HostAccountId:  defaultHostAccount.HostAccountId,
 //			})
@@ -123,6 +170,7 @@ func NewHostAccountShareKeyAttachment(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HostAccountShareKeyAttachment
 	err := ctx.RegisterResource("alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment", name, args, &resource, opts...)
 	if err != nil {

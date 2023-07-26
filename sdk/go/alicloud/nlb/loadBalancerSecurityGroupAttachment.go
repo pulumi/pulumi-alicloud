@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -141,6 +142,7 @@ func NewLoadBalancerSecurityGroupAttachment(ctx *pulumi.Context,
 	if args.SecurityGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'SecurityGroupId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LoadBalancerSecurityGroupAttachment
 	err := ctx.RegisterResource("alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment", name, args, &resource, opts...)
 	if err != nil {

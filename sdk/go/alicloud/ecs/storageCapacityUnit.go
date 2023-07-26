@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +88,7 @@ func NewStorageCapacityUnit(ctx *pulumi.Context,
 	if args.Capacity == nil {
 		return nil, errors.New("invalid value for required argument 'Capacity'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StorageCapacityUnit
 	err := ctx.RegisterResource("alicloud:ecs/storageCapacityUnit:StorageCapacityUnit", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +88,7 @@ func NewNetworkAttachment(ctx *pulumi.Context,
 	if args.SagId == nil {
 		return nil, errors.New("invalid value for required argument 'SagId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkAttachment
 	err := ctx.RegisterResource("alicloud:cloudconnect/networkAttachment:NetworkAttachment", name, args, &resource, opts...)
 	if err != nil {

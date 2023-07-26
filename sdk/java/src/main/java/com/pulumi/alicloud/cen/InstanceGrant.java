@@ -97,13 +97,12 @@ import javax.annotation.Nullable;
  * 
  *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
  *             .instanceId(exampleInstance.id())
- *             .childInstanceId(childAccountNetwork.id())
+ *             .childInstanceId(childAccountInstanceGrant.childInstanceId())
  *             .childInstanceType(&#34;VPC&#34;)
  *             .childInstanceRegionId(default_.regions()[0].id())
  *             .childInstanceOwnerId(childAccountAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.your_account())
- *                 .dependsOn(childAccountInstanceGrant)
  *                 .build());
  * 
  *     }

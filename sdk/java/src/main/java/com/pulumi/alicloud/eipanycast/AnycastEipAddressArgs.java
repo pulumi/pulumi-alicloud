@@ -6,7 +6,9 @@ package com.pulumi.alicloud.eipanycast;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,14 +34,14 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+     * The peak bandwidth of the Anycast EIP instance, in Mbps.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+     * @return The peak bandwidth of the Anycast EIP instance, in Mbps.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -62,14 +64,14 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+     * The billing method of Anycast EIP instance. &#34;PayByBandwidth&#34;: refers to the method of billing based on traffic.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+     * @return The billing method of Anycast EIP instance. &#34;PayByBandwidth&#34;: refers to the method of billing based on traffic.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -77,14 +79,14 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * @return The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -92,18 +94,33 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+     * Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
      * 
      */
     @Import(name="serviceLocation", required=true)
     private Output<String> serviceLocation;
 
     /**
-     * @return Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+     * @return Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
      * 
      */
     public Output<String> serviceLocation() {
         return this.serviceLocation;
+    }
+
+    /**
+     * List of resource-bound tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return List of resource-bound tags.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private AnycastEipAddressArgs() {}
@@ -115,6 +132,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         this.internetChargeType = $.internetChargeType;
         this.paymentType = $.paymentType;
         this.serviceLocation = $.serviceLocation;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -157,7 +175,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bandwidth The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+         * @param bandwidth The peak bandwidth of the Anycast EIP instance, in Mbps.
          * 
          * @return builder
          * 
@@ -168,7 +186,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bandwidth The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+         * @param bandwidth The peak bandwidth of the Anycast EIP instance, in Mbps.
          * 
          * @return builder
          * 
@@ -199,7 +217,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param internetChargeType The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+         * @param internetChargeType The billing method of Anycast EIP instance. &#34;PayByBandwidth&#34;: refers to the method of billing based on traffic.
          * 
          * @return builder
          * 
@@ -210,7 +228,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param internetChargeType The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+         * @param internetChargeType The billing method of Anycast EIP instance. &#34;PayByBandwidth&#34;: refers to the method of billing based on traffic.
          * 
          * @return builder
          * 
@@ -220,7 +238,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+         * @param paymentType The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
          * 
          * @return builder
          * 
@@ -231,7 +249,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+         * @param paymentType The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
          * 
          * @return builder
          * 
@@ -241,7 +259,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceLocation Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+         * @param serviceLocation Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
          * 
          * @return builder
          * 
@@ -252,13 +270,34 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceLocation Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+         * @param serviceLocation Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
          * 
          * @return builder
          * 
          */
         public Builder serviceLocation(String serviceLocation) {
             return serviceLocation(Output.of(serviceLocation));
+        }
+
+        /**
+         * @param tags List of resource-bound tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags List of resource-bound tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public AnycastEipAddressArgs build() {

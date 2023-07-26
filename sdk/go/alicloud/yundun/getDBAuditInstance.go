@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupDBAuditInstance(ctx *pulumi.Context, args *LookupDBAuditInstanceArgs, opts ...pulumi.InvokeOption) (*LookupDBAuditInstanceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDBAuditInstanceResult
 	err := ctx.Invoke("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -117,6 +118,7 @@ func NewInstanceAttachment(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceAttachment
 	err := ctx.RegisterResource("alicloud:cen/instanceAttachment:InstanceAttachment", name, args, &resource, opts...)
 	if err != nil {

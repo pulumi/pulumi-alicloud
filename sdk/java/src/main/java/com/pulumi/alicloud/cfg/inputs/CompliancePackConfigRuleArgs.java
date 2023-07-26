@@ -18,14 +18,14 @@ public final class CompliancePackConfigRuleArgs extends com.pulumi.resources.Res
     public static final CompliancePackConfigRuleArgs Empty = new CompliancePackConfigRuleArgs();
 
     /**
-     * A list of Config Rule Parameters.
+     * A list of Config Rule Parameters. See `config_rule_parameters` below.
      * 
      */
     @Import(name="configRuleParameters")
     private @Nullable Output<List<CompliancePackConfigRuleConfigRuleParameterArgs>> configRuleParameters;
 
     /**
-     * @return A list of Config Rule Parameters.
+     * @return A list of Config Rule Parameters. See `config_rule_parameters` below.
      * 
      */
     public Optional<Output<List<CompliancePackConfigRuleConfigRuleParameterArgs>>> configRuleParameters() {
@@ -73,7 +73,7 @@ public final class CompliancePackConfigRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param configRuleParameters A list of Config Rule Parameters.
+         * @param configRuleParameters A list of Config Rule Parameters. See `config_rule_parameters` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class CompliancePackConfigRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param configRuleParameters A list of Config Rule Parameters.
+         * @param configRuleParameters A list of Config Rule Parameters. See `config_rule_parameters` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class CompliancePackConfigRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param configRuleParameters A list of Config Rule Parameters.
+         * @param configRuleParameters A list of Config Rule Parameters. See `config_rule_parameters` below.
          * 
          * @return builder
          * 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ import (
 //
 // ```
 func GetServerlessInstances(ctx *pulumi.Context, args *GetServerlessInstancesArgs, opts ...pulumi.InvokeOption) (*GetServerlessInstancesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerlessInstancesResult
 	err := ctx.Invoke("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args, &rv, opts...)
 	if err != nil {

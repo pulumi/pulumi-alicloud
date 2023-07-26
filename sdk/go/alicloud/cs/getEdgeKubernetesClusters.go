@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetEdgeKubernetesClusters(ctx *pulumi.Context, args *GetEdgeKubernetesClustersArgs, opts ...pulumi.InvokeOption) (*GetEdgeKubernetesClustersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEdgeKubernetesClustersResult
 	err := ctx.Invoke("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args, &rv, opts...)
 	if err != nil {

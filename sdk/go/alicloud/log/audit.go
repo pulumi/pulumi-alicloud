@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -289,6 +290,7 @@ func NewAudit(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Audit
 	err := ctx.RegisterResource("alicloud:log/audit:Audit", name, args, &resource, opts...)
 	if err != nil {

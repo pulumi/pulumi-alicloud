@@ -28,8 +28,8 @@ class CompliancePackArgs:
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
-        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
-        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below.
         """
         pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
         pulumi.set(__self__, "description", description)
@@ -96,7 +96,7 @@ class CompliancePackArgs:
     @pulumi.getter(name="configRuleIds")
     def config_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]:
         """
-        A list of Config Rule IDs.
+        A list of Config Rule IDs. See `config_rule_ids` below.
         """
         return pulumi.get(self, "config_rule_ids")
 
@@ -108,7 +108,7 @@ class CompliancePackArgs:
     @pulumi.getter(name="configRules")
     def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]:
         """
-        A list of Config Rules.
+        A list of Config Rules. See `config_rules` below.
         """
         warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
         pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
@@ -134,8 +134,8 @@ class _CompliancePackState:
         Input properties used for looking up and filtering CompliancePack resources.
         :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
-        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
-        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
         :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
@@ -186,7 +186,7 @@ class _CompliancePackState:
     @pulumi.getter(name="configRuleIds")
     def config_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]:
         """
-        A list of Config Rule IDs.
+        A list of Config Rule IDs. See `config_rule_ids` below.
         """
         return pulumi.get(self, "config_rule_ids")
 
@@ -198,7 +198,7 @@ class _CompliancePackState:
     @pulumi.getter(name="configRules")
     def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]:
         """
-        A list of Config Rules.
+        A list of Config Rules. See `config_rules` below.
         """
         warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
         pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
@@ -261,9 +261,9 @@ class CompliancePack(pulumi.CustomResource):
         """
         Provides a Cloud Config Compliance Pack resource.
 
-        For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+        For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createcompliancepack).
 
-        > **NOTE:** Available in v1.124.0+.
+        > **NOTE:** Available since v1.124.0.
 
         ## Example Usage
 
@@ -276,28 +276,22 @@ class CompliancePack(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example_name"
-        default_instances = alicloud.ecs.get_instances()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+            name = "tf-example-config"
+        default_regions = alicloud.get_regions(current=True)
         default_rule = alicloud.cfg.Rule("defaultRule",
-            rule_name=name,
-            description=name,
-            source_identifier="ecs-instances-in-vpc",
+            description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
             source_owner="ALIYUN",
-            resource_types_scopes=["ACS::ECS::Instance"],
+            source_identifier="oss-bucket-public-read-prohibited",
             risk_level=1,
+            tag_key_scope="For",
+            tag_value_scope="example",
+            region_ids_scope=default_regions.regions[0].id,
             config_rule_trigger_types="ConfigurationItemChangeNotification",
-            tag_key_scope="tfTest",
-            tag_value_scope="tfTest 123",
-            resource_group_ids_scope=default_resource_groups.ids[0],
-            exclude_resource_ids_scope=default_instances.instances[0].id,
-            region_ids_scope="cn-hangzhou",
-            input_parameters={
-                "vpcIds": default_instances.instances[0].vpc_id,
-            })
+            resource_types_scopes=["ACS::OSS::Bucket"],
+            rule_name="oss-bucket-public-read-prohibited")
         default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
-            compliance_pack_name="tf-testaccConfig1234",
-            description="tf-testaccConfig1234",
+            compliance_pack_name=name,
+            description=name,
             risk_level=1,
             config_rule_ids=[alicloud.cfg.CompliancePackConfigRuleIdArgs(
                 config_rule_id=default_rule.id,
@@ -316,8 +310,8 @@ class CompliancePack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
         """
@@ -330,9 +324,9 @@ class CompliancePack(pulumi.CustomResource):
         """
         Provides a Cloud Config Compliance Pack resource.
 
-        For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+        For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createcompliancepack).
 
-        > **NOTE:** Available in v1.124.0+.
+        > **NOTE:** Available since v1.124.0.
 
         ## Example Usage
 
@@ -345,28 +339,22 @@ class CompliancePack(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example_name"
-        default_instances = alicloud.ecs.get_instances()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+            name = "tf-example-config"
+        default_regions = alicloud.get_regions(current=True)
         default_rule = alicloud.cfg.Rule("defaultRule",
-            rule_name=name,
-            description=name,
-            source_identifier="ecs-instances-in-vpc",
+            description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
             source_owner="ALIYUN",
-            resource_types_scopes=["ACS::ECS::Instance"],
+            source_identifier="oss-bucket-public-read-prohibited",
             risk_level=1,
+            tag_key_scope="For",
+            tag_value_scope="example",
+            region_ids_scope=default_regions.regions[0].id,
             config_rule_trigger_types="ConfigurationItemChangeNotification",
-            tag_key_scope="tfTest",
-            tag_value_scope="tfTest 123",
-            resource_group_ids_scope=default_resource_groups.ids[0],
-            exclude_resource_ids_scope=default_instances.instances[0].id,
-            region_ids_scope="cn-hangzhou",
-            input_parameters={
-                "vpcIds": default_instances.instances[0].vpc_id,
-            })
+            resource_types_scopes=["ACS::OSS::Bucket"],
+            rule_name="oss-bucket-public-read-prohibited")
         default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
-            compliance_pack_name="tf-testaccConfig1234",
-            description="tf-testaccConfig1234",
+            compliance_pack_name=name,
+            description=name,
             risk_level=1,
             config_rule_ids=[alicloud.cfg.CompliancePackConfigRuleIdArgs(
                 config_rule_id=default_rule.id,
@@ -453,8 +441,8 @@ class CompliancePack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
         :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
@@ -492,7 +480,7 @@ class CompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="configRuleIds")
     def config_rule_ids(self) -> pulumi.Output[Optional[Sequence['outputs.CompliancePackConfigRuleId']]]:
         """
-        A list of Config Rule IDs.
+        A list of Config Rule IDs. See `config_rule_ids` below.
         """
         return pulumi.get(self, "config_rule_ids")
 
@@ -500,7 +488,7 @@ class CompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="configRules")
     def config_rules(self) -> pulumi.Output[Optional[Sequence['outputs.CompliancePackConfigRule']]]:
         """
-        A list of Config Rules.
+        A list of Config Rules. See `config_rules` below.
         """
         warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
         pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")

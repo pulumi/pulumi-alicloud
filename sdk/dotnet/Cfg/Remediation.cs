@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Config Remediation resource.
     /// 
-    /// For information about Config Remediation and how to use it, see [What is Remediation](https://www.alibabacloud.com/help/en/).
+    /// For information about Config Remediation and how to use it, see [What is Remediation](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createremediation).
     /// 
-    /// &gt; **NOTE:** Available in v1.204.0+.
+    /// &gt; **NOTE:** Available since v1.204.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,13 +28,52 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Cfg.Remediation("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example-oss";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         ConfigRuleId = alicloud_config_rule.Prerequirement_rule.Config_rule_id,
-    ///         RemediationTemplateId = "ACS-TAG-TagResources",
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     {
+    ///         BucketName = name,
+    ///         Acl = "public-read",
+    ///         Tags = 
+    ///         {
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new()
+    ///     {
+    ///         Description = "If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
+    ///         SourceOwner = "ALIYUN",
+    ///         SourceIdentifier = "oss-bucket-public-read-prohibited",
+    ///         RiskLevel = 1,
+    ///         TagKeyScope = "For",
+    ///         TagValueScope = "example",
+    ///         RegionIdsScope = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///         ResourceTypesScopes = new[]
+    ///         {
+    ///             "ACS::OSS::Bucket",
+    ///         },
+    ///         RuleName = "oss-bucket-public-read-prohibited",
+    ///     });
+    /// 
+    ///     var defaultRemediation = new AliCloud.Cfg.Remediation("defaultRemediation", new()
+    ///     {
+    ///         ConfigRuleId = defaultRule.ConfigRuleId,
+    ///         RemediationTemplateId = "ACS-OSS-PutBucketAcl",
     ///         RemediationSourceType = "ALIYUN",
     ///         InvokeType = "MANUAL_EXECUTION",
-    ///         Params = "{\"regionId\":\"{regionId}\",\"tags\":\"{\\\"terraform\\\":\\\"terraform\\\"}\",\"resourceType\":\"{resourceType}\",\"resourceIds\":\"{resourceId}\"}",
+    ///         Params = Output.Tuple(defaultBucket.BucketName, defaultRegions).Apply(values =&gt;
+    ///         {
+    ///             var bucket = values.Item1;
+    ///             var defaultRegions = values.Item2;
+    ///             return $"{{\"bucketName\": \"{bucket}\", \"regionId\": \"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}\", \"permissionName\": \"private\"}}";
+    ///         }),
     ///         RemediationType = "OOS",
     ///     });
     /// 

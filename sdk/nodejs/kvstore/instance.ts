@@ -44,15 +44,15 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      */
     public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
-     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * Specifies whether to use a coupon. Default to: `false`.
+     * Specifies whether to use a coupon. Default value: `false`.
      */
     public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
     /**
@@ -94,6 +94,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
     /**
+     * (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+     *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
@@ -104,7 +106,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly connectionStringPrefix!: pulumi.Output<string | undefined>;
     /**
-     * The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+     * The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
      */
     public readonly couponNo!: pulumi.Output<string | undefined>;
     /**
@@ -117,19 +119,15 @@ export class Instance extends pulumi.CustomResource {
     public readonly dedicatedHostGroupId!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to precheck the request. Valid values:
-     * * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-     * * false: checks the request. After the request passes the check, an instance is created.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
      * The time when the database is switched after the instance is migrated, 
      * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-     * - Immediately (Default): The configurations are immediately changed.
-     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      */
     public readonly effectiveTime!: pulumi.Output<string | undefined>;
     /**
-     * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+     * Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
      */
     public readonly enableBackupLog!: pulumi.Output<number | undefined>;
     /**
@@ -151,16 +149,16 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
-     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
      * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Specifies whether to forcibly change the type. Default to: `true`.
+     * Specifies whether to forcibly change the type. Default value: `true`.
      */
     public readonly forceUpgrade!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to create a distributed cache. Default to: `false`.
+     * Whether to create a distributed cache. Default value: `false`.
      */
     public readonly globalInstance!: pulumi.Output<boolean | undefined>;
     /**
@@ -181,7 +179,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
-     * @deprecated Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+     * @deprecated Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
@@ -189,7 +187,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceReleaseProtection!: pulumi.Output<boolean>;
     /**
-     * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+     * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      */
     public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
@@ -209,21 +207,21 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly maintainStartTime!: pulumi.Output<string>;
     /**
-     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
      */
     public readonly modifyMode!: pulumi.Output<number | undefined>;
     /**
-     * "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
     public readonly nodeType!: pulumi.Output<string>;
     /**
-     * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+     * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      */
     public readonly orderType!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `config` instead..
+     * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      *
      * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
      */
@@ -233,7 +231,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+     * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -270,19 +268,10 @@ export class Instance extends pulumi.CustomResource {
     public readonly restoreTime!: pulumi.Output<string | undefined>;
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      */
-    public readonly roleArn!: pulumi.Output<string | undefined>;
+    public readonly roleArn!: pulumi.Output<string>;
     /**
      * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-     *
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
@@ -303,12 +292,24 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     */
+    public readonly shardCount!: pulumi.Output<number>;
+    /**
      * The ID of the source instance.
      */
     public readonly srcdbInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
-     * Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+     * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
     public readonly sslEnable!: pulumi.Output<string | undefined>;
     /**
@@ -324,7 +325,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tdeStatus!: pulumi.Output<string>;
     /**
-     * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+     * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      */
     public readonly vpcAuthMode!: pulumi.Output<string | undefined>;
     /**
@@ -406,6 +407,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityIpGroupAttribute"] = state ? state.securityIpGroupAttribute : undefined;
             resourceInputs["securityIpGroupName"] = state ? state.securityIpGroupName : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
+            resourceInputs["shardCount"] = state ? state.shardCount : undefined;
             resourceInputs["srcdbInstanceId"] = state ? state.srcdbInstanceId : undefined;
             resourceInputs["sslEnable"] = state ? state.sslEnable : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -468,6 +470,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityIpGroupAttribute"] = args ? args.securityIpGroupAttribute : undefined;
             resourceInputs["securityIpGroupName"] = args ? args.securityIpGroupName : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["shardCount"] = args ? args.shardCount : undefined;
             resourceInputs["srcdbInstanceId"] = args ? args.srcdbInstanceId : undefined;
             resourceInputs["sslEnable"] = args ? args.sslEnable : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -494,15 +497,15 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Specifies whether to use a coupon. Default to: `false`.
+     * Specifies whether to use a coupon. Default value: `false`.
      */
     autoUseCoupon?: pulumi.Input<boolean>;
     /**
@@ -544,6 +547,8 @@ export interface InstanceState {
      */
     connectionDomain?: pulumi.Input<string>;
     /**
+     * (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+     *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
     connectionString?: pulumi.Input<string>;
@@ -554,7 +559,7 @@ export interface InstanceState {
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
-     * The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+     * The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
      */
     couponNo?: pulumi.Input<string>;
     /**
@@ -567,19 +572,15 @@ export interface InstanceState {
     dedicatedHostGroupId?: pulumi.Input<string>;
     /**
      * Specifies whether to precheck the request. Valid values:
-     * * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-     * * false: checks the request. After the request passes the check, an instance is created.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
      * The time when the database is switched after the instance is migrated, 
      * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-     * - Immediately (Default): The configurations are immediately changed.
-     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      */
     effectiveTime?: pulumi.Input<string>;
     /**
-     * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+     * Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
      */
     enableBackupLog?: pulumi.Input<number>;
     /**
@@ -601,16 +602,16 @@ export interface InstanceState {
      */
     endTime?: pulumi.Input<string>;
     /**
-     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
      * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
     engineVersion?: pulumi.Input<string>;
     /**
-     * Specifies whether to forcibly change the type. Default to: `true`.
+     * Specifies whether to forcibly change the type. Default value: `true`.
      */
     forceUpgrade?: pulumi.Input<boolean>;
     /**
-     * Whether to create a distributed cache. Default to: `false`.
+     * Whether to create a distributed cache. Default value: `false`.
      */
     globalInstance?: pulumi.Input<boolean>;
     /**
@@ -631,7 +632,7 @@ export interface InstanceState {
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
-     * @deprecated Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+     * @deprecated Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      */
     instanceName?: pulumi.Input<string>;
     /**
@@ -639,7 +640,7 @@ export interface InstanceState {
      */
     instanceReleaseProtection?: pulumi.Input<boolean>;
     /**
-     * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+     * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -659,21 +660,21 @@ export interface InstanceState {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
      */
     modifyMode?: pulumi.Input<number>;
     /**
-     * "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
     nodeType?: pulumi.Input<string>;
     /**
-     * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+     * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      */
     orderType?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `config` instead..
+     * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      *
      * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
      */
@@ -683,7 +684,7 @@ export interface InstanceState {
      */
     password?: pulumi.Input<string>;
     /**
-     * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+     * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -720,19 +721,10 @@ export interface InstanceState {
     restoreTime?: pulumi.Input<string>;
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      */
     roleArn?: pulumi.Input<string>;
     /**
      * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-     *
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string>;
@@ -753,12 +745,24 @@ export interface InstanceState {
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     */
+    shardCount?: pulumi.Input<number>;
+    /**
      * The ID of the source instance.
      */
     srcdbInstanceId?: pulumi.Input<string>;
     /**
-     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
-     * Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+     * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
     sslEnable?: pulumi.Input<string>;
     /**
@@ -774,7 +778,7 @@ export interface InstanceState {
      */
     tdeStatus?: pulumi.Input<string>;
     /**
-     * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+     * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      */
     vpcAuthMode?: pulumi.Input<string>;
     /**
@@ -792,15 +796,15 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Specifies whether to use a coupon. Default to: `false`.
+     * Specifies whether to use a coupon. Default value: `false`.
      */
     autoUseCoupon?: pulumi.Input<boolean>;
     /**
@@ -840,7 +844,7 @@ export interface InstanceArgs {
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
-     * The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+     * The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
      */
     couponNo?: pulumi.Input<string>;
     /**
@@ -853,19 +857,15 @@ export interface InstanceArgs {
     dedicatedHostGroupId?: pulumi.Input<string>;
     /**
      * Specifies whether to precheck the request. Valid values:
-     * * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-     * * false: checks the request. After the request passes the check, an instance is created.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
      * The time when the database is switched after the instance is migrated, 
      * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-     * - Immediately (Default): The configurations are immediately changed.
-     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      */
     effectiveTime?: pulumi.Input<string>;
     /**
-     * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+     * Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
      */
     enableBackupLog?: pulumi.Input<number>;
     /**
@@ -883,16 +883,16 @@ export interface InstanceArgs {
      */
     encryptionName?: pulumi.Input<string>;
     /**
-     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
      * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
     engineVersion?: pulumi.Input<string>;
     /**
-     * Specifies whether to forcibly change the type. Default to: `true`.
+     * Specifies whether to forcibly change the type. Default value: `true`.
      */
     forceUpgrade?: pulumi.Input<boolean>;
     /**
-     * Whether to create a distributed cache. Default to: `false`.
+     * Whether to create a distributed cache. Default value: `false`.
      */
     globalInstance?: pulumi.Input<boolean>;
     /**
@@ -913,7 +913,7 @@ export interface InstanceArgs {
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
-     * @deprecated Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+     * @deprecated Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      */
     instanceName?: pulumi.Input<string>;
     /**
@@ -921,7 +921,7 @@ export interface InstanceArgs {
      */
     instanceReleaseProtection?: pulumi.Input<boolean>;
     /**
-     * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+     * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -941,21 +941,21 @@ export interface InstanceArgs {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
      */
     modifyMode?: pulumi.Input<number>;
     /**
-     * "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
     nodeType?: pulumi.Input<string>;
     /**
-     * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+     * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      */
     orderType?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `config` instead..
+     * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      *
      * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
      */
@@ -965,7 +965,7 @@ export interface InstanceArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+     * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -998,19 +998,10 @@ export interface InstanceArgs {
     restoreTime?: pulumi.Input<string>;
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      */
     roleArn?: pulumi.Input<string>;
     /**
      * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-     *
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string>;
@@ -1031,12 +1022,24 @@ export interface InstanceArgs {
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     */
+    shardCount?: pulumi.Input<number>;
+    /**
      * The ID of the source instance.
      */
     srcdbInstanceId?: pulumi.Input<string>;
     /**
-     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
-     * Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+     * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
     sslEnable?: pulumi.Input<string>;
     /**
@@ -1048,7 +1051,7 @@ export interface InstanceArgs {
      */
     tdeStatus?: pulumi.Input<string>;
     /**
-     * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+     * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      */
     vpcAuthMode?: pulumi.Input<string>;
     /**

@@ -9,55 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about VPC Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
  *
- * > **NOTE:** Available in v1.151.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
- *     nameRegex: "^preserved-NODELETING",
- * });
- * const exampleVirtualBorderRouter: alicloud.expressconnect.VirtualBorderRouter[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleVirtualBorderRouter.push(new alicloud.expressconnect.VirtualBorderRouter(`exampleVirtualBorderRouter-${range.value}`, {
- *         localGatewayIp: "10.0.0.1",
- *         peerGatewayIp: "10.0.0.2",
- *         peeringSubnetMask: "255.255.255.252",
- *         physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections[range.value].id),
- *         virtualBorderRouterName: _var.name,
- *         vlanId: 100,
- *         minRxInterval: 1000,
- *         minTxInterval: 1000,
- *         detectMultiplier: 10,
- *     }));
- * }
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
- *     cenInstanceName: "example_value",
- *     description: "example_value",
- * });
- * const exampleInstanceAttachment: alicloud.cen.InstanceAttachment[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleInstanceAttachment.push(new alicloud.cen.InstanceAttachment(`exampleInstanceAttachment-${range.value}`, {
- *         instanceId: exampleInstance.id,
- *         childInstanceId: exampleVirtualBorderRouter[range.value].id,
- *         childInstanceType: "VBR",
- *         childInstanceRegionId: "cn-hangzhou",
- *     }));
- * }
- * const exampleVbrHa = new alicloud.vpc.VbrHa("exampleVbrHa", {
- *     vbrId: exampleInstanceAttachment[0].id,
- *     peerVbrId: exampleInstanceAttachment[1].id,
- *     vbrHaName: "example_value",
- *     description: "example_value",
- * }, {
- *     dependsOn: ["alicloud_cen_instance_attachment.example"],
- * });
- * ```
+ * > **NOTE:** Available since v1.151.0.
  *
  * ## Import
  *

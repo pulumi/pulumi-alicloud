@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,6 +67,7 @@ import (
 //
 // ```
 func GetIpv6InternetBandwidths(ctx *pulumi.Context, args *GetIpv6InternetBandwidthsArgs, opts ...pulumi.InvokeOption) (*GetIpv6InternetBandwidthsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpv6InternetBandwidthsResult
 	err := ctx.Invoke("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args, &rv, opts...)
 	if err != nil {

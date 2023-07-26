@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +74,7 @@ func NewStorageBundle(ctx *pulumi.Context,
 	if args.StorageBundleName == nil {
 		return nil, errors.New("invalid value for required argument 'StorageBundleName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StorageBundle
 	err := ctx.RegisterResource("alicloud:cloudstoragegateway/storageBundle:StorageBundle", name, args, &resource, opts...)
 	if err != nil {

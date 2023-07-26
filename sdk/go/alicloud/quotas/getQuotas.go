@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetQuotas(ctx *pulumi.Context, args *GetQuotasArgs, opts ...pulumi.InvokeOption) (*GetQuotasResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQuotasResult
 	err := ctx.Invoke("alicloud:quotas/getQuotas:getQuotas", args, &rv, opts...)
 	if err != nil {

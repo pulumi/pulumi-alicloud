@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Api Gateway Backend resource.
 //
-// For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/zh/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
+// For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
 //
-// > **NOTE:** Available in v1.181.0+.
+// > **NOTE:** Available since v1.181.0.
 //
 // ## Example Usage
 //
@@ -35,13 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name1 := "tf-testAccBackend"
-//			if param := cfg.Get("name1"); param != "" {
-//				name1 = param
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
 //			_, err := apigateway.NewBackend(ctx, "default", &apigateway.BackendArgs{
-//				BackendName: pulumi.Any(_var.Name),
-//				Description: pulumi.Any(_var.Name),
+//				BackendName: pulumi.String(name),
+//				Description: pulumi.String(name),
 //				BackendType: pulumi.String("HTTP"),
 //			})
 //			if err != nil {
@@ -88,6 +89,7 @@ func NewBackend(ctx *pulumi.Context,
 	if args.BackendType == nil {
 		return nil, errors.New("invalid value for required argument 'BackendType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Backend
 	err := ctx.RegisterResource("alicloud:apigateway/backend:Backend", name, args, &resource, opts...)
 	if err != nil {

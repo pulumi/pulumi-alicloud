@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cms
     /// <summary>
     /// Provides a Cloud Monitor Service Monitor Group Instances resource.
     /// 
-    /// For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/doc-detail/115031.htm).
+    /// For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroupinstances).
     /// 
-    /// &gt; **NOTE:** Available in v1.115.0+.
+    /// &gt; **NOTE:** Available since v1.115.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,15 +28,22 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = "tf-testacc-vpcname",
+    ///         VpcName = name,
     ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
     ///     var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("defaultMonitorGroup", new()
     ///     {
-    ///         MonitorGroupName = "tf-testaccmonitorgroup",
+    ///         MonitorGroupName = name,
+    ///     });
+    /// 
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
     ///     });
     /// 
     ///     var example = new AliCloud.Cms.MonitorGroupInstances("example", new()
@@ -47,8 +54,8 @@ namespace Pulumi.AliCloud.Cms
     ///             new AliCloud.Cms.Inputs.MonitorGroupInstancesInstanceArgs
     ///             {
     ///                 InstanceId = defaultNetwork.Id,
-    ///                 InstanceName = "tf-testacc-vpcname",
-    ///                 RegionId = "cn-hangzhou",
+    ///                 InstanceName = name,
+    ///                 RegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///                 Category = "vpc",
     ///             },
     ///         },
@@ -75,7 +82,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance information added to the Cms Group.
+        /// Instance information added to the Cms Group. See `instances` below.
         /// </summary>
         [Output("instances")]
         public Output<ImmutableArray<Outputs.MonitorGroupInstancesInstance>> Instances { get; private set; } = null!;
@@ -136,7 +143,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MonitorGroupInstancesInstanceArgs>? _instances;
 
         /// <summary>
-        /// Instance information added to the Cms Group.
+        /// Instance information added to the Cms Group. See `instances` below.
         /// </summary>
         public InputList<Inputs.MonitorGroupInstancesInstanceArgs> Instances
         {
@@ -162,7 +169,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MonitorGroupInstancesInstanceGetArgs>? _instances;
 
         /// <summary>
-        /// Instance information added to the Cms Group.
+        /// Instance information added to the Cms Group. See `instances` below.
         /// </summary>
         public InputList<Inputs.MonitorGroupInstancesInstanceGetArgs> Instances
         {

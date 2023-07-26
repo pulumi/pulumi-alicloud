@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -172,6 +173,7 @@ func NewSaslAcl(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SaslAcl
 	err := ctx.RegisterResource("alicloud:alikafka/saslAcl:SaslAcl", name, args, &resource, opts...)
 	if err != nil {

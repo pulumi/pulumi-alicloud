@@ -12,9 +12,174 @@ namespace Pulumi.AliCloud.Ga
     /// <summary>
     /// Provides a Global Accelerator (GA) Forwarding Rule resource.
     /// 
-    /// For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
+    /// For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
     /// 
     /// &gt; **NOTE:** Available since v1.120.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new()
+    ///     {
+    ///         Duration = 3,
+    ///         Spec = "2",
+    ///         AcceleratorName = name,
+    ///         AutoUseCoupon = false,
+    ///         Description = name,
+    ///         AutoRenewDuration = 2,
+    ///         RenewalStatus = "AutoRenewal",
+    ///     });
+    /// 
+    ///     var exampleBandwidthPackage = new AliCloud.Ga.BandwidthPackage("exampleBandwidthPackage", new()
+    ///     {
+    ///         Type = "Basic",
+    ///         Bandwidth = 20,
+    ///         BandwidthType = "Basic",
+    ///         Duration = "1",
+    ///         AutoPay = true,
+    ///         PaymentType = "Subscription",
+    ///         AutoUseCoupon = false,
+    ///         BandwidthPackageName = name,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         BandwidthPackageId = exampleBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var exampleListener = new AliCloud.Ga.Listener("exampleListener", new()
+    ///     {
+    ///         AcceleratorId = exampleBandwidthPackageAttachment.AcceleratorId,
+    ///         ClientAffinity = "SOURCE_IP",
+    ///         Description = name,
+    ///         Protocol = "HTTP",
+    ///         ProxyProtocol = true,
+    ///         PortRanges = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+    ///             {
+    ///                 FromPort = 60,
+    ///                 ToPort = 60,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleIpSet = new AliCloud.Ga.IpSet("exampleIpSet", new()
+    ///     {
+    ///         AccelerateRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         AcceleratorId = exampleBandwidthPackageAttachment.AcceleratorId,
+    ///         Bandwidth = 20,
+    ///     });
+    /// 
+    ///     var exampleEipAddress = new AliCloud.Ecs.EipAddress("exampleEipAddress", new()
+    ///     {
+    ///         Bandwidth = "10",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///     });
+    /// 
+    ///     var @virtual = new AliCloud.Ga.EndpointGroup("virtual", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         EndpointConfigurations = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
+    ///             {
+    ///                 Endpoint = exampleEipAddress.IpAddress,
+    ///                 Type = "PublicIp",
+    ///                 Weight = 20,
+    ///                 EnableClientipPreservation = true,
+    ///             },
+    ///         },
+    ///         EndpointGroupRegion = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         ListenerId = exampleListener.Id,
+    ///         Description = name,
+    ///         EndpointGroupType = "virtual",
+    ///         EndpointRequestProtocol = "HTTPS",
+    ///         HealthCheckIntervalSeconds = 4,
+    ///         HealthCheckPath = "/path",
+    ///         ThresholdCount = 4,
+    ///         TrafficPercentage = 20,
+    ///         PortOverrides = new AliCloud.Ga.Inputs.EndpointGroupPortOverridesArgs
+    ///         {
+    ///             EndpointPort = 80,
+    ///             ListenerPort = 60,
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleForwardingRule = new AliCloud.Ga.ForwardingRule("exampleForwardingRule", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         ListenerId = exampleListener.Id,
+    ///         RuleConditions = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ForwardingRuleRuleConditionArgs
+    ///             {
+    ///                 RuleConditionType = "Path",
+    ///                 PathConfig = new AliCloud.Ga.Inputs.ForwardingRuleRuleConditionPathConfigArgs
+    ///                 {
+    ///                     Values = new[]
+    ///                     {
+    ///                         "/testpathconfig",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new AliCloud.Ga.Inputs.ForwardingRuleRuleConditionArgs
+    ///             {
+    ///                 RuleConditionType = "Host",
+    ///                 HostConfigs = new[]
+    ///                 {
+    ///                     new AliCloud.Ga.Inputs.ForwardingRuleRuleConditionHostConfigArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             "www.test.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         RuleActions = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ForwardingRuleRuleActionArgs
+    ///             {
+    ///                 Order = 40,
+    ///                 RuleActionType = "ForwardGroup",
+    ///                 ForwardGroupConfig = new AliCloud.Ga.Inputs.ForwardingRuleRuleActionForwardGroupConfigArgs
+    ///                 {
+    ///                     ServerGroupTuples = new[]
+    ///                     {
+    ///                         new AliCloud.Ga.Inputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs
+    ///                         {
+    ///                             EndpointGroupId = @virtual.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Priority = 2,
+    ///         ForwardingRuleName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

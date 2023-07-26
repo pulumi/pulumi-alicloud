@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
     public sealed class ApiConstantParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the api. Defaults to null.
+        /// The description of Constant parameter.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        /// Constant parameter location; values: 'HEAD' and 'QUERY'.
         /// </summary>
         [Input("in", required: true)]
         public Input<string> In { get; set; } = null!;
 
         /// <summary>
-        /// The name of the api gateway api. Defaults to null.
+        /// Constant parameter name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

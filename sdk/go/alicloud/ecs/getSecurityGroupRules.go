@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +63,7 @@ import (
 //
 // ```
 func GetSecurityGroupRules(ctx *pulumi.Context, args *GetSecurityGroupRulesArgs, opts ...pulumi.InvokeOption) (*GetSecurityGroupRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecurityGroupRulesResult
 	err := ctx.Invoke("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args, &rv, opts...)
 	if err != nil {

@@ -21,20 +21,21 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Forwarding Rule resource.
  * 
- * For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
+ * For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
  * 
  * &gt; **NOTE:** Available since v1.120.0.
  * 
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.ga.Accelerator;
  * import com.pulumi.alicloud.ga.AcceleratorArgs;
  * import com.pulumi.alicloud.ga.BandwidthPackage;
@@ -58,7 +59,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleConditionPathConfigArgs;
  * import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleActionArgs;
  * import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleActionForwardGroupConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -72,12 +72,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
  *         var exampleAccelerator = new Accelerator(&#34;exampleAccelerator&#34;, AcceleratorArgs.builder()        
  *             .duration(3)
  *             .spec(&#34;2&#34;)
- *             .acceleratorName(&#34;ga-tf&#34;)
+ *             .acceleratorName(name)
  *             .autoUseCoupon(false)
- *             .description(&#34;ga-tf description&#34;)
+ *             .description(name)
  *             .autoRenewDuration(&#34;2&#34;)
  *             .renewalStatus(&#34;AutoRenewal&#34;)
  *             .build());
@@ -87,12 +93,11 @@ import javax.annotation.Nullable;
  *             .bandwidth(20)
  *             .bandwidthType(&#34;Basic&#34;)
  *             .duration(1)
- *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .autoPay(true)
  *             .paymentType(&#34;Subscription&#34;)
  *             .autoUseCoupon(false)
- *             .bandwidthPackageName(&#34;bandwidth_package_name_tf&#34;)
- *             .description(&#34;bandwidth_package_name_tf_description&#34;)
+ *             .bandwidthPackageName(name)
+ *             .description(name)
  *             .build());
  * 
  *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
@@ -101,26 +106,22 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleListener = new Listener(&#34;exampleListener&#34;, ListenerArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
+ *             .acceleratorId(exampleBandwidthPackageAttachment.acceleratorId())
+ *             .clientAffinity(&#34;SOURCE_IP&#34;)
+ *             .description(name)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .proxyProtocol(true)
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(60)
  *                 .toPort(60)
  *                 .build())
- *             .clientAffinity(&#34;SOURCE_IP&#34;)
- *             .description(&#34;alicloud_ga_listener_description&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .proxyProtocol(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(exampleBandwidthPackageAttachment)
- *                 .build());
+ *             .build());
  * 
  *         var exampleIpSet = new IpSet(&#34;exampleIpSet&#34;, IpSetArgs.builder()        
- *             .accelerateRegionId(&#34;cn-shanghai&#34;)
- *             .acceleratorId(exampleAccelerator.id())
+ *             .accelerateRegionId(default_.regions()[0].id())
+ *             .acceleratorId(exampleBandwidthPackageAttachment.acceleratorId())
  *             .bandwidth(&#34;20&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(exampleBandwidthPackageAttachment)
- *                 .build());
+ *             .build());
  * 
  *         var exampleEipAddress = new EipAddress(&#34;exampleEipAddress&#34;, EipAddressArgs.builder()        
  *             .bandwidth(&#34;10&#34;)
@@ -135,9 +136,9 @@ import javax.annotation.Nullable;
  *                 .weight(&#34;20&#34;)
  *                 .enableClientipPreservation(true)
  *                 .build())
- *             .endpointGroupRegion(&#34;cn-shanghai&#34;)
+ *             .endpointGroupRegion(default_.regions()[0].id())
  *             .listenerId(exampleListener.id())
- *             .description(&#34;alicloud_ga_endpoint_group_description&#34;)
+ *             .description(name)
  *             .endpointGroupType(&#34;virtual&#34;)
  *             .endpointRequestProtocol(&#34;HTTPS&#34;)
  *             .healthCheckIntervalSeconds(4)
@@ -176,7 +177,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .priority(2)
- *             .forwardingRuleName(&#34;forwarding_rule_name&#34;)
+ *             .forwardingRuleName(name)
  *             .build());
  * 
  *     }

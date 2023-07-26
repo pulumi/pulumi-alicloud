@@ -264,9 +264,111 @@ class ForwardingRule(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Forwarding Rule resource.
 
-        For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
+        For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
 
         > **NOTE:** Available since v1.120.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_regions(current=True)
+        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+            duration=3,
+            spec="2",
+            accelerator_name=name,
+            auto_use_coupon=False,
+            description=name,
+            auto_renew_duration=2,
+            renewal_status="AutoRenewal")
+        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
+            type="Basic",
+            bandwidth=20,
+            bandwidth_type="Basic",
+            duration="1",
+            auto_pay=True,
+            payment_type="Subscription",
+            auto_use_coupon=False,
+            bandwidth_package_name=name,
+            description=name)
+        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=example_bandwidth_package.id)
+        example_listener = alicloud.ga.Listener("exampleListener",
+            accelerator_id=example_bandwidth_package_attachment.accelerator_id,
+            client_affinity="SOURCE_IP",
+            description=name,
+            protocol="HTTP",
+            proxy_protocol=True,
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=60,
+                to_port=60,
+            )])
+        example_ip_set = alicloud.ga.IpSet("exampleIpSet",
+            accelerate_region_id=default.regions[0].id,
+            accelerator_id=example_bandwidth_package_attachment.accelerator_id,
+            bandwidth=20)
+        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
+            bandwidth="10",
+            internet_charge_type="PayByBandwidth")
+        virtual = alicloud.ga.EndpointGroup("virtual",
+            accelerator_id=example_accelerator.id,
+            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                endpoint=example_eip_address.ip_address,
+                type="PublicIp",
+                weight=20,
+                enable_clientip_preservation=True,
+            )],
+            endpoint_group_region=default.regions[0].id,
+            listener_id=example_listener.id,
+            description=name,
+            endpoint_group_type="virtual",
+            endpoint_request_protocol="HTTPS",
+            health_check_interval_seconds=4,
+            health_check_path="/path",
+            threshold_count=4,
+            traffic_percentage=20,
+            port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
+                endpoint_port=80,
+                listener_port=60,
+            ))
+        example_forwarding_rule = alicloud.ga.ForwardingRule("exampleForwardingRule",
+            accelerator_id=example_accelerator.id,
+            listener_id=example_listener.id,
+            rule_conditions=[
+                alicloud.ga.ForwardingRuleRuleConditionArgs(
+                    rule_condition_type="Path",
+                    path_config=alicloud.ga.ForwardingRuleRuleConditionPathConfigArgs(
+                        values=["/testpathconfig"],
+                    ),
+                ),
+                alicloud.ga.ForwardingRuleRuleConditionArgs(
+                    rule_condition_type="Host",
+                    host_configs=[alicloud.ga.ForwardingRuleRuleConditionHostConfigArgs(
+                        values=["www.test.com"],
+                    )],
+                ),
+            ],
+            rule_actions=[alicloud.ga.ForwardingRuleRuleActionArgs(
+                order=40,
+                rule_action_type="ForwardGroup",
+                forward_group_config=alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigArgs(
+                    server_group_tuples=[alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(
+                        endpoint_group_id=virtual.id,
+                    )],
+                ),
+            )],
+            priority=2,
+            forwarding_rule_name=name)
+        ```
 
         ## Import
 
@@ -294,9 +396,111 @@ class ForwardingRule(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Forwarding Rule resource.
 
-        For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
+        For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
 
         > **NOTE:** Available since v1.120.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_regions(current=True)
+        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+            duration=3,
+            spec="2",
+            accelerator_name=name,
+            auto_use_coupon=False,
+            description=name,
+            auto_renew_duration=2,
+            renewal_status="AutoRenewal")
+        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
+            type="Basic",
+            bandwidth=20,
+            bandwidth_type="Basic",
+            duration="1",
+            auto_pay=True,
+            payment_type="Subscription",
+            auto_use_coupon=False,
+            bandwidth_package_name=name,
+            description=name)
+        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=example_bandwidth_package.id)
+        example_listener = alicloud.ga.Listener("exampleListener",
+            accelerator_id=example_bandwidth_package_attachment.accelerator_id,
+            client_affinity="SOURCE_IP",
+            description=name,
+            protocol="HTTP",
+            proxy_protocol=True,
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=60,
+                to_port=60,
+            )])
+        example_ip_set = alicloud.ga.IpSet("exampleIpSet",
+            accelerate_region_id=default.regions[0].id,
+            accelerator_id=example_bandwidth_package_attachment.accelerator_id,
+            bandwidth=20)
+        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
+            bandwidth="10",
+            internet_charge_type="PayByBandwidth")
+        virtual = alicloud.ga.EndpointGroup("virtual",
+            accelerator_id=example_accelerator.id,
+            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                endpoint=example_eip_address.ip_address,
+                type="PublicIp",
+                weight=20,
+                enable_clientip_preservation=True,
+            )],
+            endpoint_group_region=default.regions[0].id,
+            listener_id=example_listener.id,
+            description=name,
+            endpoint_group_type="virtual",
+            endpoint_request_protocol="HTTPS",
+            health_check_interval_seconds=4,
+            health_check_path="/path",
+            threshold_count=4,
+            traffic_percentage=20,
+            port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
+                endpoint_port=80,
+                listener_port=60,
+            ))
+        example_forwarding_rule = alicloud.ga.ForwardingRule("exampleForwardingRule",
+            accelerator_id=example_accelerator.id,
+            listener_id=example_listener.id,
+            rule_conditions=[
+                alicloud.ga.ForwardingRuleRuleConditionArgs(
+                    rule_condition_type="Path",
+                    path_config=alicloud.ga.ForwardingRuleRuleConditionPathConfigArgs(
+                        values=["/testpathconfig"],
+                    ),
+                ),
+                alicloud.ga.ForwardingRuleRuleConditionArgs(
+                    rule_condition_type="Host",
+                    host_configs=[alicloud.ga.ForwardingRuleRuleConditionHostConfigArgs(
+                        values=["www.test.com"],
+                    )],
+                ),
+            ],
+            rule_actions=[alicloud.ga.ForwardingRuleRuleActionArgs(
+                order=40,
+                rule_action_type="ForwardGroup",
+                forward_group_config=alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigArgs(
+                    server_group_tuples=[alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(
+                        endpoint_group_id=virtual.id,
+                    )],
+                ),
+            )],
+            priority=2,
+            forwarding_rule_name=name)
+        ```
 
         ## Import
 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetSharedResources(ctx *pulumi.Context, args *GetSharedResourcesArgs, opts ...pulumi.InvokeOption) (*GetSharedResourcesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSharedResourcesResult
 	err := ctx.Invoke("alicloud:resourcemanager/getSharedResources:getSharedResources", args, &rv, opts...)
 	if err != nil {

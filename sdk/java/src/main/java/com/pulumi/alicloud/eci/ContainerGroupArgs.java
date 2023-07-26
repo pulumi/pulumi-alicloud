@@ -30,14 +30,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     public static final ContainerGroupArgs Empty = new ContainerGroupArgs();
 
     /**
-     * The ACR enterprise edition example properties.
+     * The ACR enterprise edition example properties. See `acr_registry_info` below.
      * 
      */
     @Import(name="acrRegistryInfos")
     private @Nullable Output<List<ContainerGroupAcrRegistryInfoArgs>> acrRegistryInfos;
 
     /**
-     * @return The ACR enterprise edition example properties.
+     * @return The ACR enterprise edition example properties. See `acr_registry_info` below.
      * 
      */
     public Optional<Output<List<ContainerGroupAcrRegistryInfoArgs>>> acrRegistryInfos() {
@@ -60,14 +60,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies whether to automatically match the image cache. Default value: false.
+     * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      * 
      */
     @Import(name="autoMatchImageCache")
     private @Nullable Output<Boolean> autoMatchImageCache;
 
     /**
-     * @return Specifies whether to automatically match the image cache. Default value: false.
+     * @return Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      * 
      */
     public Optional<Output<Boolean>> autoMatchImageCache() {
@@ -90,14 +90,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The list of containers.
+     * The list of containers. See `containers` below.
      * 
      */
     @Import(name="containers", required=true)
     private Output<List<ContainerGroupContainerArgs>> containers;
 
     /**
-     * @return The list of containers.
+     * @return The list of containers. See `containers` below.
      * 
      */
     public Output<List<ContainerGroupContainerArgs>> containers() {
@@ -120,14 +120,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The structure of dnsConfig.
+     * The structure of dnsConfig. See `dns_config` below.
      * 
      */
     @Import(name="dnsConfig")
     private @Nullable Output<ContainerGroupDnsConfigArgs> dnsConfig;
 
     /**
-     * @return The structure of dnsConfig.
+     * @return The structure of dnsConfig. See `dns_config` below.
      * 
      */
     public Optional<Output<ContainerGroupDnsConfigArgs>> dnsConfig() {
@@ -135,14 +135,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The security context of the container group.
+     * The security context of the container group. See `eci_security_context` below.
      * 
      */
     @Import(name="eciSecurityContext")
     private @Nullable Output<ContainerGroupEciSecurityContextArgs> eciSecurityContext;
 
     /**
-     * @return The security context of the container group.
+     * @return The security context of the container group. See `eci_security_context` below.
      * 
      */
     public Optional<Output<ContainerGroupEciSecurityContextArgs>> eciSecurityContext() {
@@ -150,14 +150,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The bandwidth of the EIP. The default value is `5`.
+     * The bandwidth of the EIP. Default value: `5`.
      * 
      */
     @Import(name="eipBandwidth")
     private @Nullable Output<Integer> eipBandwidth;
 
     /**
-     * @return The bandwidth of the EIP. The default value is `5`.
+     * @return The bandwidth of the EIP. Default value: `5`.
      * 
      */
     public Optional<Output<Integer>> eipBandwidth() {
@@ -180,14 +180,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * HostAliases.
+     * HostAliases. See `host_aliases` below.
      * 
      */
     @Import(name="hostAliases")
     private @Nullable Output<List<ContainerGroupHostAliasArgs>> hostAliases;
 
     /**
-     * @return HostAliases.
+     * @return HostAliases. See `host_aliases` below.
      * 
      */
     public Optional<Output<List<ContainerGroupHostAliasArgs>>> hostAliases() {
@@ -195,14 +195,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The image registry credential. The details see Block `image_registry_credential`.
+     * The image registry credential. See `image_registry_credential` below.
      * 
      */
     @Import(name="imageRegistryCredentials")
     private @Nullable Output<List<ContainerGroupImageRegistryCredentialArgs>> imageRegistryCredentials;
 
     /**
-     * @return The image registry credential. The details see Block `image_registry_credential`.
+     * @return The image registry credential. See `image_registry_credential` below.
      * 
      */
     public Optional<Output<List<ContainerGroupImageRegistryCredentialArgs>>> imageRegistryCredentials() {
@@ -210,14 +210,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The list of initContainers.
+     * The list of initContainers. See `init_containers` below.
      * 
      */
     @Import(name="initContainers")
     private @Nullable Output<List<ContainerGroupInitContainerArgs>> initContainers;
 
     /**
-     * @return The list of initContainers.
+     * @return The list of initContainers. See `init_containers` below.
      * 
      */
     public Optional<Output<List<ContainerGroupInitContainerArgs>>> initContainers() {
@@ -300,14 +300,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -364,14 +364,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The list of volumes.
+     * The list of volumes. See `volumes` below.
      * 
      */
     @Import(name="volumes")
     private @Nullable Output<List<ContainerGroupVolumeArgs>> volumes;
 
     /**
-     * @return The list of volumes.
+     * @return The list of volumes. See `volumes` below.
      * 
      */
     public Optional<Output<List<ContainerGroupVolumeArgs>>> volumes() {
@@ -380,6 +380,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
      * 
      */
     @Import(name="vswitchId", required=true)
@@ -387,6 +388,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
      * 
      */
     public Output<String> vswitchId() {
@@ -457,7 +459,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acrRegistryInfos The ACR enterprise edition example properties.
+         * @param acrRegistryInfos The ACR enterprise edition example properties. See `acr_registry_info` below.
          * 
          * @return builder
          * 
@@ -468,7 +470,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acrRegistryInfos The ACR enterprise edition example properties.
+         * @param acrRegistryInfos The ACR enterprise edition example properties. See `acr_registry_info` below.
          * 
          * @return builder
          * 
@@ -478,7 +480,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acrRegistryInfos The ACR enterprise edition example properties.
+         * @param acrRegistryInfos The ACR enterprise edition example properties. See `acr_registry_info` below.
          * 
          * @return builder
          * 
@@ -509,7 +511,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param autoMatchImageCache Specifies whether to automatically match the image cache. Default value: false.
+         * @param autoMatchImageCache Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
          * 
          * @return builder
          * 
@@ -520,7 +522,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param autoMatchImageCache Specifies whether to automatically match the image cache. Default value: false.
+         * @param autoMatchImageCache Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
          * 
          * @return builder
          * 
@@ -551,7 +553,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param containers The list of containers.
+         * @param containers The list of containers. See `containers` below.
          * 
          * @return builder
          * 
@@ -562,7 +564,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param containers The list of containers.
+         * @param containers The list of containers. See `containers` below.
          * 
          * @return builder
          * 
@@ -572,7 +574,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param containers The list of containers.
+         * @param containers The list of containers. See `containers` below.
          * 
          * @return builder
          * 
@@ -603,7 +605,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dnsConfig The structure of dnsConfig.
+         * @param dnsConfig The structure of dnsConfig. See `dns_config` below.
          * 
          * @return builder
          * 
@@ -614,7 +616,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dnsConfig The structure of dnsConfig.
+         * @param dnsConfig The structure of dnsConfig. See `dns_config` below.
          * 
          * @return builder
          * 
@@ -624,7 +626,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param eciSecurityContext The security context of the container group.
+         * @param eciSecurityContext The security context of the container group. See `eci_security_context` below.
          * 
          * @return builder
          * 
@@ -635,7 +637,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param eciSecurityContext The security context of the container group.
+         * @param eciSecurityContext The security context of the container group. See `eci_security_context` below.
          * 
          * @return builder
          * 
@@ -645,7 +647,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param eipBandwidth The bandwidth of the EIP. The default value is `5`.
+         * @param eipBandwidth The bandwidth of the EIP. Default value: `5`.
          * 
          * @return builder
          * 
@@ -656,7 +658,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param eipBandwidth The bandwidth of the EIP. The default value is `5`.
+         * @param eipBandwidth The bandwidth of the EIP. Default value: `5`.
          * 
          * @return builder
          * 
@@ -687,7 +689,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostAliases HostAliases.
+         * @param hostAliases HostAliases. See `host_aliases` below.
          * 
          * @return builder
          * 
@@ -698,7 +700,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostAliases HostAliases.
+         * @param hostAliases HostAliases. See `host_aliases` below.
          * 
          * @return builder
          * 
@@ -708,7 +710,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostAliases HostAliases.
+         * @param hostAliases HostAliases. See `host_aliases` below.
          * 
          * @return builder
          * 
@@ -718,7 +720,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential. The details see Block `image_registry_credential`.
+         * @param imageRegistryCredentials The image registry credential. See `image_registry_credential` below.
          * 
          * @return builder
          * 
@@ -729,7 +731,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential. The details see Block `image_registry_credential`.
+         * @param imageRegistryCredentials The image registry credential. See `image_registry_credential` below.
          * 
          * @return builder
          * 
@@ -739,7 +741,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential. The details see Block `image_registry_credential`.
+         * @param imageRegistryCredentials The image registry credential. See `image_registry_credential` below.
          * 
          * @return builder
          * 
@@ -749,7 +751,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param initContainers The list of initContainers.
+         * @param initContainers The list of initContainers. See `init_containers` below.
          * 
          * @return builder
          * 
@@ -760,7 +762,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param initContainers The list of initContainers.
+         * @param initContainers The list of initContainers. See `init_containers` below.
          * 
          * @return builder
          * 
@@ -770,7 +772,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param initContainers The list of initContainers.
+         * @param initContainers The list of initContainers. See `init_containers` below.
          * 
          * @return builder
          * 
@@ -885,7 +887,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 
@@ -896,7 +898,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 
@@ -973,7 +975,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param volumes The list of volumes.
+         * @param volumes The list of volumes. See `volumes` below.
          * 
          * @return builder
          * 
@@ -984,7 +986,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param volumes The list of volumes.
+         * @param volumes The list of volumes. See `volumes` below.
          * 
          * @return builder
          * 
@@ -994,7 +996,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param volumes The list of volumes.
+         * @param volumes The list of volumes. See `volumes` below.
          * 
          * @return builder
          * 
@@ -1005,6 +1007,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param vswitchId The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+         * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
          * 
          * @return builder
          * 
@@ -1016,6 +1019,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param vswitchId The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+         * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
          * 
          * @return builder
          * 

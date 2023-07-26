@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ApiGateway
     /// <summary>
     /// Provides a Api Gateway Log Config resource.
     /// 
-    /// For information about Api Gateway Log Config and how to use it, see [What is Log Config](https://help.aliyun.com/document_detail/400392.html).
+    /// For information about Api Gateway Log Config and how to use it, see [What is Log Config](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createlogconfig).
     /// 
-    /// &gt; **NOTE:** Available in v1.185.0+.
+    /// &gt; **NOTE:** Available since v1.185.0.
     /// 
     /// ## Example Usage
     /// 
@@ -23,18 +23,63 @@ namespace Pulumi.AliCloud.ApiGateway
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Threading.Tasks;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
-    /// return await Deployment.RunAsync(() =&gt; 
+    /// return await Deployment.RunAsync(async() =&gt; 
     /// {
-    ///     var @default = new AliCloud.ApiGateway.LogConfig("default", new()
+    ///     var defaultLogConfigs = await AliCloud.ApiGateway.GetLogConfigs.InvokeAsync(new()
     ///     {
     ///         LogType = "PROVIDER",
-    ///         SlsLogStore = "example_value",
-    ///         SlsProject = "example_value",
     ///     });
     /// 
+    ///     var count = defaultLogConfigs.Configs.Length &gt; 0 ? 0 : 1;
+    /// 
+    ///     var defaultRandomInteger = new List&lt;Random.RandomInteger&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultRandomInteger.Add(new Random.RandomInteger($"defaultRandomInteger-{range.Value}", new()
+    ///         {
+    ///             Max = 99999,
+    ///             Min = 10000,
+    ///         }));
+    ///     }
+    ///     var exampleProject = new List&lt;AliCloud.Log.Project&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleProject.Add(new AliCloud.Log.Project($"exampleProject-{range.Value}", new()
+    ///         {
+    ///             Description = "terraform-example",
+    ///         }));
+    ///     }
+    ///     var exampleStore = new List&lt;AliCloud.Log.Store&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleStore.Add(new AliCloud.Log.Store($"exampleStore-{range.Value}", new()
+    ///         {
+    ///             Project = exampleProject[0].Name,
+    ///             ShardCount = 3,
+    ///             AutoSplit = true,
+    ///             MaxSplitShardCount = 60,
+    ///             AppendMeta = true,
+    ///         }));
+    ///     }
+    ///     var exampleLogConfig = new List&lt;AliCloud.ApiGateway.LogConfig&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleLogConfig.Add(new AliCloud.ApiGateway.LogConfig($"exampleLogConfig-{range.Value}", new()
+    ///         {
+    ///             SlsProject = exampleProject[0].Name,
+    ///             SlsLogStore = exampleStore[0].Name,
+    ///             LogType = "PROVIDER",
+    ///         }));
+    ///     }
     /// });
     /// ```
     /// 

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Bastion Host User Group and how to use it, see [What is User Group](https://www.alibabacloud.com/help/doc-detail/204596.htm).
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -26,16 +27,68 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bastionhost.NewUserGroup(ctx, "example", &bastionhost.UserGroupArgs{
-//				InstanceId:    pulumi.String("example_value"),
-//				UserGroupName: pulumi.String("example_value"),
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := bastionhost.NewInstance(ctx, "defaultInstance", &bastionhost.InstanceArgs{
+//				Description: pulumi.String(name),
+//				LicenseCode: pulumi.String("bhah_ent_50_asset"),
+//				PlanCode:    pulumi.String("cloudbastion"),
+//				Storage:     pulumi.String("5"),
+//				Bandwidth:   pulumi.String("5"),
+//				Period:      pulumi.Int(1),
+//				VswitchId:   defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewUserGroup(ctx, "defaultUserGroup", &bastionhost.UserGroupArgs{
+//				InstanceId:    defaultInstance.ID(),
+//				UserGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -81,6 +134,7 @@ func NewUserGroup(ctx *pulumi.Context,
 	if args.UserGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'UserGroupName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserGroup
 	err := ctx.RegisterResource("alicloud:bastionhost/userGroup:UserGroup", name, args, &resource, opts...)
 	if err != nil {

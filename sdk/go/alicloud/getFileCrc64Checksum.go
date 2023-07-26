@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetFileCrc64Checksum(ctx *pulumi.Context, args *GetFileCrc64ChecksumArgs, opts ...pulumi.InvokeOption) (*GetFileCrc64ChecksumResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFileCrc64ChecksumResult
 	err := ctx.Invoke("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args, &rv, opts...)
 	if err != nil {

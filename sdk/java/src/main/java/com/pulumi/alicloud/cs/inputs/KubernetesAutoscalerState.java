@@ -64,18 +64,14 @@ public final class KubernetesAutoscalerState extends com.pulumi.resources.Resour
     }
 
     /**
-     * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-     * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-     * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+     * The list of the node pools. See `nodepools` below.
      * 
      */
     @Import(name="nodepools")
     private @Nullable Output<List<KubernetesAutoscalerNodepoolArgs>> nodepools;
 
     /**
-     * @return * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-     * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-     * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+     * @return The list of the node pools. See `nodepools` below.
      * 
      */
     public Optional<Output<List<KubernetesAutoscalerNodepoolArgs>>> nodepools() {
@@ -205,9 +201,7 @@ public final class KubernetesAutoscalerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param nodepools * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-         * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-         * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+         * @param nodepools The list of the node pools. See `nodepools` below.
          * 
          * @return builder
          * 
@@ -218,9 +212,7 @@ public final class KubernetesAutoscalerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param nodepools * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-         * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-         * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+         * @param nodepools The list of the node pools. See `nodepools` below.
          * 
          * @return builder
          * 
@@ -230,9 +222,7 @@ public final class KubernetesAutoscalerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param nodepools * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-         * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-         * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+         * @param nodepools The list of the node pools. See `nodepools` below.
          * 
          * @return builder
          * 

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ func NewListenerAdditionalCertificateAttachment(ctx *pulumi.Context,
 	if args.ListenerId == nil {
 		return nil, errors.New("invalid value for required argument 'ListenerId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ListenerAdditionalCertificateAttachment
 	err := ctx.RegisterResource("alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment", name, args, &resource, opts...)
 	if err != nil {

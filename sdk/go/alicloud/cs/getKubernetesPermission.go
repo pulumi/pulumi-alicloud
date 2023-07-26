@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func LookupKubernetesPermission(ctx *pulumi.Context, args *LookupKubernetesPermissionArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesPermissionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesPermissionResult
 	err := ctx.Invoke("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args, &rv, opts...)
 	if err != nil {

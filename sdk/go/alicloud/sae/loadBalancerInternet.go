@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,6 +89,7 @@ func NewLoadBalancerInternet(ctx *pulumi.Context,
 	if args.Internets == nil {
 		return nil, errors.New("invalid value for required argument 'Internets'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LoadBalancerInternet
 	err := ctx.RegisterResource("alicloud:sae/loadBalancerInternet:LoadBalancerInternet", name, args, &resource, opts...)
 	if err != nil {

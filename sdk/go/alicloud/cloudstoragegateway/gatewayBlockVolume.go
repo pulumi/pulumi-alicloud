@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +88,7 @@ func NewGatewayBlockVolume(ctx *pulumi.Context,
 	if args.Protocol == nil {
 		return nil, errors.New("invalid value for required argument 'Protocol'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GatewayBlockVolume
 	err := ctx.RegisterResource("alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume", name, args, &resource, opts...)
 	if err != nil {

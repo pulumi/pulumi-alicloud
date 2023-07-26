@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Bastion Host User Attachment resource to add user to one user group.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -24,17 +25,89 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bastionhost.NewUserAttachment(ctx, "example", &bastionhost.UserAttachmentArgs{
-//				InstanceId:  pulumi.String("bastionhost-cn-tl3xxxxxxx"),
-//				UserGroupId: pulumi.String("10"),
-//				UserId:      pulumi.String("100"),
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := bastionhost.NewInstance(ctx, "defaultInstance", &bastionhost.InstanceArgs{
+//				Description: pulumi.String(name),
+//				LicenseCode: pulumi.String("bhah_ent_50_asset"),
+//				PlanCode:    pulumi.String("cloudbastion"),
+//				Storage:     pulumi.String("5"),
+//				Bandwidth:   pulumi.String("5"),
+//				Period:      pulumi.Int(1),
+//				VswitchId:   defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultUserGroup, err := bastionhost.NewUserGroup(ctx, "defaultUserGroup", &bastionhost.UserGroupArgs{
+//				InstanceId:    defaultInstance.ID(),
+//				UserGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			localUser, err := bastionhost.NewUser(ctx, "localUser", &bastionhost.UserArgs{
+//				InstanceId:        defaultInstance.ID(),
+//				MobileCountryCode: pulumi.String("CN"),
+//				Mobile:            pulumi.String("13312345678"),
+//				Password:          pulumi.String("YourPassword-123"),
+//				Source:            pulumi.String("Local"),
+//				UserName:          pulumi.String(fmt.Sprintf("%v_local_user", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewUserAttachment(ctx, "defaultUserAttachment", &bastionhost.UserAttachmentArgs{
+//				InstanceId:  defaultInstance.ID(),
+//				UserGroupId: defaultUserGroup.UserGroupId,
+//				UserId:      localUser.UserId,
 //			})
 //			if err != nil {
 //				return err
@@ -81,6 +154,7 @@ func NewUserAttachment(ctx *pulumi.Context,
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserAttachment
 	err := ctx.RegisterResource("alicloud:bastionhost/userAttachment:UserAttachment", name, args, &resource, opts...)
 	if err != nil {

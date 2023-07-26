@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,6 +107,7 @@ func NewFirewallVpcFirewallCen(ctx *pulumi.Context,
 	if args.VpcRegion == nil {
 		return nil, errors.New("invalid value for required argument 'VpcRegion'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallVpcFirewallCen
 	err := ctx.RegisterResource("alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen", name, args, &resource, opts...)
 	if err != nil {

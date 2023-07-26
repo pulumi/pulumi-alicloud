@@ -18,7 +18,7 @@ public final class ContainerGroupDnsConfig {
      */
     private @Nullable List<String> nameServers;
     /**
-     * @return The structure of options.
+     * @return The structure of options. See `options` below.
      * 
      */
     private @Nullable List<ContainerGroupDnsConfigOption> options;
@@ -37,7 +37,7 @@ public final class ContainerGroupDnsConfig {
         return this.nameServers == null ? List.of() : this.nameServers;
     }
     /**
-     * @return The structure of options.
+     * @return The structure of options. See `options` below.
      * 
      */
     public List<ContainerGroupDnsConfigOption> options() {

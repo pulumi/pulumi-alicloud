@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -116,6 +117,7 @@ func NewFcTrigger(ctx *pulumi.Context,
 	if args.TriggerArn == nil {
 		return nil, errors.New("invalid value for required argument 'TriggerArn'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FcTrigger
 	err := ctx.RegisterResource("alicloud:cdn/fcTrigger:FcTrigger", name, args, &resource, opts...)
 	if err != nil {

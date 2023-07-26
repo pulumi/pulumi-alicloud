@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Cloud Monitor Service Event Rule and how to use it, see [What is Event Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/puteventrule).
 //
-// > **NOTE:** Available in v1.182.0+.
+// > **NOTE:** Available since v1.182.0.
 //
 // ## Example Usage
 //
@@ -28,21 +29,27 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String("example_value"),
+//				MonitorGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cms.NewEventRule(ctx, "example", &cms.EventRuleArgs{
-//				RuleName:    pulumi.String("example_value"),
+//				RuleName:    pulumi.String(name),
 //				GroupId:     _default.ID(),
-//				Description: pulumi.String("example_value"),
+//				Description: pulumi.String(name),
 //				Status:      pulumi.String("ENABLED"),
 //				EventPattern: &cms.EventRuleEventPatternArgs{
 //					Product: pulumi.String("ecs"),
@@ -82,7 +89,7 @@ type EventRule struct {
 
 	// The description of the event-triggered alert rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Event mode, used to describe the trigger conditions for this event. See the following `Block eventPattern`.
+	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern EventRuleEventPatternOutput `pulumi:"eventPattern"`
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
@@ -107,6 +114,7 @@ func NewEventRule(ctx *pulumi.Context,
 	if args.RuleName == nil {
 		return nil, errors.New("invalid value for required argument 'RuleName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EventRule
 	err := ctx.RegisterResource("alicloud:cms/eventRule:EventRule", name, args, &resource, opts...)
 	if err != nil {
@@ -131,7 +139,7 @@ func GetEventRule(ctx *pulumi.Context,
 type eventRuleState struct {
 	// The description of the event-triggered alert rule.
 	Description *string `pulumi:"description"`
-	// Event mode, used to describe the trigger conditions for this event. See the following `Block eventPattern`.
+	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern *EventRuleEventPattern `pulumi:"eventPattern"`
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId *string `pulumi:"groupId"`
@@ -146,7 +154,7 @@ type eventRuleState struct {
 type EventRuleState struct {
 	// The description of the event-triggered alert rule.
 	Description pulumi.StringPtrInput
-	// Event mode, used to describe the trigger conditions for this event. See the following `Block eventPattern`.
+	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern EventRuleEventPatternPtrInput
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId pulumi.StringPtrInput
@@ -165,7 +173,7 @@ func (EventRuleState) ElementType() reflect.Type {
 type eventRuleArgs struct {
 	// The description of the event-triggered alert rule.
 	Description *string `pulumi:"description"`
-	// Event mode, used to describe the trigger conditions for this event. See the following `Block eventPattern`.
+	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern EventRuleEventPattern `pulumi:"eventPattern"`
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId *string `pulumi:"groupId"`
@@ -181,7 +189,7 @@ type eventRuleArgs struct {
 type EventRuleArgs struct {
 	// The description of the event-triggered alert rule.
 	Description pulumi.StringPtrInput
-	// Event mode, used to describe the trigger conditions for this event. See the following `Block eventPattern`.
+	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern EventRuleEventPatternInput
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId pulumi.StringPtrInput
@@ -285,7 +293,7 @@ func (o EventRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Event mode, used to describe the trigger conditions for this event. See the following `Block eventPattern`.
+// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 func (o EventRuleOutput) EventPattern() EventRuleEventPatternOutput {
 	return o.ApplyT(func(v *EventRule) EventRuleEventPatternOutput { return v.EventPattern }).(EventRuleEventPatternOutput)
 }

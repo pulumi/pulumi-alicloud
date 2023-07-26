@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Ga Domain resource.
  *
- * For information about Ga Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain).
+ * For information about Ga Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createdomain).
  *
  * > **NOTE:** Available since v1.197.0.
  *

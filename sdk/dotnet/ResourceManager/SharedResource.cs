@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ResourceManager
     /// <summary>
     /// Provides a Resource Manager Shared Resource resource.
     /// 
-    /// For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+    /// For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcesharing-2020-01-10-associateresourceshare).
     /// 
-    /// &gt; **NOTE:** Available in v1.111.0+.
+    /// &gt; **NOTE:** Available since v1.111.0.
     /// 
     /// ## Import
     /// 
@@ -40,13 +40,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> ResourceShareId { get; private set; } = null!;
 
         /// <summary>
-        /// The resource type of should shared, valid value
+        /// The resource type of should shared. Valid values:
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// status.
+        /// The status of the Shared Resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string> ResourceShareId { get; set; } = null!;
 
         /// <summary>
-        /// The resource type of should shared, valid value
+        /// The resource type of should shared. Valid values:
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -136,13 +136,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ResourceShareId { get; set; }
 
         /// <summary>
-        /// The resource type of should shared, valid value
+        /// The resource type of should shared. Valid values:
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// status.
+        /// The status of the Shared Resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

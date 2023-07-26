@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetAssets(ctx *pulumi.Context, args *GetAssetsArgs, opts ...pulumi.InvokeOption) (*GetAssetsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAssetsResult
 	err := ctx.Invoke("alicloud:threatdetection/getAssets:getAssets", args, &rv, opts...)
 	if err != nil {

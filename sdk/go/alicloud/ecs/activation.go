@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,6 +82,7 @@ func NewActivation(ctx *pulumi.Context,
 		args = &ActivationArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Activation
 	err := ctx.RegisterResource("alicloud:ecs/activation:Activation", name, args, &resource, opts...)
 	if err != nil {

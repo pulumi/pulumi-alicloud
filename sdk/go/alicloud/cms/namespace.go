@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Monitor Service Namespace resource.
 //
-// For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+// For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitornamespace).
 //
-// > **NOTE:** Available in v1.171.0+.
+// > **NOTE:** Available since v1.171.0.
 //
 // ## Example Usage
 //
@@ -34,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewNamespace(ctx, "example", &cms.NamespaceArgs{
-//				Namespace:     pulumi.String("example-value"),
+//				Namespace:     pulumi.String("tf_example"),
 //				Specification: pulumi.String("cms.s1.large"),
 //			})
 //			if err != nil {
@@ -82,6 +83,7 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.Namespace == nil {
 		return nil, errors.New("invalid value for required argument 'Namespace'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Namespace
 	err := ctx.RegisterResource("alicloud:cms/namespace:Namespace", name, args, &resource, opts...)
 	if err != nil {

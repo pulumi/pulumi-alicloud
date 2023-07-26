@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user and one host group.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -17,41 +17,64 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.bastionhost.Instance("defaultInstance", {
+ *     description: name,
+ *     licenseCode: "bhah_ent_50_asset",
+ *     planCode: "cloudbastion",
+ *     storage: "5",
+ *     bandwidth: "5",
+ *     period: 1,
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ * });
+ * const localUser = new alicloud.bastionhost.User("localUser", {
+ *     instanceId: defaultInstance.id,
+ *     mobileCountryCode: "CN",
+ *     mobile: "13312345678",
+ *     password: "YourPassword-123",
+ *     source: "Local",
+ *     userName: `${name}_local_user`,
+ * });
  * const defaultHost = new alicloud.bastionhost.Host("defaultHost", {
- *     instanceId: "bastionhost-cn-tl3xxxxxxx",
- *     hostName: _var.name,
+ *     instanceId: defaultInstance.id,
+ *     hostName: name,
  *     activeAddressType: "Private",
  *     hostPrivateAddress: "172.16.0.10",
  *     osType: "Linux",
  *     source: "Local",
  * });
- * const defaultHostAccount: alicloud.bastionhost.HostAccount[] = [];
- * for (const range = {value: 0}; range.value < 3; range.value++) {
- *     defaultHostAccount.push(new alicloud.bastionhost.HostAccount(`defaultHostAccount-${range.value}`, {
- *         instanceId: defaultHost.instanceId,
- *         hostAccountName: `example_value-${range.value}`,
- *         hostId: defaultHost.hostId,
- *         protocolName: "SSH",
- *         password: "YourPassword12345",
- *     }));
- * }
- * const defaultUser = new alicloud.bastionhost.User("defaultUser", {
+ * const defaultHostAccount = new alicloud.bastionhost.HostAccount("defaultHostAccount", {
+ *     hostAccountName: name,
+ *     hostId: defaultHost.hostId,
  *     instanceId: defaultHost.instanceId,
- *     mobileCountryCode: "CN",
- *     mobile: "13312345678",
- *     password: "YourPassword-123",
- *     source: "Local",
- *     userName: "my-local-user",
+ *     protocolName: "SSH",
+ *     password: "YourPassword12345",
  * });
  * const defaultHostGroup = new alicloud.bastionhost.HostGroup("defaultHostGroup", {
- *     hostGroupName: "example_value",
- *     instanceId: "bastionhost-cn-tl3xxxxxxx",
+ *     hostGroupName: name,
+ *     instanceId: defaultInstance.id,
  * });
  * const defaultHostGroupAccountUserAttachment = new alicloud.bastionhost.HostGroupAccountUserAttachment("defaultHostGroupAccountUserAttachment", {
  *     instanceId: defaultHost.instanceId,
- *     userId: defaultUser.userId,
+ *     userId: localUser.userId,
  *     hostGroupId: defaultHostGroup.hostGroupId,
- *     hostAccountNames: defaultHostAccount.map(__item => __item.hostAccountName),
+ *     hostAccountNames: [defaultHostAccount.hostAccountName],
  * });
  * ```
  *

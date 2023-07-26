@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetMscSubContacts(ctx *pulumi.Context, args *GetMscSubContactsArgs, opts ...pulumi.InvokeOption) (*GetMscSubContactsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMscSubContactsResult
 	err := ctx.Invoke("alicloud:index/getMscSubContacts:getMscSubContacts", args, &rv, opts...)
 	if err != nil {

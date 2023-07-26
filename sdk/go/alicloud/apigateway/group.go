@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,8 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.NewGroup(ctx, "apiGroup", &apigateway.GroupArgs{
-//				Description: pulumi.String("description of the api group"),
+//			_, err := apigateway.NewGroup(ctx, "default", &apigateway.GroupArgs{
+//				Description: pulumi.String("tf_example"),
 //			})
 //			if err != nil {
 //				return err
@@ -73,6 +74,7 @@ func NewGroup(ctx *pulumi.Context,
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Group
 	err := ctx.RegisterResource("alicloud:apigateway/group:Group", name, args, &resource, opts...)
 	if err != nil {

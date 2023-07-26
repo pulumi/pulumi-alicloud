@@ -7,14 +7,15 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Application Real-Time Monitoring Service (ARMS) Alert Contact resource.
 //
-// For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://www.alibabacloud.com/help/en/doc-detail/42953.htm).
+// For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/createalertcontact).
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -78,6 +79,7 @@ func NewAlertContact(ctx *pulumi.Context,
 		args = &AlertContactArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AlertContact
 	err := ctx.RegisterResource("alicloud:arms/alertContact:AlertContact", name, args, &resource, opts...)
 	if err != nil {

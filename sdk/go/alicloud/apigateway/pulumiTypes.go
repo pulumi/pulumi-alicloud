@@ -7,15 +7,18 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+var _ = internal.GetEnvOrDefault
+
 type ApiConstantParameter struct {
-	// The description of the api. Defaults to null.
+	// The description of Constant parameter.
 	Description *string `pulumi:"description"`
-	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+	// Constant parameter location; values: 'HEAD' and 'QUERY'.
 	In string `pulumi:"in"`
-	// The name of the api gateway api. Defaults to null.
+	// Constant parameter name.
 	Name string `pulumi:"name"`
 	// Constant parameter value.
 	Value string `pulumi:"value"`
@@ -33,11 +36,11 @@ type ApiConstantParameterInput interface {
 }
 
 type ApiConstantParameterArgs struct {
-	// The description of the api. Defaults to null.
+	// The description of Constant parameter.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+	// Constant parameter location; values: 'HEAD' and 'QUERY'.
 	In pulumi.StringInput `pulumi:"in"`
-	// The name of the api gateway api. Defaults to null.
+	// Constant parameter name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Constant parameter value.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -94,17 +97,17 @@ func (o ApiConstantParameterOutput) ToApiConstantParameterOutputWithContext(ctx 
 	return o
 }
 
-// The description of the api. Defaults to null.
+// The description of Constant parameter.
 func (o ApiConstantParameterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiConstantParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+// Constant parameter location; values: 'HEAD' and 'QUERY'.
 func (o ApiConstantParameterOutput) In() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiConstantParameter) string { return v.In }).(pulumi.StringOutput)
 }
 
-// The name of the api gateway api. Defaults to null.
+// Constant parameter name.
 func (o ApiConstantParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiConstantParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -349,11 +352,12 @@ func (o ApiFcServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
 
 type ApiHttpServiceConfig struct {
 	// The address of backend service.
-	Address  string  `pulumi:"address"`
+	Address string `pulumi:"address"`
+	// The name of aone.
 	AoneName *string `pulumi:"aoneName"`
-	// The method of the api, including 'GET','POST','PUT' etc.
+	// The http method of backend service.
 	Method string `pulumi:"method"`
-	// The request path of the api.
+	// The path of backend service.
 	Path string `pulumi:"path"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout int `pulumi:"timeout"`
@@ -372,11 +376,12 @@ type ApiHttpServiceConfigInput interface {
 
 type ApiHttpServiceConfigArgs struct {
 	// The address of backend service.
-	Address  pulumi.StringInput    `pulumi:"address"`
+	Address pulumi.StringInput `pulumi:"address"`
+	// The name of aone.
 	AoneName pulumi.StringPtrInput `pulumi:"aoneName"`
-	// The method of the api, including 'GET','POST','PUT' etc.
+	// The http method of backend service.
 	Method pulumi.StringInput `pulumi:"method"`
-	// The request path of the api.
+	// The path of backend service.
 	Path pulumi.StringInput `pulumi:"path"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
@@ -464,16 +469,17 @@ func (o ApiHttpServiceConfigOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The name of aone.
 func (o ApiHttpServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiHttpServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
-// The method of the api, including 'GET','POST','PUT' etc.
+// The http method of backend service.
 func (o ApiHttpServiceConfigOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// The request path of the api.
+// The path of backend service.
 func (o ApiHttpServiceConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -517,6 +523,7 @@ func (o ApiHttpServiceConfigPtrOutput) Address() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of aone.
 func (o ApiHttpServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
 		if v == nil {
@@ -526,7 +533,7 @@ func (o ApiHttpServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The method of the api, including 'GET','POST','PUT' etc.
+// The http method of backend service.
 func (o ApiHttpServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
 		if v == nil {
@@ -536,7 +543,7 @@ func (o ApiHttpServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The request path of the api.
+// The path of backend service.
 func (o ApiHttpServiceConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
 		if v == nil {
@@ -557,14 +564,15 @@ func (o ApiHttpServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
 }
 
 type ApiHttpVpcServiceConfig struct {
+	// The name of aone.
 	AoneName *string `pulumi:"aoneName"`
-	// The method of the api, including 'GET','POST','PUT' etc.
+	// The http method of backend service.
 	Method string `pulumi:"method"`
-	// The name of the api gateway api. Defaults to null.
+	// The name of vpc instance.
 	Name string `pulumi:"name"`
-	// The request path of the api.
+	// The path of backend service.
 	Path string `pulumi:"path"`
-	// Backend service time-out time; unit: millisecond.
+	// Backend service time-out time. Unit: millisecond.
 	Timeout int `pulumi:"timeout"`
 }
 
@@ -580,14 +588,15 @@ type ApiHttpVpcServiceConfigInput interface {
 }
 
 type ApiHttpVpcServiceConfigArgs struct {
+	// The name of aone.
 	AoneName pulumi.StringPtrInput `pulumi:"aoneName"`
-	// The method of the api, including 'GET','POST','PUT' etc.
+	// The http method of backend service.
 	Method pulumi.StringInput `pulumi:"method"`
-	// The name of the api gateway api. Defaults to null.
+	// The name of vpc instance.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The request path of the api.
+	// The path of backend service.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Backend service time-out time; unit: millisecond.
+	// Backend service time-out time. Unit: millisecond.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
 }
 
@@ -668,26 +677,27 @@ func (o ApiHttpVpcServiceConfigOutput) ToApiHttpVpcServiceConfigPtrOutputWithCon
 	}).(ApiHttpVpcServiceConfigPtrOutput)
 }
 
+// The name of aone.
 func (o ApiHttpVpcServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
-// The method of the api, including 'GET','POST','PUT' etc.
+// The http method of backend service.
 func (o ApiHttpVpcServiceConfigOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// The name of the api gateway api. Defaults to null.
+// The name of vpc instance.
 func (o ApiHttpVpcServiceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The request path of the api.
+// The path of backend service.
 func (o ApiHttpVpcServiceConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Backend service time-out time; unit: millisecond.
+// Backend service time-out time. Unit: millisecond.
 func (o ApiHttpVpcServiceConfigOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
@@ -716,6 +726,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Elem() ApiHttpVpcServiceConfigOutput {
 	}).(ApiHttpVpcServiceConfigOutput)
 }
 
+// The name of aone.
 func (o ApiHttpVpcServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
 		if v == nil {
@@ -725,7 +736,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The method of the api, including 'GET','POST','PUT' etc.
+// The http method of backend service.
 func (o ApiHttpVpcServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
 		if v == nil {
@@ -735,7 +746,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the api gateway api. Defaults to null.
+// The name of vpc instance.
 func (o ApiHttpVpcServiceConfigPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
 		if v == nil {
@@ -745,7 +756,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The request path of the api.
+// The path of backend service.
 func (o ApiHttpVpcServiceConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
 		if v == nil {
@@ -755,7 +766,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Backend service time-out time; unit: millisecond.
+// Backend service time-out time. Unit: millisecond.
 func (o ApiHttpVpcServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *int {
 		if v == nil {
@@ -766,6 +777,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
 }
 
 type ApiMockServiceConfig struct {
+	// The name of aone.
 	AoneName *string `pulumi:"aoneName"`
 	// The result of the mock service.
 	Result string `pulumi:"result"`
@@ -783,6 +795,7 @@ type ApiMockServiceConfigInput interface {
 }
 
 type ApiMockServiceConfigArgs struct {
+	// The name of aone.
 	AoneName pulumi.StringPtrInput `pulumi:"aoneName"`
 	// The result of the mock service.
 	Result pulumi.StringInput `pulumi:"result"`
@@ -865,6 +878,7 @@ func (o ApiMockServiceConfigOutput) ToApiMockServiceConfigPtrOutputWithContext(c
 	}).(ApiMockServiceConfigPtrOutput)
 }
 
+// The name of aone.
 func (o ApiMockServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiMockServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
@@ -898,6 +912,7 @@ func (o ApiMockServiceConfigPtrOutput) Elem() ApiMockServiceConfigOutput {
 	}).(ApiMockServiceConfigOutput)
 }
 
+// The name of aone.
 func (o ApiMockServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiMockServiceConfig) *string {
 		if v == nil {
@@ -1133,13 +1148,13 @@ func (o ApiRequestConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
 type ApiRequestParameter struct {
 	// The default value of the parameter.
 	DefaultValue *string `pulumi:"defaultValue"`
-	// The description of the api. Defaults to null.
+	// The description of parameter.
 	Description *string `pulumi:"description"`
 	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	In string `pulumi:"in"`
 	// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	InService string `pulumi:"inService"`
-	// The name of the api gateway api. Defaults to null.
+	// Request's parameter name.
 	Name string `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService string `pulumi:"nameService"`
@@ -1163,13 +1178,13 @@ type ApiRequestParameterInput interface {
 type ApiRequestParameterArgs struct {
 	// The default value of the parameter.
 	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
-	// The description of the api. Defaults to null.
+	// The description of parameter.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	In pulumi.StringInput `pulumi:"in"`
 	// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	InService pulumi.StringInput `pulumi:"inService"`
-	// The name of the api gateway api. Defaults to null.
+	// Request's parameter name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService pulumi.StringInput `pulumi:"nameService"`
@@ -1235,7 +1250,7 @@ func (o ApiRequestParameterOutput) DefaultValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiRequestParameter) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
 }
 
-// The description of the api. Defaults to null.
+// The description of parameter.
 func (o ApiRequestParameterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiRequestParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1250,7 +1265,7 @@ func (o ApiRequestParameterOutput) InService() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParameter) string { return v.InService }).(pulumi.StringOutput)
 }
 
-// The name of the api gateway api. Defaults to null.
+// Request's parameter name.
 func (o ApiRequestParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1291,9 +1306,9 @@ func (o ApiRequestParameterArrayOutput) Index(i pulumi.IntInput) ApiRequestParam
 }
 
 type ApiSystemParameter struct {
-	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+	// System parameter location; values: 'HEAD' and 'QUERY'.
 	In string `pulumi:"in"`
-	// The name of the api gateway api. Defaults to null.
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name string `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService string `pulumi:"nameService"`
@@ -1311,9 +1326,9 @@ type ApiSystemParameterInput interface {
 }
 
 type ApiSystemParameterArgs struct {
-	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+	// System parameter location; values: 'HEAD' and 'QUERY'.
 	In pulumi.StringInput `pulumi:"in"`
-	// The name of the api gateway api. Defaults to null.
+	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 	Name pulumi.StringInput `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService pulumi.StringInput `pulumi:"nameService"`
@@ -1370,12 +1385,12 @@ func (o ApiSystemParameterOutput) ToApiSystemParameterOutputWithContext(ctx cont
 	return o
 }
 
-// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+// System parameter location; values: 'HEAD' and 'QUERY'.
 func (o ApiSystemParameterOutput) In() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiSystemParameter) string { return v.In }).(pulumi.StringOutput)
 }
 
-// The name of the api gateway api. Defaults to null.
+// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
 func (o ApiSystemParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiSystemParameter) string { return v.Name }).(pulumi.StringOutput)
 }

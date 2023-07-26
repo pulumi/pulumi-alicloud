@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ import (
 //
 // ```
 func GetTrafficMirrorFilterIngressRules(ctx *pulumi.Context, args *GetTrafficMirrorFilterIngressRulesArgs, opts ...pulumi.InvokeOption) (*GetTrafficMirrorFilterIngressRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrafficMirrorFilterIngressRulesResult
 	err := ctx.Invoke("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args, &rv, opts...)
 	if err != nil {

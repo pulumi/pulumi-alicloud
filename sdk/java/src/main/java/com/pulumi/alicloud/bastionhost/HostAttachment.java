@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Bastion Host Host Attachment resource to add host into one host group.
  * 
- * &gt; **NOTE:** Available in v1.135.0+.
+ * &gt; **NOTE:** Available since v1.135.0.
  * 
  * ## Example Usage
  * 
@@ -27,6 +27,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.bastionhost.Instance;
+ * import com.pulumi.alicloud.bastionhost.InstanceArgs;
+ * import com.pulumi.alicloud.bastionhost.HostGroup;
+ * import com.pulumi.alicloud.bastionhost.HostGroupArgs;
+ * import com.pulumi.alicloud.bastionhost.Host;
+ * import com.pulumi.alicloud.bastionhost.HostArgs;
  * import com.pulumi.alicloud.bastionhost.HostAttachment;
  * import com.pulumi.alicloud.bastionhost.HostAttachmentArgs;
  * import java.util.List;
@@ -42,10 +56,57 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HostAttachment(&#34;example&#34;, HostAttachmentArgs.builder()        
- *             .hostGroupId(&#34;6&#34;)
- *             .hostId(&#34;15&#34;)
- *             .instanceId(&#34;bastionhost-cn-tl32bh0no30&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .description(name)
+ *             .licenseCode(&#34;bhah_ent_50_asset&#34;)
+ *             .planCode(&#34;cloudbastion&#34;)
+ *             .storage(&#34;5&#34;)
+ *             .bandwidth(&#34;5&#34;)
+ *             .period(&#34;1&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *         var defaultHostGroup = new HostGroup(&#34;defaultHostGroup&#34;, HostGroupArgs.builder()        
+ *             .hostGroupName(name)
+ *             .instanceId(defaultInstance.id())
+ *             .build());
+ * 
+ *         var defaultHost = new Host(&#34;defaultHost&#34;, HostArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .hostName(name)
+ *             .activeAddressType(&#34;Private&#34;)
+ *             .hostPrivateAddress(&#34;172.16.0.10&#34;)
+ *             .osType(&#34;Linux&#34;)
+ *             .source(&#34;Local&#34;)
+ *             .build());
+ * 
+ *         var defaultHostAttachment = new HostAttachment(&#34;defaultHostAttachment&#34;, HostAttachmentArgs.builder()        
+ *             .hostGroupId(defaultHostGroup.hostGroupId())
+ *             .hostId(defaultHost.hostId())
+ *             .instanceId(defaultInstance.id())
  *             .build());
  * 
  *     }

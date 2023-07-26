@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceLdapAuthServer {
     /**
-     * @return The username of the account that is used for the AD server.
+     * @return The username of the account that is used for the LDAP server.
      * 
      */
     private String account;
@@ -24,7 +24,7 @@ public final class InstanceLdapAuthServer {
      */
     private String baseDn;
     /**
-     * @return The field that is used to indicate the email address of a user on the AD server.
+     * @return The field that is used to indicate the email address of a user on the LDAP server.
      * 
      */
     private @Nullable String emailMapping;
@@ -44,39 +44,39 @@ public final class InstanceLdapAuthServer {
      */
     private @Nullable String loginNameMapping;
     /**
-     * @return The field that is used to indicate the mobile phone number of a user on the AD server.
+     * @return The field that is used to indicate the mobile phone number of a user on the LDAP server.
      * 
      */
     private @Nullable String mobileMapping;
     /**
-     * @return The field that is used to indicate the name of a user on the AD server.
+     * @return The field that is used to indicate the name of a user on the LDAP server.
      * 
      */
     private @Nullable String nameMapping;
     /**
-     * @return The password of the account that is used for the AD server.
+     * @return The password of the account that is used for the LDAP server.
      * 
      */
     private String password;
     /**
-     * @return The port that is used to access the AD server.
+     * @return The port that is used to access the LDAP server.
      * 
      */
     private Integer port;
     /**
-     * @return The address of the AD server.
+     * @return The address of the LDAP server.
      * 
      */
     private String server;
     /**
-     * @return The address of the secondary AD server.
+     * @return The address of the secondary LDAP server.
      * 
      */
     private @Nullable String standbyServer;
 
     private InstanceLdapAuthServer() {}
     /**
-     * @return The username of the account that is used for the AD server.
+     * @return The username of the account that is used for the LDAP server.
      * 
      */
     public String account() {
@@ -90,7 +90,7 @@ public final class InstanceLdapAuthServer {
         return this.baseDn;
     }
     /**
-     * @return The field that is used to indicate the email address of a user on the AD server.
+     * @return The field that is used to indicate the email address of a user on the LDAP server.
      * 
      */
     public Optional<String> emailMapping() {
@@ -118,42 +118,42 @@ public final class InstanceLdapAuthServer {
         return Optional.ofNullable(this.loginNameMapping);
     }
     /**
-     * @return The field that is used to indicate the mobile phone number of a user on the AD server.
+     * @return The field that is used to indicate the mobile phone number of a user on the LDAP server.
      * 
      */
     public Optional<String> mobileMapping() {
         return Optional.ofNullable(this.mobileMapping);
     }
     /**
-     * @return The field that is used to indicate the name of a user on the AD server.
+     * @return The field that is used to indicate the name of a user on the LDAP server.
      * 
      */
     public Optional<String> nameMapping() {
         return Optional.ofNullable(this.nameMapping);
     }
     /**
-     * @return The password of the account that is used for the AD server.
+     * @return The password of the account that is used for the LDAP server.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return The port that is used to access the AD server.
+     * @return The port that is used to access the LDAP server.
      * 
      */
     public Integer port() {
         return this.port;
     }
     /**
-     * @return The address of the AD server.
+     * @return The address of the LDAP server.
      * 
      */
     public String server() {
         return this.server;
     }
     /**
-     * @return The address of the secondary AD server.
+     * @return The address of the secondary LDAP server.
      * 
      */
     public Optional<String> standbyServer() {

@@ -15,22 +15,30 @@ public final class NodePoolTaintArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolTaintArgs Empty = new NodePoolTaintArgs();
 
+    /**
+     * The scheduling policy.
+     * 
+     */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
+    /**
+     * @return The scheduling policy.
+     * 
+     */
     public Optional<Output<String>> effect() {
         return Optional.ofNullable(this.effect);
     }
 
     /**
-     * The label key.
+     * The key of a taint.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The label key.
+     * @return The key of a taint.
      * 
      */
     public Output<String> key() {
@@ -38,14 +46,14 @@ public final class NodePoolTaintArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The label value.
+     * The value of a taint.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The label value.
+     * @return The value of a taint.
      * 
      */
     public Optional<Output<String>> value() {
@@ -78,17 +86,29 @@ public final class NodePoolTaintArgs extends com.pulumi.resources.ResourceArgs {
             $ = new NodePoolTaintArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param effect The scheduling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(@Nullable Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
+        /**
+         * @param effect The scheduling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(String effect) {
             return effect(Output.of(effect));
         }
 
         /**
-         * @param key The label key.
+         * @param key The key of a taint.
          * 
          * @return builder
          * 
@@ -99,7 +119,7 @@ public final class NodePoolTaintArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The label key.
+         * @param key The key of a taint.
          * 
          * @return builder
          * 
@@ -109,7 +129,7 @@ public final class NodePoolTaintArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The label value.
+         * @param value The value of a taint.
          * 
          * @return builder
          * 
@@ -120,7 +140,7 @@ public final class NodePoolTaintArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The label value.
+         * @param value The value of a taint.
          * 
          * @return builder
          * 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetServerCustomImages(ctx *pulumi.Context, args *GetServerCustomImagesArgs, opts ...pulumi.InvokeOption) (*GetServerCustomImagesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerCustomImagesResult
 	err := ctx.Invoke("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args, &rv, opts...)
 	if err != nil {

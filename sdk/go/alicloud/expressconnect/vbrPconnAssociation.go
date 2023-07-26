@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -127,6 +128,7 @@ func NewVbrPconnAssociation(ctx *pulumi.Context,
 	if args.VlanId == nil {
 		return nil, errors.New("invalid value for required argument 'VlanId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VbrPconnAssociation
 	err := ctx.RegisterResource("alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation", name, args, &resource, opts...)
 	if err != nil {

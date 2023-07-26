@@ -35,7 +35,7 @@ export class KubernetesPermission extends pulumi.CustomResource {
     }
 
     /**
-     * A list of user permission.
+     * A list of user permission. See `permissions` below.
      */
     public readonly permissions!: pulumi.Output<outputs.cs.KubernetesPermissionPermission[] | undefined>;
     /**
@@ -76,7 +76,7 @@ export class KubernetesPermission extends pulumi.CustomResource {
  */
 export interface KubernetesPermissionState {
     /**
-     * A list of user permission.
+     * A list of user permission. See `permissions` below.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesPermissionPermission>[]>;
     /**
@@ -90,7 +90,7 @@ export interface KubernetesPermissionState {
  */
 export interface KubernetesPermissionArgs {
     /**
-     * A list of user permission.
+     * A list of user permission. See `permissions` below.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesPermissionPermission>[]>;
     /**

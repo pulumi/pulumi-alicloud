@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -112,6 +113,7 @@ func NewNetworkGrant(ctx *pulumi.Context,
 	if args.CenUid == nil {
 		return nil, errors.New("invalid value for required argument 'CenUid'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkGrant
 	err := ctx.RegisterResource("alicloud:cloudconnect/networkGrant:NetworkGrant", name, args, &resource, opts...)
 	if err != nil {

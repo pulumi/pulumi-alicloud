@@ -44,7 +44,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
  * import com.pulumi.alicloud.ess.SuspendProcess;
  * import com.pulumi.alicloud.ess.SuspendProcessArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -113,11 +112,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSuspendProcess = new SuspendProcess(&#34;defaultSuspendProcess&#34;, SuspendProcessArgs.builder()        
- *             .scalingGroupId(defaultScalingGroup.id())
+ *             .scalingGroupId(defaultScalingConfiguration.scalingGroupId())
  *             .process(&#34;ScaleIn&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultScalingConfiguration)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

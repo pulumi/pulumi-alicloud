@@ -14,6 +14,8 @@ from .dhcp_options_set import *
 from .dhcp_options_set_attachment import *
 from .flow_log import *
 from .forward_entry import *
+from .gateway_endpoint import *
+from .gateway_endpoint_route_table_attachment import *
 from .gateway_route_table_attachment import *
 from .get_bgp_groups import *
 from .get_bgp_networks import *

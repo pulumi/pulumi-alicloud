@@ -181,7 +181,7 @@ class AclAttachment(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Acl Attachment resource.
 
-        For information about Global Accelerator (GA) Acl Attachment and how to use it, see [What is Acl Attachment](https://www.alibabacloud.com/help/en/doc-detail/258295.html).
+        For information about Global Accelerator (GA) Acl Attachment and how to use it, see [What is Acl Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-associateaclswithlistener).
 
         > **NOTE:** Available since v1.150.0.
 
@@ -250,7 +250,7 @@ class AclAttachment(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Acl Attachment resource.
 
-        For information about Global Accelerator (GA) Acl Attachment and how to use it, see [What is Acl Attachment](https://www.alibabacloud.com/help/en/doc-detail/258295.html).
+        For information about Global Accelerator (GA) Acl Attachment and how to use it, see [What is Acl Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-associateaclswithlistener).
 
         > **NOTE:** Available since v1.150.0.
 

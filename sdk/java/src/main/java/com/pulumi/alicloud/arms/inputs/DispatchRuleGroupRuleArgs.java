@@ -17,9 +17,17 @@ public final class DispatchRuleGroupRuleArgs extends com.pulumi.resources.Resour
 
     public static final DispatchRuleGroupRuleArgs Empty = new DispatchRuleGroupRuleArgs();
 
+    /**
+     * The ID of the group rule.
+     * 
+     */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
+    /**
+     * @return The ID of the group rule.
+     * 
+     */
     public Optional<Output<Integer>> groupId() {
         return Optional.ofNullable(this.groupId);
     }
@@ -112,11 +120,23 @@ public final class DispatchRuleGroupRuleArgs extends com.pulumi.resources.Resour
             $ = new DispatchRuleGroupRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param groupId The ID of the group rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(@Nullable Output<Integer> groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param groupId The ID of the group rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(Integer groupId) {
             return groupId(Output.of(groupId));
         }

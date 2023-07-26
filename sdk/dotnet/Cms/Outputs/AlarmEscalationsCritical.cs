@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? ComparisonOperator;
         /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         /// </summary>
         public readonly string? Statistics;
         /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        /// Critical level alarm threshold value, which must be a numeric value currently.
         /// </summary>
         public readonly string? Threshold;
         /// <summary>

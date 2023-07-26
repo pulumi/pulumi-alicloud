@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,11 +23,11 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
-	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
-	// Specifies whether to use a coupon. Default to: `false`.
+	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
@@ -48,28 +49,26 @@ type Instance struct {
 	Config pulumi.MapOutput `pulumi:"config"`
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
+	// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrOutput `pulumi:"connectionStringPrefix"`
-	// The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
 	CouponNo pulumi.StringPtrOutput `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringOutput `pulumi:"dbInstanceName"`
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrOutput `pulumi:"dedicatedHostGroupId"`
 	// Specifies whether to precheck the request. Valid values:
-	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The time when the database is switched after the instance is migrated,
 	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-	// - Immediately (Default): The configurations are immediately changed.
-	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
-	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrOutput `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
@@ -81,12 +80,12 @@ type Instance struct {
 	EncryptionName pulumi.StringOutput `pulumi:"encryptionName"`
 	// The expiration time of the prepaid instance.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
-	// Specifies whether to forcibly change the type. Default to: `true`.
+	// Specifies whether to forcibly change the type. Default value: `true`.
 	ForceUpgrade pulumi.BoolPtrOutput `pulumi:"forceUpgrade"`
-	// Whether to create a distributed cache. Default to: `false`.
+	// Whether to create a distributed cache. Default value: `false`.
 	GlobalInstance pulumi.BoolPtrOutput `pulumi:"globalInstance"`
 	// The ID of distributed cache.
 	GlobalInstanceId pulumi.StringPtrOutput `pulumi:"globalInstanceId"`
@@ -99,11 +98,11 @@ type Instance struct {
 	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Whether to open the release protection.
 	InstanceReleaseProtection pulumi.BoolOutput `pulumi:"instanceReleaseProtection"`
-	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
@@ -113,21 +112,21 @@ type Instance struct {
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode pulumi.IntPtrOutput `pulumi:"modifyMode"`
-	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
-	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
-	// It has been deprecated from provider version 1.101.0 and `config` instead..
+	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
@@ -146,17 +145,8 @@ type Instance struct {
 	// The point in time of a backup file.
 	RestoreTime pulumi.StringPtrOutput `pulumi:"restoreTime"`
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
-	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
+	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The ID of security groups.
@@ -167,10 +157,20 @@ type Instance struct {
 	SecurityIpGroupName pulumi.StringOutput `pulumi:"securityIpGroupName"`
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrOutput `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
-	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+	// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 	SslEnable pulumi.StringPtrOutput `pulumi:"sslEnable"`
 	// The status of KVStore DBInstance.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -178,7 +178,7 @@ type Instance struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
 	TdeStatus pulumi.StringOutput `pulumi:"tdeStatus"`
-	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode pulumi.StringPtrOutput `pulumi:"vpcAuthMode"`
 	// The ID of VSwitch.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
@@ -200,6 +200,7 @@ func NewInstance(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:kvstore/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -222,11 +223,11 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Specifies whether to use a coupon. Default to: `false`.
+	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
@@ -248,28 +249,26 @@ type instanceState struct {
 	Config map[string]interface{} `pulumi:"config"`
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain *string `pulumi:"connectionDomain"`
+	// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString *string `pulumi:"connectionString"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
-	// The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
 	CouponNo *string `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName *string `pulumi:"dbInstanceName"`
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
 	// Specifies whether to precheck the request. Valid values:
-	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun *bool `pulumi:"dryRun"`
 	// The time when the database is switched after the instance is migrated,
 	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-	// - Immediately (Default): The configurations are immediately changed.
-	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime *string `pulumi:"effectiveTime"`
-	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
@@ -281,12 +280,12 @@ type instanceState struct {
 	EncryptionName *string `pulumi:"encryptionName"`
 	// The expiration time of the prepaid instance.
 	EndTime *string `pulumi:"endTime"`
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion *string `pulumi:"engineVersion"`
-	// Specifies whether to forcibly change the type. Default to: `true`.
+	// Specifies whether to forcibly change the type. Default value: `true`.
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
-	// Whether to create a distributed cache. Default to: `false`.
+	// Whether to create a distributed cache. Default value: `false`.
 	GlobalInstance *bool `pulumi:"globalInstance"`
 	// The ID of distributed cache.
 	GlobalInstanceId *string `pulumi:"globalInstanceId"`
@@ -299,11 +298,11 @@ type instanceState struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName *string `pulumi:"instanceName"`
 	// Whether to open the release protection.
 	InstanceReleaseProtection *bool `pulumi:"instanceReleaseProtection"`
-	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType *string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -313,21 +312,21 @@ type instanceState struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode *int `pulumi:"modifyMode"`
-	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType *string `pulumi:"nodeType"`
-	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType *string `pulumi:"orderType"`
-	// It has been deprecated from provider version 1.101.0 and `config` instead..
+	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
 	Password *string `pulumi:"password"`
-	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
 	Period *string `pulumi:"period"`
@@ -346,17 +345,8 @@ type instanceState struct {
 	// The point in time of a backup file.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	RoleArn *string `pulumi:"roleArn"`
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups.
@@ -367,10 +357,20 @@ type instanceState struct {
 	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps []string `pulumi:"securityIps"`
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	ShardCount *int `pulumi:"shardCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
-	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+	// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 	SslEnable *string `pulumi:"sslEnable"`
 	// The status of KVStore DBInstance.
 	Status *string `pulumi:"status"`
@@ -378,7 +378,7 @@ type instanceState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
 	TdeStatus *string `pulumi:"tdeStatus"`
-	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode *string `pulumi:"vpcAuthMode"`
 	// The ID of VSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -387,11 +387,11 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
 	AutoRenew pulumi.BoolPtrInput
-	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Specifies whether to use a coupon. Default to: `false`.
+	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
@@ -413,28 +413,26 @@ type InstanceState struct {
 	Config pulumi.MapInput
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringPtrInput
+	// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrInput
-	// The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
 	CouponNo pulumi.StringPtrInput
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringPtrInput
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
 	// Specifies whether to precheck the request. Valid values:
-	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun pulumi.BoolPtrInput
 	// The time when the database is switched after the instance is migrated,
 	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-	// - Immediately (Default): The configurations are immediately changed.
-	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime pulumi.StringPtrInput
-	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
@@ -446,12 +444,12 @@ type InstanceState struct {
 	EncryptionName pulumi.StringPtrInput
 	// The expiration time of the prepaid instance.
 	EndTime pulumi.StringPtrInput
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion pulumi.StringPtrInput
-	// Specifies whether to forcibly change the type. Default to: `true`.
+	// Specifies whether to forcibly change the type. Default value: `true`.
 	ForceUpgrade pulumi.BoolPtrInput
-	// Whether to create a distributed cache. Default to: `false`.
+	// Whether to create a distributed cache. Default value: `false`.
 	GlobalInstance pulumi.BoolPtrInput
 	// The ID of distributed cache.
 	GlobalInstanceId pulumi.StringPtrInput
@@ -464,11 +462,11 @@ type InstanceState struct {
 	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName pulumi.StringPtrInput
 	// Whether to open the release protection.
 	InstanceReleaseProtection pulumi.BoolPtrInput
-	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -478,21 +476,21 @@ type InstanceState struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode pulumi.IntPtrInput
-	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringPtrInput
-	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.101.0 and `config` instead..
+	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters InstanceParameterArrayInput
 	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
 	Password pulumi.StringPtrInput
-	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
 	Period pulumi.StringPtrInput
@@ -511,17 +509,8 @@ type InstanceState struct {
 	// The point in time of a backup file.
 	RestoreTime pulumi.StringPtrInput
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	RoleArn pulumi.StringPtrInput
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups.
@@ -532,10 +521,20 @@ type InstanceState struct {
 	SecurityIpGroupName pulumi.StringPtrInput
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps pulumi.StringArrayInput
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	ShardCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
-	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+	// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 	SslEnable pulumi.StringPtrInput
 	// The status of KVStore DBInstance.
 	Status pulumi.StringPtrInput
@@ -543,7 +542,7 @@ type InstanceState struct {
 	Tags pulumi.MapInput
 	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
 	TdeStatus pulumi.StringPtrInput
-	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode pulumi.StringPtrInput
 	// The ID of VSwitch.
 	VswitchId pulumi.StringPtrInput
@@ -556,11 +555,11 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Specifies whether to use a coupon. Default to: `false`.
+	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
@@ -582,22 +581,18 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
-	// The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
 	CouponNo *string `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName *string `pulumi:"dbInstanceName"`
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
 	// Specifies whether to precheck the request. Valid values:
-	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun *bool `pulumi:"dryRun"`
 	// The time when the database is switched after the instance is migrated,
 	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-	// - Immediately (Default): The configurations are immediately changed.
-	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime *string `pulumi:"effectiveTime"`
-	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
@@ -607,12 +602,12 @@ type instanceArgs struct {
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The Encryption algorithm, default AES-CTR-256.Note that this parameter is only available when the TDEStatus parameter is Enabled.
 	EncryptionName *string `pulumi:"encryptionName"`
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion *string `pulumi:"engineVersion"`
-	// Specifies whether to forcibly change the type. Default to: `true`.
+	// Specifies whether to forcibly change the type. Default value: `true`.
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
-	// Whether to create a distributed cache. Default to: `false`.
+	// Whether to create a distributed cache. Default value: `false`.
 	GlobalInstance *bool `pulumi:"globalInstance"`
 	// The ID of distributed cache.
 	GlobalInstanceId *string `pulumi:"globalInstanceId"`
@@ -625,11 +620,11 @@ type instanceArgs struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName *string `pulumi:"instanceName"`
 	// Whether to open the release protection.
 	InstanceReleaseProtection *bool `pulumi:"instanceReleaseProtection"`
-	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType *string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -639,21 +634,21 @@ type instanceArgs struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode *int `pulumi:"modifyMode"`
-	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType *string `pulumi:"nodeType"`
-	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType *string `pulumi:"orderType"`
-	// It has been deprecated from provider version 1.101.0 and `config` instead..
+	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
 	Password *string `pulumi:"password"`
-	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
 	Period *string `pulumi:"period"`
@@ -670,17 +665,8 @@ type instanceArgs struct {
 	// The point in time of a backup file.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	RoleArn *string `pulumi:"roleArn"`
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups.
@@ -691,16 +677,26 @@ type instanceArgs struct {
 	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps []string `pulumi:"securityIps"`
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	ShardCount *int `pulumi:"shardCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
-	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+	// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 	SslEnable *string `pulumi:"sslEnable"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
 	TdeStatus *string `pulumi:"tdeStatus"`
-	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode *string `pulumi:"vpcAuthMode"`
 	// The ID of VSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -710,11 +706,11 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+	// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
 	AutoRenew pulumi.BoolPtrInput
-	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+	// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Specifies whether to use a coupon. Default to: `false`.
+	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
@@ -736,22 +732,18 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrInput
-	// The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
 	CouponNo pulumi.StringPtrInput
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringPtrInput
 	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
 	// Specifies whether to precheck the request. Valid values:
-	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun pulumi.BoolPtrInput
 	// The time when the database is switched after the instance is migrated,
 	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-	// - Immediately (Default): The configurations are immediately changed.
-	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime pulumi.StringPtrInput
-	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
@@ -761,12 +753,12 @@ type InstanceArgs struct {
 	EncryptionKey pulumi.StringPtrInput
 	// The Encryption algorithm, default AES-CTR-256.Note that this parameter is only available when the TDEStatus parameter is Enabled.
 	EncryptionName pulumi.StringPtrInput
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion pulumi.StringPtrInput
-	// Specifies whether to forcibly change the type. Default to: `true`.
+	// Specifies whether to forcibly change the type. Default value: `true`.
 	ForceUpgrade pulumi.BoolPtrInput
-	// Whether to create a distributed cache. Default to: `false`.
+	// Whether to create a distributed cache. Default value: `false`.
 	GlobalInstance pulumi.BoolPtrInput
 	// The ID of distributed cache.
 	GlobalInstanceId pulumi.StringPtrInput
@@ -779,11 +771,11 @@ type InstanceArgs struct {
 	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName pulumi.StringPtrInput
 	// Whether to open the release protection.
 	InstanceReleaseProtection pulumi.BoolPtrInput
-	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -793,21 +785,21 @@ type InstanceArgs struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode pulumi.IntPtrInput
-	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringPtrInput
-	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.101.0 and `config` instead..
+	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters InstanceParameterArrayInput
 	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
 	Password pulumi.StringPtrInput
-	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
 	Period pulumi.StringPtrInput
@@ -824,17 +816,8 @@ type InstanceArgs struct {
 	// The point in time of a backup file.
 	RestoreTime pulumi.StringPtrInput
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	RoleArn pulumi.StringPtrInput
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups.
@@ -845,16 +828,26 @@ type InstanceArgs struct {
 	SecurityIpGroupName pulumi.StringPtrInput
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps pulumi.StringArrayInput
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	ShardCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
-	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+	// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 	SslEnable pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
 	TdeStatus pulumi.StringPtrInput
-	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode pulumi.StringPtrInput
 	// The ID of VSwitch.
 	VswitchId pulumi.StringPtrInput
@@ -949,17 +942,17 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
 func (o InstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
 func (o InstanceOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether to use a coupon. Default to: `false`.
+// Specifies whether to use a coupon. Default value: `false`.
 func (o InstanceOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AutoUseCoupon }).(pulumi.BoolPtrOutput)
 }
@@ -1011,6 +1004,8 @@ func (o InstanceOutput) ConnectionDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionDomain }).(pulumi.StringOutput)
 }
 
+// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+//
 // Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
@@ -1023,7 +1018,7 @@ func (o InstanceOutput) ConnectionStringPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ConnectionStringPrefix }).(pulumi.StringPtrOutput)
 }
 
-// The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
 func (o InstanceOutput) CouponNo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CouponNo }).(pulumi.StringPtrOutput)
 }
@@ -1039,21 +1034,17 @@ func (o InstanceOutput) DedicatedHostGroupId() pulumi.StringPtrOutput {
 }
 
 // Specifies whether to precheck the request. Valid values:
-// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-// * false: checks the request. After the request passes the check, an instance is created.
 func (o InstanceOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
 // The time when the database is switched after the instance is migrated,
 // or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-// - Immediately (Default): The configurations are immediately changed.
-// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 func (o InstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
 }
 
-// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 func (o InstanceOutput) EnableBackupLog() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.EnableBackupLog }).(pulumi.IntPtrOutput)
 }
@@ -1080,18 +1071,18 @@ func (o InstanceOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
 // **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// Specifies whether to forcibly change the type. Default to: `true`.
+// Specifies whether to forcibly change the type. Default value: `true`.
 func (o InstanceOutput) ForceUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to create a distributed cache. Default to: `false`.
+// Whether to create a distributed cache. Default value: `false`.
 func (o InstanceOutput) GlobalInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.GlobalInstance }).(pulumi.BoolPtrOutput)
 }
@@ -1116,7 +1107,7 @@ func (o InstanceOutput) InstanceClass() pulumi.StringPtrOutput {
 
 // It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 //
-// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
@@ -1126,7 +1117,7 @@ func (o InstanceOutput) InstanceReleaseProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.InstanceReleaseProtection }).(pulumi.BoolOutput)
 }
 
-// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 func (o InstanceOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -1151,24 +1142,24 @@ func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
 
-// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 func (o InstanceOutput) ModifyMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ModifyMode }).(pulumi.IntPtrOutput)
 }
 
-// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 //
 // Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 func (o InstanceOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }
 
-// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 func (o InstanceOutput) OrderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.101.0 and `config` instead..
+// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 //
 // Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
@@ -1180,7 +1171,7 @@ func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -1226,20 +1217,11 @@ func (o InstanceOutput) RestoreTime() pulumi.StringPtrOutput {
 }
 
 // The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-//
-// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-//
-// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-//
-// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-//
-// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
-func (o InstanceOutput) RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RoleArn }).(pulumi.StringOutput)
 }
 
 // The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-//
 // > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 func (o InstanceOutput) SecondaryZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecondaryZoneId }).(pulumi.StringPtrOutput)
@@ -1265,13 +1247,26 @@ func (o InstanceOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }
 
+// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+//
+// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+//
+// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+//
+// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+//
+// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+func (o InstanceOutput) ShardCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ShardCount }).(pulumi.IntOutput)
+}
+
 // The ID of the source instance.
 func (o InstanceOutput) SrcdbInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SrcdbInstanceId }).(pulumi.StringPtrOutput)
 }
 
 // Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
-// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 func (o InstanceOutput) SslEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SslEnable }).(pulumi.StringPtrOutput)
 }
@@ -1291,7 +1286,7 @@ func (o InstanceOutput) TdeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TdeStatus }).(pulumi.StringOutput)
 }
 
-// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 func (o InstanceOutput) VpcAuthMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VpcAuthMode }).(pulumi.StringPtrOutput)
 }

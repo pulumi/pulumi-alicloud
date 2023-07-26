@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +50,7 @@ import (
 //
 // ```
 func GetRegistryEnterpriseSyncRules(ctx *pulumi.Context, args *GetRegistryEnterpriseSyncRulesArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseSyncRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistryEnterpriseSyncRulesResult
 	err := ctx.Invoke("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args, &rv, opts...)
 	if err != nil {

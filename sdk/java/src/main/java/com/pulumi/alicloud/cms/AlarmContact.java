@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/doc-detail/114923.htm).
+ * Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontact).
  * 
- * &gt; **NOTE:** Available in v1.99.0+.
+ * &gt; **NOTE:** Available since v1.99.0.
  * 
  * ## Example Usage
  * 
@@ -44,9 +44,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AlarmContact(&#34;example&#34;, AlarmContactArgs.builder()        
- *             .alarmContactName(&#34;zhangsan&#34;)
+ *             .alarmContactName(&#34;terraform-example&#34;)
  *             .channelsMail(&#34;terraform@test.com&#34;)
- *             .describe(&#34;For Test&#34;)
+ *             .describe(&#34;For example&#34;)
  *             .build());
  * 
  *     }
@@ -74,8 +74,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AlarmContact(&#34;example&#34;, AlarmContactArgs.builder()        
- *             .alarmContactName(&#34;zhangsan&#34;)
- *             .describe(&#34;For Test&#34;)
+ *             .alarmContactName(&#34;tf-example&#34;)
+ *             .describe(&#34;For example&#34;)
  *             .channelsMail(&#34;terraform@test.com&#34;)
  *             .build());
  * 

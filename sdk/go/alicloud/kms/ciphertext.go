@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +78,7 @@ func NewCiphertext(ctx *pulumi.Context,
 		"plaintext",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ciphertext
 	err := ctx.RegisterResource("alicloud:kms/ciphertext:Ciphertext", name, args, &resource, opts...)
 	if err != nil {

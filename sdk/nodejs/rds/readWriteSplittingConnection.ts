@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
  *
+ * > **NOTE:** Available since v1.48.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -61,11 +63,9 @@ import * as utilities from "../utilities";
  *     vswitchId: exampleSwitch.id,
  * });
  * const exampleReadWriteSplittingConnection = new alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", {
- *     instanceId: exampleInstance.id,
+ *     instanceId: exampleReadOnlyInstance.masterDbInstanceId,
  *     connectionPrefix: "example-con-123",
  *     distributionType: "Standard",
- * }, {
- *     dependsOn: [exampleReadOnlyInstance],
  * });
  * ```
  *

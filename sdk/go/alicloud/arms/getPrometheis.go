@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetPrometheis(ctx *pulumi.Context, args *GetPrometheisArgs, opts ...pulumi.InvokeOption) (*GetPrometheisResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrometheisResult
 	err := ctx.Invoke("alicloud:arms/getPrometheis:getPrometheis", args, &rv, opts...)
 	if err != nil {

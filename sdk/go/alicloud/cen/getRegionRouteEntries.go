@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetRegionRouteEntries(ctx *pulumi.Context, args *GetRegionRouteEntriesArgs, opts ...pulumi.InvokeOption) (*GetRegionRouteEntriesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionRouteEntriesResult
 	err := ctx.Invoke("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args, &rv, opts...)
 	if err != nil {

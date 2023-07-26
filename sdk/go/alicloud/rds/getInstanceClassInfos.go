@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetInstanceClassInfos(ctx *pulumi.Context, args *GetInstanceClassInfosArgs, opts ...pulumi.InvokeOption) (*GetInstanceClassInfosResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceClassInfosResult
 	err := ctx.Invoke("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", args, &rv, opts...)
 	if err != nil {

@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Config Compliance Pack resource.
  * 
- * For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
+ * For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createcompliancepack).
  * 
- * &gt; **NOTE:** Available in v1.124.0+.
+ * &gt; **NOTE:** Available since v1.124.0.
  * 
  * ## Example Usage
  * 
@@ -34,10 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.cfg.Rule;
  * import com.pulumi.alicloud.cfg.RuleArgs;
  * import com.pulumi.alicloud.cfg.CompliancePack;
@@ -57,32 +55,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_name&#34;);
- *         final var defaultInstances = EcsFunctions.getInstances();
- * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-config&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
  *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
- *             .ruleName(name)
- *             .description(name)
- *             .sourceIdentifier(&#34;ecs-instances-in-vpc&#34;)
+ *             .description(&#34;If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.&#34;)
  *             .sourceOwner(&#34;ALIYUN&#34;)
- *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
+ *             .sourceIdentifier(&#34;oss-bucket-public-read-prohibited&#34;)
  *             .riskLevel(1)
+ *             .tagKeyScope(&#34;For&#34;)
+ *             .tagValueScope(&#34;example&#34;)
+ *             .regionIdsScope(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
- *             .tagKeyScope(&#34;tfTest&#34;)
- *             .tagValueScope(&#34;tfTest 123&#34;)
- *             .resourceGroupIdsScope(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
- *             .excludeResourceIdsScope(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()))
- *             .regionIdsScope(&#34;cn-hangzhou&#34;)
- *             .inputParameters(Map.of(&#34;vpcIds&#34;, defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].vpcId())))
+ *             .resourceTypesScopes(&#34;ACS::OSS::Bucket&#34;)
+ *             .ruleName(&#34;oss-bucket-public-read-prohibited&#34;)
  *             .build());
  * 
  *         var defaultCompliancePack = new CompliancePack(&#34;defaultCompliancePack&#34;, CompliancePackArgs.builder()        
- *             .compliancePackName(&#34;tf-testaccConfig1234&#34;)
- *             .description(&#34;tf-testaccConfig1234&#34;)
+ *             .compliancePackName(name)
+ *             .description(name)
  *             .riskLevel(&#34;1&#34;)
  *             .configRuleIds(CompliancePackConfigRuleIdArgs.builder()
  *                 .configRuleId(defaultRule.id())
@@ -133,21 +126,21 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.compliancePackTemplateId);
     }
     /**
-     * A list of Config Rule IDs.
+     * A list of Config Rule IDs. See `config_rule_ids` below.
      * 
      */
     @Export(name="configRuleIds", type=List.class, parameters={CompliancePackConfigRuleId.class})
     private Output</* @Nullable */ List<CompliancePackConfigRuleId>> configRuleIds;
 
     /**
-     * @return A list of Config Rule IDs.
+     * @return A list of Config Rule IDs. See `config_rule_ids` below.
      * 
      */
     public Output<Optional<List<CompliancePackConfigRuleId>>> configRuleIds() {
         return Codegen.optional(this.configRuleIds);
     }
     /**
-     * A list of Config Rules.
+     * A list of Config Rules. See `config_rules` below.
      * 
      * @deprecated
      * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
@@ -158,7 +151,7 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<CompliancePackConfigRule>> configRules;
 
     /**
-     * @return A list of Config Rules.
+     * @return A list of Config Rules. See `config_rules` below.
      * 
      */
     public Output<Optional<List<CompliancePackConfigRule>>> configRules() {

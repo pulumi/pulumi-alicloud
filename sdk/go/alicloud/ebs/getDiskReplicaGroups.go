@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func GetDiskReplicaGroups(ctx *pulumi.Context, args *GetDiskReplicaGroupsArgs, opts ...pulumi.InvokeOption) (*GetDiskReplicaGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDiskReplicaGroupsResult
 	err := ctx.Invoke("alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups", args, &rv, opts...)
 	if err != nil {

@@ -15,9 +15,17 @@ public final class ApiMockServiceConfigArgs extends com.pulumi.resources.Resourc
 
     public static final ApiMockServiceConfigArgs Empty = new ApiMockServiceConfigArgs();
 
+    /**
+     * The name of aone.
+     * 
+     */
     @Import(name="aoneName")
     private @Nullable Output<String> aoneName;
 
+    /**
+     * @return The name of aone.
+     * 
+     */
     public Optional<Output<String>> aoneName() {
         return Optional.ofNullable(this.aoneName);
     }
@@ -62,11 +70,23 @@ public final class ApiMockServiceConfigArgs extends com.pulumi.resources.Resourc
             $ = new ApiMockServiceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aoneName The name of aone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aoneName(@Nullable Output<String> aoneName) {
             $.aoneName = aoneName;
             return this;
         }
 
+        /**
+         * @param aoneName The name of aone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aoneName(String aoneName) {
             return aoneName(Output.of(aoneName));
         }

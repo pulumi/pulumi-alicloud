@@ -167,9 +167,9 @@ class AlarmContactGroup(pulumi.CustomResource):
         """
         Provides a CMS Alarm Contact Group resource.
 
-        For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/doc-detail/114929.htm).
+        For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontactgroup).
 
-        > **NOTE:** Available in v1.101.0+.
+        > **NOTE:** Available since v1.101.0.
 
         ## Example Usage
 
@@ -179,7 +179,7 @@ class AlarmContactGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-test")
+        example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
         ```
 
         ## Import
@@ -206,9 +206,9 @@ class AlarmContactGroup(pulumi.CustomResource):
         """
         Provides a CMS Alarm Contact Group resource.
 
-        For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/doc-detail/114929.htm).
+        For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontactgroup).
 
-        > **NOTE:** Available in v1.101.0+.
+        > **NOTE:** Available since v1.101.0.
 
         ## Example Usage
 
@@ -218,7 +218,7 @@ class AlarmContactGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-test")
+        example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
         ```
 
         ## Import

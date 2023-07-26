@@ -18,14 +18,14 @@ public final class SlsGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final SlsGroupArgs Empty = new SlsGroupArgs();
 
     /**
-     * The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+     * The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
      * 
      */
     @Import(name="slsGroupConfigs", required=true)
     private Output<List<SlsGroupSlsGroupConfigArgs>> slsGroupConfigs;
 
     /**
-     * @return The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+     * @return The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
      * 
      */
     public Output<List<SlsGroupSlsGroupConfigArgs>> slsGroupConfigs() {
@@ -89,7 +89,7 @@ public final class SlsGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class SlsGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class SlsGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+         * @param slsGroupConfigs The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string Category;
         /// <summary>
-        /// The information about the trigger condition based on the alert level. See the following `Block escalations`.
+        /// The information about the trigger condition based on the alert level. See `escalations` below.
         /// </summary>
         public readonly Outputs.MetricRuleTemplateAlertTemplateEscalations? Escalations;
         /// <summary>

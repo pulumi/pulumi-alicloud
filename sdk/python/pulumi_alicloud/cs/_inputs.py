@@ -669,6 +669,11 @@ class KubernetesAutoscalerNodepoolArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[str]] = None,
                  taints: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The scaling group id of the groups configured for cluster-autoscaler.
+        :param pulumi.Input[str] labels: The labels for the nodes in scaling group.
+        :param pulumi.Input[str] taints: The taints for the nodes in scaling group.
+        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if labels is not None:
@@ -679,6 +684,9 @@ class KubernetesAutoscalerNodepoolArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scaling group id of the groups configured for cluster-autoscaler.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -688,6 +696,9 @@ class KubernetesAutoscalerNodepoolArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[str]]:
+        """
+        The labels for the nodes in scaling group.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -697,6 +708,9 @@ class KubernetesAutoscalerNodepoolArgs:
     @property
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[str]]:
+        """
+        The taints for the nodes in scaling group.
+        """
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -1266,7 +1280,22 @@ class ManagedKubernetesAddonArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[str] config: If this parameter is left empty, no configurations are required.
+        :param pulumi.Input[bool] disabled: It specifies whether to disable automatic installation. 
+               
+               It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+               
+               You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+               
+               `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
+               
+               `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+               
+               The `main.tf`:
+               
+               
+               The `varibales.tf`:
+        :param pulumi.Input[str] name: This parameter specifies the name of the component.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -1278,6 +1307,9 @@ class ManagedKubernetesAddonArgs:
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
+        """
+        If this parameter is left empty, no configurations are required.
+        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -1287,6 +1319,22 @@ class ManagedKubernetesAddonArgs:
     @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        It specifies whether to disable automatic installation. 
+
+        It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+
+        You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+
+        `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
+
+        `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+
+        The `main.tf`:
+
+
+        The `varibales.tf`:
+        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -1297,7 +1345,7 @@ class ManagedKubernetesAddonArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        This parameter specifies the name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -1625,6 +1673,31 @@ class ManagedKubernetesTaintArgs:
                  effect: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] effect: The taint effect.
+               
+               The following example is the definition of taints block:
+               
+               ```python
+               import pulumi
+               import pulumi_alicloud as alicloud
+               
+               k8s = alicloud.cs.ManagedKubernetes("k8s", taints=[
+                   alicloud.cs.ManagedKubernetesTaintArgs(
+                       effect="NoSchedule",
+                       key="key-a",
+                       value="value-a",
+                   ),
+                   alicloud.cs.ManagedKubernetesTaintArgs(
+                       effect="NoSchedule",
+                       key="key-b",
+                       value="value-b",
+                   ),
+               ])
+               ```
+        :param pulumi.Input[str] key: The taint key.
+        :param pulumi.Input[str] value: The taint value.
+        """
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
         if key is not None:
@@ -1635,6 +1708,29 @@ class ManagedKubernetesTaintArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The taint effect.
+
+        The following example is the definition of taints block:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        k8s = alicloud.cs.ManagedKubernetes("k8s", taints=[
+            alicloud.cs.ManagedKubernetesTaintArgs(
+                effect="NoSchedule",
+                key="key-a",
+                value="value-a",
+            ),
+            alicloud.cs.ManagedKubernetesTaintArgs(
+                effect="NoSchedule",
+                key="key-b",
+                value="value-b",
+            ),
+        ])
+        ```
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -1644,6 +1740,9 @@ class ManagedKubernetesTaintArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The taint key.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1653,6 +1752,9 @@ class ManagedKubernetesTaintArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The taint value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1674,11 +1776,14 @@ class ManagedKubernetesWorkerDataDiskArgs:
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] auto_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
-        :param pulumi.Input[str] category: The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        :param pulumi.Input[str] encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[str] category: (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] device: The mount point of data disk N.
+        :param pulumi.Input[str] encrypted: (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        :param pulumi.Input[str] kms_key_id: The ID of the Key Management Service (KMS) key to use for data disk N.
+        :param pulumi.Input[str] name: The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
         :param pulumi.Input[str] performance_level: (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        :param pulumi.Input[str] size: The size of a data disk, at least 40. Unit: GiB.
+        :param pulumi.Input[str] size: (Optional)The size of a data disk, at least 40. Unit: GiB.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -1715,7 +1820,7 @@ class ManagedKubernetesWorkerDataDiskArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -1726,6 +1831,9 @@ class ManagedKubernetesWorkerDataDiskArgs:
     @property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mount point of data disk N.
+        """
         return pulumi.get(self, "device")
 
     @device.setter
@@ -1736,7 +1844,7 @@ class ManagedKubernetesWorkerDataDiskArgs:
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         """
         return pulumi.get(self, "encrypted")
 
@@ -1747,6 +1855,9 @@ class ManagedKubernetesWorkerDataDiskArgs:
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Key Management Service (KMS) key to use for data disk N.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -1757,7 +1868,7 @@ class ManagedKubernetesWorkerDataDiskArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "name")
 
@@ -1781,7 +1892,7 @@ class ManagedKubernetesWorkerDataDiskArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[str]]:
         """
-        The size of a data disk, at least 40. Unit: GiB.
+        (Optional)The size of a data disk, at least 40. Unit: GiB.
         """
         return pulumi.get(self, "size")
 
@@ -1792,6 +1903,9 @@ class ManagedKubernetesWorkerDataDiskArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -1867,12 +1981,15 @@ class NodePoolDataDiskArgs:
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that you want to apply to the system disk.
         :param pulumi.Input[str] category: The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+        :param pulumi.Input[str] device: The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
         :param pulumi.Input[str] encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         :param pulumi.Input[str] kms_key_id: The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
-        :param pulumi.Input[str] name: The name of node pool.
+        :param pulumi.Input[str] name: The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] size: The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -1896,6 +2013,9 @@ class NodePoolDataDiskArgs:
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the automatic snapshot policy that you want to apply to the system disk.
+        """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @auto_snapshot_policy_id.setter
@@ -1917,6 +2037,9 @@ class NodePoolDataDiskArgs:
     @property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+        """
         return pulumi.get(self, "device")
 
     @device.setter
@@ -1951,7 +2074,7 @@ class NodePoolDataDiskArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of node pool.
+        The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         """
         return pulumi.get(self, "name")
 
@@ -1986,6 +2109,9 @@ class NodePoolDataDiskArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -2525,8 +2651,9 @@ class NodePoolTaintArgs:
                  effect: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key: The label key.
-        :param pulumi.Input[str] value: The label value.
+        :param pulumi.Input[str] key: The key of a taint.
+        :param pulumi.Input[str] effect: The scheduling policy.
+        :param pulumi.Input[str] value: The value of a taint.
         """
         pulumi.set(__self__, "key", key)
         if effect is not None:
@@ -2538,7 +2665,7 @@ class NodePoolTaintArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The label key.
+        The key of a taint.
         """
         return pulumi.get(self, "key")
 
@@ -2549,6 +2676,9 @@ class NodePoolTaintArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scheduling policy.
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -2559,7 +2689,7 @@ class NodePoolTaintArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The label value.
+        The value of a taint.
         """
         return pulumi.get(self, "value")
 

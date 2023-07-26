@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Network Attached Storage (NAS) Data Flow and how to use it, see [What is Data Flow](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0.
 //
 // ## Import
 //
@@ -71,6 +72,7 @@ func NewDataFlow(ctx *pulumi.Context,
 	if args.Throughput == nil {
 		return nil, errors.New("invalid value for required argument 'Throughput'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DataFlow
 	err := ctx.RegisterResource("alicloud:nas/dataFlow:DataFlow", name, args, &resource, opts...)
 	if err != nil {

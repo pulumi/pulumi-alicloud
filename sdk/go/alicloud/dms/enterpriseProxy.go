@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,6 +67,7 @@ func NewEnterpriseProxy(ctx *pulumi.Context,
 		"username",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnterpriseProxy
 	err := ctx.RegisterResource("alicloud:dms/enterpriseProxy:EnterpriseProxy", name, args, &resource, opts...)
 	if err != nil {

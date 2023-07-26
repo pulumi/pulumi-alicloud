@@ -22,19 +22,19 @@ namespace Pulumi.AliCloud.KVStore
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
+        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to use a coupon. Default to: `false`.
+        /// Specifies whether to use a coupon. Default value: `false`.
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
@@ -93,6 +93,9 @@ namespace Pulumi.AliCloud.KVStore
         [Output("connectionDomain")]
         public Output<string> ConnectionDomain { get; private set; } = null!;
 
+        /// <summary>
+        /// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+        /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
 
@@ -103,7 +106,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> ConnectionStringPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
+        /// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         /// </summary>
         [Output("couponNo")]
         public Output<string?> CouponNo { get; private set; } = null!;
@@ -122,8 +125,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Specifies whether to precheck the request. Valid values:
-        /// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-        /// * false: checks the request. After the request passes the check, an instance is created.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -131,14 +132,12 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// The time when the database is switched after the instance is migrated, 
         /// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-        /// - Immediately (Default): The configurations are immediately changed.
-        /// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
         /// </summary>
         [Output("effectiveTime")]
         public Output<string?> EffectiveTime { get; private set; } = null!;
 
         /// <summary>
-        /// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+        /// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
         /// </summary>
         [Output("enableBackupLog")]
         public Output<int?> EnableBackupLog { get; private set; } = null!;
@@ -168,20 +167,20 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+        /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
         /// **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to forcibly change the type. Default to: `true`.
+        /// Specifies whether to forcibly change the type. Default value: `true`.
         /// </summary>
         [Output("forceUpgrade")]
         public Output<bool?> ForceUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a distributed cache. Default to: `false`.
+        /// Whether to create a distributed cache. Default value: `false`.
         /// </summary>
         [Output("globalInstance")]
         public Output<bool?> GlobalInstance { get; private set; } = null!;
@@ -218,7 +217,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<bool> InstanceReleaseProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+        /// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
         /// </summary>
         [Output("instanceType")]
         public Output<string?> InstanceType { get; private set; } = null!;
@@ -248,25 +247,25 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
         /// </summary>
         [Output("modifyMode")]
         public Output<int?> ModifyMode { get; private set; } = null!;
 
         /// <summary>
-        /// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        /// "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+        /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `config` instead..
+        /// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
@@ -278,7 +277,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+        /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -333,21 +332,12 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-        /// 
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-        /// 
-        /// &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-        /// 
-        /// &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-        /// 
-        /// &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         /// </summary>
         [Output("roleArn")]
-        public Output<string?> RoleArn { get; private set; } = null!;
+        public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-        /// 
         /// &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         /// </summary>
         [Output("secondaryZoneId")]
@@ -378,14 +368,28 @@ namespace Pulumi.AliCloud.KVStore
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
+        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+        /// </summary>
+        [Output("shardCount")]
+        public Output<int> ShardCount { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the source instance.
         /// </summary>
         [Output("srcdbInstanceId")]
         public Output<string?> SrcdbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
-        /// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        /// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         /// </summary>
         [Output("sslEnable")]
         public Output<string?> SslEnable { get; private set; } = null!;
@@ -409,7 +413,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> TdeStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         /// </summary>
         [Output("vpcAuthMode")]
         public Output<string?> VpcAuthMode { get; private set; } = null!;
@@ -477,19 +481,19 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
+        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Specifies whether to use a coupon. Default to: `false`.
+        /// Specifies whether to use a coupon. Default value: `false`.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -555,7 +559,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
+        /// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         /// </summary>
         [Input("couponNo")]
         public Input<string>? CouponNo { get; set; }
@@ -574,8 +578,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Specifies whether to precheck the request. Valid values:
-        /// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-        /// * false: checks the request. After the request passes the check, an instance is created.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -583,14 +585,12 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// The time when the database is switched after the instance is migrated, 
         /// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-        /// - Immediately (Default): The configurations are immediately changed.
-        /// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
-        /// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+        /// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
         /// </summary>
         [Input("enableBackupLog")]
         public Input<int>? EnableBackupLog { get; set; }
@@ -614,20 +614,20 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? EncryptionName { get; set; }
 
         /// <summary>
-        /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+        /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
         /// **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to forcibly change the type. Default to: `true`.
+        /// Specifies whether to forcibly change the type. Default value: `true`.
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
 
         /// <summary>
-        /// Whether to create a distributed cache. Default to: `false`.
+        /// Whether to create a distributed cache. Default value: `false`.
         /// </summary>
         [Input("globalInstance")]
         public Input<bool>? GlobalInstance { get; set; }
@@ -664,7 +664,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<bool>? InstanceReleaseProtection { get; set; }
 
         /// <summary>
-        /// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+        /// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -700,19 +700,19 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
         /// </summary>
         [Input("modifyMode")]
         public Input<int>? ModifyMode { get; set; }
 
         /// <summary>
-        /// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        /// "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+        /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -721,7 +721,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputList<Inputs.InstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `config` instead..
+        /// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         /// </summary>
         [Obsolete(@"Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.")]
         public InputList<Inputs.InstanceParameterArgs> Parameters
@@ -747,7 +747,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+        /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -796,21 +796,12 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-        /// 
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-        /// 
-        /// &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-        /// 
-        /// &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-        /// 
-        /// &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
         /// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-        /// 
         /// &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         /// </summary>
         [Input("secondaryZoneId")]
@@ -847,14 +838,28 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
+        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+        /// </summary>
+        [Input("shardCount")]
+        public Input<int>? ShardCount { get; set; }
+
+        /// <summary>
         /// The ID of the source instance.
         /// </summary>
         [Input("srcdbInstanceId")]
         public Input<string>? SrcdbInstanceId { get; set; }
 
         /// <summary>
-        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
-        /// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        /// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         /// </summary>
         [Input("sslEnable")]
         public Input<string>? SslEnable { get; set; }
@@ -878,7 +883,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         /// </summary>
         [Input("vpcAuthMode")]
         public Input<string>? VpcAuthMode { get; set; }
@@ -904,19 +909,19 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
+        /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
+        /// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Specifies whether to use a coupon. Default to: `false`.
+        /// Specifies whether to use a coupon. Default value: `false`.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -987,6 +992,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("connectionDomain")]
         public Input<string>? ConnectionDomain { get; set; }
 
+        /// <summary>
+        /// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+        /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
 
@@ -997,7 +1005,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
+        /// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         /// </summary>
         [Input("couponNo")]
         public Input<string>? CouponNo { get; set; }
@@ -1016,8 +1024,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Specifies whether to precheck the request. Valid values:
-        /// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-        /// * false: checks the request. After the request passes the check, an instance is created.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -1025,14 +1031,12 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// The time when the database is switched after the instance is migrated, 
         /// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-        /// - Immediately (Default): The configurations are immediately changed.
-        /// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
-        /// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+        /// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
         /// </summary>
         [Input("enableBackupLog")]
         public Input<int>? EnableBackupLog { get; set; }
@@ -1062,20 +1066,20 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
+        /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
         /// **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to forcibly change the type. Default to: `true`.
+        /// Specifies whether to forcibly change the type. Default value: `true`.
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
 
         /// <summary>
-        /// Whether to create a distributed cache. Default to: `false`.
+        /// Whether to create a distributed cache. Default value: `false`.
         /// </summary>
         [Input("globalInstance")]
         public Input<bool>? GlobalInstance { get; set; }
@@ -1112,7 +1116,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<bool>? InstanceReleaseProtection { get; set; }
 
         /// <summary>
-        /// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+        /// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1148,19 +1152,19 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
         /// </summary>
         [Input("modifyMode")]
         public Input<int>? ModifyMode { get; set; }
 
         /// <summary>
-        /// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        /// "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+        /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -1169,7 +1173,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.101.0 and `config` instead..
+        /// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         /// </summary>
         [Obsolete(@"Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.")]
         public InputList<Inputs.InstanceParameterGetArgs> Parameters
@@ -1195,7 +1199,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+        /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -1250,21 +1254,12 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-        /// 
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-        /// 
-        /// &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-        /// 
-        /// &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-        /// 
-        /// &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
         /// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-        /// 
         /// &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         /// </summary>
         [Input("secondaryZoneId")]
@@ -1301,14 +1296,28 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
+        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+        /// </summary>
+        [Input("shardCount")]
+        public Input<int>? ShardCount { get; set; }
+
+        /// <summary>
         /// The ID of the source instance.
         /// </summary>
         [Input("srcdbInstanceId")]
         public Input<string>? SrcdbInstanceId { get; set; }
 
         /// <summary>
-        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
-        /// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        /// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         /// </summary>
         [Input("sslEnable")]
         public Input<string>? SslEnable { get; set; }
@@ -1338,7 +1347,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        /// Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         /// </summary>
         [Input("vpcAuthMode")]
         public Input<string>? VpcAuthMode { get; set; }

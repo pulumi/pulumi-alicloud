@@ -21,7 +21,8 @@ class DomainResourceArgs:
                  proxy_types: pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]],
                  real_servers: pulumi.Input[Sequence[pulumi.Input[str]]],
                  rs_type: pulumi.Input[int],
-                 https_ext: Optional[pulumi.Input[str]] = None):
+                 https_ext: Optional[pulumi.Input[str]] = None,
+                 ocsp_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DomainResource resource.
         :param pulumi.Input[str] domain: The domain name of the website that you want to add to the instance.
@@ -32,6 +33,7 @@ class DomainResourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
         :param pulumi.Input[int] rs_type: The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
         :param pulumi.Input[str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
+        :param pulumi.Input[bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "instance_ids", instance_ids)
@@ -40,6 +42,8 @@ class DomainResourceArgs:
         pulumi.set(__self__, "rs_type", rs_type)
         if https_ext is not None:
             pulumi.set(__self__, "https_ext", https_ext)
+        if ocsp_enabled is not None:
+            pulumi.set(__self__, "ocsp_enabled", ocsp_enabled)
 
     @property
     @pulumi.getter
@@ -115,6 +119,18 @@ class DomainResourceArgs:
     def https_ext(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "https_ext", value)
 
+    @property
+    @pulumi.getter(name="ocspEnabled")
+    def ocsp_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "ocsp_enabled")
+
+    @ocsp_enabled.setter
+    def ocsp_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ocsp_enabled", value)
+
 
 @pulumi.input_type
 class _DomainResourceState:
@@ -123,6 +139,7 @@ class _DomainResourceState:
                  domain: Optional[pulumi.Input[str]] = None,
                  https_ext: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ocsp_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  rs_type: Optional[pulumi.Input[int]] = None):
@@ -133,6 +150,7 @@ class _DomainResourceState:
         :param pulumi.Input[str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
                > **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+        :param pulumi.Input[bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information. See `proxy_types` below.
                > **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
@@ -146,6 +164,8 @@ class _DomainResourceState:
             pulumi.set(__self__, "https_ext", https_ext)
         if instance_ids is not None:
             pulumi.set(__self__, "instance_ids", instance_ids)
+        if ocsp_enabled is not None:
+            pulumi.set(__self__, "ocsp_enabled", ocsp_enabled)
         if proxy_types is not None:
             pulumi.set(__self__, "proxy_types", proxy_types)
         if real_servers is not None:
@@ -203,6 +223,18 @@ class _DomainResourceState:
         pulumi.set(self, "instance_ids", value)
 
     @property
+    @pulumi.getter(name="ocspEnabled")
+    def ocsp_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "ocsp_enabled")
+
+    @ocsp_enabled.setter
+    def ocsp_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ocsp_enabled", value)
+
+    @property
     @pulumi.getter(name="proxyTypes")
     def proxy_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]]:
         """
@@ -248,6 +280,7 @@ class DomainResource(pulumi.CustomResource):
                  domain: Optional[pulumi.Input[str]] = None,
                  https_ext: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ocsp_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  rs_type: Optional[pulumi.Input[int]] = None,
@@ -293,6 +326,7 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.Input[str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
                > **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+        :param pulumi.Input[bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
                > **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
@@ -357,6 +391,7 @@ class DomainResource(pulumi.CustomResource):
                  domain: Optional[pulumi.Input[str]] = None,
                  https_ext: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ocsp_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  rs_type: Optional[pulumi.Input[int]] = None,
@@ -376,6 +411,7 @@ class DomainResource(pulumi.CustomResource):
             if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
             __props__.__dict__["instance_ids"] = instance_ids
+            __props__.__dict__["ocsp_enabled"] = ocsp_enabled
             if proxy_types is None and not opts.urn:
                 raise TypeError("Missing required property 'proxy_types'")
             __props__.__dict__["proxy_types"] = proxy_types
@@ -400,6 +436,7 @@ class DomainResource(pulumi.CustomResource):
             domain: Optional[pulumi.Input[str]] = None,
             https_ext: Optional[pulumi.Input[str]] = None,
             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            ocsp_enabled: Optional[pulumi.Input[bool]] = None,
             proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]]] = None,
             real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             rs_type: Optional[pulumi.Input[int]] = None) -> 'DomainResource':
@@ -415,6 +452,7 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.Input[str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
                > **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+        :param pulumi.Input[bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
                > **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
@@ -428,6 +466,7 @@ class DomainResource(pulumi.CustomResource):
         __props__.__dict__["domain"] = domain
         __props__.__dict__["https_ext"] = https_ext
         __props__.__dict__["instance_ids"] = instance_ids
+        __props__.__dict__["ocsp_enabled"] = ocsp_enabled
         __props__.__dict__["proxy_types"] = proxy_types
         __props__.__dict__["real_servers"] = real_servers
         __props__.__dict__["rs_type"] = rs_type
@@ -465,6 +504,14 @@ class DomainResource(pulumi.CustomResource):
         > **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
         """
         return pulumi.get(self, "instance_ids")
+
+    @property
+    @pulumi.getter(name="ocspEnabled")
+    def ocsp_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "ocsp_enabled")
 
     @property
     @pulumi.getter(name="proxyTypes")

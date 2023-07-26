@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 // }
 // ```
 func GetPortfolios(ctx *pulumi.Context, args *GetPortfoliosArgs, opts ...pulumi.InvokeOption) (*GetPortfoliosResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortfoliosResult
 	err := ctx.Invoke("alicloud:servicecatalog/getPortfolios:getPortfolios", args, &rv, opts...)
 	if err != nil {

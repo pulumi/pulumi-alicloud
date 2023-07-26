@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 // }
 // ```
 func GetElasticityAssurances(ctx *pulumi.Context, args *GetElasticityAssurancesArgs, opts ...pulumi.InvokeOption) (*GetElasticityAssurancesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetElasticityAssurancesResult
 	err := ctx.Invoke("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args, &rv, opts...)
 	if err != nil {

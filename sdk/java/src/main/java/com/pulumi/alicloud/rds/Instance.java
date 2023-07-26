@@ -426,7 +426,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
@@ -437,7 +437,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -864,6 +864,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * 
+     */
+    @Export(name="roleArn", type=String.class, parameters={})
+    private Output<String> roleArn;
+
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * 
+     */
+    public Output<String> roleArn() {
+        return this.roleArn;
     }
     /**
      * It has been deprecated from 1.69.0 and use `security_group_ids` instead.

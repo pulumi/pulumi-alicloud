@@ -9,97 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// cluster-autoscaler in Kubernetes Cluster.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "autoscaler";
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke();
-    /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
-    ///     {
-    ///         Owners = "system",
-    ///         NameRegex = "^centos_7",
-    ///         MostRecent = true,
-    ///     });
-    /// 
-    ///     var defaultManagedKubernetesClusters = AliCloud.CS.GetManagedKubernetesClusters.Invoke();
-    /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
-    ///     {
-    ///         CpuCoreCount = 2,
-    ///         MemorySize = 4,
-    ///     });
-    /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new()
-    ///     {
-    ///         ScalingGroupName = name,
-    ///         MinSize = @var.Min_size,
-    ///         MaxSize = @var.Max_size,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.VswitchIds[0]),
-    ///         },
-    ///         RemovalPolicies = new[]
-    ///         {
-    ///             "OldestInstance",
-    ///             "NewestInstance",
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("defaultScalingConfiguration", new()
-    ///     {
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         SecurityGroupId = defaultSecurityGroup.Id,
-    ///         ScalingGroupId = defaultScalingGroup.Id,
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         InternetChargeType = "PayByTraffic",
-    ///         ForceDelete = true,
-    ///         Enable = true,
-    ///         Active = true,
-    ///     });
-    /// 
-    ///     var defaultKubernetesAutoscaler = new AliCloud.CS.KubernetesAutoscaler("defaultKubernetesAutoscaler", new()
-    ///     {
-    ///         ClusterId = defaultManagedKubernetesClusters.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Clusters[0]?.Id),
-    ///         Nodepools = new[]
-    ///         {
-    ///             new AliCloud.CS.Inputs.KubernetesAutoscalerNodepoolArgs
-    ///             {
-    ///                 Id = defaultScalingGroup.Id,
-    ///                 Labels = "a=b",
-    ///             },
-    ///         },
-    ///         Utilization = @var.Utilization,
-    ///         CoolDownDuration = @var.Cool_down_duration,
-    ///         DeferScaleInDuration = @var.Defer_scale_in_duration,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             alicloud_ess_scaling_group.Defalut,
-    ///             defaultScalingConfiguration,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [AliCloudResourceType("alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler")]
     public partial class KubernetesAutoscaler : global::Pulumi.CustomResource
     {
@@ -122,9 +31,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> DeferScaleInDuration { get; private set; } = null!;
 
         /// <summary>
-        /// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-        /// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-        /// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        /// The list of the node pools. See `nodepools` below.
         /// </summary>
         [Output("nodepools")]
         public Output<ImmutableArray<Outputs.KubernetesAutoscalerNodepool>> Nodepools { get; private set; } = null!;
@@ -209,9 +116,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAutoscalerNodepoolArgs>? _nodepools;
 
         /// <summary>
-        /// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-        /// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-        /// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        /// The list of the node pools. See `nodepools` below.
         /// </summary>
         public InputList<Inputs.KubernetesAutoscalerNodepoolArgs> Nodepools
         {
@@ -261,9 +166,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAutoscalerNodepoolGetArgs>? _nodepools;
 
         /// <summary>
-        /// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
-        /// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
-        /// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        /// The list of the node pools. See `nodepools` below.
         /// </summary>
         public InputList<Inputs.KubernetesAutoscalerNodepoolGetArgs> Nodepools
         {

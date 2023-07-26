@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -115,7 +116,7 @@ type Instance struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -213,6 +214,8 @@ type Instance struct {
 	ReplicationAcl pulumi.StringOutput `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -343,6 +346,7 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceType == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:rds/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -457,7 +461,7 @@ type instanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -555,6 +559,8 @@ type instanceState struct {
 	ReplicationAcl *string `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	RoleArn *string `pulumi:"roleArn"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -759,7 +765,7 @@ type InstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -857,6 +863,8 @@ type InstanceState struct {
 	ReplicationAcl pulumi.StringPtrInput
 	// The ID of resource group which the DB instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	RoleArn pulumi.StringPtrInput
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -1059,7 +1067,7 @@ type instanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -1157,6 +1165,8 @@ type instanceArgs struct {
 	ReplicationAcl *string `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	RoleArn *string `pulumi:"roleArn"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -1352,7 +1362,7 @@ type InstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -1450,6 +1460,8 @@ type InstanceArgs struct {
 	ReplicationAcl pulumi.StringPtrInput
 	// The ID of resource group which the DB instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	RoleArn pulumi.StringPtrInput
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -1799,7 +1811,7 @@ func (o InstanceOutput) DbTimeZone() pulumi.StringOutput {
 // - true: delete protect.
 // - false: no delete protect.
 //
-// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1967,6 +1979,11 @@ func (o InstanceOutput) ReplicationAcl() pulumi.StringOutput {
 // The ID of resource group which the DB instance belongs.
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+func (o InstanceOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RoleArn }).(pulumi.StringOutput)
 }
 
 // It has been deprecated from 1.69.0 and use `securityGroupIds` instead.

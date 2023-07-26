@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Monitor Service Monitor Group Instances resource.
 //
-// For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/doc-detail/115031.htm).
+// For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroupinstances).
 //
-// > **NOTE:** Available in v1.115.0+.
+// > **NOTE:** Available since v1.115.0.
 //
 // ## Example Usage
 //
@@ -26,24 +27,37 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf-testacc-vpcname"),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "defaultMonitorGroup", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String("tf-testaccmonitorgroup"),
+//				MonitorGroupName: pulumi.String(name),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -52,8 +66,8 @@ import (
 //				Instances: cms.MonitorGroupInstancesInstanceArray{
 //					&cms.MonitorGroupInstancesInstanceArgs{
 //						InstanceId:   defaultNetwork.ID(),
-//						InstanceName: pulumi.String("tf-testacc-vpcname"),
-//						RegionId:     pulumi.String("cn-hangzhou"),
+//						InstanceName: pulumi.String(name),
+//						RegionId:     *pulumi.String(defaultRegions.Regions[0].Id),
 //						Category:     pulumi.String("vpc"),
 //					},
 //				},
@@ -81,7 +95,7 @@ type MonitorGroupInstances struct {
 
 	// The id of Cms Group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// Instance information added to the Cms Group.
+	// Instance information added to the Cms Group. See `instances` below.
 	Instances MonitorGroupInstancesInstanceArrayOutput `pulumi:"instances"`
 }
 
@@ -98,6 +112,7 @@ func NewMonitorGroupInstances(ctx *pulumi.Context,
 	if args.Instances == nil {
 		return nil, errors.New("invalid value for required argument 'Instances'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MonitorGroupInstances
 	err := ctx.RegisterResource("alicloud:cms/monitorGroupInstances:MonitorGroupInstances", name, args, &resource, opts...)
 	if err != nil {
@@ -122,14 +137,14 @@ func GetMonitorGroupInstances(ctx *pulumi.Context,
 type monitorGroupInstancesState struct {
 	// The id of Cms Group.
 	GroupId *string `pulumi:"groupId"`
-	// Instance information added to the Cms Group.
+	// Instance information added to the Cms Group. See `instances` below.
 	Instances []MonitorGroupInstancesInstance `pulumi:"instances"`
 }
 
 type MonitorGroupInstancesState struct {
 	// The id of Cms Group.
 	GroupId pulumi.StringPtrInput
-	// Instance information added to the Cms Group.
+	// Instance information added to the Cms Group. See `instances` below.
 	Instances MonitorGroupInstancesInstanceArrayInput
 }
 
@@ -140,7 +155,7 @@ func (MonitorGroupInstancesState) ElementType() reflect.Type {
 type monitorGroupInstancesArgs struct {
 	// The id of Cms Group.
 	GroupId string `pulumi:"groupId"`
-	// Instance information added to the Cms Group.
+	// Instance information added to the Cms Group. See `instances` below.
 	Instances []MonitorGroupInstancesInstance `pulumi:"instances"`
 }
 
@@ -148,7 +163,7 @@ type monitorGroupInstancesArgs struct {
 type MonitorGroupInstancesArgs struct {
 	// The id of Cms Group.
 	GroupId pulumi.StringInput
-	// Instance information added to the Cms Group.
+	// Instance information added to the Cms Group. See `instances` below.
 	Instances MonitorGroupInstancesInstanceArrayInput
 }
 
@@ -244,7 +259,7 @@ func (o MonitorGroupInstancesOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitorGroupInstances) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Instance information added to the Cms Group.
+// Instance information added to the Cms Group. See `instances` below.
 func (o MonitorGroupInstancesOutput) Instances() MonitorGroupInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v *MonitorGroupInstances) MonitorGroupInstancesInstanceArrayOutput { return v.Instances }).(MonitorGroupInstancesInstanceArrayOutput)
 }

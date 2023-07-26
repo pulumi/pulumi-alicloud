@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Basic Accelerate IP resource.
 //
-// For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicaccelerateip).
+// For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerateip).
 //
 // > **NOTE:** Available since v1.194.0.
 //
@@ -107,6 +108,7 @@ func NewBasicAccelerateIp(ctx *pulumi.Context,
 	if args.IpSetId == nil {
 		return nil, errors.New("invalid value for required argument 'IpSetId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BasicAccelerateIp
 	err := ctx.RegisterResource("alicloud:ga/basicAccelerateIp:BasicAccelerateIp", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -129,6 +130,7 @@ func NewHanaInstance(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HanaInstance
 	err := ctx.RegisterResource("alicloud:hbr/hanaInstance:HanaInstance", name, args, &resource, opts...)
 	if err != nil {

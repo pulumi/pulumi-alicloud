@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -142,6 +143,7 @@ func NewCaCertificate(ctx *pulumi.Context,
 	if args.CaCertificate == nil {
 		return nil, errors.New("invalid value for required argument 'CaCertificate'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CaCertificate
 	err := ctx.RegisterResource("alicloud:slb/caCertificate:CaCertificate", name, args, &resource, opts...)
 	if err != nil {

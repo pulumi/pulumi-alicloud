@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,6 +67,7 @@ import (
 //
 // ```
 func GetEcsSnapshotGroups(ctx *pulumi.Context, args *GetEcsSnapshotGroupsArgs, opts ...pulumi.InvokeOption) (*GetEcsSnapshotGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsSnapshotGroupsResult
 	err := ctx.Invoke("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", args, &rv, opts...)
 	if err != nil {

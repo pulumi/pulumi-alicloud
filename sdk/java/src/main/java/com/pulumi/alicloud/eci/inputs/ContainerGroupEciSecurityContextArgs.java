@@ -17,14 +17,14 @@ public final class ContainerGroupEciSecurityContextArgs extends com.pulumi.resou
     public static final ContainerGroupEciSecurityContextArgs Empty = new ContainerGroupEciSecurityContextArgs();
 
     /**
-     * system.
+     * Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
      * 
      */
     @Import(name="sysctls")
     private @Nullable Output<List<ContainerGroupEciSecurityContextSysctlArgs>> sysctls;
 
     /**
-     * @return system.
+     * @return Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
      * 
      */
     public Optional<Output<List<ContainerGroupEciSecurityContextSysctlArgs>>> sysctls() {
@@ -56,7 +56,7 @@ public final class ContainerGroupEciSecurityContextArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sysctls system.
+         * @param sysctls Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ContainerGroupEciSecurityContextArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sysctls system.
+         * @param sysctls Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ContainerGroupEciSecurityContextArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sysctls system.
+         * @param sysctls Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
          * 
          * @return builder
          * 

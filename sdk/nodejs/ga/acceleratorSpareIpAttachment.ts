@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator (GA) Accelerator Spare Ip Attachment resource.
  *
- * For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createspareips).
+ * For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createspareips).
  *
  * > **NOTE:** Available since v1.167.0.
  *

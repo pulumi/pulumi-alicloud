@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetDomainTxtGuid(ctx *pulumi.Context, args *GetDomainTxtGuidArgs, opts ...pulumi.InvokeOption) (*GetDomainTxtGuidResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainTxtGuidResult
 	err := ctx.Invoke("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args, &rv, opts...)
 	if err != nil {

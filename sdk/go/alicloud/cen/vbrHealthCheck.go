@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -161,6 +162,7 @@ func NewVbrHealthCheck(ctx *pulumi.Context,
 	if args.VbrInstanceRegionId == nil {
 		return nil, errors.New("invalid value for required argument 'VbrInstanceRegionId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VbrHealthCheck
 	err := ctx.RegisterResource("alicloud:cen/vbrHealthCheck:VbrHealthCheck", name, args, &resource, opts...)
 	if err != nil {

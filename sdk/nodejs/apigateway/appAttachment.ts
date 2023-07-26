@@ -13,10 +13,46 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = new alicloud.apigateway.AppAttachment("foo", {
- *     apiId: "d29d25b9cfdf4742b1a3f6537299a749",
- *     appId: "20898181",
- *     groupId: "aaef8cdbb404420f9398a74ed1db7fff",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform_example";
+ * const exampleGroup = new alicloud.apigateway.Group("exampleGroup", {description: name});
+ * const exampleApi = new alicloud.apigateway.Api("exampleApi", {
+ *     groupId: exampleGroup.id,
+ *     description: name,
+ *     authType: "APP",
+ *     forceNonceCheck: false,
+ *     requestConfig: {
+ *         protocol: "HTTP",
+ *         method: "GET",
+ *         path: "/example/path",
+ *         mode: "MAPPING",
+ *     },
+ *     serviceType: "HTTP",
+ *     httpServiceConfig: {
+ *         address: "http://apigateway-backend.alicloudapi.com:8080",
+ *         method: "GET",
+ *         path: "/web/cloudapi",
+ *         timeout: 12,
+ *         aoneName: "cloudapi-openapi",
+ *     },
+ *     requestParameters: [{
+ *         name: "example",
+ *         type: "STRING",
+ *         required: "OPTIONAL",
+ *         "in": "QUERY",
+ *         inService: "QUERY",
+ *         nameService: "exampleservice",
+ *     }],
+ *     stageNames: [
+ *         "RELEASE",
+ *         "TEST",
+ *     ],
+ * });
+ * const exampleApp = new alicloud.apigateway.App("exampleApp", {description: name});
+ * const exampleAppAttachment = new alicloud.apigateway.AppAttachment("exampleAppAttachment", {
+ *     apiId: exampleApi.apiId,
+ *     groupId: exampleGroup.id,
+ *     appId: exampleApp.id,
  *     stageName: "PRE",
  * });
  * ```

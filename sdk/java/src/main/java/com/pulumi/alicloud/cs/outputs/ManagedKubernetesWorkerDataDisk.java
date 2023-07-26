@@ -17,19 +17,27 @@ public final class ManagedKubernetesWorkerDataDisk {
      */
     private @Nullable String autoSnapshotPolicyId;
     /**
-     * @return The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * @return (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
     private @Nullable String category;
+    /**
+     * @return The mount point of data disk N.
+     * 
+     */
     private @Nullable String device;
     /**
-     * @return Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+     * @return (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
      * 
      */
     private @Nullable String encrypted;
+    /**
+     * @return The ID of the Key Management Service (KMS) key to use for data disk N.
+     * 
+     */
     private @Nullable String kmsKeyId;
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
      * 
      */
     private @Nullable String name;
@@ -39,10 +47,14 @@ public final class ManagedKubernetesWorkerDataDisk {
      */
     private @Nullable String performanceLevel;
     /**
-     * @return The size of a data disk, at least 40. Unit: GiB.
+     * @return (Optional)The size of a data disk, at least 40. Unit: GiB.
      * 
      */
     private @Nullable String size;
+    /**
+     * @return The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+     * 
+     */
     private @Nullable String snapshotId;
 
     private ManagedKubernetesWorkerDataDisk() {}
@@ -54,27 +66,35 @@ public final class ManagedKubernetesWorkerDataDisk {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
     /**
-     * @return The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * @return (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return The mount point of data disk N.
+     * 
+     */
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
     /**
-     * @return Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+     * @return (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
      * 
      */
     public Optional<String> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
+    /**
+     * @return The ID of the Key Management Service (KMS) key to use for data disk N.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
      * 
      */
     public Optional<String> name() {
@@ -88,12 +108,16 @@ public final class ManagedKubernetesWorkerDataDisk {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
-     * @return The size of a data disk, at least 40. Unit: GiB.
+     * @return (Optional)The size of a data disk, at least 40. Unit: GiB.
      * 
      */
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
+    /**
+     * @return The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+     * 
+     */
     public Optional<String> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }

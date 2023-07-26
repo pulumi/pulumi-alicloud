@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +60,7 @@ import (
 //
 // ```
 func GetTemplateScratches(ctx *pulumi.Context, args *GetTemplateScratchesArgs, opts ...pulumi.InvokeOption) (*GetTemplateScratchesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTemplateScratchesResult
 	err := ctx.Invoke("alicloud:ros/getTemplateScratches:getTemplateScratches", args, &rv, opts...)
 	if err != nil {

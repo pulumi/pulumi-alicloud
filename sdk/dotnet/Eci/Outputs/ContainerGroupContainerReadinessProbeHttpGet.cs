@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// The port number. Valid values: 1 to 65535.
+        /// The port number. Valid values: `1` to `65535`.
         /// </summary>
         public readonly int? Port;
         /// <summary>

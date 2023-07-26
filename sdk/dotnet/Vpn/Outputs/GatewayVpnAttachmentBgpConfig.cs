@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GatewayVpnAttachmentBgpConfig
     {
         /// <summary>
-        /// Specifies whether to enable health checks.
+        /// Whether to enable BGP.
         /// </summary>
         public readonly bool? Enable;
         /// <summary>

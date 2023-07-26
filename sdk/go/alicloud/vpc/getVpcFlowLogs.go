@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetVpcFlowLogs(ctx *pulumi.Context, args *GetVpcFlowLogsArgs, opts ...pulumi.InvokeOption) (*GetVpcFlowLogsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcFlowLogsResult
 	err := ctx.Invoke("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args, &rv, opts...)
 	if err != nil {

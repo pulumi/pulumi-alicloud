@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +57,7 @@ import (
 //
 // ```
 func GetPublicIpAddressPoolCidrBlocks(ctx *pulumi.Context, args *GetPublicIpAddressPoolCidrBlocksArgs, opts ...pulumi.InvokeOption) (*GetPublicIpAddressPoolCidrBlocksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPublicIpAddressPoolCidrBlocksResult
 	err := ctx.Invoke("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", args, &rv, opts...)
 	if err != nil {

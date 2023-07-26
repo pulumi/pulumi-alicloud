@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
 
     public sealed class ApiMockServiceConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of aone.
+        /// </summary>
         [Input("aoneName")]
         public Input<string>? AoneName { get; set; }
 

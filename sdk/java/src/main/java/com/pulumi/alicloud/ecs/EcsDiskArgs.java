@@ -64,13 +64,6 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.category);
     }
 
-    @Import(name="dedicatedBlockStorageClusterId")
-    private @Nullable Output<String> dedicatedBlockStorageClusterId;
-
-    public Optional<Output<String>> dedicatedBlockStorageClusterId() {
-        return Optional.ofNullable(this.dedicatedBlockStorageClusterId);
-    }
-
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
      * 
@@ -396,7 +389,6 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         this.advancedFeatures = $.advancedFeatures;
         this.availabilityZone = $.availabilityZone;
         this.category = $.category;
-        this.dedicatedBlockStorageClusterId = $.dedicatedBlockStorageClusterId;
         this.deleteAutoSnapshot = $.deleteAutoSnapshot;
         this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
@@ -495,15 +487,6 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder category(String category) {
             return category(Output.of(category));
-        }
-
-        public Builder dedicatedBlockStorageClusterId(@Nullable Output<String> dedicatedBlockStorageClusterId) {
-            $.dedicatedBlockStorageClusterId = dedicatedBlockStorageClusterId;
-            return this;
-        }
-
-        public Builder dedicatedBlockStorageClusterId(String dedicatedBlockStorageClusterId) {
-            return dedicatedBlockStorageClusterId(Output.of(dedicatedBlockStorageClusterId));
         }
 
         /**

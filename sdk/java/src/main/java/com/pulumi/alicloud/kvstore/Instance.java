@@ -33,42 +33,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:kvstore/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
+     * Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
      * 
      */
     @Export(name="autoRenew", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
+     * @return Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
+     * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      * 
      */
     @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
+     * @return Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * Specifies whether to use a coupon. Default to: `false`.
+     * Specifies whether to use a coupon. Default value: `false`.
      * 
      */
     @Export(name="autoUseCoupon", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> autoUseCoupon;
 
     /**
-     * @return Specifies whether to use a coupon. Default to: `false`.
+     * @return Specifies whether to use a coupon. Default value: `false`.
      * 
      */
     public Output<Optional<Boolean>> autoUseCoupon() {
@@ -205,6 +205,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.connectionDomain;
     }
     /**
+     * (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+     * 
      * @deprecated
      * Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
@@ -213,6 +215,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     @Export(name="connectionString", type=String.class, parameters={})
     private Output<String> connectionString;
 
+    /**
+     * @return (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+     * 
+     */
     public Output<String> connectionString() {
         return this.connectionString;
     }
@@ -235,14 +241,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionStringPrefix);
     }
     /**
-     * The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
+     * The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
      * 
      */
     @Export(name="couponNo", type=String.class, parameters={})
     private Output</* @Nullable */ String> couponNo;
 
     /**
-     * @return The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
+     * @return The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
      * 
      */
     public Output<Optional<String>> couponNo() {
@@ -278,8 +284,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to precheck the request. Valid values:
-     * * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-     * * false: checks the request. After the request passes the check, an instance is created.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
@@ -287,8 +291,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to precheck the request. Valid values:
-     * * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
-     * * false: checks the request. After the request passes the check, an instance is created.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -297,8 +299,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The time when the database is switched after the instance is migrated,
      * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-     * - Immediately (Default): The configurations are immediately changed.
-     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
      * 
      */
     @Export(name="effectiveTime", type=String.class, parameters={})
@@ -307,22 +307,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The time when the database is switched after the instance is migrated,
      * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
-     * - Immediately (Default): The configurations are immediately changed.
-     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
      * 
      */
     public Output<Optional<String>> effectiveTime() {
         return Codegen.optional(this.effectiveTime);
     }
     /**
-     * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+     * Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
      * 
      */
     @Export(name="enableBackupLog", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> enableBackupLog;
 
     /**
-     * @return Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+     * @return Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
      * 
      */
     public Output<Optional<Integer>> enableBackupLog() {
@@ -389,7 +387,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.endTime;
     }
     /**
-     * The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default to &#34;5.0&#34;.
+     * The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default value: `5.0`.
      * **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports &#34;4.0&#34;.
      * 
      */
@@ -397,7 +395,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> engineVersion;
 
     /**
-     * @return The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default to &#34;5.0&#34;.
+     * @return The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default value: `5.0`.
      * **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports &#34;4.0&#34;.
      * 
      */
@@ -405,28 +403,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
-     * Specifies whether to forcibly change the type. Default to: `true`.
+     * Specifies whether to forcibly change the type. Default value: `true`.
      * 
      */
     @Export(name="forceUpgrade", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> forceUpgrade;
 
     /**
-     * @return Specifies whether to forcibly change the type. Default to: `true`.
+     * @return Specifies whether to forcibly change the type. Default value: `true`.
      * 
      */
     public Output<Optional<Boolean>> forceUpgrade() {
         return Codegen.optional(this.forceUpgrade);
     }
     /**
-     * Whether to create a distributed cache. Default to: `false`.
+     * Whether to create a distributed cache. Default value: `false`.
      * 
      */
     @Export(name="globalInstance", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> globalInstance;
 
     /**
-     * @return Whether to create a distributed cache. Default to: `false`.
+     * @return Whether to create a distributed cache. Default value: `false`.
      * 
      */
     public Output<Optional<Boolean>> globalInstance() {
@@ -484,10 +482,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
      * 
      * @deprecated
-     * Field &#39;instance_name&#39; has been deprecated from version 1.101.0. Use &#39;db_instance_name&#39; instead.
+     * Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      * 
      */
-    @Deprecated /* Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead. */
+    @Deprecated /* Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead. */
     @Export(name="instanceName", type=String.class, parameters={})
     private Output<String> instanceName;
 
@@ -513,14 +511,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceReleaseProtection;
     }
     /**
-     * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+     * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      * 
      */
     @Export(name="instanceType", type=String.class, parameters={})
     private Output</* @Nullable */ String> instanceType;
 
     /**
-     * @return The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+     * @return The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      * 
      */
     public Output<Optional<String>> instanceType() {
@@ -583,21 +581,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.maintainStartTime;
     }
     /**
-     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
      * 
      */
     @Export(name="modifyMode", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> modifyMode;
 
     /**
-     * @return The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+     * @return The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
      * 
      */
     public Output<Optional<Integer>> modifyMode() {
         return Codegen.optional(this.modifyMode);
     }
     /**
-     * &#34;Field &#39;node_type&#39; has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+     * &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
      * 
      * @deprecated
      * Field &#39;node_type&#39; has been deprecated from version 1.120.1
@@ -608,28 +606,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> nodeType;
 
     /**
-     * @return &#34;Field &#39;node_type&#39; has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+     * @return &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
      * 
      */
     public Output<String> nodeType() {
         return this.nodeType;
     }
     /**
-     * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+     * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      * 
      */
     @Export(name="orderType", type=String.class, parameters={})
     private Output</* @Nullable */ String> orderType;
 
     /**
-     * @return Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+     * @return Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      * 
      */
     public Output<Optional<String>> orderType() {
         return Codegen.optional(this.orderType);
     }
     /**
-     * It has been deprecated from provider version 1.101.0 and `config` instead..
+     * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -640,7 +638,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<List<InstanceParameter>> parameters;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `config` instead..
+     * @return It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      * 
      */
     public Output<List<InstanceParameter>> parameters() {
@@ -661,14 +659,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+     * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      * 
      */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output<String> paymentType;
 
     /**
-     * @return The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+     * @return The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      * 
      */
     public Output<String> paymentType() {
@@ -789,36 +787,19 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
      * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
-     * 
      */
     @Export(name="roleArn", type=String.class, parameters={})
-    private Output</* @Nullable */ String> roleArn;
+    private Output<String> roleArn;
 
     /**
      * @return The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
      * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
-     * 
      */
-    public Output<Optional<String>> roleArn() {
-        return Codegen.optional(this.roleArn);
+    public Output<String> roleArn() {
+        return this.roleArn;
     }
     /**
      * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -827,7 +808,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
-     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -891,6 +871,36 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityIps;
     }
     /**
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+     * 
+     */
+    @Export(name="shardCount", type=Integer.class, parameters={})
+    private Output<Integer> shardCount;
+
+    /**
+     * @return The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+     * 
+     */
+    public Output<Integer> shardCount() {
+        return this.shardCount;
+    }
+    /**
      * The ID of the source instance.
      * 
      */
@@ -906,7 +916,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
-     * Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+     * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      * 
      */
     @Export(name="sslEnable", type=String.class, parameters={})
@@ -914,7 +924,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
-     * Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+     * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      * 
      */
     public Output<Optional<String>> sslEnable() {
@@ -963,14 +973,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.tdeStatus;
     }
     /**
-     * Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+     * Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      * 
      */
     @Export(name="vpcAuthMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> vpcAuthMode;
 
     /**
-     * @return Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+     * @return Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      * 
      */
     public Output<Optional<String>> vpcAuthMode() {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +63,7 @@ import (
 //
 // ```
 func GetSwitches(ctx *pulumi.Context, args *GetSwitchesArgs, opts ...pulumi.InvokeOption) (*GetSwitchesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSwitchesResult
 	err := ctx.Invoke("alicloud:vpc/getSwitches:getSwitches", args, &rv, opts...)
 	if err != nil {

@@ -109,7 +109,7 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public readonly specification!: pulumi.Output<string>;
     /**
-     * (Available in 1.121.0+) The status of NAT gateway.
+     * (Available since v1.121.0) The status of NAT gateway.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -261,7 +261,7 @@ export interface NatGatewayState {
      */
     specification?: pulumi.Input<string>;
     /**
-     * (Available in 1.121.0+) The status of NAT gateway.
+     * (Available since v1.121.0) The status of NAT gateway.
      */
     status?: pulumi.Input<string>;
     /**

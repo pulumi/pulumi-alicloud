@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string>? Alias { get; set; }
 
         /// <summary>
-        /// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+        /// The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
         /// </summary>
         [Input("express")]
         public Input<string>? Express { get; set; }

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -159,6 +160,7 @@ func NewAdConnectorOfficeSite(ctx *pulumi.Context,
 		"domainPassword",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AdConnectorOfficeSite
 	err := ctx.RegisterResource("alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite", name, args, &resource, opts...)
 	if err != nil {

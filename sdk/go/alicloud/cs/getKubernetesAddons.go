@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetKubernetesAddons(ctx *pulumi.Context, args *GetKubernetesAddonsArgs, opts ...pulumi.InvokeOption) (*GetKubernetesAddonsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesAddonsResult
 	err := ctx.Invoke("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args, &rv, opts...)
 	if err != nil {

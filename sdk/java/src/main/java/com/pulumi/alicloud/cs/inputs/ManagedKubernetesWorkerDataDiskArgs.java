@@ -31,58 +31,74 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
     }
 
     /**
-     * The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * @return (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
     }
 
+    /**
+     * The mount point of data disk N.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The mount point of data disk N.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
 
     /**
-     * Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+     * (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<String> encrypted;
 
     /**
-     * @return Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+     * @return (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
      * 
      */
     public Optional<Output<String>> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
 
+    /**
+     * The ID of the Key Management Service (KMS) key to use for data disk N.
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
+    /**
+     * @return The ID of the Key Management Service (KMS) key to use for data disk N.
+     * 
+     */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
     /**
-     * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> name() {
@@ -105,23 +121,31 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
     }
 
     /**
-     * The size of a data disk, at least 40. Unit: GiB.
+     * (Optional)The size of a data disk, at least 40. Unit: GiB.
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return The size of a data disk, at least 40. Unit: GiB.
+     * @return (Optional)The size of a data disk, at least 40. Unit: GiB.
      * 
      */
     public Optional<Output<String>> size() {
         return Optional.ofNullable(this.size);
     }
 
+    /**
+     * The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+     * 
+     */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
+    /**
+     * @return The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+     * 
+     */
     public Optional<Output<String>> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }
@@ -180,7 +204,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param category The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+         * @param category (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
          * 
          * @return builder
          * 
@@ -191,7 +215,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param category The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+         * @param category (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
          * 
          * @return builder
          * 
@@ -200,17 +224,29 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
             return category(Output.of(category));
         }
 
+        /**
+         * @param device The mount point of data disk N.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The mount point of data disk N.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }
 
         /**
-         * @param encrypted Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         * @param encrypted (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
          * 
          * @return builder
          * 
@@ -221,7 +257,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param encrypted Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         * @param encrypted (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
          * 
          * @return builder
          * 
@@ -230,17 +266,29 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
             return encrypted(Output.of(encrypted));
         }
 
+        /**
+         * @param kmsKeyId The ID of the Key Management Service (KMS) key to use for data disk N.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param kmsKeyId The ID of the Key Management Service (KMS) key to use for data disk N.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -251,7 +299,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -282,7 +330,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param size The size of a data disk, at least 40. Unit: GiB.
+         * @param size (Optional)The size of a data disk, at least 40. Unit: GiB.
          * 
          * @return builder
          * 
@@ -293,7 +341,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param size The size of a data disk, at least 40. Unit: GiB.
+         * @param size (Optional)The size of a data disk, at least 40. Unit: GiB.
          * 
          * @return builder
          * 
@@ -302,11 +350,23 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
             return size(Output.of(size));
         }
 
+        /**
+         * @param snapshotId The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotId(@Nullable Output<String> snapshotId) {
             $.snapshotId = snapshotId;
             return this;
         }
 
+        /**
+         * @param snapshotId The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotId(String snapshotId) {
             return snapshotId(Output.of(snapshotId));
         }

@@ -106,14 +106,14 @@ public final class SnatEntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.119.1+) The status of snat entry.
+     * (Available since v1.119.1) The status of snat entry.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in 1.119.1+) The status of snat entry.
+     * @return (Available since v1.119.1) The status of snat entry.
      * 
      */
     public Optional<Output<String>> status() {
@@ -277,7 +277,7 @@ public final class SnatEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.119.1+) The status of snat entry.
+         * @param status (Available since v1.119.1) The status of snat entry.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class SnatEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.119.1+) The status of snat entry.
+         * @param status (Available since v1.119.1) The status of snat entry.
          * 
          * @return builder
          * 

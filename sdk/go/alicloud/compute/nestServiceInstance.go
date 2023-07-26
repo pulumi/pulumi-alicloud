@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -180,6 +181,7 @@ func NewNestServiceInstance(ctx *pulumi.Context,
 	if args.ServiceVersion == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceVersion'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NestServiceInstance
 	err := ctx.RegisterResource("alicloud:compute/nestServiceInstance:NestServiceInstance", name, args, &resource, opts...)
 	if err != nil {

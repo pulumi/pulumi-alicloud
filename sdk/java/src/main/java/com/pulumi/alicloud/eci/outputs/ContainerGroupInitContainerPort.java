@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupInitContainerPort {
     /**
-     * @return The port number. Valid values: 1 to 65535.
+     * @return The port number. Valid values: `1` to `65535`.
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return Valid values: TCP and UDP.
+     * @return The type of the protocol. Valid values: `TCP` and `UDP`.
      * 
      */
     private @Nullable String protocol;
 
     private ContainerGroupInitContainerPort() {}
     /**
-     * @return The port number. Valid values: 1 to 65535.
+     * @return The port number. Valid values: `1` to `65535`.
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Valid values: TCP and UDP.
+     * @return The type of the protocol. Valid values: `TCP` and `UDP`.
      * 
      */
     public Optional<String> protocol() {

@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Rds
     /// <summary>
     /// Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
     /// 
+    /// &gt; **NOTE:** Available since v1.48.0.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -90,15 +92,9 @@ namespace Pulumi.AliCloud.Rds
     /// 
     ///     var exampleReadWriteSplittingConnection = new AliCloud.Rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", new()
     ///     {
-    ///         InstanceId = exampleInstance.Id,
+    ///         InstanceId = exampleReadOnlyInstance.MasterDbInstanceId,
     ///         ConnectionPrefix = "example-con-123",
     ///         DistributionType = "Standard",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             exampleReadOnlyInstance,
-    ///         },
     ///     });
     /// 
     /// });

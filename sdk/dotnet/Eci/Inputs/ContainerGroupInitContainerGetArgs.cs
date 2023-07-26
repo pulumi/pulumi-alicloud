@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container group.
+        /// The amount of CPU resources allocated to the container. Default value: `0`.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupInitContainerEnvironmentVarGetArgs>? _environmentVars;
 
         /// <summary>
-        /// The structure of environmentVars.
+        /// The structure of environmentVars. See `environment_vars` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerEnvironmentVarGetArgs> EnvironmentVars
         {
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         }
 
         /// <summary>
-        /// The number GPUs.
+        /// The number GPUs. Default value: `0`.
         /// </summary>
         [Input("gpu")]
         public Input<int>? Gpu { get; set; }
@@ -67,19 +67,19 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// The restart policy of the image.
+        /// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
         /// </summary>
         [Input("imagePullPolicy")]
         public Input<string>? ImagePullPolicy { get; set; }
 
         /// <summary>
-        /// The amount of memory resources allocated to the container group.
+        /// The amount of memory resources allocated to the container. Default value: `0`.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
 
         /// <summary>
-        /// The name of the volume.
+        /// The name of the mounted volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupInitContainerPortGetArgs>? _ports;
 
         /// <summary>
-        /// The structure of port.
+        /// The structure of port. See `ports` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerPortGetArgs> Ports
         {
@@ -96,9 +96,15 @@ namespace Pulumi.AliCloud.Eci.Inputs
             set => _ports = value;
         }
 
+        /// <summary>
+        /// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+        /// </summary>
         [Input("ready")]
         public Input<bool>? Ready { get; set; }
 
+        /// <summary>
+        /// (Available since v1.208.0) The number of times that the container restarted.
+        /// </summary>
         [Input("restartCount")]
         public Input<int>? RestartCount { get; set; }
 
@@ -106,7 +112,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupInitContainerVolumeMountGetArgs>? _volumeMounts;
 
         /// <summary>
-        /// The structure of volumeMounts.
+        /// The structure of volumeMounts. See `volume_mounts` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerVolumeMountGetArgs> VolumeMounts
         {

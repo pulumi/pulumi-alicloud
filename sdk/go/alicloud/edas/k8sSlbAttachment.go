@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -93,6 +94,7 @@ func NewK8sSlbAttachment(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource K8sSlbAttachment
 	err := ctx.RegisterResource("alicloud:edas/k8sSlbAttachment:K8sSlbAttachment", name, args, &resource, opts...)
 	if err != nil {

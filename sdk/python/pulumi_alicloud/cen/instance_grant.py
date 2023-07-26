@@ -173,12 +173,11 @@ class InstanceGrant(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
         example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
             instance_id=example_instance.id,
-            child_instance_id=child_account_network.id,
+            child_instance_id=child_account_instance_grant.child_instance_id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id,
             child_instance_owner_id=child_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"],
-                depends_on=[child_account_instance_grant]))
+            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
         ```
 
         ## Import
@@ -245,12 +244,11 @@ class InstanceGrant(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
         example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
             instance_id=example_instance.id,
-            child_instance_id=child_account_network.id,
+            child_instance_id=child_account_instance_grant.child_instance_id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id,
             child_instance_owner_id=child_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"],
-                depends_on=[child_account_instance_grant]))
+            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
         ```
 
         ## Import

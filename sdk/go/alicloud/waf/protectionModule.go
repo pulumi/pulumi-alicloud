@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -131,6 +132,7 @@ func NewProtectionModule(ctx *pulumi.Context,
 	if args.Mode == nil {
 		return nil, errors.New("invalid value for required argument 'Mode'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProtectionModule
 	err := ctx.RegisterResource("alicloud:waf/protectionModule:ProtectionModule", name, args, &resource, opts...)
 	if err != nil {

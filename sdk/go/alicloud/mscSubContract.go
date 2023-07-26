@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,6 +90,7 @@ func NewMscSubContract(ctx *pulumi.Context,
 	if args.Position == nil {
 		return nil, errors.New("invalid value for required argument 'Position'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MscSubContract
 	err := ctx.RegisterResource("alicloud:index/mscSubContract:MscSubContract", name, args, &resource, opts...)
 	if err != nil {

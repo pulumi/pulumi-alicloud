@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in v1.126.0+.
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectsResult
 	err := ctx.Invoke("alicloud:log/getProjects:getProjects", args, &rv, opts...)
 	if err != nil {

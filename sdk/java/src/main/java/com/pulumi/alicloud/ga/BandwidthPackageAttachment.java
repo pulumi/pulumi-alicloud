@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Bandwidth Package Attachment resource.
  * 
- * For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/bandwidthpackageaddaccelerator).
+ * For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-bandwidthpackageaddaccelerator).
  * 
  * &gt; **NOTE:** Available since v1.113.0.
  * 

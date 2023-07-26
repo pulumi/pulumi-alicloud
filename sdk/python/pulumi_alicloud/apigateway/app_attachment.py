@@ -170,10 +170,47 @@ class AppAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.apigateway.AppAttachment("foo",
-            api_id="d29d25b9cfdf4742b1a3f6537299a749",
-            app_id="20898181",
-            group_id="aaef8cdbb404420f9398a74ed1db7fff",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
+        example_api = alicloud.apigateway.Api("exampleApi",
+            group_id=example_group.id,
+            description=name,
+            auth_type="APP",
+            force_nonce_check=False,
+            request_config=alicloud.apigateway.ApiRequestConfigArgs(
+                protocol="HTTP",
+                method="GET",
+                path="/example/path",
+                mode="MAPPING",
+            ),
+            service_type="HTTP",
+            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
+                address="http://apigateway-backend.alicloudapi.com:8080",
+                method="GET",
+                path="/web/cloudapi",
+                timeout=12,
+                aone_name="cloudapi-openapi",
+            ),
+            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
+                name="example",
+                type="STRING",
+                required="OPTIONAL",
+                in_="QUERY",
+                in_service="QUERY",
+                name_service="exampleservice",
+            )],
+            stage_names=[
+                "RELEASE",
+                "TEST",
+            ])
+        example_app = alicloud.apigateway.App("exampleApp", description=name)
+        example_app_attachment = alicloud.apigateway.AppAttachment("exampleAppAttachment",
+            api_id=example_api.api_id,
+            group_id=example_group.id,
+            app_id=example_app.id,
             stage_name="PRE")
         ```
 
@@ -199,10 +236,47 @@ class AppAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.apigateway.AppAttachment("foo",
-            api_id="d29d25b9cfdf4742b1a3f6537299a749",
-            app_id="20898181",
-            group_id="aaef8cdbb404420f9398a74ed1db7fff",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
+        example_api = alicloud.apigateway.Api("exampleApi",
+            group_id=example_group.id,
+            description=name,
+            auth_type="APP",
+            force_nonce_check=False,
+            request_config=alicloud.apigateway.ApiRequestConfigArgs(
+                protocol="HTTP",
+                method="GET",
+                path="/example/path",
+                mode="MAPPING",
+            ),
+            service_type="HTTP",
+            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
+                address="http://apigateway-backend.alicloudapi.com:8080",
+                method="GET",
+                path="/web/cloudapi",
+                timeout=12,
+                aone_name="cloudapi-openapi",
+            ),
+            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
+                name="example",
+                type="STRING",
+                required="OPTIONAL",
+                in_="QUERY",
+                in_service="QUERY",
+                name_service="exampleservice",
+            )],
+            stage_names=[
+                "RELEASE",
+                "TEST",
+            ])
+        example_app = alicloud.apigateway.App("exampleApp", description=name)
+        example_app_attachment = alicloud.apigateway.AppAttachment("exampleAppAttachment",
+            api_id=example_api.api_id,
+            group_id=example_group.id,
+            app_id=example_app.id,
             stage_name="PRE")
         ```
 

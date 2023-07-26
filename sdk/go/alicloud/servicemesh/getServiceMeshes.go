@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +63,7 @@ import (
 //
 // ```
 func GetServiceMeshes(ctx *pulumi.Context, args *GetServiceMeshesArgs, opts ...pulumi.InvokeOption) (*GetServiceMeshesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceMeshesResult
 	err := ctx.Invoke("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args, &rv, opts...)
 	if err != nil {

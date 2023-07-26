@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -136,6 +137,7 @@ import (
 //
 // ```
 func GetGatewayVcoRoutes(ctx *pulumi.Context, args *GetGatewayVcoRoutesArgs, opts ...pulumi.InvokeOption) (*GetGatewayVcoRoutesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayVcoRoutesResult
 	err := ctx.Invoke("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", args, &rv, opts...)
 	if err != nil {

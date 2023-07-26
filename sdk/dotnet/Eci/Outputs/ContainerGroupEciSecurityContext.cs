@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupEciSecurityContext
     {
         /// <summary>
-        /// system.
+        /// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupEciSecurityContextSysctl> Sysctls;
 

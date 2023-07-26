@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetEnterpriseProxies(ctx *pulumi.Context, args *GetEnterpriseProxiesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseProxiesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseProxiesResult
 	err := ctx.Invoke("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", args, &rv, opts...)
 	if err != nil {

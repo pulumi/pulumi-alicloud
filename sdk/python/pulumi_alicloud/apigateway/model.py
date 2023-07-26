@@ -165,9 +165,9 @@ class Model(pulumi.CustomResource):
         """
         Provides a Api Gateway Model resource.
 
-        For information about Api Gateway Model and how to use it, see [What is Model](https://help.aliyun.com/document_detail/400372.html).
+        For information about Api Gateway Model and how to use it, see [What is Model](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createmodel).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -209,9 +209,9 @@ class Model(pulumi.CustomResource):
         """
         Provides a Api Gateway Model resource.
 
-        For information about Api Gateway Model and how to use it, see [What is Model](https://help.aliyun.com/document_detail/400372.html).
+        For information about Api Gateway Model and how to use it, see [What is Model](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createmodel).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 

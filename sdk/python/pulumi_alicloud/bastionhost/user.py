@@ -59,7 +59,7 @@ class UserArgs:
                * PH: philippines (+63)
                * CH: Switzerland (+41)
                * SE: Sweden (+46)
-        :param pulumi.Input[str] password: Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        :param pulumi.Input[str] password: Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         :param pulumi.Input[str] source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Frozen`, `Normal`.
         """
@@ -207,7 +207,7 @@ class UserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         """
         return pulumi.get(self, "password")
 
@@ -282,7 +282,7 @@ class _UserState:
                * PH: philippines (+63)
                * CH: Switzerland (+41)
                * SE: Sweden (+46)
-        :param pulumi.Input[str] password: Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        :param pulumi.Input[str] password: Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         :param pulumi.Input[str] source: Specify the New of the User That Created the Source. Valid Values:
                * Local: Local User
                * Ram: Ram User
@@ -414,7 +414,7 @@ class _UserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         """
         return pulumi.get(self, "password")
 
@@ -510,7 +510,7 @@ class User(pulumi.CustomResource):
 
         For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/204503.htm).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -520,21 +520,48 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        local = alicloud.bastionhost.User("local",
-            instance_id="example_value",
-            mobile="13312345678",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        local_user = alicloud.bastionhost.User("localUser",
+            instance_id=default_instance.id,
             mobile_country_code="CN",
+            mobile="13312345678",
             password="YourPassword-123",
             source="Local",
-            user_name="my-local-user")
-        ram = alicloud.bastionhost.User("ram",
-            instance_id="example_value",
-            mobile="13312345678",
-            mobile_country_code="CN",
-            password="YourPassword-123",
+            user_name=f"{name}_local_user")
+        user = alicloud.ram.User("user",
+            display_name=f"{name}_bastionhost_user",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo",
+            force=True)
+        default_account = alicloud.get_account()
+        ram_user = alicloud.bastionhost.User("ramUser",
+            instance_id=default_instance.id,
             source="Ram",
-            source_user_id="1234567890",
-            user_name="my-ram-user")
+            source_user_id=default_account.id,
+            user_name=user.name)
         ```
 
         ## Import
@@ -572,7 +599,7 @@ class User(pulumi.CustomResource):
                * PH: philippines (+63)
                * CH: Switzerland (+41)
                * SE: Sweden (+46)
-        :param pulumi.Input[str] password: Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        :param pulumi.Input[str] password: Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         :param pulumi.Input[str] source: Specify the New of the User That Created the Source. Valid Values:
                * Local: Local User
                * Ram: Ram User
@@ -594,7 +621,7 @@ class User(pulumi.CustomResource):
 
         For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/204503.htm).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -604,21 +631,48 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        local = alicloud.bastionhost.User("local",
-            instance_id="example_value",
-            mobile="13312345678",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        local_user = alicloud.bastionhost.User("localUser",
+            instance_id=default_instance.id,
             mobile_country_code="CN",
+            mobile="13312345678",
             password="YourPassword-123",
             source="Local",
-            user_name="my-local-user")
-        ram = alicloud.bastionhost.User("ram",
-            instance_id="example_value",
-            mobile="13312345678",
-            mobile_country_code="CN",
-            password="YourPassword-123",
+            user_name=f"{name}_local_user")
+        user = alicloud.ram.User("user",
+            display_name=f"{name}_bastionhost_user",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo",
+            force=True)
+        default_account = alicloud.get_account()
+        ram_user = alicloud.bastionhost.User("ramUser",
+            instance_id=default_instance.id,
             source="Ram",
-            source_user_id="1234567890",
-            user_name="my-ram-user")
+            source_user_id=default_account.id,
+            user_name=user.name)
         ```
 
         ## Import
@@ -738,7 +792,7 @@ class User(pulumi.CustomResource):
                * PH: philippines (+63)
                * CH: Switzerland (+41)
                * SE: Sweden (+46)
-        :param pulumi.Input[str] password: Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        :param pulumi.Input[str] password: Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         :param pulumi.Input[str] source: Specify the New of the User That Created the Source. Valid Values:
                * Local: Local User
                * Ram: Ram User
@@ -839,7 +893,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+        Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         """
         return pulumi.get(self, "password")
 

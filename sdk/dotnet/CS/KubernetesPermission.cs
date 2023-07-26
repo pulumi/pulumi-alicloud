@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS
     public partial class KubernetesPermission : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of user permission.
+        /// A list of user permission. See `permissions` below.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.KubernetesPermissionPermission>> Permissions { get; private set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesPermissionPermissionArgs>? _permissions;
 
         /// <summary>
-        /// A list of user permission.
+        /// A list of user permission. See `permissions` below.
         /// </summary>
         public InputList<Inputs.KubernetesPermissionPermissionArgs> Permissions
         {
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesPermissionPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// A list of user permission.
+        /// A list of user permission. See `permissions` below.
         /// </summary>
         public InputList<Inputs.KubernetesPermissionPermissionGetArgs> Permissions
         {

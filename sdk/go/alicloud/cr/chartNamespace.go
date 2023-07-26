@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,6 +91,7 @@ func NewChartNamespace(ctx *pulumi.Context,
 	if args.NamespaceName == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ChartNamespace
 	err := ctx.RegisterResource("alicloud:cr/chartNamespace:ChartNamespace", name, args, &resource, opts...)
 	if err != nil {

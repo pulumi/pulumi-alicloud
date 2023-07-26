@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetPrefixLists(ctx *pulumi.Context, args *GetPrefixListsArgs, opts ...pulumi.InvokeOption) (*GetPrefixListsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrefixListsResult
 	err := ctx.Invoke("alicloud:vpc/getPrefixLists:getPrefixLists", args, &rv, opts...)
 	if err != nil {

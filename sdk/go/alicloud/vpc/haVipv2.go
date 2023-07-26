@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -153,6 +154,7 @@ func NewHaVipv2(ctx *pulumi.Context,
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HaVipv2
 	err := ctx.RegisterResource("alicloud:vpc/haVipv2:HaVipv2", name, args, &resource, opts...)
 	if err != nil {

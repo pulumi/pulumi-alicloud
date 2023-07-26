@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The value of the key that is used to filter logs imported from Log Service.
+        /// The tag value of the metric.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

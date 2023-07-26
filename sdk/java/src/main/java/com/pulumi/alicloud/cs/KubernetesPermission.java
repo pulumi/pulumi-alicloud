@@ -19,14 +19,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/kubernetesPermission:KubernetesPermission")
 public class KubernetesPermission extends com.pulumi.resources.CustomResource {
     /**
-     * A list of user permission.
+     * A list of user permission. See `permissions` below.
      * 
      */
     @Export(name="permissions", type=List.class, parameters={KubernetesPermissionPermission.class})
     private Output</* @Nullable */ List<KubernetesPermissionPermission>> permissions;
 
     /**
-     * @return A list of user permission.
+     * @return A list of user permission. See `permissions` below.
      * 
      */
     public Output<Optional<List<KubernetesPermissionPermission>>> permissions() {

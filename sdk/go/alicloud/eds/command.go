@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -146,6 +147,7 @@ func NewCommand(ctx *pulumi.Context,
 	if args.DesktopId == nil {
 		return nil, errors.New("invalid value for required argument 'DesktopId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Command
 	err := ctx.RegisterResource("alicloud:eds/command:Command", name, args, &resource, opts...)
 	if err != nil {

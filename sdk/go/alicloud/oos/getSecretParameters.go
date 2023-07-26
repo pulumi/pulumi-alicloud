@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in v1.147.0+.
 func GetSecretParameters(ctx *pulumi.Context, args *GetSecretParametersArgs, opts ...pulumi.InvokeOption) (*GetSecretParametersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretParametersResult
 	err := ctx.Invoke("alicloud:oos/getSecretParameters:getSecretParameters", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetIpSets(ctx *pulumi.Context, args *GetIpSetsArgs, opts ...pulumi.InvokeOption) (*GetIpSetsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpSetsResult
 	err := ctx.Invoke("alicloud:ga/getIpSets:getIpSets", args, &rv, opts...)
 	if err != nil {

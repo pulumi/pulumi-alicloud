@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Ip Set resource.
 //
-// For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/doc-detail/153246.htm).
+// For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createipsets).
 //
 // > **NOTE:** Available since v1.113.0.
 //
@@ -121,6 +122,7 @@ func NewIpSet(ctx *pulumi.Context,
 	if args.AcceleratorId == nil {
 		return nil, errors.New("invalid value for required argument 'AcceleratorId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IpSet
 	err := ctx.RegisterResource("alicloud:ga/ipSet:IpSet", name, args, &resource, opts...)
 	if err != nil {

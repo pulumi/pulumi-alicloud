@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetIpv4Gateways(ctx *pulumi.Context, args *GetIpv4GatewaysArgs, opts ...pulumi.InvokeOption) (*GetIpv4GatewaysResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpv4GatewaysResult
 	err := ctx.Invoke("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", args, &rv, opts...)
 	if err != nil {

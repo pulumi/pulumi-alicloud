@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +56,7 @@ import (
 //
 // ```
 func GetPrometheusAlertRules(ctx *pulumi.Context, args *GetPrometheusAlertRulesArgs, opts ...pulumi.InvokeOption) (*GetPrometheusAlertRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrometheusAlertRulesResult
 	err := ctx.Invoke("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args, &rv, opts...)
 	if err != nil {

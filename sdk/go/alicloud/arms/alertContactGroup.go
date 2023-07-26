@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Application Real-Time Monitoring Service (ARMS) Alert Contact Group resource.
 //
-// For information about Application Real-Time Monitoring Service (ARMS) Alert Contact Group and how to use it, see [What is Alert Contact Group](https://www.alibabacloud.com/help/zh/doc-detail/130677.htm).
+// For information about Application Real-Time Monitoring Service (ARMS) Alert Contact Group and how to use it, see [What is Alert Contact Group](https://www.alibabacloud.com/help/en/doc-detail/130677.htm).
 //
-// > **NOTE:** Available in v1.131.0+.
+// > **NOTE:** Available since v1.131.0.
 //
 // ## Example Usage
 //
@@ -85,6 +86,7 @@ func NewAlertContactGroup(ctx *pulumi.Context,
 	if args.AlertContactGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'AlertContactGroupName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AlertContactGroup
 	err := ctx.RegisterResource("alicloud:arms/alertContactGroup:AlertContactGroup", name, args, &resource, opts...)
 	if err != nil {

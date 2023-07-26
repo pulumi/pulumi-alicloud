@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,63 @@ import (
 //
 // For information about CR Endpoint Acl Policy and how to use it, see [What is Endpoint Acl Policy](https://www.alibabacloud.com/help/doc-detail/145275.htm).
 //
-// > **NOTE:** Available in v1.139.0+.
+// > **NOTE:** Available since v1.139.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "defaultRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				InstanceName:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEndpointAclService := cr.GetEndpointAclServiceOutput(ctx, cr.GetEndpointAclServiceOutputArgs{
+//				EndpointType: pulumi.String("internet"),
+//				Enable:       pulumi.Bool(true),
+//				InstanceId:   defaultRegistryEnterpriseInstance.ID(),
+//				ModuleName:   pulumi.String("Registry"),
+//			}, nil)
+//			_, err = cr.NewEndpointAclPolicy(ctx, "defaultEndpointAclPolicy", &cr.EndpointAclPolicyArgs{
+//				InstanceId: defaultEndpointAclService.ApplyT(func(defaultEndpointAclService cr.GetEndpointAclServiceResult) (*string, error) {
+//					return &defaultEndpointAclService.InstanceId, nil
+//				}).(pulumi.StringPtrOutput),
+//				Entry:        pulumi.String("192.168.1.0/24"),
+//				Description:  pulumi.String(name),
+//				ModuleName:   pulumi.String("Registry"),
+//				EndpointType: pulumi.String("internet"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -57,6 +114,7 @@ func NewEndpointAclPolicy(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EndpointAclPolicy
 	err := ctx.RegisterResource("alicloud:cr/endpointAclPolicy:EndpointAclPolicy", name, args, &resource, opts...)
 	if err != nil {

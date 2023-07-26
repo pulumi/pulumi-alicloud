@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cms
     /// <summary>
     /// Provides a Cloud Monitor Service Monitor Group resource.
     /// 
-    /// For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/doc-detail/115030.htm).
+    /// For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.113.0+.
+    /// &gt; **NOTE:** Available since v1.113.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var example = new AliCloud.Cms.MonitorGroup("example", new()
     ///     {
-    ///         MonitorGroupName = "tf-testaccmonitorgroup",
+    ///         MonitorGroupName = "tf-example-accmonitorgroup",
     ///     });
     /// 
     ///     var default2 = new AliCloud.Cms.MonitorGroup("default2", new()
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Cms
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "Acceptance-test" },
+    ///             { "For", "Acceptance-example" },
     ///         },
     ///     });
     /// 

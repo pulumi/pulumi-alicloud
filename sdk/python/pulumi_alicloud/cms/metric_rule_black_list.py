@@ -37,7 +37,7 @@ class MetricRuleBlackListArgs:
         :param pulumi.Input[str] enable_end_time: The start timestamp of the alert blacklist policy.Unit: milliseconds.
         :param pulumi.Input[str] enable_start_time: The end timestamp of the alert blacklist policy.Unit: milliseconds.
         :param pulumi.Input[bool] is_enable: The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]] metrics: Monitoring metrics in the instance.See the following `Block Metrics`.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]] metrics: Monitoring metrics in the instance. See `metrics` below.
         :param pulumi.Input[str] scope_type: The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_values: Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
         """
@@ -160,7 +160,7 @@ class MetricRuleBlackListArgs:
     @pulumi.getter
     def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]:
         """
-        Monitoring metrics in the instance.See the following `Block Metrics`.
+        Monitoring metrics in the instance. See `metrics` below.
         """
         return pulumi.get(self, "metrics")
 
@@ -221,7 +221,7 @@ class _MetricRuleBlackListState:
         :param pulumi.Input[bool] is_enable: The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
         :param pulumi.Input[str] metric_rule_black_list_id: The ID of the blacklist policy.
         :param pulumi.Input[str] metric_rule_black_list_name: The name of the alert blacklist policy.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]] metrics: Monitoring metrics in the instance.See the following `Block Metrics`.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]] metrics: Monitoring metrics in the instance. See `metrics` below.
         :param pulumi.Input[str] namespace: The data namespace of the cloud service.
         :param pulumi.Input[str] scope_type: The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_values: Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
@@ -368,7 +368,7 @@ class _MetricRuleBlackListState:
     @pulumi.getter
     def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]:
         """
-        Monitoring metrics in the instance.See the following `Block Metrics`.
+        Monitoring metrics in the instance. See `metrics` below.
         """
         return pulumi.get(self, "metrics")
 
@@ -447,7 +447,53 @@ class MetricRuleBlackList(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Metric Rule Black List and how to use it, see [What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        default_metric_rule_black_list = alicloud.cms.MetricRuleBlackList("defaultMetricRuleBlackList",
+            instances=[default_instance.id.apply(lambda id: f"{{\\"instancceId\\":\\"{id}\\"}}")],
+            metrics=[alicloud.cms.MetricRuleBlackListMetricArgs(
+                metric_name="disk_utilization",
+            )],
+            category="ecs",
+            enable_end_time="1799443209000",
+            namespace="acs_ecs_dashboard",
+            enable_start_time="1689243209000",
+            metric_rule_black_list_name=name)
+        ```
 
         ## Import
 
@@ -466,7 +512,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of instances of cloud services specified in the alert blacklist policy.
         :param pulumi.Input[bool] is_enable: The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
         :param pulumi.Input[str] metric_rule_black_list_name: The name of the alert blacklist policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRuleBlackListMetricArgs']]]] metrics: Monitoring metrics in the instance.See the following `Block Metrics`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRuleBlackListMetricArgs']]]] metrics: Monitoring metrics in the instance. See `metrics` below.
         :param pulumi.Input[str] namespace: The data namespace of the cloud service.
         :param pulumi.Input[str] scope_type: The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_values: Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
@@ -482,7 +528,53 @@ class MetricRuleBlackList(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Metric Rule Black List and how to use it, see [What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        default_metric_rule_black_list = alicloud.cms.MetricRuleBlackList("defaultMetricRuleBlackList",
+            instances=[default_instance.id.apply(lambda id: f"{{\\"instancceId\\":\\"{id}\\"}}")],
+            metrics=[alicloud.cms.MetricRuleBlackListMetricArgs(
+                metric_name="disk_utilization",
+            )],
+            category="ecs",
+            enable_end_time="1799443209000",
+            namespace="acs_ecs_dashboard",
+            enable_start_time="1689243209000",
+            metric_rule_black_list_name=name)
+        ```
 
         ## Import
 
@@ -589,7 +681,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         :param pulumi.Input[bool] is_enable: The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
         :param pulumi.Input[str] metric_rule_black_list_id: The ID of the blacklist policy.
         :param pulumi.Input[str] metric_rule_black_list_name: The name of the alert blacklist policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRuleBlackListMetricArgs']]]] metrics: Monitoring metrics in the instance.See the following `Block Metrics`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRuleBlackListMetricArgs']]]] metrics: Monitoring metrics in the instance. See `metrics` below.
         :param pulumi.Input[str] namespace: The data namespace of the cloud service.
         :param pulumi.Input[str] scope_type: The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_values: Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
@@ -691,7 +783,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
     @pulumi.getter
     def metrics(self) -> pulumi.Output[Optional[Sequence['outputs.MetricRuleBlackListMetric']]]:
         """
-        Monitoring metrics in the instance.See the following `Block Metrics`.
+        Monitoring metrics in the instance. See `metrics` below.
         """
         return pulumi.get(self, "metrics")
 

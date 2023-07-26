@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +22,8 @@ import (
 //
 // > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
 //
+// > **NOTE:** Available since v1.117.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -32,75 +35,86 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("10.1.0.0/21"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
-//				VpcId:     vpc.ID(),
-//				CidrBlock: pulumi.String("10.1.1.0/24"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vpc,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
-//				MostRecent: pulumi.BoolRef(true),
-//				Owners:     pulumi.StringRef("system"),
+//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(exampleZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
-//				Description: pulumi.String("New security group"),
-//				VpcId:       vpc.ID(),
+//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
-//				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: *pulumi.String(exampleZones.Zones[0].Id),
+//				InstanceName:     pulumi.String(name),
+//				ImageId:          *pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					group.ID(),
+//					exampleSecurityGroup.ID(),
 //				},
-//				VswitchId:    vsw.ID(),
-//				InstanceName: pulumi.String("hello"),
+//				VswitchId: exampleSwitch.ID(),
 //				Tags: pulumi.StringMap{
-//					"Name": pulumi.String("TerraformTest-instance"),
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			eip, err := ecs.NewEipAddress(ctx, "eip", nil)
+//			exampleEipAddress, err := ecs.NewEipAddress(ctx, "exampleEipAddress", &ecs.EipAddressArgs{
+//				AddressName: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEipAssociation(ctx, "eipAsso", &ecs.EipAssociationArgs{
-//				AllocationId: eip.ID(),
-//				InstanceId:   ecsInstance.ID(),
+//			_, err = ecs.NewEipAssociation(ctx, "exampleEipAssociation", &ecs.EipAssociationArgs{
+//				AllocationId: exampleEipAddress.ID(),
+//				InstanceId:   exampleInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -154,6 +168,7 @@ func NewEipAssociation(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EipAssociation
 	err := ctx.RegisterResource("alicloud:ecs/eipAssociation:EipAssociation", name, args, &resource, opts...)
 	if err != nil {

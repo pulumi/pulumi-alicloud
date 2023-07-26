@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Basic Accelerator resource.
 //
-// For information about Global Accelerator (GA) Basic Accelerator and how to use it, see [What is Basic Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/createbasicaccelerator).
+// For information about Global Accelerator (GA) Basic Accelerator and how to use it, see [What is Basic Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerator).
 //
 // > **NOTE:** Available since v1.194.0.
 //
@@ -95,6 +96,7 @@ func NewBasicAccelerator(ctx *pulumi.Context,
 		args = &BasicAcceleratorArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BasicAccelerator
 	err := ctx.RegisterResource("alicloud:ga/basicAccelerator:BasicAccelerator", name, args, &resource, opts...)
 	if err != nil {

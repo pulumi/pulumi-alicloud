@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -144,6 +145,7 @@ func NewLogTailAttachment(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LogTailAttachment
 	err := ctx.RegisterResource("alicloud:log/logTailAttachment:LogTailAttachment", name, args, &resource, opts...)
 	if err != nil {

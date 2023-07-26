@@ -100,9 +100,9 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         """
         Provides a Resource Manager Control Policy Attachment resource.
 
-        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://help.aliyun.com/document_detail/208330.html).
+        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-doc-resourcedirectorymaster-2022-04-19-api-doc-attachcontrolpolicy).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
 
         ## Example Usage
 
@@ -112,11 +112,13 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Enable the control policy
-        example_resource_directory = alicloud.resourcemanager.ResourceDirectory("exampleResourceDirectory", status="Enabled")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example_control_policy = alicloud.resourcemanager.ControlPolicy("exampleControlPolicy",
-            control_policy_name="tf-testAccName",
-            description="tf-testAccRDControlPolicy",
+            control_policy_name=name,
+            description=name,
             effect_scope="RAM",
             policy_document=\"\"\"  {
             "Version": "1",
@@ -134,11 +136,10 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             ]
           }
         \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name="tf-testAccName")
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
         example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment",
             policy_id=example_control_policy.id,
-            target_id=example_folder.id,
-            opts=pulumi.ResourceOptions(depends_on=[example_resource_directory]))
+            target_id=example_folder.id)
         ```
 
         ## Import
@@ -163,9 +164,9 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         """
         Provides a Resource Manager Control Policy Attachment resource.
 
-        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://help.aliyun.com/document_detail/208330.html).
+        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-doc-resourcedirectorymaster-2022-04-19-api-doc-attachcontrolpolicy).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
 
         ## Example Usage
 
@@ -175,11 +176,13 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Enable the control policy
-        example_resource_directory = alicloud.resourcemanager.ResourceDirectory("exampleResourceDirectory", status="Enabled")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example_control_policy = alicloud.resourcemanager.ControlPolicy("exampleControlPolicy",
-            control_policy_name="tf-testAccName",
-            description="tf-testAccRDControlPolicy",
+            control_policy_name=name,
+            description=name,
             effect_scope="RAM",
             policy_document=\"\"\"  {
             "Version": "1",
@@ -197,11 +200,10 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             ]
           }
         \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name="tf-testAccName")
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
         example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment",
             policy_id=example_control_policy.id,
-            target_id=example_folder.id,
-            opts=pulumi.ResourceOptions(depends_on=[example_resource_directory]))
+            target_id=example_folder.id)
         ```
 
         ## Import

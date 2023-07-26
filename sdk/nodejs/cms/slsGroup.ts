@@ -11,28 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Monitor Service Sls Group and how to use it, see [What is Sls Group](https://www.alibabacloud.com/help/doc-detail/28608.htm).
  *
- * > **NOTE:** Available in v1.171.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const this = alicloud.getAccount({});
- * const _default = new alicloud.cms.SlsGroup("default", {
- *     slsGroupConfigs: [{
- *         slsUserId: _this.then(_this => _this.id),
- *         slsLogstore: "Logstore-ECS",
- *         slsProject: "aliyun-project",
- *         slsRegion: "cn-hangzhou",
- *     }],
- *     slsGroupDescription: _var.name,
- *     slsGroupName: _var.name,
- * });
- * ```
+ * > **NOTE:** Available since v1.171.0.
  *
  * ## Import
  *
@@ -71,7 +50,7 @@ export class SlsGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+     * The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
      */
     public readonly slsGroupConfigs!: pulumi.Output<outputs.cms.SlsGroupSlsGroupConfig[]>;
     /**
@@ -121,7 +100,7 @@ export class SlsGroup extends pulumi.CustomResource {
  */
 export interface SlsGroupState {
     /**
-     * The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+     * The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
      */
     slsGroupConfigs?: pulumi.Input<pulumi.Input<inputs.cms.SlsGroupSlsGroupConfig>[]>;
     /**
@@ -139,7 +118,7 @@ export interface SlsGroupState {
  */
 export interface SlsGroupArgs {
     /**
-     * The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+     * The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
      */
     slsGroupConfigs: pulumi.Input<pulumi.Input<inputs.cms.SlsGroupSlsGroupConfig>[]>;
     /**

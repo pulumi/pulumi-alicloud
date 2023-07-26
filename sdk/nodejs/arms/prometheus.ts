@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-createprometheusinstance).
  *
- * > **NOTE:** Available in v1.203.0+.
+ * > **NOTE:** Available since v1.203.0.
  *
  * ## Example Usage
  *
@@ -19,21 +19,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "your_name_regex",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.zones).length]).then(([defaultZones, length]) => defaultZones.zones[length - 1].id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
  * const defaultPrometheus = new alicloud.arms.Prometheus("defaultPrometheus", {
  *     clusterType: "ecs",
  *     grafanaInstanceId: "free",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vpcId: defaultNetwork.id,
+ *     vswitchId: defaultSwitch.id,
  *     securityGroupId: defaultSecurityGroup.id,
- *     clusterName: defaultNetworks.then(defaultNetworks => `${_var.name}-${defaultNetworks.ids?.[0]}`),
+ *     clusterName: pulumi.interpolate`${name}-${defaultNetwork.id}`,
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     tags: {
  *         Created: "TF",

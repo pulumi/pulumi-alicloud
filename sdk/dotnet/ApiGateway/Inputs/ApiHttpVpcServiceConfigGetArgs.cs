@@ -12,29 +12,32 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
 
     public sealed class ApiHttpVpcServiceConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of aone.
+        /// </summary>
         [Input("aoneName")]
         public Input<string>? AoneName { get; set; }
 
         /// <summary>
-        /// The method of the api, including 'GET','POST','PUT' etc.
+        /// The http method of backend service.
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
 
         /// <summary>
-        /// The name of the api gateway api. Defaults to null.
+        /// The name of vpc instance.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The request path of the api.
+        /// The path of backend service.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// Backend service time-out time; unit: millisecond.
+        /// Backend service time-out time. Unit: millisecond.
         /// </summary>
         [Input("timeout", required: true)]
         public Input<int> Timeout { get; set; } = null!;

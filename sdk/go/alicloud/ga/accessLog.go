@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Global Accelerator (GA) Access Log resource.
 //
-// For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/attachlogstoretoendpointgroup).
+// For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-attachlogstoretoendpointgroup).
 //
 // > **NOTE:** Available since v1.187.0.
 //
@@ -192,6 +193,7 @@ func NewAccessLog(ctx *pulumi.Context,
 	if args.SlsRegionId == nil {
 		return nil, errors.New("invalid value for required argument 'SlsRegionId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessLog
 	err := ctx.RegisterResource("alicloud:ga/accessLog:AccessLog", name, args, &resource, opts...)
 	if err != nil {

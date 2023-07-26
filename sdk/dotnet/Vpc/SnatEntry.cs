@@ -12,6 +12,71 @@ namespace Pulumi.AliCloud.Vpc
     /// <summary>
     /// Provides a snat resource.
     /// 
+    /// &gt; **NOTE:** Available since v1.119.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         NatGatewayName = name,
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         NatType = "Enhanced",
+    ///     });
+    /// 
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     {
+    ///         AddressName = name,
+    ///     });
+    /// 
+    ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new()
+    ///     {
+    ///         AllocationId = defaultEipAddress.Id,
+    ///         InstanceId = defaultNatGateway.Id,
+    ///     });
+    /// 
+    ///     var defaultSnatEntry = new AliCloud.Vpc.SnatEntry("defaultSnatEntry", new()
+    ///     {
+    ///         SnatTableId = defaultNatGateway.SnatTableIds,
+    ///         SourceVswitchId = defaultSwitch.Id,
+    ///         SnatIp = defaultEipAddress.IpAddress,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Snat Entry can be imported using the id, e.g.
@@ -60,7 +125,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> SourceVswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.119.1+) The status of snat entry.
+        /// (Available since v1.119.1) The status of snat entry.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -186,7 +251,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? SourceVswitchId { get; set; }
 
         /// <summary>
-        /// (Available in 1.119.1+) The status of snat entry.
+        /// (Available since v1.119.1) The status of snat entry.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

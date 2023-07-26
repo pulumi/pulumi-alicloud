@@ -367,7 +367,7 @@ class DataLimit(pulumi.CustomResource):
 
         For information about Data Security Center Data Limit and how to use it, see [What is Data Limit](https://www.alibabacloud.com/help/en/doc-detail/158987.html).
 
-        > **NOTE:** Available in v1.159.0+.
+        > **NOTE:** Available since v1.159.0.
 
         ## Import
 
@@ -401,7 +401,7 @@ class DataLimit(pulumi.CustomResource):
 
         For information about Data Security Center Data Limit and how to use it, see [What is Data Limit](https://www.alibabacloud.com/help/en/doc-detail/158987.html).
 
-        > **NOTE:** Available in v1.159.0+.
+        > **NOTE:** Available since v1.159.0.
 
         ## Import
 

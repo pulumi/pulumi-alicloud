@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,6 +92,7 @@ func NewCommonBandwithPackageAttachment(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CommonBandwithPackageAttachment
 	err := ctx.RegisterResource("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment", name, args, &resource, opts...)
 	if err != nil {

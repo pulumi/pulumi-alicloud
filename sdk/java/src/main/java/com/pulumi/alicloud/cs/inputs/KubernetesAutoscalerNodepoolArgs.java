@@ -15,23 +15,47 @@ public final class KubernetesAutoscalerNodepoolArgs extends com.pulumi.resources
 
     public static final KubernetesAutoscalerNodepoolArgs Empty = new KubernetesAutoscalerNodepoolArgs();
 
+    /**
+     * The scaling group id of the groups configured for cluster-autoscaler.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return The scaling group id of the groups configured for cluster-autoscaler.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * The labels for the nodes in scaling group.
+     * 
+     */
     @Import(name="labels")
     private @Nullable Output<String> labels;
 
+    /**
+     * @return The labels for the nodes in scaling group.
+     * 
+     */
     public Optional<Output<String>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
+    /**
+     * The taints for the nodes in scaling group.
+     * 
+     */
     @Import(name="taints")
     private @Nullable Output<String> taints;
 
+    /**
+     * @return The taints for the nodes in scaling group.
+     * 
+     */
     public Optional<Output<String>> taints() {
         return Optional.ofNullable(this.taints);
     }
@@ -62,29 +86,65 @@ public final class KubernetesAutoscalerNodepoolArgs extends com.pulumi.resources
             $ = new KubernetesAutoscalerNodepoolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id The scaling group id of the groups configured for cluster-autoscaler.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The scaling group id of the groups configured for cluster-autoscaler.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param labels The labels for the nodes in scaling group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(@Nullable Output<String> labels) {
             $.labels = labels;
             return this;
         }
 
+        /**
+         * @param labels The labels for the nodes in scaling group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(String labels) {
             return labels(Output.of(labels));
         }
 
+        /**
+         * @param taints The taints for the nodes in scaling group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(@Nullable Output<String> taints) {
             $.taints = taints;
             return this;
         }
 
+        /**
+         * @param taints The taints for the nodes in scaling group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(String taints) {
             return taints(Output.of(taints));
         }

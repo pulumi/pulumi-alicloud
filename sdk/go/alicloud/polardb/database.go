@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -113,6 +114,7 @@ func NewDatabase(ctx *pulumi.Context,
 	if args.DbName == nil {
 		return nil, errors.New("invalid value for required argument 'DbName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Database
 	err := ctx.RegisterResource("alicloud:polardb/database:Database", name, args, &resource, opts...)
 	if err != nil {

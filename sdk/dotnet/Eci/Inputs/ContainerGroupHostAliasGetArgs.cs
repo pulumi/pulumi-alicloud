@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// Adds a host name.
+        /// The information about the host.
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         }
 
         /// <summary>
-        /// Adds an IP address.
+        /// The IP address of the host.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }

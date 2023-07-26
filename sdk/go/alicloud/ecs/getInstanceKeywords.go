@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetInstanceKeywords(ctx *pulumi.Context, args *GetInstanceKeywordsArgs, opts ...pulumi.InvokeOption) (*GetInstanceKeywordsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceKeywordsResult
 	err := ctx.Invoke("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetGrantRuleToCens(ctx *pulumi.Context, args *GetGrantRuleToCensArgs, opts ...pulumi.InvokeOption) (*GetGrantRuleToCensResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGrantRuleToCensResult
 	err := ctx.Invoke("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args, &rv, opts...)
 	if err != nil {

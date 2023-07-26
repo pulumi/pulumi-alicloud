@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +56,7 @@ import (
 //
 // ```
 func GetLifecyclePolicies(ctx *pulumi.Context, args *GetLifecyclePoliciesArgs, opts ...pulumi.InvokeOption) (*GetLifecyclePoliciesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLifecyclePoliciesResult
 	err := ctx.Invoke("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetAccelerators(ctx *pulumi.Context, args *GetAcceleratorsArgs, opts ...pulumi.InvokeOption) (*GetAcceleratorsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAcceleratorsResult
 	err := ctx.Invoke("alicloud:ga/getAccelerators:getAccelerators", args, &rv, opts...)
 	if err != nil {

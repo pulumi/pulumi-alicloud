@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +72,7 @@ import (
 //
 // ```
 func GetIpv6EgressRules(ctx *pulumi.Context, args *GetIpv6EgressRulesArgs, opts ...pulumi.InvokeOption) (*GetIpv6EgressRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpv6EgressRulesResult
 	err := ctx.Invoke("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args, &rv, opts...)
 	if err != nil {

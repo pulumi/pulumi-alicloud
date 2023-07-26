@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetTrails(ctx *pulumi.Context, args *GetTrailsArgs, opts ...pulumi.InvokeOption) (*GetTrailsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrailsResult
 	err := ctx.Invoke("alicloud:actiontrail/getTrails:getTrails", args, &rv, opts...)
 	if err != nil {

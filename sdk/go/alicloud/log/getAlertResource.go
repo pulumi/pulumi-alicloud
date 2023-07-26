@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +51,7 @@ import (
 //
 // ```
 func GetAlertResource(ctx *pulumi.Context, args *GetAlertResourceArgs, opts ...pulumi.InvokeOption) (*GetAlertResourceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlertResourceResult
 	err := ctx.Invoke("alicloud:log/getAlertResource:getAlertResource", args, &rv, opts...)
 	if err != nil {

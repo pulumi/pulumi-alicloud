@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Data Security Center Data Limit and how to use it, see [What is Data Limit](https://www.alibabacloud.com/help/en/doc-detail/158987.html).
 //
-// > **NOTE:** Available in v1.159.0+.
+// > **NOTE:** Available since v1.159.0.
 //
 // ## Import
 //
@@ -61,6 +62,7 @@ func NewDataLimit(ctx *pulumi.Context,
 	if args.ResourceType == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DataLimit
 	err := ctx.RegisterResource("alicloud:sddp/dataLimit:DataLimit", name, args, &resource, opts...)
 	if err != nil {

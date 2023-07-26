@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Config Aggregator resource.
 //
-// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/doc-detail/211197.html).
+// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
 //
-// > **NOTE:** Available in v1.124.0+.
+// > **NOTE:** Available since v1.124.0.
 //
 // ## Example Usage
 //
@@ -27,22 +28,36 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfg.NewAggregator(ctx, "example", &cfg.AggregatorArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
+//				Status: pulumi.StringRef("CreateSuccess"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   pulumi.String("123968452689****"),
-//						AccountName: pulumi.String("tf-testacc1234"),
+//						AccountId:   *pulumi.String(defaultAccounts.Accounts[0].AccountId),
+//						AccountName: *pulumi.String(defaultAccounts.Accounts[0].DisplayName),
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},
-//				AggregatorName: pulumi.String("tf-testaccConfigAggregator1234"),
-//				Description:    pulumi.String("tf-testaccConfigAggregator1234"),
+//				AggregatorName: pulumi.String(name),
+//				Description:    pulumi.String(name),
+//				AggregatorType: pulumi.String("CUSTOM"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +80,7 @@ import (
 type Aggregator struct {
 	pulumi.CustomResourceState
 
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts AggregatorAggregatorAccountArrayOutput `pulumi:"aggregatorAccounts"`
 	// The name of aggregator.
 	AggregatorName pulumi.StringOutput `pulumi:"aggregatorName"`
@@ -90,6 +105,7 @@ func NewAggregator(ctx *pulumi.Context,
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Aggregator
 	err := ctx.RegisterResource("alicloud:cfg/aggregator:Aggregator", name, args, &resource, opts...)
 	if err != nil {
@@ -112,7 +128,7 @@ func GetAggregator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Aggregator resources.
 type aggregatorState struct {
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
 	// The name of aggregator.
 	AggregatorName *string `pulumi:"aggregatorName"`
@@ -125,7 +141,7 @@ type aggregatorState struct {
 }
 
 type AggregatorState struct {
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
 	// The name of aggregator.
 	AggregatorName pulumi.StringPtrInput
@@ -142,7 +158,7 @@ func (AggregatorState) ElementType() reflect.Type {
 }
 
 type aggregatorArgs struct {
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
 	// The name of aggregator.
 	AggregatorName string `pulumi:"aggregatorName"`
@@ -154,7 +170,7 @@ type aggregatorArgs struct {
 
 // The set of arguments for constructing a Aggregator resource.
 type AggregatorArgs struct {
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
 	// The name of aggregator.
 	AggregatorName pulumi.StringInput
@@ -251,7 +267,7 @@ func (o AggregatorOutput) ToAggregatorOutputWithContext(ctx context.Context) Agg
 	return o
 }
 
-// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 func (o AggregatorOutput) AggregatorAccounts() AggregatorAggregatorAccountArrayOutput {
 	return o.ApplyT(func(v *Aggregator) AggregatorAggregatorAccountArrayOutput { return v.AggregatorAccounts }).(AggregatorAggregatorAccountArrayOutput)
 }

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? PromQl;
         /// <summary>
-        /// Critical level alarm retry times. Default to 3.
+        /// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
         /// </summary>
         public readonly int? Times;
 

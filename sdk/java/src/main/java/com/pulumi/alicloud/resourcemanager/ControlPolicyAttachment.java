@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Resource Manager Control Policy Attachment resource.
  * 
- * For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://help.aliyun.com/document_detail/208330.html).
+ * For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-doc-resourcedirectorymaster-2022-04-19-api-doc-attachcontrolpolicy).
  * 
- * &gt; **NOTE:** Available in v1.120.0+.
+ * &gt; **NOTE:** Available since v1.120.0.
  * 
  * ## Example Usage
  * 
@@ -29,15 +29,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourceDirectory;
- * import com.pulumi.alicloud.resourcemanager.ResourceDirectoryArgs;
  * import com.pulumi.alicloud.resourcemanager.ControlPolicy;
  * import com.pulumi.alicloud.resourcemanager.ControlPolicyArgs;
  * import com.pulumi.alicloud.resourcemanager.Folder;
  * import com.pulumi.alicloud.resourcemanager.FolderArgs;
  * import com.pulumi.alicloud.resourcemanager.ControlPolicyAttachment;
  * import com.pulumi.alicloud.resourcemanager.ControlPolicyAttachmentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,13 +48,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleResourceDirectory = new ResourceDirectory(&#34;exampleResourceDirectory&#34;, ResourceDirectoryArgs.builder()        
- *             .status(&#34;Enabled&#34;)
- *             .build());
- * 
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var exampleControlPolicy = new ControlPolicy(&#34;exampleControlPolicy&#34;, ControlPolicyArgs.builder()        
- *             .controlPolicyName(&#34;tf-testAccName&#34;)
- *             .description(&#34;tf-testAccRDControlPolicy&#34;)
+ *             .controlPolicyName(name)
+ *             .description(name)
  *             .effectScope(&#34;RAM&#34;)
  *             .policyDocument(&#34;&#34;&#34;
  *   {
@@ -79,15 +74,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleFolder = new Folder(&#34;exampleFolder&#34;, FolderArgs.builder()        
- *             .folderName(&#34;tf-testAccName&#34;)
+ *             .folderName(name)
  *             .build());
  * 
  *         var exampleControlPolicyAttachment = new ControlPolicyAttachment(&#34;exampleControlPolicyAttachment&#34;, ControlPolicyAttachmentArgs.builder()        
  *             .policyId(exampleControlPolicy.id())
  *             .targetId(exampleFolder.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(exampleResourceDirectory)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

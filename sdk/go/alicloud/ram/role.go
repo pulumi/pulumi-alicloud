@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,6 +107,7 @@ func NewRole(ctx *pulumi.Context,
 		args = &RoleArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Role
 	err := ctx.RegisterResource("alicloud:ram/role:Role", name, args, &resource, opts...)
 	if err != nil {

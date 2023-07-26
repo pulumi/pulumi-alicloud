@@ -88,6 +88,10 @@ export class DomainResource extends pulumi.CustomResource {
      */
     public readonly instanceIds!: pulumi.Output<string[]>;
     /**
+     * Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+     */
+    public readonly ocspEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Protocol type and port number information. See `proxyTypes` below.
      * > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
      */
@@ -118,6 +122,7 @@ export class DomainResource extends pulumi.CustomResource {
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["httpsExt"] = state ? state.httpsExt : undefined;
             resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
+            resourceInputs["ocspEnabled"] = state ? state.ocspEnabled : undefined;
             resourceInputs["proxyTypes"] = state ? state.proxyTypes : undefined;
             resourceInputs["realServers"] = state ? state.realServers : undefined;
             resourceInputs["rsType"] = state ? state.rsType : undefined;
@@ -141,6 +146,7 @@ export class DomainResource extends pulumi.CustomResource {
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["httpsExt"] = args ? args.httpsExt : undefined;
             resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
+            resourceInputs["ocspEnabled"] = args ? args.ocspEnabled : undefined;
             resourceInputs["proxyTypes"] = args ? args.proxyTypes : undefined;
             resourceInputs["realServers"] = args ? args.realServers : undefined;
             resourceInputs["rsType"] = args ? args.rsType : undefined;
@@ -173,6 +179,10 @@ export interface DomainResourceState {
      */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+     */
+    ocspEnabled?: pulumi.Input<boolean>;
+    /**
      * Protocol type and port number information. See `proxyTypes` below.
      * > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
      */
@@ -204,6 +214,10 @@ export interface DomainResourceArgs {
      * > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
      */
     instanceIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+     */
+    ocspEnabled?: pulumi.Input<boolean>;
     /**
      * Protocol type and port number information. See `proxyTypes` below.
      * > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.

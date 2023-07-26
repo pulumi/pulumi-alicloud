@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
 /**
  * Provides ECI Container Group resource.
  * 
- * For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/doc-detail/90341.htm).
+ * For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/elastic-container-instance/latest/api-eci-2018-08-08-createcontainergroup).
  * 
- * &gt; **NOTE:** Available in v1.111.0+.
+ * &gt; **NOTE:** Available since v1.111.0.
  * 
  * ## Example Usage
  * 
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ContainerGroup(&#34;example&#34;, ContainerGroupArgs.builder()        
- *             .containerGroupName(&#34;tf-testacc-eci-gruop&#34;)
+ *             .containerGroupName(&#34;tf-eci-gruop&#34;)
  *             .cpu(8)
  *             .memory(16)
  *             .restartPolicy(&#34;OnFailure&#34;)
@@ -156,14 +156,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eci/containerGroup:ContainerGroup")
 public class ContainerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The ACR enterprise edition example properties.
+     * The ACR enterprise edition example properties. See `acr_registry_info` below.
      * 
      */
     @Export(name="acrRegistryInfos", type=List.class, parameters={ContainerGroupAcrRegistryInfo.class})
     private Output</* @Nullable */ List<ContainerGroupAcrRegistryInfo>> acrRegistryInfos;
 
     /**
-     * @return The ACR enterprise edition example properties.
+     * @return The ACR enterprise edition example properties. See `acr_registry_info` below.
      * 
      */
     public Output<Optional<List<ContainerGroupAcrRegistryInfo>>> acrRegistryInfos() {
@@ -184,14 +184,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoCreateEip);
     }
     /**
-     * Specifies whether to automatically match the image cache. Default value: false.
+     * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      * 
      */
     @Export(name="autoMatchImageCache", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> autoMatchImageCache;
 
     /**
-     * @return Specifies whether to automatically match the image cache. Default value: false.
+     * @return Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      * 
      */
     public Output<Optional<Boolean>> autoMatchImageCache() {
@@ -212,14 +212,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return this.containerGroupName;
     }
     /**
-     * The list of containers.
+     * The list of containers. See `containers` below.
      * 
      */
     @Export(name="containers", type=List.class, parameters={ContainerGroupContainer.class})
     private Output<List<ContainerGroupContainer>> containers;
 
     /**
-     * @return The list of containers.
+     * @return The list of containers. See `containers` below.
      * 
      */
     public Output<List<ContainerGroupContainer>> containers() {
@@ -240,42 +240,42 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return this.cpu;
     }
     /**
-     * The structure of dnsConfig.
+     * The structure of dnsConfig. See `dns_config` below.
      * 
      */
     @Export(name="dnsConfig", type=ContainerGroupDnsConfig.class, parameters={})
     private Output</* @Nullable */ ContainerGroupDnsConfig> dnsConfig;
 
     /**
-     * @return The structure of dnsConfig.
+     * @return The structure of dnsConfig. See `dns_config` below.
      * 
      */
     public Output<Optional<ContainerGroupDnsConfig>> dnsConfig() {
         return Codegen.optional(this.dnsConfig);
     }
     /**
-     * The security context of the container group.
+     * The security context of the container group. See `eci_security_context` below.
      * 
      */
     @Export(name="eciSecurityContext", type=ContainerGroupEciSecurityContext.class, parameters={})
     private Output</* @Nullable */ ContainerGroupEciSecurityContext> eciSecurityContext;
 
     /**
-     * @return The security context of the container group.
+     * @return The security context of the container group. See `eci_security_context` below.
      * 
      */
     public Output<Optional<ContainerGroupEciSecurityContext>> eciSecurityContext() {
         return Codegen.optional(this.eciSecurityContext);
     }
     /**
-     * The bandwidth of the EIP. The default value is `5`.
+     * The bandwidth of the EIP. Default value: `5`.
      * 
      */
     @Export(name="eipBandwidth", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> eipBandwidth;
 
     /**
-     * @return The bandwidth of the EIP. The default value is `5`.
+     * @return The bandwidth of the EIP. Default value: `5`.
      * 
      */
     public Output<Optional<Integer>> eipBandwidth() {
@@ -296,42 +296,42 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eipInstanceId);
     }
     /**
-     * HostAliases.
+     * HostAliases. See `host_aliases` below.
      * 
      */
     @Export(name="hostAliases", type=List.class, parameters={ContainerGroupHostAlias.class})
     private Output</* @Nullable */ List<ContainerGroupHostAlias>> hostAliases;
 
     /**
-     * @return HostAliases.
+     * @return HostAliases. See `host_aliases` below.
      * 
      */
     public Output<Optional<List<ContainerGroupHostAlias>>> hostAliases() {
         return Codegen.optional(this.hostAliases);
     }
     /**
-     * The image registry credential. The details see Block `image_registry_credential`.
+     * The image registry credential. See `image_registry_credential` below.
      * 
      */
     @Export(name="imageRegistryCredentials", type=List.class, parameters={ContainerGroupImageRegistryCredential.class})
     private Output</* @Nullable */ List<ContainerGroupImageRegistryCredential>> imageRegistryCredentials;
 
     /**
-     * @return The image registry credential. The details see Block `image_registry_credential`.
+     * @return The image registry credential. See `image_registry_credential` below.
      * 
      */
     public Output<Optional<List<ContainerGroupImageRegistryCredential>>> imageRegistryCredentials() {
         return Codegen.optional(this.imageRegistryCredentials);
     }
     /**
-     * The list of initContainers.
+     * The list of initContainers. See `init_containers` below.
      * 
      */
     @Export(name="initContainers", type=List.class, parameters={ContainerGroupInitContainer.class})
     private Output</* @Nullable */ List<ContainerGroupInitContainer>> initContainers;
 
     /**
-     * @return The list of initContainers.
+     * @return The list of initContainers. See `init_containers` below.
      * 
      */
     public Output<Optional<List<ContainerGroupInitContainer>>> initContainers() {
@@ -366,28 +366,28 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceType);
     }
     /**
-     * (Available in v1.170.0+) The Public IP of the container group.
+     * (Available since v1.170.0) The Public IP of the container group.
      * 
      */
     @Export(name="internetIp", type=String.class, parameters={})
     private Output<String> internetIp;
 
     /**
-     * @return (Available in v1.170.0+) The Public IP of the container group.
+     * @return (Available since v1.170.0) The Public IP of the container group.
      * 
      */
     public Output<String> internetIp() {
         return this.internetIp;
     }
     /**
-     * (Available in v1.170.0+) The Private IP of the container group.
+     * (Available since v1.170.0) The Private IP of the container group.
      * 
      */
     @Export(name="intranetIp", type=String.class, parameters={})
     private Output<String> intranetIp;
 
     /**
-     * @return (Available in v1.170.0+) The Private IP of the container group.
+     * @return (Available since v1.170.0) The Private IP of the container group.
      * 
      */
     public Output<String> intranetIp() {
@@ -436,14 +436,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ramRoleName);
     }
     /**
-     * The ID of the resource group.
+     * The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
      * 
      */
     public Output<String> resourceGroupId() {
@@ -510,14 +510,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The list of volumes.
+     * The list of volumes. See `volumes` below.
      * 
      */
     @Export(name="volumes", type=List.class, parameters={ContainerGroupVolume.class})
     private Output</* @Nullable */ List<ContainerGroupVolume>> volumes;
 
     /**
-     * @return The list of volumes.
+     * @return The list of volumes. See `volumes` below.
      * 
      */
     public Output<Optional<List<ContainerGroupVolume>>> volumes() {
@@ -525,6 +525,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
      * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
@@ -532,6 +533,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+     * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
      * 
      */
     public Output<String> vswitchId() {

@@ -21,50 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Monitor Service Sls Group and how to use it, see [What is Sls Group](https://www.alibabacloud.com/help/doc-detail/28608.htm).
  * 
- * &gt; **NOTE:** Available in v1.171.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.cms.SlsGroup;
- * import com.pulumi.alicloud.cms.SlsGroupArgs;
- * import com.pulumi.alicloud.cms.inputs.SlsGroupSlsGroupConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var this = AlicloudFunctions.getAccount();
- * 
- *         var default_ = new SlsGroup(&#34;default&#34;, SlsGroupArgs.builder()        
- *             .slsGroupConfigs(SlsGroupSlsGroupConfigArgs.builder()
- *                 .slsUserId(this_.id())
- *                 .slsLogstore(&#34;Logstore-ECS&#34;)
- *                 .slsProject(&#34;aliyun-project&#34;)
- *                 .slsRegion(&#34;cn-hangzhou&#34;)
- *                 .build())
- *             .slsGroupDescription(var_.name())
- *             .slsGroupName(var_.name())
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.171.0.
  * 
  * ## Import
  * 
@@ -78,14 +35,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/slsGroup:SlsGroup")
 public class SlsGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+     * The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
      * 
      */
     @Export(name="slsGroupConfigs", type=List.class, parameters={SlsGroupSlsGroupConfig.class})
     private Output<List<SlsGroupSlsGroupConfig>> slsGroupConfigs;
 
     /**
-     * @return The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+     * @return The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
      * 
      */
     public Output<List<SlsGroupSlsGroupConfig>> slsGroupConfigs() {

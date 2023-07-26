@@ -14,31 +14,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/doc-detail/212056.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.136.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Arms.PrometheusAlertRule("example", new()
-    ///     {
-    ///         ClusterId = "example_value",
-    ///         Duration = "example_value",
-    ///         Expression = "example_value",
-    ///         Message = "example_value",
-    ///         PrometheusAlertRuleName = "example_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.136.0.
     /// 
     /// ## Import
     /// 
@@ -52,7 +28,7 @@ namespace Pulumi.AliCloud.Arms
     public partial class PrometheusAlertRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The annotations of the alert rule.. See the following `Block annotations`.
+        /// The annotations of the alert rule. See `annotations` below.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableArray<Outputs.PrometheusAlertRuleAnnotation>> Annotations { get; private set; } = null!;
@@ -82,7 +58,7 @@ namespace Pulumi.AliCloud.Arms
         public Output<string> Expression { get; private set; } = null!;
 
         /// <summary>
-        /// The labels of the resource. See the following `Block labels`.
+        /// The labels of the resource. See `labels` below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.PrometheusAlertRuleLabel>> Labels { get; private set; } = null!;
@@ -173,7 +149,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.PrometheusAlertRuleAnnotationArgs>? _annotations;
 
         /// <summary>
-        /// The annotations of the alert rule.. See the following `Block annotations`.
+        /// The annotations of the alert rule. See `annotations` below.
         /// </summary>
         public InputList<Inputs.PrometheusAlertRuleAnnotationArgs> Annotations
         {
@@ -209,7 +185,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.PrometheusAlertRuleLabelArgs>? _labels;
 
         /// <summary>
-        /// The labels of the resource. See the following `Block labels`.
+        /// The labels of the resource. See `labels` below.
         /// </summary>
         public InputList<Inputs.PrometheusAlertRuleLabelArgs> Labels
         {
@@ -253,7 +229,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.PrometheusAlertRuleAnnotationGetArgs>? _annotations;
 
         /// <summary>
-        /// The annotations of the alert rule.. See the following `Block annotations`.
+        /// The annotations of the alert rule. See `annotations` below.
         /// </summary>
         public InputList<Inputs.PrometheusAlertRuleAnnotationGetArgs> Annotations
         {
@@ -289,7 +265,7 @@ namespace Pulumi.AliCloud.Arms
         private InputList<Inputs.PrometheusAlertRuleLabelGetArgs>? _labels;
 
         /// <summary>
-        /// The labels of the resource. See the following `Block labels`.
+        /// The labels of the resource. See `labels` below.
         /// </summary>
         public InputList<Inputs.PrometheusAlertRuleLabelGetArgs> Labels
         {

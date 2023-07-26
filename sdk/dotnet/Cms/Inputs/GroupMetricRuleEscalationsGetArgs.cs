@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Cms.Inputs
     public sealed class GroupMetricRuleEscalationsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The critical level.
+        /// The critical level. See `critical` below.
         /// </summary>
         [Input("critical")]
         public Input<Inputs.GroupMetricRuleEscalationsCriticalGetArgs>? Critical { get; set; }
 
         /// <summary>
-        /// The info level.
+        /// The info level. See `info` below.
         /// </summary>
         [Input("info")]
         public Input<Inputs.GroupMetricRuleEscalationsInfoGetArgs>? Info { get; set; }
 
         /// <summary>
-        /// The warn level.
+        /// The warn level. See `warn` below.
         /// </summary>
         [Input("warn")]
         public Input<Inputs.GroupMetricRuleEscalationsWarnGetArgs>? Warn { get; set; }

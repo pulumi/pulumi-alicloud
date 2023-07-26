@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetResourceGroups(ctx *pulumi.Context, args *GetResourceGroupsArgs, opts ...pulumi.InvokeOption) (*GetResourceGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResourceGroupsResult
 	err := ctx.Invoke("alicloud:adb/getResourceGroups:getResourceGroups", args, &rv, opts...)
 	if err != nil {

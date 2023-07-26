@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetConfigurationRecorders(ctx *pulumi.Context, args *GetConfigurationRecordersArgs, opts ...pulumi.InvokeOption) (*GetConfigurationRecordersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConfigurationRecordersResult
 	err := ctx.Invoke("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args, &rv, opts...)
 	if err != nil {

@@ -33,9 +33,9 @@ class PrometheusAlertRuleArgs:
         :param pulumi.Input[str] expression: The alert rule expression that follows the PromQL syntax.
         :param pulumi.Input[str] message: The message of the alert notification.
         :param pulumi.Input[str] prometheus_alert_rule_name: The name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]] annotations: The annotations of the alert rule.. See the following `Block annotations`.
+        :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]] annotations: The annotations of the alert rule. See `annotations` below.
         :param pulumi.Input[str] dispatch_rule_id: The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
-        :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]] labels: The labels of the resource. See the following `Block labels`.
+        :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]] labels: The labels of the resource. See `labels` below.
         :param pulumi.Input[str] notify_type: The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
         :param pulumi.Input[str] type: The type of the alert rule.
         """
@@ -119,7 +119,7 @@ class PrometheusAlertRuleArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]:
         """
-        The annotations of the alert rule.. See the following `Block annotations`.
+        The annotations of the alert rule. See `annotations` below.
         """
         return pulumi.get(self, "annotations")
 
@@ -143,7 +143,7 @@ class PrometheusAlertRuleArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]:
         """
-        The labels of the resource. See the following `Block labels`.
+        The labels of the resource. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
@@ -193,12 +193,12 @@ class _PrometheusAlertRuleState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PrometheusAlertRule resources.
-        :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]] annotations: The annotations of the alert rule.. See the following `Block annotations`.
+        :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]] annotations: The annotations of the alert rule. See `annotations` below.
         :param pulumi.Input[str] cluster_id: The ID of the cluster.
         :param pulumi.Input[str] dispatch_rule_id: The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
         :param pulumi.Input[str] duration: The duration of the alert.
         :param pulumi.Input[str] expression: The alert rule expression that follows the PromQL syntax.
-        :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]] labels: The labels of the resource. See the following `Block labels`.
+        :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]] labels: The labels of the resource. See `labels` below.
         :param pulumi.Input[str] message: The message of the alert notification.
         :param pulumi.Input[str] notify_type: The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
         :param pulumi.Input[int] prometheus_alert_rule_id: The first ID of the resource.
@@ -235,7 +235,7 @@ class _PrometheusAlertRuleState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]:
         """
-        The annotations of the alert rule.. See the following `Block annotations`.
+        The annotations of the alert rule. See `annotations` below.
         """
         return pulumi.get(self, "annotations")
 
@@ -295,7 +295,7 @@ class _PrometheusAlertRuleState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]:
         """
-        The labels of the resource. See the following `Block labels`.
+        The labels of the resource. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
@@ -397,23 +397,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
 
         For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/doc-detail/212056.htm).
 
-        > **NOTE:** Available in v1.136.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.arms.PrometheusAlertRule("example",
-            cluster_id="example_value",
-            duration="example_value",
-            expression="example_value",
-            message="example_value",
-            prometheus_alert_rule_name="example_value")
-        ```
+        > **NOTE:** Available since v1.136.0.
 
         ## Import
 
@@ -425,12 +409,12 @@ class PrometheusAlertRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleAnnotationArgs']]]] annotations: The annotations of the alert rule.. See the following `Block annotations`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleAnnotationArgs']]]] annotations: The annotations of the alert rule. See `annotations` below.
         :param pulumi.Input[str] cluster_id: The ID of the cluster.
         :param pulumi.Input[str] dispatch_rule_id: The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
         :param pulumi.Input[str] duration: The duration of the alert.
         :param pulumi.Input[str] expression: The alert rule expression that follows the PromQL syntax.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleLabelArgs']]]] labels: The labels of the resource. See the following `Block labels`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleLabelArgs']]]] labels: The labels of the resource. See `labels` below.
         :param pulumi.Input[str] message: The message of the alert notification.
         :param pulumi.Input[str] notify_type: The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
         :param pulumi.Input[str] prometheus_alert_rule_name: The name of the resource.
@@ -447,23 +431,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
 
         For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/doc-detail/212056.htm).
 
-        > **NOTE:** Available in v1.136.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.arms.PrometheusAlertRule("example",
-            cluster_id="example_value",
-            duration="example_value",
-            expression="example_value",
-            message="example_value",
-            prometheus_alert_rule_name="example_value")
-        ```
+        > **NOTE:** Available since v1.136.0.
 
         ## Import
 
@@ -558,12 +526,12 @@ class PrometheusAlertRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleAnnotationArgs']]]] annotations: The annotations of the alert rule.. See the following `Block annotations`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleAnnotationArgs']]]] annotations: The annotations of the alert rule. See `annotations` below.
         :param pulumi.Input[str] cluster_id: The ID of the cluster.
         :param pulumi.Input[str] dispatch_rule_id: The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
         :param pulumi.Input[str] duration: The duration of the alert.
         :param pulumi.Input[str] expression: The alert rule expression that follows the PromQL syntax.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleLabelArgs']]]] labels: The labels of the resource. See the following `Block labels`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleLabelArgs']]]] labels: The labels of the resource. See `labels` below.
         :param pulumi.Input[str] message: The message of the alert notification.
         :param pulumi.Input[str] notify_type: The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
         :param pulumi.Input[int] prometheus_alert_rule_id: The first ID of the resource.
@@ -593,7 +561,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Sequence['outputs.PrometheusAlertRuleAnnotation']]]:
         """
-        The annotations of the alert rule.. See the following `Block annotations`.
+        The annotations of the alert rule. See `annotations` below.
         """
         return pulumi.get(self, "annotations")
 
@@ -633,7 +601,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Sequence['outputs.PrometheusAlertRuleLabel']]]:
         """
-        The labels of the resource. See the following `Block labels`.
+        The labels of the resource. See `labels` below.
         """
         return pulumi.get(self, "labels")
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
     public sealed class AggregateCompliancePackConfigRule
     {
         /// <summary>
-        /// A list of parameter rules.
+        /// A list of parameter rules. See `config_rule_parameters` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AggregateCompliancePackConfigRuleConfigRuleParameter> ConfigRuleParameters;
         /// <summary>

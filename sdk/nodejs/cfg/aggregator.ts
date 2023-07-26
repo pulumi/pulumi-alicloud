@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Config Aggregator resource.
  *
- * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/doc-detail/211197.html).
+ * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *
@@ -21,14 +21,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cfg.Aggregator("example", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultAccounts = alicloud.resourcemanager.getAccounts({
+ *     status: "CreateSuccess",
+ * });
+ * const defaultAggregator = new alicloud.cfg.Aggregator("defaultAggregator", {
  *     aggregatorAccounts: [{
- *         accountId: "123968452689****",
- *         accountName: "tf-testacc1234",
+ *         accountId: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.accountId),
+ *         accountName: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.displayName),
  *         accountType: "ResourceDirectory",
  *     }],
- *     aggregatorName: "tf-testaccConfigAggregator1234",
- *     description: "tf-testaccConfigAggregator1234",
+ *     aggregatorName: name,
+ *     description: name,
+ *     aggregatorType: "CUSTOM",
  * });
  * ```
  *
@@ -69,7 +75,7 @@ export class Aggregator extends pulumi.CustomResource {
     }
 
     /**
-     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
      */
     public readonly aggregatorAccounts!: pulumi.Output<outputs.cfg.AggregatorAggregatorAccount[]>;
     /**
@@ -131,7 +137,7 @@ export class Aggregator extends pulumi.CustomResource {
  */
 export interface AggregatorState {
     /**
-     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
      */
     aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
     /**
@@ -157,7 +163,7 @@ export interface AggregatorState {
  */
 export interface AggregatorArgs {
     /**
-     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
      */
     aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
     /**

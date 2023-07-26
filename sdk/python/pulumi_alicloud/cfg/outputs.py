@@ -63,7 +63,7 @@ class AggregateCompliancePackConfigRule(dict):
                  config_rule_parameters: Optional[Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']] = None):
         """
         :param str managed_rule_identifier: The Managed Rule Identifier.
-        :param Sequence['AggregateCompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
+        :param Sequence['AggregateCompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules. See `config_rule_parameters` below.
         """
         pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
@@ -81,7 +81,7 @@ class AggregateCompliancePackConfigRule(dict):
     @pulumi.getter(name="configRuleParameters")
     def config_rule_parameters(self) -> Optional[Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']]:
         """
-        A list of parameter rules.
+        A list of parameter rules. See `config_rule_parameters` below.
         """
         return pulumi.get(self, "config_rule_parameters")
 
@@ -259,7 +259,7 @@ class CompliancePackConfigRule(dict):
                  config_rule_parameters: Optional[Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']] = None):
         """
         :param str managed_rule_identifier: The Managed Rule Identifier.
-        :param Sequence['CompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of Config Rule Parameters.
+        :param Sequence['CompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of Config Rule Parameters. See `config_rule_parameters` below.
         """
         pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
@@ -277,7 +277,7 @@ class CompliancePackConfigRule(dict):
     @pulumi.getter(name="configRuleParameters")
     def config_rule_parameters(self) -> Optional[Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']]:
         """
-        A list of Config Rule Parameters.
+        A list of Config Rule Parameters. See `config_rule_parameters` below.
         """
         return pulumi.get(self, "config_rule_parameters")
 

@@ -8,573 +8,10 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// The managed cluster configuration,
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-test"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
-//				CpuCoreCount:       pulumi.IntRef(2),
-//				MemorySize:         pulumi.Float64Ref(4),
-//				KubernetesNodeRole: pulumi.StringRef("Worker"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.1.0.0/21"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("10.1.1.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewKeyPair(ctx, "defaultKeyPair", &ecs.KeyPairArgs{
-//				KeyPairName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			var defaultManagedKubernetes []*cs.ManagedKubernetes
-//			for index := 0; index < 1 == true; index++ {
-//				key0 := index
-//				_ := index
-//				__res, err := cs.NewManagedKubernetes(ctx, fmt.Sprintf("defaultManagedKubernetes-%v", key0), &cs.ManagedKubernetesArgs{
-//					ClusterSpec:               pulumi.String("ack.pro.small"),
-//					IsEnterpriseSecurityGroup: pulumi.Bool(true),
-//					PodCidr:                   pulumi.String("172.20.0.0/16"),
-//					ServiceCidr:               pulumi.String("172.21.0.0/20"),
-//					WorkerVswitchIds: pulumi.StringArray{
-//						defaultSwitch.ID(),
-//					},
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				defaultManagedKubernetes = append(defaultManagedKubernetes, __res)
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a node pool.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-//				DesiredSize:        pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// The parameter `nodeCount` are deprecated from version 1.158.0，but it can still works. If you want to use the new parameter `desiredSize` instead, you can update it as follows. for more information of `desiredSize`, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3).
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-//				DesiredSize:        pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `cs.ManagedKubernetes`.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-//				DesiredSize:        pulumi.Int(1),
-//				Management: &cs.NodePoolManagementArgs{
-//					AutoRepair:     pulumi.Bool(true),
-//					AutoUpgrade:    pulumi.Bool(true),
-//					Surge:          pulumi.Int(1),
-//					MaxUnavailable: pulumi.Int(1),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Enable automatic scaling for the node pool. `scalingConfig` is required.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
-//					MinSize: pulumi.Int(1),
-//					MaxSize: pulumi.Int(10),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Enable automatic scaling for managed node pool.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-//				Management: &cs.NodePoolManagementArgs{
-//					AutoRepair:     pulumi.Bool(true),
-//					AutoUpgrade:    pulumi.Bool(true),
-//					Surge:          pulumi.Int(1),
-//					MaxUnavailable: pulumi.Int(1),
-//				},
-//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
-//					MinSize: pulumi.Int(1),
-//					MaxSize: pulumi.Int(10),
-//					Type:    pulumi.String("cpu"),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				alicloud_cs_autoscaling_config.Default,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a `PrePaid` node pool.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory:  pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:      pulumi.Int(40),
-//				KeyName:             pulumi.Any(alicloud_key_pair.Default.Key_name),
-//				InstanceChargeType:  pulumi.String("PrePaid"),
-//				Period:              pulumi.Int(1),
-//				PeriodUnit:          pulumi.String("Month"),
-//				AutoRenew:           pulumi.Bool(true),
-//				AutoRenewPeriod:     pulumi.Int(1),
-//				InstallCloudMonitor: pulumi.Bool(true),
-//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
-//					MinSize: pulumi.Int(1),
-//					MaxSize: pulumi.Int(10),
-//					Type:    pulumi.String("cpu"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a node pool with spot instance.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-//				DesiredSize:        pulumi.Int(1),
-//				SpotStrategy:       pulumi.String("SpotWithPriceLimit"),
-//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
-//					&cs.NodePoolSpotPriceLimitArgs{
-//						InstanceType: pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-//						PriceLimit:   pulumi.String("0.70"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Use Spot instances to create a node pool with auto-scaling enabled
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
-//					MinSize: pulumi.Int(1),
-//					MaxSize: pulumi.Int(10),
-//					Type:    pulumi.String("spot"),
-//				},
-//				SpotStrategy: pulumi.String("SpotWithPriceLimit"),
-//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
-//					&cs.NodePoolSpotPriceLimitArgs{
-//						InstanceType: pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-//						PriceLimit:   pulumi.String("0.70"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a node pool with platform as Windows
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				InstanceChargeType: pulumi.String("PostPaid"),
-//				DesiredSize:        pulumi.Int(1),
-//				Password:           pulumi.String("Hello1234"),
-//				Platform:           pulumi.String("Windows"),
-//				ImageId:            pulumi.Any(window_image_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # Add an existing node to the node pool
-//
-// In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				InstanceChargeType: pulumi.String("PostPaid"),
-//				Instances: pulumi.StringArray{
-//					pulumi.String("instance_id_01"),
-//					pulumi.String("instance_id_02"),
-//					pulumi.String("instance_id_03"),
-//				},
-//				FormatDisk:       pulumi.Bool(false),
-//				KeepInstanceName: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a node pool with customized kubelet parameters
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-//				VswitchIds: pulumi.StringArray{
-//					alicloud_vswitch.Default.Id,
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				InstanceChargeType: pulumi.String("PostPaid"),
-//				DesiredSize:        pulumi.Int(3),
-//				KubeletConfiguration: &cs.NodePoolKubeletConfigurationArgs{
-//					RegistryPullQps: pulumi.String("10"),
-//					RegistryBurst:   pulumi.String("5"),
-//					EventRecordQps:  pulumi.String("10"),
-//					EventBurst:      pulumi.String("5"),
-//					EvictionHard: pulumi.AnyMap{
-//						"memory.available":            pulumi.Any("1024Mi"),
-//						"nodefs.available":            pulumi.Any("10%"),
-//						"nodefs.inodesFree":           pulumi.Any("1000"),
-//						"imagefs.available":           pulumi.Any("10%"),
-//						"imagefs.inodesFree":          pulumi.Any("1000"),
-//						"allocatableMemory.available": pulumi.Any("2048"),
-//						"pid.available":               pulumi.Any("1000"),
-//					},
-//					SystemReserved: pulumi.AnyMap{
-//						"cpu":               pulumi.Any("1"),
-//						"memory":            pulumi.Any("1Gi"),
-//						"ephemeral-storage": pulumi.Any("10Gi"),
-//					},
-//					KubeReserved: pulumi.AnyMap{
-//						"cpu":    pulumi.Any("500m"),
-//						"memory": pulumi.Any("1Gi"),
-//					},
-//				},
-//				RollingPolicy: &cs.NodePoolRollingPolicyArgs{
-//					MaxParallelism: pulumi.Int(1),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
@@ -597,7 +34,7 @@ type NodePool struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
 	CpuPolicy pulumi.StringPtrOutput `pulumi:"cpuPolicy"`
-	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// The data disk configurations of worker nodes, such as the disk type and disk size. See `dataDisks` below.
 	DataDisks NodePoolDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId pulumi.StringOutput `pulumi:"deploymentSetId"`
@@ -629,11 +66,11 @@ type NodePool struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
-	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	// Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
 	KubeletConfiguration NodePoolKubeletConfigurationPtrOutput `pulumi:"kubeletConfiguration"`
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
 	Labels NodePoolLabelArrayOutput `pulumi:"labels"`
-	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. See `management` below.
 	Management NodePoolManagementPtrOutput `pulumi:"management"`
 	// The name of node pool.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -641,7 +78,7 @@ type NodePool struct {
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
-	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+	// Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,<prefix>,ip,<suffix>`. For example "customized,aliyun.com-,ip,-test", if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
 	NodeNameMode pulumi.StringOutput `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
@@ -659,9 +96,9 @@ type NodePool struct {
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rollingPolicy` below.
 	RollingPolicy NodePoolRollingPolicyPtrOutput `pulumi:"rollingPolicy"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0. See `rolloutPolicy` below.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrOutput `pulumi:"rolloutPolicy"`
@@ -669,9 +106,9 @@ type NodePool struct {
 	RuntimeName pulumi.StringOutput `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
 	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
-	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+	// Auto scaling node pool configuration. See `scalingConfig` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig NodePoolScalingConfigPtrOutput `pulumi:"scalingConfig"`
-	// (Available in 1.105.0+) Id of the Scaling Group.
+	// The scaling group id.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy pulumi.StringOutput `pulumi:"scalingPolicy"`
@@ -684,7 +121,7 @@ type NodePool struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrOutput `pulumi:"socEnabled"`
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spotPriceLimit` below.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayOutput `pulumi:"spotPriceLimits"`
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
 	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
@@ -704,7 +141,7 @@ type NodePool struct {
 	SystemDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskSnapshotPolicyId"`
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints NodePoolTaintArrayOutput `pulumi:"taints"`
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
@@ -739,6 +176,7 @@ func NewNodePool(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NodePool
 	err := ctx.RegisterResource("alicloud:cs/nodePool:NodePool", name, args, &resource, opts...)
 	if err != nil {
@@ -771,7 +209,7 @@ type nodePoolState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
-	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// The data disk configurations of worker nodes, such as the disk type and disk size. See `dataDisks` below.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
@@ -803,11 +241,11 @@ type nodePoolState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
-	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	// Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
 	KubeletConfiguration *NodePoolKubeletConfiguration `pulumi:"kubeletConfiguration"`
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
 	Labels []NodePoolLabel `pulumi:"labels"`
-	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. See `management` below.
 	Management *NodePoolManagement `pulumi:"management"`
 	// The name of node pool.
 	Name *string `pulumi:"name"`
@@ -815,7 +253,7 @@ type nodePoolState struct {
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount *int `pulumi:"nodeCount"`
-	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+	// Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,<prefix>,ip,<suffix>`. For example "customized,aliyun.com-,ip,-test", if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
@@ -833,9 +271,9 @@ type nodePoolState struct {
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rollingPolicy` below.
 	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0. See `rolloutPolicy` below.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
@@ -843,9 +281,9 @@ type nodePoolState struct {
 	RuntimeName *string `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
-	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+	// Auto scaling node pool configuration. See `scalingConfig` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
-	// (Available in 1.105.0+) Id of the Scaling Group.
+	// The scaling group id.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy *string `pulumi:"scalingPolicy"`
@@ -858,7 +296,7 @@ type nodePoolState struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spotPriceLimit` below.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
@@ -878,7 +316,7 @@ type nodePoolState struct {
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints []NodePoolTaint `pulumi:"taints"`
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable *bool `pulumi:"unschedulable"`
@@ -901,7 +339,7 @@ type NodePoolState struct {
 	ClusterId pulumi.StringPtrInput
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
 	CpuPolicy pulumi.StringPtrInput
-	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// The data disk configurations of worker nodes, such as the disk type and disk size. See `dataDisks` below.
 	DataDisks NodePoolDataDiskArrayInput
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId pulumi.StringPtrInput
@@ -933,11 +371,11 @@ type NodePoolState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
-	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	// Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
 	KubeletConfiguration NodePoolKubeletConfigurationPtrInput
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
 	Labels NodePoolLabelArrayInput
-	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. See `management` below.
 	Management NodePoolManagementPtrInput
 	// The name of node pool.
 	Name pulumi.StringPtrInput
@@ -945,7 +383,7 @@ type NodePoolState struct {
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount pulumi.IntPtrInput
-	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+	// Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,<prefix>,ip,<suffix>`. For example "customized,aliyun.com-,ip,-test", if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
@@ -963,9 +401,9 @@ type NodePoolState struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rollingPolicy` below.
 	RollingPolicy NodePoolRollingPolicyPtrInput
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0. See `rolloutPolicy` below.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrInput
@@ -973,9 +411,9 @@ type NodePoolState struct {
 	RuntimeName pulumi.StringPtrInput
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
 	RuntimeVersion pulumi.StringPtrInput
-	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+	// Auto scaling node pool configuration. See `scalingConfig` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig NodePoolScalingConfigPtrInput
-	// (Available in 1.105.0+) Id of the Scaling Group.
+	// The scaling group id.
 	ScalingGroupId pulumi.StringPtrInput
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy pulumi.StringPtrInput
@@ -988,7 +426,7 @@ type NodePoolState struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrInput
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spotPriceLimit` below.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput
@@ -1008,7 +446,7 @@ type NodePoolState struct {
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags pulumi.MapInput
-	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints NodePoolTaintArrayInput
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable pulumi.BoolPtrInput
@@ -1035,7 +473,7 @@ type nodePoolArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
-	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// The data disk configurations of worker nodes, such as the disk type and disk size. See `dataDisks` below.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
@@ -1067,11 +505,11 @@ type nodePoolArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
-	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	// Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
 	KubeletConfiguration *NodePoolKubeletConfiguration `pulumi:"kubeletConfiguration"`
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
 	Labels []NodePoolLabel `pulumi:"labels"`
-	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. See `management` below.
 	Management *NodePoolManagement `pulumi:"management"`
 	// The name of node pool.
 	Name *string `pulumi:"name"`
@@ -1079,7 +517,7 @@ type nodePoolArgs struct {
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount *int `pulumi:"nodeCount"`
-	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+	// Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,<prefix>,ip,<suffix>`. For example "customized,aliyun.com-,ip,-test", if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
@@ -1097,9 +535,9 @@ type nodePoolArgs struct {
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rollingPolicy` below.
 	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0. See `rolloutPolicy` below.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
@@ -1107,7 +545,7 @@ type nodePoolArgs struct {
 	RuntimeName *string `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
-	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+	// Auto scaling node pool configuration. See `scalingConfig` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy *string `pulumi:"scalingPolicy"`
@@ -1120,7 +558,7 @@ type nodePoolArgs struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spotPriceLimit` below.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
@@ -1140,7 +578,7 @@ type nodePoolArgs struct {
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints []NodePoolTaint `pulumi:"taints"`
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable *bool `pulumi:"unschedulable"`
@@ -1162,7 +600,7 @@ type NodePoolArgs struct {
 	ClusterId pulumi.StringInput
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
 	CpuPolicy pulumi.StringPtrInput
-	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// The data disk configurations of worker nodes, such as the disk type and disk size. See `dataDisks` below.
 	DataDisks NodePoolDataDiskArrayInput
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId pulumi.StringPtrInput
@@ -1194,11 +632,11 @@ type NodePoolArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
-	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	// Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
 	KubeletConfiguration NodePoolKubeletConfigurationPtrInput
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
 	Labels NodePoolLabelArrayInput
-	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. See `management` below.
 	Management NodePoolManagementPtrInput
 	// The name of node pool.
 	Name pulumi.StringPtrInput
@@ -1206,7 +644,7 @@ type NodePoolArgs struct {
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount pulumi.IntPtrInput
-	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+	// Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,<prefix>,ip,<suffix>`. For example "customized,aliyun.com-,ip,-test", if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
@@ -1224,9 +662,9 @@ type NodePoolArgs struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rollingPolicy` below.
 	RollingPolicy NodePoolRollingPolicyPtrInput
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0. See `rolloutPolicy` below.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrInput
@@ -1234,7 +672,7 @@ type NodePoolArgs struct {
 	RuntimeName pulumi.StringPtrInput
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
 	RuntimeVersion pulumi.StringPtrInput
-	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+	// Auto scaling node pool configuration. See `scalingConfig` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig NodePoolScalingConfigPtrInput
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy pulumi.StringPtrInput
@@ -1247,7 +685,7 @@ type NodePoolArgs struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrInput
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spotPriceLimit` below.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput
@@ -1267,7 +705,7 @@ type NodePoolArgs struct {
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags pulumi.MapInput
-	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints NodePoolTaintArrayInput
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable pulumi.BoolPtrInput
@@ -1389,7 +827,7 @@ func (o NodePoolOutput) CpuPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.CpuPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The data disk configurations of worker nodes, such as the disk type and disk size.
+// The data disk configurations of worker nodes, such as the disk type and disk size. See `dataDisks` below.
 func (o NodePoolOutput) DataDisks() NodePoolDataDiskArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolDataDiskArrayOutput { return v.DataDisks }).(NodePoolDataDiskArrayOutput)
 }
@@ -1469,17 +907,17 @@ func (o NodePoolOutput) KmsEncryptionContext() pulumi.MapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
 }
 
-// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+// Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
 func (o NodePoolOutput) KubeletConfiguration() NodePoolKubeletConfigurationPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolKubeletConfigurationPtrOutput { return v.KubeletConfiguration }).(NodePoolKubeletConfigurationPtrOutput)
 }
 
-// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
 func (o NodePoolOutput) Labels() NodePoolLabelArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolLabelArrayOutput { return v.Labels }).(NodePoolLabelArrayOutput)
 }
 
-// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. See `management` below.
 func (o NodePoolOutput) Management() NodePoolManagementPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolManagementPtrOutput { return v.Management }).(NodePoolManagementPtrOutput)
 }
@@ -1496,7 +934,7 @@ func (o NodePoolOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
 }
 
-// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+// Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,<prefix>,ip,<suffix>`. For example "customized,aliyun.com-,ip,-test", if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
 func (o NodePoolOutput) NodeNameMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.NodeNameMode }).(pulumi.StringOutput)
 }
@@ -1538,12 +976,12 @@ func (o NodePoolOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rollingPolicy` below.
 func (o NodePoolOutput) RollingPolicy() NodePoolRollingPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolRollingPolicyPtrOutput { return v.RollingPolicy }).(NodePoolRollingPolicyPtrOutput)
 }
 
-// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0. See `rolloutPolicy` below.
 //
 // Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 func (o NodePoolOutput) RolloutPolicy() NodePoolRolloutPolicyPtrOutput {
@@ -1560,12 +998,12 @@ func (o NodePoolOutput) RuntimeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.RuntimeVersion }).(pulumi.StringOutput)
 }
 
-// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+// Auto scaling node pool configuration. See `scalingConfig` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 func (o NodePoolOutput) ScalingConfig() NodePoolScalingConfigPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolScalingConfigPtrOutput { return v.ScalingConfig }).(NodePoolScalingConfigPtrOutput)
 }
 
-// (Available in 1.105.0+) Id of the Scaling Group.
+// The scaling group id.
 func (o NodePoolOutput) ScalingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
@@ -1593,7 +1031,7 @@ func (o NodePoolOutput) SocEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.SocEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spotPriceLimit` below.
 func (o NodePoolOutput) SpotPriceLimits() NodePoolSpotPriceLimitArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolSpotPriceLimitArrayOutput { return v.SpotPriceLimits }).(NodePoolSpotPriceLimitArrayOutput)
 }
@@ -1643,7 +1081,7 @@ func (o NodePoolOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 func (o NodePoolOutput) Taints() NodePoolTaintArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolTaintArrayOutput { return v.Taints }).(NodePoolTaintArrayOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusremotewrite).
     /// 
-    /// &gt; **NOTE:** Available in v1.204.0+.
+    /// &gt; **NOTE:** Available since v1.204.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,58 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Arms.RemoteWrite("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         ClusterId = "your_cluster_id",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length).Apply(values =&gt;
+    ///         {
+    ///             var defaultZones = values.Item1;
+    ///             var length = values.Item2;
+    ///             return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[length - 1].Id;
+    ///         }),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("defaultPrometheus", new()
+    ///     {
+    ///         ClusterType = "ecs",
+    ///         GrafanaInstanceId = "free",
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         ClusterName = defaultNetwork.Id.Apply(id =&gt; $"{name}-{id}"),
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Prometheus" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRemoteWrite = new AliCloud.Arms.RemoteWrite("defaultRemoteWrite", new()
+    ///     {
+    ///         ClusterId = defaultPrometheus.Id,
     ///         RemoteWriteYaml = @"remote_write:
     /// - name: ArmsRemoteWrite
     ///   url: http://47.96.227.137:8080/prometheus/xxx/yyy/cn-hangzhou/api/v3/write
@@ -41,7 +90,6 @@ namespace Pulumi.AliCloud.Arms
     ///     regex: si-6e2ca86444db4e55a7c1
     ///     replacement: $1
     ///     action: keep
-    /// 
     /// ",
     ///     });
     /// 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetProvisionedProducts(ctx *pulumi.Context, args *GetProvisionedProductsArgs, opts ...pulumi.InvokeOption) (*GetProvisionedProductsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProvisionedProductsResult
 	err := ctx.Invoke("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", args, &rv, opts...)
 	if err != nil {

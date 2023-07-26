@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator (GA) Bandwidth Package resource.
  *
- * For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbandwidthpackage).
+ * For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbandwidthpackage).
  *
  * > **NOTE:** At present, The `alicloud.ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
  *
@@ -117,6 +117,10 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string | undefined>;
     /**
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+     */
+    public readonly promotionOptionNo!: pulumi.Output<string | undefined>;
+    /**
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
      */
     public readonly ratio!: pulumi.Output<number | undefined>;
@@ -162,6 +166,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["duration"] = state ? state.duration : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["promotionOptionNo"] = state ? state.promotionOptionNo : undefined;
             resourceInputs["ratio"] = state ? state.ratio : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -187,6 +192,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["duration"] = args ? args.duration : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["promotionOptionNo"] = args ? args.promotionOptionNo : undefined;
             resourceInputs["ratio"] = args ? args.ratio : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -251,6 +257,10 @@ export interface BandwidthPackageState {
      * The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+     */
+    promotionOptionNo?: pulumi.Input<string>;
     /**
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
      */
@@ -326,6 +336,10 @@ export interface BandwidthPackageArgs {
      * The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+     */
+    promotionOptionNo?: pulumi.Input<string>;
     /**
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
      */

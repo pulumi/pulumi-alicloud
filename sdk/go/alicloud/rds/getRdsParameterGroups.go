@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetRdsParameterGroups(ctx *pulumi.Context, args *GetRdsParameterGroupsArgs, opts ...pulumi.InvokeOption) (*GetRdsParameterGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRdsParameterGroupsResult
 	err := ctx.Invoke("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args, &rv, opts...)
 	if err != nil {

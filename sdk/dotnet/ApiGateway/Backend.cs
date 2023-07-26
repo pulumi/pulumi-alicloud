@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ApiGateway
     /// <summary>
     /// Provides a Api Gateway Backend resource.
     /// 
-    /// For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/zh/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
+    /// For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
     /// 
-    /// &gt; **NOTE:** Available in v1.181.0+.
+    /// &gt; **NOTE:** Available since v1.181.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,11 +29,11 @@ namespace Pulumi.AliCloud.ApiGateway
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name1 = config.Get("name1") ?? "tf-testAccBackend";
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = new AliCloud.ApiGateway.Backend("default", new()
     ///     {
-    ///         BackendName = @var.Name,
-    ///         Description = @var.Name,
+    ///         BackendName = name,
+    ///         Description = name,
     ///         BackendType = "HTTP",
     ///     });
     /// 

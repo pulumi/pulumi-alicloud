@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func GetCustomProperties(ctx *pulumi.Context, args *GetCustomPropertiesArgs, opts ...pulumi.InvokeOption) (*GetCustomPropertiesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomPropertiesResult
 	err := ctx.Invoke("alicloud:eds/getCustomProperties:getCustomProperties", args, &rv, opts...)
 	if err != nil {

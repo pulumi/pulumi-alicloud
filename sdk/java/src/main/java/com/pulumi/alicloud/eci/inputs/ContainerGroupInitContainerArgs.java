@@ -53,14 +53,14 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The amount of CPU resources allocated to the container group.
+     * The amount of CPU resources allocated to the container. Default value: `0`.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container group.
+     * @return The amount of CPU resources allocated to the container. Default value: `0`.
      * 
      */
     public Optional<Output<Double>> cpu() {
@@ -68,14 +68,14 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The structure of environmentVars.
+     * The structure of environmentVars. See `environment_vars` below.
      * 
      */
     @Import(name="environmentVars")
     private @Nullable Output<List<ContainerGroupInitContainerEnvironmentVarArgs>> environmentVars;
 
     /**
-     * @return The structure of environmentVars.
+     * @return The structure of environmentVars. See `environment_vars` below.
      * 
      */
     public Optional<Output<List<ContainerGroupInitContainerEnvironmentVarArgs>>> environmentVars() {
@@ -83,14 +83,14 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The number GPUs.
+     * The number GPUs. Default value: `0`.
      * 
      */
     @Import(name="gpu")
     private @Nullable Output<Integer> gpu;
 
     /**
-     * @return The number GPUs.
+     * @return The number GPUs. Default value: `0`.
      * 
      */
     public Optional<Output<Integer>> gpu() {
@@ -113,14 +113,14 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The restart policy of the image.
+     * The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
      * 
      */
     @Import(name="imagePullPolicy")
     private @Nullable Output<String> imagePullPolicy;
 
     /**
-     * @return The restart policy of the image.
+     * @return The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
      * 
      */
     public Optional<Output<String>> imagePullPolicy() {
@@ -128,14 +128,14 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The amount of memory resources allocated to the container group.
+     * The amount of memory resources allocated to the container. Default value: `0`.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container group.
+     * @return The amount of memory resources allocated to the container. Default value: `0`.
      * 
      */
     public Optional<Output<Double>> memory() {
@@ -143,14 +143,14 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of the volume.
+     * The name of the mounted volume.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     public Optional<Output<String>> name() {
@@ -158,43 +158,59 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The structure of port.
+     * The structure of port. See `ports` below.
      * 
      */
     @Import(name="ports")
     private @Nullable Output<List<ContainerGroupInitContainerPortArgs>> ports;
 
     /**
-     * @return The structure of port.
+     * @return The structure of port. See `ports` below.
      * 
      */
     public Optional<Output<List<ContainerGroupInitContainerPortArgs>>> ports() {
         return Optional.ofNullable(this.ports);
     }
 
+    /**
+     * (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * 
+     */
     @Import(name="ready")
     private @Nullable Output<Boolean> ready;
 
+    /**
+     * @return (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * 
+     */
     public Optional<Output<Boolean>> ready() {
         return Optional.ofNullable(this.ready);
     }
 
+    /**
+     * (Available since v1.208.0) The number of times that the container restarted.
+     * 
+     */
     @Import(name="restartCount")
     private @Nullable Output<Integer> restartCount;
 
+    /**
+     * @return (Available since v1.208.0) The number of times that the container restarted.
+     * 
+     */
     public Optional<Output<Integer>> restartCount() {
         return Optional.ofNullable(this.restartCount);
     }
 
     /**
-     * The structure of volumeMounts.
+     * The structure of volumeMounts. See `volume_mounts` below.
      * 
      */
     @Import(name="volumeMounts")
     private @Nullable Output<List<ContainerGroupInitContainerVolumeMountArgs>> volumeMounts;
 
     /**
-     * @return The structure of volumeMounts.
+     * @return The structure of volumeMounts. See `volume_mounts` below.
      * 
      */
     public Optional<Output<List<ContainerGroupInitContainerVolumeMountArgs>>> volumeMounts() {
@@ -316,7 +332,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container group.
+         * @param cpu The amount of CPU resources allocated to the container. Default value: `0`.
          * 
          * @return builder
          * 
@@ -327,7 +343,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container group.
+         * @param cpu The amount of CPU resources allocated to the container. Default value: `0`.
          * 
          * @return builder
          * 
@@ -337,7 +353,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param environmentVars The structure of environmentVars.
+         * @param environmentVars The structure of environmentVars. See `environment_vars` below.
          * 
          * @return builder
          * 
@@ -348,7 +364,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param environmentVars The structure of environmentVars.
+         * @param environmentVars The structure of environmentVars. See `environment_vars` below.
          * 
          * @return builder
          * 
@@ -358,7 +374,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param environmentVars The structure of environmentVars.
+         * @param environmentVars The structure of environmentVars. See `environment_vars` below.
          * 
          * @return builder
          * 
@@ -368,7 +384,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param gpu The number GPUs.
+         * @param gpu The number GPUs. Default value: `0`.
          * 
          * @return builder
          * 
@@ -379,7 +395,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param gpu The number GPUs.
+         * @param gpu The number GPUs. Default value: `0`.
          * 
          * @return builder
          * 
@@ -410,7 +426,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imagePullPolicy The restart policy of the image.
+         * @param imagePullPolicy The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
          * 
          * @return builder
          * 
@@ -421,7 +437,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imagePullPolicy The restart policy of the image.
+         * @param imagePullPolicy The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
          * 
          * @return builder
          * 
@@ -431,7 +447,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container group.
+         * @param memory The amount of memory resources allocated to the container. Default value: `0`.
          * 
          * @return builder
          * 
@@ -442,7 +458,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container group.
+         * @param memory The amount of memory resources allocated to the container. Default value: `0`.
          * 
          * @return builder
          * 
@@ -452,7 +468,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 
@@ -463,7 +479,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 
@@ -473,7 +489,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ports The structure of port.
+         * @param ports The structure of port. See `ports` below.
          * 
          * @return builder
          * 
@@ -484,7 +500,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ports The structure of port.
+         * @param ports The structure of port. See `ports` below.
          * 
          * @return builder
          * 
@@ -494,7 +510,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ports The structure of port.
+         * @param ports The structure of port. See `ports` below.
          * 
          * @return builder
          * 
@@ -503,26 +519,50 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
             return ports(List.of(ports));
         }
 
+        /**
+         * @param ready (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ready(@Nullable Output<Boolean> ready) {
             $.ready = ready;
             return this;
         }
 
+        /**
+         * @param ready (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ready(Boolean ready) {
             return ready(Output.of(ready));
         }
 
+        /**
+         * @param restartCount (Available since v1.208.0) The number of times that the container restarted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartCount(@Nullable Output<Integer> restartCount) {
             $.restartCount = restartCount;
             return this;
         }
 
+        /**
+         * @param restartCount (Available since v1.208.0) The number of times that the container restarted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartCount(Integer restartCount) {
             return restartCount(Output.of(restartCount));
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts.
+         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below.
          * 
          * @return builder
          * 
@@ -533,7 +573,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts.
+         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below.
          * 
          * @return builder
          * 
@@ -543,7 +583,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts.
+         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below.
          * 
          * @return builder
          * 

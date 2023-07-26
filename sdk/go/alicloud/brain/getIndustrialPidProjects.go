@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetIndustrialPidProjects(ctx *pulumi.Context, args *GetIndustrialPidProjectsArgs, opts ...pulumi.InvokeOption) (*GetIndustrialPidProjectsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIndustrialPidProjectsResult
 	err := ctx.Invoke("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", args, &rv, opts...)
 	if err != nil {

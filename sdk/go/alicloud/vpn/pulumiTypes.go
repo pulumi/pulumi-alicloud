@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type ConnectionBgpConfig struct {
 	// Whether to enable Health Check.
@@ -901,7 +904,7 @@ func (o ConnectionIpsecConfigPtrOutput) IpsecPfs() pulumi.StringPtrOutput {
 }
 
 type GatewayVpnAttachmentBgpConfig struct {
-	// Specifies whether to enable health checks.
+	// Whether to enable BGP.
 	Enable *bool `pulumi:"enable"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn *int `pulumi:"localAsn"`
@@ -923,7 +926,7 @@ type GatewayVpnAttachmentBgpConfigInput interface {
 }
 
 type GatewayVpnAttachmentBgpConfigArgs struct {
-	// Specifies whether to enable health checks.
+	// Whether to enable BGP.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn pulumi.IntPtrInput `pulumi:"localAsn"`
@@ -1010,7 +1013,7 @@ func (o GatewayVpnAttachmentBgpConfigOutput) ToGatewayVpnAttachmentBgpConfigPtrO
 	}).(GatewayVpnAttachmentBgpConfigPtrOutput)
 }
 
-// Specifies whether to enable health checks.
+// Whether to enable BGP.
 func (o GatewayVpnAttachmentBgpConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentBgpConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -1054,7 +1057,7 @@ func (o GatewayVpnAttachmentBgpConfigPtrOutput) Elem() GatewayVpnAttachmentBgpCo
 	}).(GatewayVpnAttachmentBgpConfigOutput)
 }
 
-// Specifies whether to enable health checks.
+// Whether to enable BGP.
 func (o GatewayVpnAttachmentBgpConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentBgpConfig) *bool {
 		if v == nil {

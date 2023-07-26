@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetStaticAccounts(ctx *pulumi.Context, args *GetStaticAccountsArgs, opts ...pulumi.InvokeOption) (*GetStaticAccountsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStaticAccountsResult
 	err := ctx.Invoke("alicloud:amqp/getStaticAccounts:getStaticAccounts", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ func NewDomainConfig(ctx *pulumi.Context,
 	if args.FunctionName == nil {
 		return nil, errors.New("invalid value for required argument 'FunctionName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DomainConfig
 	err := ctx.RegisterResource("alicloud:scdn/domainConfig:DomainConfig", name, args, &resource, opts...)
 	if err != nil {

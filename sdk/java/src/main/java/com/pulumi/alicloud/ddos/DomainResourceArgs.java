@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ddos;
 import com.pulumi.alicloud.ddos.inputs.DomainResourceProxyTypeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -66,6 +67,21 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="ocspEnabled")
+    private @Nullable Output<Boolean> ocspEnabled;
+
+    /**
+     * @return Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> ocspEnabled() {
+        return Optional.ofNullable(this.ocspEnabled);
+    }
+
+    /**
      * Protocol type and port number information. See `proxy_types` below.
      * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
      * 
@@ -118,6 +134,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         this.domain = $.domain;
         this.httpsExt = $.httpsExt;
         this.instanceIds = $.instanceIds;
+        this.ocspEnabled = $.ocspEnabled;
         this.proxyTypes = $.proxyTypes;
         this.realServers = $.realServers;
         this.rsType = $.rsType;
@@ -215,6 +232,27 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder instanceIds(String... instanceIds) {
             return instanceIds(List.of(instanceIds));
+        }
+
+        /**
+         * @param ocspEnabled Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ocspEnabled(@Nullable Output<Boolean> ocspEnabled) {
+            $.ocspEnabled = ocspEnabled;
+            return this;
+        }
+
+        /**
+         * @param ocspEnabled Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ocspEnabled(Boolean ocspEnabled) {
+            return ocspEnabled(Output.of(ocspEnabled));
         }
 
         /**

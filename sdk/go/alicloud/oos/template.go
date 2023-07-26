@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -132,6 +133,7 @@ func NewTemplate(ctx *pulumi.Context,
 	if args.TemplateName == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Template
 	err := ctx.RegisterResource("alicloud:oos/template:Template", name, args, &resource, opts...)
 	if err != nil {

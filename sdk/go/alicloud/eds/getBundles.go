@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetBundles(ctx *pulumi.Context, args *GetBundlesArgs, opts ...pulumi.InvokeOption) (*GetBundlesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBundlesResult
 	err := ctx.Invoke("alicloud:eds/getBundles:getBundles", args, &rv, opts...)
 	if err != nil {

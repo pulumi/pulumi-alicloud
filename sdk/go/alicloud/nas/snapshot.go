@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -108,6 +109,7 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args.FileSystemId == nil {
 		return nil, errors.New("invalid value for required argument 'FileSystemId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Snapshot
 	err := ctx.RegisterResource("alicloud:nas/snapshot:Snapshot", name, args, &resource, opts...)
 	if err != nil {

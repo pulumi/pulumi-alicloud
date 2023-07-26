@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,6 +93,7 @@ func NewAccessStrategy(ctx *pulumi.Context,
 	if args.StrategyName == nil {
 		return nil, errors.New("invalid value for required argument 'StrategyName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessStrategy
 	err := ctx.RegisterResource("alicloud:dns/accessStrategy:AccessStrategy", name, args, &resource, opts...)
 	if err != nil {

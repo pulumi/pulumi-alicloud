@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetScheduledTasks(ctx *pulumi.Context, args *GetScheduledTasksArgs, opts ...pulumi.InvokeOption) (*GetScheduledTasksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetScheduledTasksResult
 	err := ctx.Invoke("alicloud:ess/getScheduledTasks:getScheduledTasks", args, &rv, opts...)
 	if err != nil {

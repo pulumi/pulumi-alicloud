@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +17,7 @@ import (
 //
 // > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
 func GetClusterCredential(ctx *pulumi.Context, args *GetClusterCredentialArgs, opts ...pulumi.InvokeOption) (*GetClusterCredentialResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterCredentialResult
 	err := ctx.Invoke("alicloud:cs/getClusterCredential:getClusterCredential", args, &rv, opts...)
 	if err != nil {

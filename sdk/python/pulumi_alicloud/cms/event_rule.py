@@ -24,7 +24,7 @@ class EventRuleArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EventRule resource.
-        :param pulumi.Input['EventRuleEventPatternArgs'] event_pattern: Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        :param pulumi.Input['EventRuleEventPatternArgs'] event_pattern: Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         :param pulumi.Input[str] rule_name: The name of the event-triggered alert rule.
         :param pulumi.Input[str] description: The description of the event-triggered alert rule.
         :param pulumi.Input[str] group_id: The ID of the application group to which the event-triggered alert rule belongs.
@@ -46,7 +46,7 @@ class EventRuleArgs:
     @pulumi.getter(name="eventPattern")
     def event_pattern(self) -> pulumi.Input['EventRuleEventPatternArgs']:
         """
-        Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         """
         return pulumi.get(self, "event_pattern")
 
@@ -127,7 +127,7 @@ class _EventRuleState:
         """
         Input properties used for looking up and filtering EventRule resources.
         :param pulumi.Input[str] description: The description of the event-triggered alert rule.
-        :param pulumi.Input['EventRuleEventPatternArgs'] event_pattern: Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        :param pulumi.Input['EventRuleEventPatternArgs'] event_pattern: Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         :param pulumi.Input[str] group_id: The ID of the application group to which the event-triggered alert rule belongs.
         :param pulumi.Input[str] rule_name: The name of the event-triggered alert rule.
         :param pulumi.Input[int] silence_time: The silence time.
@@ -162,7 +162,7 @@ class _EventRuleState:
     @pulumi.getter(name="eventPattern")
     def event_pattern(self) -> Optional[pulumi.Input['EventRuleEventPatternArgs']]:
         """
-        Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         """
         return pulumi.get(self, "event_pattern")
 
@@ -236,7 +236,7 @@ class EventRule(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Event Rule and how to use it, see [What is Event Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/puteventrule).
 
-        > **NOTE:** Available in v1.182.0+.
+        > **NOTE:** Available since v1.182.0.
 
         ## Example Usage
 
@@ -246,11 +246,15 @@ class EventRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cms.MonitorGroup("default", monitor_group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cms.MonitorGroup("default", monitor_group_name=name)
         example = alicloud.cms.EventRule("example",
-            rule_name="example_value",
+            rule_name=name,
             group_id=default.id,
-            description="example_value",
+            description=name,
             status="ENABLED",
             event_pattern=alicloud.cms.EventRuleEventPatternArgs(
                 product="ecs",
@@ -273,7 +277,7 @@ class EventRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the event-triggered alert rule.
-        :param pulumi.Input[pulumi.InputType['EventRuleEventPatternArgs']] event_pattern: Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        :param pulumi.Input[pulumi.InputType['EventRuleEventPatternArgs']] event_pattern: Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         :param pulumi.Input[str] group_id: The ID of the application group to which the event-triggered alert rule belongs.
         :param pulumi.Input[str] rule_name: The name of the event-triggered alert rule.
         :param pulumi.Input[int] silence_time: The silence time.
@@ -290,7 +294,7 @@ class EventRule(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Event Rule and how to use it, see [What is Event Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/puteventrule).
 
-        > **NOTE:** Available in v1.182.0+.
+        > **NOTE:** Available since v1.182.0.
 
         ## Example Usage
 
@@ -300,11 +304,15 @@ class EventRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cms.MonitorGroup("default", monitor_group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cms.MonitorGroup("default", monitor_group_name=name)
         example = alicloud.cms.EventRule("example",
-            rule_name="example_value",
+            rule_name=name,
             group_id=default.id,
-            description="example_value",
+            description=name,
             status="ENABLED",
             event_pattern=alicloud.cms.EventRuleEventPatternArgs(
                 product="ecs",
@@ -388,7 +396,7 @@ class EventRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the event-triggered alert rule.
-        :param pulumi.Input[pulumi.InputType['EventRuleEventPatternArgs']] event_pattern: Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        :param pulumi.Input[pulumi.InputType['EventRuleEventPatternArgs']] event_pattern: Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         :param pulumi.Input[str] group_id: The ID of the application group to which the event-triggered alert rule belongs.
         :param pulumi.Input[str] rule_name: The name of the event-triggered alert rule.
         :param pulumi.Input[int] silence_time: The silence time.
@@ -418,7 +426,7 @@ class EventRule(pulumi.CustomResource):
     @pulumi.getter(name="eventPattern")
     def event_pattern(self) -> pulumi.Output['outputs.EventRuleEventPattern']:
         """
-        Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         """
         return pulumi.get(self, "event_pattern")
 

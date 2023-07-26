@@ -31,22 +31,30 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
         return this.address;
     }
 
+    /**
+     * The name of aone.
+     * 
+     */
     @Import(name="aoneName")
     private @Nullable Output<String> aoneName;
 
+    /**
+     * @return The name of aone.
+     * 
+     */
     public Optional<Output<String>> aoneName() {
         return Optional.ofNullable(this.aoneName);
     }
 
     /**
-     * The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+     * The http method of backend service.
      * 
      */
     @Import(name="method", required=true)
     private Output<String> method;
 
     /**
-     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+     * @return The http method of backend service.
      * 
      */
     public Output<String> method() {
@@ -54,14 +62,14 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The request path of the api.
+     * The path of backend service.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return The request path of the api.
+     * @return The path of backend service.
      * 
      */
     public Output<String> path() {
@@ -132,17 +140,29 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
             return address(Output.of(address));
         }
 
+        /**
+         * @param aoneName The name of aone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aoneName(@Nullable Output<String> aoneName) {
             $.aoneName = aoneName;
             return this;
         }
 
+        /**
+         * @param aoneName The name of aone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aoneName(String aoneName) {
             return aoneName(Output.of(aoneName));
         }
 
         /**
-         * @param method The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+         * @param method The http method of backend service.
          * 
          * @return builder
          * 
@@ -153,7 +173,7 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param method The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
+         * @param method The http method of backend service.
          * 
          * @return builder
          * 
@@ -163,7 +183,7 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param path The request path of the api.
+         * @param path The path of backend service.
          * 
          * @return builder
          * 
@@ -174,7 +194,7 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param path The request path of the api.
+         * @param path The path of backend service.
          * 
          * @return builder
          * 

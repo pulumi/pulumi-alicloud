@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// For information about Cloud Monitor Service Event Rule and how to use it, see [What is Event Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/puteventrule).
     /// 
-    /// &gt; **NOTE:** Available in v1.182.0+.
+    /// &gt; **NOTE:** Available since v1.182.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,16 +28,18 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = new AliCloud.Cms.MonitorGroup("default", new()
     ///     {
-    ///         MonitorGroupName = "example_value",
+    ///         MonitorGroupName = name,
     ///     });
     /// 
     ///     var example = new AliCloud.Cms.EventRule("example", new()
     ///     {
-    ///         RuleName = "example_value",
+    ///         RuleName = name,
     ///         GroupId = @default.Id,
-    ///         Description = "example_value",
+    ///         Description = name,
     ///         Status = "ENABLED",
     ///         EventPattern = new AliCloud.Cms.Inputs.EventRuleEventPatternArgs
     ///         {
@@ -80,7 +82,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        /// Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         /// </summary>
         [Output("eventPattern")]
         public Output<Outputs.EventRuleEventPattern> EventPattern { get; private set; } = null!;
@@ -162,7 +164,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        /// Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         /// </summary>
         [Input("eventPattern", required: true)]
         public Input<Inputs.EventRuleEventPatternArgs> EventPattern { get; set; } = null!;
@@ -206,7 +208,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Event mode, used to describe the trigger conditions for this event. See the following `Block event_pattern`.
+        /// Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         /// </summary>
         [Input("eventPattern")]
         public Input<Inputs.EventRuleEventPatternGetArgs>? EventPattern { get; set; }

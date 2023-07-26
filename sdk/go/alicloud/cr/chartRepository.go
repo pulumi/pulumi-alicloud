@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -103,6 +104,7 @@ func NewChartRepository(ctx *pulumi.Context,
 	if args.RepoNamespaceName == nil {
 		return nil, errors.New("invalid value for required argument 'RepoNamespaceName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ChartRepository
 	err := ctx.RegisterResource("alicloud:cr/chartRepository:ChartRepository", name, args, &resource, opts...)
 	if err != nil {

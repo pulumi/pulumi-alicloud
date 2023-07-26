@@ -23,14 +23,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * The AD auth server of the Instance. See the following `Block ad_auth_server`.
+     * The AD auth server of the Instance. See `ad_auth_server` below.
      * 
      */
     @Import(name="adAuthServers")
     private @Nullable Output<List<InstanceAdAuthServerArgs>> adAuthServers;
 
     /**
-     * @return The AD auth server of the Instance. See the following `Block ad_auth_server`.
+     * @return The AD auth server of the Instance. See `ad_auth_server` below.
      * 
      */
     public Optional<Output<List<InstanceAdAuthServerArgs>>> adAuthServers() {
@@ -38,14 +38,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     * The bandwidth of Cloud Bastionhost instance.
+     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      * 
      */
     @Import(name="bandwidth", required=true)
     private Output<String> bandwidth;
 
     /**
-     * @return The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     * @return The bandwidth of Cloud Bastionhost instance.
+     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      * 
      */
     public Output<String> bandwidth() {
@@ -83,14 +87,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+     * The LDAP auth server of the Instance. See `ldap_auth_server` below.
      * 
      */
     @Import(name="ldapAuthServers")
     private @Nullable Output<List<InstanceLdapAuthServerArgs>> ldapAuthServers;
 
     /**
-     * @return The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+     * @return The LDAP auth server of the Instance. See `ldap_auth_server` below.
      * 
      */
     public Optional<Output<List<InstanceLdapAuthServerArgs>>> ldapAuthServers() {
@@ -318,7 +322,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adAuthServers The AD auth server of the Instance. See the following `Block ad_auth_server`.
+         * @param adAuthServers The AD auth server of the Instance. See `ad_auth_server` below.
          * 
          * @return builder
          * 
@@ -329,7 +333,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adAuthServers The AD auth server of the Instance. See the following `Block ad_auth_server`.
+         * @param adAuthServers The AD auth server of the Instance. See `ad_auth_server` below.
          * 
          * @return builder
          * 
@@ -339,7 +343,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adAuthServers The AD auth server of the Instance. See the following `Block ad_auth_server`.
+         * @param adAuthServers The AD auth server of the Instance. See `ad_auth_server` below.
          * 
          * @return builder
          * 
@@ -349,7 +353,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+         * @param bandwidth The bandwidth of Cloud Bastionhost instance.
+         * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+         * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
          * 
          * @return builder
          * 
@@ -360,7 +366,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+         * @param bandwidth The bandwidth of Cloud Bastionhost instance.
+         * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+         * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
          * 
          * @return builder
          * 
@@ -412,7 +420,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapAuthServers The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+         * @param ldapAuthServers The LDAP auth server of the Instance. See `ldap_auth_server` below.
          * 
          * @return builder
          * 
@@ -423,7 +431,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapAuthServers The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+         * @param ldapAuthServers The LDAP auth server of the Instance. See `ldap_auth_server` below.
          * 
          * @return builder
          * 
@@ -433,7 +441,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapAuthServers The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+         * @param ldapAuthServers The LDAP auth server of the Instance. See `ldap_auth_server` below.
          * 
          * @return builder
          * 

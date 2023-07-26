@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CMS Alarm Contact Group resource.
  *
- * For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/doc-detail/114929.htm).
+ * For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontactgroup).
  *
- * > **NOTE:** Available in v1.101.0+.
+ * > **NOTE:** Available since v1.101.0.
  *
  * ## Example Usage
  *
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cms.AlarmContactGroup("example", {alarmContactGroupName: "tf-test"});
+ * const example = new alicloud.cms.AlarmContactGroup("example", {alarmContactGroupName: "tf-example"});
  * ```
  *
  * ## Import

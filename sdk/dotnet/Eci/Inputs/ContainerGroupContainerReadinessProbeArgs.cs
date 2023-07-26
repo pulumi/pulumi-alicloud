@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerReadinessProbeExecArgs>? _execs;
 
         /// <summary>
-        /// Health check using command line method.
+        /// Health check using command line method. See `exec` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerReadinessProbeExecArgs> Execs
         {
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerReadinessProbeHttpGetArgs>? _httpGets;
 
         /// <summary>
-        /// Health check using HTTP request method.
+        /// Health check using HTTP request method. See `http_get` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerReadinessProbeHttpGetArgs> HttpGets
         {
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupContainerReadinessProbeTcpSocketArgs>? _tcpSockets;
 
         /// <summary>
-        /// Health check using TCP socket method.
+        /// Health check using TCP socket method. See `tcp_socket` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupContainerReadinessProbeTcpSocketArgs> TcpSockets
         {

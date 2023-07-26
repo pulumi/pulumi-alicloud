@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Cloud Monitor Service Hybrid Monitor Fc Task and how to use it, see [What is Hybrid Monitor Fc Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
 //
-// > **NOTE:** Available in v1.179.0+.
+// > **NOTE:** Available since v1.179.0.
 //
 // ## Example Usage
 //
@@ -26,17 +27,55 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cms.NewHybridMonitorFcTask(ctx, "example", &cms.HybridMonitorFcTaskArgs{
-//				Namespace:    pulumi.String("example_value"),
-//				TargetUserId: pulumi.String("example_value"),
-//				YarmConfig:   pulumi.String("example_value"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNamespace, err := cms.NewNamespace(ctx, "defaultNamespace", &cms.NamespaceArgs{
+//				Description:   pulumi.String(name),
+//				Namespace:     pulumi.String(name),
+//				Specification: pulumi.String("cms.s1.large"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewHybridMonitorFcTask(ctx, "defaultHybridMonitorFcTask", &cms.HybridMonitorFcTaskArgs{
+//				Namespace: defaultNamespace.ID(),
+//				YarmConfig: pulumi.String(`products:
+//   - namespace: acs_ecs_dashboard
+//     metric_info:
+//   - metric_list:
+//   - cpu_total
+//   - cpu_idle
+//   - diskusage_utilization
+//   - CPUUtilization
+//   - DiskReadBPS
+//   - InternetOut
+//   - IntranetOut
+//   - cpu_system
+//   - namespace: acs_rds_dashboard
+//     metric_info:
+//   - metric_list:
+//   - MySQL_QPS
+//   - MySQL_TPS
+//
+// `),
+//
+//				TargetUserId: *pulumi.String(defaultAccount.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -82,6 +121,7 @@ func NewHybridMonitorFcTask(ctx *pulumi.Context,
 	if args.YarmConfig == nil {
 		return nil, errors.New("invalid value for required argument 'YarmConfig'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HybridMonitorFcTask
 	err := ctx.RegisterResource("alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask", name, args, &resource, opts...)
 	if err != nil {

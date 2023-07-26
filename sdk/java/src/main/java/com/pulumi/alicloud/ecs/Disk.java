@@ -110,12 +110,6 @@ public class Disk extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
-    @Export(name="dedicatedBlockStorageClusterId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> dedicatedBlockStorageClusterId;
-
-    public Output<Optional<String>> dedicatedBlockStorageClusterId() {
-        return Codegen.optional(this.dedicatedBlockStorageClusterId);
-    }
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
      * 

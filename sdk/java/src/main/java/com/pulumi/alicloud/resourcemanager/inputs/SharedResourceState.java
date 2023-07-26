@@ -46,14 +46,14 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The resource type of should shared, valid value
+     * The resource type of should shared. Valid values:
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The resource type of should shared, valid value
+     * @return The resource type of should shared. Valid values:
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -61,14 +61,14 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * status.
+     * The status of the Shared Resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return status.
+     * @return The status of the Shared Resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -145,7 +145,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceType The resource type of should shared, valid value
+         * @param resourceType The resource type of should shared. Valid values:
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceType The resource type of should shared, valid value
+         * @param resourceType The resource type of should shared. Valid values:
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status status.
+         * @param status The status of the Shared Resource.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status status.
+         * @param status The status of the Shared Resource.
          * 
          * @return builder
          * 

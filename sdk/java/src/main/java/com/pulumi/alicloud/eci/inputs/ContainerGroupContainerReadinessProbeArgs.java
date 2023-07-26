@@ -20,14 +20,14 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
     public static final ContainerGroupContainerReadinessProbeArgs Empty = new ContainerGroupContainerReadinessProbeArgs();
 
     /**
-     * Health check using command line method.
+     * Health check using command line method. See `exec` below.
      * 
      */
     @Import(name="execs")
     private @Nullable Output<List<ContainerGroupContainerReadinessProbeExecArgs>> execs;
 
     /**
-     * @return Health check using command line method.
+     * @return Health check using command line method. See `exec` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerReadinessProbeExecArgs>>> execs() {
@@ -50,14 +50,14 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
     }
 
     /**
-     * Health check using HTTP request method.
+     * Health check using HTTP request method. See `http_get` below.
      * 
      */
     @Import(name="httpGets")
     private @Nullable Output<List<ContainerGroupContainerReadinessProbeHttpGetArgs>> httpGets;
 
     /**
-     * @return Health check using HTTP request method.
+     * @return Health check using HTTP request method. See `http_get` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerReadinessProbeHttpGetArgs>>> httpGets() {
@@ -110,14 +110,14 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
     }
 
     /**
-     * Health check using TCP socket method.
+     * Health check using TCP socket method. See `tcp_socket` below.
      * 
      */
     @Import(name="tcpSockets")
     private @Nullable Output<List<ContainerGroupContainerReadinessProbeTcpSocketArgs>> tcpSockets;
 
     /**
-     * @return Health check using TCP socket method.
+     * @return Health check using TCP socket method. See `tcp_socket` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerReadinessProbeTcpSocketArgs>>> tcpSockets() {
@@ -171,7 +171,7 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param execs Health check using command line method.
+         * @param execs Health check using command line method. See `exec` below.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param execs Health check using command line method.
+         * @param execs Health check using command line method. See `exec` below.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param execs Health check using command line method.
+         * @param execs Health check using command line method. See `exec` below.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param httpGets Health check using HTTP request method.
+         * @param httpGets Health check using HTTP request method. See `http_get` below.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param httpGets Health check using HTTP request method.
+         * @param httpGets Health check using HTTP request method. See `http_get` below.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param httpGets Health check using HTTP request method.
+         * @param httpGets Health check using HTTP request method. See `http_get` below.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param tcpSockets Health check using TCP socket method.
+         * @param tcpSockets Health check using TCP socket method. See `tcp_socket` below.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param tcpSockets Health check using TCP socket method.
+         * @param tcpSockets Health check using TCP socket method. See `tcp_socket` below.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param tcpSockets Health check using TCP socket method.
+         * @param tcpSockets Health check using TCP socket method. See `tcp_socket` below.
          * 
          * @return builder
          * 

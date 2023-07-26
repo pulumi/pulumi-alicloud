@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,6 +112,7 @@ func NewPolicyVersion(ctx *pulumi.Context,
 	if args.PolicyName == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PolicyVersion
 	err := ctx.RegisterResource("alicloud:resourcemanager/policyVersion:PolicyVersion", name, args, &resource, opts...)
 	if err != nil {

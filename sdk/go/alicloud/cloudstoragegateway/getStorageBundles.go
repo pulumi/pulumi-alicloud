@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetStorageBundles(ctx *pulumi.Context, args *GetStorageBundlesArgs, opts ...pulumi.InvokeOption) (*GetStorageBundlesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStorageBundlesResult
 	err := ctx.Invoke("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args, &rv, opts...)
 	if err != nil {

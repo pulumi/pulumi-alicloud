@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a CMS Alarm Contact Group resource.
  * 
- * For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/doc-detail/114929.htm).
+ * For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontactgroup).
  * 
- * &gt; **NOTE:** Available in v1.101.0+.
+ * &gt; **NOTE:** Available since v1.101.0.
  * 
  * ## Example Usage
  * 
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AlarmContactGroup(&#34;example&#34;, AlarmContactGroupArgs.builder()        
- *             .alarmContactGroupName(&#34;tf-test&#34;)
+ *             .alarmContactGroupName(&#34;tf-example&#34;)
  *             .build());
  * 
  *     }

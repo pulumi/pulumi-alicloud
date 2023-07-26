@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Config Remediation resource.
 //
-// For information about Config Remediation and how to use it, see [What is Remediation](https://www.alibabacloud.com/help/en/).
+// For information about Config Remediation and how to use it, see [What is Remediation](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createremediation).
 //
-// > **NOTE:** Available in v1.204.0+.
+// > **NOTE:** Available since v1.204.0.
 //
 // ## Example Usage
 //
@@ -26,20 +27,65 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfg.NewRemediation(ctx, "default", &cfg.RemediationArgs{
-//				ConfigRuleId:          pulumi.Any(alicloud_config_rule.PrerequirementRule.Config_rule_id),
-//				RemediationTemplateId: pulumi.String("ACS-TAG-TagResources"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example-oss"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: pulumi.String(name),
+//				Acl:    pulumi.String("public-read"),
+//				Tags: pulumi.AnyMap{
+//					"For": pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRule, err := cfg.NewRule(ctx, "defaultRule", &cfg.RuleArgs{
+//				Description:            pulumi.String("If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant."),
+//				SourceOwner:            pulumi.String("ALIYUN"),
+//				SourceIdentifier:       pulumi.String("oss-bucket-public-read-prohibited"),
+//				RiskLevel:              pulumi.Int(1),
+//				TagKeyScope:            pulumi.String("For"),
+//				TagValueScope:          pulumi.String("example"),
+//				RegionIdsScope:         *pulumi.String(defaultRegions.Regions[0].Id),
+//				ConfigRuleTriggerTypes: pulumi.String("ConfigurationItemChangeNotification"),
+//				ResourceTypesScopes: pulumi.StringArray{
+//					pulumi.String("ACS::OSS::Bucket"),
+//				},
+//				RuleName: pulumi.String("oss-bucket-public-read-prohibited"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewRemediation(ctx, "defaultRemediation", &cfg.RemediationArgs{
+//				ConfigRuleId:          defaultRule.ConfigRuleId,
+//				RemediationTemplateId: pulumi.String("ACS-OSS-PutBucketAcl"),
 //				RemediationSourceType: pulumi.String("ALIYUN"),
 //				InvokeType:            pulumi.String("MANUAL_EXECUTION"),
-//				Params:                pulumi.String("{\"regionId\":\"{regionId}\",\"tags\":\"{\\\"terraform\\\":\\\"terraform\\\"}\",\"resourceType\":\"{resourceType}\",\"resourceIds\":\"{resourceId}\"}"),
-//				RemediationType:       pulumi.String("OOS"),
+//				Params: defaultBucket.Bucket.ApplyT(func(bucket *string) (string, error) {
+//					return fmt.Sprintf("{\"bucketName\": \"%v\", \"regionId\": \"%v\", \"permissionName\": \"private\"}", bucket, defaultRegions.Regions[0].Id), nil
+//				}).(pulumi.StringOutput),
+//				RemediationType: pulumi.String("OOS"),
 //			})
 //			if err != nil {
 //				return err
@@ -102,6 +148,7 @@ func NewRemediation(ctx *pulumi.Context,
 	if args.RemediationType == nil {
 		return nil, errors.New("invalid value for required argument 'RemediationType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Remediation
 	err := ctx.RegisterResource("alicloud:cfg/remediation:Remediation", name, args, &resource, opts...)
 	if err != nil {

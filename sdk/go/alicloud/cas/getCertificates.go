@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // Deprecated: This resource has been deprecated in favour of getServiceCertificates
 func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCertificatesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCertificatesResult
 	err := ctx.Invoke("alicloud:cas/getCertificates:getCertificates", args, &rv, opts...)
 	if err != nil {

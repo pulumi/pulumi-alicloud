@@ -164,7 +164,7 @@ class HostAccountUserGroupAttachment(pulumi.CustomResource):
         """
         Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user group.
 
-        > **NOTE:** Available in v1.135.0+.
+        > **NOTE:** Available since v1.135.0.
 
         ## Example Usage
 
@@ -174,29 +174,50 @@ class HostAccountUserGroupAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
         default_host = alicloud.bastionhost.Host("defaultHost",
-            instance_id="bastionhost-cn-tl32bh0no30",
-            host_name=var["name"],
+            instance_id=default_instance.id,
+            host_name=name,
             active_address_type="Private",
             host_private_address="172.16.0.10",
             os_type="Linux",
             source="Local")
-        default_host_account = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            default_host_account.append(alicloud.bastionhost.HostAccount(f"defaultHostAccount-{range['value']}",
-                instance_id=default_host.instance_id,
-                host_account_name=f"example_value-{range['value']}",
-                host_id=default_host.host_id,
-                protocol_name="SSH",
-                password="YourPassword12345"))
+        default_host_account = alicloud.bastionhost.HostAccount("defaultHostAccount",
+            host_account_name=name,
+            host_id=default_host.host_id,
+            instance_id=default_host.instance_id,
+            protocol_name="SSH",
+            password="YourPassword12345")
         default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
-            instance_id="bastionhost-cn-tl32bh0no30",
-            user_group_name=var["name"])
+            instance_id=default_host.instance_id,
+            user_group_name=name)
         default_host_account_user_group_attachment = alicloud.bastionhost.HostAccountUserGroupAttachment("defaultHostAccountUserGroupAttachment",
             instance_id=default_host.instance_id,
             user_group_id=default_user_group.user_group_id,
             host_id=default_host.host_id,
-            host_account_ids=[__item.host_account_id for __item in default_host_account])
+            host_account_ids=[default_host_account.host_account_id])
         ```
 
         ## Import
@@ -223,7 +244,7 @@ class HostAccountUserGroupAttachment(pulumi.CustomResource):
         """
         Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user group.
 
-        > **NOTE:** Available in v1.135.0+.
+        > **NOTE:** Available since v1.135.0.
 
         ## Example Usage
 
@@ -233,29 +254,50 @@ class HostAccountUserGroupAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
         default_host = alicloud.bastionhost.Host("defaultHost",
-            instance_id="bastionhost-cn-tl32bh0no30",
-            host_name=var["name"],
+            instance_id=default_instance.id,
+            host_name=name,
             active_address_type="Private",
             host_private_address="172.16.0.10",
             os_type="Linux",
             source="Local")
-        default_host_account = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            default_host_account.append(alicloud.bastionhost.HostAccount(f"defaultHostAccount-{range['value']}",
-                instance_id=default_host.instance_id,
-                host_account_name=f"example_value-{range['value']}",
-                host_id=default_host.host_id,
-                protocol_name="SSH",
-                password="YourPassword12345"))
+        default_host_account = alicloud.bastionhost.HostAccount("defaultHostAccount",
+            host_account_name=name,
+            host_id=default_host.host_id,
+            instance_id=default_host.instance_id,
+            protocol_name="SSH",
+            password="YourPassword12345")
         default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
-            instance_id="bastionhost-cn-tl32bh0no30",
-            user_group_name=var["name"])
+            instance_id=default_host.instance_id,
+            user_group_name=name)
         default_host_account_user_group_attachment = alicloud.bastionhost.HostAccountUserGroupAttachment("defaultHostAccountUserGroupAttachment",
             instance_id=default_host.instance_id,
             user_group_id=default_user_group.user_group_id,
             host_id=default_host.host_id,
-            host_account_ids=[__item.host_account_id for __item in default_host_account])
+            host_account_ids=[default_host_account.host_account_id])
         ```
 
         ## Import

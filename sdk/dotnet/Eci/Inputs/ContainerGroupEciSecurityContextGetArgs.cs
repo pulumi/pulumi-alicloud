@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupEciSecurityContextSysctlGetArgs>? _sysctls;
 
         /// <summary>
-        /// system.
+        /// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupEciSecurityContextSysctlGetArgs> Sysctls
         {

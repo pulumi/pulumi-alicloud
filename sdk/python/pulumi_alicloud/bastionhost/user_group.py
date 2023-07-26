@@ -151,7 +151,7 @@ class UserGroup(pulumi.CustomResource):
 
         For information about Bastion Host User Group and how to use it, see [What is User Group](https://www.alibabacloud.com/help/doc-detail/204596.htm).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         ## Example Usage
 
@@ -161,9 +161,32 @@ class UserGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.bastionhost.UserGroup("example",
-            instance_id="example_value",
-            user_group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
+            instance_id=default_instance.id,
+            user_group_name=name)
         ```
 
         ## Import
@@ -191,7 +214,7 @@ class UserGroup(pulumi.CustomResource):
 
         For information about Bastion Host User Group and how to use it, see [What is User Group](https://www.alibabacloud.com/help/doc-detail/204596.htm).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         ## Example Usage
 
@@ -201,9 +224,32 @@ class UserGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.bastionhost.UserGroup("example",
-            instance_id="example_value",
-            user_group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
+            instance_id=default_instance.id,
+            user_group_name=name)
         ```
 
         ## Import

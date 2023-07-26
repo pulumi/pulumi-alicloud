@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +28,7 @@ func NewSlr(ctx *pulumi.Context,
 	if args.ProductName == nil {
 		return nil, errors.New("invalid value for required argument 'ProductName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Slr
 	err := ctx.RegisterResource("alicloud:eventbridge/slr:Slr", name, args, &resource, opts...)
 	if err != nil {

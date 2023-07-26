@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// For information about Cloud Monitor Service Hybrid Monitor Fc Task and how to use it, see [What is Hybrid Monitor Fc Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
     /// 
-    /// &gt; **NOTE:** Available in v1.179.0+.
+    /// &gt; **NOTE:** Available since v1.179.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,39 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Cms.HybridMonitorFcTask("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultNamespace = new AliCloud.Cms.Namespace("defaultNamespace", new()
     ///     {
-    ///         Namespace = "example_value",
-    ///         TargetUserId = "example_value",
-    ///         YarmConfig = "example_value",
+    ///         Description = name,
+    ///         NamespaceName = name,
+    ///         Specification = "cms.s1.large",
+    ///     });
+    /// 
+    ///     var defaultHybridMonitorFcTask = new AliCloud.Cms.HybridMonitorFcTask("defaultHybridMonitorFcTask", new()
+    ///     {
+    ///         Namespace = defaultNamespace.Id,
+    ///         YarmConfig = @"products:
+    /// - namespace: acs_ecs_dashboard
+    ///   metric_info:
+    ///   - metric_list:
+    ///     - cpu_total
+    ///     - cpu_idle
+    ///     - diskusage_utilization
+    ///     - CPUUtilization
+    ///     - DiskReadBPS
+    ///     - InternetOut
+    ///     - IntranetOut
+    ///     - cpu_system
+    /// - namespace: acs_rds_dashboard
+    ///   metric_info:
+    ///   - metric_list:
+    ///     - MySQL_QPS
+    ///     - MySQL_TPS
+    /// ",
+    ///         TargetUserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///     });
     /// 
     /// });

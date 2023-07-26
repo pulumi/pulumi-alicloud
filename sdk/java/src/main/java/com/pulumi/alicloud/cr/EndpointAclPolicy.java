@@ -19,7 +19,64 @@ import javax.annotation.Nullable;
  * 
  * For information about CR Endpoint Acl Policy and how to use it, see [What is Endpoint Acl Policy](https://www.alibabacloud.com/help/doc-detail/145275.htm).
  * 
- * &gt; **NOTE:** Available in v1.139.0+.
+ * &gt; **NOTE:** Available since v1.139.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
+ * import com.pulumi.alicloud.cr.CrFunctions;
+ * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
+ * import com.pulumi.alicloud.cr.EndpointAclPolicy;
+ * import com.pulumi.alicloud.cr.EndpointAclPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;defaultRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .renewalStatus(&#34;ManualRenewal&#34;)
+ *             .instanceType(&#34;Advanced&#34;)
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *         final var defaultEndpointAclService = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
+ *             .endpointType(&#34;internet&#34;)
+ *             .enable(true)
+ *             .instanceId(defaultRegistryEnterpriseInstance.id())
+ *             .moduleName(&#34;Registry&#34;)
+ *             .build());
+ * 
+ *         var defaultEndpointAclPolicy = new EndpointAclPolicy(&#34;defaultEndpointAclPolicy&#34;, EndpointAclPolicyArgs.builder()        
+ *             .instanceId(defaultEndpointAclService.applyValue(getEndpointAclServiceResult -&gt; getEndpointAclServiceResult).applyValue(defaultEndpointAclService -&gt; defaultEndpointAclService.applyValue(getEndpointAclServiceResult -&gt; getEndpointAclServiceResult.instanceId())))
+ *             .entry(&#34;192.168.1.0/24&#34;)
+ *             .description(name)
+ *             .moduleName(&#34;Registry&#34;)
+ *             .endpointType(&#34;internet&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

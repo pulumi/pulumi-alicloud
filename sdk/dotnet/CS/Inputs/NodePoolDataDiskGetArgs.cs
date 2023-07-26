@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class NodePoolDataDiskGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the automatic snapshot policy that you want to apply to the system disk.
+        /// </summary>
         [Input("autoSnapshotPolicyId")]
         public Input<string>? AutoSnapshotPolicyId { get; set; }
 
@@ -21,6 +24,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 
@@ -37,7 +43,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The name of node pool.
+        /// The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -54,6 +60,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("size")]
         public Input<int>? Size { get; set; }
 
+        /// <summary>
+        /// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+        /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 

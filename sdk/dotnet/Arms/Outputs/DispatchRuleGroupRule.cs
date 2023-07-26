@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class DispatchRuleGroupRule
     {
+        /// <summary>
+        /// The ID of the group rule.
+        /// </summary>
         public readonly int? GroupId;
         /// <summary>
         /// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.

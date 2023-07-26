@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://www.alibabacloud.com/help/en/doc-detail/203146.htm).
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -113,7 +113,7 @@ export class DispatchRule extends pulumi.CustomResource {
      */
     public readonly dispatchType!: pulumi.Output<string | undefined>;
     /**
-     * Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+     * Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
     public readonly groupRules!: pulumi.Output<outputs.arms.DispatchRuleGroupRule[]>;
     /**
@@ -121,11 +121,11 @@ export class DispatchRule extends pulumi.CustomResource {
      */
     public readonly isRecover!: pulumi.Output<boolean | undefined>;
     /**
-     * Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+     * Sets the dispatch rule. See `labelMatchExpressionGrid` below.
      */
     public readonly labelMatchExpressionGrids!: pulumi.Output<outputs.arms.DispatchRuleLabelMatchExpressionGrid[]>;
     /**
-     * Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+     * Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
     public readonly notifyRules!: pulumi.Output<outputs.arms.DispatchRuleNotifyRule[]>;
     /**
@@ -193,7 +193,7 @@ export interface DispatchRuleState {
      */
     dispatchType?: pulumi.Input<string>;
     /**
-     * Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+     * Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
     groupRules?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleGroupRule>[]>;
     /**
@@ -201,11 +201,11 @@ export interface DispatchRuleState {
      */
     isRecover?: pulumi.Input<boolean>;
     /**
-     * Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+     * Sets the dispatch rule. See `labelMatchExpressionGrid` below.
      */
     labelMatchExpressionGrids?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleLabelMatchExpressionGrid>[]>;
     /**
-     * Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+     * Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
     notifyRules?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyRule>[]>;
     /**
@@ -227,7 +227,7 @@ export interface DispatchRuleArgs {
      */
     dispatchType?: pulumi.Input<string>;
     /**
-     * Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+     * Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
     groupRules: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleGroupRule>[]>;
     /**
@@ -235,11 +235,11 @@ export interface DispatchRuleArgs {
      */
     isRecover?: pulumi.Input<boolean>;
     /**
-     * Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+     * Sets the dispatch rule. See `labelMatchExpressionGrid` below.
      */
     labelMatchExpressionGrids: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleLabelMatchExpressionGrid>[]>;
     /**
-     * Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+     * Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
     notifyRules: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyRule>[]>;
 }

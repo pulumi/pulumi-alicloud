@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class GatewayVpnAttachmentBgpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable health checks.
+        /// Whether to enable BGP.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }

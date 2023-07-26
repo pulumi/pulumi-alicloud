@@ -18,14 +18,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterArgs extends com.pu
     public static final HybridMonitorSlsTaskSlsProcessConfigFilterArgs Empty = new HybridMonitorSlsTaskSlsProcessConfigFilterArgs();
 
     /**
-     * The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+     * The conditions that are used to filter logs imported from Log Service. See `filters` below.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs>> filters;
 
     /**
-     * @return The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+     * @return The conditions that are used to filter logs imported from Log Service. See `filters` below.
      * 
      */
     public Optional<Output<List<HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs>>> filters() {
@@ -73,7 +73,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterArgs extends com.pu
         }
 
         /**
-         * @param filters The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+         * @param filters The conditions that are used to filter logs imported from Log Service. See `filters` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterArgs extends com.pu
         }
 
         /**
-         * @param filters The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+         * @param filters The conditions that are used to filter logs imported from Log Service. See `filters` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterArgs extends com.pu
         }
 
         /**
-         * @param filters The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+         * @param filters The conditions that are used to filter logs imported from Log Service. See `filters` below.
          * 
          * @return builder
          * 

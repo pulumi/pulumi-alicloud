@@ -31,14 +31,14 @@ public final class ContainerGroupContainerEnvironmentVarArgs extends com.pulumi.
     }
 
     /**
-     * The value of the variable. The value can be 0 to 256 characters in length.
+     * The variable value of the security context that the container group runs.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
+     * @return The variable value of the security context that the container group runs.
      * 
      */
     public Optional<Output<String>> value() {
@@ -92,7 +92,7 @@ public final class ContainerGroupContainerEnvironmentVarArgs extends com.pulumi.
         }
 
         /**
-         * @param value The value of the variable. The value can be 0 to 256 characters in length.
+         * @param value The variable value of the security context that the container group runs.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ContainerGroupContainerEnvironmentVarArgs extends com.pulumi.
         }
 
         /**
-         * @param value The value of the variable. The value can be 0 to 256 characters in length.
+         * @param value The variable value of the security context that the container group runs.
          * 
          * @return builder
          * 

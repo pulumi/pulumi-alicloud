@@ -22,13 +22,15 @@ namespace Pulumi.AliCloud.BastionHost
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        /// The AD auth server of the Instance. See `ad_auth_server` below.
         /// </summary>
         [Output("adAuthServers")]
         public Output<ImmutableArray<Outputs.InstanceAdAuthServer>> AdAuthServers { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+        /// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
@@ -46,7 +48,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<bool> EnablePublicAccess { get; private set; } = null!;
 
         /// <summary>
-        /// The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        /// The LDAP auth server of the Instance. See `ldap_auth_server` below.
         /// </summary>
         [Output("ldapAuthServers")]
         public Output<ImmutableArray<Outputs.InstanceLdapAuthServer>> LdapAuthServers { get; private set; } = null!;
@@ -174,7 +176,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<Inputs.InstanceAdAuthServerArgs>? _adAuthServers;
 
         /// <summary>
-        /// The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        /// The AD auth server of the Instance. See `ad_auth_server` below.
         /// </summary>
         public InputList<Inputs.InstanceAdAuthServerArgs> AdAuthServers
         {
@@ -183,7 +185,9 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+        /// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         /// </summary>
         [Input("bandwidth", required: true)]
         public Input<string> Bandwidth { get; set; } = null!;
@@ -204,7 +208,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<Inputs.InstanceLdapAuthServerArgs>? _ldapAuthServers;
 
         /// <summary>
-        /// The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        /// The LDAP auth server of the Instance. See `ldap_auth_server` below.
         /// </summary>
         public InputList<Inputs.InstanceLdapAuthServerArgs> LdapAuthServers
         {
@@ -314,7 +318,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<Inputs.InstanceAdAuthServerGetArgs>? _adAuthServers;
 
         /// <summary>
-        /// The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        /// The AD auth server of the Instance. See `ad_auth_server` below.
         /// </summary>
         public InputList<Inputs.InstanceAdAuthServerGetArgs> AdAuthServers
         {
@@ -323,7 +327,9 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+        /// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
@@ -344,7 +350,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<Inputs.InstanceLdapAuthServerGetArgs>? _ldapAuthServers;
 
         /// <summary>
-        /// The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        /// The LDAP auth server of the Instance. See `ldap_auth_server` below.
         /// </summary>
         public InputList<Inputs.InstanceLdapAuthServerGetArgs> LdapAuthServers
         {

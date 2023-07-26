@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class HybridMonitorSlsTaskSlsProcessConfig
     {
         /// <summary>
-        /// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+        /// The extended field that specifies the result of basic operations that are performed on aggregation results.
         /// </summary>
         public readonly ImmutableArray<Outputs.HybridMonitorSlsTaskSlsProcessConfigExpress> Expresses;
         /// <summary>
-        /// The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+        /// The conditions that are used to filter logs imported from Log Service. See `filter` below.
         /// </summary>
         public readonly Outputs.HybridMonitorSlsTaskSlsProcessConfigFilter? Filter;
         /// <summary>
-        /// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
+        /// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.HybridMonitorSlsTaskSlsProcessConfigGroupBy> GroupBies;
         /// <summary>
-        /// The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+        /// The method that is used to aggregate logs imported from Log Service. See `statistics` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.HybridMonitorSlsTaskSlsProcessConfigStatistic> Statistics;
 

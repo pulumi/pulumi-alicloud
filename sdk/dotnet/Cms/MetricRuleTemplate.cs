@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cms
     /// <summary>
     /// Provides a Cloud Monitor Service Metric Rule Template resource.
     /// 
-    /// For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/doc-detail/114984.html).
+    /// For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmetricruletemplate).
     /// 
-    /// &gt; **NOTE:** Available in v1.134.0+.
+    /// &gt; **NOTE:** Available since v1.134.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,13 +28,19 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = new AliCloud.Cms.MetricRuleTemplate("example", new()
     ///     {
+    ///         MetricRuleTemplateName = name,
     ///         AlertTemplates = new[]
     ///         {
     ///             new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateArgs
     ///             {
     ///                 Category = "ecs",
+    ///                 MetricName = "cpu_total",
+    ///                 Namespace = "acs_ecs_dashboard",
+    ///                 RuleName = "tf_example",
     ///                 Escalations = new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateEscalationsArgs
     ///                 {
     ///                     Critical = new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs
@@ -45,12 +51,8 @@ namespace Pulumi.AliCloud.Cms
     ///                         Times = "3",
     ///                     },
     ///                 },
-    ///                 MetricName = "cpu_total",
-    ///                 Namespace = "acs_ecs_dashboard",
-    ///                 RuleName = "tf_testAcc_new",
     ///             },
     ///         },
-    ///         MetricRuleTemplateName = "example_value",
     ///     });
     /// 
     /// });
@@ -68,7 +70,7 @@ namespace Pulumi.AliCloud.Cms
     public partial class MetricRuleTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        /// The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         /// </summary>
         [Output("alertTemplates")]
         public Output<ImmutableArray<Outputs.MetricRuleTemplateAlertTemplate>> AlertTemplates { get; private set; } = null!;
@@ -187,7 +189,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MetricRuleTemplateAlertTemplateArgs>? _alertTemplates;
 
         /// <summary>
-        /// The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        /// The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         /// </summary>
         public InputList<Inputs.MetricRuleTemplateAlertTemplateArgs> AlertTemplates
         {
@@ -271,7 +273,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.MetricRuleTemplateAlertTemplateGetArgs>? _alertTemplates;
 
         /// <summary>
-        /// The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        /// The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         /// </summary>
         public InputList<Inputs.MetricRuleTemplateAlertTemplateGetArgs> AlertTemplates
         {

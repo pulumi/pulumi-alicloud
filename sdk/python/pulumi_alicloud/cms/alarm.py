@@ -48,14 +48,14 @@ class AlarmArgs:
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm (documented below).
-        :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info (documented below).
-        :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn (documented below).
+        :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
+        :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info. See `escalations_info` below.
+        :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
         :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
-        :param pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]] prometheuses: The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
@@ -224,7 +224,7 @@ class AlarmArgs:
     @pulumi.getter(name="escalationsCritical")
     def escalations_critical(self) -> Optional[pulumi.Input['AlarmEscalationsCriticalArgs']]:
         """
-        A configuration of critical alarm (documented below).
+        A configuration of critical alarm. See `escalations_critical` below.
         """
         return pulumi.get(self, "escalations_critical")
 
@@ -236,7 +236,7 @@ class AlarmArgs:
     @pulumi.getter(name="escalationsInfo")
     def escalations_info(self) -> Optional[pulumi.Input['AlarmEscalationsInfoArgs']]:
         """
-        A configuration of critical info (documented below).
+        A configuration of critical info. See `escalations_info` below.
         """
         return pulumi.get(self, "escalations_info")
 
@@ -248,7 +248,7 @@ class AlarmArgs:
     @pulumi.getter(name="escalationsWarn")
     def escalations_warn(self) -> Optional[pulumi.Input['AlarmEscalationsWarnArgs']]:
         """
-        A configuration of critical warn (documented below).
+        A configuration of critical warn. See `escalations_warn` below.
         """
         return pulumi.get(self, "escalations_warn")
 
@@ -311,7 +311,7 @@ class AlarmArgs:
     @pulumi.getter
     def prometheuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]:
         """
-        The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         """
         return pulumi.get(self, "prometheuses")
 
@@ -451,9 +451,9 @@ class _AlarmState:
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm (documented below).
-        :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info (documented below).
-        :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn (documented below).
+        :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
+        :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info. See `escalations_info` below.
+        :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
@@ -461,7 +461,7 @@ class _AlarmState:
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
-        :param pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]] prometheuses: The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
@@ -611,7 +611,7 @@ class _AlarmState:
     @pulumi.getter(name="escalationsCritical")
     def escalations_critical(self) -> Optional[pulumi.Input['AlarmEscalationsCriticalArgs']]:
         """
-        A configuration of critical alarm (documented below).
+        A configuration of critical alarm. See `escalations_critical` below.
         """
         return pulumi.get(self, "escalations_critical")
 
@@ -623,7 +623,7 @@ class _AlarmState:
     @pulumi.getter(name="escalationsInfo")
     def escalations_info(self) -> Optional[pulumi.Input['AlarmEscalationsInfoArgs']]:
         """
-        A configuration of critical info (documented below).
+        A configuration of critical info. See `escalations_info` below.
         """
         return pulumi.get(self, "escalations_info")
 
@@ -635,7 +635,7 @@ class _AlarmState:
     @pulumi.getter(name="escalationsWarn")
     def escalations_warn(self) -> Optional[pulumi.Input['AlarmEscalationsWarnArgs']]:
         """
-        A configuration of critical warn (documented below).
+        A configuration of critical warn. See `escalations_warn` below.
         """
         return pulumi.get(self, "escalations_warn")
 
@@ -723,7 +723,7 @@ class _AlarmState:
     @pulumi.getter
     def prometheuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]:
         """
-        The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         """
         return pulumi.get(self, "prometheuses")
 
@@ -872,7 +872,9 @@ class Alarm(pulumi.CustomResource):
                  __props__=None):
         """
         This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
-        Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+        Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+
+        > **NOTE:** Available since v1.9.1.
 
         ## Example Usage
 
@@ -882,19 +884,46 @@ class Alarm(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        basic = alicloud.cms.Alarm("basic",
-            contact_groups=["test-group"],
-            effective_interval="0:00-2:00",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
+        default_alarm = alicloud.cms.Alarm("defaultAlarm",
+            project="acs_ecs_dashboard",
+            metric="disk_writebytes",
+            metric_dimensions=default_instance.id.apply(lambda id: f"[{{\\"instanceId\\":\\"{id}\\",\\"device\\":\\"/dev/vda1\\"}}]"),
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
-                comparison_operator="<=",
                 statistics="Average",
+                comparison_operator="<=",
                 threshold="35",
                 times=2,
             ),
-            metric_dimensions="[{\\"instanceId\\":\\"i-bp1247jeep0y53nu3bnk\\",\\"device\\":\\"/dev/vda1\\"},{\\"instanceId\\":\\"i-bp11gdcik8z6dl5jm84p\\",\\"device\\":\\"/dev/vdb1\\"}]",
             period=900,
-            project="acs_ecs_dashboard",
-            webhook=f"https://{data['alicloud_account']['current']['id']}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")
+            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            effective_interval="06:00-20:00")
         ```
 
         ## Import
@@ -912,9 +941,9 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm (documented below).
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info (documented below).
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn (documented below).
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info. See `escalations_info` below.
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
@@ -922,7 +951,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]] prometheuses: The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
@@ -941,7 +970,9 @@ class Alarm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
-        Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+        Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+
+        > **NOTE:** Available since v1.9.1.
 
         ## Example Usage
 
@@ -951,19 +982,46 @@ class Alarm(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        basic = alicloud.cms.Alarm("basic",
-            contact_groups=["test-group"],
-            effective_interval="0:00-2:00",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
+        default_alarm = alicloud.cms.Alarm("defaultAlarm",
+            project="acs_ecs_dashboard",
+            metric="disk_writebytes",
+            metric_dimensions=default_instance.id.apply(lambda id: f"[{{\\"instanceId\\":\\"{id}\\",\\"device\\":\\"/dev/vda1\\"}}]"),
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
-                comparison_operator="<=",
                 statistics="Average",
+                comparison_operator="<=",
                 threshold="35",
                 times=2,
             ),
-            metric_dimensions="[{\\"instanceId\\":\\"i-bp1247jeep0y53nu3bnk\\",\\"device\\":\\"/dev/vda1\\"},{\\"instanceId\\":\\"i-bp11gdcik8z6dl5jm84p\\",\\"device\\":\\"/dev/vdb1\\"}]",
             period=900,
-            project="acs_ecs_dashboard",
-            webhook=f"https://{data['alicloud_account']['current']['id']}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")
+            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            effective_interval="06:00-20:00")
         ```
 
         ## Import
@@ -1115,9 +1173,9 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm (documented below).
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info (documented below).
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn (documented below).
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info. See `escalations_info` below.
+        :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
@@ -1125,7 +1183,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]] prometheuses: The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
@@ -1216,7 +1274,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter(name="escalationsCritical")
     def escalations_critical(self) -> pulumi.Output[Optional['outputs.AlarmEscalationsCritical']]:
         """
-        A configuration of critical alarm (documented below).
+        A configuration of critical alarm. See `escalations_critical` below.
         """
         return pulumi.get(self, "escalations_critical")
 
@@ -1224,7 +1282,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter(name="escalationsInfo")
     def escalations_info(self) -> pulumi.Output[Optional['outputs.AlarmEscalationsInfo']]:
         """
-        A configuration of critical info (documented below).
+        A configuration of critical info. See `escalations_info` below.
         """
         return pulumi.get(self, "escalations_info")
 
@@ -1232,7 +1290,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter(name="escalationsWarn")
     def escalations_warn(self) -> pulumi.Output[Optional['outputs.AlarmEscalationsWarn']]:
         """
-        A configuration of critical warn (documented below).
+        A configuration of critical warn. See `escalations_warn` below.
         """
         return pulumi.get(self, "escalations_warn")
 
@@ -1292,7 +1350,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def prometheuses(self) -> pulumi.Output[Optional[Sequence['outputs.AlarmPrometheus']]]:
         """
-        The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         """
         return pulumi.get(self, "prometheuses")
 

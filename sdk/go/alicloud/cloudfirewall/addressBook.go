@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -103,6 +104,7 @@ func NewAddressBook(ctx *pulumi.Context,
 	if args.GroupType == nil {
 		return nil, errors.New("invalid value for required argument 'GroupType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AddressBook
 	err := ctx.RegisterResource("alicloud:cloudfirewall/addressBook:AddressBook", name, args, &resource, opts...)
 	if err != nil {

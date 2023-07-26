@@ -17,7 +17,7 @@ public final class DispatchRuleNotifyRule {
      */
     private List<String> notifyChannels;
     /**
-     * @return Sets the notification object. See the following `Block notify_objects`.
+     * @return Sets the notification object. See `notify_objects` below.
      * 
      */
     private List<DispatchRuleNotifyRuleNotifyObject> notifyObjects;
@@ -31,7 +31,7 @@ public final class DispatchRuleNotifyRule {
         return this.notifyChannels;
     }
     /**
-     * @return Sets the notification object. See the following `Block notify_objects`.
+     * @return Sets the notification object. See `notify_objects` below.
      * 
      */
     public List<DispatchRuleNotifyRuleNotifyObject> notifyObjects() {

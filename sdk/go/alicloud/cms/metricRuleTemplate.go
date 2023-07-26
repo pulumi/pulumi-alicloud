@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Monitor Service Metric Rule Template resource.
 //
-// For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/doc-detail/114984.html).
+// For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmetricruletemplate).
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -28,15 +29,25 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := cms.NewMetricRuleTemplate(ctx, "example", &cms.MetricRuleTemplateArgs{
+//				MetricRuleTemplateName: pulumi.String(name),
 //				AlertTemplates: cms.MetricRuleTemplateAlertTemplateArray{
 //					&cms.MetricRuleTemplateAlertTemplateArgs{
-//						Category: pulumi.String("ecs"),
+//						Category:   pulumi.String("ecs"),
+//						MetricName: pulumi.String("cpu_total"),
+//						Namespace:  pulumi.String("acs_ecs_dashboard"),
+//						RuleName:   pulumi.String("tf_example"),
 //						Escalations: &cms.MetricRuleTemplateAlertTemplateEscalationsArgs{
 //							Critical: &cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{
 //								ComparisonOperator: pulumi.String("GreaterThanThreshold"),
@@ -45,12 +56,8 @@ import (
 //								Times:              pulumi.String("3"),
 //							},
 //						},
-//						MetricName: pulumi.String("cpu_total"),
-//						Namespace:  pulumi.String("acs_ecs_dashboard"),
-//						RuleName:   pulumi.String("tf_testAcc_new"),
 //					},
 //				},
-//				MetricRuleTemplateName: pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err
@@ -73,7 +80,7 @@ import (
 type MetricRuleTemplate struct {
 	pulumi.CustomResourceState
 
-	// The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates MetricRuleTemplateAlertTemplateArrayOutput `pulumi:"alertTemplates"`
 	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
 	ApplyMode pulumi.StringPtrOutput `pulumi:"applyMode"`
@@ -111,6 +118,7 @@ func NewMetricRuleTemplate(ctx *pulumi.Context,
 	if args.MetricRuleTemplateName == nil {
 		return nil, errors.New("invalid value for required argument 'MetricRuleTemplateName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MetricRuleTemplate
 	err := ctx.RegisterResource("alicloud:cms/metricRuleTemplate:MetricRuleTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -133,7 +141,7 @@ func GetMetricRuleTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetricRuleTemplate resources.
 type metricRuleTemplateState struct {
-	// The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates []MetricRuleTemplateAlertTemplate `pulumi:"alertTemplates"`
 	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
 	ApplyMode *string `pulumi:"applyMode"`
@@ -162,7 +170,7 @@ type metricRuleTemplateState struct {
 }
 
 type MetricRuleTemplateState struct {
-	// The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates MetricRuleTemplateAlertTemplateArrayInput
 	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
 	ApplyMode pulumi.StringPtrInput
@@ -195,7 +203,7 @@ func (MetricRuleTemplateState) ElementType() reflect.Type {
 }
 
 type metricRuleTemplateArgs struct {
-	// The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates []MetricRuleTemplateAlertTemplate `pulumi:"alertTemplates"`
 	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
 	ApplyMode *string `pulumi:"applyMode"`
@@ -225,7 +233,7 @@ type metricRuleTemplateArgs struct {
 
 // The set of arguments for constructing a MetricRuleTemplate resource.
 type MetricRuleTemplateArgs struct {
-	// The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates MetricRuleTemplateAlertTemplateArrayInput
 	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
 	ApplyMode pulumi.StringPtrInput
@@ -340,7 +348,7 @@ func (o MetricRuleTemplateOutput) ToMetricRuleTemplateOutputWithContext(ctx cont
 	return o
 }
 
-// The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 func (o MetricRuleTemplateOutput) AlertTemplates() MetricRuleTemplateAlertTemplateArrayOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) MetricRuleTemplateAlertTemplateArrayOutput { return v.AlertTemplates }).(MetricRuleTemplateAlertTemplateArrayOutput)
 }

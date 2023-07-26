@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Cloud Config Aggregate Config Rule resource.
     /// 
-    /// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
+    /// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigrule).
     /// 
-    /// &gt; **NOTE:** Available in v1.124.0+.
+    /// &gt; **NOTE:** Available since v1.124.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,28 +28,36 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAggregator = new AliCloud.Cfg.Aggregator("exampleAggregator", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke(new()
+    ///     {
+    ///         Status = "CreateSuccess",
+    ///     });
+    /// 
+    ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("defaultAggregator", new()
     ///     {
     ///         AggregatorAccounts = new[]
     ///         {
     ///             new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
     ///             {
-    ///                 AccountId = "140278452670****",
-    ///                 AccountName = "test-2",
+    ///                 AccountId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountId),
+    ///                 AccountName = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.DisplayName),
     ///                 AccountType = "ResourceDirectory",
     ///             },
     ///         },
-    ///         AggregatorName = "tf-testaccaggregator",
-    ///         Description = "tf-testaccaggregator",
+    ///         AggregatorName = name,
+    ///         Description = name,
+    ///         AggregatorType = "CUSTOM",
     ///     });
     /// 
-    ///     var exampleAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("exampleAggregateConfigRule", new()
+    ///     var defaultAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("defaultAggregateConfigRule", new()
     ///     {
-    ///         AggregateConfigRuleName = "tf-testaccconfig1234",
-    ///         AggregatorId = exampleAggregator.Id,
+    ///         AggregateConfigRuleName = "contains-tag",
+    ///         AggregatorId = defaultAggregator.Id,
     ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
     ///         SourceOwner = "ALIYUN",
-    ///         SourceIdentifier = "ecs-cpu-min-count-limit",
+    ///         SourceIdentifier = "contains-tag",
     ///         RiskLevel = 1,
     ///         ResourceTypesScopes = new[]
     ///         {
@@ -57,7 +65,8 @@ namespace Pulumi.AliCloud.Cfg
     ///         },
     ///         InputParameters = 
     ///         {
-    ///             { "cpuCount", "4" },
+    ///             { "key", "example" },
+    ///             { "value", "example" },
     ///         },
     ///     });
     /// 
@@ -88,7 +97,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> AggregatorId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        /// (Available since v1.141.0) The rule ID of Aggregate Config Rule.
         /// </summary>
         [Output("configRuleId")]
         public Output<string> ConfigRuleId { get; private set; } = null!;
@@ -352,7 +361,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? AggregatorId { get; set; }
 
         /// <summary>
-        /// (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+        /// (Available since v1.141.0) The rule ID of Aggregate Config Rule.
         /// </summary>
         [Input("configRuleId")]
         public Input<string>? ConfigRuleId { get; set; }

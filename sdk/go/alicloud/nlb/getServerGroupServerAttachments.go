@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func GetServerGroupServerAttachments(ctx *pulumi.Context, args *GetServerGroupServerAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetServerGroupServerAttachmentsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerGroupServerAttachmentsResult
 	err := ctx.Invoke("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args, &rv, opts...)
 	if err != nil {

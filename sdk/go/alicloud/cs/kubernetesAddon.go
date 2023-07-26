@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -230,6 +231,7 @@ func NewKubernetesAddon(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KubernetesAddon
 	err := ctx.RegisterResource("alicloud:cs/kubernetesAddon:KubernetesAddon", name, args, &resource, opts...)
 	if err != nil {

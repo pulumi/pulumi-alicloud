@@ -32,14 +32,14 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
     }
 
     /**
-     * The information about the trigger condition based on the alert level. See the following `Block escalations`.
+     * The information about the trigger condition based on the alert level. See `escalations` below.
      * 
      */
     @Import(name="escalations")
     private @Nullable Output<MetricRuleTemplateAlertTemplateEscalationsArgs> escalations;
 
     /**
-     * @return The information about the trigger condition based on the alert level. See the following `Block escalations`.
+     * @return The information about the trigger condition based on the alert level. See `escalations` below.
      * 
      */
     public Optional<Output<MetricRuleTemplateAlertTemplateEscalationsArgs>> escalations() {
@@ -165,7 +165,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
         }
 
         /**
-         * @param escalations The information about the trigger condition based on the alert level. See the following `Block escalations`.
+         * @param escalations The information about the trigger condition based on the alert level. See `escalations` below.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
         }
 
         /**
-         * @param escalations The information about the trigger condition based on the alert level. See the following `Block escalations`.
+         * @param escalations The information about the trigger condition based on the alert level. See `escalations` below.
          * 
          * @return builder
          * 

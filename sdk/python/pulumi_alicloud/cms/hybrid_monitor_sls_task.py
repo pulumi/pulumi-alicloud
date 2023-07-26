@@ -27,9 +27,9 @@ class HybridMonitorSlsTaskArgs:
         The set of arguments for constructing a HybridMonitorSlsTask resource.
         :param pulumi.Input[str] collect_target_type: The type of the collection target, enter the name of the Logstore group.
         :param pulumi.Input[str] namespace: The name of the namespace.
-        :param pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs'] sls_process_config: The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        :param pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs'] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         :param pulumi.Input[str] task_name: The name of the metric import task, enter the name of the metric for logs imported from Log Service.
-        :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]] attach_labels: The label of the monitoring task. See the following `Block attach_labels`.
+        :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]] attach_labels: The label of the monitoring task. See `attach_labels` below.
         :param pulumi.Input[int] collect_interval: The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
         :param pulumi.Input[str] description: The description of the metric import task.
         """
@@ -72,7 +72,7 @@ class HybridMonitorSlsTaskArgs:
     @pulumi.getter(name="slsProcessConfig")
     def sls_process_config(self) -> pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs']:
         """
-        The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         """
         return pulumi.get(self, "sls_process_config")
 
@@ -96,7 +96,7 @@ class HybridMonitorSlsTaskArgs:
     @pulumi.getter(name="attachLabels")
     def attach_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]]]:
         """
-        The label of the monitoring task. See the following `Block attach_labels`.
+        The label of the monitoring task. See `attach_labels` below.
         """
         return pulumi.get(self, "attach_labels")
 
@@ -141,12 +141,12 @@ class _HybridMonitorSlsTaskState:
                  task_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HybridMonitorSlsTask resources.
-        :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]] attach_labels: The label of the monitoring task. See the following `Block attach_labels`.
+        :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]] attach_labels: The label of the monitoring task. See `attach_labels` below.
         :param pulumi.Input[int] collect_interval: The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
         :param pulumi.Input[str] collect_target_type: The type of the collection target, enter the name of the Logstore group.
         :param pulumi.Input[str] description: The description of the metric import task.
         :param pulumi.Input[str] namespace: The name of the namespace.
-        :param pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs'] sls_process_config: The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        :param pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs'] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         :param pulumi.Input[str] task_name: The name of the metric import task, enter the name of the metric for logs imported from Log Service.
         """
         if attach_labels is not None:
@@ -168,7 +168,7 @@ class _HybridMonitorSlsTaskState:
     @pulumi.getter(name="attachLabels")
     def attach_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]]]:
         """
-        The label of the monitoring task. See the following `Block attach_labels`.
+        The label of the monitoring task. See `attach_labels` below.
         """
         return pulumi.get(self, "attach_labels")
 
@@ -228,7 +228,7 @@ class _HybridMonitorSlsTaskState:
     @pulumi.getter(name="slsProcessConfig")
     def sls_process_config(self) -> Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs']]:
         """
-        The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         """
         return pulumi.get(self, "sls_process_config")
 
@@ -267,66 +267,7 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Hybrid Monitor Sls Task and how to use it, see [What is Hybrid Monitor Sls Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
 
-        > **NOTE:** Available in v1.179.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        this = alicloud.get_account()
-        default_sls_group = alicloud.cms.SlsGroup("defaultSlsGroup",
-            sls_group_configs=[alicloud.cms.SlsGroupSlsGroupConfigArgs(
-                sls_user_id=this.id,
-                sls_logstore="Logstore-ECS",
-                sls_project="aliyun-project",
-                sls_region="cn-hangzhou",
-            )],
-            sls_group_description="example_value",
-            sls_group_name="example_value")
-        default_namespace = alicloud.cms.Namespace("defaultNamespace",
-            description=var["name"],
-            namespace="example-value",
-            specification="cms.s1.large")
-        default_hybrid_monitor_sls_task = alicloud.cms.HybridMonitorSlsTask("defaultHybridMonitorSlsTask",
-            sls_process_config=alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigArgs(
-                filter=alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigFilterArgs(
-                    relation="and",
-                    filters=[alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs(
-                        operator="=",
-                        value="200",
-                        sls_key_name="code",
-                    )],
-                ),
-                statistics=[alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArgs(
-                    function="count",
-                    alias="level_count",
-                    sls_key_name="name",
-                    parameter_one="200",
-                    parameter_two="299",
-                )],
-                group_bies=[alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArgs(
-                    alias="code",
-                    sls_key_name="ApiResult",
-                )],
-                expresses=[alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigExpressArgs(
-                    express="success_count",
-                    alias="SuccRate",
-                )],
-            ),
-            task_name="example_value",
-            namespace=default_namespace.id,
-            description="example_value",
-            collect_interval=60,
-            collect_target_type=default_sls_group.id,
-            attach_labels=[alicloud.cms.HybridMonitorSlsTaskAttachLabelArgs(
-                name="app_service",
-                value="testValue",
-            )])
-        ```
+        > **NOTE:** Available since v1.179.0.
 
         ## Import
 
@@ -338,12 +279,12 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskAttachLabelArgs']]]] attach_labels: The label of the monitoring task. See the following `Block attach_labels`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskAttachLabelArgs']]]] attach_labels: The label of the monitoring task. See `attach_labels` below.
         :param pulumi.Input[int] collect_interval: The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
         :param pulumi.Input[str] collect_target_type: The type of the collection target, enter the name of the Logstore group.
         :param pulumi.Input[str] description: The description of the metric import task.
         :param pulumi.Input[str] namespace: The name of the namespace.
-        :param pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskSlsProcessConfigArgs']] sls_process_config: The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        :param pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskSlsProcessConfigArgs']] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         :param pulumi.Input[str] task_name: The name of the metric import task, enter the name of the metric for logs imported from Log Service.
         """
         ...
@@ -357,66 +298,7 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
 
         For information about Cloud Monitor Service Hybrid Monitor Sls Task and how to use it, see [What is Hybrid Monitor Sls Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
 
-        > **NOTE:** Available in v1.179.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        this = alicloud.get_account()
-        default_sls_group = alicloud.cms.SlsGroup("defaultSlsGroup",
-            sls_group_configs=[alicloud.cms.SlsGroupSlsGroupConfigArgs(
-                sls_user_id=this.id,
-                sls_logstore="Logstore-ECS",
-                sls_project="aliyun-project",
-                sls_region="cn-hangzhou",
-            )],
-            sls_group_description="example_value",
-            sls_group_name="example_value")
-        default_namespace = alicloud.cms.Namespace("defaultNamespace",
-            description=var["name"],
-            namespace="example-value",
-            specification="cms.s1.large")
-        default_hybrid_monitor_sls_task = alicloud.cms.HybridMonitorSlsTask("defaultHybridMonitorSlsTask",
-            sls_process_config=alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigArgs(
-                filter=alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigFilterArgs(
-                    relation="and",
-                    filters=[alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs(
-                        operator="=",
-                        value="200",
-                        sls_key_name="code",
-                    )],
-                ),
-                statistics=[alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArgs(
-                    function="count",
-                    alias="level_count",
-                    sls_key_name="name",
-                    parameter_one="200",
-                    parameter_two="299",
-                )],
-                group_bies=[alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArgs(
-                    alias="code",
-                    sls_key_name="ApiResult",
-                )],
-                expresses=[alicloud.cms.HybridMonitorSlsTaskSlsProcessConfigExpressArgs(
-                    express="success_count",
-                    alias="SuccRate",
-                )],
-            ),
-            task_name="example_value",
-            namespace=default_namespace.id,
-            description="example_value",
-            collect_interval=60,
-            collect_target_type=default_sls_group.id,
-            attach_labels=[alicloud.cms.HybridMonitorSlsTaskAttachLabelArgs(
-                name="app_service",
-                value="testValue",
-            )])
-        ```
+        > **NOTE:** Available since v1.179.0.
 
         ## Import
 
@@ -496,12 +378,12 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskAttachLabelArgs']]]] attach_labels: The label of the monitoring task. See the following `Block attach_labels`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskAttachLabelArgs']]]] attach_labels: The label of the monitoring task. See `attach_labels` below.
         :param pulumi.Input[int] collect_interval: The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
         :param pulumi.Input[str] collect_target_type: The type of the collection target, enter the name of the Logstore group.
         :param pulumi.Input[str] description: The description of the metric import task.
         :param pulumi.Input[str] namespace: The name of the namespace.
-        :param pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskSlsProcessConfigArgs']] sls_process_config: The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        :param pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskSlsProcessConfigArgs']] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         :param pulumi.Input[str] task_name: The name of the metric import task, enter the name of the metric for logs imported from Log Service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -521,7 +403,7 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
     @pulumi.getter(name="attachLabels")
     def attach_labels(self) -> pulumi.Output[Optional[Sequence['outputs.HybridMonitorSlsTaskAttachLabel']]]:
         """
-        The label of the monitoring task. See the following `Block attach_labels`.
+        The label of the monitoring task. See `attach_labels` below.
         """
         return pulumi.get(self, "attach_labels")
 
@@ -561,7 +443,7 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
     @pulumi.getter(name="slsProcessConfig")
     def sls_process_config(self) -> pulumi.Output['outputs.HybridMonitorSlsTaskSlsProcessConfig']:
         """
-        The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+        The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         """
         return pulumi.get(self, "sls_process_config")
 

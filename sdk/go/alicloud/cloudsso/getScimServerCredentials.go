@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +50,7 @@ import (
 //
 // ```
 func GetScimServerCredentials(ctx *pulumi.Context, args *GetScimServerCredentialsArgs, opts ...pulumi.InvokeOption) (*GetScimServerCredentialsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetScimServerCredentialsResult
 	err := ctx.Invoke("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", args, &rv, opts...)
 	if err != nil {

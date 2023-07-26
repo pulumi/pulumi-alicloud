@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,6 +80,7 @@ import (
 //
 // ```
 func GetDhcpOptionsSets(ctx *pulumi.Context, args *GetDhcpOptionsSetsArgs, opts ...pulumi.InvokeOption) (*GetDhcpOptionsSetsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDhcpOptionsSetsResult
 	err := ctx.Invoke("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", args, &rv, opts...)
 	if err != nil {

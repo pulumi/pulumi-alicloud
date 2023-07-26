@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -184,6 +185,7 @@ func NewFirewallVpcFirewallControlPolicy(ctx *pulumi.Context,
 	if args.VpcFirewallId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcFirewallId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallVpcFirewallControlPolicy
 	err := ctx.RegisterResource("alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -9,7 +9,33 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-doc-config-2020-09-07-api-doc-createconfigdeliverychannel).
  *
- * > **NOTE:** Available since v1.171.0+.
+ * > **NOTE:** Available since v1.171.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example-sls";
+ * const thisAccount = alicloud.getAccount({});
+ * const thisRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultProject = new alicloud.log.Project("defaultProject", {});
+ * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
+ * const defaultDelivery = new alicloud.cfg.Delivery("defaultDelivery", {
+ *     configurationItemChangeNotification: true,
+ *     nonCompliantNotification: true,
+ *     deliveryChannelName: name,
+ *     deliveryChannelTargetArn: pulumi.all([thisRegions, thisAccount, defaultProject.name, defaultStore.name]).apply(([thisRegions, thisAccount, defaultProjectName, defaultStoreName]) => `acs:log:${thisRegions.ids?.[0]}:${thisAccount.id}:project/${defaultProjectName}/logstore/${defaultStoreName}`),
+ *     deliveryChannelType: "SLS",
+ *     description: name,
+ * });
+ * ```
  *
  * ## Import
  *

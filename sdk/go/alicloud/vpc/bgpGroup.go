@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -112,6 +113,7 @@ func NewBgpGroup(ctx *pulumi.Context,
 	if args.RouterId == nil {
 		return nil, errors.New("invalid value for required argument 'RouterId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BgpGroup
 	err := ctx.RegisterResource("alicloud:vpc/bgpGroup:BgpGroup", name, args, &resource, opts...)
 	if err != nil {

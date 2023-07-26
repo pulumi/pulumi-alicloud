@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetSlsGroups(ctx *pulumi.Context, args *GetSlsGroupsArgs, opts ...pulumi.InvokeOption) (*GetSlsGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSlsGroupsResult
 	err := ctx.Invoke("alicloud:cms/getSlsGroups:getSlsGroups", args, &rv, opts...)
 	if err != nil {

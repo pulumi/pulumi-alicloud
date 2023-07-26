@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,6 +83,8 @@ type DomainResource struct {
 	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
 	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
+	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	OcspEnabled pulumi.BoolPtrOutput `pulumi:"ocspEnabled"`
 	// Protocol type and port number information. See `proxyTypes` below.
 	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes DomainResourceProxyTypeArrayOutput `pulumi:"proxyTypes"`
@@ -113,6 +116,7 @@ func NewDomainResource(ctx *pulumi.Context,
 	if args.RsType == nil {
 		return nil, errors.New("invalid value for required argument 'RsType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DomainResource
 	err := ctx.RegisterResource("alicloud:ddos/domainResource:DomainResource", name, args, &resource, opts...)
 	if err != nil {
@@ -144,6 +148,8 @@ type domainResourceState struct {
 	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
 	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
 	InstanceIds []string `pulumi:"instanceIds"`
+	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	OcspEnabled *bool `pulumi:"ocspEnabled"`
 	// Protocol type and port number information. See `proxyTypes` below.
 	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes []DomainResourceProxyType `pulumi:"proxyTypes"`
@@ -163,6 +169,8 @@ type DomainResourceState struct {
 	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
 	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
 	InstanceIds pulumi.StringArrayInput
+	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	OcspEnabled pulumi.BoolPtrInput
 	// Protocol type and port number information. See `proxyTypes` below.
 	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes DomainResourceProxyTypeArrayInput
@@ -184,6 +192,8 @@ type domainResourceArgs struct {
 	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
 	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
 	InstanceIds []string `pulumi:"instanceIds"`
+	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	OcspEnabled *bool `pulumi:"ocspEnabled"`
 	// Protocol type and port number information. See `proxyTypes` below.
 	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes []DomainResourceProxyType `pulumi:"proxyTypes"`
@@ -202,6 +212,8 @@ type DomainResourceArgs struct {
 	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
 	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
 	InstanceIds pulumi.StringArrayInput
+	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	OcspEnabled pulumi.BoolPtrInput
 	// Protocol type and port number information. See `proxyTypes` below.
 	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes DomainResourceProxyTypeArrayInput
@@ -317,6 +329,11 @@ func (o DomainResourceOutput) HttpsExt() pulumi.StringOutput {
 // > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
 func (o DomainResourceOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+func (o DomainResourceOutput) OcspEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.BoolPtrOutput { return v.OcspEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Protocol type and port number information. See `proxyTypes` below.

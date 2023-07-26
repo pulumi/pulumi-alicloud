@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,6 +100,7 @@ func NewSmartagFlowLog(ctx *pulumi.Context,
 	if args.OutputType == nil {
 		return nil, errors.New("invalid value for required argument 'OutputType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SmartagFlowLog
 	err := ctx.RegisterResource("alicloud:sag/smartagFlowLog:SmartagFlowLog", name, args, &resource, opts...)
 	if err != nil {

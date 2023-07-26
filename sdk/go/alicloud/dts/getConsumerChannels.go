@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetConsumerChannels(ctx *pulumi.Context, args *GetConsumerChannelsArgs, opts ...pulumi.InvokeOption) (*GetConsumerChannelsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConsumerChannelsResult
 	err := ctx.Invoke("alicloud:dts/getConsumerChannels:getConsumerChannels", args, &rv, opts...)
 	if err != nil {

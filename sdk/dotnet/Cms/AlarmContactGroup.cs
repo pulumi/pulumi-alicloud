@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cms
     /// <summary>
     /// Provides a CMS Alarm Contact Group resource.
     /// 
-    /// For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/doc-detail/114929.htm).
+    /// For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontactgroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.101.0+.
+    /// &gt; **NOTE:** Available since v1.101.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var example = new AliCloud.Cms.AlarmContactGroup("example", new()
     ///     {
-    ///         AlarmContactGroupName = "tf-test",
+    ///         AlarmContactGroupName = "tf-example",
     ///     });
     /// 
     /// });

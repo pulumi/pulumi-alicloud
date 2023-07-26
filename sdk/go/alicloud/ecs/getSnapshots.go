@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,6 +80,7 @@ import (
 // * `tags` - (Optional) A map of tags assigned to snapshots.
 // * `outputFile` - (Optional) The name of output file that saves the filter results.
 func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetSnapshotsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSnapshotsResult
 	err := ctx.Invoke("alicloud:ecs/getSnapshots:getSnapshots", args, &rv, opts...)
 	if err != nil {

@@ -24,7 +24,7 @@ class DynamicTagGroupArgs:
         """
         The set of arguments for constructing a DynamicTagGroup resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_group_lists: Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
-        :param pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]] match_expresses: The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        :param pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]] match_expresses: The label generates a matching expression that applies the grouping. See `match_express` below.
         :param pulumi.Input[str] tag_key: The tag key of the tag.
         :param pulumi.Input[str] match_express_filter_relation: The relationship between conditional expressions. Valid values: `and`, `or`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] template_id_lists: Alarm template ID list.
@@ -53,7 +53,7 @@ class DynamicTagGroupArgs:
     @pulumi.getter(name="matchExpresses")
     def match_expresses(self) -> pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]:
         """
-        The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        The label generates a matching expression that applies the grouping. See `match_express` below.
         """
         return pulumi.get(self, "match_expresses")
 
@@ -111,7 +111,7 @@ class _DynamicTagGroupState:
         Input properties used for looking up and filtering DynamicTagGroup resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_group_lists: Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
         :param pulumi.Input[str] match_express_filter_relation: The relationship between conditional expressions. Valid values: `and`, `or`.
-        :param pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]] match_expresses: The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        :param pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]] match_expresses: The label generates a matching expression that applies the grouping. See `match_express` below.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `FINISH`.
         :param pulumi.Input[str] tag_key: The tag key of the tag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] template_id_lists: Alarm template ID list.
@@ -157,7 +157,7 @@ class _DynamicTagGroupState:
     @pulumi.getter(name="matchExpresses")
     def match_expresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]]:
         """
-        The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        The label generates a matching expression that applies the grouping. See `match_express` below.
         """
         return pulumi.get(self, "match_expresses")
 
@@ -216,9 +216,9 @@ class DynamicTagGroup(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Dynamic Tag Group resource.
 
-        For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/doc-detail/150123.html).
+        For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createdynamictaggroup).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -253,7 +253,7 @@ class DynamicTagGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_group_lists: Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
         :param pulumi.Input[str] match_express_filter_relation: The relationship between conditional expressions. Valid values: `and`, `or`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DynamicTagGroupMatchExpressArgs']]]] match_expresses: The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DynamicTagGroupMatchExpressArgs']]]] match_expresses: The label generates a matching expression that applies the grouping. See `match_express` below.
         :param pulumi.Input[str] tag_key: The tag key of the tag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] template_id_lists: Alarm template ID list.
         """
@@ -266,9 +266,9 @@ class DynamicTagGroup(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Dynamic Tag Group resource.
 
-        For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/doc-detail/150123.html).
+        For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createdynamictaggroup).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -365,7 +365,7 @@ class DynamicTagGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_group_lists: Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
         :param pulumi.Input[str] match_express_filter_relation: The relationship between conditional expressions. Valid values: `and`, `or`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DynamicTagGroupMatchExpressArgs']]]] match_expresses: The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DynamicTagGroupMatchExpressArgs']]]] match_expresses: The label generates a matching expression that applies the grouping. See `match_express` below.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `FINISH`.
         :param pulumi.Input[str] tag_key: The tag key of the tag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] template_id_lists: Alarm template ID list.
@@ -402,7 +402,7 @@ class DynamicTagGroup(pulumi.CustomResource):
     @pulumi.getter(name="matchExpresses")
     def match_expresses(self) -> pulumi.Output[Sequence['outputs.DynamicTagGroupMatchExpress']]:
         """
-        The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        The label generates a matching expression that applies the grouping. See `match_express` below.
         """
         return pulumi.get(self, "match_expresses")
 

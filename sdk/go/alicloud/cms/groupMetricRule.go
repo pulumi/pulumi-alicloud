@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloud Monitor Service Group Metric Rule resource.
 //
-// For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/doc-detail/114943.htm).
+// For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putgroupmetricrule).
 //
-// > **NOTE:** Available in v1.104.0+.
+// > **NOTE:** Available since v1.104.0.
 //
 // ## Example Usage
 //
@@ -27,26 +28,42 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisRandomUuid, err := random.NewRandomUuid(ctx, "thisRandomUuid", nil)
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//				AlarmContactGroupName: pulumi.String(name),
+//				Describe:              pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cms.NewGroupMetricRule(ctx, "thisGroupMetricRule", &cms.GroupMetricRuleArgs{
-//				GroupId:             pulumi.String("539****"),
-//				RuleId:              thisRandomUuid.ID(),
+//			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "defaultMonitorGroup", &cms.MonitorGroupArgs{
+//				MonitorGroupName: pulumi.String(name),
+//				ContactGroups: pulumi.StringArray{
+//					defaultAlarmContactGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewGroupMetricRule(ctx, "this", &cms.GroupMetricRuleArgs{
+//				GroupId:             defaultMonitorGroup.ID(),
+//				GroupMetricRuleName: pulumi.String(name),
 //				Category:            pulumi.String("ecs"),
-//				Namespace:           pulumi.String("acs_ecs_dashboard"),
 //				MetricName:          pulumi.String("cpu_total"),
+//				Namespace:           pulumi.String("acs_ecs_dashboard"),
+//				RuleId:              pulumi.String(name),
 //				Period:              pulumi.Int(60),
-//				GroupMetricRuleName: pulumi.String("tf-testacc-rule-name"),
-//				EmailSubject:        pulumi.String("tf-testacc-rule-name-warning"),
 //				Interval:            pulumi.String("3600"),
 //				SilenceTime:         pulumi.Int(85800),
 //				NoEffectiveInterval: pulumi.String("00:00-05:30"),
@@ -97,7 +114,7 @@ type GroupMetricRule struct {
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
 	// The subject of the alert notification email.                                         .
 	EmailSubject pulumi.StringOutput `pulumi:"emailSubject"`
-	// Alarm level. See the following `Block escalations`.
+	// Alarm level. See `escalations` below.
 	Escalations GroupMetricRuleEscalationsOutput `pulumi:"escalations"`
 	// The ID of the application group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
@@ -119,7 +136,7 @@ type GroupMetricRule struct {
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
 	// The status of Group Metric Rule.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets GroupMetricRuleTargetArrayOutput `pulumi:"targets"`
 	// The callback URL.
 	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
@@ -153,6 +170,7 @@ func NewGroupMetricRule(ctx *pulumi.Context,
 	if args.RuleId == nil {
 		return nil, errors.New("invalid value for required argument 'RuleId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GroupMetricRule
 	err := ctx.RegisterResource("alicloud:cms/groupMetricRule:GroupMetricRule", name, args, &resource, opts...)
 	if err != nil {
@@ -185,7 +203,7 @@ type groupMetricRuleState struct {
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// The subject of the alert notification email.                                         .
 	EmailSubject *string `pulumi:"emailSubject"`
-	// Alarm level. See the following `Block escalations`.
+	// Alarm level. See `escalations` below.
 	Escalations *GroupMetricRuleEscalations `pulumi:"escalations"`
 	// The ID of the application group.
 	GroupId *string `pulumi:"groupId"`
@@ -207,7 +225,7 @@ type groupMetricRuleState struct {
 	SilenceTime *int `pulumi:"silenceTime"`
 	// The status of Group Metric Rule.
 	Status *string `pulumi:"status"`
-	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets []GroupMetricRuleTarget `pulumi:"targets"`
 	// The callback URL.
 	Webhook *string `pulumi:"webhook"`
@@ -224,7 +242,7 @@ type GroupMetricRuleState struct {
 	EffectiveInterval pulumi.StringPtrInput
 	// The subject of the alert notification email.                                         .
 	EmailSubject pulumi.StringPtrInput
-	// Alarm level. See the following `Block escalations`.
+	// Alarm level. See `escalations` below.
 	Escalations GroupMetricRuleEscalationsPtrInput
 	// The ID of the application group.
 	GroupId pulumi.StringPtrInput
@@ -246,7 +264,7 @@ type GroupMetricRuleState struct {
 	SilenceTime pulumi.IntPtrInput
 	// The status of Group Metric Rule.
 	Status pulumi.StringPtrInput
-	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets GroupMetricRuleTargetArrayInput
 	// The callback URL.
 	Webhook pulumi.StringPtrInput
@@ -267,7 +285,7 @@ type groupMetricRuleArgs struct {
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// The subject of the alert notification email.                                         .
 	EmailSubject *string `pulumi:"emailSubject"`
-	// Alarm level. See the following `Block escalations`.
+	// Alarm level. See `escalations` below.
 	Escalations GroupMetricRuleEscalations `pulumi:"escalations"`
 	// The ID of the application group.
 	GroupId string `pulumi:"groupId"`
@@ -287,7 +305,7 @@ type groupMetricRuleArgs struct {
 	RuleId string `pulumi:"ruleId"`
 	// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
 	SilenceTime *int `pulumi:"silenceTime"`
-	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets []GroupMetricRuleTarget `pulumi:"targets"`
 	// The callback URL.
 	Webhook *string `pulumi:"webhook"`
@@ -305,7 +323,7 @@ type GroupMetricRuleArgs struct {
 	EffectiveInterval pulumi.StringPtrInput
 	// The subject of the alert notification email.                                         .
 	EmailSubject pulumi.StringPtrInput
-	// Alarm level. See the following `Block escalations`.
+	// Alarm level. See `escalations` below.
 	Escalations GroupMetricRuleEscalationsInput
 	// The ID of the application group.
 	GroupId pulumi.StringInput
@@ -325,7 +343,7 @@ type GroupMetricRuleArgs struct {
 	RuleId pulumi.StringInput
 	// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
 	SilenceTime pulumi.IntPtrInput
-	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets GroupMetricRuleTargetArrayInput
 	// The callback URL.
 	Webhook pulumi.StringPtrInput
@@ -443,7 +461,7 @@ func (o GroupMetricRuleOutput) EmailSubject() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.EmailSubject }).(pulumi.StringOutput)
 }
 
-// Alarm level. See the following `Block escalations`.
+// Alarm level. See `escalations` below.
 func (o GroupMetricRuleOutput) Escalations() GroupMetricRuleEscalationsOutput {
 	return o.ApplyT(func(v *GroupMetricRule) GroupMetricRuleEscalationsOutput { return v.Escalations }).(GroupMetricRuleEscalationsOutput)
 }
@@ -498,7 +516,7 @@ func (o GroupMetricRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The information about the resource for which alerts are triggered. See the following `Block targets`.
+// The information about the resource for which alerts are triggered. See `targets` below.
 func (o GroupMetricRuleOutput) Targets() GroupMetricRuleTargetArrayOutput {
 	return o.ApplyT(func(v *GroupMetricRule) GroupMetricRuleTargetArrayOutput { return v.Targets }).(GroupMetricRuleTargetArrayOutput)
 }

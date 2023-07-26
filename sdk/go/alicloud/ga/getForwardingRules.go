@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetForwardingRules(ctx *pulumi.Context, args *GetForwardingRulesArgs, opts ...pulumi.InvokeOption) (*GetForwardingRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetForwardingRulesResult
 	err := ctx.Invoke("alicloud:ga/getForwardingRules:getForwardingRules", args, &rv, opts...)
 	if err != nil {

@@ -18,14 +18,14 @@ public final class AggregatorState extends com.pulumi.resources.ResourceArgs {
     public static final AggregatorState Empty = new AggregatorState();
 
     /**
-     * The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+     * The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
      * 
      */
     @Import(name="aggregatorAccounts")
     private @Nullable Output<List<AggregatorAggregatorAccountArgs>> aggregatorAccounts;
 
     /**
-     * @return The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+     * @return The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
      * 
      */
     public Optional<Output<List<AggregatorAggregatorAccountArgs>>> aggregatorAccounts() {
@@ -121,7 +121,7 @@ public final class AggregatorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorAccounts The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+         * @param aggregatorAccounts The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class AggregatorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorAccounts The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+         * @param aggregatorAccounts The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class AggregatorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorAccounts The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+         * @param aggregatorAccounts The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
          * 
          * @return builder
          * 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetNestServiceInstances(ctx *pulumi.Context, args *GetNestServiceInstancesArgs, opts ...pulumi.InvokeOption) (*GetNestServiceInstancesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNestServiceInstancesResult
 	err := ctx.Invoke("alicloud:compute/getNestServiceInstances:getNestServiceInstances", args, &rv, opts...)
 	if err != nil {

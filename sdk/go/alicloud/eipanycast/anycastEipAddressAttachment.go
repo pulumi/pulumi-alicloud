@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,6 +101,7 @@ func NewAnycastEipAddressAttachment(ctx *pulumi.Context,
 	if args.BindInstanceType == nil {
 		return nil, errors.New("invalid value for required argument 'BindInstanceType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AnycastEipAddressAttachment
 	err := ctx.RegisterResource("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment", name, args, &resource, opts...)
 	if err != nil {

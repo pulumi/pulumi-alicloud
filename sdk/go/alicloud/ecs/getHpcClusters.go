@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetHpcClusters(ctx *pulumi.Context, args *GetHpcClustersArgs, opts ...pulumi.InvokeOption) (*GetHpcClustersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHpcClustersResult
 	err := ctx.Invoke("alicloud:ecs/getHpcClusters:getHpcClusters", args, &rv, opts...)
 	if err != nil {

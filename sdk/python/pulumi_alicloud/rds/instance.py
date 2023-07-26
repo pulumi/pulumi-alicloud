@@ -58,6 +58,7 @@ class InstanceArgs:
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ip_mode: Optional[pulumi.Input[str]] = None,
@@ -187,7 +188,7 @@ class InstanceArgs:
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -230,6 +231,7 @@ class InstanceArgs:
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
+        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
@@ -386,6 +388,8 @@ class InstanceArgs:
             pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
         if security_group_id is not None:
             warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
             pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
@@ -794,7 +798,7 @@ class InstanceArgs:
         - true: delete protect.
         - false: no delete protect.
 
-        > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1052,6 +1056,18 @@ class InstanceArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -1491,6 +1507,7 @@ class _InstanceState:
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ip_mode: Optional[pulumi.Input[str]] = None,
@@ -1594,7 +1611,7 @@ class _InstanceState:
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -1668,6 +1685,7 @@ class _InstanceState:
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
+        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
@@ -1836,6 +1854,8 @@ class _InstanceState:
             pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
         if security_group_id is not None:
             warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
             pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
@@ -2209,7 +2229,7 @@ class _InstanceState:
         - true: delete protect.
         - false: no delete protect.
 
-        > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -2542,6 +2562,18 @@ class _InstanceState:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -3004,6 +3036,7 @@ class Instance(pulumi.CustomResource):
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ip_mode: Optional[pulumi.Input[str]] = None,
@@ -3112,7 +3145,7 @@ class Instance(pulumi.CustomResource):
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -3186,6 +3219,7 @@ class Instance(pulumi.CustomResource):
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
+        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
@@ -3334,6 +3368,7 @@ class Instance(pulumi.CustomResource):
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ip_mode: Optional[pulumi.Input[str]] = None,
@@ -3421,6 +3456,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["released_keep_policy"] = released_keep_policy
             __props__.__dict__["replication_acl"] = replication_acl
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["role_arn"] = role_arn
             if security_group_id is not None and not opts.urn:
                 warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
                 pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
@@ -3515,6 +3551,7 @@ class Instance(pulumi.CustomResource):
             released_keep_policy: Optional[pulumi.Input[str]] = None,
             replication_acl: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            role_arn: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_ip_mode: Optional[pulumi.Input[str]] = None,
@@ -3623,7 +3660,7 @@ class Instance(pulumi.CustomResource):
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -3697,6 +3734,7 @@ class Instance(pulumi.CustomResource):
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
+        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
@@ -3824,6 +3862,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["released_keep_policy"] = released_keep_policy
         __props__.__dict__["replication_acl"] = replication_acl
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["role_arn"] = role_arn
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["security_ip_mode"] = security_ip_mode
@@ -4078,7 +4117,7 @@ class Instance(pulumi.CustomResource):
         - true: delete protect.
         - false: no delete protect.
 
-        > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -4315,6 +4354,14 @@ class Instance(pulumi.CustomResource):
         The ID of resource group which the DB instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Output[str]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        """
+        return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="securityGroupId")

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetDomainExtensions(ctx *pulumi.Context, args *GetDomainExtensionsArgs, opts ...pulumi.InvokeOption) (*GetDomainExtensionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainExtensionsResult
 	err := ctx.Invoke("alicloud:slb/getDomainExtensions:getDomainExtensions", args, &rv, opts...)
 	if err != nil {

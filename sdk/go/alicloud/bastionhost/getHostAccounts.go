@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ import (
 //
 // ```
 func GetHostAccounts(ctx *pulumi.Context, args *GetHostAccountsArgs, opts ...pulumi.InvokeOption) (*GetHostAccountsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostAccountsResult
 	err := ctx.Invoke("alicloud:bastionhost/getHostAccounts:getHostAccounts", args, &rv, opts...)
 	if err != nil {

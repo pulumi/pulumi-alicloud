@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetMongoInstances(ctx *pulumi.Context, args *GetMongoInstancesArgs, opts ...pulumi.InvokeOption) (*GetMongoInstancesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMongoInstancesResult
 	err := ctx.Invoke("alicloud:dds/getMongoInstances:getMongoInstances", args, &rv, opts...)
 	if err != nil {

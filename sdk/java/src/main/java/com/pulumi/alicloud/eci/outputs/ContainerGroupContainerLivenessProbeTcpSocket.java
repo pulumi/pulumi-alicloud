@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupContainerLivenessProbeTcpSocket {
     /**
-     * @return The port number. Valid values: 1 to 65535.
+     * @return The port number. Valid values: `1` to `65535`.
      * 
      */
     private @Nullable Integer port;
 
     private ContainerGroupContainerLivenessProbeTcpSocket() {}
     /**
-     * @return The port number. Valid values: 1 to 65535.
+     * @return The port number. Valid values: `1` to `65535`.
      * 
      */
     public Optional<Integer> port() {

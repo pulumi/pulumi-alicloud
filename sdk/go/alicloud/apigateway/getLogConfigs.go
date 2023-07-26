@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetLogConfigs(ctx *pulumi.Context, args *GetLogConfigsArgs, opts ...pulumi.InvokeOption) (*GetLogConfigsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogConfigsResult
 	err := ctx.Invoke("alicloud:apigateway/getLogConfigs:getLogConfigs", args, &rv, opts...)
 	if err != nil {

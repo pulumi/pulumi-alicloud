@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -103,6 +104,7 @@ func NewIndustrialPidLoop(ctx *pulumi.Context,
 	if args.PidProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'PidProjectId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IndustrialPidLoop
 	err := ctx.RegisterResource("alicloud:brain/industrialPidLoop:IndustrialPidLoop", name, args, &resource, opts...)
 	if err != nil {

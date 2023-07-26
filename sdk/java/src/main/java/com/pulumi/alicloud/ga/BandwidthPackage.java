@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Bandwidth Package resource.
  * 
- * For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbandwidthpackage).
+ * For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbandwidthpackage).
  * 
  * &gt; **NOTE:** At present, The `alicloud.ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
  * 
@@ -244,6 +244,20 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> paymentType() {
         return Codegen.optional(this.paymentType);
+    }
+    /**
+     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    @Export(name="promotionOptionNo", type=String.class, parameters={})
+    private Output</* @Nullable */ String> promotionOptionNo;
+
+    /**
+     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    public Output<Optional<String>> promotionOptionNo() {
+        return Codegen.optional(this.promotionOptionNo);
     }
     /**
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.

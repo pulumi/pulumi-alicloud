@@ -13,8 +13,49 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class ManagedKubernetesTaint
     {
+        /// <summary>
+        /// The taint effect.
+        /// 
+        /// The following example is the definition of taints block:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var k8s = new AliCloud.CS.ManagedKubernetes("k8s", new()
+        ///     {
+        ///         Taints = new[]
+        ///         {
+        ///             new AliCloud.CS.Inputs.ManagedKubernetesTaintArgs
+        ///             {
+        ///                 Effect = "NoSchedule",
+        ///                 Key = "key-a",
+        ///                 Value = "value-a",
+        ///             },
+        ///             new AliCloud.CS.Inputs.ManagedKubernetesTaintArgs
+        ///             {
+        ///                 Effect = "NoSchedule",
+        ///                 Key = "key-b",
+        ///                 Value = "value-b",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public readonly string? Effect;
+        /// <summary>
+        /// The taint key.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// The taint value.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

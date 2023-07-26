@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.EipAnycast
 {
     /// <summary>
-    /// Provides a Eipanycast Anycast Eip Address resource.
+    /// Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
     /// 
-    /// For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://help.aliyun.com/document_detail/169284.html).
+    /// For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/).
     /// 
-    /// &gt; **NOTE:** Available in v1.113.0+.
+    /// &gt; **NOTE:** Available since v1.208.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,34 @@ namespace Pulumi.AliCloud.EipAnycast
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.EipAnycast.AnycastEipAddress("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.EipAnycast.AnycastEipAddress("default", new()
     ///     {
+    ///         AnycastEipAddressName = name,
+    ///         Description = "test_1",
+    ///         Bandwidth = 200,
     ///         ServiceLocation = "international",
+    ///         InternetChargeType = "PayByTraffic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         Tags = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "tagKey", "k1" },
+    ///                 { "tagValue", "v1" },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "tagKey", "k2" },
+    ///                 { "tagValue", "v2" },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "tagKey", "k3" },
+    ///                 { "tagValue", "v3" },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -54,10 +79,16 @@ namespace Pulumi.AliCloud.EipAnycast
         public Output<string?> AnycastEipAddressName { get; private set; } = null!;
 
         /// <summary>
-        /// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+        /// The peak bandwidth of the Anycast EIP instance, in Mbps.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
+
+        /// <summary>
+        /// Anycast EIP instance creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Anycast EIP instance description.
@@ -66,28 +97,34 @@ namespace Pulumi.AliCloud.EipAnycast
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+        /// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+        /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
         /// </summary>
         [Output("paymentType")]
         public Output<string?> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         /// </summary>
         [Output("serviceLocation")]
         public Output<string> ServiceLocation { get; private set; } = null!;
 
         /// <summary>
-        /// The IP status.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// List of resource-bound tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -142,7 +179,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? AnycastEipAddressName { get; set; }
 
         /// <summary>
-        /// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+        /// The peak bandwidth of the Anycast EIP instance, in Mbps.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -154,22 +191,34 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+        /// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+        /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         /// </summary>
         [Input("serviceLocation", required: true)]
         public Input<string> ServiceLocation { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// List of resource-bound tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public AnycastEipAddressArgs()
         {
@@ -186,10 +235,16 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? AnycastEipAddressName { get; set; }
 
         /// <summary>
-        /// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+        /// The peak bandwidth of the Anycast EIP instance, in Mbps.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
+
+        /// <summary>
+        /// Anycast EIP instance creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Anycast EIP instance description.
@@ -198,28 +253,40 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+        /// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+        /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         /// </summary>
         [Input("serviceLocation")]
         public Input<string>? ServiceLocation { get; set; }
 
         /// <summary>
-        /// The IP status.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// List of resource-bound tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public AnycastEipAddressState()
         {

@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupDnsConfigOptionArgs>? _options;
 
         /// <summary>
-        /// The structure of options.
+        /// The structure of options. See `options` below.
         /// </summary>
         public InputList<Inputs.ContainerGroupDnsConfigOptionArgs> Options
         {

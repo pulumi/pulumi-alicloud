@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,17 +21,77 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.NewVpcAccess(ctx, "foo", &apigateway.VpcAccessArgs{
-//				InstanceId: pulumi.String("i-kai2ks92kzkw92ka"),
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(exampleZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String("New security group"),
+//				VpcId:       exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: *pulumi.String(exampleZones.Zones[0].Id),
+//				InstanceName:     pulumi.String("terraform-example"),
+//				ImageId:          *pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
+//				SecurityGroups: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
+//				},
+//				VswitchId: exampleSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigateway.NewVpcAccess(ctx, "exampleVpcAccess", &apigateway.VpcAccessArgs{
+//				VpcId:      exampleNetwork.ID(),
+//				InstanceId: exampleInstance.ID(),
 //				Port:       pulumi.Int(8080),
-//				VpcId:      pulumi.String("vpc-awkcj192ka9zalz"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,6 +140,7 @@ func NewVpcAccess(ctx *pulumi.Context,
 	if args.VpcId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VpcAccess
 	err := ctx.RegisterResource("alicloud:apigateway/vpcAccess:VpcAccess", name, args, &resource, opts...)
 	if err != nil {

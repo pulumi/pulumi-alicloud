@@ -7,15 +7,18 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AlarmEscalationsCritical struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics *string `pulumi:"statistics"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
 	// Critical level alarm retry times. Default to 3.
 	Times *int `pulumi:"times"`
@@ -35,9 +38,9 @@ type AlarmEscalationsCriticalInput interface {
 type AlarmEscalationsCriticalArgs struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
 	// Critical level alarm retry times. Default to 3.
 	Times pulumi.IntPtrInput `pulumi:"times"`
@@ -125,12 +128,12 @@ func (o AlarmEscalationsCriticalOutput) ComparisonOperator() pulumi.StringPtrOut
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsCriticalOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+// Critical level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsCriticalOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
@@ -174,7 +177,7 @@ func (o AlarmEscalationsCriticalPtrOutput) ComparisonOperator() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsCriticalPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsCritical) *string {
 		if v == nil {
@@ -184,7 +187,7 @@ func (o AlarmEscalationsCriticalPtrOutput) Statistics() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+// Critical level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsCriticalPtrOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsCritical) *string {
 		if v == nil {
@@ -207,9 +210,9 @@ func (o AlarmEscalationsCriticalPtrOutput) Times() pulumi.IntPtrOutput {
 type AlarmEscalationsInfo struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics *string `pulumi:"statistics"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
 	// Critical level alarm retry times. Default to 3.
 	Times *int `pulumi:"times"`
@@ -229,9 +232,9 @@ type AlarmEscalationsInfoInput interface {
 type AlarmEscalationsInfoArgs struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
 	// Critical level alarm retry times. Default to 3.
 	Times pulumi.IntPtrInput `pulumi:"times"`
@@ -319,12 +322,12 @@ func (o AlarmEscalationsInfoOutput) ComparisonOperator() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsInfoOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+// Critical level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsInfoOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
@@ -368,7 +371,7 @@ func (o AlarmEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
 		if v == nil {
@@ -378,7 +381,7 @@ func (o AlarmEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+// Critical level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsInfoPtrOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
 		if v == nil {
@@ -401,9 +404,9 @@ func (o AlarmEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
 type AlarmEscalationsWarn struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics *string `pulumi:"statistics"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
 	// Critical level alarm retry times. Default to 3.
 	Times *int `pulumi:"times"`
@@ -423,9 +426,9 @@ type AlarmEscalationsWarnInput interface {
 type AlarmEscalationsWarnArgs struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
 	// Critical level alarm retry times. Default to 3.
 	Times pulumi.IntPtrInput `pulumi:"times"`
@@ -513,12 +516,12 @@ func (o AlarmEscalationsWarnOutput) ComparisonOperator() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsWarnOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+// Critical level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsWarnOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
@@ -562,7 +565,7 @@ func (o AlarmEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
 		if v == nil {
@@ -572,7 +575,7 @@ func (o AlarmEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+// Critical level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsWarnPtrOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
 		if v == nil {
@@ -599,7 +602,7 @@ type AlarmPrometheus struct {
 	Level *string `pulumi:"level"`
 	// The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
 	PromQl *string `pulumi:"promQl"`
-	// Critical level alarm retry times. Default to 3.
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 	Times *int `pulumi:"times"`
 }
 
@@ -621,7 +624,7 @@ type AlarmPrometheusArgs struct {
 	Level pulumi.StringPtrInput `pulumi:"level"`
 	// The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
 	PromQl pulumi.StringPtrInput `pulumi:"promQl"`
-	// Critical level alarm retry times. Default to 3.
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 	Times pulumi.IntPtrInput `pulumi:"times"`
 }
 
@@ -691,7 +694,7 @@ func (o AlarmPrometheusOutput) PromQl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmPrometheus) *string { return v.PromQl }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 func (o AlarmPrometheusOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlarmPrometheus) *int { return v.Times }).(pulumi.IntPtrOutput)
 }
@@ -1036,11 +1039,11 @@ func (o EventRuleEventPatternPtrOutput) SqlFilter() pulumi.StringPtrOutput {
 }
 
 type GroupMetricRuleEscalations struct {
-	// The critical level.
+	// The critical level. See `critical` below.
 	Critical *GroupMetricRuleEscalationsCritical `pulumi:"critical"`
-	// The info level.
+	// The info level. See `info` below.
 	Info *GroupMetricRuleEscalationsInfo `pulumi:"info"`
-	// The warn level.
+	// The warn level. See `warn` below.
 	Warn *GroupMetricRuleEscalationsWarn `pulumi:"warn"`
 }
 
@@ -1056,11 +1059,11 @@ type GroupMetricRuleEscalationsInput interface {
 }
 
 type GroupMetricRuleEscalationsArgs struct {
-	// The critical level.
+	// The critical level. See `critical` below.
 	Critical GroupMetricRuleEscalationsCriticalPtrInput `pulumi:"critical"`
-	// The info level.
+	// The info level. See `info` below.
 	Info GroupMetricRuleEscalationsInfoPtrInput `pulumi:"info"`
-	// The warn level.
+	// The warn level. See `warn` below.
 	Warn GroupMetricRuleEscalationsWarnPtrInput `pulumi:"warn"`
 }
 
@@ -1141,17 +1144,17 @@ func (o GroupMetricRuleEscalationsOutput) ToGroupMetricRuleEscalationsPtrOutputW
 	}).(GroupMetricRuleEscalationsPtrOutput)
 }
 
-// The critical level.
+// The critical level. See `critical` below.
 func (o GroupMetricRuleEscalationsOutput) Critical() GroupMetricRuleEscalationsCriticalPtrOutput {
 	return o.ApplyT(func(v GroupMetricRuleEscalations) *GroupMetricRuleEscalationsCritical { return v.Critical }).(GroupMetricRuleEscalationsCriticalPtrOutput)
 }
 
-// The info level.
+// The info level. See `info` below.
 func (o GroupMetricRuleEscalationsOutput) Info() GroupMetricRuleEscalationsInfoPtrOutput {
 	return o.ApplyT(func(v GroupMetricRuleEscalations) *GroupMetricRuleEscalationsInfo { return v.Info }).(GroupMetricRuleEscalationsInfoPtrOutput)
 }
 
-// The warn level.
+// The warn level. See `warn` below.
 func (o GroupMetricRuleEscalationsOutput) Warn() GroupMetricRuleEscalationsWarnPtrOutput {
 	return o.ApplyT(func(v GroupMetricRuleEscalations) *GroupMetricRuleEscalationsWarn { return v.Warn }).(GroupMetricRuleEscalationsWarnPtrOutput)
 }
@@ -1180,7 +1183,7 @@ func (o GroupMetricRuleEscalationsPtrOutput) Elem() GroupMetricRuleEscalationsOu
 	}).(GroupMetricRuleEscalationsOutput)
 }
 
-// The critical level.
+// The critical level. See `critical` below.
 func (o GroupMetricRuleEscalationsPtrOutput) Critical() GroupMetricRuleEscalationsCriticalPtrOutput {
 	return o.ApplyT(func(v *GroupMetricRuleEscalations) *GroupMetricRuleEscalationsCritical {
 		if v == nil {
@@ -1190,7 +1193,7 @@ func (o GroupMetricRuleEscalationsPtrOutput) Critical() GroupMetricRuleEscalatio
 	}).(GroupMetricRuleEscalationsCriticalPtrOutput)
 }
 
-// The info level.
+// The info level. See `info` below.
 func (o GroupMetricRuleEscalationsPtrOutput) Info() GroupMetricRuleEscalationsInfoPtrOutput {
 	return o.ApplyT(func(v *GroupMetricRuleEscalations) *GroupMetricRuleEscalationsInfo {
 		if v == nil {
@@ -1200,7 +1203,7 @@ func (o GroupMetricRuleEscalationsPtrOutput) Info() GroupMetricRuleEscalationsIn
 	}).(GroupMetricRuleEscalationsInfoPtrOutput)
 }
 
-// The warn level.
+// The warn level. See `warn` below.
 func (o GroupMetricRuleEscalationsPtrOutput) Warn() GroupMetricRuleEscalationsWarnPtrOutput {
 	return o.ApplyT(func(v *GroupMetricRuleEscalations) *GroupMetricRuleEscalationsWarn {
 		if v == nil {
@@ -1925,7 +1928,7 @@ func (o GroupMetricRuleTargetArrayOutput) Index(i pulumi.IntInput) GroupMetricRu
 type HybridMonitorSlsTaskAttachLabel struct {
 	// The tag key of the metric.
 	Name *string `pulumi:"name"`
-	// The value of the key that is used to filter logs imported from Log Service.
+	// The tag value of the metric.
 	Value *string `pulumi:"value"`
 }
 
@@ -1943,7 +1946,7 @@ type HybridMonitorSlsTaskAttachLabelInput interface {
 type HybridMonitorSlsTaskAttachLabelArgs struct {
 	// The tag key of the metric.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the key that is used to filter logs imported from Log Service.
+	// The tag value of the metric.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2003,7 +2006,7 @@ func (o HybridMonitorSlsTaskAttachLabelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HybridMonitorSlsTaskAttachLabel) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The value of the key that is used to filter logs imported from Log Service.
+// The tag value of the metric.
 func (o HybridMonitorSlsTaskAttachLabelOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HybridMonitorSlsTaskAttachLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2029,13 +2032,13 @@ func (o HybridMonitorSlsTaskAttachLabelArrayOutput) Index(i pulumi.IntInput) Hyb
 }
 
 type HybridMonitorSlsTaskSlsProcessConfig struct {
-	// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
 	Expresses []HybridMonitorSlsTaskSlsProcessConfigExpress `pulumi:"expresses"`
-	// The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+	// The conditions that are used to filter logs imported from Log Service. See `filter` below.
 	Filter *HybridMonitorSlsTaskSlsProcessConfigFilter `pulumi:"filter"`
-	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
 	GroupBies []HybridMonitorSlsTaskSlsProcessConfigGroupBy `pulumi:"groupBies"`
-	// The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+	// The method that is used to aggregate logs imported from Log Service. See `statistics` below.
 	Statistics []HybridMonitorSlsTaskSlsProcessConfigStatistic `pulumi:"statistics"`
 }
 
@@ -2051,13 +2054,13 @@ type HybridMonitorSlsTaskSlsProcessConfigInput interface {
 }
 
 type HybridMonitorSlsTaskSlsProcessConfigArgs struct {
-	// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
 	Expresses HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput `pulumi:"expresses"`
-	// The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+	// The conditions that are used to filter logs imported from Log Service. See `filter` below.
 	Filter HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput `pulumi:"filter"`
-	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
 	GroupBies HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput `pulumi:"groupBies"`
-	// The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+	// The method that is used to aggregate logs imported from Log Service. See `statistics` below.
 	Statistics HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput `pulumi:"statistics"`
 }
 
@@ -2138,28 +2141,28 @@ func (o HybridMonitorSlsTaskSlsProcessConfigOutput) ToHybridMonitorSlsTaskSlsPro
 	}).(HybridMonitorSlsTaskSlsProcessConfigPtrOutput)
 }
 
-// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+// The extended field that specifies the result of basic operations that are performed on aggregation results.
 func (o HybridMonitorSlsTaskSlsProcessConfigOutput) Expresses() HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput {
 	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigExpress {
 		return v.Expresses
 	}).(HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput)
 }
 
-// The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+// The conditions that are used to filter logs imported from Log Service. See `filter` below.
 func (o HybridMonitorSlsTaskSlsProcessConfigOutput) Filter() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
 	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfig) *HybridMonitorSlsTaskSlsProcessConfigFilter {
 		return v.Filter
 	}).(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput)
 }
 
-// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
 func (o HybridMonitorSlsTaskSlsProcessConfigOutput) GroupBies() HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput {
 	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigGroupBy {
 		return v.GroupBies
 	}).(HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput)
 }
 
-// The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+// The method that is used to aggregate logs imported from Log Service. See `statistics` below.
 func (o HybridMonitorSlsTaskSlsProcessConfigOutput) Statistics() HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput {
 	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigStatistic {
 		return v.Statistics
@@ -2190,7 +2193,7 @@ func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Elem() HybridMonitorSlsTa
 	}).(HybridMonitorSlsTaskSlsProcessConfigOutput)
 }
 
-// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+// The extended field that specifies the result of basic operations that are performed on aggregation results.
 func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Expresses() HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput {
 	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigExpress {
 		if v == nil {
@@ -2200,7 +2203,7 @@ func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Expresses() HybridMonitor
 	}).(HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput)
 }
 
-// The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+// The conditions that are used to filter logs imported from Log Service. See `filter` below.
 func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Filter() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
 	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfig) *HybridMonitorSlsTaskSlsProcessConfigFilter {
 		if v == nil {
@@ -2210,7 +2213,7 @@ func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Filter() HybridMonitorSls
 	}).(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput)
 }
 
-// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `groupBy` below.
 func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) GroupBies() HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput {
 	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigGroupBy {
 		if v == nil {
@@ -2220,7 +2223,7 @@ func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) GroupBies() HybridMonitor
 	}).(HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput)
 }
 
-// The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+// The method that is used to aggregate logs imported from Log Service. See `statistics` below.
 func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Statistics() HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput {
 	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigStatistic {
 		if v == nil {
@@ -2233,7 +2236,7 @@ func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Statistics() HybridMonito
 type HybridMonitorSlsTaskSlsProcessConfigExpress struct {
 	// The alias of the aggregation result.
 	Alias *string `pulumi:"alias"`
-	// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+	// The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
 	Express *string `pulumi:"express"`
 }
 
@@ -2251,7 +2254,7 @@ type HybridMonitorSlsTaskSlsProcessConfigExpressInput interface {
 type HybridMonitorSlsTaskSlsProcessConfigExpressArgs struct {
 	// The alias of the aggregation result.
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
-	// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+	// The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
 	Express pulumi.StringPtrInput `pulumi:"express"`
 }
 
@@ -2311,7 +2314,7 @@ func (o HybridMonitorSlsTaskSlsProcessConfigExpressOutput) Alias() pulumi.String
 	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigExpress) *string { return v.Alias }).(pulumi.StringPtrOutput)
 }
 
-// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+// The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
 func (o HybridMonitorSlsTaskSlsProcessConfigExpressOutput) Express() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigExpress) *string { return v.Express }).(pulumi.StringPtrOutput)
 }
@@ -2337,7 +2340,7 @@ func (o HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput) Index(i pulumi.I
 }
 
 type HybridMonitorSlsTaskSlsProcessConfigFilter struct {
-	// The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+	// The conditions that are used to filter logs imported from Log Service. See `filters` below.
 	Filters []HybridMonitorSlsTaskSlsProcessConfigFilterFilter `pulumi:"filters"`
 	// The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
 	Relation *string `pulumi:"relation"`
@@ -2355,7 +2358,7 @@ type HybridMonitorSlsTaskSlsProcessConfigFilterInput interface {
 }
 
 type HybridMonitorSlsTaskSlsProcessConfigFilterArgs struct {
-	// The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+	// The conditions that are used to filter logs imported from Log Service. See `filters` below.
 	Filters HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput `pulumi:"filters"`
 	// The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
@@ -2438,7 +2441,7 @@ func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) ToHybridMonitorSlsTask
 	}).(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput)
 }
 
-// The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+// The conditions that are used to filter logs imported from Log Service. See `filters` below.
 func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) Filters() HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput {
 	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigFilter) []HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
 		return v.Filters
@@ -2474,7 +2477,7 @@ func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) Elem() HybridMonito
 	}).(HybridMonitorSlsTaskSlsProcessConfigFilterOutput)
 }
 
-// The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+// The conditions that are used to filter logs imported from Log Service. See `filters` below.
 func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) Filters() HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput {
 	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfigFilter) []HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
 		if v == nil {
@@ -2963,7 +2966,7 @@ func (o MetricRuleBlackListMetricArrayOutput) Index(i pulumi.IntInput) MetricRul
 type MetricRuleTemplateAlertTemplate struct {
 	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
 	Category string `pulumi:"category"`
-	// The information about the trigger condition based on the alert level. See the following `Block escalations`.
+	// The information about the trigger condition based on the alert level. See `escalations` below.
 	Escalations *MetricRuleTemplateAlertTemplateEscalations `pulumi:"escalations"`
 	// The name of the metric.
 	//
@@ -2993,7 +2996,7 @@ type MetricRuleTemplateAlertTemplateInput interface {
 type MetricRuleTemplateAlertTemplateArgs struct {
 	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
 	Category pulumi.StringInput `pulumi:"category"`
-	// The information about the trigger condition based on the alert level. See the following `Block escalations`.
+	// The information about the trigger condition based on the alert level. See `escalations` below.
 	Escalations MetricRuleTemplateAlertTemplateEscalationsPtrInput `pulumi:"escalations"`
 	// The name of the metric.
 	//
@@ -3065,7 +3068,7 @@ func (o MetricRuleTemplateAlertTemplateOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Category }).(pulumi.StringOutput)
 }
 
-// The information about the trigger condition based on the alert level. See the following `Block escalations`.
+// The information about the trigger condition based on the alert level. See `escalations` below.
 func (o MetricRuleTemplateAlertTemplateOutput) Escalations() MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) *MetricRuleTemplateAlertTemplateEscalations {
 		return v.Escalations
@@ -3117,11 +3120,11 @@ func (o MetricRuleTemplateAlertTemplateArrayOutput) Index(i pulumi.IntInput) Met
 }
 
 type MetricRuleTemplateAlertTemplateEscalations struct {
-	// The condition for triggering critical-level alerts. See the following `Block critical`.
+	// The condition for triggering critical-level alerts. See `critical` below.
 	Critical *MetricRuleTemplateAlertTemplateEscalationsCritical `pulumi:"critical"`
-	// The condition for triggering info-level alerts. See the following `Block info`.
+	// The condition for triggering info-level alerts. See `info` below.
 	Info *MetricRuleTemplateAlertTemplateEscalationsInfo `pulumi:"info"`
-	// The condition for triggering warn-level alerts. See the following `Block warn`.
+	// The condition for triggering warn-level alerts. See `warn` below.
 	Warn *MetricRuleTemplateAlertTemplateEscalationsWarn `pulumi:"warn"`
 }
 
@@ -3137,11 +3140,11 @@ type MetricRuleTemplateAlertTemplateEscalationsInput interface {
 }
 
 type MetricRuleTemplateAlertTemplateEscalationsArgs struct {
-	// The condition for triggering critical-level alerts. See the following `Block critical`.
+	// The condition for triggering critical-level alerts. See `critical` below.
 	Critical MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput `pulumi:"critical"`
-	// The condition for triggering info-level alerts. See the following `Block info`.
+	// The condition for triggering info-level alerts. See `info` below.
 	Info MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput `pulumi:"info"`
-	// The condition for triggering warn-level alerts. See the following `Block warn`.
+	// The condition for triggering warn-level alerts. See `warn` below.
 	Warn MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput `pulumi:"warn"`
 }
 
@@ -3222,21 +3225,21 @@ func (o MetricRuleTemplateAlertTemplateEscalationsOutput) ToMetricRuleTemplateAl
 	}).(MetricRuleTemplateAlertTemplateEscalationsPtrOutput)
 }
 
-// The condition for triggering critical-level alerts. See the following `Block critical`.
+// The condition for triggering critical-level alerts. See `critical` below.
 func (o MetricRuleTemplateAlertTemplateEscalationsOutput) Critical() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsCritical {
 		return v.Critical
 	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
 }
 
-// The condition for triggering info-level alerts. See the following `Block info`.
+// The condition for triggering info-level alerts. See `info` below.
 func (o MetricRuleTemplateAlertTemplateEscalationsOutput) Info() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsInfo {
 		return v.Info
 	}).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
 }
 
-// The condition for triggering warn-level alerts. See the following `Block warn`.
+// The condition for triggering warn-level alerts. See `warn` below.
 func (o MetricRuleTemplateAlertTemplateEscalationsOutput) Warn() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsWarn {
 		return v.Warn
@@ -3267,7 +3270,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Elem() MetricRuleTe
 	}).(MetricRuleTemplateAlertTemplateEscalationsOutput)
 }
 
-// The condition for triggering critical-level alerts. See the following `Block critical`.
+// The condition for triggering critical-level alerts. See `critical` below.
 func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Critical() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsCritical {
 		if v == nil {
@@ -3277,7 +3280,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Critical() MetricRu
 	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
 }
 
-// The condition for triggering info-level alerts. See the following `Block info`.
+// The condition for triggering info-level alerts. See `info` below.
 func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Info() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsInfo {
 		if v == nil {
@@ -3287,7 +3290,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Info() MetricRuleTe
 	}).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
 }
 
-// The condition for triggering warn-level alerts. See the following `Block warn`.
+// The condition for triggering warn-level alerts. See `warn` below.
 func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Warn() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalationsWarn {
 		if v == nil {

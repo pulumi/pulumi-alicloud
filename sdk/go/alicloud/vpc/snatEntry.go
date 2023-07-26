@@ -8,10 +8,96 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a snat resource.
+//
+// > **NOTE:** Available since v1.119.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNatGateway, err := vpc.NewNatGateway(ctx, "defaultNatGateway", &vpc.NatGatewayArgs{
+//				VpcId:          defaultNetwork.ID(),
+//				NatGatewayName: pulumi.String(name),
+//				PaymentType:    pulumi.String("PayAsYouGo"),
+//				VswitchId:      defaultSwitch.ID(),
+//				NatType:        pulumi.String("Enhanced"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				AddressName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEipAssociation(ctx, "defaultEipAssociation", &ecs.EipAssociationArgs{
+//				AllocationId: defaultEipAddress.ID(),
+//				InstanceId:   defaultNatGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSnatEntry(ctx, "defaultSnatEntry", &vpc.SnatEntryArgs{
+//				SnatTableId:     defaultNatGateway.SnatTableIds,
+//				SourceVswitchId: defaultSwitch.ID(),
+//				SnatIp:          defaultEipAddress.IpAddress,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -37,7 +123,7 @@ type SnatEntry struct {
 	SourceCidr pulumi.StringOutput `pulumi:"sourceCidr"`
 	// The vswitch ID.
 	SourceVswitchId pulumi.StringOutput `pulumi:"sourceVswitchId"`
-	// (Available in 1.119.1+) The status of snat entry.
+	// (Available since v1.119.1) The status of snat entry.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -54,6 +140,7 @@ func NewSnatEntry(ctx *pulumi.Context,
 	if args.SnatTableId == nil {
 		return nil, errors.New("invalid value for required argument 'SnatTableId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SnatEntry
 	err := ctx.RegisterResource("alicloud:vpc/snatEntry:SnatEntry", name, args, &resource, opts...)
 	if err != nil {
@@ -88,7 +175,7 @@ type snatEntryState struct {
 	SourceCidr *string `pulumi:"sourceCidr"`
 	// The vswitch ID.
 	SourceVswitchId *string `pulumi:"sourceVswitchId"`
-	// (Available in 1.119.1+) The status of snat entry.
+	// (Available since v1.119.1) The status of snat entry.
 	Status *string `pulumi:"status"`
 }
 
@@ -105,7 +192,7 @@ type SnatEntryState struct {
 	SourceCidr pulumi.StringPtrInput
 	// The vswitch ID.
 	SourceVswitchId pulumi.StringPtrInput
-	// (Available in 1.119.1+) The status of snat entry.
+	// (Available since v1.119.1) The status of snat entry.
 	Status pulumi.StringPtrInput
 }
 
@@ -257,7 +344,7 @@ func (o SnatEntryOutput) SourceVswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SourceVswitchId }).(pulumi.StringOutput)
 }
 
-// (Available in 1.119.1+) The status of snat entry.
+// (Available since v1.119.1) The status of snat entry.
 func (o SnatEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

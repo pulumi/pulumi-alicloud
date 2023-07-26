@@ -7,24 +7,58 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InstanceParameterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceParameterArgs Empty = new InstanceParameterArgs();
 
-    @Import(name="name", required=true)
-    private Output<String> name;
+    /**
+     * Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * 
+     * @deprecated
+     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
-    public Output<String> name() {
-        return this.name;
+    /**
+     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * 
+     * @deprecated
+     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
-    @Import(name="value", required=true)
-    private Output<String> value;
+    /**
+     * Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * 
+     * @deprecated
+     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
-    public Output<String> value() {
-        return this.value;
+    /**
+     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * 
+     * @deprecated
+     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private InstanceParameterArgs() {}
@@ -52,27 +86,65 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
             $ = new InstanceParameterArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder name(Output<String> name) {
+        /**
+         * @param name Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        public Builder value(Output<String> value) {
+        /**
+         * @param value Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
         public Builder value(String value) {
             return value(Output.of(value));
         }
 
         public InstanceParameterArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }
     }

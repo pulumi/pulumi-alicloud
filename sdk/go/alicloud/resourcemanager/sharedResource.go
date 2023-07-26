@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Resource Manager Shared Resource resource.
 //
-// For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+// For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcesharing-2020-01-10-associateresourceshare).
 //
-// > **NOTE:** Available in v1.111.0+.
+// > **NOTE:** Available since v1.111.0.
 //
 // ## Import
 //
@@ -33,9 +34,9 @@ type SharedResource struct {
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringOutput `pulumi:"resourceShareId"`
-	// The resource type of should shared, valid value
+	// The resource type of should shared. Valid values:
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
-	// status.
+	// The status of the Shared Resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -55,6 +56,7 @@ func NewSharedResource(ctx *pulumi.Context,
 	if args.ResourceType == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SharedResource
 	err := ctx.RegisterResource("alicloud:resourcemanager/sharedResource:SharedResource", name, args, &resource, opts...)
 	if err != nil {
@@ -81,9 +83,9 @@ type sharedResourceState struct {
 	ResourceId *string `pulumi:"resourceId"`
 	// The resource share ID of resource manager.
 	ResourceShareId *string `pulumi:"resourceShareId"`
-	// The resource type of should shared, valid value
+	// The resource type of should shared. Valid values:
 	ResourceType *string `pulumi:"resourceType"`
-	// status.
+	// The status of the Shared Resource.
 	Status *string `pulumi:"status"`
 }
 
@@ -92,9 +94,9 @@ type SharedResourceState struct {
 	ResourceId pulumi.StringPtrInput
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringPtrInput
-	// The resource type of should shared, valid value
+	// The resource type of should shared. Valid values:
 	ResourceType pulumi.StringPtrInput
-	// status.
+	// The status of the Shared Resource.
 	Status pulumi.StringPtrInput
 }
 
@@ -107,7 +109,7 @@ type sharedResourceArgs struct {
 	ResourceId string `pulumi:"resourceId"`
 	// The resource share ID of resource manager.
 	ResourceShareId string `pulumi:"resourceShareId"`
-	// The resource type of should shared, valid value
+	// The resource type of should shared. Valid values:
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -117,7 +119,7 @@ type SharedResourceArgs struct {
 	ResourceId pulumi.StringInput
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringInput
-	// The resource type of should shared, valid value
+	// The resource type of should shared. Valid values:
 	ResourceType pulumi.StringInput
 }
 
@@ -218,12 +220,12 @@ func (o SharedResourceOutput) ResourceShareId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceShareId }).(pulumi.StringOutput)
 }
 
-// The resource type of should shared, valid value
+// The resource type of should shared. Valid values:
 func (o SharedResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// status.
+// The status of the Shared Resource.
 func (o SharedResourceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

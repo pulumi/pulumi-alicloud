@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://www.alibabacloud.com/help/en/doc-detail/203146.htm).
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -123,13 +124,13 @@ type DispatchRule struct {
 	DispatchRuleName pulumi.StringOutput `pulumi:"dispatchRuleName"`
 	// The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
 	DispatchType pulumi.StringPtrOutput `pulumi:"dispatchType"`
-	// Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	GroupRules DispatchRuleGroupRuleArrayOutput `pulumi:"groupRules"`
 	// Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
 	IsRecover pulumi.BoolPtrOutput `pulumi:"isRecover"`
-	// Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+	// Sets the dispatch rule. See `labelMatchExpressionGrid` below.
 	LabelMatchExpressionGrids DispatchRuleLabelMatchExpressionGridArrayOutput `pulumi:"labelMatchExpressionGrids"`
-	// Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules DispatchRuleNotifyRuleArrayOutput `pulumi:"notifyRules"`
 	// The resource status of Alert Dispatch Rule.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -154,6 +155,7 @@ func NewDispatchRule(ctx *pulumi.Context,
 	if args.NotifyRules == nil {
 		return nil, errors.New("invalid value for required argument 'NotifyRules'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DispatchRule
 	err := ctx.RegisterResource("alicloud:arms/dispatchRule:DispatchRule", name, args, &resource, opts...)
 	if err != nil {
@@ -180,13 +182,13 @@ type dispatchRuleState struct {
 	DispatchRuleName *string `pulumi:"dispatchRuleName"`
 	// The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
 	DispatchType *string `pulumi:"dispatchType"`
-	// Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	GroupRules []DispatchRuleGroupRule `pulumi:"groupRules"`
 	// Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
 	IsRecover *bool `pulumi:"isRecover"`
-	// Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+	// Sets the dispatch rule. See `labelMatchExpressionGrid` below.
 	LabelMatchExpressionGrids []DispatchRuleLabelMatchExpressionGrid `pulumi:"labelMatchExpressionGrids"`
-	// Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules []DispatchRuleNotifyRule `pulumi:"notifyRules"`
 	// The resource status of Alert Dispatch Rule.
 	Status *string `pulumi:"status"`
@@ -197,13 +199,13 @@ type DispatchRuleState struct {
 	DispatchRuleName pulumi.StringPtrInput
 	// The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
 	DispatchType pulumi.StringPtrInput
-	// Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	GroupRules DispatchRuleGroupRuleArrayInput
 	// Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
 	IsRecover pulumi.BoolPtrInput
-	// Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+	// Sets the dispatch rule. See `labelMatchExpressionGrid` below.
 	LabelMatchExpressionGrids DispatchRuleLabelMatchExpressionGridArrayInput
-	// Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules DispatchRuleNotifyRuleArrayInput
 	// The resource status of Alert Dispatch Rule.
 	Status pulumi.StringPtrInput
@@ -218,13 +220,13 @@ type dispatchRuleArgs struct {
 	DispatchRuleName string `pulumi:"dispatchRuleName"`
 	// The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
 	DispatchType *string `pulumi:"dispatchType"`
-	// Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	GroupRules []DispatchRuleGroupRule `pulumi:"groupRules"`
 	// Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
 	IsRecover *bool `pulumi:"isRecover"`
-	// Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+	// Sets the dispatch rule. See `labelMatchExpressionGrid` below.
 	LabelMatchExpressionGrids []DispatchRuleLabelMatchExpressionGrid `pulumi:"labelMatchExpressionGrids"`
-	// Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules []DispatchRuleNotifyRule `pulumi:"notifyRules"`
 }
 
@@ -234,13 +236,13 @@ type DispatchRuleArgs struct {
 	DispatchRuleName pulumi.StringInput
 	// The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
 	DispatchType pulumi.StringPtrInput
-	// Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	GroupRules DispatchRuleGroupRuleArrayInput
 	// Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
 	IsRecover pulumi.BoolPtrInput
-	// Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+	// Sets the dispatch rule. See `labelMatchExpressionGrid` below.
 	LabelMatchExpressionGrids DispatchRuleLabelMatchExpressionGridArrayInput
-	// Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules DispatchRuleNotifyRuleArrayInput
 }
 
@@ -341,7 +343,7 @@ func (o DispatchRuleOutput) DispatchType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DispatchRule) pulumi.StringPtrOutput { return v.DispatchType }).(pulumi.StringPtrOutput)
 }
 
-// Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+// Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 func (o DispatchRuleOutput) GroupRules() DispatchRuleGroupRuleArrayOutput {
 	return o.ApplyT(func(v *DispatchRule) DispatchRuleGroupRuleArrayOutput { return v.GroupRules }).(DispatchRuleGroupRuleArrayOutput)
 }
@@ -351,14 +353,14 @@ func (o DispatchRuleOutput) IsRecover() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DispatchRule) pulumi.BoolPtrOutput { return v.IsRecover }).(pulumi.BoolPtrOutput)
 }
 
-// Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+// Sets the dispatch rule. See `labelMatchExpressionGrid` below.
 func (o DispatchRuleOutput) LabelMatchExpressionGrids() DispatchRuleLabelMatchExpressionGridArrayOutput {
 	return o.ApplyT(func(v *DispatchRule) DispatchRuleLabelMatchExpressionGridArrayOutput {
 		return v.LabelMatchExpressionGrids
 	}).(DispatchRuleLabelMatchExpressionGridArrayOutput)
 }
 
-// Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 func (o DispatchRuleOutput) NotifyRules() DispatchRuleNotifyRuleArrayOutput {
 	return o.ApplyT(func(v *DispatchRule) DispatchRuleNotifyRuleArrayOutput { return v.NotifyRules }).(DispatchRuleNotifyRuleArrayOutput)
 }

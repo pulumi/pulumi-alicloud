@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetFilesets(ctx *pulumi.Context, args *GetFilesetsArgs, opts ...pulumi.InvokeOption) (*GetFilesetsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFilesetsResult
 	err := ctx.Invoke("alicloud:nas/getFilesets:getFilesets", args, &rv, opts...)
 	if err != nil {

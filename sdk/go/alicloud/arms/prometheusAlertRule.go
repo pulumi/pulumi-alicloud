@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,39 +16,7 @@ import (
 //
 // For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/doc-detail/212056.htm).
 //
-// > **NOTE:** Available in v1.136.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := arms.NewPrometheusAlertRule(ctx, "example", &arms.PrometheusAlertRuleArgs{
-//				ClusterId:               pulumi.String("example_value"),
-//				Duration:                pulumi.String("example_value"),
-//				Expression:              pulumi.String("example_value"),
-//				Message:                 pulumi.String("example_value"),
-//				PrometheusAlertRuleName: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Import
 //
@@ -61,7 +30,7 @@ import (
 type PrometheusAlertRule struct {
 	pulumi.CustomResourceState
 
-	// The annotations of the alert rule.. See the following `Block annotations`.
+	// The annotations of the alert rule. See `annotations` below.
 	Annotations PrometheusAlertRuleAnnotationArrayOutput `pulumi:"annotations"`
 	// The ID of the cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
@@ -71,7 +40,7 @@ type PrometheusAlertRule struct {
 	Duration pulumi.StringOutput `pulumi:"duration"`
 	// The alert rule expression that follows the PromQL syntax.
 	Expression pulumi.StringOutput `pulumi:"expression"`
-	// The labels of the resource. See the following `Block labels`.
+	// The labels of the resource. See `labels` below.
 	Labels PrometheusAlertRuleLabelArrayOutput `pulumi:"labels"`
 	// The message of the alert notification.
 	Message pulumi.StringOutput `pulumi:"message"`
@@ -109,6 +78,7 @@ func NewPrometheusAlertRule(ctx *pulumi.Context,
 	if args.PrometheusAlertRuleName == nil {
 		return nil, errors.New("invalid value for required argument 'PrometheusAlertRuleName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PrometheusAlertRule
 	err := ctx.RegisterResource("alicloud:arms/prometheusAlertRule:PrometheusAlertRule", name, args, &resource, opts...)
 	if err != nil {
@@ -131,7 +101,7 @@ func GetPrometheusAlertRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrometheusAlertRule resources.
 type prometheusAlertRuleState struct {
-	// The annotations of the alert rule.. See the following `Block annotations`.
+	// The annotations of the alert rule. See `annotations` below.
 	Annotations []PrometheusAlertRuleAnnotation `pulumi:"annotations"`
 	// The ID of the cluster.
 	ClusterId *string `pulumi:"clusterId"`
@@ -141,7 +111,7 @@ type prometheusAlertRuleState struct {
 	Duration *string `pulumi:"duration"`
 	// The alert rule expression that follows the PromQL syntax.
 	Expression *string `pulumi:"expression"`
-	// The labels of the resource. See the following `Block labels`.
+	// The labels of the resource. See `labels` below.
 	Labels []PrometheusAlertRuleLabel `pulumi:"labels"`
 	// The message of the alert notification.
 	Message *string `pulumi:"message"`
@@ -158,7 +128,7 @@ type prometheusAlertRuleState struct {
 }
 
 type PrometheusAlertRuleState struct {
-	// The annotations of the alert rule.. See the following `Block annotations`.
+	// The annotations of the alert rule. See `annotations` below.
 	Annotations PrometheusAlertRuleAnnotationArrayInput
 	// The ID of the cluster.
 	ClusterId pulumi.StringPtrInput
@@ -168,7 +138,7 @@ type PrometheusAlertRuleState struct {
 	Duration pulumi.StringPtrInput
 	// The alert rule expression that follows the PromQL syntax.
 	Expression pulumi.StringPtrInput
-	// The labels of the resource. See the following `Block labels`.
+	// The labels of the resource. See `labels` below.
 	Labels PrometheusAlertRuleLabelArrayInput
 	// The message of the alert notification.
 	Message pulumi.StringPtrInput
@@ -189,7 +159,7 @@ func (PrometheusAlertRuleState) ElementType() reflect.Type {
 }
 
 type prometheusAlertRuleArgs struct {
-	// The annotations of the alert rule.. See the following `Block annotations`.
+	// The annotations of the alert rule. See `annotations` below.
 	Annotations []PrometheusAlertRuleAnnotation `pulumi:"annotations"`
 	// The ID of the cluster.
 	ClusterId string `pulumi:"clusterId"`
@@ -199,7 +169,7 @@ type prometheusAlertRuleArgs struct {
 	Duration string `pulumi:"duration"`
 	// The alert rule expression that follows the PromQL syntax.
 	Expression string `pulumi:"expression"`
-	// The labels of the resource. See the following `Block labels`.
+	// The labels of the resource. See `labels` below.
 	Labels []PrometheusAlertRuleLabel `pulumi:"labels"`
 	// The message of the alert notification.
 	Message string `pulumi:"message"`
@@ -213,7 +183,7 @@ type prometheusAlertRuleArgs struct {
 
 // The set of arguments for constructing a PrometheusAlertRule resource.
 type PrometheusAlertRuleArgs struct {
-	// The annotations of the alert rule.. See the following `Block annotations`.
+	// The annotations of the alert rule. See `annotations` below.
 	Annotations PrometheusAlertRuleAnnotationArrayInput
 	// The ID of the cluster.
 	ClusterId pulumi.StringInput
@@ -223,7 +193,7 @@ type PrometheusAlertRuleArgs struct {
 	Duration pulumi.StringInput
 	// The alert rule expression that follows the PromQL syntax.
 	Expression pulumi.StringInput
-	// The labels of the resource. See the following `Block labels`.
+	// The labels of the resource. See `labels` below.
 	Labels PrometheusAlertRuleLabelArrayInput
 	// The message of the alert notification.
 	Message pulumi.StringInput
@@ -322,7 +292,7 @@ func (o PrometheusAlertRuleOutput) ToPrometheusAlertRuleOutputWithContext(ctx co
 	return o
 }
 
-// The annotations of the alert rule.. See the following `Block annotations`.
+// The annotations of the alert rule. See `annotations` below.
 func (o PrometheusAlertRuleOutput) Annotations() PrometheusAlertRuleAnnotationArrayOutput {
 	return o.ApplyT(func(v *PrometheusAlertRule) PrometheusAlertRuleAnnotationArrayOutput { return v.Annotations }).(PrometheusAlertRuleAnnotationArrayOutput)
 }
@@ -347,7 +317,7 @@ func (o PrometheusAlertRuleOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
 }
 
-// The labels of the resource. See the following `Block labels`.
+// The labels of the resource. See `labels` below.
 func (o PrometheusAlertRuleOutput) Labels() PrometheusAlertRuleLabelArrayOutput {
 	return o.ApplyT(func(v *PrometheusAlertRule) PrometheusAlertRuleLabelArrayOutput { return v.Labels }).(PrometheusAlertRuleLabelArrayOutput)
 }

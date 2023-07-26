@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -158,6 +159,7 @@ func NewServerCertificate(ctx *pulumi.Context,
 		args = &ServerCertificateArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerCertificate
 	err := ctx.RegisterResource("alicloud:slb/serverCertificate:ServerCertificate", name, args, &resource, opts...)
 	if err != nil {

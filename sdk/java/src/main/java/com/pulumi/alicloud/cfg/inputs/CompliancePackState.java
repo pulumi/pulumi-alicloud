@@ -50,14 +50,14 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A list of Config Rule IDs.
+     * A list of Config Rule IDs. See `config_rule_ids` below.
      * 
      */
     @Import(name="configRuleIds")
     private @Nullable Output<List<CompliancePackConfigRuleIdArgs>> configRuleIds;
 
     /**
-     * @return A list of Config Rule IDs.
+     * @return A list of Config Rule IDs. See `config_rule_ids` below.
      * 
      */
     public Optional<Output<List<CompliancePackConfigRuleIdArgs>>> configRuleIds() {
@@ -65,7 +65,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A list of Config Rules.
+     * A list of Config Rules. See `config_rules` below.
      * 
      * @deprecated
      * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
@@ -76,7 +76,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<List<CompliancePackConfigRuleArgs>> configRules;
 
     /**
-     * @return A list of Config Rules.
+     * @return A list of Config Rules. See `config_rules` below.
      * 
      * @deprecated
      * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
@@ -205,7 +205,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param configRuleIds A list of Config Rule IDs.
+         * @param configRuleIds A list of Config Rule IDs. See `config_rule_ids` below.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param configRuleIds A list of Config Rule IDs.
+         * @param configRuleIds A list of Config Rule IDs. See `config_rule_ids` below.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param configRuleIds A list of Config Rule IDs.
+         * @param configRuleIds A list of Config Rule IDs. See `config_rule_ids` below.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param configRules A list of Config Rules.
+         * @param configRules A list of Config Rules. See `config_rules` below.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param configRules A list of Config Rules.
+         * @param configRules A list of Config Rules. See `config_rules` below.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param configRules A list of Config Rules.
+         * @param configRules A list of Config Rules. See `config_rules` below.
          * 
          * @return builder
          * 

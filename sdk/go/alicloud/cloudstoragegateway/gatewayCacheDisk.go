@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,6 +131,7 @@ func NewGatewayCacheDisk(ctx *pulumi.Context,
 	if args.GatewayId == nil {
 		return nil, errors.New("invalid value for required argument 'GatewayId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GatewayCacheDisk
 	err := ctx.RegisterResource("alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk", name, args, &resource, opts...)
 	if err != nil {

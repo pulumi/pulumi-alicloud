@@ -32,6 +32,7 @@ class DispatchRuleGroupRuleArgs:
         :param pulumi.Input[int] group_interval: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
         :param pulumi.Input[int] group_wait_time: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grouping_fields: The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+        :param pulumi.Input[int] group_id: The ID of the group rule.
         :param pulumi.Input[int] repeat_interval: The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
         """
         pulumi.set(__self__, "group_interval", group_interval)
@@ -81,6 +82,9 @@ class DispatchRuleGroupRuleArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the group rule.
+        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -105,7 +109,7 @@ class DispatchRuleLabelMatchExpressionGridArgs:
     def __init__(__self__, *,
                  label_match_expression_groups: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs']]] label_match_expression_groups: Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs']]] label_match_expression_groups: Sets the dispatch rule. See `label_match_expression_groups` below.
         """
         pulumi.set(__self__, "label_match_expression_groups", label_match_expression_groups)
 
@@ -113,7 +117,7 @@ class DispatchRuleLabelMatchExpressionGridArgs:
     @pulumi.getter(name="labelMatchExpressionGroups")
     def label_match_expression_groups(self) -> pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs']]]:
         """
-        Sets the dispatch rule. See the following `Block label_match_expression_groups`.
+        Sets the dispatch rule. See `label_match_expression_groups` below.
         """
         return pulumi.get(self, "label_match_expression_groups")
 
@@ -127,7 +131,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs:
     def __init__(__self__, *,
                  label_match_expressions: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs']]] label_match_expressions: Sets the dispatch rule. See the following `Block label_match_expressions`.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs']]] label_match_expressions: Sets the dispatch rule. See `label_match_expressions` below.
         """
         pulumi.set(__self__, "label_match_expressions", label_match_expressions)
 
@@ -135,7 +139,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs:
     @pulumi.getter(name="labelMatchExpressions")
     def label_match_expressions(self) -> pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs']]]:
         """
-        Sets the dispatch rule. See the following `Block label_match_expressions`.
+        Sets the dispatch rule. See `label_match_expressions` below.
         """
         return pulumi.get(self, "label_match_expressions")
 
@@ -223,7 +227,7 @@ class DispatchRuleNotifyRuleArgs:
                  notify_objects: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notify_channels: The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
-        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]] notify_objects: Sets the notification object. See the following `Block notify_objects`.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]] notify_objects: Sets the notification object. See `notify_objects` below.
         """
         pulumi.set(__self__, "notify_channels", notify_channels)
         pulumi.set(__self__, "notify_objects", notify_objects)
@@ -244,7 +248,7 @@ class DispatchRuleNotifyRuleArgs:
     @pulumi.getter(name="notifyObjects")
     def notify_objects(self) -> pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]]:
         """
-        Sets the notification object. See the following `Block notify_objects`.
+        Sets the notification object. See `notify_objects` below.
         """
         return pulumi.get(self, "notify_objects")
 
@@ -311,8 +315,8 @@ class PrometheusAlertRuleAnnotationArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the label.
-        :param pulumi.Input[str] value: The value of the label.
+        :param pulumi.Input[str] name: The name of the annotation.
+        :param pulumi.Input[str] value: The value of the annotation.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -323,7 +327,7 @@ class PrometheusAlertRuleAnnotationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the label.
+        The name of the annotation.
         """
         return pulumi.get(self, "name")
 
@@ -335,7 +339,7 @@ class PrometheusAlertRuleAnnotationArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the label.
+        The value of the annotation.
         """
         return pulumi.get(self, "value")
 

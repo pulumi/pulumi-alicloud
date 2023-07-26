@@ -51,14 +51,14 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     @Import(name="groupRules")
     private @Nullable Output<List<DispatchRuleGroupRuleArgs>> groupRules;
 
     /**
-     * @return Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * @return Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     public Optional<Output<List<DispatchRuleGroupRuleArgs>>> groupRules() {
@@ -81,14 +81,14 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+     * Sets the dispatch rule. See `label_match_expression_grid` below.
      * 
      */
     @Import(name="labelMatchExpressionGrids")
     private @Nullable Output<List<DispatchRuleLabelMatchExpressionGridArgs>> labelMatchExpressionGrids;
 
     /**
-     * @return Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+     * @return Sets the dispatch rule. See `label_match_expression_grid` below.
      * 
      */
     public Optional<Output<List<DispatchRuleLabelMatchExpressionGridArgs>>> labelMatchExpressionGrids() {
@@ -96,14 +96,14 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     @Import(name="notifyRules")
     private @Nullable Output<List<DispatchRuleNotifyRuleArgs>> notifyRules;
 
     /**
-     * @return Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+     * @return Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
     public Optional<Output<List<DispatchRuleNotifyRuleArgs>>> notifyRules() {
@@ -198,7 +198,7 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupRules Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+         * @param groupRules Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupRules Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+         * @param groupRules Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupRules Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+         * @param groupRules Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelMatchExpressionGrids Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+         * @param labelMatchExpressionGrids Sets the dispatch rule. See `label_match_expression_grid` below.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelMatchExpressionGrids Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+         * @param labelMatchExpressionGrids Sets the dispatch rule. See `label_match_expression_grid` below.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelMatchExpressionGrids Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+         * @param labelMatchExpressionGrids Sets the dispatch rule. See `label_match_expression_grid` below.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifyRules Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+         * @param notifyRules Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifyRules Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+         * @param notifyRules Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class DispatchRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifyRules Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
+         * @param notifyRules Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
          * 
          * @return builder
          * 

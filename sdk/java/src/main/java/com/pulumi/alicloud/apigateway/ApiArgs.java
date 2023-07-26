@@ -41,14 +41,14 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * constant_parameters defines the constant parameters of the api.
+     * constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
      * 
      */
     @Import(name="constantParameters")
     private @Nullable Output<List<ApiConstantParameterArgs>> constantParameters;
 
     /**
-     * @return constant_parameters defines the constant parameters of the api.
+     * @return constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
      * 
      */
     public Optional<Output<List<ApiConstantParameterArgs>>> constantParameters() {
@@ -71,14 +71,14 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;.
+     * fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;. See `fc_service_config` below.
      * 
      */
     @Import(name="fcServiceConfig")
     private @Nullable Output<ApiFcServiceConfigArgs> fcServiceConfig;
 
     /**
-     * @return fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;.
+     * @return fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;. See `fc_service_config` below.
      * 
      */
     public Optional<Output<ApiFcServiceConfigArgs>> fcServiceConfig() {
@@ -116,14 +116,14 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * http_service_config defines the config when service_type selected &#39;HTTP&#39;.
+     * http_service_config defines the config when service_type selected &#39;HTTP&#39;. See `http_service_config` below.
      * 
      */
     @Import(name="httpServiceConfig")
     private @Nullable Output<ApiHttpServiceConfigArgs> httpServiceConfig;
 
     /**
-     * @return http_service_config defines the config when service_type selected &#39;HTTP&#39;.
+     * @return http_service_config defines the config when service_type selected &#39;HTTP&#39;. See `http_service_config` below.
      * 
      */
     public Optional<Output<ApiHttpServiceConfigArgs>> httpServiceConfig() {
@@ -131,14 +131,14 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;.
+     * http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;. See `http_vpc_service_config` below.
      * 
      */
     @Import(name="httpVpcServiceConfig")
     private @Nullable Output<ApiHttpVpcServiceConfigArgs> httpVpcServiceConfig;
 
     /**
-     * @return http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;.
+     * @return http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;. See `http_vpc_service_config` below.
      * 
      */
     public Optional<Output<ApiHttpVpcServiceConfigArgs>> httpVpcServiceConfig() {
@@ -146,14 +146,14 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * http_service_config defines the config when service_type selected &#39;MOCK&#39;.
+     * http_service_config defines the config when service_type selected &#39;MOCK&#39;. See `mock_service_config` below.
      * 
      */
     @Import(name="mockServiceConfig")
     private @Nullable Output<ApiMockServiceConfigArgs> mockServiceConfig;
 
     /**
-     * @return http_service_config defines the config when service_type selected &#39;MOCK&#39;.
+     * @return http_service_config defines the config when service_type selected &#39;MOCK&#39;. See `mock_service_config` below.
      * 
      */
     public Optional<Output<ApiMockServiceConfigArgs>> mockServiceConfig() {
@@ -176,14 +176,14 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Request_config defines how users can send requests to your API.
+     * Request_config defines how users can send requests to your API. See `request_config` below.
      * 
      */
     @Import(name="requestConfig", required=true)
     private Output<ApiRequestConfigArgs> requestConfig;
 
     /**
-     * @return Request_config defines how users can send requests to your API.
+     * @return Request_config defines how users can send requests to your API. See `request_config` below.
      * 
      */
     public Output<ApiRequestConfigArgs> requestConfig() {
@@ -191,14 +191,14 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * request_parameters defines the request parameters of the api.
+     * request_parameters defines the request parameters of the api. See `request_parameters` below.
      * 
      */
     @Import(name="requestParameters")
     private @Nullable Output<List<ApiRequestParameterArgs>> requestParameters;
 
     /**
-     * @return request_parameters defines the request parameters of the api.
+     * @return request_parameters defines the request parameters of the api. See `request_parameters` below.
      * 
      */
     public Optional<Output<List<ApiRequestParameterArgs>>> requestParameters() {
@@ -236,14 +236,14 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * system_parameters defines the system parameters of the api.
+     * system_parameters defines the system parameters of the api. See `system_parameters` below.
      * 
      */
     @Import(name="systemParameters")
     private @Nullable Output<List<ApiSystemParameterArgs>> systemParameters;
 
     /**
-     * @return system_parameters defines the system parameters of the api.
+     * @return system_parameters defines the system parameters of the api. See `system_parameters` below.
      * 
      */
     public Optional<Output<List<ApiSystemParameterArgs>>> systemParameters() {
@@ -310,7 +310,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param constantParameters constant_parameters defines the constant parameters of the api.
+         * @param constantParameters constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param constantParameters constant_parameters defines the constant parameters of the api.
+         * @param constantParameters constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param constantParameters constant_parameters defines the constant parameters of the api.
+         * @param constantParameters constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fcServiceConfig fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;.
+         * @param fcServiceConfig fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;. See `fc_service_config` below.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fcServiceConfig fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;.
+         * @param fcServiceConfig fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;. See `fc_service_config` below.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpServiceConfig http_service_config defines the config when service_type selected &#39;HTTP&#39;.
+         * @param httpServiceConfig http_service_config defines the config when service_type selected &#39;HTTP&#39;. See `http_service_config` below.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpServiceConfig http_service_config defines the config when service_type selected &#39;HTTP&#39;.
+         * @param httpServiceConfig http_service_config defines the config when service_type selected &#39;HTTP&#39;. See `http_service_config` below.
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpVpcServiceConfig http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;.
+         * @param httpVpcServiceConfig http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;. See `http_vpc_service_config` below.
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpVpcServiceConfig http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;.
+         * @param httpVpcServiceConfig http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;. See `http_vpc_service_config` below.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mockServiceConfig http_service_config defines the config when service_type selected &#39;MOCK&#39;.
+         * @param mockServiceConfig http_service_config defines the config when service_type selected &#39;MOCK&#39;. See `mock_service_config` below.
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mockServiceConfig http_service_config defines the config when service_type selected &#39;MOCK&#39;.
+         * @param mockServiceConfig http_service_config defines the config when service_type selected &#39;MOCK&#39;. See `mock_service_config` below.
          * 
          * @return builder
          * 
@@ -509,7 +509,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestConfig Request_config defines how users can send requests to your API.
+         * @param requestConfig Request_config defines how users can send requests to your API. See `request_config` below.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestConfig Request_config defines how users can send requests to your API.
+         * @param requestConfig Request_config defines how users can send requests to your API. See `request_config` below.
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestParameters request_parameters defines the request parameters of the api.
+         * @param requestParameters request_parameters defines the request parameters of the api. See `request_parameters` below.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestParameters request_parameters defines the request parameters of the api.
+         * @param requestParameters request_parameters defines the request parameters of the api. See `request_parameters` below.
          * 
          * @return builder
          * 
@@ -551,7 +551,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestParameters request_parameters defines the request parameters of the api.
+         * @param requestParameters request_parameters defines the request parameters of the api. See `request_parameters` below.
          * 
          * @return builder
          * 
@@ -613,7 +613,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemParameters system_parameters defines the system parameters of the api.
+         * @param systemParameters system_parameters defines the system parameters of the api. See `system_parameters` below.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemParameters system_parameters defines the system parameters of the api.
+         * @param systemParameters system_parameters defines the system parameters of the api. See `system_parameters` below.
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemParameters system_parameters defines the system parameters of the api.
+         * @param systemParameters system_parameters defines the system parameters of the api. See `system_parameters` below.
          * 
          * @return builder
          * 

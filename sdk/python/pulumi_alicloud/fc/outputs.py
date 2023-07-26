@@ -23,6 +23,15 @@ __all__ = [
     'ServiceNasConfigMountPoint',
     'ServiceTracingConfig',
     'ServiceVpcConfig',
+    'V2FunctionCode',
+    'V2FunctionCustomContainerConfig',
+    'V2FunctionCustomDns',
+    'V2FunctionCustomDnsDnsOption',
+    'V2FunctionCustomHealthCheckConfig',
+    'V2FunctionCustomRuntimeConfig',
+    'V2FunctionInstanceLifecycleConfig',
+    'V2FunctionInstanceLifecycleConfigPreFreeze',
+    'V2FunctionInstanceLifecycleConfigPreStop',
     'GetCustomDomainsDomainResult',
     'GetCustomDomainsDomainCertConfigResult',
     'GetCustomDomainsDomainRouteConfigResult',
@@ -613,6 +622,498 @@ class ServiceVpcConfig(dict):
         A vpc ID associated with the Function Compute Service.
         """
         return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class V2FunctionCode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ossBucketName":
+            suggest = "oss_bucket_name"
+        elif key == "ossObjectName":
+            suggest = "oss_object_name"
+        elif key == "zipFile":
+            suggest = "zip_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V2FunctionCode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V2FunctionCode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V2FunctionCode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oss_bucket_name: Optional[str] = None,
+                 oss_object_name: Optional[str] = None,
+                 zip_file: Optional[str] = None):
+        """
+        :param str oss_bucket_name: The OSS bucket name of the function code package.
+        :param str oss_object_name: The OSS object name of the function code package.
+        :param str zip_file: Upload the base64 encoding of the code zip package directly in the request body.
+        """
+        if oss_bucket_name is not None:
+            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+        if oss_object_name is not None:
+            pulumi.set(__self__, "oss_object_name", oss_object_name)
+        if zip_file is not None:
+            pulumi.set(__self__, "zip_file", zip_file)
+
+    @property
+    @pulumi.getter(name="ossBucketName")
+    def oss_bucket_name(self) -> Optional[str]:
+        """
+        The OSS bucket name of the function code package.
+        """
+        return pulumi.get(self, "oss_bucket_name")
+
+    @property
+    @pulumi.getter(name="ossObjectName")
+    def oss_object_name(self) -> Optional[str]:
+        """
+        The OSS object name of the function code package.
+        """
+        return pulumi.get(self, "oss_object_name")
+
+    @property
+    @pulumi.getter(name="zipFile")
+    def zip_file(self) -> Optional[str]:
+        """
+        Upload the base64 encoding of the code zip package directly in the request body.
+        """
+        return pulumi.get(self, "zip_file")
+
+
+@pulumi.output_type
+class V2FunctionCustomContainerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accelerationType":
+            suggest = "acceleration_type"
+        elif key == "webServerMode":
+            suggest = "web_server_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V2FunctionCustomContainerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V2FunctionCustomContainerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V2FunctionCustomContainerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acceleration_type: Optional[str] = None,
+                 args: Optional[str] = None,
+                 command: Optional[str] = None,
+                 image: Optional[str] = None,
+                 web_server_mode: Optional[bool] = None):
+        """
+        :param str acceleration_type: Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
+        :param str args: Container startup parameters.
+        :param str command: Container start command, equivalent to Docker ENTRYPOINT.
+        :param str image: Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
+        :param bool web_server_mode: Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
+        """
+        if acceleration_type is not None:
+            pulumi.set(__self__, "acceleration_type", acceleration_type)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if command is not None:
+            pulumi.set(__self__, "command", command)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if web_server_mode is not None:
+            pulumi.set(__self__, "web_server_mode", web_server_mode)
+
+    @property
+    @pulumi.getter(name="accelerationType")
+    def acceleration_type(self) -> Optional[str]:
+        """
+        Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
+        """
+        return pulumi.get(self, "acceleration_type")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[str]:
+        """
+        Container startup parameters.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def command(self) -> Optional[str]:
+        """
+        Container start command, equivalent to Docker ENTRYPOINT.
+        """
+        return pulumi.get(self, "command")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="webServerMode")
+    def web_server_mode(self) -> Optional[bool]:
+        """
+        Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
+        """
+        return pulumi.get(self, "web_server_mode")
+
+
+@pulumi.output_type
+class V2FunctionCustomDns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsOptions":
+            suggest = "dns_options"
+        elif key == "nameServers":
+            suggest = "name_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V2FunctionCustomDns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V2FunctionCustomDns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V2FunctionCustomDns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_options: Optional[Sequence['outputs.V2FunctionCustomDnsDnsOption']] = None,
+                 name_servers: Optional[Sequence[str]] = None,
+                 searches: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['V2FunctionCustomDnsDnsOptionArgs'] dns_options: DNS resolver configuration parameter list. See `dns_options` below.
+        :param Sequence[str] name_servers: List of IP addresses of DNS servers.
+        :param Sequence[str] searches: List of DNS search domains.
+        """
+        if dns_options is not None:
+            pulumi.set(__self__, "dns_options", dns_options)
+        if name_servers is not None:
+            pulumi.set(__self__, "name_servers", name_servers)
+        if searches is not None:
+            pulumi.set(__self__, "searches", searches)
+
+    @property
+    @pulumi.getter(name="dnsOptions")
+    def dns_options(self) -> Optional[Sequence['outputs.V2FunctionCustomDnsDnsOption']]:
+        """
+        DNS resolver configuration parameter list. See `dns_options` below.
+        """
+        return pulumi.get(self, "dns_options")
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Optional[Sequence[str]]:
+        """
+        List of IP addresses of DNS servers.
+        """
+        return pulumi.get(self, "name_servers")
+
+    @property
+    @pulumi.getter
+    def searches(self) -> Optional[Sequence[str]]:
+        """
+        List of DNS search domains.
+        """
+        return pulumi.get(self, "searches")
+
+
+@pulumi.output_type
+class V2FunctionCustomDnsDnsOption(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: DNS option name.
+        :param str value: DNS option value.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        DNS option name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        DNS option value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class V2FunctionCustomHealthCheckConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGetUrl":
+            suggest = "http_get_url"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V2FunctionCustomHealthCheckConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V2FunctionCustomHealthCheckConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V2FunctionCustomHealthCheckConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_threshold: Optional[int] = None,
+                 http_get_url: Optional[str] = None,
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 success_threshold: Optional[int] = None,
+                 timeout_seconds: Optional[int] = None):
+        """
+        :param int failure_threshold: The threshold for the number of health check failures. The system considers the check failed after the health check fails.
+        :param str http_get_url: Container custom health check URL address.
+        :param int initial_delay_seconds: Delay from container startup to initiation of health check.
+        :param int period_seconds: Health check cycle.
+        :param int success_threshold: The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
+        :param int timeout_seconds: Health check timeout.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_get_url is not None:
+            pulumi.set(__self__, "http_get_url", http_get_url)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[int]:
+        """
+        The threshold for the number of health check failures. The system considers the check failed after the health check fails.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter(name="httpGetUrl")
+    def http_get_url(self) -> Optional[str]:
+        """
+        Container custom health check URL address.
+        """
+        return pulumi.get(self, "http_get_url")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[int]:
+        """
+        Delay from container startup to initiation of health check.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[int]:
+        """
+        Health check cycle.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[int]:
+        """
+        The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[int]:
+        """
+        Health check timeout.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class V2FunctionCustomRuntimeConfig(dict):
+    def __init__(__self__, *,
+                 args: Optional[Sequence[str]] = None,
+                 commands: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] args: Parameters received by the start entry command.
+        :param Sequence[str] commands: List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        Parameters received by the start entry command.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
+        """
+        return pulumi.get(self, "commands")
+
+
+@pulumi.output_type
+class V2FunctionInstanceLifecycleConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preFreeze":
+            suggest = "pre_freeze"
+        elif key == "preStop":
+            suggest = "pre_stop"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V2FunctionInstanceLifecycleConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V2FunctionInstanceLifecycleConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V2FunctionInstanceLifecycleConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pre_freeze: Optional['outputs.V2FunctionInstanceLifecycleConfigPreFreeze'] = None,
+                 pre_stop: Optional['outputs.V2FunctionInstanceLifecycleConfigPreStop'] = None):
+        """
+        :param 'V2FunctionInstanceLifecycleConfigPreFreezeArgs' pre_freeze: PreFreeze function configuration. See `pre_freeze` below.
+        :param 'V2FunctionInstanceLifecycleConfigPreStopArgs' pre_stop: PreStop function configuration. See `pre_stop` below.
+        """
+        if pre_freeze is not None:
+            pulumi.set(__self__, "pre_freeze", pre_freeze)
+        if pre_stop is not None:
+            pulumi.set(__self__, "pre_stop", pre_stop)
+
+    @property
+    @pulumi.getter(name="preFreeze")
+    def pre_freeze(self) -> Optional['outputs.V2FunctionInstanceLifecycleConfigPreFreeze']:
+        """
+        PreFreeze function configuration. See `pre_freeze` below.
+        """
+        return pulumi.get(self, "pre_freeze")
+
+    @property
+    @pulumi.getter(name="preStop")
+    def pre_stop(self) -> Optional['outputs.V2FunctionInstanceLifecycleConfigPreStop']:
+        """
+        PreStop function configuration. See `pre_stop` below.
+        """
+        return pulumi.get(self, "pre_stop")
+
+
+@pulumi.output_type
+class V2FunctionInstanceLifecycleConfigPreFreeze(dict):
+    def __init__(__self__, *,
+                 handler: Optional[str] = None,
+                 timeout: Optional[int] = None):
+        """
+        :param str handler: entry point of function.
+        :param int timeout: max running time of function.
+        """
+        if handler is not None:
+            pulumi.set(__self__, "handler", handler)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> Optional[str]:
+        """
+        entry point of function.
+        """
+        return pulumi.get(self, "handler")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        max running time of function.
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class V2FunctionInstanceLifecycleConfigPreStop(dict):
+    def __init__(__self__, *,
+                 handler: Optional[str] = None,
+                 timeout: Optional[int] = None):
+        """
+        :param str handler: entry point of function.
+        :param int timeout: max running time of function.
+        """
+        if handler is not None:
+            pulumi.set(__self__, "handler", handler)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> Optional[str]:
+        """
+        entry point of function.
+        """
+        return pulumi.get(self, "handler")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        max running time of function.
+        """
+        return pulumi.get(self, "timeout")
 
 
 @pulumi.output_type

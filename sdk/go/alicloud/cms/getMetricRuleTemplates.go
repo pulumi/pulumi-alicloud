@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,6 +67,7 @@ import (
 //
 // ```
 func GetMetricRuleTemplates(ctx *pulumi.Context, args *GetMetricRuleTemplatesArgs, opts ...pulumi.InvokeOption) (*GetMetricRuleTemplatesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetricRuleTemplatesResult
 	err := ctx.Invoke("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", args, &rv, opts...)
 	if err != nil {

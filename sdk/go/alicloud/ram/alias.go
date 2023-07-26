@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +28,7 @@ func NewAlias(ctx *pulumi.Context,
 	if args.AccountAlias == nil {
 		return nil, errors.New("invalid value for required argument 'AccountAlias'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Alias
 	err := ctx.RegisterResource("alicloud:ram/alias:Alias", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -114,6 +115,7 @@ func NewEcsInvocation(ctx *pulumi.Context,
 	if args.InstanceIds == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceIds'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EcsInvocation
 	err := ctx.RegisterResource("alicloud:ecs/ecsInvocation:EcsInvocation", name, args, &resource, opts...)
 	if err != nil {

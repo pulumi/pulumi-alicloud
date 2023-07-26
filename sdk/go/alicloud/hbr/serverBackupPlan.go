@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -169,6 +170,7 @@ func NewServerBackupPlan(ctx *pulumi.Context,
 	if args.Schedule == nil {
 		return nil, errors.New("invalid value for required argument 'Schedule'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerBackupPlan
 	err := ctx.RegisterResource("alicloud:hbr/serverBackupPlan:ServerBackupPlan", name, args, &resource, opts...)
 	if err != nil {

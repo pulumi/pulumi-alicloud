@@ -96,14 +96,8 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var defaultSuspendProcess = new AliCloud.Ess.SuspendProcess("defaultSuspendProcess", new()
     ///     {
-    ///         ScalingGroupId = defaultScalingGroup.Id,
+    ///         ScalingGroupId = defaultScalingConfiguration.ScalingGroupId,
     ///         Process = "ScaleIn",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultScalingConfiguration,
-    ///         },
     ///     });
     /// 
     /// });

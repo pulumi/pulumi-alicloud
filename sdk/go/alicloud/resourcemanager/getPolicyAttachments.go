@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetPolicyAttachments(ctx *pulumi.Context, args *GetPolicyAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetPolicyAttachmentsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPolicyAttachmentsResult
 	err := ctx.Invoke("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args, &rv, opts...)
 	if err != nil {

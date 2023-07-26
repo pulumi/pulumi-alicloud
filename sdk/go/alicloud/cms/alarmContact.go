@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/doc-detail/114923.htm).
+// Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontact).
 //
-// > **NOTE:** Available in v1.99.0+.
+// > **NOTE:** Available since v1.99.0.
 //
 // ## Example Usage
 //
@@ -32,9 +33,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
-//				AlarmContactName: pulumi.String("zhangsan"),
+//				AlarmContactName: pulumi.String("terraform-example"),
 //				ChannelsMail:     pulumi.String("terraform@test.com"),
-//				Describe:         pulumi.String("For Test"),
+//				Describe:         pulumi.String("For example"),
 //			})
 //			if err != nil {
 //				return err
@@ -58,8 +59,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
-//				AlarmContactName: pulumi.String("zhangsan"),
-//				Describe:         pulumi.String("For Test"),
+//				AlarmContactName: pulumi.String("tf-example"),
+//				Describe:         pulumi.String("For example"),
 //				ChannelsMail:     pulumi.String("terraform@test.com"),
 //			})
 //			if err != nil {
@@ -114,6 +115,7 @@ func NewAlarmContact(ctx *pulumi.Context,
 	if args.Describe == nil {
 		return nil, errors.New("invalid value for required argument 'Describe'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AlarmContact
 	err := ctx.RegisterResource("alicloud:cms/alarmContact:AlarmContact", name, args, &resource, opts...)
 	if err != nil {

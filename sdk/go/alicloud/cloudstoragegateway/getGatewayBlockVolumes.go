@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +56,7 @@ import (
 //
 // ```
 func GetGatewayBlockVolumes(ctx *pulumi.Context, args *GetGatewayBlockVolumesArgs, opts ...pulumi.InvokeOption) (*GetGatewayBlockVolumesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayBlockVolumesResult
 	err := ctx.Invoke("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args, &rv, opts...)
 	if err != nil {

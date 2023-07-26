@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetControlPolicies(ctx *pulumi.Context, args *GetControlPoliciesArgs, opts ...pulumi.InvokeOption) (*GetControlPoliciesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetControlPoliciesResult
 	err := ctx.Invoke("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args, &rv, opts...)
 	if err != nil {

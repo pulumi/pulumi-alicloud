@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetDedicatedHostGroups(ctx *pulumi.Context, args *GetDedicatedHostGroupsArgs, opts ...pulumi.InvokeOption) (*GetDedicatedHostGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDedicatedHostGroupsResult
 	err := ctx.Invoke("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args, &rv, opts...)
 	if err != nil {

@@ -16,29 +16,69 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
 
     public static final ManagedKubernetesAddonArgs Empty = new ManagedKubernetesAddonArgs();
 
+    /**
+     * If this parameter is left empty, no configurations are required.
+     * 
+     */
     @Import(name="config")
     private @Nullable Output<String> config;
 
+    /**
+     * @return If this parameter is left empty, no configurations are required.
+     * 
+     */
     public Optional<Output<String>> config() {
         return Optional.ofNullable(this.config);
     }
 
+    /**
+     * It specifies whether to disable automatic installation.
+     * 
+     * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+     * 
+     * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+     * 
+     * `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
+     * 
+     * `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+     * 
+     * The `main.tf`:
+     * 
+     * The `varibales.tf`:
+     * 
+     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
+    /**
+     * @return It specifies whether to disable automatic installation.
+     * 
+     * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+     * 
+     * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+     * 
+     * `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
+     * 
+     * `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+     * 
+     * The `main.tf`:
+     * 
+     * The `varibales.tf`:
+     * 
+     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
     /**
-     * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * This parameter specifies the name of the component.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return This parameter specifies the name of the component.
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,26 +111,74 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
             $ = new ManagedKubernetesAddonArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param config If this parameter is left empty, no configurations are required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(@Nullable Output<String> config) {
             $.config = config;
             return this;
         }
 
+        /**
+         * @param config If this parameter is left empty, no configurations are required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(String config) {
             return config(Output.of(config));
         }
 
+        /**
+         * @param disabled It specifies whether to disable automatic installation.
+         * 
+         * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+         * 
+         * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+         * 
+         * `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
+         * 
+         * `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+         * 
+         * The `main.tf`:
+         * 
+         * The `varibales.tf`:
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
+        /**
+         * @param disabled It specifies whether to disable automatic installation.
+         * 
+         * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+         * 
+         * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+         * 
+         * `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
+         * 
+         * `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+         * 
+         * The `main.tf`:
+         * 
+         * The `varibales.tf`:
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name This parameter specifies the name of the component.
          * 
          * @return builder
          * 
@@ -101,7 +189,7 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name This parameter specifies the name of the component.
          * 
          * @return builder
          * 

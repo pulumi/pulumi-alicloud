@@ -31,14 +31,14 @@ public final class ApiRequestParameterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The description of the api. Defaults to null.
+     * The description of parameter.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the api. Defaults to null.
+     * @return The description of parameter.
      * 
      */
     public Optional<Output<String>> description() {
@@ -76,14 +76,14 @@ public final class ApiRequestParameterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the api gateway api. Defaults to null.
+     * Request&#39;s parameter name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the api gateway api. Defaults to null.
+     * @return Request&#39;s parameter name.
      * 
      */
     public Output<String> name() {
@@ -188,7 +188,7 @@ public final class ApiRequestParameterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of the api. Defaults to null.
+         * @param description The description of parameter.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ApiRequestParameterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of the api. Defaults to null.
+         * @param description The description of parameter.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class ApiRequestParameterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the api gateway api. Defaults to null.
+         * @param name Request&#39;s parameter name.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class ApiRequestParameterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the api gateway api. Defaults to null.
+         * @param name Request&#39;s parameter name.
          * 
          * @return builder
          * 

@@ -15,16 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const apiGroup = new alicloud.apigateway.Group("apiGroup", {description: "description of the api group"});
- * const apiGatewayApi = new alicloud.apigateway.Api("apiGatewayApi", {
- *     groupId: apiGroup.id,
- *     description: "your description",
+ * const exampleGroup = new alicloud.apigateway.Group("exampleGroup", {description: "tf-example"});
+ * const exampleApi = new alicloud.apigateway.Api("exampleApi", {
+ *     groupId: exampleGroup.id,
+ *     description: "tf-example",
  *     authType: "APP",
  *     forceNonceCheck: false,
  *     requestConfig: {
  *         protocol: "HTTP",
  *         method: "GET",
- *         path: "/test/path1",
+ *         path: "/example/path",
  *         mode: "MAPPING",
  *     },
  *     serviceType: "HTTP",
@@ -36,12 +36,12 @@ import * as utilities from "../utilities";
  *         aoneName: "cloudapi-openapi",
  *     },
  *     requestParameters: [{
- *         name: "aaa",
+ *         name: "example",
  *         type: "STRING",
  *         required: "OPTIONAL",
  *         "in": "QUERY",
  *         inService: "QUERY",
- *         nameService: "testparams",
+ *         nameService: "exampleservice",
  *     }],
  *     stageNames: [
  *         "RELEASE",
@@ -95,7 +95,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly authType!: pulumi.Output<string>;
     /**
-     * constant_parameters defines the constant parameters of the api.
+     * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      */
     public readonly constantParameters!: pulumi.Output<outputs.apigateway.ApiConstantParameter[] | undefined>;
     /**
@@ -103,7 +103,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+     * fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
      */
     public readonly fcServiceConfig!: pulumi.Output<outputs.apigateway.ApiFcServiceConfig | undefined>;
     /**
@@ -115,15 +115,15 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * http_service_config defines the config when serviceType selected 'HTTP'.
+     * http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
      */
     public readonly httpServiceConfig!: pulumi.Output<outputs.apigateway.ApiHttpServiceConfig | undefined>;
     /**
-     * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+     * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
      */
     public readonly httpVpcServiceConfig!: pulumi.Output<outputs.apigateway.ApiHttpVpcServiceConfig | undefined>;
     /**
-     * http_service_config defines the config when serviceType selected 'MOCK'.
+     * http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
      */
     public readonly mockServiceConfig!: pulumi.Output<outputs.apigateway.ApiMockServiceConfig | undefined>;
     /**
@@ -131,11 +131,11 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Request_config defines how users can send requests to your API.
+     * Request_config defines how users can send requests to your API. See `requestConfig` below.
      */
     public readonly requestConfig!: pulumi.Output<outputs.apigateway.ApiRequestConfig>;
     /**
-     * request_parameters defines the request parameters of the api.
+     * request_parameters defines the request parameters of the api. See `requestParameters` below.
      */
     public readonly requestParameters!: pulumi.Output<outputs.apigateway.ApiRequestParameter[] | undefined>;
     /**
@@ -147,7 +147,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly stageNames!: pulumi.Output<string[] | undefined>;
     /**
-     * system_parameters defines the system parameters of the api.
+     * system_parameters defines the system parameters of the api. See `systemParameters` below.
      */
     public readonly systemParameters!: pulumi.Output<outputs.apigateway.ApiSystemParameter[] | undefined>;
 
@@ -232,7 +232,7 @@ export interface ApiState {
      */
     authType?: pulumi.Input<string>;
     /**
-     * constant_parameters defines the constant parameters of the api.
+     * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      */
     constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
     /**
@@ -240,7 +240,7 @@ export interface ApiState {
      */
     description?: pulumi.Input<string>;
     /**
-     * fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+     * fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
      */
     fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
     /**
@@ -252,15 +252,15 @@ export interface ApiState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * http_service_config defines the config when serviceType selected 'HTTP'.
+     * http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
      */
     httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig>;
     /**
-     * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+     * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
      */
     httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig>;
     /**
-     * http_service_config defines the config when serviceType selected 'MOCK'.
+     * http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
      */
     mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
     /**
@@ -268,11 +268,11 @@ export interface ApiState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Request_config defines how users can send requests to your API.
+     * Request_config defines how users can send requests to your API. See `requestConfig` below.
      */
     requestConfig?: pulumi.Input<inputs.apigateway.ApiRequestConfig>;
     /**
-     * request_parameters defines the request parameters of the api.
+     * request_parameters defines the request parameters of the api. See `requestParameters` below.
      */
     requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
     /**
@@ -284,7 +284,7 @@ export interface ApiState {
      */
     stageNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * system_parameters defines the system parameters of the api.
+     * system_parameters defines the system parameters of the api. See `systemParameters` below.
      */
     systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[]>;
 }
@@ -298,7 +298,7 @@ export interface ApiArgs {
      */
     authType: pulumi.Input<string>;
     /**
-     * constant_parameters defines the constant parameters of the api.
+     * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      */
     constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
     /**
@@ -306,7 +306,7 @@ export interface ApiArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+     * fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
      */
     fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
     /**
@@ -318,15 +318,15 @@ export interface ApiArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * http_service_config defines the config when serviceType selected 'HTTP'.
+     * http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
      */
     httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig>;
     /**
-     * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+     * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
      */
     httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig>;
     /**
-     * http_service_config defines the config when serviceType selected 'MOCK'.
+     * http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
      */
     mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
     /**
@@ -334,11 +334,11 @@ export interface ApiArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Request_config defines how users can send requests to your API.
+     * Request_config defines how users can send requests to your API. See `requestConfig` below.
      */
     requestConfig: pulumi.Input<inputs.apigateway.ApiRequestConfig>;
     /**
-     * request_parameters defines the request parameters of the api.
+     * request_parameters defines the request parameters of the api. See `requestParameters` below.
      */
     requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
     /**
@@ -350,7 +350,7 @@ export interface ApiArgs {
      */
     stageNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * system_parameters defines the system parameters of the api.
+     * system_parameters defines the system parameters of the api. See `systemParameters` below.
      */
     systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[]>;
 }

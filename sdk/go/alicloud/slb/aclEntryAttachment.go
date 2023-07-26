@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,6 +85,7 @@ func NewAclEntryAttachment(ctx *pulumi.Context,
 	if args.Entry == nil {
 		return nil, errors.New("invalid value for required argument 'Entry'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclEntryAttachment
 	err := ctx.RegisterResource("alicloud:slb/aclEntryAttachment:AclEntryAttachment", name, args, &resource, opts...)
 	if err != nil {

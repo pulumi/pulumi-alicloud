@@ -79,17 +79,13 @@ namespace Pulumi.AliCloud.Cen
     ///     var exampleInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleInstanceAttachment", new()
     ///     {
     ///         InstanceId = exampleInstance.Id,
-    ///         ChildInstanceId = childAccountNetwork.Id,
+    ///         ChildInstanceId = childAccountInstanceGrant.ChildInstanceId,
     ///         ChildInstanceType = "VPC",
     ///         ChildInstanceRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         ChildInstanceOwnerId = childAccountAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Your_account,
-    ///         DependsOn = new[]
-    ///         {
-    ///             childAccountInstanceGrant,
-    ///         },
     ///     });
     /// 
     /// });

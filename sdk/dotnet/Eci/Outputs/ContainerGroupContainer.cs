@@ -18,19 +18,19 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// The commands run by the init container.
+        /// Commands to be executed inside the container when performing health checks using the command line method.
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
-        /// The amount of CPU resources allocated to the container group.
+        /// The amount of CPU resources allocated to the container. Default value: `0`.
         /// </summary>
         public readonly double? Cpu;
         /// <summary>
-        /// The structure of environmentVars.
+        /// The structure of environmentVars. See `environment_vars` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerEnvironmentVar> EnvironmentVars;
         /// <summary>
-        /// The number GPUs.
+        /// The number GPUs. Default value: `0`.
         /// </summary>
         public readonly int? Gpu;
         /// <summary>
@@ -38,33 +38,39 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
-        /// The restart policy of the image.
+        /// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
         /// </summary>
         public readonly string? ImagePullPolicy;
         /// <summary>
-        /// The health check of the container.
+        /// The health check of the container. See `liveness_probe` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerLivenessProbe> LivenessProbes;
         /// <summary>
-        /// The amount of memory resources allocated to the container group.
+        /// The amount of memory resources allocated to the container. Default value: `0`.
         /// </summary>
         public readonly double? Memory;
         /// <summary>
-        /// The name of the volume.
+        /// The name of the mounted volume.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The structure of port.
+        /// The structure of port. See `ports` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerPort> Ports;
         /// <summary>
-        /// The health check of the container.
+        /// The health check of the container. See `readiness_probe` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerReadinessProbe> ReadinessProbes;
+        /// <summary>
+        /// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+        /// </summary>
         public readonly bool? Ready;
+        /// <summary>
+        /// (Available since v1.208.0) The number of times that the container restarted.
+        /// </summary>
         public readonly int? RestartCount;
         /// <summary>
-        /// The structure of volumeMounts.
+        /// The structure of volumeMounts. See `volume_mounts` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerVolumeMount> VolumeMounts;
         /// <summary>

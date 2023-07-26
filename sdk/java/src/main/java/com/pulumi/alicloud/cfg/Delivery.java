@@ -21,7 +21,67 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-doc-config-2020-09-07-api-doc-createconfigdeliverychannel).
  * 
- * &gt; **NOTE:** Available since v1.171.0+.
+ * &gt; **NOTE:** Available since v1.171.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.cfg.Delivery;
+ * import com.pulumi.alicloud.cfg.DeliveryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-sls&#34;);
+ *         final var thisAccount = AlicloudFunctions.getAccount();
+ * 
+ *         final var thisRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultProject = new Project(&#34;defaultProject&#34;);
+ * 
+ *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *             .project(defaultProject.name())
+ *             .build());
+ * 
+ *         var defaultDelivery = new Delivery(&#34;defaultDelivery&#34;, DeliveryArgs.builder()        
+ *             .configurationItemChangeNotification(true)
+ *             .nonCompliantNotification(true)
+ *             .deliveryChannelName(name)
+ *             .deliveryChannelTargetArn(Output.tuple(defaultProject.name(), defaultStore.name()).applyValue(values -&gt; {
+ *                 var defaultProjectName = values.t1;
+ *                 var defaultStoreName = values.t2;
+ *                 return String.format(&#34;acs:log:%s:%s:project/%s/logstore/%s&#34;, thisRegions.applyValue(getRegionsResult -&gt; getRegionsResult.ids()[0]),thisAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),defaultProjectName,defaultStoreName);
+ *             }))
+ *             .deliveryChannelType(&#34;SLS&#34;)
+ *             .description(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

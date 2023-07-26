@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ import (
 //	* `allocationId` - The ID of the EIP instance.
 //	* `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
 func GetCommonBandwidthPackages(ctx *pulumi.Context, args *GetCommonBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetCommonBandwidthPackagesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCommonBandwidthPackagesResult
 	err := ctx.Invoke("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args, &rv, opts...)
 	if err != nil {

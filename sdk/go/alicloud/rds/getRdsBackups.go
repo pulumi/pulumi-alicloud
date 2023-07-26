@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetRdsBackups(ctx *pulumi.Context, args *GetRdsBackupsArgs, opts ...pulumi.InvokeOption) (*GetRdsBackupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRdsBackupsResult
 	err := ctx.Invoke("alicloud:rds/getRdsBackups:getRdsBackups", args, &rv, opts...)
 	if err != nil {

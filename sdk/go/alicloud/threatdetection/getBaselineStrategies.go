@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in 1.195.0+
 func GetBaselineStrategies(ctx *pulumi.Context, args *GetBaselineStrategiesArgs, opts ...pulumi.InvokeOption) (*GetBaselineStrategiesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBaselineStrategiesResult
 	err := ctx.Invoke("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", args, &rv, opts...)
 	if err != nil {

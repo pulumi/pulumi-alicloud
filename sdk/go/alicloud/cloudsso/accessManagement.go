@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -17,7 +18,7 @@ import (
 //
 // > **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
 //
-// > **NOTE:** Available in v1.145.0+.
+// > **NOTE:** Available since v1.145.0.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -74,6 +75,7 @@ func NewAccessManagement(ctx *pulumi.Context,
 	if args.TargetType == nil {
 		return nil, errors.New("invalid value for required argument 'TargetType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessManagement
 	err := ctx.RegisterResource("alicloud:cloudsso/accessManagement:AccessManagement", name, args, &resource, opts...)
 	if err != nil {

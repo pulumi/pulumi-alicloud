@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The value of the key that is used to filter logs imported from Log Service.
+        /// The tag value of the metric.
         /// </summary>
         public readonly string? Value;
 

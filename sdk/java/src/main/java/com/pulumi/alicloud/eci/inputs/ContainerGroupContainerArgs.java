@@ -40,14 +40,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The commands run by the init container.
+     * Commands to be executed inside the container when performing health checks using the command line method.
      * 
      */
     @Import(name="commands")
     private @Nullable Output<List<String>> commands;
 
     /**
-     * @return The commands run by the init container.
+     * @return Commands to be executed inside the container when performing health checks using the command line method.
      * 
      */
     public Optional<Output<List<String>>> commands() {
@@ -55,14 +55,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The amount of CPU resources allocated to the container group.
+     * The amount of CPU resources allocated to the container. Default value: `0`.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container group.
+     * @return The amount of CPU resources allocated to the container. Default value: `0`.
      * 
      */
     public Optional<Output<Double>> cpu() {
@@ -70,14 +70,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The structure of environmentVars.
+     * The structure of environmentVars. See `environment_vars` below.
      * 
      */
     @Import(name="environmentVars")
     private @Nullable Output<List<ContainerGroupContainerEnvironmentVarArgs>> environmentVars;
 
     /**
-     * @return The structure of environmentVars.
+     * @return The structure of environmentVars. See `environment_vars` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerEnvironmentVarArgs>>> environmentVars() {
@@ -85,14 +85,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The number GPUs.
+     * The number GPUs. Default value: `0`.
      * 
      */
     @Import(name="gpu")
     private @Nullable Output<Integer> gpu;
 
     /**
-     * @return The number GPUs.
+     * @return The number GPUs. Default value: `0`.
      * 
      */
     public Optional<Output<Integer>> gpu() {
@@ -115,14 +115,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The restart policy of the image.
+     * The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
      * 
      */
     @Import(name="imagePullPolicy")
     private @Nullable Output<String> imagePullPolicy;
 
     /**
-     * @return The restart policy of the image.
+     * @return The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
      * 
      */
     public Optional<Output<String>> imagePullPolicy() {
@@ -130,14 +130,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The health check of the container.
+     * The health check of the container. See `liveness_probe` below.
      * 
      */
     @Import(name="livenessProbes")
     private @Nullable Output<List<ContainerGroupContainerLivenessProbeArgs>> livenessProbes;
 
     /**
-     * @return The health check of the container.
+     * @return The health check of the container. See `liveness_probe` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerLivenessProbeArgs>>> livenessProbes() {
@@ -145,14 +145,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The amount of memory resources allocated to the container group.
+     * The amount of memory resources allocated to the container. Default value: `0`.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container group.
+     * @return The amount of memory resources allocated to the container. Default value: `0`.
      * 
      */
     public Optional<Output<Double>> memory() {
@@ -160,14 +160,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the volume.
+     * The name of the mounted volume.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     public Output<String> name() {
@@ -175,14 +175,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The structure of port.
+     * The structure of port. See `ports` below.
      * 
      */
     @Import(name="ports")
     private @Nullable Output<List<ContainerGroupContainerPortArgs>> ports;
 
     /**
-     * @return The structure of port.
+     * @return The structure of port. See `ports` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerPortArgs>>> ports() {
@@ -190,43 +190,59 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The health check of the container.
+     * The health check of the container. See `readiness_probe` below.
      * 
      */
     @Import(name="readinessProbes")
     private @Nullable Output<List<ContainerGroupContainerReadinessProbeArgs>> readinessProbes;
 
     /**
-     * @return The health check of the container.
+     * @return The health check of the container. See `readiness_probe` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerReadinessProbeArgs>>> readinessProbes() {
         return Optional.ofNullable(this.readinessProbes);
     }
 
+    /**
+     * (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * 
+     */
     @Import(name="ready")
     private @Nullable Output<Boolean> ready;
 
+    /**
+     * @return (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * 
+     */
     public Optional<Output<Boolean>> ready() {
         return Optional.ofNullable(this.ready);
     }
 
+    /**
+     * (Available since v1.208.0) The number of times that the container restarted.
+     * 
+     */
     @Import(name="restartCount")
     private @Nullable Output<Integer> restartCount;
 
+    /**
+     * @return (Available since v1.208.0) The number of times that the container restarted.
+     * 
+     */
     public Optional<Output<Integer>> restartCount() {
         return Optional.ofNullable(this.restartCount);
     }
 
     /**
-     * The structure of volumeMounts.
+     * The structure of volumeMounts. See `volume_mounts` below.
      * 
      */
     @Import(name="volumeMounts")
     private @Nullable Output<List<ContainerGroupContainerVolumeMountArgs>> volumeMounts;
 
     /**
-     * @return The structure of volumeMounts.
+     * @return The structure of volumeMounts. See `volume_mounts` below.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerVolumeMountArgs>>> volumeMounts() {
@@ -319,7 +335,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param commands The commands run by the init container.
+         * @param commands Commands to be executed inside the container when performing health checks using the command line method.
          * 
          * @return builder
          * 
@@ -330,7 +346,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param commands The commands run by the init container.
+         * @param commands Commands to be executed inside the container when performing health checks using the command line method.
          * 
          * @return builder
          * 
@@ -340,7 +356,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param commands The commands run by the init container.
+         * @param commands Commands to be executed inside the container when performing health checks using the command line method.
          * 
          * @return builder
          * 
@@ -350,7 +366,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container group.
+         * @param cpu The amount of CPU resources allocated to the container. Default value: `0`.
          * 
          * @return builder
          * 
@@ -361,7 +377,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container group.
+         * @param cpu The amount of CPU resources allocated to the container. Default value: `0`.
          * 
          * @return builder
          * 
@@ -371,7 +387,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param environmentVars The structure of environmentVars.
+         * @param environmentVars The structure of environmentVars. See `environment_vars` below.
          * 
          * @return builder
          * 
@@ -382,7 +398,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param environmentVars The structure of environmentVars.
+         * @param environmentVars The structure of environmentVars. See `environment_vars` below.
          * 
          * @return builder
          * 
@@ -392,7 +408,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param environmentVars The structure of environmentVars.
+         * @param environmentVars The structure of environmentVars. See `environment_vars` below.
          * 
          * @return builder
          * 
@@ -402,7 +418,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gpu The number GPUs.
+         * @param gpu The number GPUs. Default value: `0`.
          * 
          * @return builder
          * 
@@ -413,7 +429,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gpu The number GPUs.
+         * @param gpu The number GPUs. Default value: `0`.
          * 
          * @return builder
          * 
@@ -444,7 +460,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param imagePullPolicy The restart policy of the image.
+         * @param imagePullPolicy The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
          * 
          * @return builder
          * 
@@ -455,7 +471,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param imagePullPolicy The restart policy of the image.
+         * @param imagePullPolicy The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
          * 
          * @return builder
          * 
@@ -465,7 +481,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param livenessProbes The health check of the container.
+         * @param livenessProbes The health check of the container. See `liveness_probe` below.
          * 
          * @return builder
          * 
@@ -476,7 +492,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param livenessProbes The health check of the container.
+         * @param livenessProbes The health check of the container. See `liveness_probe` below.
          * 
          * @return builder
          * 
@@ -486,7 +502,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param livenessProbes The health check of the container.
+         * @param livenessProbes The health check of the container. See `liveness_probe` below.
          * 
          * @return builder
          * 
@@ -496,7 +512,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container group.
+         * @param memory The amount of memory resources allocated to the container. Default value: `0`.
          * 
          * @return builder
          * 
@@ -507,7 +523,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container group.
+         * @param memory The amount of memory resources allocated to the container. Default value: `0`.
          * 
          * @return builder
          * 
@@ -517,7 +533,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 
@@ -528,7 +544,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 
@@ -538,7 +554,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ports The structure of port.
+         * @param ports The structure of port. See `ports` below.
          * 
          * @return builder
          * 
@@ -549,7 +565,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ports The structure of port.
+         * @param ports The structure of port. See `ports` below.
          * 
          * @return builder
          * 
@@ -559,7 +575,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ports The structure of port.
+         * @param ports The structure of port. See `ports` below.
          * 
          * @return builder
          * 
@@ -569,7 +585,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param readinessProbes The health check of the container.
+         * @param readinessProbes The health check of the container. See `readiness_probe` below.
          * 
          * @return builder
          * 
@@ -580,7 +596,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param readinessProbes The health check of the container.
+         * @param readinessProbes The health check of the container. See `readiness_probe` below.
          * 
          * @return builder
          * 
@@ -590,7 +606,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param readinessProbes The health check of the container.
+         * @param readinessProbes The health check of the container. See `readiness_probe` below.
          * 
          * @return builder
          * 
@@ -599,26 +615,50 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
             return readinessProbes(List.of(readinessProbes));
         }
 
+        /**
+         * @param ready (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ready(@Nullable Output<Boolean> ready) {
             $.ready = ready;
             return this;
         }
 
+        /**
+         * @param ready (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ready(Boolean ready) {
             return ready(Output.of(ready));
         }
 
+        /**
+         * @param restartCount (Available since v1.208.0) The number of times that the container restarted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartCount(@Nullable Output<Integer> restartCount) {
             $.restartCount = restartCount;
             return this;
         }
 
+        /**
+         * @param restartCount (Available since v1.208.0) The number of times that the container restarted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartCount(Integer restartCount) {
             return restartCount(Output.of(restartCount));
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts.
+         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below.
          * 
          * @return builder
          * 
@@ -629,7 +669,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts.
+         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below.
          * 
          * @return builder
          * 
@@ -639,7 +679,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts.
+         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below.
          * 
          * @return builder
          * 

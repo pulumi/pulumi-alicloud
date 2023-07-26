@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PrometheusAlertRuleAnnotation {
     /**
-     * @return The name of the label.
+     * @return The name of the annotation.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The value of the label.
+     * @return The value of the annotation.
      * 
      */
     private @Nullable String value;
 
     private PrometheusAlertRuleAnnotation() {}
     /**
-     * @return The name of the label.
+     * @return The name of the annotation.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The value of the label.
+     * @return The value of the annotation.
      * 
      */
     public Optional<String> value() {

@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetBastionHostInstances(ctx *pulumi.Context, args *GetBastionHostInstancesArgs, opts ...pulumi.InvokeOption) (*GetBastionHostInstancesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBastionHostInstancesResult
 	err := ctx.Invoke("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args, &rv, opts...)
 	if err != nil {

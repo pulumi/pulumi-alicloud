@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetPeerConnections(ctx *pulumi.Context, args *GetPeerConnectionsArgs, opts ...pulumi.InvokeOption) (*GetPeerConnectionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPeerConnectionsResult
 	err := ctx.Invoke("alicloud:vpc/getPeerConnections:getPeerConnections", args, &rv, opts...)
 	if err != nil {

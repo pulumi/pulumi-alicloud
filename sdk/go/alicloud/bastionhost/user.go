@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/204503.htm).
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -26,32 +27,98 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bastionhost.NewUser(ctx, "local", &bastionhost.UserArgs{
-//				InstanceId:        pulumi.String("example_value"),
-//				Mobile:            pulumi.String("13312345678"),
-//				MobileCountryCode: pulumi.String("CN"),
-//				Password:          pulumi.String("YourPassword-123"),
-//				Source:            pulumi.String("Local"),
-//				UserName:          pulumi.String("my-local-user"),
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bastionhost.NewUser(ctx, "ram", &bastionhost.UserArgs{
-//				InstanceId:        pulumi.String("example_value"),
-//				Mobile:            pulumi.String("13312345678"),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := bastionhost.NewInstance(ctx, "defaultInstance", &bastionhost.InstanceArgs{
+//				Description: pulumi.String(name),
+//				LicenseCode: pulumi.String("bhah_ent_50_asset"),
+//				PlanCode:    pulumi.String("cloudbastion"),
+//				Storage:     pulumi.String("5"),
+//				Bandwidth:   pulumi.String("5"),
+//				Period:      pulumi.Int(1),
+//				VswitchId:   defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewUser(ctx, "localUser", &bastionhost.UserArgs{
+//				InstanceId:        defaultInstance.ID(),
 //				MobileCountryCode: pulumi.String("CN"),
+//				Mobile:            pulumi.String("13312345678"),
 //				Password:          pulumi.String("YourPassword-123"),
-//				Source:            pulumi.String("Ram"),
-//				SourceUserId:      pulumi.String("1234567890"),
-//				UserName:          pulumi.String("my-ram-user"),
+//				Source:            pulumi.String("Local"),
+//				UserName:          pulumi.String(fmt.Sprintf("%v_local_user", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				DisplayName: pulumi.String(fmt.Sprintf("%v_bastionhost_user", name)),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewUser(ctx, "ramUser", &bastionhost.UserArgs{
+//				InstanceId:   defaultInstance.ID(),
+//				Source:       pulumi.String("Ram"),
+//				SourceUserId: *pulumi.String(defaultAccount.Id),
+//				UserName:     user.Name,
 //			})
 //			if err != nil {
 //				return err
@@ -105,7 +172,7 @@ type User struct {
 	// * CH: Switzerland (+41)
 	// * SE: Sweden (+46)
 	MobileCountryCode pulumi.StringOutput `pulumi:"mobileCountryCode"`
-	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Specify the New of the User That Created the Source. Valid Values:
 	// * Local: Local User
@@ -147,6 +214,7 @@ func NewUser(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("alicloud:bastionhost/user:User", name, args, &resource, opts...)
 	if err != nil {
@@ -200,7 +268,7 @@ type userState struct {
 	// * CH: Switzerland (+41)
 	// * SE: Sweden (+46)
 	MobileCountryCode *string `pulumi:"mobileCountryCode"`
-	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
 	Password *string `pulumi:"password"`
 	// Specify the New of the User That Created the Source. Valid Values:
 	// * Local: Local User
@@ -251,7 +319,7 @@ type UserState struct {
 	// * CH: Switzerland (+41)
 	// * SE: Sweden (+46)
 	MobileCountryCode pulumi.StringPtrInput
-	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
 	Password pulumi.StringPtrInput
 	// Specify the New of the User That Created the Source. Valid Values:
 	// * Local: Local User
@@ -306,7 +374,7 @@ type userArgs struct {
 	// * CH: Switzerland (+41)
 	// * SE: Sweden (+46)
 	MobileCountryCode *string `pulumi:"mobileCountryCode"`
-	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
 	Password *string `pulumi:"password"`
 	// Specify the New of the User That Created the Source. Valid Values:
 	// * Local: Local User
@@ -356,7 +424,7 @@ type UserArgs struct {
 	// * CH: Switzerland (+41)
 	// * SE: Sweden (+46)
 	MobileCountryCode pulumi.StringPtrInput
-	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+	// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
 	Password pulumi.StringPtrInput
 	// Specify the New of the User That Created the Source. Valid Values:
 	// * Local: Local User
@@ -509,7 +577,7 @@ func (o UserOutput) MobileCountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.MobileCountryCode }).(pulumi.StringOutput)
 }
 
-// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
 func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

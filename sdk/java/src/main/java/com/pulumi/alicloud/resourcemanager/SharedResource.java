@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Resource Manager Shared Resource resource.
  * 
- * For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+ * For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcesharing-2020-01-10-associateresourceshare).
  * 
- * &gt; **NOTE:** Available in v1.111.0+.
+ * &gt; **NOTE:** Available since v1.111.0.
  * 
  * ## Import
  * 
@@ -60,28 +60,28 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
         return this.resourceShareId;
     }
     /**
-     * The resource type of should shared, valid value
+     * The resource type of should shared. Valid values:
      * 
      */
     @Export(name="resourceType", type=String.class, parameters={})
     private Output<String> resourceType;
 
     /**
-     * @return The resource type of should shared, valid value
+     * @return The resource type of should shared. Valid values:
      * 
      */
     public Output<String> resourceType() {
         return this.resourceType;
     }
     /**
-     * status.
+     * The status of the Shared Resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return status.
+     * @return The status of the Shared Resource.
      * 
      */
     public Output<String> status() {

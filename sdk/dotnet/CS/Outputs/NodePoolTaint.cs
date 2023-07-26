@@ -13,13 +13,16 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class NodePoolTaint
     {
+        /// <summary>
+        /// The scheduling policy.
+        /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// The label key.
+        /// The key of a taint.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The label value.
+        /// The value of a taint.
         /// </summary>
         public readonly string? Value;
 

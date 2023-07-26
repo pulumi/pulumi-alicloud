@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetPhysicalConnectionService(ctx *pulumi.Context, args *GetPhysicalConnectionServiceArgs, opts ...pulumi.InvokeOption) (*GetPhysicalConnectionServiceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPhysicalConnectionServiceResult
 	err := ctx.Invoke("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args, &rv, opts...)
 	if err != nil {

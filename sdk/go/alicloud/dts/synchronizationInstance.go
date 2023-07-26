@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -124,6 +125,7 @@ func NewSynchronizationInstance(ctx *pulumi.Context,
 	if args.SourceEndpointRegion == nil {
 		return nil, errors.New("invalid value for required argument 'SourceEndpointRegion'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SynchronizationInstance
 	err := ctx.RegisterResource("alicloud:dts/synchronizationInstance:SynchronizationInstance", name, args, &resource, opts...)
 	if err != nil {

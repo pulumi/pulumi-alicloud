@@ -94,6 +94,12 @@ namespace Pulumi.AliCloud.Ddos
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+        /// </summary>
+        [Output("ocspEnabled")]
+        public Output<bool?> OcspEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Protocol type and port number information. See `proxy_types` below.
         /// &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
@@ -183,6 +189,12 @@ namespace Pulumi.AliCloud.Ddos
             set => _instanceIds = value;
         }
 
+        /// <summary>
+        /// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("ocspEnabled")]
+        public Input<bool>? OcspEnabled { get; set; }
+
         [Input("proxyTypes", required: true)]
         private InputList<Inputs.DomainResourceProxyTypeArgs>? _proxyTypes;
 
@@ -252,6 +264,12 @@ namespace Pulumi.AliCloud.Ddos
             get => _instanceIds ?? (_instanceIds = new InputList<string>());
             set => _instanceIds = value;
         }
+
+        /// <summary>
+        /// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("ocspEnabled")]
+        public Input<bool>? OcspEnabled { get; set; }
 
         [Input("proxyTypes")]
         private InputList<Inputs.DomainResourceProxyTypeGetArgs>? _proxyTypes;

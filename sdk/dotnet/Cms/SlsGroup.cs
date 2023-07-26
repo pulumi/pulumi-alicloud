@@ -14,40 +14,7 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// For information about Cloud Monitor Service Sls Group and how to use it, see [What is Sls Group](https://www.alibabacloud.com/help/doc-detail/28608.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.171.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var @default = new AliCloud.Cms.SlsGroup("default", new()
-    ///     {
-    ///         SlsGroupConfigs = new[]
-    ///         {
-    ///             new AliCloud.Cms.Inputs.SlsGroupSlsGroupConfigArgs
-    ///             {
-    ///                 SlsUserId = @this.Apply(@this =&gt; @this.Apply(getAccountResult =&gt; getAccountResult.Id)),
-    ///                 SlsLogstore = "Logstore-ECS",
-    ///                 SlsProject = "aliyun-project",
-    ///                 SlsRegion = "cn-hangzhou",
-    ///             },
-    ///         },
-    ///         SlsGroupDescription = @var.Name,
-    ///         SlsGroupName = @var.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.171.0.
     /// 
     /// ## Import
     /// 
@@ -61,7 +28,7 @@ namespace Pulumi.AliCloud.Cms
     public partial class SlsGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        /// The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         /// </summary>
         [Output("slsGroupConfigs")]
         public Output<ImmutableArray<Outputs.SlsGroupSlsGroupConfig>> SlsGroupConfigs { get; private set; } = null!;
@@ -128,7 +95,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.SlsGroupSlsGroupConfigArgs>? _slsGroupConfigs;
 
         /// <summary>
-        /// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        /// The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         /// </summary>
         public InputList<Inputs.SlsGroupSlsGroupConfigArgs> SlsGroupConfigs
         {
@@ -160,7 +127,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.SlsGroupSlsGroupConfigGetArgs>? _slsGroupConfigs;
 
         /// <summary>
-        /// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
+        /// The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         /// </summary>
         public InputList<Inputs.SlsGroupSlsGroupConfigGetArgs> SlsGroupConfigs
         {

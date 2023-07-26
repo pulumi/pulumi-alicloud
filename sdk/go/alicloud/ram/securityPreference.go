@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,6 +84,7 @@ func NewSecurityPreference(ctx *pulumi.Context,
 		args = &SecurityPreferenceArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecurityPreference
 	err := ctx.RegisterResource("alicloud:ram/securityPreference:SecurityPreference", name, args, &resource, opts...)
 	if err != nil {

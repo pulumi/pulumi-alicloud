@@ -23,6 +23,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.apigateway.Group;
+ * import com.pulumi.alicloud.apigateway.GroupArgs;
+ * import com.pulumi.alicloud.apigateway.Api;
+ * import com.pulumi.alicloud.apigateway.ApiArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.ApiRequestConfigArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.ApiHttpServiceConfigArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
+ * import com.pulumi.alicloud.apigateway.App;
+ * import com.pulumi.alicloud.apigateway.AppArgs;
  * import com.pulumi.alicloud.apigateway.AppAttachment;
  * import com.pulumi.alicloud.apigateway.AppAttachmentArgs;
  * import java.util.List;
@@ -38,10 +47,52 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AppAttachment(&#34;foo&#34;, AppAttachmentArgs.builder()        
- *             .apiId(&#34;d29d25b9cfdf4742b1a3f6537299a749&#34;)
- *             .appId(&#34;20898181&#34;)
- *             .groupId(&#34;aaef8cdbb404420f9398a74ed1db7fff&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform_example&#34;);
+ *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
+ *             .description(name)
+ *             .build());
+ * 
+ *         var exampleApi = new Api(&#34;exampleApi&#34;, ApiArgs.builder()        
+ *             .groupId(exampleGroup.id())
+ *             .description(name)
+ *             .authType(&#34;APP&#34;)
+ *             .forceNonceCheck(false)
+ *             .requestConfig(ApiRequestConfigArgs.builder()
+ *                 .protocol(&#34;HTTP&#34;)
+ *                 .method(&#34;GET&#34;)
+ *                 .path(&#34;/example/path&#34;)
+ *                 .mode(&#34;MAPPING&#34;)
+ *                 .build())
+ *             .serviceType(&#34;HTTP&#34;)
+ *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
+ *                 .address(&#34;http://apigateway-backend.alicloudapi.com:8080&#34;)
+ *                 .method(&#34;GET&#34;)
+ *                 .path(&#34;/web/cloudapi&#34;)
+ *                 .timeout(12)
+ *                 .aoneName(&#34;cloudapi-openapi&#34;)
+ *                 .build())
+ *             .requestParameters(ApiRequestParameterArgs.builder()
+ *                 .name(&#34;example&#34;)
+ *                 .type(&#34;STRING&#34;)
+ *                 .required(&#34;OPTIONAL&#34;)
+ *                 .in(&#34;QUERY&#34;)
+ *                 .inService(&#34;QUERY&#34;)
+ *                 .nameService(&#34;exampleservice&#34;)
+ *                 .build())
+ *             .stageNames(            
+ *                 &#34;RELEASE&#34;,
+ *                 &#34;TEST&#34;)
+ *             .build());
+ * 
+ *         var exampleApp = new App(&#34;exampleApp&#34;, AppArgs.builder()        
+ *             .description(name)
+ *             .build());
+ * 
+ *         var exampleAppAttachment = new AppAttachment(&#34;exampleAppAttachment&#34;, AppAttachmentArgs.builder()        
+ *             .apiId(exampleApi.apiId())
+ *             .groupId(exampleGroup.id())
+ *             .appId(exampleApp.id())
  *             .stageName(&#34;PRE&#34;)
  *             .build());
  * 

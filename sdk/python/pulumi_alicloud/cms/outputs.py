@@ -105,8 +105,8 @@ class AlarmEscalationsCritical(dict):
                  times: Optional[int] = None):
         """
         :param str comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
-        :param str statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        :param str threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default to 3.
         """
         if comparison_operator is not None:
@@ -130,7 +130,7 @@ class AlarmEscalationsCritical(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+        Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         """
         return pulumi.get(self, "statistics")
 
@@ -138,7 +138,7 @@ class AlarmEscalationsCritical(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        Critical level alarm threshold value, which must be a numeric value currently.
         """
         return pulumi.get(self, "threshold")
 
@@ -177,8 +177,8 @@ class AlarmEscalationsInfo(dict):
                  times: Optional[int] = None):
         """
         :param str comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
-        :param str statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        :param str threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default to 3.
         """
         if comparison_operator is not None:
@@ -202,7 +202,7 @@ class AlarmEscalationsInfo(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+        Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         """
         return pulumi.get(self, "statistics")
 
@@ -210,7 +210,7 @@ class AlarmEscalationsInfo(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        Critical level alarm threshold value, which must be a numeric value currently.
         """
         return pulumi.get(self, "threshold")
 
@@ -249,8 +249,8 @@ class AlarmEscalationsWarn(dict):
                  times: Optional[int] = None):
         """
         :param str comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
-        :param str statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        :param str threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default to 3.
         """
         if comparison_operator is not None:
@@ -274,7 +274,7 @@ class AlarmEscalationsWarn(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+        Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         """
         return pulumi.get(self, "statistics")
 
@@ -282,7 +282,7 @@ class AlarmEscalationsWarn(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        Critical level alarm threshold value, which must be a numeric value currently.
         """
         return pulumi.get(self, "threshold")
 
@@ -323,7 +323,7 @@ class AlarmPrometheus(dict):
         :param Mapping[str, Any] annotations: The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
         :param str level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         :param str prom_ql: The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
-        :param int times: Critical level alarm retry times. Default to 3.
+        :param int times: The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -362,7 +362,7 @@ class AlarmPrometheus(dict):
     @pulumi.getter
     def times(self) -> Optional[int]:
         """
-        Critical level alarm retry times. Default to 3.
+        The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
         """
         return pulumi.get(self, "times")
 
@@ -511,9 +511,9 @@ class GroupMetricRuleEscalations(dict):
                  info: Optional['outputs.GroupMetricRuleEscalationsInfo'] = None,
                  warn: Optional['outputs.GroupMetricRuleEscalationsWarn'] = None):
         """
-        :param 'GroupMetricRuleEscalationsCriticalArgs' critical: The critical level.
-        :param 'GroupMetricRuleEscalationsInfoArgs' info: The info level.
-        :param 'GroupMetricRuleEscalationsWarnArgs' warn: The warn level.
+        :param 'GroupMetricRuleEscalationsCriticalArgs' critical: The critical level. See `critical` below.
+        :param 'GroupMetricRuleEscalationsInfoArgs' info: The info level. See `info` below.
+        :param 'GroupMetricRuleEscalationsWarnArgs' warn: The warn level. See `warn` below.
         """
         if critical is not None:
             pulumi.set(__self__, "critical", critical)
@@ -526,7 +526,7 @@ class GroupMetricRuleEscalations(dict):
     @pulumi.getter
     def critical(self) -> Optional['outputs.GroupMetricRuleEscalationsCritical']:
         """
-        The critical level.
+        The critical level. See `critical` below.
         """
         return pulumi.get(self, "critical")
 
@@ -534,7 +534,7 @@ class GroupMetricRuleEscalations(dict):
     @pulumi.getter
     def info(self) -> Optional['outputs.GroupMetricRuleEscalationsInfo']:
         """
-        The info level.
+        The info level. See `info` below.
         """
         return pulumi.get(self, "info")
 
@@ -542,7 +542,7 @@ class GroupMetricRuleEscalations(dict):
     @pulumi.getter
     def warn(self) -> Optional['outputs.GroupMetricRuleEscalationsWarn']:
         """
-        The warn level.
+        The warn level. See `warn` below.
         """
         return pulumi.get(self, "warn")
 
@@ -846,7 +846,7 @@ class HybridMonitorSlsTaskAttachLabel(dict):
                  value: Optional[str] = None):
         """
         :param str name: The tag key of the metric.
-        :param str value: The value of the key that is used to filter logs imported from Log Service.
+        :param str value: The tag value of the metric.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -865,7 +865,7 @@ class HybridMonitorSlsTaskAttachLabel(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the key that is used to filter logs imported from Log Service.
+        The tag value of the metric.
         """
         return pulumi.get(self, "value")
 
@@ -895,10 +895,10 @@ class HybridMonitorSlsTaskSlsProcessConfig(dict):
                  group_bies: Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigGroupBy']] = None,
                  statistics: Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigStatistic']] = None):
         """
-        :param Sequence['HybridMonitorSlsTaskSlsProcessConfigExpressArgs'] expresses: The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
-        :param 'HybridMonitorSlsTaskSlsProcessConfigFilterArgs' filter: The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
-        :param Sequence['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs'] group_bies: The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
-        :param Sequence['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs'] statistics: The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+        :param Sequence['HybridMonitorSlsTaskSlsProcessConfigExpressArgs'] expresses: The extended field that specifies the result of basic operations that are performed on aggregation results.
+        :param 'HybridMonitorSlsTaskSlsProcessConfigFilterArgs' filter: The conditions that are used to filter logs imported from Log Service. See `filter` below.
+        :param Sequence['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs'] group_bies: The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+        :param Sequence['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs'] statistics: The method that is used to aggregate logs imported from Log Service. See `statistics` below.
         """
         if expresses is not None:
             pulumi.set(__self__, "expresses", expresses)
@@ -913,7 +913,7 @@ class HybridMonitorSlsTaskSlsProcessConfig(dict):
     @pulumi.getter
     def expresses(self) -> Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigExpress']]:
         """
-        The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+        The extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "expresses")
 
@@ -921,7 +921,7 @@ class HybridMonitorSlsTaskSlsProcessConfig(dict):
     @pulumi.getter
     def filter(self) -> Optional['outputs.HybridMonitorSlsTaskSlsProcessConfigFilter']:
         """
-        The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+        The conditions that are used to filter logs imported from Log Service. See `filter` below.
         """
         return pulumi.get(self, "filter")
 
@@ -929,7 +929,7 @@ class HybridMonitorSlsTaskSlsProcessConfig(dict):
     @pulumi.getter(name="groupBies")
     def group_bies(self) -> Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigGroupBy']]:
         """
-        The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
+        The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
         """
         return pulumi.get(self, "group_bies")
 
@@ -937,7 +937,7 @@ class HybridMonitorSlsTaskSlsProcessConfig(dict):
     @pulumi.getter
     def statistics(self) -> Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigStatistic']]:
         """
-        The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+        The method that is used to aggregate logs imported from Log Service. See `statistics` below.
         """
         return pulumi.get(self, "statistics")
 
@@ -949,7 +949,7 @@ class HybridMonitorSlsTaskSlsProcessConfigExpress(dict):
                  express: Optional[str] = None):
         """
         :param str alias: The alias of the aggregation result.
-        :param str express: The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+        :param str express: The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
@@ -968,7 +968,7 @@ class HybridMonitorSlsTaskSlsProcessConfigExpress(dict):
     @pulumi.getter
     def express(self) -> Optional[str]:
         """
-        The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+        The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
         """
         return pulumi.get(self, "express")
 
@@ -979,7 +979,7 @@ class HybridMonitorSlsTaskSlsProcessConfigFilter(dict):
                  filters: Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilter']] = None,
                  relation: Optional[str] = None):
         """
-        :param Sequence['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs'] filters: The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+        :param Sequence['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs'] filters: The conditions that are used to filter logs imported from Log Service. See `filters` below.
         :param str relation: The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
         """
         if filters is not None:
@@ -991,7 +991,7 @@ class HybridMonitorSlsTaskSlsProcessConfigFilter(dict):
     @pulumi.getter
     def filters(self) -> Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilter']]:
         """
-        The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+        The conditions that are used to filter logs imported from Log Service. See `filters` below.
         """
         return pulumi.get(self, "filters")
 
@@ -1288,7 +1288,7 @@ class MetricRuleTemplateAlertTemplate(dict):
                
                > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param str rule_name: The name of the alert rule.
-        :param 'MetricRuleTemplateAlertTemplateEscalationsArgs' escalations: The information about the trigger condition based on the alert level. See the following `Block escalations`.
+        :param 'MetricRuleTemplateAlertTemplateEscalationsArgs' escalations: The information about the trigger condition based on the alert level. See `escalations` below.
         :param str webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
         pulumi.set(__self__, "category", category)
@@ -1340,7 +1340,7 @@ class MetricRuleTemplateAlertTemplate(dict):
     @pulumi.getter
     def escalations(self) -> Optional['outputs.MetricRuleTemplateAlertTemplateEscalations']:
         """
-        The information about the trigger condition based on the alert level. See the following `Block escalations`.
+        The information about the trigger condition based on the alert level. See `escalations` below.
         """
         return pulumi.get(self, "escalations")
 
@@ -1360,9 +1360,9 @@ class MetricRuleTemplateAlertTemplateEscalations(dict):
                  info: Optional['outputs.MetricRuleTemplateAlertTemplateEscalationsInfo'] = None,
                  warn: Optional['outputs.MetricRuleTemplateAlertTemplateEscalationsWarn'] = None):
         """
-        :param 'MetricRuleTemplateAlertTemplateEscalationsCriticalArgs' critical: The condition for triggering critical-level alerts. See the following `Block critical`.
-        :param 'MetricRuleTemplateAlertTemplateEscalationsInfoArgs' info: The condition for triggering info-level alerts. See the following `Block info`.
-        :param 'MetricRuleTemplateAlertTemplateEscalationsWarnArgs' warn: The condition for triggering warn-level alerts. See the following `Block warn`.
+        :param 'MetricRuleTemplateAlertTemplateEscalationsCriticalArgs' critical: The condition for triggering critical-level alerts. See `critical` below.
+        :param 'MetricRuleTemplateAlertTemplateEscalationsInfoArgs' info: The condition for triggering info-level alerts. See `info` below.
+        :param 'MetricRuleTemplateAlertTemplateEscalationsWarnArgs' warn: The condition for triggering warn-level alerts. See `warn` below.
         """
         if critical is not None:
             pulumi.set(__self__, "critical", critical)
@@ -1375,7 +1375,7 @@ class MetricRuleTemplateAlertTemplateEscalations(dict):
     @pulumi.getter
     def critical(self) -> Optional['outputs.MetricRuleTemplateAlertTemplateEscalationsCritical']:
         """
-        The condition for triggering critical-level alerts. See the following `Block critical`.
+        The condition for triggering critical-level alerts. See `critical` below.
         """
         return pulumi.get(self, "critical")
 
@@ -1383,7 +1383,7 @@ class MetricRuleTemplateAlertTemplateEscalations(dict):
     @pulumi.getter
     def info(self) -> Optional['outputs.MetricRuleTemplateAlertTemplateEscalationsInfo']:
         """
-        The condition for triggering info-level alerts. See the following `Block info`.
+        The condition for triggering info-level alerts. See `info` below.
         """
         return pulumi.get(self, "info")
 
@@ -1391,7 +1391,7 @@ class MetricRuleTemplateAlertTemplateEscalations(dict):
     @pulumi.getter
     def warn(self) -> Optional['outputs.MetricRuleTemplateAlertTemplateEscalationsWarn']:
         """
-        The condition for triggering warn-level alerts. See the following `Block warn`.
+        The condition for triggering warn-level alerts. See `warn` below.
         """
         return pulumi.get(self, "warn")
 

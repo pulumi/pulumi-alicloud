@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetAttachments(ctx *pulumi.Context, args *GetAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetAttachmentsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAttachmentsResult
 	err := ctx.Invoke("alicloud:slb/getAttachments:getAttachments", args, &rv, opts...)
 	if err != nil {

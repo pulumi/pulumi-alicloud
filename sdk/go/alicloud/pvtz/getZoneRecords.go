@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetZoneRecords(ctx *pulumi.Context, args *GetZoneRecordsArgs, opts ...pulumi.InvokeOption) (*GetZoneRecordsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZoneRecordsResult
 	err := ctx.Invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", args, &rv, opts...)
 	if err != nil {

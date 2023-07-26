@@ -386,7 +386,32 @@ class Delivery(pulumi.CustomResource):
 
         For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-doc-config-2020-09-07-api-doc-createconfigdeliverychannel).
 
-        > **NOTE:** Available since v1.171.0+.
+        > **NOTE:** Available since v1.171.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-sls"
+        this_account = alicloud.get_account()
+        this_regions = alicloud.get_regions(current=True)
+        default_project = alicloud.log.Project("defaultProject")
+        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        default_delivery = alicloud.cfg.Delivery("defaultDelivery",
+            configuration_item_change_notification=True,
+            non_compliant_notification=True,
+            delivery_channel_name=name,
+            delivery_channel_target_arn=pulumi.Output.all(default_project.name, default_store.name).apply(lambda defaultProjectName, defaultStoreName: f"acs:log:{this_regions.ids[0]}:{this_account.id}:project/{default_project_name}/logstore/{default_store_name}"),
+            delivery_channel_type="SLS",
+            description=name)
+        ```
 
         ## Import
 
@@ -425,7 +450,32 @@ class Delivery(pulumi.CustomResource):
 
         For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-doc-config-2020-09-07-api-doc-createconfigdeliverychannel).
 
-        > **NOTE:** Available since v1.171.0+.
+        > **NOTE:** Available since v1.171.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-sls"
+        this_account = alicloud.get_account()
+        this_regions = alicloud.get_regions(current=True)
+        default_project = alicloud.log.Project("defaultProject")
+        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        default_delivery = alicloud.cfg.Delivery("defaultDelivery",
+            configuration_item_change_notification=True,
+            non_compliant_notification=True,
+            delivery_channel_name=name,
+            delivery_channel_target_arn=pulumi.Output.all(default_project.name, default_store.name).apply(lambda defaultProjectName, defaultStoreName: f"acs:log:{this_regions.ids[0]}:{this_account.id}:project/{default_project_name}/logstore/{default_store_name}"),
+            delivery_channel_type="SLS",
+            description=name)
+        ```
 
         ## Import
 

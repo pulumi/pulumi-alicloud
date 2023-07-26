@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,6 +131,7 @@ func NewTrafficMirrorFilter(ctx *pulumi.Context,
 		args = &TrafficMirrorFilterArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TrafficMirrorFilter
 	err := ctx.RegisterResource("alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter", name, args, &resource, opts...)
 	if err != nil {

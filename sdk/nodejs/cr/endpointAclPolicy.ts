@@ -9,7 +9,39 @@ import * as utilities from "../utilities";
  *
  * For information about CR Endpoint Acl Policy and how to use it, see [What is Endpoint Acl Policy](https://www.alibabacloud.com/help/doc-detail/145275.htm).
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewalStatus: "ManualRenewal",
+ *     instanceType: "Advanced",
+ *     instanceName: name,
+ * });
+ * const defaultEndpointAclService = alicloud.cr.getEndpointAclServiceOutput({
+ *     endpointType: "internet",
+ *     enable: true,
+ *     instanceId: defaultRegistryEnterpriseInstance.id,
+ *     moduleName: "Registry",
+ * });
+ * const defaultEndpointAclPolicy = new alicloud.cr.EndpointAclPolicy("defaultEndpointAclPolicy", {
+ *     instanceId: defaultEndpointAclService.apply(defaultEndpointAclService => defaultEndpointAclService.instanceId),
+ *     entry: "192.168.1.0/24",
+ *     description: name,
+ *     moduleName: "Registry",
+ *     endpointType: "internet",
+ * });
+ * ```
  *
  * ## Import
  *

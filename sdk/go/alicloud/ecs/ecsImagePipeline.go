@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -174,6 +175,7 @@ func NewEcsImagePipeline(ctx *pulumi.Context,
 	if args.BaseImageType == nil {
 		return nil, errors.New("invalid value for required argument 'BaseImageType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EcsImagePipeline
 	err := ctx.RegisterResource("alicloud:ecs/ecsImagePipeline:EcsImagePipeline", name, args, &resource, opts...)
 	if err != nil {

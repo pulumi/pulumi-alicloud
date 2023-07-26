@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func GetApplicationLoadBalancers(ctx *pulumi.Context, args *GetApplicationLoadBalancersArgs, opts ...pulumi.InvokeOption) (*GetApplicationLoadBalancersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationLoadBalancersResult
 	err := ctx.Invoke("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", args, &rv, opts...)
 	if err != nil {

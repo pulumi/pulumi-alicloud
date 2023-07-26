@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,6 +80,7 @@ func NewFaceConfig(ctx *pulumi.Context,
 	if args.BizType == nil {
 		return nil, errors.New("invalid value for required argument 'BizType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FaceConfig
 	err := ctx.RegisterResource("alicloud:cloudauth/faceConfig:FaceConfig", name, args, &resource, opts...)
 	if err != nil {

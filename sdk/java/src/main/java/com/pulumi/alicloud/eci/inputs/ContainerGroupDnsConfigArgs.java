@@ -33,14 +33,14 @@ public final class ContainerGroupDnsConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The structure of options.
+     * The structure of options. See `options` below.
      * 
      */
     @Import(name="options")
     private @Nullable Output<List<ContainerGroupDnsConfigOptionArgs>> options;
 
     /**
-     * @return The structure of options.
+     * @return The structure of options. See `options` below.
      * 
      */
     public Optional<Output<List<ContainerGroupDnsConfigOptionArgs>>> options() {
@@ -120,7 +120,7 @@ public final class ContainerGroupDnsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options The structure of options.
+         * @param options The structure of options. See `options` below.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ContainerGroupDnsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options The structure of options.
+         * @param options The structure of options. See `options` below.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ContainerGroupDnsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options The structure of options.
+         * @param options The structure of options. See `options` below.
          * 
          * @return builder
          * 

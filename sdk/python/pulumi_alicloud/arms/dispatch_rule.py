@@ -25,9 +25,9 @@ class DispatchRuleArgs:
         """
         The set of arguments for constructing a DispatchRule resource.
         :param pulumi.Input[str] dispatch_rule_name: The name of the dispatch policy.
-        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]] group_rules: Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
-        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]] label_match_expression_grids: Sets the dispatch rule. See the following `Block label_match_expression_grid`.
-        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]] notify_rules: Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[str] dispatch_type: The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
         """
@@ -56,7 +56,7 @@ class DispatchRuleArgs:
     @pulumi.getter(name="groupRules")
     def group_rules(self) -> pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]:
         """
-        Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         return pulumi.get(self, "group_rules")
 
@@ -68,7 +68,7 @@ class DispatchRuleArgs:
     @pulumi.getter(name="labelMatchExpressionGrids")
     def label_match_expression_grids(self) -> pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]:
         """
-        Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+        Sets the dispatch rule. See `label_match_expression_grid` below.
         """
         return pulumi.get(self, "label_match_expression_grids")
 
@@ -80,7 +80,7 @@ class DispatchRuleArgs:
     @pulumi.getter(name="notifyRules")
     def notify_rules(self) -> pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]:
         """
-        Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         return pulumi.get(self, "notify_rules")
 
@@ -127,10 +127,10 @@ class _DispatchRuleState:
         Input properties used for looking up and filtering DispatchRule resources.
         :param pulumi.Input[str] dispatch_rule_name: The name of the dispatch policy.
         :param pulumi.Input[str] dispatch_type: The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
-        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]] group_rules: Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
-        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]] label_match_expression_grids: Sets the dispatch rule. See the following `Block label_match_expression_grid`.
-        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]] notify_rules: Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[str] status: The resource status of Alert Dispatch Rule.
         """
         if dispatch_rule_name is not None:
@@ -176,7 +176,7 @@ class _DispatchRuleState:
     @pulumi.getter(name="groupRules")
     def group_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]]:
         """
-        Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         return pulumi.get(self, "group_rules")
 
@@ -200,7 +200,7 @@ class _DispatchRuleState:
     @pulumi.getter(name="labelMatchExpressionGrids")
     def label_match_expression_grids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]]:
         """
-        Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+        Sets the dispatch rule. See `label_match_expression_grid` below.
         """
         return pulumi.get(self, "label_match_expression_grids")
 
@@ -212,7 +212,7 @@ class _DispatchRuleState:
     @pulumi.getter(name="notifyRules")
     def notify_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]]:
         """
-        Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         return pulumi.get(self, "notify_rules")
 
@@ -250,7 +250,7 @@ class DispatchRule(pulumi.CustomResource):
 
         For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://www.alibabacloud.com/help/en/doc-detail/203146.htm).
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -316,10 +316,10 @@ class DispatchRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dispatch_rule_name: The name of the dispatch policy.
         :param pulumi.Input[str] dispatch_type: The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleGroupRuleArgs']]]] group_rules: Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleGroupRuleArgs']]]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleLabelMatchExpressionGridArgs']]]] label_match_expression_grids: Sets the dispatch rule. See the following `Block label_match_expression_grid`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleNotifyRuleArgs']]]] notify_rules: Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleLabelMatchExpressionGridArgs']]]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleNotifyRuleArgs']]]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         ...
     @overload
@@ -332,7 +332,7 @@ class DispatchRule(pulumi.CustomResource):
 
         For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://www.alibabacloud.com/help/en/doc-detail/203146.htm).
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -465,10 +465,10 @@ class DispatchRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dispatch_rule_name: The name of the dispatch policy.
         :param pulumi.Input[str] dispatch_type: The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleGroupRuleArgs']]]] group_rules: Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleGroupRuleArgs']]]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleLabelMatchExpressionGridArgs']]]] label_match_expression_grids: Sets the dispatch rule. See the following `Block label_match_expression_grid`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleNotifyRuleArgs']]]] notify_rules: Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleLabelMatchExpressionGridArgs']]]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleNotifyRuleArgs']]]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[str] status: The resource status of Alert Dispatch Rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -504,7 +504,7 @@ class DispatchRule(pulumi.CustomResource):
     @pulumi.getter(name="groupRules")
     def group_rules(self) -> pulumi.Output[Sequence['outputs.DispatchRuleGroupRule']]:
         """
-        Sets the event group. See the following `Block group_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         return pulumi.get(self, "group_rules")
 
@@ -520,7 +520,7 @@ class DispatchRule(pulumi.CustomResource):
     @pulumi.getter(name="labelMatchExpressionGrids")
     def label_match_expression_grids(self) -> pulumi.Output[Sequence['outputs.DispatchRuleLabelMatchExpressionGrid']]:
         """
-        Sets the dispatch rule. See the following `Block label_match_expression_grid`.
+        Sets the dispatch rule. See `label_match_expression_grid` below.
         """
         return pulumi.get(self, "label_match_expression_grids")
 
@@ -528,7 +528,7 @@ class DispatchRule(pulumi.CustomResource):
     @pulumi.getter(name="notifyRules")
     def notify_rules(self) -> pulumi.Output[Sequence['outputs.DispatchRuleNotifyRule']]:
         """
-        Sets the notification rule. See the following `Block notify_rules`. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         return pulumi.get(self, "notify_rules")
 

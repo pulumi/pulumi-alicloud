@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// <summary>
     /// Provides a DBFS Snapshot resource.
     /// 
-    /// For information about DBFS Snapshot and how to use it, see [What is Snapshot](https://help.aliyun.com/document_detail/149726.html).
+    /// For information about DBFS Snapshot and how to use it.
     /// 
-    /// &gt; **NOTE:** Available in v1.156.0+.
+    /// &gt; **NOTE:** Available since v1.156.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,73 +28,82 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "default-NODELETING",
-    ///     });
-    /// 
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var zoneId = "cn-hangzhou-i";
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var exampleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         AvailabilityZone = zoneId,
+    ///         InstanceTypeFamily = "ecs.g7se",
+    ///     });
+    /// 
+    ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length - 1].Id,
+    ///         NameRegex = "^aliyun_2",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = exampleNetwork.Id,
     ///         ZoneId = zoneId,
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
     ///     {
-    ///         Description = "tf test",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var exampleInstance = new AliCloud.Ecs.Instance("exampleInstance", new()
     ///     {
-    ///         Owners = "system",
-    ///         NameRegex = "^centos_8",
-    ///         MostRecent = true,
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
-    ///     {
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceName = @var.Name,
-    ///         InstanceType = "ecs.g7se.large",
     ///         AvailabilityZone = zoneId,
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         SystemDiskCategory = "cloud_essd",
+    ///         InstanceName = name,
+    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[1]?.Id),
+    ///         InstanceType = Output.Tuple(exampleInstanceTypes, exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length).Apply(values =&gt;
+    ///         {
+    ///             var exampleInstanceTypes = values.Item1;
+    ///             var length = values.Item2;
+    ///             return exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[length - 1].Id;
+    ///         }),
     ///         SecurityGroups = new[]
     ///         {
-    ///             defaultSecurityGroup.Id,
+    ///             exampleSecurityGroup.Id,
     ///         },
+    ///         VswitchId = exampleSwitch.Id,
+    ///         SystemDiskCategory = "cloud_essd",
     ///     });
     /// 
-    ///     var defaultDatabasefilesystem_instanceInstance = new AliCloud.DatabaseFilesystem.Instance("defaultDatabasefilesystem/instanceInstance", new()
+    ///     var exampleDatabasefilesystem_instanceInstance = new AliCloud.DatabaseFilesystem.Instance("exampleDatabasefilesystem/instanceInstance", new()
     ///     {
     ///         Category = "standard",
-    ///         ZoneId = defaultInstance.AvailabilityZone,
+    ///         ZoneId = zoneId,
     ///         PerformanceLevel = "PL1",
-    ///         InstanceName = @var.Name,
+    ///         InstanceName = name,
     ///         Size = 100,
     ///     });
     /// 
-    ///     var defaultInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("defaultInstanceAttachment", new()
+    ///     var exampleInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("exampleInstanceAttachment", new()
     ///     {
-    ///         EcsId = defaultInstance.Id,
-    ///         InstanceId = defaultDatabasefilesystem / instanceInstance.Id,
+    ///         EcsId = exampleInstance.Id,
+    ///         InstanceId = exampleDatabasefilesystem / instanceInstance.Id,
     ///     });
     /// 
-    ///     var example = new AliCloud.DatabaseFilesystem.Snapshot("example", new()
+    ///     var exampleSnapshot = new AliCloud.DatabaseFilesystem.Snapshot("exampleSnapshot", new()
     ///     {
-    ///         InstanceId = data.Alicloud_dbfs_instances.Default.Ids[0],
-    ///         SnapshotName = "example_value",
-    ///         Description = "example_value",
+    ///         InstanceId = exampleInstanceAttachment.InstanceId,
+    ///         SnapshotName = name,
+    ///         Description = name,
     ///         RetentionDays = 30,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultInstanceAttachment,
-    ///         },
     ///     });
     /// 
     /// });

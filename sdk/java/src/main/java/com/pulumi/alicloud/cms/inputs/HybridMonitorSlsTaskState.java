@@ -20,14 +20,14 @@ public final class HybridMonitorSlsTaskState extends com.pulumi.resources.Resour
     public static final HybridMonitorSlsTaskState Empty = new HybridMonitorSlsTaskState();
 
     /**
-     * The label of the monitoring task. See the following `Block attach_labels`.
+     * The label of the monitoring task. See `attach_labels` below.
      * 
      */
     @Import(name="attachLabels")
     private @Nullable Output<List<HybridMonitorSlsTaskAttachLabelArgs>> attachLabels;
 
     /**
-     * @return The label of the monitoring task. See the following `Block attach_labels`.
+     * @return The label of the monitoring task. See `attach_labels` below.
      * 
      */
     public Optional<Output<List<HybridMonitorSlsTaskAttachLabelArgs>>> attachLabels() {
@@ -95,14 +95,14 @@ public final class HybridMonitorSlsTaskState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+     * The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
      * 
      */
     @Import(name="slsProcessConfig")
     private @Nullable Output<HybridMonitorSlsTaskSlsProcessConfigArgs> slsProcessConfig;
 
     /**
-     * @return The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+     * @return The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
      * 
      */
     public Optional<Output<HybridMonitorSlsTaskSlsProcessConfigArgs>> slsProcessConfig() {
@@ -155,7 +155,7 @@ public final class HybridMonitorSlsTaskState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param attachLabels The label of the monitoring task. See the following `Block attach_labels`.
+         * @param attachLabels The label of the monitoring task. See `attach_labels` below.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class HybridMonitorSlsTaskState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param attachLabels The label of the monitoring task. See the following `Block attach_labels`.
+         * @param attachLabels The label of the monitoring task. See `attach_labels` below.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class HybridMonitorSlsTaskState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param attachLabels The label of the monitoring task. See the following `Block attach_labels`.
+         * @param attachLabels The label of the monitoring task. See `attach_labels` below.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class HybridMonitorSlsTaskState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param slsProcessConfig The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+         * @param slsProcessConfig The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class HybridMonitorSlsTaskState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param slsProcessConfig The configurations of the logs that are imported from Log Service. See the following `Block sls_process_config`.
+         * @param slsProcessConfig The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
          * 
          * @return builder
          * 

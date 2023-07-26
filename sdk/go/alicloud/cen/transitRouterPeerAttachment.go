@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -174,6 +175,7 @@ func NewTransitRouterPeerAttachment(ctx *pulumi.Context,
 	if args.PeerTransitRouterRegionId == nil {
 		return nil, errors.New("invalid value for required argument 'PeerTransitRouterRegionId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TransitRouterPeerAttachment
 	err := ctx.RegisterResource("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment", name, args, &resource, opts...)
 	if err != nil {

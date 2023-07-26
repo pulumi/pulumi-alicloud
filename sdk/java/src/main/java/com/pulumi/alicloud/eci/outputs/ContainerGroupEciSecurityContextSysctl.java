@@ -17,7 +17,7 @@ public final class ContainerGroupEciSecurityContextSysctl {
      */
     private @Nullable String name;
     /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
+     * @return The variable value of the security context that the container group runs.
      * 
      */
     private @Nullable String value;
@@ -31,7 +31,7 @@ public final class ContainerGroupEciSecurityContextSysctl {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
+     * @return The variable value of the security context that the container group runs.
      * 
      */
     public Optional<String> value() {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE:** Available in v1.199.0+.
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClustersResult
 	err := ctx.Invoke("alicloud:emrv2/getClusters:getClusters", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+var _ = internal.GetEnvOrDefault
+
 type AggregateCompliancePackConfigRule struct {
-	// A list of parameter rules.
+	// A list of parameter rules. See `configRuleParameters` below.
 	ConfigRuleParameters []AggregateCompliancePackConfigRuleConfigRuleParameter `pulumi:"configRuleParameters"`
 	// The Managed Rule Identifier.
 	ManagedRuleIdentifier string `pulumi:"managedRuleIdentifier"`
@@ -29,7 +32,7 @@ type AggregateCompliancePackConfigRuleInput interface {
 }
 
 type AggregateCompliancePackConfigRuleArgs struct {
-	// A list of parameter rules.
+	// A list of parameter rules. See `configRuleParameters` below.
 	ConfigRuleParameters AggregateCompliancePackConfigRuleConfigRuleParameterArrayInput `pulumi:"configRuleParameters"`
 	// The Managed Rule Identifier.
 	ManagedRuleIdentifier pulumi.StringInput `pulumi:"managedRuleIdentifier"`
@@ -86,7 +89,7 @@ func (o AggregateCompliancePackConfigRuleOutput) ToAggregateCompliancePackConfig
 	return o
 }
 
-// A list of parameter rules.
+// A list of parameter rules. See `configRuleParameters` below.
 func (o AggregateCompliancePackConfigRuleOutput) ConfigRuleParameters() AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput {
 	return o.ApplyT(func(v AggregateCompliancePackConfigRule) []AggregateCompliancePackConfigRuleConfigRuleParameter {
 		return v.ConfigRuleParameters
@@ -437,7 +440,7 @@ func (o AggregatorAggregatorAccountArrayOutput) Index(i pulumi.IntInput) Aggrega
 }
 
 type CompliancePackConfigRule struct {
-	// A list of Config Rule Parameters.
+	// A list of Config Rule Parameters. See `configRuleParameters` below.
 	ConfigRuleParameters []CompliancePackConfigRuleConfigRuleParameter `pulumi:"configRuleParameters"`
 	// The Managed Rule Identifier.
 	ManagedRuleIdentifier string `pulumi:"managedRuleIdentifier"`
@@ -455,7 +458,7 @@ type CompliancePackConfigRuleInput interface {
 }
 
 type CompliancePackConfigRuleArgs struct {
-	// A list of Config Rule Parameters.
+	// A list of Config Rule Parameters. See `configRuleParameters` below.
 	ConfigRuleParameters CompliancePackConfigRuleConfigRuleParameterArrayInput `pulumi:"configRuleParameters"`
 	// The Managed Rule Identifier.
 	ManagedRuleIdentifier pulumi.StringInput `pulumi:"managedRuleIdentifier"`
@@ -512,7 +515,7 @@ func (o CompliancePackConfigRuleOutput) ToCompliancePackConfigRuleOutputWithCont
 	return o
 }
 
-// A list of Config Rule Parameters.
+// A list of Config Rule Parameters. See `configRuleParameters` below.
 func (o CompliancePackConfigRuleOutput) ConfigRuleParameters() CompliancePackConfigRuleConfigRuleParameterArrayOutput {
 	return o.ApplyT(func(v CompliancePackConfigRule) []CompliancePackConfigRuleConfigRuleParameter {
 		return v.ConfigRuleParameters

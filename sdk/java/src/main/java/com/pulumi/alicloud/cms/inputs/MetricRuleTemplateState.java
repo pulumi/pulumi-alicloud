@@ -19,14 +19,14 @@ public final class MetricRuleTemplateState extends com.pulumi.resources.Resource
     public static final MetricRuleTemplateState Empty = new MetricRuleTemplateState();
 
     /**
-     * The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+     * The details of alert rules that are generated based on the alert template. See `alert_templates` below.
      * 
      */
     @Import(name="alertTemplates")
     private @Nullable Output<List<MetricRuleTemplateAlertTemplateArgs>> alertTemplates;
 
     /**
-     * @return The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+     * @return The details of alert rules that are generated based on the alert template. See `alert_templates` below.
      * 
      */
     public Optional<Output<List<MetricRuleTemplateAlertTemplateArgs>>> alertTemplates() {
@@ -226,7 +226,7 @@ public final class MetricRuleTemplateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param alertTemplates The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+         * @param alertTemplates The details of alert rules that are generated based on the alert template. See `alert_templates` below.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class MetricRuleTemplateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param alertTemplates The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+         * @param alertTemplates The details of alert rules that are generated based on the alert template. See `alert_templates` below.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class MetricRuleTemplateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param alertTemplates The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+         * @param alertTemplates The details of alert rules that are generated based on the alert template. See `alert_templates` below.
          * 
          * @return builder
          * 

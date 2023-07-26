@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *

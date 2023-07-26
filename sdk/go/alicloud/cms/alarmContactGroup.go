@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a CMS Alarm Contact Group resource.
 //
-// For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/doc-detail/114929.htm).
+// For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontactgroup).
 //
-// > **NOTE:** Available in v1.101.0+.
+// > **NOTE:** Available since v1.101.0.
 //
 // ## Example Usage
 //
@@ -34,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewAlarmContactGroup(ctx, "example", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String("tf-test"),
+//				AlarmContactGroupName: pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -77,6 +78,7 @@ func NewAlarmContactGroup(ctx *pulumi.Context,
 	if args.AlarmContactGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'AlarmContactGroupName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AlarmContactGroup
 	err := ctx.RegisterResource("alicloud:cms/alarmContactGroup:AlarmContactGroup", name, args, &resource, opts...)
 	if err != nil {

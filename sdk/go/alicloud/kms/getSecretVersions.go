@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetSecretVersions(ctx *pulumi.Context, args *GetSecretVersionsArgs, opts ...pulumi.InvokeOption) (*GetSecretVersionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretVersionsResult
 	err := ctx.Invoke("alicloud:kms/getSecretVersions:getSecretVersions", args, &rv, opts...)
 	if err != nil {

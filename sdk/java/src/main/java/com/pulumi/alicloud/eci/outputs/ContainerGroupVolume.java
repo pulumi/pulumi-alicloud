@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupVolume {
     /**
-     * @return ConfigFileVolumeConfigFileToPaths.
+     * @return The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+     * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */
     private @Nullable List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths;
@@ -55,14 +56,12 @@ public final class ContainerGroupVolume {
      */
     private @Nullable String nfsVolumePath;
     /**
-     * @return The nfs volume read only. Default to `false`.
+     * @return The nfs volume read only. Default value: `false`.
      * 
      */
     private @Nullable Boolean nfsVolumeReadOnly;
     /**
      * @return The address of the NFS server.
-     * 
-     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
      * 
      */
     private @Nullable String nfsVolumeServer;
@@ -74,7 +73,8 @@ public final class ContainerGroupVolume {
 
     private ContainerGroupVolume() {}
     /**
-     * @return ConfigFileVolumeConfigFileToPaths.
+     * @return The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+     * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */
     public List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths() {
@@ -130,7 +130,7 @@ public final class ContainerGroupVolume {
         return Optional.ofNullable(this.nfsVolumePath);
     }
     /**
-     * @return The nfs volume read only. Default to `false`.
+     * @return The nfs volume read only. Default value: `false`.
      * 
      */
     public Optional<Boolean> nfsVolumeReadOnly() {
@@ -138,8 +138,6 @@ public final class ContainerGroupVolume {
     }
     /**
      * @return The address of the NFS server.
-     * 
-     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
      * 
      */
     public Optional<String> nfsVolumeServer() {

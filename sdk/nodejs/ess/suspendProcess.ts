@@ -62,10 +62,8 @@ import * as utilities from "../utilities";
  *     enable: true,
  * });
  * const defaultSuspendProcess = new alicloud.ess.SuspendProcess("defaultSuspendProcess", {
- *     scalingGroupId: defaultScalingGroup.id,
+ *     scalingGroupId: defaultScalingConfiguration.scalingGroupId,
  *     process: "ScaleIn",
- * }, {
- *     dependsOn: [defaultScalingConfiguration],
  * });
  * ```
  *

@@ -44,11 +44,13 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The AD auth server of the Instance. See the following `Block adAuthServer`.
+     * The AD auth server of the Instance. See `adAuthServer` below.
      */
     public readonly adAuthServers!: pulumi.Output<outputs.bastionhost.InstanceAdAuthServer[]>;
     /**
-     * The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     * The bandwidth of Cloud Bastionhost instance.
+     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      */
     public readonly bandwidth!: pulumi.Output<string>;
     /**
@@ -60,7 +62,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly enablePublicAccess!: pulumi.Output<boolean>;
     /**
-     * The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+     * The LDAP auth server of the Instance. See `ldapAuthServer` below.
      */
     public readonly ldapAuthServers!: pulumi.Output<outputs.bastionhost.InstanceLdapAuthServer[]>;
     /**
@@ -194,11 +196,13 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The AD auth server of the Instance. See the following `Block adAuthServer`.
+     * The AD auth server of the Instance. See `adAuthServer` below.
      */
     adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
     /**
-     * The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     * The bandwidth of Cloud Bastionhost instance.
+     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      */
     bandwidth?: pulumi.Input<string>;
     /**
@@ -210,7 +214,7 @@ export interface InstanceState {
      */
     enablePublicAccess?: pulumi.Input<boolean>;
     /**
-     * The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+     * The LDAP auth server of the Instance. See `ldapAuthServer` below.
      */
     ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceLdapAuthServer>[]>;
     /**
@@ -269,11 +273,13 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The AD auth server of the Instance. See the following `Block adAuthServer`.
+     * The AD auth server of the Instance. See `adAuthServer` below.
      */
     adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
     /**
-     * The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     * The bandwidth of Cloud Bastionhost instance.
+     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      */
     bandwidth: pulumi.Input<string>;
     /**
@@ -285,7 +291,7 @@ export interface InstanceArgs {
      */
     enablePublicAccess?: pulumi.Input<boolean>;
     /**
-     * The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+     * The LDAP auth server of the Instance. See `ldapAuthServer` below.
      */
     ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceLdapAuthServer>[]>;
     /**

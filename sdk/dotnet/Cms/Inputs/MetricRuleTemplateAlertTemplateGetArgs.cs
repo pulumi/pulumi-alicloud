@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string> Category { get; set; } = null!;
 
         /// <summary>
-        /// The information about the trigger condition based on the alert level. See the following `Block escalations`.
+        /// The information about the trigger condition based on the alert level. See `escalations` below.
         /// </summary>
         [Input("escalations")]
         public Input<Inputs.MetricRuleTemplateAlertTemplateEscalationsGetArgs>? Escalations { get; set; }

@@ -16,7 +16,8 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<Inputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPathGetArgs>? _configFileVolumeConfigFileToPaths;
 
         /// <summary>
-        /// ConfigFileVolumeConfigFileToPaths.
+        /// The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+        /// &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
         /// </summary>
         public InputList<Inputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPathGetArgs> ConfigFileVolumeConfigFileToPaths
         {
@@ -67,15 +68,13 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? NfsVolumePath { get; set; }
 
         /// <summary>
-        /// The nfs volume read only. Default to `false`.
+        /// The nfs volume read only. Default value: `false`.
         /// </summary>
         [Input("nfsVolumeReadOnly")]
         public Input<bool>? NfsVolumeReadOnly { get; set; }
 
         /// <summary>
         /// The address of the NFS server.
-        /// 
-        /// &gt; **NOTE:** Every volumes mounted must have name and type attributes.
         /// </summary>
         [Input("nfsVolumeServer")]
         public Input<string>? NfsVolumeServer { get; set; }

@@ -366,7 +366,7 @@ class Prometheus(pulumi.CustomResource):
 
         For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-createprometheusinstance).
 
-        > **NOTE:** Available in v1.203.0+.
+        > **NOTE:** Available since v1.203.0.
 
         ## Example Usage
 
@@ -376,17 +376,28 @@ class Prometheus(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="your_name_regex")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[len(default_zones.zones) - 1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
         default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
             cluster_type="ecs",
             grafana_instance_id="free",
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0],
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
             security_group_id=default_security_group.id,
-            cluster_name=f"{var['name']}-{default_networks.ids[0]}",
+            cluster_name=default_network.id.apply(lambda id: f"{name}-{id}"),
             resource_group_id=default_resource_groups.groups[0].id,
             tags={
                 "Created": "TF",
@@ -426,7 +437,7 @@ class Prometheus(pulumi.CustomResource):
 
         For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-createprometheusinstance).
 
-        > **NOTE:** Available in v1.203.0+.
+        > **NOTE:** Available since v1.203.0.
 
         ## Example Usage
 
@@ -436,17 +447,28 @@ class Prometheus(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="your_name_regex")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[len(default_zones.zones) - 1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
         default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
             cluster_type="ecs",
             grafana_instance_id="free",
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0],
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
             security_group_id=default_security_group.id,
-            cluster_name=f"{var['name']}-{default_networks.ids[0]}",
+            cluster_name=default_network.id.apply(lambda id: f"{name}-{id}"),
             resource_group_id=default_resource_groups.groups[0].id,
             tags={
                 "Created": "TF",

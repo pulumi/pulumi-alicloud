@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -108,6 +109,7 @@ func NewHistoryDeliveryJob(ctx *pulumi.Context,
 	if args.TrailName == nil {
 		return nil, errors.New("invalid value for required argument 'TrailName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HistoryDeliveryJob
 	err := ctx.RegisterResource("alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob", name, args, &resource, opts...)
 	if err != nil {

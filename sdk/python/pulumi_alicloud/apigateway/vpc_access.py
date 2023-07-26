@@ -171,10 +171,34 @@ class VpcAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.apigateway.VpcAccess("foo",
-            instance_id="i-kai2ks92kzkw92ka",
-            port=8080,
-            vpc_id="vpc-awkcj192ka9zalz")
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup",
+            description="New security group",
+            vpc_id=example_network.id)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            availability_zone=example_zones.zones[0].id,
+            instance_name="terraform-example",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            security_groups=[example_security_group.id],
+            vswitch_id=example_switch.id)
+        example_vpc_access = alicloud.apigateway.VpcAccess("exampleVpcAccess",
+            vpc_id=example_network.id,
+            instance_id=example_instance.id,
+            port=8080)
         ```
 
         ## Import
@@ -207,10 +231,34 @@ class VpcAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.apigateway.VpcAccess("foo",
-            instance_id="i-kai2ks92kzkw92ka",
-            port=8080,
-            vpc_id="vpc-awkcj192ka9zalz")
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup",
+            description="New security group",
+            vpc_id=example_network.id)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            availability_zone=example_zones.zones[0].id,
+            instance_name="terraform-example",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            security_groups=[example_security_group.id],
+            vswitch_id=example_switch.id)
+        example_vpc_access = alicloud.apigateway.VpcAccess("exampleVpcAccess",
+            vpc_id=example_network.id,
+            instance_id=example_instance.id,
+            port=8080)
         ```
 
         ## Import

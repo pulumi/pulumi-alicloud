@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetDBClusters(ctx *pulumi.Context, args *GetDBClustersArgs, opts ...pulumi.InvokeOption) (*GetDBClustersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDBClustersResult
 	err := ctx.Invoke("alicloud:adb/getDBClusters:getDBClusters", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetBindings(ctx *pulumi.Context, args *GetBindingsArgs, opts ...pulumi.InvokeOption) (*GetBindingsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBindingsResult
 	err := ctx.Invoke("alicloud:amqp/getBindings:getBindings", args, &rv, opts...)
 	if err != nil {

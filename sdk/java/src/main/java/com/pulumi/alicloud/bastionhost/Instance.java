@@ -34,28 +34,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:bastionhost/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The AD auth server of the Instance. See the following `Block ad_auth_server`.
+     * The AD auth server of the Instance. See `ad_auth_server` below.
      * 
      */
     @Export(name="adAuthServers", type=List.class, parameters={InstanceAdAuthServer.class})
     private Output<List<InstanceAdAuthServer>> adAuthServers;
 
     /**
-     * @return The AD auth server of the Instance. See the following `Block ad_auth_server`.
+     * @return The AD auth server of the Instance. See `ad_auth_server` below.
      * 
      */
     public Output<List<InstanceAdAuthServer>> adAuthServers() {
         return this.adAuthServers;
     }
     /**
-     * The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     * The bandwidth of Cloud Bastionhost instance.
+     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      * 
      */
     @Export(name="bandwidth", type=String.class, parameters={})
     private Output<String> bandwidth;
 
     /**
-     * @return The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     * @return The bandwidth of Cloud Bastionhost instance.
+     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
+     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      * 
      */
     public Output<String> bandwidth() {
@@ -90,14 +94,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.enablePublicAccess;
     }
     /**
-     * The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+     * The LDAP auth server of the Instance. See `ldap_auth_server` below.
      * 
      */
     @Export(name="ldapAuthServers", type=List.class, parameters={InstanceLdapAuthServer.class})
     private Output<List<InstanceLdapAuthServer>> ldapAuthServers;
 
     /**
-     * @return The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+     * @return The LDAP auth server of the Instance. See `ldap_auth_server` below.
      * 
      */
     public Output<List<InstanceLdapAuthServer>> ldapAuthServers() {

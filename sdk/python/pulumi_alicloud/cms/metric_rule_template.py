@@ -30,7 +30,7 @@ class MetricRuleTemplateArgs:
         """
         The set of arguments for constructing a MetricRuleTemplate resource.
         :param pulumi.Input[str] metric_rule_template_name: The name of the alert template.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]] alert_templates: The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[str] apply_mode: The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
         :param pulumi.Input[str] description: The description of the alert template.
         :param pulumi.Input[str] enable_end_time: The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
@@ -83,7 +83,7 @@ class MetricRuleTemplateArgs:
     @pulumi.getter(name="alertTemplates")
     def alert_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]:
         """
-        The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         """
         return pulumi.get(self, "alert_templates")
 
@@ -220,7 +220,7 @@ class _MetricRuleTemplateState:
                  webhook: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetricRuleTemplate resources.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]] alert_templates: The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[str] apply_mode: The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
         :param pulumi.Input[str] description: The description of the alert template.
         :param pulumi.Input[str] enable_end_time: The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
@@ -263,7 +263,7 @@ class _MetricRuleTemplateState:
     @pulumi.getter(name="alertTemplates")
     def alert_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]:
         """
-        The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         """
         return pulumi.get(self, "alert_templates")
 
@@ -416,9 +416,9 @@ class MetricRuleTemplate(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Metric Rule Template resource.
 
-        For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/doc-detail/114984.html).
+        For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmetricruletemplate).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -428,9 +428,17 @@ class MetricRuleTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.cms.MetricRuleTemplate("example",
+            metric_rule_template_name=name,
             alert_templates=[alicloud.cms.MetricRuleTemplateAlertTemplateArgs(
                 category="ecs",
+                metric_name="cpu_total",
+                namespace="acs_ecs_dashboard",
+                rule_name="tf_example",
                 escalations=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsArgs(
                     critical=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs(
                         comparison_operator="GreaterThanThreshold",
@@ -439,11 +447,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
                         times="3",
                     ),
                 ),
-                metric_name="cpu_total",
-                namespace="acs_ecs_dashboard",
-                rule_name="tf_testAcc_new",
-            )],
-            metric_rule_template_name="example_value")
+            )])
         ```
 
         ## Import
@@ -456,7 +460,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRuleTemplateAlertTemplateArgs']]]] alert_templates: The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRuleTemplateAlertTemplateArgs']]]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[str] apply_mode: The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
         :param pulumi.Input[str] description: The description of the alert template.
         :param pulumi.Input[str] enable_end_time: The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
@@ -481,9 +485,9 @@ class MetricRuleTemplate(pulumi.CustomResource):
         """
         Provides a Cloud Monitor Service Metric Rule Template resource.
 
-        For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/doc-detail/114984.html).
+        For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmetricruletemplate).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -493,9 +497,17 @@ class MetricRuleTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.cms.MetricRuleTemplate("example",
+            metric_rule_template_name=name,
             alert_templates=[alicloud.cms.MetricRuleTemplateAlertTemplateArgs(
                 category="ecs",
+                metric_name="cpu_total",
+                namespace="acs_ecs_dashboard",
+                rule_name="tf_example",
                 escalations=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsArgs(
                     critical=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs(
                         comparison_operator="GreaterThanThreshold",
@@ -504,11 +516,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
                         times="3",
                     ),
                 ),
-                metric_name="cpu_total",
-                namespace="acs_ecs_dashboard",
-                rule_name="tf_testAcc_new",
-            )],
-            metric_rule_template_name="example_value")
+            )])
         ```
 
         ## Import
@@ -595,7 +603,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRuleTemplateAlertTemplateArgs']]]] alert_templates: The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRuleTemplateAlertTemplateArgs']]]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[str] apply_mode: The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
         :param pulumi.Input[str] description: The description of the alert template.
         :param pulumi.Input[str] enable_end_time: The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
@@ -632,7 +640,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
     @pulumi.getter(name="alertTemplates")
     def alert_templates(self) -> pulumi.Output[Optional[Sequence['outputs.MetricRuleTemplateAlertTemplate']]]:
         """
-        The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
+        The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         """
         return pulumi.get(self, "alert_templates")
 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -137,6 +138,7 @@ func NewNetwork(ctx *pulumi.Context,
 		args = &NetworkArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Network
 	err := ctx.RegisterResource("alicloud:vpc/network:Network", name, args, &resource, opts...)
 	if err != nil {

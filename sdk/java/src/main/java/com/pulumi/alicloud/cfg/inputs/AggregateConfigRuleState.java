@@ -50,14 +50,14 @@ public final class AggregateConfigRuleState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+     * (Available since v1.141.0) The rule ID of Aggregate Config Rule.
      * 
      */
     @Import(name="configRuleId")
     private @Nullable Output<String> configRuleId;
 
     /**
-     * @return (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+     * @return (Available since v1.141.0) The rule ID of Aggregate Config Rule.
      * 
      */
     public Optional<Output<String>> configRuleId() {
@@ -357,7 +357,7 @@ public final class AggregateConfigRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configRuleId (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+         * @param configRuleId (Available since v1.141.0) The rule ID of Aggregate Config Rule.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class AggregateConfigRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configRuleId (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+         * @param configRuleId (Available since v1.141.0) The rule ID of Aggregate Config Rule.
          * 
          * @return builder
          * 

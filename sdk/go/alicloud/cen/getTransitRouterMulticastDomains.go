@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ import (
 //
 // ```
 func GetTransitRouterMulticastDomains(ctx *pulumi.Context, args *GetTransitRouterMulticastDomainsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterMulticastDomainsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterMulticastDomainsResult
 	err := ctx.Invoke("alicloud:cen/getTransitRouterMulticastDomains:getTransitRouterMulticastDomains", args, &rv, opts...)
 	if err != nil {

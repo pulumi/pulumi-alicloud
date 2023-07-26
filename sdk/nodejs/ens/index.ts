@@ -10,6 +10,11 @@ export const getKeyPairs: typeof import("./getKeyPairs").getKeyPairs = null as a
 export const getKeyPairsOutput: typeof import("./getKeyPairs").getKeyPairsOutput = null as any;
 utilities.lazyLoad(exports, ["getKeyPairs","getKeyPairsOutput"], () => require("./getKeyPairs"));
 
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
 export { KeyPairArgs, KeyPairState } from "./keyPair";
 export type KeyPair = import("./keyPair").KeyPair;
 export const KeyPair: typeof import("./keyPair").KeyPair = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:ens/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "alicloud:ens/keyPair:KeyPair":
                 return new KeyPair(name, <any>undefined, { urn })
             default:
@@ -27,4 +34,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "ens/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/keyPair", _module)

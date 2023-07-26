@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +129,7 @@ func NewEndpointAddress(ctx *pulumi.Context,
 	if args.DbEndpointId == nil {
 		return nil, errors.New("invalid value for required argument 'DbEndpointId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EndpointAddress
 	err := ctx.RegisterResource("alicloud:polardb/endpointAddress:EndpointAddress", name, args, &resource, opts...)
 	if err != nil {

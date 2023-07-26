@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,74 @@ import (
 //
 // For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-doc-config-2020-09-07-api-doc-createconfigdeliverychannel).
 //
-// > **NOTE:** Available since v1.171.0+.
+// > **NOTE:** Available since v1.171.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example-sls"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			thisAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//				Project: defaultProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewDelivery(ctx, "defaultDelivery", &cfg.DeliveryArgs{
+//				ConfigurationItemChangeNotification: pulumi.Bool(true),
+//				NonCompliantNotification:            pulumi.Bool(true),
+//				DeliveryChannelName:                 pulumi.String(name),
+//				DeliveryChannelTargetArn: pulumi.All(defaultProject.Name, defaultStore.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					defaultProjectName := _args[0].(string)
+//					defaultStoreName := _args[1].(string)
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v/logstore/%v", thisRegions.Ids[0], thisAccount.Id, defaultProjectName, defaultStoreName), nil
+//				}).(pulumi.StringOutput),
+//				DeliveryChannelType: pulumi.String("SLS"),
+//				Description:         pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -69,6 +137,7 @@ func NewDelivery(ctx *pulumi.Context,
 	if args.DeliveryChannelType == nil {
 		return nil, errors.New("invalid value for required argument 'DeliveryChannelType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Delivery
 	err := ctx.RegisterResource("alicloud:cfg/delivery:Delivery", name, args, &resource, opts...)
 	if err != nil {

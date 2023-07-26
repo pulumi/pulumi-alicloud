@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetAlertContactGroups(ctx *pulumi.Context, args *GetAlertContactGroupsArgs, opts ...pulumi.InvokeOption) (*GetAlertContactGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlertContactGroupsResult
 	err := ctx.Invoke("alicloud:arms/getAlertContactGroups:getAlertContactGroups", args, &rv, opts...)
 	if err != nil {

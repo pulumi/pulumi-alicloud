@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ import (
 //
 // ```
 func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.InvokeOption) (*GetFoldersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFoldersResult
 	err := ctx.Invoke("alicloud:dataworks/getFolders:getFolders", args, &rv, opts...)
 	if err != nil {

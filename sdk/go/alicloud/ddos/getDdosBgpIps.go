@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetDdosBgpIps(ctx *pulumi.Context, args *GetDdosBgpIpsArgs, opts ...pulumi.InvokeOption) (*GetDdosBgpIpsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDdosBgpIpsResult
 	err := ctx.Invoke("alicloud:ddos/getDdosBgpIps:getDdosBgpIps", args, &rv, opts...)
 	if err != nil {

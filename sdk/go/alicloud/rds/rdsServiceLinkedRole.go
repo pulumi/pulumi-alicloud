@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +78,7 @@ func NewRdsServiceLinkedRole(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RdsServiceLinkedRole
 	err := ctx.RegisterResource("alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole", name, args, &resource, opts...)
 	if err != nil {

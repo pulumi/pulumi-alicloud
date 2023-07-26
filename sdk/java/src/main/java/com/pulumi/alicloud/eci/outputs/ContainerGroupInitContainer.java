@@ -29,17 +29,17 @@ public final class ContainerGroupInitContainer {
      */
     private @Nullable List<String> commands;
     /**
-     * @return The amount of CPU resources allocated to the container group.
+     * @return The amount of CPU resources allocated to the container. Default value: `0`.
      * 
      */
     private @Nullable Double cpu;
     /**
-     * @return The structure of environmentVars.
+     * @return The structure of environmentVars. See `environment_vars` below.
      * 
      */
     private @Nullable List<ContainerGroupInitContainerEnvironmentVar> environmentVars;
     /**
-     * @return The number GPUs.
+     * @return The number GPUs. Default value: `0`.
      * 
      */
     private @Nullable Integer gpu;
@@ -49,29 +49,37 @@ public final class ContainerGroupInitContainer {
      */
     private @Nullable String image;
     /**
-     * @return The restart policy of the image.
+     * @return The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
      * 
      */
     private @Nullable String imagePullPolicy;
     /**
-     * @return The amount of memory resources allocated to the container group.
+     * @return The amount of memory resources allocated to the container. Default value: `0`.
      * 
      */
     private @Nullable Double memory;
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The structure of port.
+     * @return The structure of port. See `ports` below.
      * 
      */
     private @Nullable List<ContainerGroupInitContainerPort> ports;
+    /**
+     * @return (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * 
+     */
     private @Nullable Boolean ready;
+    /**
+     * @return (Available since v1.208.0) The number of times that the container restarted.
+     * 
+     */
     private @Nullable Integer restartCount;
     /**
-     * @return The structure of volumeMounts.
+     * @return The structure of volumeMounts. See `volume_mounts` below.
      * 
      */
     private @Nullable List<ContainerGroupInitContainerVolumeMount> volumeMounts;
@@ -97,21 +105,21 @@ public final class ContainerGroupInitContainer {
         return this.commands == null ? List.of() : this.commands;
     }
     /**
-     * @return The amount of CPU resources allocated to the container group.
+     * @return The amount of CPU resources allocated to the container. Default value: `0`.
      * 
      */
     public Optional<Double> cpu() {
         return Optional.ofNullable(this.cpu);
     }
     /**
-     * @return The structure of environmentVars.
+     * @return The structure of environmentVars. See `environment_vars` below.
      * 
      */
     public List<ContainerGroupInitContainerEnvironmentVar> environmentVars() {
         return this.environmentVars == null ? List.of() : this.environmentVars;
     }
     /**
-     * @return The number GPUs.
+     * @return The number GPUs. Default value: `0`.
      * 
      */
     public Optional<Integer> gpu() {
@@ -125,41 +133,49 @@ public final class ContainerGroupInitContainer {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return The restart policy of the image.
+     * @return The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
      * 
      */
     public Optional<String> imagePullPolicy() {
         return Optional.ofNullable(this.imagePullPolicy);
     }
     /**
-     * @return The amount of memory resources allocated to the container group.
+     * @return The amount of memory resources allocated to the container. Default value: `0`.
      * 
      */
     public Optional<Double> memory() {
         return Optional.ofNullable(this.memory);
     }
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The structure of port.
+     * @return The structure of port. See `ports` below.
      * 
      */
     public List<ContainerGroupInitContainerPort> ports() {
         return this.ports == null ? List.of() : this.ports;
     }
+    /**
+     * @return (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * 
+     */
     public Optional<Boolean> ready() {
         return Optional.ofNullable(this.ready);
     }
+    /**
+     * @return (Available since v1.208.0) The number of times that the container restarted.
+     * 
+     */
     public Optional<Integer> restartCount() {
         return Optional.ofNullable(this.restartCount);
     }
     /**
-     * @return The structure of volumeMounts.
+     * @return The structure of volumeMounts. See `volume_mounts` below.
      * 
      */
     public List<ContainerGroupInitContainerVolumeMount> volumeMounts() {

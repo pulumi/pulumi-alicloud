@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -286,6 +287,7 @@ func NewKubernetes(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Kubernetes
 	err := ctx.RegisterResource("alicloud:cs/kubernetes:Kubernetes", name, args, &resource, opts...)
 	if err != nil {

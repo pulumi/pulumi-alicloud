@@ -17,7 +17,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpress {
      */
     private @Nullable String alias;
     /**
-     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
      * 
      */
     private @Nullable String express;
@@ -31,7 +31,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpress {
         return Optional.ofNullable(this.alias);
     }
     /**
-     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
      * 
      */
     public Optional<String> express() {

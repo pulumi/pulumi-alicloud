@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -164,6 +165,7 @@ func NewForwardEntry(ctx *pulumi.Context,
 	if args.IpProtocol == nil {
 		return nil, errors.New("invalid value for required argument 'IpProtocol'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ForwardEntry
 	err := ctx.RegisterResource("alicloud:vpc/forwardEntry:ForwardEntry", name, args, &resource, opts...)
 	if err != nil {

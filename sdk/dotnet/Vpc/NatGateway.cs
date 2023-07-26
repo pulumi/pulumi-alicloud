@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Specification { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.121.0+) The status of NAT gateway.
+        /// (Available since v1.121.0) The status of NAT gateway.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -409,7 +409,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Specification { get; set; }
 
         /// <summary>
-        /// (Available in 1.121.0+) The status of NAT gateway.
+        /// (Available since v1.121.0) The status of NAT gateway.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetEnterpriseDatabases(ctx *pulumi.Context, args *GetEnterpriseDatabasesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseDatabasesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseDatabasesResult
 	err := ctx.Invoke("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetBlockedRegions(ctx *pulumi.Context, args *GetBlockedRegionsArgs, opts ...pulumi.InvokeOption) (*GetBlockedRegionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBlockedRegionsResult
 	err := ctx.Invoke("alicloud:cdn/getBlockedRegions:getBlockedRegions", args, &rv, opts...)
 	if err != nil {

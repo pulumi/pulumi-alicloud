@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +57,7 @@ import (
 //
 // ```
 func GetInterRegionTrafficQosPolicies(ctx *pulumi.Context, args *GetInterRegionTrafficQosPoliciesArgs, opts ...pulumi.InvokeOption) (*GetInterRegionTrafficQosPoliciesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInterRegionTrafficQosPoliciesResult
 	err := ctx.Invoke("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", args, &rv, opts...)
 	if err != nil {

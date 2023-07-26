@@ -11,24 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/doc-detail/212056.htm).
  *
- * > **NOTE:** Available in v1.136.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.arms.PrometheusAlertRule("example", {
- *     clusterId: "example_value",
- *     duration: "example_value",
- *     expression: "example_value",
- *     message: "example_value",
- *     prometheusAlertRuleName: "example_value",
- * });
- * ```
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Import
  *
@@ -67,7 +50,7 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
     }
 
     /**
-     * The annotations of the alert rule.. See the following `Block annotations`.
+     * The annotations of the alert rule. See `annotations` below.
      */
     public readonly annotations!: pulumi.Output<outputs.arms.PrometheusAlertRuleAnnotation[] | undefined>;
     /**
@@ -87,7 +70,7 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
      */
     public readonly expression!: pulumi.Output<string>;
     /**
-     * The labels of the resource. See the following `Block labels`.
+     * The labels of the resource. See `labels` below.
      */
     public readonly labels!: pulumi.Output<outputs.arms.PrometheusAlertRuleLabel[] | undefined>;
     /**
@@ -180,7 +163,7 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
  */
 export interface PrometheusAlertRuleState {
     /**
-     * The annotations of the alert rule.. See the following `Block annotations`.
+     * The annotations of the alert rule. See `annotations` below.
      */
     annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[]>;
     /**
@@ -200,7 +183,7 @@ export interface PrometheusAlertRuleState {
      */
     expression?: pulumi.Input<string>;
     /**
-     * The labels of the resource. See the following `Block labels`.
+     * The labels of the resource. See `labels` below.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[]>;
     /**
@@ -234,7 +217,7 @@ export interface PrometheusAlertRuleState {
  */
 export interface PrometheusAlertRuleArgs {
     /**
-     * The annotations of the alert rule.. See the following `Block annotations`.
+     * The annotations of the alert rule. See `annotations` below.
      */
     annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[]>;
     /**
@@ -254,7 +237,7 @@ export interface PrometheusAlertRuleArgs {
      */
     expression: pulumi.Input<string>;
     /**
-     * The labels of the resource. See the following `Block labels`.
+     * The labels of the resource. See `labels` below.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[]>;
     /**

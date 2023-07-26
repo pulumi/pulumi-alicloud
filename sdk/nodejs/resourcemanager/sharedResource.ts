@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager Shared Resource resource.
  *
- * For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+ * For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcesharing-2020-01-10-associateresourceshare).
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Import
  *
@@ -56,11 +56,11 @@ export class SharedResource extends pulumi.CustomResource {
      */
     public readonly resourceShareId!: pulumi.Output<string>;
     /**
-     * The resource type of should shared, valid value
+     * The resource type of should shared. Valid values:
      */
     public readonly resourceType!: pulumi.Output<string>;
     /**
-     * status.
+     * The status of the Shared Resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -115,11 +115,11 @@ export interface SharedResourceState {
      */
     resourceShareId?: pulumi.Input<string>;
     /**
-     * The resource type of should shared, valid value
+     * The resource type of should shared. Valid values:
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * status.
+     * The status of the Shared Resource.
      */
     status?: pulumi.Input<string>;
 }
@@ -137,7 +137,7 @@ export interface SharedResourceArgs {
      */
     resourceShareId: pulumi.Input<string>;
     /**
-     * The resource type of should shared, valid value
+     * The resource type of should shared. Valid values:
      */
     resourceType: pulumi.Input<string>;
 }

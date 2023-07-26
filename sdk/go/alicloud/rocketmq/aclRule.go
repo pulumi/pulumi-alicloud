@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,6 +85,7 @@ func NewAclRule(ctx *pulumi.Context,
 	if args.SourcePortRange == nil {
 		return nil, errors.New("invalid value for required argument 'SourcePortRange'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclRule
 	err := ctx.RegisterResource("alicloud:rocketmq/aclRule:AclRule", name, args, &resource, opts...)
 	if err != nil {

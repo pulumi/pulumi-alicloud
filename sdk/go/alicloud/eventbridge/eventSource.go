@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -104,6 +105,7 @@ func NewEventSource(ctx *pulumi.Context,
 	if args.EventSourceName == nil {
 		return nil, errors.New("invalid value for required argument 'EventSourceName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EventSource
 	err := ctx.RegisterResource("alicloud:eventbridge/eventSource:EventSource", name, args, &resource, opts...)
 	if err != nil {

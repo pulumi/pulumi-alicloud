@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetScalingGroups(ctx *pulumi.Context, args *GetScalingGroupsArgs, opts ...pulumi.InvokeOption) (*GetScalingGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetScalingGroupsResult
 	err := ctx.Invoke("alicloud:ess/getScalingGroups:getScalingGroups", args, &rv, opts...)
 	if err != nil {

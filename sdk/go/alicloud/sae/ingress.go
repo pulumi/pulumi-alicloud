@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -173,6 +174,7 @@ func NewIngress(ctx *pulumi.Context,
 	if args.SlbId == nil {
 		return nil, errors.New("invalid value for required argument 'SlbId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ingress
 	err := ctx.RegisterResource("alicloud:sae/ingress:Ingress", name, args, &resource, opts...)
 	if err != nil {

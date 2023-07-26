@@ -27,6 +27,7 @@ class BandwidthPackageArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
@@ -46,6 +47,7 @@ class BandwidthPackageArgs:
         :param pulumi.Input[str] description: The description of bandwidth package.
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -74,6 +76,8 @@ class BandwidthPackageArgs:
             pulumi.set(__self__, "duration", duration)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if promotion_option_no is not None:
+            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if ratio is not None:
             pulumi.set(__self__, "ratio", ratio)
         if renewal_status is not None:
@@ -239,6 +243,18 @@ class BandwidthPackageArgs:
         pulumi.set(self, "payment_type", value)
 
     @property
+    @pulumi.getter(name="promotionOptionNo")
+    def promotion_option_no(self) -> Optional[pulumi.Input[str]]:
+        """
+        The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "promotion_option_no")
+
+    @promotion_option_no.setter
+    def promotion_option_no(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "promotion_option_no", value)
+
+    @property
     @pulumi.getter
     def ratio(self) -> Optional[pulumi.Input[int]]:
         """
@@ -290,6 +306,7 @@ class _BandwidthPackageState:
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -310,6 +327,7 @@ class _BandwidthPackageState:
         :param pulumi.Input[str] description: The description of bandwidth package.
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
         :param pulumi.Input[str] status: The status of the Bandwidth Package.
@@ -340,6 +358,8 @@ class _BandwidthPackageState:
             pulumi.set(__self__, "duration", duration)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if promotion_option_no is not None:
+            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if ratio is not None:
             pulumi.set(__self__, "ratio", ratio)
         if renewal_status is not None:
@@ -497,6 +517,18 @@ class _BandwidthPackageState:
         pulumi.set(self, "payment_type", value)
 
     @property
+    @pulumi.getter(name="promotionOptionNo")
+    def promotion_option_no(self) -> Optional[pulumi.Input[str]]:
+        """
+        The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "promotion_option_no")
+
+    @promotion_option_no.setter
+    def promotion_option_no(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "promotion_option_no", value)
+
+    @property
     @pulumi.getter
     def ratio(self) -> Optional[pulumi.Input[int]]:
         """
@@ -574,6 +606,7 @@ class BandwidthPackage(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -582,7 +615,7 @@ class BandwidthPackage(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Bandwidth Package resource.
 
-        For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbandwidthpackage).
+        For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbandwidthpackage).
 
         > **NOTE:** At present, The `ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
 
@@ -628,6 +661,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of bandwidth package.
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -642,7 +676,7 @@ class BandwidthPackage(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Bandwidth Package resource.
 
-        For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbandwidthpackage).
+        For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbandwidthpackage).
 
         > **NOTE:** At present, The `ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
 
@@ -700,6 +734,7 @@ class BandwidthPackage(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -727,6 +762,7 @@ class BandwidthPackage(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["duration"] = duration
             __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["promotion_option_no"] = promotion_option_no
             __props__.__dict__["ratio"] = ratio
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["tags"] = tags
@@ -756,6 +792,7 @@ class BandwidthPackage(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
+            promotion_option_no: Optional[pulumi.Input[str]] = None,
             ratio: Optional[pulumi.Input[int]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -781,6 +818,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of bandwidth package.
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
         :param pulumi.Input[str] status: The status of the Bandwidth Package.
@@ -803,6 +841,7 @@ class BandwidthPackage(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["duration"] = duration
         __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["promotion_option_no"] = promotion_option_no
         __props__.__dict__["ratio"] = ratio
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["status"] = status
@@ -906,6 +945,14 @@ class BandwidthPackage(pulumi.CustomResource):
         The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="promotionOptionNo")
+    def promotion_option_no(self) -> pulumi.Output[Optional[str]]:
+        """
+        The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "promotion_option_no")
 
     @property
     @pulumi.getter

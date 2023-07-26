@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func GetAggregateCompliancePacks(ctx *pulumi.Context, args *GetAggregateCompliancePacksArgs, opts ...pulumi.InvokeOption) (*GetAggregateCompliancePacksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAggregateCompliancePacksResult
 	err := ctx.Invoke("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args, &rv, opts...)
 	if err != nil {

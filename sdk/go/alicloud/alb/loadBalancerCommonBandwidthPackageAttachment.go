@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ func NewLoadBalancerCommonBandwidthPackageAttachment(ctx *pulumi.Context,
 	if args.LoadBalancerId == nil {
 		return nil, errors.New("invalid value for required argument 'LoadBalancerId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LoadBalancerCommonBandwidthPackageAttachment
 	err := ctx.RegisterResource("alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment", name, args, &resource, opts...)
 	if err != nil {

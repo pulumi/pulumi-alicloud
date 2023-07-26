@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-createprometheusinstance).
     /// 
-    /// &gt; **NOTE:** Available in v1.203.0+.
+    /// &gt; **NOTE:** Available since v1.203.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,31 +28,47 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         NameRegex = "your_name_regex",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length).Apply(values =&gt;
+    ///         {
+    ///             var defaultZones = values.Item1;
+    ///             var length = values.Item2;
+    ///             return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[length - 1].Id;
+    ///         }),
+    ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
     ///     });
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("defaultPrometheus", new()
     ///     {
     ///         ClusterType = "ecs",
     ///         GrafanaInstanceId = "free",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
     ///         SecurityGroupId = defaultSecurityGroup.Id,
-    ///         ClusterName = $"{@var.Name}-{defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}",
+    ///         ClusterName = defaultNetwork.Id.Apply(id =&gt; $"{name}-{id}"),
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///         Tags = 
     ///         {

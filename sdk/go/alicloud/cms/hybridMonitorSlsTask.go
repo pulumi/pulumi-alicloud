@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,106 +16,7 @@ import (
 //
 // For information about Cloud Monitor Service Hybrid Monitor Sls Task and how to use it, see [What is Hybrid Monitor Sls Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
 //
-// > **NOTE:** Available in v1.179.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := alicloud.GetAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSlsGroup, err := cms.NewSlsGroup(ctx, "defaultSlsGroup", &cms.SlsGroupArgs{
-//				SlsGroupConfigs: cms.SlsGroupSlsGroupConfigArray{
-//					&cms.SlsGroupSlsGroupConfigArgs{
-//						SlsUserId:   *pulumi.String(this.Id),
-//						SlsLogstore: pulumi.String("Logstore-ECS"),
-//						SlsProject:  pulumi.String("aliyun-project"),
-//						SlsRegion:   pulumi.String("cn-hangzhou"),
-//					},
-//				},
-//				SlsGroupDescription: pulumi.String("example_value"),
-//				SlsGroupName:        pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultNamespace, err := cms.NewNamespace(ctx, "defaultNamespace", &cms.NamespaceArgs{
-//				Description:   pulumi.Any(_var.Name),
-//				Namespace:     pulumi.String("example-value"),
-//				Specification: pulumi.String("cms.s1.large"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cms.NewHybridMonitorSlsTask(ctx, "defaultHybridMonitorSlsTask", &cms.HybridMonitorSlsTaskArgs{
-//				SlsProcessConfig: &cms.HybridMonitorSlsTaskSlsProcessConfigArgs{
-//					Filter: &cms.HybridMonitorSlsTaskSlsProcessConfigFilterArgs{
-//						Relation: pulumi.String("and"),
-//						Filters: cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray{
-//							&cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{
-//								Operator:   pulumi.String("="),
-//								Value:      pulumi.String("200"),
-//								SlsKeyName: pulumi.String("code"),
-//							},
-//						},
-//					},
-//					Statistics: cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArray{
-//						&cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{
-//							Function:     pulumi.String("count"),
-//							Alias:        pulumi.String("level_count"),
-//							SlsKeyName:   pulumi.String("name"),
-//							ParameterOne: pulumi.String("200"),
-//							ParameterTwo: pulumi.String("299"),
-//						},
-//					},
-//					GroupBies: cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArray{
-//						&cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{
-//							Alias:      pulumi.String("code"),
-//							SlsKeyName: pulumi.String("ApiResult"),
-//						},
-//					},
-//					Expresses: cms.HybridMonitorSlsTaskSlsProcessConfigExpressArray{
-//						&cms.HybridMonitorSlsTaskSlsProcessConfigExpressArgs{
-//							Express: pulumi.String("success_count"),
-//							Alias:   pulumi.String("SuccRate"),
-//						},
-//					},
-//				},
-//				TaskName:          pulumi.String("example_value"),
-//				Namespace:         defaultNamespace.ID(),
-//				Description:       pulumi.String("example_value"),
-//				CollectInterval:   pulumi.Int(60),
-//				CollectTargetType: defaultSlsGroup.ID(),
-//				AttachLabels: cms.HybridMonitorSlsTaskAttachLabelArray{
-//					&cms.HybridMonitorSlsTaskAttachLabelArgs{
-//						Name:  pulumi.String("app_service"),
-//						Value: pulumi.String("testValue"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.179.0.
 //
 // ## Import
 //
@@ -128,7 +30,7 @@ import (
 type HybridMonitorSlsTask struct {
 	pulumi.CustomResourceState
 
-	// The label of the monitoring task. See the following `Block attachLabels`.
+	// The label of the monitoring task. See `attachLabels` below.
 	AttachLabels HybridMonitorSlsTaskAttachLabelArrayOutput `pulumi:"attachLabels"`
 	// The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
 	CollectInterval pulumi.IntOutput `pulumi:"collectInterval"`
@@ -138,7 +40,7 @@ type HybridMonitorSlsTask struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the namespace.
 	Namespace pulumi.StringOutput `pulumi:"namespace"`
-	// The configurations of the logs that are imported from Log Service. See the following `Block slsProcessConfig`.
+	// The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
 	SlsProcessConfig HybridMonitorSlsTaskSlsProcessConfigOutput `pulumi:"slsProcessConfig"`
 	// The name of the metric import task, enter the name of the metric for logs imported from Log Service.
 	TaskName pulumi.StringOutput `pulumi:"taskName"`
@@ -163,6 +65,7 @@ func NewHybridMonitorSlsTask(ctx *pulumi.Context,
 	if args.TaskName == nil {
 		return nil, errors.New("invalid value for required argument 'TaskName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HybridMonitorSlsTask
 	err := ctx.RegisterResource("alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask", name, args, &resource, opts...)
 	if err != nil {
@@ -185,7 +88,7 @@ func GetHybridMonitorSlsTask(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HybridMonitorSlsTask resources.
 type hybridMonitorSlsTaskState struct {
-	// The label of the monitoring task. See the following `Block attachLabels`.
+	// The label of the monitoring task. See `attachLabels` below.
 	AttachLabels []HybridMonitorSlsTaskAttachLabel `pulumi:"attachLabels"`
 	// The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
 	CollectInterval *int `pulumi:"collectInterval"`
@@ -195,14 +98,14 @@ type hybridMonitorSlsTaskState struct {
 	Description *string `pulumi:"description"`
 	// The name of the namespace.
 	Namespace *string `pulumi:"namespace"`
-	// The configurations of the logs that are imported from Log Service. See the following `Block slsProcessConfig`.
+	// The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
 	SlsProcessConfig *HybridMonitorSlsTaskSlsProcessConfig `pulumi:"slsProcessConfig"`
 	// The name of the metric import task, enter the name of the metric for logs imported from Log Service.
 	TaskName *string `pulumi:"taskName"`
 }
 
 type HybridMonitorSlsTaskState struct {
-	// The label of the monitoring task. See the following `Block attachLabels`.
+	// The label of the monitoring task. See `attachLabels` below.
 	AttachLabels HybridMonitorSlsTaskAttachLabelArrayInput
 	// The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
 	CollectInterval pulumi.IntPtrInput
@@ -212,7 +115,7 @@ type HybridMonitorSlsTaskState struct {
 	Description pulumi.StringPtrInput
 	// The name of the namespace.
 	Namespace pulumi.StringPtrInput
-	// The configurations of the logs that are imported from Log Service. See the following `Block slsProcessConfig`.
+	// The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
 	SlsProcessConfig HybridMonitorSlsTaskSlsProcessConfigPtrInput
 	// The name of the metric import task, enter the name of the metric for logs imported from Log Service.
 	TaskName pulumi.StringPtrInput
@@ -223,7 +126,7 @@ func (HybridMonitorSlsTaskState) ElementType() reflect.Type {
 }
 
 type hybridMonitorSlsTaskArgs struct {
-	// The label of the monitoring task. See the following `Block attachLabels`.
+	// The label of the monitoring task. See `attachLabels` below.
 	AttachLabels []HybridMonitorSlsTaskAttachLabel `pulumi:"attachLabels"`
 	// The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
 	CollectInterval *int `pulumi:"collectInterval"`
@@ -233,7 +136,7 @@ type hybridMonitorSlsTaskArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the namespace.
 	Namespace string `pulumi:"namespace"`
-	// The configurations of the logs that are imported from Log Service. See the following `Block slsProcessConfig`.
+	// The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
 	SlsProcessConfig HybridMonitorSlsTaskSlsProcessConfig `pulumi:"slsProcessConfig"`
 	// The name of the metric import task, enter the name of the metric for logs imported from Log Service.
 	TaskName string `pulumi:"taskName"`
@@ -241,7 +144,7 @@ type hybridMonitorSlsTaskArgs struct {
 
 // The set of arguments for constructing a HybridMonitorSlsTask resource.
 type HybridMonitorSlsTaskArgs struct {
-	// The label of the monitoring task. See the following `Block attachLabels`.
+	// The label of the monitoring task. See `attachLabels` below.
 	AttachLabels HybridMonitorSlsTaskAttachLabelArrayInput
 	// The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
 	CollectInterval pulumi.IntPtrInput
@@ -251,7 +154,7 @@ type HybridMonitorSlsTaskArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the namespace.
 	Namespace pulumi.StringInput
-	// The configurations of the logs that are imported from Log Service. See the following `Block slsProcessConfig`.
+	// The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
 	SlsProcessConfig HybridMonitorSlsTaskSlsProcessConfigInput
 	// The name of the metric import task, enter the name of the metric for logs imported from Log Service.
 	TaskName pulumi.StringInput
@@ -344,7 +247,7 @@ func (o HybridMonitorSlsTaskOutput) ToHybridMonitorSlsTaskOutputWithContext(ctx 
 	return o
 }
 
-// The label of the monitoring task. See the following `Block attachLabels`.
+// The label of the monitoring task. See `attachLabels` below.
 func (o HybridMonitorSlsTaskOutput) AttachLabels() HybridMonitorSlsTaskAttachLabelArrayOutput {
 	return o.ApplyT(func(v *HybridMonitorSlsTask) HybridMonitorSlsTaskAttachLabelArrayOutput { return v.AttachLabels }).(HybridMonitorSlsTaskAttachLabelArrayOutput)
 }
@@ -369,7 +272,7 @@ func (o HybridMonitorSlsTaskOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *HybridMonitorSlsTask) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// The configurations of the logs that are imported from Log Service. See the following `Block slsProcessConfig`.
+// The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
 func (o HybridMonitorSlsTaskOutput) SlsProcessConfig() HybridMonitorSlsTaskSlsProcessConfigOutput {
 	return o.ApplyT(func(v *HybridMonitorSlsTask) HybridMonitorSlsTaskSlsProcessConfigOutput { return v.SlsProcessConfig }).(HybridMonitorSlsTaskSlsProcessConfigOutput)
 }

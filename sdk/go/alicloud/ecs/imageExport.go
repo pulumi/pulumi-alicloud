@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -161,6 +162,7 @@ func NewImageExport(ctx *pulumi.Context,
 	if args.OssBucket == nil {
 		return nil, errors.New("invalid value for required argument 'OssBucket'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ImageExport
 	err := ctx.RegisterResource("alicloud:ecs/imageExport:ImageExport", name, args, &resource, opts...)
 	if err != nil {

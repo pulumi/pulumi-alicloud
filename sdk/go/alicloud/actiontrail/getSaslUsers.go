@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetSaslUsers(ctx *pulumi.Context, args *GetSaslUsersArgs, opts ...pulumi.InvokeOption) (*GetSaslUsersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSaslUsersResult
 	err := ctx.Invoke("alicloud:actiontrail/getSaslUsers:getSaslUsers", args, &rv, opts...)
 	if err != nil {

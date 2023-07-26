@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusremotewrite).
  *
- * > **NOTE:** Available in v1.204.0+.
+ * > **NOTE:** Available since v1.204.0.
  *
  * ## Example Usage
  *
@@ -19,8 +19,38 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.arms.RemoteWrite("default", {
- *     clusterId: "your_cluster_id",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.zones).length]).then(([defaultZones, length]) => defaultZones.zones[length - 1].id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultPrometheus = new alicloud.arms.Prometheus("defaultPrometheus", {
+ *     clusterType: "ecs",
+ *     grafanaInstanceId: "free",
+ *     vpcId: defaultNetwork.id,
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     clusterName: pulumi.interpolate`${name}-${defaultNetwork.id}`,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Prometheus",
+ *     },
+ * });
+ * const defaultRemoteWrite = new alicloud.arms.RemoteWrite("defaultRemoteWrite", {
+ *     clusterId: defaultPrometheus.id,
  *     remoteWriteYaml: `remote_write:
  * - name: ArmsRemoteWrite
  *   url: http://47.96.227.137:8080/prometheus/xxx/yyy/cn-hangzhou/api/v3/write
@@ -31,7 +61,6 @@ import * as utilities from "../utilities";
  *     regex: si-6e2ca86444db4e55a7c1
  *     replacement: $1
  *     action: keep
- *
  * `,
  * });
  * ```

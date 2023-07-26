@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func GetSystemSecurityPolicies(ctx *pulumi.Context, args *GetSystemSecurityPoliciesArgs, opts ...pulumi.InvokeOption) (*GetSystemSecurityPoliciesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSystemSecurityPoliciesResult
 	err := ctx.Invoke("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", args, &rv, opts...)
 	if err != nil {

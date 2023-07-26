@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiTest = new App(&#34;apiTest&#34;, AppArgs.builder()        
- *             .description(&#34;description of the app&#34;)
+ *         var example = new App(&#34;example&#34;, AppArgs.builder()        
+ *             .description(&#34;tf_example&#34;)
  *             .build());
  * 
  *     }

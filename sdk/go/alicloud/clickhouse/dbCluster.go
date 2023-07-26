@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -169,6 +170,7 @@ func NewDbCluster(ctx *pulumi.Context,
 	if args.StorageType == nil {
 		return nil, errors.New("invalid value for required argument 'StorageType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DbCluster
 	err := ctx.RegisterResource("alicloud:clickhouse/dbCluster:DbCluster", name, args, &resource, opts...)
 	if err != nil {

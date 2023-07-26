@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetAggregators(ctx *pulumi.Context, args *GetAggregatorsArgs, opts ...pulumi.InvokeOption) (*GetAggregatorsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAggregatorsResult
 	err := ctx.Invoke("alicloud:cfg/getAggregators:getAggregators", args, &rv, opts...)
 	if err != nil {

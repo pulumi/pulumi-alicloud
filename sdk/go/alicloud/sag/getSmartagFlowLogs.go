@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func GetSmartagFlowLogs(ctx *pulumi.Context, args *GetSmartagFlowLogsArgs, opts ...pulumi.InvokeOption) (*GetSmartagFlowLogsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSmartagFlowLogsResult
 	err := ctx.Invoke("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args, &rv, opts...)
 	if err != nil {

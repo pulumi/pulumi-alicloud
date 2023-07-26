@@ -70,6 +70,11 @@ export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
 utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
 
+export { V2FunctionArgs, V2FunctionState } from "./v2function";
+export type V2Function = import("./v2function").V2Function;
+export const V2Function: typeof import("./v2function").V2Function = null as any;
+utilities.lazyLoad(exports, ["V2Function"], () => require("./v2function"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -89,6 +94,8 @@ const _module = {
                 return new Service(name, <any>undefined, { urn })
             case "alicloud:fc/trigger:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
+            case "alicloud:fc/v2Function:V2Function":
+                return new V2Function(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -101,3 +108,4 @@ pulumi.runtime.registerResourceModule("alicloud", "fc/functionAsyncInvokeConfig"
 pulumi.runtime.registerResourceModule("alicloud", "fc/layerVersion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/service", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/trigger", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v2Function", _module)

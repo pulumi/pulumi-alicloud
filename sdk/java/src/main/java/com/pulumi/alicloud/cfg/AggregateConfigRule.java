@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Config Aggregate Config Rule resource.
  * 
- * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
+ * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigrule).
  * 
- * &gt; **NOTE:** Available in v1.124.0+.
+ * &gt; **NOTE:** Available since v1.124.0.
  * 
  * ## Example Usage
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
  * import com.pulumi.alicloud.cfg.Aggregator;
  * import com.pulumi.alicloud.cfg.AggregatorArgs;
  * import com.pulumi.alicloud.cfg.inputs.AggregatorAggregatorAccountArgs;
@@ -52,25 +54,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAggregator = new Aggregator(&#34;exampleAggregator&#34;, AggregatorArgs.builder()        
- *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
- *                 .accountId(&#34;140278452670****&#34;)
- *                 .accountName(&#34;test-2&#34;)
- *                 .accountType(&#34;ResourceDirectory&#34;)
- *                 .build())
- *             .aggregatorName(&#34;tf-testaccaggregator&#34;)
- *             .description(&#34;tf-testaccaggregator&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+ *             .status(&#34;CreateSuccess&#34;)
  *             .build());
  * 
- *         var exampleAggregateConfigRule = new AggregateConfigRule(&#34;exampleAggregateConfigRule&#34;, AggregateConfigRuleArgs.builder()        
- *             .aggregateConfigRuleName(&#34;tf-testaccconfig1234&#34;)
- *             .aggregatorId(exampleAggregator.id())
+ *         var defaultAggregator = new Aggregator(&#34;defaultAggregator&#34;, AggregatorArgs.builder()        
+ *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
+ *                 .accountId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].accountId()))
+ *                 .accountName(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].displayName()))
+ *                 .accountType(&#34;ResourceDirectory&#34;)
+ *                 .build())
+ *             .aggregatorName(name)
+ *             .description(name)
+ *             .aggregatorType(&#34;CUSTOM&#34;)
+ *             .build());
+ * 
+ *         var defaultAggregateConfigRule = new AggregateConfigRule(&#34;defaultAggregateConfigRule&#34;, AggregateConfigRuleArgs.builder()        
+ *             .aggregateConfigRuleName(&#34;contains-tag&#34;)
+ *             .aggregatorId(defaultAggregator.id())
  *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
  *             .sourceOwner(&#34;ALIYUN&#34;)
- *             .sourceIdentifier(&#34;ecs-cpu-min-count-limit&#34;)
+ *             .sourceIdentifier(&#34;contains-tag&#34;)
  *             .riskLevel(1)
  *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
- *             .inputParameters(Map.of(&#34;cpuCount&#34;, &#34;4&#34;))
+ *             .inputParameters(Map.ofEntries(
+ *                 Map.entry(&#34;key&#34;, &#34;example&#34;),
+ *                 Map.entry(&#34;value&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
  *     }
@@ -117,14 +129,14 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
         return this.aggregatorId;
     }
     /**
-     * (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+     * (Available since v1.141.0) The rule ID of Aggregate Config Rule.
      * 
      */
     @Export(name="configRuleId", type=String.class, parameters={})
     private Output<String> configRuleId;
 
     /**
-     * @return (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+     * @return (Available since v1.141.0) The rule ID of Aggregate Config Rule.
      * 
      */
     public Output<String> configRuleId() {

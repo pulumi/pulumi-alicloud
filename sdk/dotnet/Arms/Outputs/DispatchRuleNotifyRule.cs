@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly ImmutableArray<string> NotifyChannels;
         /// <summary>
-        /// Sets the notification object. See the following `Block notify_objects`.
+        /// Sets the notification object. See `notify_objects` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DispatchRuleNotifyRuleNotifyObject> NotifyObjects;
 

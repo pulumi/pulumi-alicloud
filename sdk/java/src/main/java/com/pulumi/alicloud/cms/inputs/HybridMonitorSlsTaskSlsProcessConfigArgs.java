@@ -20,14 +20,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
     public static final HybridMonitorSlsTaskSlsProcessConfigArgs Empty = new HybridMonitorSlsTaskSlsProcessConfigArgs();
 
     /**
-     * The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+     * The extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
     @Import(name="expresses")
     private @Nullable Output<List<HybridMonitorSlsTaskSlsProcessConfigExpressArgs>> expresses;
 
     /**
-     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
     public Optional<Output<List<HybridMonitorSlsTaskSlsProcessConfigExpressArgs>>> expresses() {
@@ -35,14 +35,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+     * The conditions that are used to filter logs imported from Log Service. See `filter` below.
      * 
      */
     @Import(name="filter")
     private @Nullable Output<HybridMonitorSlsTaskSlsProcessConfigFilterArgs> filter;
 
     /**
-     * @return The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+     * @return The conditions that are used to filter logs imported from Log Service. See `filter` below.
      * 
      */
     public Optional<Output<HybridMonitorSlsTaskSlsProcessConfigFilterArgs>> filter() {
@@ -50,14 +50,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
+     * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
      * 
      */
     @Import(name="groupBies")
     private @Nullable Output<List<HybridMonitorSlsTaskSlsProcessConfigGroupByArgs>> groupBies;
 
     /**
-     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
+     * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
      * 
      */
     public Optional<Output<List<HybridMonitorSlsTaskSlsProcessConfigGroupByArgs>>> groupBies() {
@@ -65,14 +65,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+     * The method that is used to aggregate logs imported from Log Service. See `statistics` below.
      * 
      */
     @Import(name="statistics")
     private @Nullable Output<List<HybridMonitorSlsTaskSlsProcessConfigStatisticArgs>> statistics;
 
     /**
-     * @return The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+     * @return The method that is used to aggregate logs imported from Log Service. See `statistics` below.
      * 
      */
     public Optional<Output<List<HybridMonitorSlsTaskSlsProcessConfigStatisticArgs>>> statistics() {
@@ -107,7 +107,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param expresses The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+         * @param expresses The extended field that specifies the result of basic operations that are performed on aggregation results.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param expresses The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+         * @param expresses The extended field that specifies the result of basic operations that are performed on aggregation results.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param expresses The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
+         * @param expresses The extended field that specifies the result of basic operations that are performed on aggregation results.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param filter The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+         * @param filter The conditions that are used to filter logs imported from Log Service. See `filter` below.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param filter The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+         * @param filter The conditions that are used to filter logs imported from Log Service. See `filter` below.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
+         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
+         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block group_by`.
+         * @param groupBies The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param statistics The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+         * @param statistics The method that is used to aggregate logs imported from Log Service. See `statistics` below.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param statistics The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+         * @param statistics The method that is used to aggregate logs imported from Log Service. See `statistics` below.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param statistics The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+         * @param statistics The method that is used to aggregate logs imported from Log Service. See `statistics` below.
          * 
          * @return builder
          * 

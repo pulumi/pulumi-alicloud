@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetBucketObjects(ctx *pulumi.Context, args *GetBucketObjectsArgs, opts ...pulumi.InvokeOption) (*GetBucketObjectsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBucketObjectsResult
 	err := ctx.Invoke("alicloud:oss/getBucketObjects:getBucketObjects", args, &rv, opts...)
 	if err != nil {

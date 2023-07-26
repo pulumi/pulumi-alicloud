@@ -47,14 +47,14 @@ public final class ContainerGroupContainerVolumeMountArgs extends com.pulumi.res
     }
 
     /**
-     * Default to `false`.
+     * Specifies whether the mount path is read-only. Default value: `false`.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return Default to `false`.
+     * @return Specifies whether the mount path is read-only. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -130,7 +130,7 @@ public final class ContainerGroupContainerVolumeMountArgs extends com.pulumi.res
         }
 
         /**
-         * @param readOnly Default to `false`.
+         * @param readOnly Specifies whether the mount path is read-only. Default value: `false`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ContainerGroupContainerVolumeMountArgs extends com.pulumi.res
         }
 
         /**
-         * @param readOnly Default to `false`.
+         * @param readOnly Specifies whether the mount path is read-only. Default value: `false`.
          * 
          * @return builder
          * 

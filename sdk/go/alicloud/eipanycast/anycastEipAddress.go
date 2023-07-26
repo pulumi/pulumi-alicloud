@@ -8,14 +8,15 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Eipanycast Anycast Eip Address resource.
+// Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
 //
-// For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://help.aliyun.com/document_detail/169284.html).
+// For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/).
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.208.0.
 //
 // ## Example Usage
 //
@@ -28,13 +29,38 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eipanycast"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eipanycast.NewAnycastEipAddress(ctx, "example", &eipanycast.AnycastEipAddressArgs{
-//				ServiceLocation: pulumi.String("international"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := eipanycast.NewAnycastEipAddress(ctx, "default", &eipanycast.AnycastEipAddressArgs{
+//				AnycastEipAddressName: pulumi.String(name),
+//				Description:           pulumi.String("test_1"),
+//				Bandwidth:             pulumi.Int(200),
+//				ServiceLocation:       pulumi.String("international"),
+//				InternetChargeType:    pulumi.String("PayByTraffic"),
+//				PaymentType:           pulumi.String("PayAsYouGo"),
+//				Tags: pulumi.AnyMap{
+//					pulumi.Any{
+//						TagKey:   "k1",
+//						TagValue: "v1",
+//					},
+//					pulumi.Any{
+//						TagKey:   "k2",
+//						TagValue: "v2",
+//					},
+//					pulumi.Any{
+//						TagKey:   "k3",
+//						TagValue: "v3",
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -59,18 +85,22 @@ type AnycastEipAddress struct {
 
 	// Anycast EIP instance name.
 	AnycastEipAddressName pulumi.StringPtrOutput `pulumi:"anycastEipAddressName"`
-	// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internetChargeType is `PayByBandwidth` and the default value is 200.
+	// The peak bandwidth of the Anycast EIP instance, in Mbps.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
+	// Anycast EIP instance creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Anycast EIP instance description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
-	// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
-	// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation pulumi.StringOutput `pulumi:"serviceLocation"`
-	// The IP status.
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// List of resource-bound tags.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewAnycastEipAddress registers a new resource with the given unique name, arguments, and options.
@@ -83,6 +113,7 @@ func NewAnycastEipAddress(ctx *pulumi.Context,
 	if args.ServiceLocation == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceLocation'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AnycastEipAddress
 	err := ctx.RegisterResource("alicloud:eipanycast/anycastEipAddress:AnycastEipAddress", name, args, &resource, opts...)
 	if err != nil {
@@ -107,35 +138,43 @@ func GetAnycastEipAddress(ctx *pulumi.Context,
 type anycastEipAddressState struct {
 	// Anycast EIP instance name.
 	AnycastEipAddressName *string `pulumi:"anycastEipAddressName"`
-	// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internetChargeType is `PayByBandwidth` and the default value is 200.
+	// The peak bandwidth of the Anycast EIP instance, in Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
+	// Anycast EIP instance creation time.
+	CreateTime *string `pulumi:"createTime"`
 	// Anycast EIP instance description.
 	Description *string `pulumi:"description"`
-	// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType *string `pulumi:"paymentType"`
-	// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation *string `pulumi:"serviceLocation"`
-	// The IP status.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
+	// List of resource-bound tags.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type AnycastEipAddressState struct {
 	// Anycast EIP instance name.
 	AnycastEipAddressName pulumi.StringPtrInput
-	// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internetChargeType is `PayByBandwidth` and the default value is 200.
+	// The peak bandwidth of the Anycast EIP instance, in Mbps.
 	Bandwidth pulumi.IntPtrInput
+	// Anycast EIP instance creation time.
+	CreateTime pulumi.StringPtrInput
 	// Anycast EIP instance description.
 	Description pulumi.StringPtrInput
-	// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType pulumi.StringPtrInput
-	// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType pulumi.StringPtrInput
-	// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation pulumi.StringPtrInput
-	// The IP status.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
+	// List of resource-bound tags.
+	Tags pulumi.MapInput
 }
 
 func (AnycastEipAddressState) ElementType() reflect.Type {
@@ -145,32 +184,36 @@ func (AnycastEipAddressState) ElementType() reflect.Type {
 type anycastEipAddressArgs struct {
 	// Anycast EIP instance name.
 	AnycastEipAddressName *string `pulumi:"anycastEipAddressName"`
-	// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internetChargeType is `PayByBandwidth` and the default value is 200.
+	// The peak bandwidth of the Anycast EIP instance, in Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Anycast EIP instance description.
 	Description *string `pulumi:"description"`
-	// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType *string `pulumi:"paymentType"`
-	// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation string `pulumi:"serviceLocation"`
+	// List of resource-bound tags.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a AnycastEipAddress resource.
 type AnycastEipAddressArgs struct {
 	// Anycast EIP instance name.
 	AnycastEipAddressName pulumi.StringPtrInput
-	// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internetChargeType is `PayByBandwidth` and the default value is 200.
+	// The peak bandwidth of the Anycast EIP instance, in Mbps.
 	Bandwidth pulumi.IntPtrInput
 	// Anycast EIP instance description.
 	Description pulumi.StringPtrInput
-	// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType pulumi.StringPtrInput
-	// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType pulumi.StringPtrInput
-	// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation pulumi.StringInput
+	// List of resource-bound tags.
+	Tags pulumi.MapInput
 }
 
 func (AnycastEipAddressArgs) ElementType() reflect.Type {
@@ -265,9 +308,14 @@ func (o AnycastEipAddressOutput) AnycastEipAddressName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.AnycastEipAddressName }).(pulumi.StringPtrOutput)
 }
 
-// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internetChargeType is `PayByBandwidth` and the default value is 200.
+// The peak bandwidth of the Anycast EIP instance, in Mbps.
 func (o AnycastEipAddressOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Anycast EIP instance creation time.
+func (o AnycastEipAddressOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Anycast EIP instance description.
@@ -275,24 +323,29 @@ func (o AnycastEipAddressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 func (o AnycastEipAddressOutput) InternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }
 
-// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 func (o AnycastEipAddressOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
-// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 func (o AnycastEipAddressOutput) ServiceLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringOutput { return v.ServiceLocation }).(pulumi.StringOutput)
 }
 
-// The IP status.
+// The status of the resource.
 func (o AnycastEipAddressOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// List of resource-bound tags.
+func (o AnycastEipAddressOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 type AnycastEipAddressArrayOutput struct{ *pulumi.OutputState }

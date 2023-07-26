@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Monitor Service Dynamic Tag Group resource.
  *
- * For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/doc-detail/150123.html).
+ * For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createdynamictaggroup).
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -81,7 +81,7 @@ export class DynamicTagGroup extends pulumi.CustomResource {
      */
     public readonly matchExpressFilterRelation!: pulumi.Output<string>;
     /**
-     * The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+     * The label generates a matching expression that applies the grouping. See `matchExpress` below.
      */
     public readonly matchExpresses!: pulumi.Output<outputs.cms.DynamicTagGroupMatchExpress[]>;
     /**
@@ -152,7 +152,7 @@ export interface DynamicTagGroupState {
      */
     matchExpressFilterRelation?: pulumi.Input<string>;
     /**
-     * The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+     * The label generates a matching expression that applies the grouping. See `matchExpress` below.
      */
     matchExpresses?: pulumi.Input<pulumi.Input<inputs.cms.DynamicTagGroupMatchExpress>[]>;
     /**
@@ -182,7 +182,7 @@ export interface DynamicTagGroupArgs {
      */
     matchExpressFilterRelation?: pulumi.Input<string>;
     /**
-     * The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+     * The label generates a matching expression that applies the grouping. See `matchExpress` below.
      */
     matchExpresses: pulumi.Input<pulumi.Input<inputs.cms.DynamicTagGroupMatchExpress>[]>;
     /**

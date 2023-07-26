@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetAddressBooks(ctx *pulumi.Context, args *GetAddressBooksArgs, opts ...pulumi.InvokeOption) (*GetAddressBooksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddressBooksResult
 	err := ctx.Invoke("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args, &rv, opts...)
 	if err != nil {

@@ -25,7 +25,9 @@ import javax.annotation.Nullable;
 
 /**
  * This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
- * Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+ * Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+ * 
+ * &gt; **NOTE:** Available since v1.9.1.
  * 
  * ## Example Usage
  * 
@@ -36,6 +38,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.cms.AlarmContactGroup;
+ * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
  * import com.pulumi.alicloud.cms.Alarm;
  * import com.pulumi.alicloud.cms.AlarmArgs;
  * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
@@ -52,19 +69,65 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Alarm(&#34;basic&#34;, AlarmArgs.builder()        
- *             .contactGroups(&#34;test-group&#34;)
- *             .effectiveInterval(&#34;0:00-2:00&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceName(name)
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .build());
+ * 
+ *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+ *             .alarmContactGroupName(name)
+ *             .build());
+ * 
+ *         var defaultAlarm = new Alarm(&#34;defaultAlarm&#34;, AlarmArgs.builder()        
+ *             .project(&#34;acs_ecs_dashboard&#34;)
+ *             .metric(&#34;disk_writebytes&#34;)
+ *             .metricDimensions(defaultInstance.id().applyValue(id -&gt; String.format(&#34;[{{\&#34;instanceId\&#34;:\&#34;%s\&#34;,\&#34;device\&#34;:\&#34;/dev/vda1\&#34;}}]&#34;, id)))
  *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
- *                 .comparisonOperator(&#34;&lt;=&#34;)
  *                 .statistics(&#34;Average&#34;)
+ *                 .comparisonOperator(&#34;&lt;=&#34;)
  *                 .threshold(35)
  *                 .times(2)
  *                 .build())
- *             .metricDimensions(&#34;[{\&#34;instanceId\&#34;:\&#34;i-bp1247jeep0y53nu3bnk\&#34;,\&#34;device\&#34;:\&#34;/dev/vda1\&#34;},{\&#34;instanceId\&#34;:\&#34;i-bp11gdcik8z6dl5jm84p\&#34;,\&#34;device\&#34;:\&#34;/dev/vdb1\&#34;}]&#34;)
  *             .period(900)
- *             .project(&#34;acs_ecs_dashboard&#34;)
- *             .webhook(String.format(&#34;https://%s.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/&#34;, data.alicloud_account().current().id()))
+ *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
+ *             .effectiveInterval(&#34;06:00-20:00&#34;)
  *             .build());
  * 
  *     }
@@ -161,42 +224,42 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.endTime);
     }
     /**
-     * A configuration of critical alarm (documented below).
+     * A configuration of critical alarm. See `escalations_critical` below.
      * 
      */
     @Export(name="escalationsCritical", type=AlarmEscalationsCritical.class, parameters={})
     private Output</* @Nullable */ AlarmEscalationsCritical> escalationsCritical;
 
     /**
-     * @return A configuration of critical alarm (documented below).
+     * @return A configuration of critical alarm. See `escalations_critical` below.
      * 
      */
     public Output<Optional<AlarmEscalationsCritical>> escalationsCritical() {
         return Codegen.optional(this.escalationsCritical);
     }
     /**
-     * A configuration of critical info (documented below).
+     * A configuration of critical info. See `escalations_info` below.
      * 
      */
     @Export(name="escalationsInfo", type=AlarmEscalationsInfo.class, parameters={})
     private Output</* @Nullable */ AlarmEscalationsInfo> escalationsInfo;
 
     /**
-     * @return A configuration of critical info (documented below).
+     * @return A configuration of critical info. See `escalations_info` below.
      * 
      */
     public Output<Optional<AlarmEscalationsInfo>> escalationsInfo() {
         return Codegen.optional(this.escalationsInfo);
     }
     /**
-     * A configuration of critical warn (documented below).
+     * A configuration of critical warn. See `escalations_warn` below.
      * 
      */
     @Export(name="escalationsWarn", type=AlarmEscalationsWarn.class, parameters={})
     private Output</* @Nullable */ AlarmEscalationsWarn> escalationsWarn;
 
     /**
-     * @return A configuration of critical warn (documented below).
+     * @return A configuration of critical warn. See `escalations_warn` below.
      * 
      */
     public Output<Optional<AlarmEscalationsWarn>> escalationsWarn() {
@@ -293,14 +356,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      * 
      */
     @Export(name="prometheuses", type=List.class, parameters={AlarmPrometheus.class})
     private Output</* @Nullable */ List<AlarmPrometheus>> prometheuses;
 
     /**
-     * @return The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * @return The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      * 
      */
     public Output<Optional<List<AlarmPrometheus>>> prometheuses() {

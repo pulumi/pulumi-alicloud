@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetEcsPrefixLists(ctx *pulumi.Context, args *GetEcsPrefixListsArgs, opts ...pulumi.InvokeOption) (*GetEcsPrefixListsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsPrefixListsResult
 	err := ctx.Invoke("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", args, &rv, opts...)
 	if err != nil {

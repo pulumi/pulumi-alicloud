@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +64,7 @@ func NewServiceMesh(ctx *pulumi.Context,
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceMesh
 	err := ctx.RegisterResource("alicloud:servicemesh/serviceMesh:ServiceMesh", name, args, &resource, opts...)
 	if err != nil {

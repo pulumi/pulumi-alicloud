@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class KubernetesAutoscalerNodepoolArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The scaling group id of the groups configured for cluster-autoscaler.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// The labels for the nodes in scaling group.
+        /// </summary>
         [Input("labels")]
         public Input<string>? Labels { get; set; }
 
+        /// <summary>
+        /// The taints for the nodes in scaling group.
+        /// </summary>
         [Input("taints")]
         public Input<string>? Taints { get; set; }
 

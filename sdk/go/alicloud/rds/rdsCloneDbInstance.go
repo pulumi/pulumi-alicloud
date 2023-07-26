@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -328,6 +329,7 @@ func NewRdsCloneDbInstance(ctx *pulumi.Context,
 	if args.SourceDbInstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'SourceDbInstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RdsCloneDbInstance
 	err := ctx.RegisterResource("alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance", name, args, &resource, opts...)
 	if err != nil {

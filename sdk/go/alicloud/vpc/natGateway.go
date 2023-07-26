@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,7 +59,7 @@ type NatGateway struct {
 	SnatTableIds pulumi.StringOutput `pulumi:"snatTableIds"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
 	Specification pulumi.StringOutput `pulumi:"specification"`
-	// (Available in 1.121.0+) The status of NAT gateway.
+	// (Available since v1.121.0) The status of NAT gateway.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of NAT gateway.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -78,6 +79,7 @@ func NewNatGateway(ctx *pulumi.Context,
 	if args.VpcId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NatGateway
 	err := ctx.RegisterResource("alicloud:vpc/natGateway:NatGateway", name, args, &resource, opts...)
 	if err != nil {
@@ -135,7 +137,7 @@ type natGatewayState struct {
 	SnatTableIds *string `pulumi:"snatTableIds"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
 	Specification *string `pulumi:"specification"`
-	// (Available in 1.121.0+) The status of NAT gateway.
+	// (Available since v1.121.0) The status of NAT gateway.
 	Status *string `pulumi:"status"`
 	// The tags of NAT gateway.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -181,7 +183,7 @@ type NatGatewayState struct {
 	SnatTableIds pulumi.StringPtrInput
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
 	Specification pulumi.StringPtrInput
-	// (Available in 1.121.0+) The status of NAT gateway.
+	// (Available since v1.121.0) The status of NAT gateway.
 	Status pulumi.StringPtrInput
 	// The tags of NAT gateway.
 	Tags pulumi.MapInput
@@ -446,7 +448,7 @@ func (o NatGatewayOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.Specification }).(pulumi.StringOutput)
 }
 
-// (Available in 1.121.0+) The status of NAT gateway.
+// (Available since v1.121.0) The status of NAT gateway.
 func (o NatGatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
