@@ -2244,7 +2244,12 @@ func Provider() tfbridge.ProviderInfo {
 					Markdown: []byte(" "),
 				},
 			},
-			"alicloud_ram_account_aliases": {Tok: dataSource(ramMod, "getAccountAliases")},
+			"alicloud_ram_account_aliases": {
+				Tok: dataSource(ramMod, "getAccountAliases"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+			},
 			"alicloud_ram_groups":          {Tok: dataSource(ramMod, "getGroups")},
 			"alicloud_ram_policies":        {Tok: dataSource(ramMod, "getPolicies")},
 			"alicloud_ram_policy_document": {Tok: dataSource(ramMod, "getPolicyDocument")},
