@@ -10,8 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides an RDS readonly instance resource.
-    /// &gt; **NOTE:** Available since v1.52.1+.
+    /// Provides an RDS readonly instance resource, see [What is DB Readonly Instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createreadonlydbinstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.52.1.
     /// 
     /// ## Example Usage
     /// 
@@ -24,27 +25,33 @@ namespace Pulumi.AliCloud.Rds
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "Rds";
-    ///     var name = config.Get("name") ?? "dbInstancevpc";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = exampleNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
@@ -52,7 +59,7 @@ namespace Pulumi.AliCloud.Rds
     ///         InstanceStorage = 20,
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
-    ///         VswitchId = defaultSwitch.Id,
+    ///         VswitchId = exampleSwitch.Id,
     ///         SecurityIps = new[]
     ///         {
     ///             "10.168.1.12",
@@ -60,15 +67,15 @@ namespace Pulumi.AliCloud.Rds
     ///         },
     ///     });
     /// 
-    ///     var defaultReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("defaultReadOnlyInstance", new()
+    ///     var exampleReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("exampleReadOnlyInstance", new()
     ///     {
-    ///         MasterDbInstanceId = defaultInstance.Id,
-    ///         ZoneId = defaultInstance.ZoneId,
-    ///         EngineVersion = defaultInstance.EngineVersion,
-    ///         InstanceType = defaultInstance.InstanceType,
-    ///         InstanceStorage = 30,
-    ///         InstanceName = $"{name}ro",
-    ///         VswitchId = defaultSwitch.Id,
+    ///         ZoneId = exampleInstance.ZoneId,
+    ///         MasterDbInstanceId = exampleInstance.Id,
+    ///         EngineVersion = exampleInstance.EngineVersion,
+    ///         InstanceStorage = exampleInstance.InstanceStorage,
+    ///         InstanceType = exampleInstance.InstanceType,
+    ///         InstanceName = $"{name}readonly",
+    ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
     /// });

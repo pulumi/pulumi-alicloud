@@ -14,7 +14,7 @@ import (
 
 // You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
 //
-// > **NOTE:** Available in v1.94.0+.
+// > **NOTE:** Available since v1.94.0.
 //
 // > **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
 //
@@ -33,13 +33,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			domainName := "example.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
 //			_, err := dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
-//				DomainName: pulumi.String("example.com"),
+//				DomainName: pulumi.String(domainName),
 //				Scope:      pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{
@@ -47,6 +53,7 @@ import (
 //						Port:     pulumi.Int(80),
 //						Priority: pulumi.String("20"),
 //						Type:     pulumi.String("ipaddr"),
+//						Weight:   pulumi.String("10"),
 //					},
 //				},
 //			})
@@ -92,7 +99,7 @@ type Domain struct {
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// The top-level domain name.
 	SecurityToken pulumi.StringPtrOutput `pulumi:"securityToken"`
-	// The origin information.
+	// The origin information. See `sources` below.
 	Sources DomainSourceArrayOutput `pulumi:"sources"`
 	// The private key. Specify this parameter only if you enable the SSL certificate.
 	SslPri pulumi.StringPtrOutput `pulumi:"sslPri"`
@@ -165,7 +172,7 @@ type domainState struct {
 	Scope *string `pulumi:"scope"`
 	// The top-level domain name.
 	SecurityToken *string `pulumi:"securityToken"`
-	// The origin information.
+	// The origin information. See `sources` below.
 	Sources []DomainSource `pulumi:"sources"`
 	// The private key. Specify this parameter only if you enable the SSL certificate.
 	SslPri *string `pulumi:"sslPri"`
@@ -203,7 +210,7 @@ type DomainState struct {
 	Scope pulumi.StringPtrInput
 	// The top-level domain name.
 	SecurityToken pulumi.StringPtrInput
-	// The origin information.
+	// The origin information. See `sources` below.
 	Sources DomainSourceArrayInput
 	// The private key. Specify this parameter only if you enable the SSL certificate.
 	SslPri pulumi.StringPtrInput
@@ -243,7 +250,7 @@ type domainArgs struct {
 	Scope *string `pulumi:"scope"`
 	// The top-level domain name.
 	SecurityToken *string `pulumi:"securityToken"`
-	// The origin information.
+	// The origin information. See `sources` below.
 	Sources []DomainSource `pulumi:"sources"`
 	// The private key. Specify this parameter only if you enable the SSL certificate.
 	SslPri *string `pulumi:"sslPri"`
@@ -280,7 +287,7 @@ type DomainArgs struct {
 	Scope pulumi.StringPtrInput
 	// The top-level domain name.
 	SecurityToken pulumi.StringPtrInput
-	// The origin information.
+	// The origin information. See `sources` below.
 	Sources DomainSourceArrayInput
 	// The private key. Specify this parameter only if you enable the SSL certificate.
 	SslPri pulumi.StringPtrInput
@@ -431,7 +438,7 @@ func (o DomainOutput) SecurityToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SecurityToken }).(pulumi.StringPtrOutput)
 }
 
-// The origin information.
+// The origin information. See `sources` below.
 func (o DomainOutput) Sources() DomainSourceArrayOutput {
 	return o.ApplyT(func(v *Domain) DomainSourceArrayOutput { return v.Sources }).(DomainSourceArrayOutput)
 }

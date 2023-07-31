@@ -29,7 +29,6 @@ class AccountPrivilegeArgs:
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-               
                Default to "ReadOnly".
         """
         pulumi.set(__self__, "account_name", account_name)
@@ -84,7 +83,6 @@ class AccountPrivilegeArgs:
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-
         Default to "ReadOnly".
         """
         return pulumi.get(self, "privilege")
@@ -112,7 +110,6 @@ class _AccountPrivilegeState:
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-               
                Default to "ReadOnly".
         """
         if account_name is not None:
@@ -170,7 +167,6 @@ class _AccountPrivilegeState:
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-
         Default to "ReadOnly".
         """
         return pulumi.get(self, "privilege")
@@ -191,9 +187,11 @@ class AccountPrivilege(pulumi.CustomResource):
                  privilege: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+        Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account, see [What is DB Account Privilege](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-grantaccountprivilege).
 
         > **NOTE:** At present, a database can only have one database owner.
+
+        > **NOTE:** Available since v1.5.0.
 
         ## Example Usage
 
@@ -202,13 +200,11 @@ class AccountPrivilege(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "dbaccountprivilegebasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+            name = "tf_example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
@@ -230,9 +226,10 @@ class AccountPrivilege(pulumi.CustomResource):
                 instance_id=instance.id,
                 description="from terraform"))
         account = alicloud.rds.Account("account",
-            instance_id=instance.id,
-            password="Test12345",
-            description="from terraform")
+            db_instance_id=instance.id,
+            account_name="tfexample",
+            account_password="Example12345",
+            account_description="from terraform")
         privilege = alicloud.rds.AccountPrivilege("privilege",
             instance_id=instance.id,
             account_name=account.name,
@@ -259,7 +256,6 @@ class AccountPrivilege(pulumi.CustomResource):
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-               
                Default to "ReadOnly".
         """
         ...
@@ -269,9 +265,11 @@ class AccountPrivilege(pulumi.CustomResource):
                  args: AccountPrivilegeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+        Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account, see [What is DB Account Privilege](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-grantaccountprivilege).
 
         > **NOTE:** At present, a database can only have one database owner.
+
+        > **NOTE:** Available since v1.5.0.
 
         ## Example Usage
 
@@ -280,13 +278,11 @@ class AccountPrivilege(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "dbaccountprivilegebasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+            name = "tf_example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
@@ -308,9 +304,10 @@ class AccountPrivilege(pulumi.CustomResource):
                 instance_id=instance.id,
                 description="from terraform"))
         account = alicloud.rds.Account("account",
-            instance_id=instance.id,
-            password="Test12345",
-            description="from terraform")
+            db_instance_id=instance.id,
+            account_name="tfexample",
+            account_password="Example12345",
+            account_description="from terraform")
         privilege = alicloud.rds.AccountPrivilege("privilege",
             instance_id=instance.id,
             account_name=account.name,
@@ -394,7 +391,6 @@ class AccountPrivilege(pulumi.CustomResource):
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-               
                Default to "ReadOnly".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -441,7 +437,6 @@ class AccountPrivilege(pulumi.CustomResource):
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-
         Default to "ReadOnly".
         """
         return pulumi.get(self, "privilege")

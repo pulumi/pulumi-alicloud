@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class KubernetesTaintGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
+        /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
+        /// <summary>
+        /// The key of a taint.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// The key of a taint.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

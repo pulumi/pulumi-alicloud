@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
         /// </summary>
         public readonly int? Interval;
         /// <summary>
-        /// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+        /// Response code statistics. See `status` below.
         /// </summary>
         public readonly Outputs.WafRuleRateLimitStatus? Status;
         /// <summary>
-        /// The match subfield.
+        /// The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
         /// </summary>
         public readonly string? SubKey;
         /// <summary>

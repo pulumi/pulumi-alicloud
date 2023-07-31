@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.oss;
 
+import com.pulumi.alicloud.oss.inputs.BucketAccessMonitorArgs;
 import com.pulumi.alicloud.oss.inputs.BucketCorsRuleArgs;
 import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleArgs;
 import com.pulumi.alicloud.oss.inputs.BucketLoggingArgs;
@@ -28,6 +29,21 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     public static final BucketArgs Empty = new BucketArgs();
 
     /**
+     * A access monitor status of a bucket. See `access_monitor` below.
+     * 
+     */
+    @Import(name="accessMonitor")
+    private @Nullable Output<BucketAccessMonitorArgs> accessMonitor;
+
+    /**
+     * @return A access monitor status of a bucket. See `access_monitor` below.
+     * 
+     */
+    public Optional<Output<BucketAccessMonitorArgs>> accessMonitor() {
+        return Optional.ofNullable(this.accessMonitor);
+    }
+
+    /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
      * 
      */
@@ -50,14 +66,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+     * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
      * 
      */
     @Import(name="corsRules")
     private @Nullable Output<List<BucketCorsRuleArgs>> corsRules;
 
     /**
-     * @return A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+     * @return A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
      * 
      */
     public Optional<Output<List<BucketCorsRuleArgs>>> corsRules() {
@@ -80,14 +96,29 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+     * A boolean that indicates lifecycle rules allow prefix overlap.
+     * 
+     */
+    @Import(name="lifecycleRuleAllowSameActionOverlap")
+    private @Nullable Output<Boolean> lifecycleRuleAllowSameActionOverlap;
+
+    /**
+     * @return A boolean that indicates lifecycle rules allow prefix overlap.
+     * 
+     */
+    public Optional<Output<Boolean>> lifecycleRuleAllowSameActionOverlap() {
+        return Optional.ofNullable(this.lifecycleRuleAllowSameActionOverlap);
+    }
+
+    /**
+     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
      * 
      */
     @Import(name="lifecycleRules")
     private @Nullable Output<List<BucketLifecycleRuleArgs>> lifecycleRules;
 
     /**
-     * @return A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+     * @return A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
      * 
      */
     public Optional<Output<List<BucketLifecycleRuleArgs>>> lifecycleRules() {
@@ -95,14 +126,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
      * 
      */
     @Import(name="logging")
     private @Nullable Output<BucketLoggingArgs> logging;
 
     /**
-     * @return A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+     * @return A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
      * 
      */
     public Optional<Output<BucketLoggingArgs>> logging() {
@@ -163,14 +194,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
      * 
      */
     @Import(name="refererConfig")
     private @Nullable Output<BucketRefererConfigArgs> refererConfig;
 
     /**
-     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
      * 
      */
     public Optional<Output<BucketRefererConfigArgs>> refererConfig() {
@@ -178,14 +209,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration of server-side encryption (documented below).
+     * A configuration of server-side encryption. See `server_side_encryption_rule` below.
      * 
      */
     @Import(name="serverSideEncryptionRule")
     private @Nullable Output<BucketServerSideEncryptionRuleArgs> serverSideEncryptionRule;
 
     /**
-     * @return A configuration of server-side encryption (documented below).
+     * @return A configuration of server-side encryption. See `server_side_encryption_rule` below.
      * 
      */
     public Optional<Output<BucketServerSideEncryptionRuleArgs>> serverSideEncryptionRule() {
@@ -193,14 +224,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
      * 
      */
     @Import(name="storageClass")
     private @Nullable Output<String> storageClass;
 
     /**
-     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
      * 
      */
     public Optional<Output<String>> storageClass() {
@@ -223,14 +254,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A transfer acceleration status of a bucket (documented below).
+     * A transfer acceleration status of a bucket. See `transfer_acceleration` below.
      * 
      */
     @Import(name="transferAcceleration")
     private @Nullable Output<BucketTransferAccelerationArgs> transferAcceleration;
 
     /**
-     * @return A transfer acceleration status of a bucket (documented below).
+     * @return A transfer acceleration status of a bucket. See `transfer_acceleration` below.
      * 
      */
     public Optional<Output<BucketTransferAccelerationArgs>> transferAcceleration() {
@@ -238,14 +269,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A state of versioning (documented below).
+     * A state of versioning. See `versioning` below.
      * 
      */
     @Import(name="versioning")
     private @Nullable Output<BucketVersioningArgs> versioning;
 
     /**
-     * @return A state of versioning (documented below).
+     * @return A state of versioning. See `versioning` below.
      * 
      */
     public Optional<Output<BucketVersioningArgs>> versioning() {
@@ -253,14 +284,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A website object(documented below).
+     * A website configuration. See `website` below.
      * 
      */
     @Import(name="website")
     private @Nullable Output<BucketWebsiteArgs> website;
 
     /**
-     * @return A website object(documented below).
+     * @return A website configuration. See `website` below.
      * 
      */
     public Optional<Output<BucketWebsiteArgs>> website() {
@@ -270,10 +301,12 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     private BucketArgs() {}
 
     private BucketArgs(BucketArgs $) {
+        this.accessMonitor = $.accessMonitor;
         this.acl = $.acl;
         this.bucket = $.bucket;
         this.corsRules = $.corsRules;
         this.forceDestroy = $.forceDestroy;
+        this.lifecycleRuleAllowSameActionOverlap = $.lifecycleRuleAllowSameActionOverlap;
         this.lifecycleRules = $.lifecycleRules;
         this.logging = $.logging;
         this.loggingIsenable = $.loggingIsenable;
@@ -307,6 +340,27 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param accessMonitor A access monitor status of a bucket. See `access_monitor` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMonitor(@Nullable Output<BucketAccessMonitorArgs> accessMonitor) {
+            $.accessMonitor = accessMonitor;
+            return this;
+        }
+
+        /**
+         * @param accessMonitor A access monitor status of a bucket. See `access_monitor` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMonitor(BucketAccessMonitorArgs accessMonitor) {
+            return accessMonitor(Output.of(accessMonitor));
+        }
+
+        /**
          * @param acl The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
          * 
          * @return builder
@@ -337,7 +391,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param corsRules A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+         * @param corsRules A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
          * 
          * @return builder
          * 
@@ -348,7 +402,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param corsRules A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+         * @param corsRules A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
          * 
          * @return builder
          * 
@@ -358,7 +412,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param corsRules A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+         * @param corsRules A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
          * 
          * @return builder
          * 
@@ -389,7 +443,28 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+         * @param lifecycleRuleAllowSameActionOverlap A boolean that indicates lifecycle rules allow prefix overlap.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifecycleRuleAllowSameActionOverlap(@Nullable Output<Boolean> lifecycleRuleAllowSameActionOverlap) {
+            $.lifecycleRuleAllowSameActionOverlap = lifecycleRuleAllowSameActionOverlap;
+            return this;
+        }
+
+        /**
+         * @param lifecycleRuleAllowSameActionOverlap A boolean that indicates lifecycle rules allow prefix overlap.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifecycleRuleAllowSameActionOverlap(Boolean lifecycleRuleAllowSameActionOverlap) {
+            return lifecycleRuleAllowSameActionOverlap(Output.of(lifecycleRuleAllowSameActionOverlap));
+        }
+
+        /**
+         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
          * 
          * @return builder
          * 
@@ -400,7 +475,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
          * 
          * @return builder
          * 
@@ -410,7 +485,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+         * @param lifecycleRules A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
          * 
          * @return builder
          * 
@@ -420,7 +495,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logging A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+         * @param logging A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
          * 
          * @return builder
          * 
@@ -431,7 +506,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logging A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+         * @param logging A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
          * 
          * @return builder
          * 
@@ -512,7 +587,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
          * 
          * @return builder
          * 
@@ -523,7 +598,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
          * 
          * @return builder
          * 
@@ -533,7 +608,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverSideEncryptionRule A configuration of server-side encryption (documented below).
+         * @param serverSideEncryptionRule A configuration of server-side encryption. See `server_side_encryption_rule` below.
          * 
          * @return builder
          * 
@@ -544,7 +619,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverSideEncryptionRule A configuration of server-side encryption (documented below).
+         * @param serverSideEncryptionRule A configuration of server-side encryption. See `server_side_encryption_rule` below.
          * 
          * @return builder
          * 
@@ -554,7 +629,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
          * 
          * @return builder
          * 
@@ -565,7 +640,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
          * 
          * @return builder
          * 
@@ -596,7 +671,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transferAcceleration A transfer acceleration status of a bucket (documented below).
+         * @param transferAcceleration A transfer acceleration status of a bucket. See `transfer_acceleration` below.
          * 
          * @return builder
          * 
@@ -607,7 +682,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transferAcceleration A transfer acceleration status of a bucket (documented below).
+         * @param transferAcceleration A transfer acceleration status of a bucket. See `transfer_acceleration` below.
          * 
          * @return builder
          * 
@@ -617,7 +692,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versioning A state of versioning (documented below).
+         * @param versioning A state of versioning. See `versioning` below.
          * 
          * @return builder
          * 
@@ -628,7 +703,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versioning A state of versioning (documented below).
+         * @param versioning A state of versioning. See `versioning` below.
          * 
          * @return builder
          * 
@@ -638,7 +713,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param website A website object(documented below).
+         * @param website A website configuration. See `website` below.
          * 
          * @return builder
          * 
@@ -649,7 +724,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param website A website object(documented below).
+         * @param website A website configuration. See `website` below.
          * 
          * @return builder
          * 

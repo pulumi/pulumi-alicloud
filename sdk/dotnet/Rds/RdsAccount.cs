@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Rds
     /// <summary>
     /// Provides a RDS Account resource.
     /// 
-    /// For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/26263.htm).
+    /// For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createaccount).
     /// 
-    /// &gt; **NOTE:** Available in v1.120.0+.
+    /// &gt; **NOTE:** Available since v1.120.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,11 +29,18 @@ namespace Pulumi.AliCloud.Rds
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "Rds";
-    ///     var name = config.Get("name") ?? "dbaccountmysql";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///     });
+    /// 
+    ///     var defaultInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
@@ -46,25 +53,25 @@ namespace Pulumi.AliCloud.Rds
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
-    ///         InstanceType = "rds.mysql.s1.small",
+    ///         InstanceType = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
     ///         InstanceStorage = 10,
     ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var account = new AliCloud.Rds.RdsAccount("account", new()
+    ///     var defaultRdsAccount = new AliCloud.Rds.RdsAccount("defaultRdsAccount", new()
     ///     {
-    ///         DbInstanceId = instance.Id,
-    ///         AccountName = "tftestnormal12",
-    ///         AccountPassword = "Test12345",
+    ///         DbInstanceId = defaultInstance.Id,
+    ///         AccountName = name,
+    ///         AccountPassword = "Example1234",
     ///     });
     /// 
     /// });

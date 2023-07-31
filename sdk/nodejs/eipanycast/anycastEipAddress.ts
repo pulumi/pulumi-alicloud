@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
  *
- * For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/).
+ * For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
  *
- * > **NOTE:** Available since v1.208.0.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *
@@ -28,20 +28,6 @@ import * as utilities from "../utilities";
  *     serviceLocation: "international",
  *     internetChargeType: "PayByTraffic",
  *     paymentType: "PayAsYouGo",
- *     tags: [
- *         {
- *             tagKey: "k1",
- *             tagValue: "v1",
- *         },
- *         {
- *             tagKey: "k2",
- *             tagValue: "v2",
- *         },
- *         {
- *             tagKey: "k3",
- *             tagValue: "v3",
- *         },
- *     ],
  * });
  * ```
  *
@@ -106,6 +92,10 @@ export class AnycastEipAddress extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the resource group to which the instance belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
      */
     public readonly serviceLocation!: pulumi.Output<string>;
@@ -137,6 +127,7 @@ export class AnycastEipAddress extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["serviceLocation"] = state ? state.serviceLocation : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -150,6 +141,7 @@ export class AnycastEipAddress extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["serviceLocation"] = args ? args.serviceLocation : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -189,6 +181,10 @@ export interface AnycastEipAddressState {
      */
     paymentType?: pulumi.Input<string>;
     /**
+     * The ID of the resource group to which the instance belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
      */
     serviceLocation?: pulumi.Input<string>;
@@ -226,6 +222,10 @@ export interface AnycastEipAddressArgs {
      * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group to which the instance belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
      */

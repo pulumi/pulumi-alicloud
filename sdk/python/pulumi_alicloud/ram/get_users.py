@@ -136,6 +136,8 @@ def get_users(group_name: Optional[str] = None,
     """
     This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
 
+    > **NOTE:** Available since v1.0.0+.
+
     ## Example Usage
 
     ```python
@@ -190,6 +192,8 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
     """
     This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available since v1.0.0+.
 
     ## Example Usage
 

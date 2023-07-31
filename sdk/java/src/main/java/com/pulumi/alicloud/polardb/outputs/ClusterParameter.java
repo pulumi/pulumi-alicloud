@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterParameter {
+    /**
+     * @return Kernel parameter name.
+     * 
+     */
     private String name;
+    /**
+     * @return Kernel parameter value.
+     * 
+     */
     private String value;
 
     private ClusterParameter() {}
+    /**
+     * @return Kernel parameter name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Kernel parameter value.
+     * 
+     */
     public String value() {
         return this.value;
     }

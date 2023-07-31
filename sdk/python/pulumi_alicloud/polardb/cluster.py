@@ -32,6 +32,7 @@ class ClusterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
+                 from_time_service: Optional[pulumi.Input[str]] = None,
                  gdn_id: Optional[pulumi.Input[str]] = None,
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,8 @@ class ClusterArgs:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 planned_end_time: Optional[pulumi.Input[str]] = None,
+                 planned_start_time: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
@@ -57,6 +60,7 @@ class ClusterArgs:
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -66,19 +70,19 @@ class ClusterArgs:
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
-        :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
                > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
-        :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
+        :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
-        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
-        :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -87,6 +91,7 @@ class ClusterArgs:
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         :param pulumi.Input[str] encryption_key: The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        :param pulumi.Input[str] from_time_service: Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
         :param pulumi.Input[str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
@@ -95,10 +100,14 @@ class ClusterArgs:
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[str] planned_end_time: The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+               > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+               > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -118,7 +127,7 @@ class ClusterArgs:
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
                > **NOTE:** This parameter is valid only for serverless clusters.
-        :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
@@ -128,6 +137,7 @@ class ClusterArgs:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
@@ -162,6 +172,8 @@ class ClusterArgs:
             pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
+        if from_time_service is not None:
+            pulumi.set(__self__, "from_time_service", from_time_service)
         if gdn_id is not None:
             pulumi.set(__self__, "gdn_id", gdn_id)
         if hot_standby_cluster is not None:
@@ -178,6 +190,10 @@ class ClusterArgs:
             pulumi.set(__self__, "pay_type", pay_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if planned_end_time is not None:
+            pulumi.set(__self__, "planned_end_time", planned_end_time)
+        if planned_start_time is not None:
+            pulumi.set(__self__, "planned_start_time", planned_start_time)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
@@ -212,6 +228,8 @@ class ClusterArgs:
             pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if upgrade_type is not None:
+            pulumi.set(__self__, "upgrade_type", upgrade_type)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -249,7 +267,7 @@ class ClusterArgs:
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> pulumi.Input[str]:
         """
-        Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         """
         return pulumi.get(self, "db_version")
 
@@ -286,7 +304,7 @@ class ClusterArgs:
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
     def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[str]]:
         """
-        The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         """
         return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
@@ -298,7 +316,7 @@ class ClusterArgs:
     @pulumi.getter(name="cloneDataPoint")
     def clone_data_point(self) -> Optional[pulumi.Input[str]]:
         """
-        The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
         > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         """
         return pulumi.get(self, "clone_data_point")
@@ -323,7 +341,7 @@ class ClusterArgs:
     @pulumi.getter(name="creationCategory")
     def creation_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
         > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         """
         return pulumi.get(self, "creation_category")
@@ -336,7 +354,7 @@ class ClusterArgs:
     @pulumi.getter(name="creationOption")
     def creation_option(self) -> Optional[pulumi.Input[str]]:
         """
-        The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
         > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         """
         return pulumi.get(self, "creation_option")
@@ -349,7 +367,7 @@ class ClusterArgs:
     @pulumi.getter(name="dbClusterIpArrays")
     def db_cluster_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]:
         """
-        db_cluster_ip_array defines how users can send requests to your API.
+        db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         """
         return pulumi.get(self, "db_cluster_ip_arrays")
 
@@ -421,6 +439,18 @@ class ClusterArgs:
         pulumi.set(self, "encryption_key", value)
 
     @property
+    @pulumi.getter(name="fromTimeService")
+    def from_time_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+        """
+        return pulumi.get(self, "from_time_service")
+
+    @from_time_service.setter
+    def from_time_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_time_service", value)
+
+    @property
     @pulumi.getter(name="gdnId")
     def gdn_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -487,7 +517,7 @@ class ClusterArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -519,6 +549,32 @@ class ClusterArgs:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="plannedEndTime")
+    def planned_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        """
+        return pulumi.get(self, "planned_end_time")
+
+    @planned_end_time.setter
+    def planned_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "planned_end_time", value)
+
+    @property
+    @pulumi.getter(name="plannedStartTime")
+    def planned_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        """
+        return pulumi.get(self, "planned_start_time")
+
+    @planned_start_time.setter
+    def planned_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "planned_start_time", value)
 
     @property
     @pulumi.getter(name="renewalStatus")
@@ -664,7 +720,7 @@ class ClusterArgs:
     @pulumi.getter(name="sourceResourceId")
     def source_resource_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         """
         return pulumi.get(self, "source_resource_id")
 
@@ -737,6 +793,18 @@ class ClusterArgs:
         pulumi.set(self, "tde_status", value)
 
     @property
+    @pulumi.getter(name="upgradeType")
+    def upgrade_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
+        """
+        return pulumi.get(self, "upgrade_type")
+
+    @upgrade_type.setter
+    def upgrade_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upgrade_type", value)
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -795,6 +863,7 @@ class _ClusterState:
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
+                 from_time_service: Optional[pulumi.Input[str]] = None,
                  gdn_id: Optional[pulumi.Input[str]] = None,
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
@@ -803,6 +872,8 @@ class _ClusterState:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 planned_end_time: Optional[pulumi.Input[str]] = None,
+                 planned_start_time: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -823,6 +894,7 @@ class _ClusterState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_region: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -831,30 +903,31 @@ class _ClusterState:
         :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
                > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
-        :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
+        :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
-        :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string.
-        :param pulumi.Input[str] create_time: (Available in 1.204.1+) PolarDB cluster creation time.
-        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        :param pulumi.Input[str] connection_string: (Available since 1.81.0+) PolarDB cluster connection string.
+        :param pulumi.Input[str] create_time: (Available since 1.204.1+) PolarDB cluster creation time.
+        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
-        :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
-        :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         :param pulumi.Input[str] encryption_key: The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        :param pulumi.Input[str] from_time_service: Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
         :param pulumi.Input[str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
@@ -863,11 +936,15 @@ class _ClusterState:
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[str] port: (Available in 1.196.0+) PolarDB cluster connection port.
+        :param pulumi.Input[str] planned_end_time: The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+               > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+               > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        :param pulumi.Input[str] port: (Available since 1.196.0+) PolarDB cluster connection port.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -887,8 +964,8 @@ class _ClusterState:
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
                > **NOTE:** This parameter is valid only for serverless clusters.
-        :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
-        :param pulumi.Input[str] status: (Available in 1.204.1+) PolarDB cluster status.
+        :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
+        :param pulumi.Input[str] status: (Available since 1.204.1+) PolarDB cluster status.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
@@ -896,11 +973,12 @@ class _ClusterState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] tde_region: (Available in 1.200.0+) The region where the TDE key resides.
+        :param pulumi.Input[str] tde_region: (Available since 1.200.0+) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
@@ -942,6 +1020,8 @@ class _ClusterState:
             pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
+        if from_time_service is not None:
+            pulumi.set(__self__, "from_time_service", from_time_service)
         if gdn_id is not None:
             pulumi.set(__self__, "gdn_id", gdn_id)
         if hot_standby_cluster is not None:
@@ -958,6 +1038,10 @@ class _ClusterState:
             pulumi.set(__self__, "pay_type", pay_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if planned_end_time is not None:
+            pulumi.set(__self__, "planned_end_time", planned_end_time)
+        if planned_start_time is not None:
+            pulumi.set(__self__, "planned_start_time", planned_start_time)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if renewal_status is not None:
@@ -998,6 +1082,8 @@ class _ClusterState:
             pulumi.set(__self__, "tde_region", tde_region)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if upgrade_type is not None:
+            pulumi.set(__self__, "upgrade_type", upgrade_type)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -1034,7 +1120,7 @@ class _ClusterState:
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
     def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[str]]:
         """
-        The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         """
         return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
@@ -1046,7 +1132,7 @@ class _ClusterState:
     @pulumi.getter(name="cloneDataPoint")
     def clone_data_point(self) -> Optional[pulumi.Input[str]]:
         """
-        The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
         > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         """
         return pulumi.get(self, "clone_data_point")
@@ -1071,7 +1157,7 @@ class _ClusterState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.81.0+) PolarDB cluster connection string.
+        (Available since 1.81.0+) PolarDB cluster connection string.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1083,7 +1169,7 @@ class _ClusterState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.204.1+) PolarDB cluster creation time.
+        (Available since 1.204.1+) PolarDB cluster creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -1095,7 +1181,7 @@ class _ClusterState:
     @pulumi.getter(name="creationCategory")
     def creation_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
         > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         """
         return pulumi.get(self, "creation_category")
@@ -1108,7 +1194,7 @@ class _ClusterState:
     @pulumi.getter(name="creationOption")
     def creation_option(self) -> Optional[pulumi.Input[str]]:
         """
-        The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
         > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         """
         return pulumi.get(self, "creation_option")
@@ -1121,7 +1207,7 @@ class _ClusterState:
     @pulumi.getter(name="dbClusterIpArrays")
     def db_cluster_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]:
         """
-        db_cluster_ip_array defines how users can send requests to your API.
+        db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         """
         return pulumi.get(self, "db_cluster_ip_arrays")
 
@@ -1172,7 +1258,7 @@ class _ClusterState:
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         """
         return pulumi.get(self, "db_version")
 
@@ -1229,6 +1315,18 @@ class _ClusterState:
     @encryption_key.setter
     def encryption_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="fromTimeService")
+    def from_time_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+        """
+        return pulumi.get(self, "from_time_service")
+
+    @from_time_service.setter
+    def from_time_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_time_service", value)
 
     @property
     @pulumi.getter(name="gdnId")
@@ -1297,7 +1395,7 @@ class _ClusterState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -1331,10 +1429,36 @@ class _ClusterState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="plannedEndTime")
+    def planned_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        """
+        return pulumi.get(self, "planned_end_time")
+
+    @planned_end_time.setter
+    def planned_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "planned_end_time", value)
+
+    @property
+    @pulumi.getter(name="plannedStartTime")
+    def planned_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        """
+        return pulumi.get(self, "planned_start_time")
+
+    @planned_start_time.setter
+    def planned_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "planned_start_time", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.196.0+) PolarDB cluster connection port.
+        (Available since 1.196.0+) PolarDB cluster connection port.
         """
         return pulumi.get(self, "port")
 
@@ -1486,7 +1610,7 @@ class _ClusterState:
     @pulumi.getter(name="sourceResourceId")
     def source_resource_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         """
         return pulumi.get(self, "source_resource_id")
 
@@ -1498,7 +1622,7 @@ class _ClusterState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.204.1+) PolarDB cluster status.
+        (Available since 1.204.1+) PolarDB cluster status.
         """
         return pulumi.get(self, "status")
 
@@ -1561,7 +1685,7 @@ class _ClusterState:
     @pulumi.getter(name="tdeRegion")
     def tde_region(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.200.0+) The region where the TDE key resides.
+        (Available since 1.200.0+) The region where the TDE key resides.
         > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
         > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         """
@@ -1583,6 +1707,18 @@ class _ClusterState:
     @tde_status.setter
     def tde_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tde_status", value)
+
+    @property
+    @pulumi.getter(name="upgradeType")
+    def upgrade_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
+        """
+        return pulumi.get(self, "upgrade_type")
+
+    @upgrade_type.setter
+    def upgrade_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upgrade_type", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -1643,6 +1779,7 @@ class Cluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
+                 from_time_service: Optional[pulumi.Input[str]] = None,
                  gdn_id: Optional[pulumi.Input[str]] = None,
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
@@ -1651,6 +1788,8 @@ class Cluster(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 planned_end_time: Optional[pulumi.Input[str]] = None,
+                 planned_start_time: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
@@ -1668,57 +1807,12 @@ class Cluster(pulumi.CustomResource):
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a PolarDB cluster resource. A PolarDB cluster is an isolated database
-        environment in the cloud. A PolarDB cluster can contain multiple user-created
-        databases.
-
-        > **NOTE:** Available in v1.66.0+.
-
-        ## Example Usage
-        ### Create a PolarDB MySQL cluster
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name="terraform-example")
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description="terraform-example",
-            db_cluster_ip_arrays=[
-                alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                    db_cluster_ip_array_name="default",
-                    security_ips=[
-                        "1.2.3.4",
-                        "1.2.3.5",
-                    ],
-                ),
-                alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                    db_cluster_ip_array_name="default2",
-                    security_ips=["1.2.3.6"],
-                ),
-            ])
-        ```
-
         ## Import
 
         PolarDB cluster can be imported using the id, e.g.
@@ -1732,28 +1826,29 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
                > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
-        :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
+        :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
-        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
-        :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
-        :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         :param pulumi.Input[str] encryption_key: The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        :param pulumi.Input[str] from_time_service: Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
         :param pulumi.Input[str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
@@ -1762,10 +1857,14 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[str] planned_end_time: The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+               > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+               > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -1785,7 +1884,7 @@ class Cluster(pulumi.CustomResource):
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
                > **NOTE:** This parameter is valid only for serverless clusters.
-        :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
@@ -1795,6 +1894,7 @@ class Cluster(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
@@ -1807,52 +1907,6 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a PolarDB cluster resource. A PolarDB cluster is an isolated database
-        environment in the cloud. A PolarDB cluster can contain multiple user-created
-        databases.
-
-        > **NOTE:** Available in v1.66.0+.
-
-        ## Example Usage
-        ### Create a PolarDB MySQL cluster
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name="terraform-example")
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description="terraform-example",
-            db_cluster_ip_arrays=[
-                alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                    db_cluster_ip_array_name="default",
-                    security_ips=[
-                        "1.2.3.4",
-                        "1.2.3.5",
-                    ],
-                ),
-                alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                    db_cluster_ip_array_name="default2",
-                    security_ips=["1.2.3.6"],
-                ),
-            ])
-        ```
-
         ## Import
 
         PolarDB cluster can be imported using the id, e.g.
@@ -1892,6 +1946,7 @@ class Cluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
+                 from_time_service: Optional[pulumi.Input[str]] = None,
                  gdn_id: Optional[pulumi.Input[str]] = None,
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
@@ -1900,6 +1955,8 @@ class Cluster(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 planned_end_time: Optional[pulumi.Input[str]] = None,
+                 planned_start_time: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
@@ -1917,6 +1974,7 @@ class Cluster(pulumi.CustomResource):
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -1951,6 +2009,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
             __props__.__dict__["encryption_key"] = encryption_key
+            __props__.__dict__["from_time_service"] = from_time_service
             __props__.__dict__["gdn_id"] = gdn_id
             __props__.__dict__["hot_standby_cluster"] = hot_standby_cluster
             __props__.__dict__["imci_switch"] = imci_switch
@@ -1959,6 +2018,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["pay_type"] = pay_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["planned_end_time"] = planned_end_time
+            __props__.__dict__["planned_start_time"] = planned_start_time
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["role_arn"] = role_arn
@@ -1976,6 +2037,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["sub_category"] = sub_category
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tde_status"] = tde_status
+            __props__.__dict__["upgrade_type"] = upgrade_type
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
@@ -2012,6 +2074,7 @@ class Cluster(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             encrypt_new_tables: Optional[pulumi.Input[str]] = None,
             encryption_key: Optional[pulumi.Input[str]] = None,
+            from_time_service: Optional[pulumi.Input[str]] = None,
             gdn_id: Optional[pulumi.Input[str]] = None,
             hot_standby_cluster: Optional[pulumi.Input[str]] = None,
             imci_switch: Optional[pulumi.Input[str]] = None,
@@ -2020,6 +2083,8 @@ class Cluster(pulumi.CustomResource):
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
             pay_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            planned_end_time: Optional[pulumi.Input[str]] = None,
+            planned_start_time: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -2040,6 +2105,7 @@ class Cluster(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tde_region: Optional[pulumi.Input[str]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
+            upgrade_type: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
@@ -2053,30 +2119,31 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
                > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
-        :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
+        :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
-        :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string.
-        :param pulumi.Input[str] create_time: (Available in 1.204.1+) PolarDB cluster creation time.
-        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        :param pulumi.Input[str] connection_string: (Available since 1.81.0+) PolarDB cluster connection string.
+        :param pulumi.Input[str] create_time: (Available since 1.204.1+) PolarDB cluster creation time.
+        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
-        :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
-        :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         :param pulumi.Input[str] encryption_key: The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        :param pulumi.Input[str] from_time_service: Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
         :param pulumi.Input[str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
@@ -2085,11 +2152,15 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[str] port: (Available in 1.196.0+) PolarDB cluster connection port.
+        :param pulumi.Input[str] planned_end_time: The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+               > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+               > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        :param pulumi.Input[str] port: (Available since 1.196.0+) PolarDB cluster connection port.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -2109,8 +2180,8 @@ class Cluster(pulumi.CustomResource):
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
                > **NOTE:** This parameter is valid only for serverless clusters.
-        :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
-        :param pulumi.Input[str] status: (Available in 1.204.1+) PolarDB cluster status.
+        :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
+        :param pulumi.Input[str] status: (Available since 1.204.1+) PolarDB cluster status.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
@@ -2118,11 +2189,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] tde_region: (Available in 1.200.0+) The region where the TDE key resides.
+        :param pulumi.Input[str] tde_region: (Available since 1.200.0+) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
@@ -2150,6 +2222,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
         __props__.__dict__["encryption_key"] = encryption_key
+        __props__.__dict__["from_time_service"] = from_time_service
         __props__.__dict__["gdn_id"] = gdn_id
         __props__.__dict__["hot_standby_cluster"] = hot_standby_cluster
         __props__.__dict__["imci_switch"] = imci_switch
@@ -2158,6 +2231,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["pay_type"] = pay_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["planned_end_time"] = planned_end_time
+        __props__.__dict__["planned_start_time"] = planned_start_time
         __props__.__dict__["port"] = port
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -2178,6 +2253,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tde_region"] = tde_region
         __props__.__dict__["tde_status"] = tde_status
+        __props__.__dict__["upgrade_type"] = upgrade_type
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
@@ -2204,7 +2280,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
     def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Output[str]:
         """
-        The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         """
         return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
@@ -2212,7 +2288,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="cloneDataPoint")
     def clone_data_point(self) -> pulumi.Output[Optional[str]]:
         """
-        The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
         > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         """
         return pulumi.get(self, "clone_data_point")
@@ -2229,7 +2305,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[str]:
         """
-        (Available in 1.81.0+) PolarDB cluster connection string.
+        (Available since 1.81.0+) PolarDB cluster connection string.
         """
         return pulumi.get(self, "connection_string")
 
@@ -2237,7 +2313,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        (Available in 1.204.1+) PolarDB cluster creation time.
+        (Available since 1.204.1+) PolarDB cluster creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -2245,7 +2321,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="creationCategory")
     def creation_category(self) -> pulumi.Output[str]:
         """
-        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
         > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         """
         return pulumi.get(self, "creation_category")
@@ -2254,7 +2330,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="creationOption")
     def creation_option(self) -> pulumi.Output[str]:
         """
-        The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
         > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         """
         return pulumi.get(self, "creation_option")
@@ -2263,7 +2339,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterIpArrays")
     def db_cluster_ip_arrays(self) -> pulumi.Output[Sequence['outputs.ClusterDbClusterIpArray']]:
         """
-        db_cluster_ip_array defines how users can send requests to your API.
+        db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         """
         return pulumi.get(self, "db_cluster_ip_arrays")
 
@@ -2298,7 +2374,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> pulumi.Output[str]:
         """
-        Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         """
         return pulumi.get(self, "db_version")
 
@@ -2335,6 +2411,14 @@ class Cluster(pulumi.CustomResource):
         The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
         """
         return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="fromTimeService")
+    def from_time_service(self) -> pulumi.Output[Optional[str]]:
+        """
+        Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+        """
+        return pulumi.get(self, "from_time_service")
 
     @property
     @pulumi.getter(name="gdnId")
@@ -2383,7 +2467,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.ClusterParameter']]:
         """
-        Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -2405,10 +2489,28 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "period")
 
     @property
+    @pulumi.getter(name="plannedEndTime")
+    def planned_end_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        """
+        return pulumi.get(self, "planned_end_time")
+
+    @property
+    @pulumi.getter(name="plannedStartTime")
+    def planned_start_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        """
+        return pulumi.get(self, "planned_start_time")
+
+    @property
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
         """
-        (Available in 1.196.0+) PolarDB cluster connection port.
+        (Available since 1.196.0+) PolarDB cluster connection port.
         """
         return pulumi.get(self, "port")
 
@@ -2512,7 +2614,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="sourceResourceId")
     def source_resource_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         """
         return pulumi.get(self, "source_resource_id")
 
@@ -2520,7 +2622,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        (Available in 1.204.1+) PolarDB cluster status.
+        (Available since 1.204.1+) PolarDB cluster status.
         """
         return pulumi.get(self, "status")
 
@@ -2563,7 +2665,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="tdeRegion")
     def tde_region(self) -> pulumi.Output[str]:
         """
-        (Available in 1.200.0+) The region where the TDE key resides.
+        (Available since 1.200.0+) The region where the TDE key resides.
         > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
         > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         """
@@ -2577,6 +2679,14 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         """
         return pulumi.get(self, "tde_status")
+
+    @property
+    @pulumi.getter(name="upgradeType")
+    def upgrade_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
+        """
+        return pulumi.get(self, "upgrade_type")
 
     @property
     @pulumi.getter(name="vpcId")

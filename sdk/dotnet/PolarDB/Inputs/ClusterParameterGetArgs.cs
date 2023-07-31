@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.PolarDB.Inputs
 
     public sealed class ClusterParameterGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kernel parameter name.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Kernel parameter value.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

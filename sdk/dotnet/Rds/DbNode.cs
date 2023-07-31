@@ -10,8 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provide RDS cluster instance to increase node resources.
-    /// &gt; **NOTE:** Available in 1.202.0+.
+    /// Provide RDS cluster instance to increase node resources, see [What is RDS DB Node](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbnodes).
+    /// 
+    /// &gt; **NOTE:** Available since v1.202.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,7 +25,7 @@ namespace Pulumi.AliCloud.Rds
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testaccrdsdbnodes";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
@@ -36,7 +37,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     ///     var defaultInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
     ///     {
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         Category = "cluster",
@@ -44,35 +45,49 @@ namespace Pulumi.AliCloud.Rds
     ///         InstanceChargeType = "PostPaid",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "^default-NODELETING$",
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
-    ///         DbInstanceStorageType = "cloud_essd",
     ///         InstanceType = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
     ///         InstanceStorage = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///         ZoneIdSlaveA = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
-    ///     var node = new AliCloud.Rds.DbNode("node", new()
+    ///     var defaultDbNode = new AliCloud.Rds.DbNode("defaultDbNode", new()
     ///     {
     ///         DbInstanceId = defaultInstance.Id,
     ///         ClassCode = defaultInstance.InstanceType,
-    ///         ZoneId = defaultInstance.ZoneId,
+    ///         ZoneId = defaultSwitch.ZoneId,
     ///     });
     /// 
     /// });

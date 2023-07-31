@@ -7,8 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
- * > **NOTE:** Available since v1.193.0+.
+ * Information about RDS database exclusive agent and its usage, see [What is RDS DB Proxy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifydbproxy).
+ *
+ * > **NOTE:** Available since v1.193.0.
  *
  * ## Example Usage
  *
@@ -17,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Rds";
- * const name = config.get("name") || "dbInstancevpc";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: name,
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
  *     engine: "MySQL",
  *     engineVersion: "5.7",
@@ -43,12 +45,12 @@ import * as utilities from "../utilities";
  *     dbInstanceStorageType: "local_ssd",
  * });
  * const defaultReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance", {
- *     masterDbInstanceId: defaultInstance.id,
  *     zoneId: defaultInstance.zoneId,
+ *     masterDbInstanceId: defaultInstance.id,
  *     engineVersion: defaultInstance.engineVersion,
- *     instanceType: "rds.mysql.s3.large",
- *     instanceStorage: 20,
- *     instanceName: `${name}ro`,
+ *     instanceStorage: defaultInstance.instanceStorage,
+ *     instanceType: defaultInstance.instanceType,
+ *     instanceName: `${name}readonly`,
  *     vswitchId: defaultSwitch.id,
  * });
  * const defaultRdsDbProxy = new alicloud.rds.RdsDbProxy("defaultRdsDbProxy", {
@@ -57,7 +59,7 @@ import * as utilities from "../utilities";
  *     vpcId: defaultInstance.vpcId,
  *     vswitchId: defaultInstance.vswitchId,
  *     dbProxyInstanceNum: 2,
- *     dbProxyConnectionPrefix: "ttest001",
+ *     dbProxyConnectionPrefix: "example",
  *     dbProxyConnectStringPort: 3306,
  *     dbProxyEndpointReadWriteMode: "ReadWrite",
  *     readOnlyInstanceMaxDelayTime: 90,

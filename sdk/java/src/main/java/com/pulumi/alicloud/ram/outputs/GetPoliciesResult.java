@@ -40,6 +40,10 @@ public final class GetPoliciesResult {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return The user name of  policy.
+     * 
+     */
     private @Nullable String userName;
 
     private GetPoliciesResult() {}
@@ -89,6 +93,10 @@ public final class GetPoliciesResult {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return The user name of  policy.
+     * 
+     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }

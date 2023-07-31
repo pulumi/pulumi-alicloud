@@ -24,6 +24,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// The device of the data disks.
+        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 
@@ -33,11 +36,14 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("encrypted")]
         public Input<string>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The id of the kms key.
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// The name of the data disks.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -54,6 +60,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("size")]
         public Input<string>? Size { get; set; }
 
+        /// <summary>
+        /// The id of snapshot.
+        /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 

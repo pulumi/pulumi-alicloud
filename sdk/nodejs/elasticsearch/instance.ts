@@ -5,41 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Elasticsearch instance resource. It contains data nodes, dedicated master node(optional) and etc. It can be associated with private IP whitelists and kibana IP whitelist.
- *
- * > **NOTE:** Only one operation is supported in a request. So if `dataNodeSpec` and `dataNodeDiskSize` are both changed, system will respond error.
- *
- * > **NOTE:** At present, `version` can not be modified once instance has been created.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const instance = new alicloud.elasticsearch.Instance("instance", {
- *     clientNodeAmount: 2,
- *     clientNodeSpec: "elasticsearch.sn2ne.large",
- *     dataNodeAmount: 2,
- *     dataNodeDiskSize: 20,
- *     dataNodeDiskType: "cloud_ssd",
- *     dataNodeSpec: "elasticsearch.sn2ne.large",
- *     description: "description",
- *     instanceChargeType: "PostPaid",
- *     password: "Your password",
- *     protocol: "HTTPS",
- *     tags: {
- *         key1: "value1",
- *         key2: "value2",
- *     },
- *     version: "5.5.3_with_X-Pack",
- *     vswitchId: "some vswitch id",
- *     zoneCount: 2,
- * });
- * ```
- *
  * ## Import
  *
  * Elasticsearch can be imported using the id, e.g.
@@ -77,6 +42,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     */
+    public readonly autoRenewDuration!: pulumi.Output<number | undefined>;
+    /**
      * The Elasticsearch cluster's client node quantity, between 2 and 25.
      */
     public readonly clientNodeAmount!: pulumi.Output<number | undefined>;
@@ -92,6 +61,10 @@ export class Instance extends pulumi.CustomResource {
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      */
     public readonly dataNodeDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    /**
+     * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+     */
+    public readonly dataNodeDiskPerformanceLevel!: pulumi.Output<string | undefined>;
     /**
      * The single data node storage space.
      */
@@ -149,13 +122,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly kibanaWhitelists!: pulumi.Output<string[]>;
     /**
-     * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     */
+    public readonly masterNodeDiskType!: pulumi.Output<string | undefined>;
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      */
@@ -181,11 +158,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
-     * (Available in 1.197.0+) Instance connection public domain.
+     * Instance connection public domain.
      */
     public /*out*/ readonly publicDomain!: pulumi.Output<string>;
     /**
-     * (Available in 1.197.0+) Instance connection public port.
+     * Instance connection public port.
      */
     public /*out*/ readonly publicPort!: pulumi.Output<number>;
     /**
@@ -193,7 +170,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly publicWhitelists!: pulumi.Output<string[]>;
     /**
-     * The Id of resource group which the Elasticsearch instance belongs.
+     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     */
+    public readonly renewStatus!: pulumi.Output<string | undefined>;
+    /**
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     */
+    public readonly renewalDurationUnit!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of resource group which the Elasticsearch instance belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
@@ -205,9 +190,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource. 
-     * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+     * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -236,10 +219,12 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["autoRenewDuration"] = state ? state.autoRenewDuration : undefined;
             resourceInputs["clientNodeAmount"] = state ? state.clientNodeAmount : undefined;
             resourceInputs["clientNodeSpec"] = state ? state.clientNodeSpec : undefined;
             resourceInputs["dataNodeAmount"] = state ? state.dataNodeAmount : undefined;
             resourceInputs["dataNodeDiskEncrypted"] = state ? state.dataNodeDiskEncrypted : undefined;
+            resourceInputs["dataNodeDiskPerformanceLevel"] = state ? state.dataNodeDiskPerformanceLevel : undefined;
             resourceInputs["dataNodeDiskSize"] = state ? state.dataNodeDiskSize : undefined;
             resourceInputs["dataNodeDiskType"] = state ? state.dataNodeDiskType : undefined;
             resourceInputs["dataNodeSpec"] = state ? state.dataNodeSpec : undefined;
@@ -256,6 +241,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kibanaWhitelists"] = state ? state.kibanaWhitelists : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["masterNodeDiskType"] = state ? state.masterNodeDiskType : undefined;
             resourceInputs["masterNodeSpec"] = state ? state.masterNodeSpec : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
@@ -265,6 +251,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["publicDomain"] = state ? state.publicDomain : undefined;
             resourceInputs["publicPort"] = state ? state.publicPort : undefined;
             resourceInputs["publicWhitelists"] = state ? state.publicWhitelists : undefined;
+            resourceInputs["renewStatus"] = state ? state.renewStatus : undefined;
+            resourceInputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["settingConfig"] = state ? state.settingConfig : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -292,10 +280,12 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["autoRenewDuration"] = args ? args.autoRenewDuration : undefined;
             resourceInputs["clientNodeAmount"] = args ? args.clientNodeAmount : undefined;
             resourceInputs["clientNodeSpec"] = args ? args.clientNodeSpec : undefined;
             resourceInputs["dataNodeAmount"] = args ? args.dataNodeAmount : undefined;
             resourceInputs["dataNodeDiskEncrypted"] = args ? args.dataNodeDiskEncrypted : undefined;
+            resourceInputs["dataNodeDiskPerformanceLevel"] = args ? args.dataNodeDiskPerformanceLevel : undefined;
             resourceInputs["dataNodeDiskSize"] = args ? args.dataNodeDiskSize : undefined;
             resourceInputs["dataNodeDiskType"] = args ? args.dataNodeDiskType : undefined;
             resourceInputs["dataNodeSpec"] = args ? args.dataNodeSpec : undefined;
@@ -309,12 +299,15 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kibanaWhitelists"] = args ? args.kibanaWhitelists : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["masterNodeDiskType"] = args ? args.masterNodeDiskType : undefined;
             resourceInputs["masterNodeSpec"] = args ? args.masterNodeSpec : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["privateWhitelists"] = args ? args.privateWhitelists : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["publicWhitelists"] = args ? args.publicWhitelists : undefined;
+            resourceInputs["renewStatus"] = args ? args.renewStatus : undefined;
+            resourceInputs["renewalDurationUnit"] = args ? args.renewalDurationUnit : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["settingConfig"] = args ? args.settingConfig : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -341,6 +334,10 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
+     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     */
+    autoRenewDuration?: pulumi.Input<number>;
+    /**
      * The Elasticsearch cluster's client node quantity, between 2 and 25.
      */
     clientNodeAmount?: pulumi.Input<number>;
@@ -356,6 +353,10 @@ export interface InstanceState {
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      */
     dataNodeDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+     */
+    dataNodeDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The single data node storage space.
      */
@@ -413,13 +414,17 @@ export interface InstanceState {
      */
     kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     */
+    masterNodeDiskType?: pulumi.Input<string>;
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      */
@@ -445,11 +450,11 @@ export interface InstanceState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * (Available in 1.197.0+) Instance connection public domain.
+     * Instance connection public domain.
      */
     publicDomain?: pulumi.Input<string>;
     /**
-     * (Available in 1.197.0+) Instance connection public port.
+     * Instance connection public port.
      */
     publicPort?: pulumi.Input<number>;
     /**
@@ -457,7 +462,15 @@ export interface InstanceState {
      */
     publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Id of resource group which the Elasticsearch instance belongs.
+     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     */
+    renewStatus?: pulumi.Input<string>;
+    /**
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     */
+    renewalDurationUnit?: pulumi.Input<string>;
+    /**
+     * The ID of resource group which the Elasticsearch instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -469,9 +482,7 @@ export interface InstanceState {
      */
     status?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource. 
-     * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -493,6 +504,10 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
+     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     */
+    autoRenewDuration?: pulumi.Input<number>;
+    /**
      * The Elasticsearch cluster's client node quantity, between 2 and 25.
      */
     clientNodeAmount?: pulumi.Input<number>;
@@ -508,6 +523,10 @@ export interface InstanceArgs {
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      */
     dataNodeDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+     */
+    dataNodeDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The single data node storage space.
      */
@@ -553,13 +572,17 @@ export interface InstanceArgs {
      */
     kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     */
+    masterNodeDiskType?: pulumi.Input<string>;
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      */
@@ -585,7 +608,15 @@ export interface InstanceArgs {
      */
     publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Id of resource group which the Elasticsearch instance belongs.
+     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     */
+    renewStatus?: pulumi.Input<string>;
+    /**
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     */
+    renewalDurationUnit?: pulumi.Input<string>;
+    /**
+     * The ID of resource group which the Elasticsearch instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -593,9 +624,7 @@ export interface InstanceArgs {
      */
     settingConfig?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A mapping of tags to assign to the resource. 
-     * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

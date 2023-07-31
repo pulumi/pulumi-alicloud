@@ -12,8 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
-// > **NOTE:** Available since v1.193.0+.
+// Information about RDS database exclusive agent and its usage, see [What is RDS DB Proxy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifydbproxy).
+//
+// > **NOTE:** Available since v1.193.0.
 //
 // ## Example Usage
 //
@@ -24,7 +25,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -35,16 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			creation := "Rds"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "dbInstancevpc"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:        pulumi.StringRef("MySQL"),
+//				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -65,6 +63,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("5.7"),
@@ -79,12 +83,12 @@ import (
 //				return err
 //			}
 //			defaultReadOnlyInstance, err := rds.NewReadOnlyInstance(ctx, "defaultReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
-//				MasterDbInstanceId: defaultInstance.ID(),
 //				ZoneId:             defaultInstance.ZoneId,
+//				MasterDbInstanceId: defaultInstance.ID(),
 //				EngineVersion:      defaultInstance.EngineVersion,
-//				InstanceType:       pulumi.String("rds.mysql.s3.large"),
-//				InstanceStorage:    pulumi.Int(20),
-//				InstanceName:       pulumi.String(fmt.Sprintf("%vro", name)),
+//				InstanceStorage:    defaultInstance.InstanceStorage,
+//				InstanceType:       defaultInstance.InstanceType,
+//				InstanceName:       pulumi.String(fmt.Sprintf("%vreadonly", name)),
 //				VswitchId:          defaultSwitch.ID(),
 //			})
 //			if err != nil {
@@ -96,7 +100,7 @@ import (
 //				VpcId:                            defaultInstance.VpcId,
 //				VswitchId:                        defaultInstance.VswitchId,
 //				DbProxyInstanceNum:               pulumi.Int(2),
-//				DbProxyConnectionPrefix:          pulumi.String("ttest001"),
+//				DbProxyConnectionPrefix:          pulumi.String("example"),
 //				DbProxyConnectStringPort:         pulumi.Int(3306),
 //				DbProxyEndpointReadWriteMode:     pulumi.String("ReadWrite"),
 //				ReadOnlyInstanceMaxDelayTime:     pulumi.Int(90),

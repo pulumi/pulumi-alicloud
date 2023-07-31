@@ -20,9 +20,11 @@ class InstanceArgs:
                  data_node_spec: pulumi.Input[str],
                  version: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  client_node_amount: Optional[pulumi.Input[int]] = None,
                  client_node_spec: Optional[pulumi.Input[str]] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 data_node_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_kibana_private_network: Optional[pulumi.Input[bool]] = None,
                  enable_kibana_public_network: Optional[pulumi.Input[bool]] = None,
@@ -33,12 +35,15 @@ class InstanceArgs:
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_node_disk_type: Optional[pulumi.Input[str]] = None,
                  master_node_spec: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 renew_status: Optional[pulumi.Input[str]] = None,
+                 renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -51,9 +56,11 @@ class InstanceArgs:
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
+        :param pulumi.Input[int] auto_renew_duration: Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
         :param pulumi.Input[int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
         :param pulumi.Input[str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        :param pulumi.Input[str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[str] description: The description of instance. It a string of 0 to 30 characters.
         :param pulumi.Input[bool] enable_kibana_private_network: Bool, default to false. When it set to true, the instance can close kibana private network access。
         :param pulumi.Input[bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
@@ -62,19 +69,20 @@ class InstanceArgs:
         :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
+        :param pulumi.Input[str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
-               - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-               - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
         pulumi.set(__self__, "data_node_amount", data_node_amount)
@@ -83,12 +91,16 @@ class InstanceArgs:
         pulumi.set(__self__, "data_node_spec", data_node_spec)
         pulumi.set(__self__, "version", version)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if auto_renew_duration is not None:
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if client_node_amount is not None:
             pulumi.set(__self__, "client_node_amount", client_node_amount)
         if client_node_spec is not None:
             pulumi.set(__self__, "client_node_spec", client_node_spec)
         if data_node_disk_encrypted is not None:
             pulumi.set(__self__, "data_node_disk_encrypted", data_node_disk_encrypted)
+        if data_node_disk_performance_level is not None:
+            pulumi.set(__self__, "data_node_disk_performance_level", data_node_disk_performance_level)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_kibana_private_network is not None:
@@ -109,6 +121,8 @@ class InstanceArgs:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if master_node_disk_type is not None:
+            pulumi.set(__self__, "master_node_disk_type", master_node_disk_type)
         if master_node_spec is not None:
             pulumi.set(__self__, "master_node_spec", master_node_spec)
         if password is not None:
@@ -121,6 +135,10 @@ class InstanceArgs:
             pulumi.set(__self__, "protocol", protocol)
         if public_whitelists is not None:
             pulumi.set(__self__, "public_whitelists", public_whitelists)
+        if renew_status is not None:
+            pulumi.set(__self__, "renew_status", renew_status)
+        if renewal_duration_unit is not None:
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if setting_config is not None:
@@ -203,6 +221,18 @@ class InstanceArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        """
+        return pulumi.get(self, "auto_renew_duration")
+
+    @auto_renew_duration.setter
+    def auto_renew_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_duration", value)
+
+    @property
     @pulumi.getter(name="clientNodeAmount")
     def client_node_amount(self) -> Optional[pulumi.Input[int]]:
         """
@@ -237,6 +267,18 @@ class InstanceArgs:
     @data_node_disk_encrypted.setter
     def data_node_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "data_node_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="dataNodeDiskPerformanceLevel")
+    def data_node_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+        """
+        return pulumi.get(self, "data_node_disk_performance_level")
+
+    @data_node_disk_performance_level.setter
+    def data_node_disk_performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_node_disk_performance_level", value)
 
     @property
     @pulumi.getter
@@ -338,7 +380,7 @@ class InstanceArgs:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
         """
-        An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -357,6 +399,18 @@ class InstanceArgs:
     @kms_encryption_context.setter
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter(name="masterNodeDiskType")
+    def master_node_disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+        """
+        return pulumi.get(self, "master_node_disk_type")
+
+    @master_node_disk_type.setter
+    def master_node_disk_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_node_disk_type", value)
 
     @property
     @pulumi.getter(name="masterNodeSpec")
@@ -431,10 +485,34 @@ class InstanceArgs:
         pulumi.set(self, "public_whitelists", value)
 
     @property
+    @pulumi.getter(name="renewStatus")
+    def renew_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        """
+        return pulumi.get(self, "renew_status")
+
+    @renew_status.setter
+    def renew_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renew_status", value)
+
+    @property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        """
+        return pulumi.get(self, "renewal_duration_unit")
+
+    @renewal_duration_unit.setter
+    def renewal_duration_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_duration_unit", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the Elasticsearch instance belongs.
+        The ID of resource group which the Elasticsearch instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -458,9 +536,7 @@ class InstanceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource. 
-        - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-        - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -484,10 +560,12 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  client_node_amount: Optional[pulumi.Input[int]] = None,
                  client_node_spec: Optional[pulumi.Input[str]] = None,
                  data_node_amount: Optional[pulumi.Input[int]] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 data_node_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  data_node_disk_size: Optional[pulumi.Input[int]] = None,
                  data_node_disk_type: Optional[pulumi.Input[str]] = None,
                  data_node_spec: Optional[pulumi.Input[str]] = None,
@@ -504,6 +582,7 @@ class _InstanceState:
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_node_disk_type: Optional[pulumi.Input[str]] = None,
                  master_node_spec: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -513,6 +592,8 @@ class _InstanceState:
                  public_domain: Optional[pulumi.Input[str]] = None,
                  public_port: Optional[pulumi.Input[int]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 renew_status: Optional[pulumi.Input[str]] = None,
+                 renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -522,10 +603,12 @@ class _InstanceState:
                  zone_count: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[int] auto_renew_duration: Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
         :param pulumi.Input[int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
         :param pulumi.Input[str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        :param pulumi.Input[str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
@@ -540,27 +623,30 @@ class _InstanceState:
         :param pulumi.Input[int] kibana_port: Kibana console port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
-        :param pulumi.Input[str] public_domain: (Available in 1.197.0+) Instance connection public domain.
-        :param pulumi.Input[int] public_port: (Available in 1.197.0+) Instance connection public port.
+        :param pulumi.Input[str] public_domain: Instance connection public domain.
+        :param pulumi.Input[int] public_port: Instance connection public port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
+        :param pulumi.Input[str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
-               - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-               - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
+        if auto_renew_duration is not None:
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if client_node_amount is not None:
             pulumi.set(__self__, "client_node_amount", client_node_amount)
         if client_node_spec is not None:
@@ -569,6 +655,8 @@ class _InstanceState:
             pulumi.set(__self__, "data_node_amount", data_node_amount)
         if data_node_disk_encrypted is not None:
             pulumi.set(__self__, "data_node_disk_encrypted", data_node_disk_encrypted)
+        if data_node_disk_performance_level is not None:
+            pulumi.set(__self__, "data_node_disk_performance_level", data_node_disk_performance_level)
         if data_node_disk_size is not None:
             pulumi.set(__self__, "data_node_disk_size", data_node_disk_size)
         if data_node_disk_type is not None:
@@ -601,6 +689,8 @@ class _InstanceState:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if master_node_disk_type is not None:
+            pulumi.set(__self__, "master_node_disk_type", master_node_disk_type)
         if master_node_spec is not None:
             pulumi.set(__self__, "master_node_spec", master_node_spec)
         if password is not None:
@@ -619,6 +709,10 @@ class _InstanceState:
             pulumi.set(__self__, "public_port", public_port)
         if public_whitelists is not None:
             pulumi.set(__self__, "public_whitelists", public_whitelists)
+        if renew_status is not None:
+            pulumi.set(__self__, "renew_status", renew_status)
+        if renewal_duration_unit is not None:
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if setting_config is not None:
@@ -633,6 +727,18 @@ class _InstanceState:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_count is not None:
             pulumi.set(__self__, "zone_count", zone_count)
+
+    @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        """
+        return pulumi.get(self, "auto_renew_duration")
+
+    @auto_renew_duration.setter
+    def auto_renew_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_duration", value)
 
     @property
     @pulumi.getter(name="clientNodeAmount")
@@ -681,6 +787,18 @@ class _InstanceState:
     @data_node_disk_encrypted.setter
     def data_node_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "data_node_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="dataNodeDiskPerformanceLevel")
+    def data_node_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+        """
+        return pulumi.get(self, "data_node_disk_performance_level")
+
+    @data_node_disk_performance_level.setter
+    def data_node_disk_performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_node_disk_performance_level", value)
 
     @property
     @pulumi.getter(name="dataNodeDiskSize")
@@ -854,7 +972,7 @@ class _InstanceState:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
         """
-        An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -873,6 +991,18 @@ class _InstanceState:
     @kms_encryption_context.setter
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter(name="masterNodeDiskType")
+    def master_node_disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+        """
+        return pulumi.get(self, "master_node_disk_type")
+
+    @master_node_disk_type.setter
+    def master_node_disk_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_node_disk_type", value)
 
     @property
     @pulumi.getter(name="masterNodeSpec")
@@ -950,7 +1080,7 @@ class _InstanceState:
     @pulumi.getter(name="publicDomain")
     def public_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.197.0+) Instance connection public domain.
+        Instance connection public domain.
         """
         return pulumi.get(self, "public_domain")
 
@@ -962,7 +1092,7 @@ class _InstanceState:
     @pulumi.getter(name="publicPort")
     def public_port(self) -> Optional[pulumi.Input[int]]:
         """
-        (Available in 1.197.0+) Instance connection public port.
+        Instance connection public port.
         """
         return pulumi.get(self, "public_port")
 
@@ -983,10 +1113,34 @@ class _InstanceState:
         pulumi.set(self, "public_whitelists", value)
 
     @property
+    @pulumi.getter(name="renewStatus")
+    def renew_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        """
+        return pulumi.get(self, "renew_status")
+
+    @renew_status.setter
+    def renew_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renew_status", value)
+
+    @property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        """
+        return pulumi.get(self, "renewal_duration_unit")
+
+    @renewal_duration_unit.setter
+    def renewal_duration_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_duration_unit", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the Elasticsearch instance belongs.
+        The ID of resource group which the Elasticsearch instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1022,9 +1176,7 @@ class _InstanceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource. 
-        - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-        - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -1074,10 +1226,12 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  client_node_amount: Optional[pulumi.Input[int]] = None,
                  client_node_spec: Optional[pulumi.Input[str]] = None,
                  data_node_amount: Optional[pulumi.Input[int]] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 data_node_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  data_node_disk_size: Optional[pulumi.Input[int]] = None,
                  data_node_disk_type: Optional[pulumi.Input[str]] = None,
                  data_node_spec: Optional[pulumi.Input[str]] = None,
@@ -1091,12 +1245,15 @@ class Instance(pulumi.CustomResource):
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_node_disk_type: Optional[pulumi.Input[str]] = None,
                  master_node_spec: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 renew_status: Optional[pulumi.Input[str]] = None,
+                 renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1105,40 +1262,6 @@ class Instance(pulumi.CustomResource):
                  zone_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides a Elasticsearch instance resource. It contains data nodes, dedicated master node(optional) and etc. It can be associated with private IP whitelists and kibana IP whitelist.
-
-        > **NOTE:** Only one operation is supported in a request. So if `data_node_spec` and `data_node_disk_size` are both changed, system will respond error.
-
-        > **NOTE:** At present, `version` can not be modified once instance has been created.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        instance = alicloud.elasticsearch.Instance("instance",
-            client_node_amount=2,
-            client_node_spec="elasticsearch.sn2ne.large",
-            data_node_amount=2,
-            data_node_disk_size=20,
-            data_node_disk_type="cloud_ssd",
-            data_node_spec="elasticsearch.sn2ne.large",
-            description="description",
-            instance_charge_type="PostPaid",
-            password="Your password",
-            protocol="HTTPS",
-            tags={
-                "key1": "value1",
-                "key2": "value2",
-            },
-            version="5.5.3_with_X-Pack",
-            vswitch_id="some vswitch id",
-            zone_count=2)
-        ```
-
         ## Import
 
         Elasticsearch can be imported using the id, e.g.
@@ -1149,10 +1272,12 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] auto_renew_duration: Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
         :param pulumi.Input[int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
         :param pulumi.Input[str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        :param pulumi.Input[str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
@@ -1164,19 +1289,20 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
+        :param pulumi.Input[str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
-               - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-               - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
@@ -1188,40 +1314,6 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Elasticsearch instance resource. It contains data nodes, dedicated master node(optional) and etc. It can be associated with private IP whitelists and kibana IP whitelist.
-
-        > **NOTE:** Only one operation is supported in a request. So if `data_node_spec` and `data_node_disk_size` are both changed, system will respond error.
-
-        > **NOTE:** At present, `version` can not be modified once instance has been created.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        instance = alicloud.elasticsearch.Instance("instance",
-            client_node_amount=2,
-            client_node_spec="elasticsearch.sn2ne.large",
-            data_node_amount=2,
-            data_node_disk_size=20,
-            data_node_disk_type="cloud_ssd",
-            data_node_spec="elasticsearch.sn2ne.large",
-            description="description",
-            instance_charge_type="PostPaid",
-            password="Your password",
-            protocol="HTTPS",
-            tags={
-                "key1": "value1",
-                "key2": "value2",
-            },
-            version="5.5.3_with_X-Pack",
-            vswitch_id="some vswitch id",
-            zone_count=2)
-        ```
-
         ## Import
 
         Elasticsearch can be imported using the id, e.g.
@@ -1245,10 +1337,12 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  client_node_amount: Optional[pulumi.Input[int]] = None,
                  client_node_spec: Optional[pulumi.Input[str]] = None,
                  data_node_amount: Optional[pulumi.Input[int]] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 data_node_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  data_node_disk_size: Optional[pulumi.Input[int]] = None,
                  data_node_disk_type: Optional[pulumi.Input[str]] = None,
                  data_node_spec: Optional[pulumi.Input[str]] = None,
@@ -1262,12 +1356,15 @@ class Instance(pulumi.CustomResource):
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_node_disk_type: Optional[pulumi.Input[str]] = None,
                  master_node_spec: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 renew_status: Optional[pulumi.Input[str]] = None,
+                 renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1283,12 +1380,14 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["auto_renew_duration"] = auto_renew_duration
             __props__.__dict__["client_node_amount"] = client_node_amount
             __props__.__dict__["client_node_spec"] = client_node_spec
             if data_node_amount is None and not opts.urn:
                 raise TypeError("Missing required property 'data_node_amount'")
             __props__.__dict__["data_node_amount"] = data_node_amount
             __props__.__dict__["data_node_disk_encrypted"] = data_node_disk_encrypted
+            __props__.__dict__["data_node_disk_performance_level"] = data_node_disk_performance_level
             if data_node_disk_size is None and not opts.urn:
                 raise TypeError("Missing required property 'data_node_disk_size'")
             __props__.__dict__["data_node_disk_size"] = data_node_disk_size
@@ -1308,12 +1407,15 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["kibana_whitelists"] = kibana_whitelists
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["master_node_disk_type"] = master_node_disk_type
             __props__.__dict__["master_node_spec"] = master_node_spec
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["period"] = period
             __props__.__dict__["private_whitelists"] = private_whitelists
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["public_whitelists"] = public_whitelists
+            __props__.__dict__["renew_status"] = renew_status
+            __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["setting_config"] = setting_config
             __props__.__dict__["tags"] = tags
@@ -1343,10 +1445,12 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew_duration: Optional[pulumi.Input[int]] = None,
             client_node_amount: Optional[pulumi.Input[int]] = None,
             client_node_spec: Optional[pulumi.Input[str]] = None,
             data_node_amount: Optional[pulumi.Input[int]] = None,
             data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+            data_node_disk_performance_level: Optional[pulumi.Input[str]] = None,
             data_node_disk_size: Optional[pulumi.Input[int]] = None,
             data_node_disk_type: Optional[pulumi.Input[str]] = None,
             data_node_spec: Optional[pulumi.Input[str]] = None,
@@ -1363,6 +1467,7 @@ class Instance(pulumi.CustomResource):
             kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            master_node_disk_type: Optional[pulumi.Input[str]] = None,
             master_node_spec: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
@@ -1372,6 +1477,8 @@ class Instance(pulumi.CustomResource):
             public_domain: Optional[pulumi.Input[str]] = None,
             public_port: Optional[pulumi.Input[int]] = None,
             public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            renew_status: Optional[pulumi.Input[str]] = None,
+            renewal_duration_unit: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -1386,10 +1493,12 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] auto_renew_duration: Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
         :param pulumi.Input[int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
         :param pulumi.Input[str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        :param pulumi.Input[str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
@@ -1404,23 +1513,24 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] kibana_port: Kibana console port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
-        :param pulumi.Input[str] public_domain: (Available in 1.197.0+) Instance connection public domain.
-        :param pulumi.Input[int] public_port: (Available in 1.197.0+) Instance connection public port.
+        :param pulumi.Input[str] public_domain: Instance connection public domain.
+        :param pulumi.Input[int] public_port: Instance connection public port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
+        :param pulumi.Input[str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
-               - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-               - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
@@ -1429,10 +1539,12 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["client_node_amount"] = client_node_amount
         __props__.__dict__["client_node_spec"] = client_node_spec
         __props__.__dict__["data_node_amount"] = data_node_amount
         __props__.__dict__["data_node_disk_encrypted"] = data_node_disk_encrypted
+        __props__.__dict__["data_node_disk_performance_level"] = data_node_disk_performance_level
         __props__.__dict__["data_node_disk_size"] = data_node_disk_size
         __props__.__dict__["data_node_disk_type"] = data_node_disk_type
         __props__.__dict__["data_node_spec"] = data_node_spec
@@ -1449,6 +1561,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["kibana_whitelists"] = kibana_whitelists
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["master_node_disk_type"] = master_node_disk_type
         __props__.__dict__["master_node_spec"] = master_node_spec
         __props__.__dict__["password"] = password
         __props__.__dict__["period"] = period
@@ -1458,6 +1571,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["public_domain"] = public_domain
         __props__.__dict__["public_port"] = public_port
         __props__.__dict__["public_whitelists"] = public_whitelists
+        __props__.__dict__["renew_status"] = renew_status
+        __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["setting_config"] = setting_config
         __props__.__dict__["status"] = status
@@ -1466,6 +1581,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_count"] = zone_count
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> pulumi.Output[Optional[int]]:
+        """
+        Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        """
+        return pulumi.get(self, "auto_renew_duration")
 
     @property
     @pulumi.getter(name="clientNodeAmount")
@@ -1498,6 +1621,14 @@ class Instance(pulumi.CustomResource):
         If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         """
         return pulumi.get(self, "data_node_disk_encrypted")
+
+    @property
+    @pulumi.getter(name="dataNodeDiskPerformanceLevel")
+    def data_node_disk_performance_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+        """
+        return pulumi.get(self, "data_node_disk_performance_level")
 
     @property
     @pulumi.getter(name="dataNodeDiskSize")
@@ -1615,7 +1746,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
-        An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -1626,6 +1757,14 @@ class Instance(pulumi.CustomResource):
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
+
+    @property
+    @pulumi.getter(name="masterNodeDiskType")
+    def master_node_disk_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+        """
+        return pulumi.get(self, "master_node_disk_type")
 
     @property
     @pulumi.getter(name="masterNodeSpec")
@@ -1679,7 +1818,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="publicDomain")
     def public_domain(self) -> pulumi.Output[str]:
         """
-        (Available in 1.197.0+) Instance connection public domain.
+        Instance connection public domain.
         """
         return pulumi.get(self, "public_domain")
 
@@ -1687,7 +1826,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="publicPort")
     def public_port(self) -> pulumi.Output[int]:
         """
-        (Available in 1.197.0+) Instance connection public port.
+        Instance connection public port.
         """
         return pulumi.get(self, "public_port")
 
@@ -1700,10 +1839,26 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "public_whitelists")
 
     @property
+    @pulumi.getter(name="renewStatus")
+    def renew_status(self) -> pulumi.Output[Optional[str]]:
+        """
+        The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        """
+        return pulumi.get(self, "renew_status")
+
+    @property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> pulumi.Output[Optional[str]]:
+        """
+        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        """
+        return pulumi.get(self, "renewal_duration_unit")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The Id of resource group which the Elasticsearch instance belongs.
+        The ID of resource group which the Elasticsearch instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1727,9 +1882,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource. 
-        - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-        - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 

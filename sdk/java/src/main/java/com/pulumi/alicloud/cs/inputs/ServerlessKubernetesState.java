@@ -22,14 +22,14 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     public static final ServerlessKubernetesState Empty = new ServerlessKubernetesState();
 
     /**
-     * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     * You can specific network plugin,log component,ingress component and so on. See `addons` below.
      * 
      */
     @Import(name="addons")
     private @Nullable Output<List<ServerlessKubernetesAddonArgs>> addons;
 
     /**
-     * @return ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     * @return You can specific network plugin,log component,ingress component and so on. See `addons` below.
      * 
      */
     public Optional<Output<List<ServerlessKubernetesAddonArgs>>> addons() {
@@ -100,9 +100,21 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.clusterSpec);
     }
 
+    /**
+     * whether to create a v2 version cluster.
+     * 
+     * *Removed params*
+     * 
+     */
     @Import(name="createV2Cluster")
     private @Nullable Output<Boolean> createV2Cluster;
 
+    /**
+     * @return whether to create a v2 version cluster.
+     * 
+     * *Removed params*
+     * 
+     */
     public Optional<Output<Boolean>> createV2Cluster() {
         return Optional.ofNullable(this.createV2Cluster);
     }
@@ -262,7 +274,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
      * 
      * @deprecated
      * Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
@@ -273,7 +285,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     private @Nullable Output<Boolean> privateZone;
 
     /**
-     * @return (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * @return Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
      * 
      * @deprecated
      * Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
@@ -307,14 +319,14 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
      * 
      */
     @Import(name="rrsaMetadata")
     private @Nullable Output<ServerlessKubernetesRrsaMetadataArgs> rrsaMetadata;
 
     /**
-     * @return (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * @return Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
      * 
      */
     public Optional<Output<ServerlessKubernetesRrsaMetadataArgs>> rrsaMetadata() {
@@ -442,7 +454,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+     * The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
      * 
      * @deprecated
      * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.91.0. New field &#39;vswitch_ids&#39; replace it.
@@ -453,7 +465,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+     * @return The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
      * 
      * @deprecated
      * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.91.0. New field &#39;vswitch_ids&#39; replace it.
@@ -549,7 +561,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addons ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+         * @param addons You can specific network plugin,log component,ingress component and so on. See `addons` below.
          * 
          * @return builder
          * 
@@ -560,7 +572,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addons ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+         * @param addons You can specific network plugin,log component,ingress component and so on. See `addons` below.
          * 
          * @return builder
          * 
@@ -570,7 +582,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addons ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+         * @param addons You can specific network plugin,log component,ingress component and so on. See `addons` below.
          * 
          * @return builder
          * 
@@ -667,11 +679,27 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
             return clusterSpec(Output.of(clusterSpec));
         }
 
+        /**
+         * @param createV2Cluster whether to create a v2 version cluster.
+         * 
+         * *Removed params*
+         * 
+         * @return builder
+         * 
+         */
         public Builder createV2Cluster(@Nullable Output<Boolean> createV2Cluster) {
             $.createV2Cluster = createV2Cluster;
             return this;
         }
 
+        /**
+         * @param createV2Cluster whether to create a v2 version cluster.
+         * 
+         * *Removed params*
+         * 
+         * @return builder
+         * 
+         */
         public Builder createV2Cluster(Boolean createV2Cluster) {
             return createV2Cluster(Output.of(createV2Cluster));
         }
@@ -887,7 +915,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param privateZone (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+         * @param privateZone Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
          * 
          * @return builder
          * 
@@ -902,7 +930,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param privateZone (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+         * @param privateZone Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
          * 
          * @return builder
          * 
@@ -950,7 +978,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param rrsaMetadata (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+         * @param rrsaMetadata Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
          * 
          * @return builder
          * 
@@ -961,7 +989,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param rrsaMetadata (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+         * @param rrsaMetadata Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
          * 
          * @return builder
          * 
@@ -1149,7 +1177,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vswitchId (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+         * @param vswitchId The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
          * 
          * @return builder
          * 
@@ -1164,7 +1192,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vswitchId (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+         * @param vswitchId The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
          * 
          * @return builder
          * 

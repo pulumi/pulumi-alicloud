@@ -25,14 +25,14 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     public static final EdgeKubernetesArgs Empty = new EdgeKubernetesArgs();
 
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. See `addons` below.
      * 
      */
     @Import(name="addons")
     private @Nullable Output<List<EdgeKubernetesAddonArgs>> addons;
 
     /**
-     * @return The addon you want to install in cluster.
+     * @return The addon you want to install in cluster. See `addons` below.
      * 
      */
     public Optional<Output<List<EdgeKubernetesAddonArgs>>> addons() {
@@ -87,12 +87,16 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      * 
+     * *Removed params*
+     * 
      */
     @Import(name="clusterCaCert")
     private @Nullable Output<String> clusterCaCert;
 
     /**
      * @return The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     * 
+     * *Removed params*
      * 
      */
     public Optional<Output<String>> clusterCaCert() {
@@ -218,8 +222,9 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     * 
      * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * 
+     * *Worker params*
      * 
      */
     @Import(name="loadBalancerSpec")
@@ -227,8 +232,9 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     * 
      * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * 
+     * *Worker params*
      * 
      */
     public Optional<Output<String>> loadBalancerSpec() {
@@ -236,7 +242,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A list of one element containing information about the associated log store. It contains the following attributes:
+     * A list of one element containing information about the associated log store. See `log_config` below.
      * 
      * @deprecated
      * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
@@ -247,7 +253,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<EdgeKubernetesLogConfigArgs> logConfig;
 
     /**
-     * @return A list of one element containing information about the associated log store. It contains the following attributes:
+     * @return A list of one element containing information about the associated log store. See `log_config` below.
      * 
      * @deprecated
      * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
@@ -498,14 +504,14 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
      * 
      */
     @Import(name="workerDataDisks")
     private @Nullable Output<List<EdgeKubernetesWorkerDataDiskArgs>> workerDataDisks;
 
     /**
-     * @return The data disk configurations of worker nodes, such as the disk type and disk size.
+     * @return The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
      * 
      */
     public Optional<Output<List<EdgeKubernetesWorkerDataDiskArgs>>> workerDataDisks() {
@@ -560,12 +566,20 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Worker node system disk auto snapshot policy.
      * 
+     * *Computed params*
+     * 
+     * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
+     * 
      */
     @Import(name="workerDiskSnapshotPolicyId")
     private @Nullable Output<String> workerDiskSnapshotPolicyId;
 
     /**
      * @return Worker node system disk auto snapshot policy.
+     * 
+     * *Computed params*
+     * 
+     * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
      * 
      */
     public Optional<Output<String>> workerDiskSnapshotPolicyId() {
@@ -696,7 +710,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param addons The addon you want to install in cluster.
+         * @param addons The addon you want to install in cluster. See `addons` below.
          * 
          * @return builder
          * 
@@ -707,7 +721,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param addons The addon you want to install in cluster.
+         * @param addons The addon you want to install in cluster. See `addons` below.
          * 
          * @return builder
          * 
@@ -717,7 +731,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param addons The addon you want to install in cluster.
+         * @param addons The addon you want to install in cluster. See `addons` below.
          * 
          * @return builder
          * 
@@ -792,6 +806,8 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param clusterCaCert The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
          * 
+         * *Removed params*
+         * 
          * @return builder
          * 
          */
@@ -802,6 +818,8 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param clusterCaCert The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+         * 
+         * *Removed params*
          * 
          * @return builder
          * 
@@ -971,8 +989,9 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-         * 
          * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+         * 
+         * *Worker params*
          * 
          * @return builder
          * 
@@ -984,8 +1003,9 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-         * 
          * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+         * 
+         * *Worker params*
          * 
          * @return builder
          * 
@@ -995,7 +1015,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param logConfig A list of one element containing information about the associated log store. It contains the following attributes:
+         * @param logConfig A list of one element containing information about the associated log store. See `log_config` below.
          * 
          * @return builder
          * 
@@ -1010,7 +1030,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param logConfig A list of one element containing information about the associated log store. It contains the following attributes:
+         * @param logConfig A list of one element containing information about the associated log store. See `log_config` below.
          * 
          * @return builder
          * 
@@ -1371,7 +1391,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size.
+         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
          * 
          * @return builder
          * 
@@ -1382,7 +1402,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size.
+         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
          * 
          * @return builder
          * 
@@ -1392,7 +1412,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size.
+         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
          * 
          * @return builder
          * 
@@ -1467,6 +1487,10 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param workerDiskSnapshotPolicyId Worker node system disk auto snapshot policy.
          * 
+         * *Computed params*
+         * 
+         * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
+         * 
          * @return builder
          * 
          */
@@ -1477,6 +1501,10 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param workerDiskSnapshotPolicyId Worker node system disk auto snapshot policy.
+         * 
+         * *Computed params*
+         * 
+         * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
          * 
          * @return builder
          * 

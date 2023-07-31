@@ -20,60 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Elasticsearch instance resource. It contains data nodes, dedicated master node(optional) and etc. It can be associated with private IP whitelists and kibana IP whitelist.
- * 
- * &gt; **NOTE:** Only one operation is supported in a request. So if `data_node_spec` and `data_node_disk_size` are both changed, system will respond error.
- * 
- * &gt; **NOTE:** At present, `version` can not be modified once instance has been created.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.elasticsearch.Instance;
- * import com.pulumi.alicloud.elasticsearch.InstanceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .clientNodeAmount(&#34;2&#34;)
- *             .clientNodeSpec(&#34;elasticsearch.sn2ne.large&#34;)
- *             .dataNodeAmount(&#34;2&#34;)
- *             .dataNodeDiskSize(&#34;20&#34;)
- *             .dataNodeDiskType(&#34;cloud_ssd&#34;)
- *             .dataNodeSpec(&#34;elasticsearch.sn2ne.large&#34;)
- *             .description(&#34;description&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .password(&#34;Your password&#34;)
- *             .protocol(&#34;HTTPS&#34;)
- *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
- *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
- *             ))
- *             .version(&#34;5.5.3_with_X-Pack&#34;)
- *             .vswitchId(&#34;some vswitch id&#34;)
- *             .zoneCount(&#34;2&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Elasticsearch can be imported using the id, e.g.
@@ -85,6 +31,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:elasticsearch/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+     * 
+     */
+    @Export(name="autoRenewDuration", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> autoRenewDuration;
+
+    /**
+     * @return Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+     * 
+     */
+    public Output<Optional<Integer>> autoRenewDuration() {
+        return Codegen.optional(this.autoRenewDuration);
+    }
     /**
      * The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
@@ -140,6 +100,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> dataNodeDiskEncrypted() {
         return Codegen.optional(this.dataNodeDiskEncrypted);
+    }
+    /**
+     * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+     * 
+     */
+    @Export(name="dataNodeDiskPerformanceLevel", type=String.class, parameters={})
+    private Output</* @Nullable */ String> dataNodeDiskPerformanceLevel;
+
+    /**
+     * @return Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+     * 
+     */
+    public Output<Optional<String>> dataNodeDiskPerformanceLevel() {
+        return Codegen.optional(this.dataNodeDiskPerformanceLevel);
     }
     /**
      * The single data node storage space.
@@ -338,14 +312,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.kibanaWhitelists;
     }
     /**
-     * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
     @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+     * @return An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
@@ -364,6 +338,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,Object>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
+    }
+    /**
+     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     * 
+     */
+    @Export(name="masterNodeDiskType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> masterNodeDiskType;
+
+    /**
+     * @return The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     * 
+     */
+    public Output<Optional<String>> masterNodeDiskType() {
+        return Codegen.optional(this.masterNodeDiskType);
     }
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
@@ -450,28 +438,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protocol);
     }
     /**
-     * (Available in 1.197.0+) Instance connection public domain.
+     * Instance connection public domain.
      * 
      */
     @Export(name="publicDomain", type=String.class, parameters={})
     private Output<String> publicDomain;
 
     /**
-     * @return (Available in 1.197.0+) Instance connection public domain.
+     * @return Instance connection public domain.
      * 
      */
     public Output<String> publicDomain() {
         return this.publicDomain;
     }
     /**
-     * (Available in 1.197.0+) Instance connection public port.
+     * Instance connection public port.
      * 
      */
     @Export(name="publicPort", type=Integer.class, parameters={})
     private Output<Integer> publicPort;
 
     /**
-     * @return (Available in 1.197.0+) Instance connection public port.
+     * @return Instance connection public port.
      * 
      */
     public Output<Integer> publicPort() {
@@ -492,14 +480,42 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.publicWhitelists;
     }
     /**
-     * The Id of resource group which the Elasticsearch instance belongs.
+     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+     * 
+     */
+    @Export(name="renewStatus", type=String.class, parameters={})
+    private Output</* @Nullable */ String> renewStatus;
+
+    /**
+     * @return The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+     * 
+     */
+    public Output<Optional<String>> renewStatus() {
+        return Codegen.optional(this.renewStatus);
+    }
+    /**
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * 
+     */
+    @Export(name="renewalDurationUnit", type=String.class, parameters={})
+    private Output</* @Nullable */ String> renewalDurationUnit;
+
+    /**
+     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * 
+     */
+    public Output<Optional<String>> renewalDurationUnit() {
+        return Codegen.optional(this.renewalDurationUnit);
+    }
+    /**
+     * The ID of resource group which the Elasticsearch instance belongs.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the Elasticsearch instance belongs.
+     * @return The ID of resource group which the Elasticsearch instance belongs.
      * 
      */
     public Output<String> resourceGroupId() {
@@ -535,8 +551,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * A mapping of tags to assign to the resource.
-     * - key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It can be a null string.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
@@ -544,8 +558,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A mapping of tags to assign to the resource.
-     * - key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It can be a null string.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

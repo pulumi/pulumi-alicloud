@@ -33,14 +33,14 @@ public final class WafRuleRateLimitArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+     * Response code statistics. See `status` below.
      * 
      */
     @Import(name="status")
     private @Nullable Output<WafRuleRateLimitStatusArgs> status;
 
     /**
-     * @return The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+     * @return Response code statistics. See `status` below.
      * 
      */
     public Optional<Output<WafRuleRateLimitStatusArgs>> status() {
@@ -48,14 +48,14 @@ public final class WafRuleRateLimitArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The match subfield.
+     * The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
      * 
      */
     @Import(name="subKey")
     private @Nullable Output<String> subKey;
 
     /**
-     * @return The match subfield.
+     * @return The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
      * 
      */
     public Optional<Output<String>> subKey() {
@@ -158,7 +158,7 @@ public final class WafRuleRateLimitArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+         * @param status Response code statistics. See `status` below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class WafRuleRateLimitArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+         * @param status Response code statistics. See `status` below.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class WafRuleRateLimitArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subKey The match subfield.
+         * @param subKey The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class WafRuleRateLimitArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subKey The match subfield.
+         * @param subKey The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
          * 
          * @return builder
          * 

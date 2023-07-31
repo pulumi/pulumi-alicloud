@@ -36,7 +36,7 @@ class InstanceArgs:
         :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
         :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
         :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
         :param pulumi.Input[str] kms_key_id: The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
@@ -136,7 +136,7 @@ class InstanceArgs:
     @pulumi.getter(name="ecsLists")
     def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
-        The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         """
         warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
         pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
@@ -253,7 +253,7 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
         :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
         :param pulumi.Input[str] instance_name: The name of the Database file system.
@@ -326,7 +326,7 @@ class _InstanceState:
     @pulumi.getter(name="ecsLists")
     def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
-        The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         """
         warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
         pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
@@ -492,9 +492,9 @@ class Instance(pulumi.CustomResource):
         """
         Provides a DBFS Instance resource.
 
-        For information about DBFS Instance and how to use it, see [What is Instance](https://help.aliyun.com/document_detail/149726.html).
+        For information about DBFS Instance and how to use it.
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -504,11 +504,16 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.databasefilesystem.Instance("example",
             category="standard",
-            instance_name="example_value",
-            size=1,
-            zone_id="example_value")
+            zone_id="cn-hangzhou-i",
+            performance_level="PL1",
+            instance_name=name,
+            size=100)
         ```
 
         ## Import
@@ -523,7 +528,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
         :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
         :param pulumi.Input[str] instance_name: The name of the Database file system.
@@ -544,9 +549,9 @@ class Instance(pulumi.CustomResource):
         """
         Provides a DBFS Instance resource.
 
-        For information about DBFS Instance and how to use it, see [What is Instance](https://help.aliyun.com/document_detail/149726.html).
+        For information about DBFS Instance and how to use it.
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -556,11 +561,16 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.databasefilesystem.Instance("example",
             category="standard",
-            instance_name="example_value",
-            size=1,
-            zone_id="example_value")
+            zone_id="cn-hangzhou-i",
+            performance_level="PL1",
+            instance_name=name,
+            size=100)
         ```
 
         ## Import
@@ -664,7 +674,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
         :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
         :param pulumi.Input[str] instance_name: The name of the Database file system.
@@ -717,7 +727,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="ecsLists")
     def ecs_lists(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceEcsList']]]:
         """
-        The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         """
         warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
         pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")

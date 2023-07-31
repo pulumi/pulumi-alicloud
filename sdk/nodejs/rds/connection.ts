@@ -5,11 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
+ * Provides an RDS connection resource to allocate an Internet connection string for RDS instance, see [What is DB Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocateinstancepublicconnection).
  *
  * > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
- * **NOTE:** Available since v1.5.0+.
+ *
+ * > **NOTE:** Available since v1.5.0.
  *
  * ## Example Usage
  *
@@ -18,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Rds";
- * const name = config.get("name") || "dbconnectionbasic";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: name,
@@ -33,7 +34,7 @@ import * as utilities from "../utilities";
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const instance = new alicloud.rds.Instance("instance", {
+ * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.t1.small",
@@ -41,8 +42,8 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  * });
- * const foo = new alicloud.rds.Connection("foo", {
- *     instanceId: instance.id,
+ * const defaultConnection = new alicloud.rds.Connection("defaultConnection", {
+ *     instanceId: defaultInstance.id,
  *     connectionPrefix: "testabc",
  * });
  * ```

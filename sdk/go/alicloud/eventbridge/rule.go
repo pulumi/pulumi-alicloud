@@ -14,9 +14,9 @@ import (
 
 // Provides a Event Bridge Rule resource.
 //
-// For information about Event Bridge Rule and how to use it, see [What is Rule](https://help.aliyun.com/document_detail/167854.html).
+// For information about Event Bridge Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/eventbridge/latest/createrule-6).
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -95,7 +95,7 @@ type Rule struct {
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
 	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The target of rule.
+	// The target of rule. See `targets` below.
 	Targets RuleTargetArrayOutput `pulumi:"targets"`
 }
 
@@ -151,7 +151,7 @@ type ruleState struct {
 	RuleName *string `pulumi:"ruleName"`
 	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 	Status *string `pulumi:"status"`
-	// The target of rule.
+	// The target of rule. See `targets` below.
 	Targets []RuleTarget `pulumi:"targets"`
 }
 
@@ -166,7 +166,7 @@ type RuleState struct {
 	RuleName pulumi.StringPtrInput
 	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 	Status pulumi.StringPtrInput
-	// The target of rule.
+	// The target of rule. See `targets` below.
 	Targets RuleTargetArrayInput
 }
 
@@ -185,7 +185,7 @@ type ruleArgs struct {
 	RuleName string `pulumi:"ruleName"`
 	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 	Status *string `pulumi:"status"`
-	// The target of rule.
+	// The target of rule. See `targets` below.
 	Targets []RuleTarget `pulumi:"targets"`
 }
 
@@ -201,7 +201,7 @@ type RuleArgs struct {
 	RuleName pulumi.StringInput
 	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 	Status pulumi.StringPtrInput
-	// The target of rule.
+	// The target of rule. See `targets` below.
 	Targets RuleTargetArrayInput
 }
 
@@ -317,7 +317,7 @@ func (o RuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The target of rule.
+// The target of rule. See `targets` below.
 func (o RuleOutput) Targets() RuleTargetArrayOutput {
 	return o.ApplyT(func(v *Rule) RuleTargetArrayOutput { return v.Targets }).(RuleTargetArrayOutput)
 }

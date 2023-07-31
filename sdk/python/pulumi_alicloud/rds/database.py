@@ -34,8 +34,7 @@ class DatabaseArgs:
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
-        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-               and have no more than 64 characters.
+        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if character_set is not None:
@@ -96,8 +95,7 @@ class DatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-        and have no more than 64 characters.
+        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         """
         return pulumi.get(self, "name")
 
@@ -129,8 +127,7 @@ class _DatabaseState:
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-               and have no more than 64 characters.
+        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         """
         if character_set is not None:
             pulumi.set(__self__, "character_set", character_set)
@@ -192,8 +189,7 @@ class _DatabaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-        and have no more than 64 characters.
+        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         """
         return pulumi.get(self, "name")
 
@@ -213,7 +209,9 @@ class Database(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
+        Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
+
+        > **NOTE:** Available since v1.5.0.
 
         ## Example Usage
 
@@ -222,27 +220,27 @@ class Database(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "dbdatabasebasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
             vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
+        default_instance = alicloud.rds.Instance("defaultInstance",
             engine="MySQL",
             engine_version="5.6",
             instance_type="rds.mysql.s1.small",
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)
-        default_database = alicloud.rds.Database("defaultDatabase", instance_id=instance.id)
+        default_database = alicloud.rds.Database("defaultDatabase", instance_id=default_instance.id)
         ```
 
         ## Import
@@ -269,8 +267,7 @@ class Database(pulumi.CustomResource):
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-               and have no more than 64 characters.
+        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         """
         ...
     @overload
@@ -279,7 +276,9 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
+        Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
+
+        > **NOTE:** Available since v1.5.0.
 
         ## Example Usage
 
@@ -288,27 +287,27 @@ class Database(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "dbdatabasebasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
             vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
+        default_instance = alicloud.rds.Instance("defaultInstance",
             engine="MySQL",
             engine_version="5.6",
             instance_type="rds.mysql.s1.small",
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)
-        default_database = alicloud.rds.Database("defaultDatabase", instance_id=instance.id)
+        default_database = alicloud.rds.Database("defaultDatabase", instance_id=default_instance.id)
         ```
 
         ## Import
@@ -388,8 +387,7 @@ class Database(pulumi.CustomResource):
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-               and have no more than 64 characters.
+        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -440,8 +438,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-        and have no more than 64 characters.
+        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         """
         return pulumi.get(self, "name")
 

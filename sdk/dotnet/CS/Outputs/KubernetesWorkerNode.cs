@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// Node name.
         /// </summary>
         public readonly string? Name;
         /// <summary>

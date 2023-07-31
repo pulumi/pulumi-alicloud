@@ -16,7 +16,7 @@ import (
 //
 // For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules).
 //
-// > **NOTE:** Available in v1.201.0+.
+// > **NOTE:** Available since v1.201.0.
 //
 // ## Example Usage
 //
@@ -29,23 +29,29 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultWafPolicy, err := dcdn.NewWafPolicy(ctx, "defaultWafPolicy", &dcdn.WafPolicyArgs{
-//				DefenseScene: pulumi.String("custom_acl"),
-//				PolicyName:   pulumi.Any(_var.Name),
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleWafPolicy, err := dcdn.NewWafPolicy(ctx, "exampleWafPolicy", &dcdn.WafPolicyArgs{
+//				DefenseScene: pulumi.String("waf_group"),
+//				PolicyName:   pulumi.String(name),
 //				PolicyType:   pulumi.String("custom"),
 //				Status:       pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewWafRule(ctx, "defaultWafRule", &dcdn.WafRuleArgs{
-//				PolicyId: defaultWafPolicy.ID(),
-//				RuleName: pulumi.Any(_var.Name),
+//			_, err = dcdn.NewWafRule(ctx, "exampleWafRule", &dcdn.WafRuleArgs{
+//				PolicyId: exampleWafPolicy.ID(),
+//				RuleName: pulumi.String(name),
 //				Conditions: dcdn.WafRuleConditionArray{
 //					&dcdn.WafRuleConditionArgs{
 //						Key:     pulumi.String("URI"),
@@ -101,7 +107,7 @@ type WafRule struct {
 	CcStatus pulumi.StringOutput `pulumi:"ccStatus"`
 	// The blocked regions in the Chinese mainland, separated by commas (,).
 	CnRegionList pulumi.StringPtrOutput `pulumi:"cnRegionList"`
-	// Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
+	// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
 	Conditions WafRuleConditionArrayOutput `pulumi:"conditions"`
 	// The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
 	DefenseScene pulumi.StringOutput `pulumi:"defenseScene"`
@@ -113,7 +119,7 @@ type WafRule struct {
 	OtherRegionList pulumi.StringPtrOutput `pulumi:"otherRegionList"`
 	// The protection policy ID.
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
-	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See the following `Block RateLimit`.
+	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
 	RateLimit WafRuleRateLimitPtrOutput `pulumi:"rateLimit"`
 	// The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
 	RegularRules pulumi.StringArrayOutput `pulumi:"regularRules"`
@@ -173,7 +179,7 @@ type wafRuleState struct {
 	CcStatus *string `pulumi:"ccStatus"`
 	// The blocked regions in the Chinese mainland, separated by commas (,).
 	CnRegionList *string `pulumi:"cnRegionList"`
-	// Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
+	// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
 	Conditions []WafRuleCondition `pulumi:"conditions"`
 	// The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
 	DefenseScene *string `pulumi:"defenseScene"`
@@ -185,7 +191,7 @@ type wafRuleState struct {
 	OtherRegionList *string `pulumi:"otherRegionList"`
 	// The protection policy ID.
 	PolicyId *string `pulumi:"policyId"`
-	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See the following `Block RateLimit`.
+	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
 	RateLimit *WafRuleRateLimit `pulumi:"rateLimit"`
 	// The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
 	RegularRules []string `pulumi:"regularRules"`
@@ -210,7 +216,7 @@ type WafRuleState struct {
 	CcStatus pulumi.StringPtrInput
 	// The blocked regions in the Chinese mainland, separated by commas (,).
 	CnRegionList pulumi.StringPtrInput
-	// Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
+	// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
 	Conditions WafRuleConditionArrayInput
 	// The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
 	DefenseScene pulumi.StringPtrInput
@@ -222,7 +228,7 @@ type WafRuleState struct {
 	OtherRegionList pulumi.StringPtrInput
 	// The protection policy ID.
 	PolicyId pulumi.StringPtrInput
-	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See the following `Block RateLimit`.
+	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
 	RateLimit WafRuleRateLimitPtrInput
 	// The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
 	RegularRules pulumi.StringArrayInput
@@ -251,7 +257,7 @@ type wafRuleArgs struct {
 	CcStatus *string `pulumi:"ccStatus"`
 	// The blocked regions in the Chinese mainland, separated by commas (,).
 	CnRegionList *string `pulumi:"cnRegionList"`
-	// Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
+	// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
 	Conditions []WafRuleCondition `pulumi:"conditions"`
 	// The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
 	Effect *string `pulumi:"effect"`
@@ -259,7 +265,7 @@ type wafRuleArgs struct {
 	OtherRegionList *string `pulumi:"otherRegionList"`
 	// The protection policy ID.
 	PolicyId string `pulumi:"policyId"`
-	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See the following `Block RateLimit`.
+	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
 	RateLimit *WafRuleRateLimit `pulumi:"rateLimit"`
 	// The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
 	RegularRules []string `pulumi:"regularRules"`
@@ -285,7 +291,7 @@ type WafRuleArgs struct {
 	CcStatus pulumi.StringPtrInput
 	// The blocked regions in the Chinese mainland, separated by commas (,).
 	CnRegionList pulumi.StringPtrInput
-	// Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
+	// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
 	Conditions WafRuleConditionArrayInput
 	// The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
 	Effect pulumi.StringPtrInput
@@ -293,7 +299,7 @@ type WafRuleArgs struct {
 	OtherRegionList pulumi.StringPtrInput
 	// The protection policy ID.
 	PolicyId pulumi.StringInput
-	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See the following `Block RateLimit`.
+	// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
 	RateLimit WafRuleRateLimitPtrInput
 	// The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
 	RegularRules pulumi.StringArrayInput
@@ -413,7 +419,7 @@ func (o WafRuleOutput) CnRegionList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.StringPtrOutput { return v.CnRegionList }).(pulumi.StringPtrOutput)
 }
 
-// Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
+// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
 func (o WafRuleOutput) Conditions() WafRuleConditionArrayOutput {
 	return o.ApplyT(func(v *WafRule) WafRuleConditionArrayOutput { return v.Conditions }).(WafRuleConditionArrayOutput)
 }
@@ -443,7 +449,7 @@ func (o WafRuleOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }
 
-// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See the following `Block RateLimit`.
+// The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
 func (o WafRuleOutput) RateLimit() WafRuleRateLimitPtrOutput {
 	return o.ApplyT(func(v *WafRule) WafRuleRateLimitPtrOutput { return v.RateLimit }).(WafRuleRateLimitPtrOutput)
 }

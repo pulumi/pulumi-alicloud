@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// <summary>
     /// Provides a DBFS Instance resource.
     /// 
-    /// For information about DBFS Instance and how to use it, see [What is Instance](https://help.aliyun.com/document_detail/149726.html).
+    /// For information about DBFS Instance and how to use it.
     /// 
-    /// &gt; **NOTE:** Available in v1.136.0+.
+    /// &gt; **NOTE:** Available since v1.136.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,12 +28,15 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = new AliCloud.DatabaseFilesystem.Instance("example", new()
     ///     {
     ///         Category = "standard",
-    ///         InstanceName = "example_value",
-    ///         Size = 1,
-    ///         ZoneId = "example_value",
+    ///         ZoneId = "cn-hangzhou-i",
+    ///         PerformanceLevel = "PL1",
+    ///         InstanceName = name,
+    ///         Size = 100,
     ///     });
     /// 
     /// });
@@ -63,7 +66,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Output<bool?> DeleteSnapshot { get; private set; } = null!;
 
         /// <summary>
-        /// The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         /// </summary>
         [Output("ecsLists")]
         public Output<ImmutableArray<Outputs.InstanceEcsList>> EcsLists { get; private set; } = null!;
@@ -196,7 +199,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         private InputList<Inputs.InstanceEcsListArgs>? _ecsLists;
 
         /// <summary>
-        /// The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         /// </summary>
         [Obsolete(@"Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.")]
         public InputList<Inputs.InstanceEcsListArgs> EcsLists
@@ -295,7 +298,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         private InputList<Inputs.InstanceEcsListGetArgs>? _ecsLists;
 
         /// <summary>
-        /// The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         /// </summary>
         [Obsolete(@"Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.")]
         public InputList<Inputs.InstanceEcsListGetArgs> EcsLists

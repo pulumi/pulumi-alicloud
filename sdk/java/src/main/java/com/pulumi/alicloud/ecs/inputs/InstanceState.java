@@ -49,7 +49,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The automatic release time of the `PostPaid` instance.
      * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
      * 
      */
     @Import(name="autoReleaseTime")
@@ -58,7 +58,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The automatic release time of the `PostPaid` instance.
      * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
      * 
      */
     public Optional<Output<String>> autoReleaseTime() {
@@ -130,14 +130,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `data_disks` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<InstanceDataDiskArgs>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance.
+     * @return The list of data disks created with instance. See `data_disks` below.
      * 
      */
     public Optional<Output<List<InstanceDataDiskArgs>>> dataDisks() {
@@ -188,7 +188,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
+     * Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      * 
@@ -197,7 +197,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether enable the deletion protection or not. Default value: `false`.
+     * @return Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      * 
@@ -207,14 +207,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+     * The group number of the instance in a deployment set when the deployment set is use.
      * 
      */
     @Import(name="deploymentSetGroupNo")
     private @Nullable Output<String> deploymentSetGroupNo;
 
     /**
-     * @return (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+     * @return The group number of the instance in a deployment set when the deployment set is use.
      * 
      */
     public Optional<Output<String>> deploymentSetGroupNo() {
@@ -237,14 +237,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the data disk.
+     * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the data disk.
+     * @return Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
      */
     public Optional<Output<String>> description() {
@@ -400,6 +400,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+     * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+     * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
      * 
      */
     @Import(name="instanceChargeType")
@@ -407,6 +410,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+     * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+     * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -454,10 +460,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      * 
      * @deprecated
-     * The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
+     * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
      * 
      */
-    @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2. */
+    @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
     @Import(name="internetMaxBandwidthIn")
     private @Nullable Output<Integer> internetMaxBandwidthIn;
 
@@ -465,10 +471,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      * 
      * @deprecated
-     * The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
+     * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
      * 
      */
-    @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2. */
+    @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
     public Optional<Output<Integer>> internetMaxBandwidthIn() {
         return Optional.ofNullable(this.internetMaxBandwidthIn);
     }
@@ -632,14 +638,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time of maintenance. See the following `Block maintenance_time`.
+     * The time of maintenance. See `maintenance_time` below.
      * 
      */
     @Import(name="maintenanceTime")
     private @Nullable Output<InstanceMaintenanceTimeArgs> maintenanceTime;
 
     /**
-     * @return The time of maintenance. See the following `Block maintenance_time`.
+     * @return The time of maintenance. See `maintenance_time` below.
      * 
      */
     public Optional<Output<InstanceMaintenanceTimeArgs>> maintenanceTime() {
@@ -659,6 +665,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> memory() {
         return Optional.ofNullable(this.memory);
+    }
+
+    /**
+     * The ID of the ENI.
+     * 
+     */
+    @Import(name="networkInterfaceId")
+    private @Nullable Output<String> networkInterfaceId;
+
+    /**
+     * @return The ID of the ENI.
+     * 
+     */
+    public Optional<Output<String>> networkInterfaceId() {
+        return Optional.ofNullable(this.networkInterfaceId);
     }
 
     /**
@@ -1031,14 +1052,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
+     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
      * 
      */
     @Import(name="systemDiskCategory")
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
+     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
      * 
      */
     public Optional<Output<String>> systemDiskCategory() {
@@ -1184,23 +1205,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-     * It supports to setting a base64-encoded value, and it is the recommended usage.
-     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-     * 
-     */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
-    /**
-     * @return User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-     * It supports to setting a base64-encoded value, and it is the recommended usage.
-     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-     * 
-     */
     public Optional<Output<String>> userData() {
         return Optional.ofNullable(this.userData);
     }
@@ -1280,6 +1287,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.maintenanceNotify = $.maintenanceNotify;
         this.maintenanceTime = $.maintenanceTime;
         this.memory = $.memory;
+        this.networkInterfaceId = $.networkInterfaceId;
         this.operatorType = $.operatorType;
         this.osName = $.osName;
         this.osType = $.osType;
@@ -1368,7 +1376,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoReleaseTime The automatic release time of the `PostPaid` instance.
          * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-         * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+         * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
          * 
          * @return builder
          * 
@@ -1381,7 +1389,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoReleaseTime The automatic release time of the `PostPaid` instance.
          * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-         * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+         * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
          * 
          * @return builder
          * 
@@ -1479,7 +1487,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance.
+         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1490,7 +1498,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance.
+         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1500,7 +1508,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance.
+         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1559,7 +1567,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: `false`.
+         * @param deletionProtection Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
          * - true: Enable deletion protection.
          * - false: Disable deletion protection.
          * 
@@ -1572,7 +1580,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: `false`.
+         * @param deletionProtection Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
          * - true: Enable deletion protection.
          * - false: Disable deletion protection.
          * 
@@ -1584,7 +1592,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentSetGroupNo (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+         * @param deploymentSetGroupNo The group number of the instance in a deployment set when the deployment set is use.
          * 
          * @return builder
          * 
@@ -1595,7 +1603,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentSetGroupNo (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+         * @param deploymentSetGroupNo The group number of the instance in a deployment set when the deployment set is use.
          * 
          * @return builder
          * 
@@ -1626,7 +1634,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
          * 
          * @return builder
          * 
@@ -1637,7 +1645,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
          * 
          * @return builder
          * 
@@ -1849,6 +1857,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+         * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+         * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+         * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
          * 
          * @return builder
          * 
@@ -1860,6 +1871,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+         * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+         * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+         * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
          * 
          * @return builder
          * 
@@ -1925,10 +1939,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
+         * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
          * 
          */
-        @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2. */
+        @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
         public Builder internetMaxBandwidthIn(@Nullable Output<Integer> internetMaxBandwidthIn) {
             $.internetMaxBandwidthIn = internetMaxBandwidthIn;
             return this;
@@ -1940,10 +1954,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
+         * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
          * 
          */
-        @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2. */
+        @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
         public Builder internetMaxBandwidthIn(Integer internetMaxBandwidthIn) {
             return internetMaxBandwidthIn(Output.of(internetMaxBandwidthIn));
         }
@@ -2177,7 +2191,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenanceTime The time of maintenance. See the following `Block maintenance_time`.
+         * @param maintenanceTime The time of maintenance. See `maintenance_time` below.
          * 
          * @return builder
          * 
@@ -2188,7 +2202,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenanceTime The time of maintenance. See the following `Block maintenance_time`.
+         * @param maintenanceTime The time of maintenance. See `maintenance_time` below.
          * 
          * @return builder
          * 
@@ -2216,6 +2230,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder memory(Integer memory) {
             return memory(Output.of(memory));
+        }
+
+        /**
+         * @param networkInterfaceId The ID of the ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaceId(@Nullable Output<String> networkInterfaceId) {
+            $.networkInterfaceId = networkInterfaceId;
+            return this;
+        }
+
+        /**
+         * @param networkInterfaceId The ID of the ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaceId(String networkInterfaceId) {
+            return networkInterfaceId(Output.of(networkInterfaceId));
         }
 
         /**
@@ -2746,7 +2781,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
+         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
          * 
          * @return builder
          * 
@@ -2757,7 +2792,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
+         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
          * 
          * @return builder
          * 
@@ -2959,29 +2994,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
-        /**
-         * @param userData User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-         * It supports to setting a base64-encoded value, and it is the recommended usage.
-         * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-         * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-         * 
-         * @return builder
-         * 
-         */
         public Builder userData(@Nullable Output<String> userData) {
             $.userData = userData;
             return this;
         }
 
-        /**
-         * @param userData User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-         * It supports to setting a base64-encoded value, and it is the recommended usage.
-         * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-         * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-         * 
-         * @return builder
-         * 
-         */
         public Builder userData(String userData) {
             return userData(Output.of(userData));
         }

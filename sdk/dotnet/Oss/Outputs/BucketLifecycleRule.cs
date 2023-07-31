@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketLifecycleRule
     {
         /// <summary>
-        /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+        /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleAbortMultipartUpload> AbortMultipartUploads;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Specifies a period in the object's expire (documented below).
+        /// Specifies a period in the object's expire. See `expiration` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleExpiration> Expirations;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Specifies when noncurrent object versions expire (documented below).
+        /// Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionExpiration> NoncurrentVersionExpirations;
         /// <summary>
-        /// Specifies when noncurrent object versions transitions (documented below).
+        /// Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
         /// 
         /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly string? Prefix;
         /// <summary>
-        /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+        /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleTransition> Transitions;
 

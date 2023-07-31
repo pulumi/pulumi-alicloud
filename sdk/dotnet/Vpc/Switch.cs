@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
     /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -183,7 +185,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The IPv6 CIDR block of the VSwitch.
         /// </summary>
         [Output("ipv6CidrBlockMask")]
-        public Output<int?> Ipv6CidrBlockMask { get; private set; } = null!;
+        public Output<int> Ipv6CidrBlockMask { get; private set; } = null!;
 
         /// <summary>
         /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.

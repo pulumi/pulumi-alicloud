@@ -21,84 +21,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a PolarDB cluster resource. A PolarDB cluster is an isolated database
- * environment in the cloud. A PolarDB cluster can contain multiple user-created
- * databases.
- * 
- * &gt; **NOTE:** Available in v1.66.0+.
- * 
- * ## Example Usage
- * ### Create a PolarDB MySQL cluster
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.polardb.PolardbFunctions;
- * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.polardb.Cluster;
- * import com.pulumi.alicloud.polardb.ClusterArgs;
- * import com.pulumi.alicloud.polardb.inputs.ClusterDbClusterIpArrayArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var defaultNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
- *             .dbType(&#34;MySQL&#34;)
- *             .dbVersion(&#34;8.0&#34;)
- *             .payType(&#34;PostPaid&#34;)
- *             .build());
- * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .build());
- * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()))
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .build());
- * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .dbType(&#34;MySQL&#34;)
- *             .dbVersion(&#34;8.0&#34;)
- *             .dbNodeClass(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass()))
- *             .payType(&#34;PostPaid&#34;)
- *             .vswitchId(defaultSwitch.id())
- *             .description(&#34;terraform-example&#34;)
- *             .dbClusterIpArrays(            
- *                 ClusterDbClusterIpArrayArgs.builder()
- *                     .dbClusterIpArrayName(&#34;default&#34;)
- *                     .securityIps(                    
- *                         &#34;1.2.3.4&#34;,
- *                         &#34;1.2.3.5&#34;)
- *                     .build(),
- *                 ClusterDbClusterIpArrayArgs.builder()
- *                     .dbClusterIpArrayName(&#34;default2&#34;)
- *                     .securityIps(&#34;1.2.3.6&#34;)
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * PolarDB cluster can be imported using the id, e.g.
@@ -141,21 +63,21 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+     * The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
      * 
      */
     @Export(name="backupRetentionPolicyOnClusterDeletion", type=String.class, parameters={})
     private Output<String> backupRetentionPolicyOnClusterDeletion;
 
     /**
-     * @return The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+     * @return The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
      * 
      */
     public Output<String> backupRetentionPolicyOnClusterDeletion() {
         return this.backupRetentionPolicyOnClusterDeletion;
     }
     /**
-     * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+     * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
      * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
      * 
      */
@@ -163,7 +85,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> cloneDataPoint;
 
     /**
-     * @return The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+     * @return The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
      * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
      * 
      */
@@ -185,35 +107,35 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.collectorStatus;
     }
     /**
-     * (Available in 1.81.0+) PolarDB cluster connection string.
+     * (Available since 1.81.0+) PolarDB cluster connection string.
      * 
      */
     @Export(name="connectionString", type=String.class, parameters={})
     private Output<String> connectionString;
 
     /**
-     * @return (Available in 1.81.0+) PolarDB cluster connection string.
+     * @return (Available since 1.81.0+) PolarDB cluster connection string.
      * 
      */
     public Output<String> connectionString() {
         return this.connectionString;
     }
     /**
-     * (Available in 1.204.1+) PolarDB cluster creation time.
+     * (Available since 1.204.1+) PolarDB cluster creation time.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return (Available in 1.204.1+) PolarDB cluster creation time.
+     * @return (Available since 1.204.1+) PolarDB cluster creation time.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
      * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
      * 
      */
@@ -221,7 +143,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<String> creationCategory;
 
     /**
-     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
      * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
      * 
      */
@@ -229,7 +151,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.creationCategory;
     }
     /**
-     * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+     * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
      * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
      * 
      */
@@ -237,7 +159,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<String> creationOption;
 
     /**
-     * @return The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+     * @return The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
      * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
      * 
      */
@@ -245,14 +167,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.creationOption;
     }
     /**
-     * db_cluster_ip_array defines how users can send requests to your API.
+     * db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
      * 
      */
     @Export(name="dbClusterIpArrays", type=List.class, parameters={ClusterDbClusterIpArray.class})
     private Output<List<ClusterDbClusterIpArray>> dbClusterIpArrays;
 
     /**
-     * @return db_cluster_ip_array defines how users can send requests to your API.
+     * @return db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
      * 
      */
     public Output<List<ClusterDbClusterIpArray>> dbClusterIpArrays() {
@@ -307,14 +229,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.dbType;
     }
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
      * 
      */
     @Export(name="dbVersion", type=String.class, parameters={})
     private Output<String> dbVersion;
 
     /**
-     * @return Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+     * @return Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
      * 
      */
     public Output<String> dbVersion() {
@@ -379,6 +301,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> encryptionKey() {
         return Codegen.optional(this.encryptionKey);
+    }
+    /**
+     * Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+     * 
+     */
+    @Export(name="fromTimeService", type=String.class, parameters={})
+    private Output</* @Nullable */ String> fromTimeService;
+
+    /**
+     * @return Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+     * 
+     */
+    public Output<Optional<String>> fromTimeService() {
+        return Codegen.optional(this.fromTimeService);
     }
     /**
      * The ID of the global database network (GDN).
@@ -457,14 +393,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modifyType);
     }
     /**
-     * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+     * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
      * 
      */
     @Export(name="parameters", type=List.class, parameters={ClusterParameter.class})
     private Output<List<ClusterParameter>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+     * @return Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
      * 
      */
     public Output<List<ClusterParameter>> parameters() {
@@ -501,14 +437,46 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * (Available in 1.196.0+) PolarDB cluster connection port.
+     * The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+     * &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+     * 
+     */
+    @Export(name="plannedEndTime", type=String.class, parameters={})
+    private Output</* @Nullable */ String> plannedEndTime;
+
+    /**
+     * @return The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+     * &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+     * 
+     */
+    public Output<Optional<String>> plannedEndTime() {
+        return Codegen.optional(this.plannedEndTime);
+    }
+    /**
+     * The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+     * &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+     * 
+     */
+    @Export(name="plannedStartTime", type=String.class, parameters={})
+    private Output</* @Nullable */ String> plannedStartTime;
+
+    /**
+     * @return The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+     * &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+     * 
+     */
+    public Output<Optional<String>> plannedStartTime() {
+        return Codegen.optional(this.plannedStartTime);
+    }
+    /**
+     * (Available since 1.196.0+) PolarDB cluster connection port.
      * 
      */
     @Export(name="port", type=String.class, parameters={})
     private Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) PolarDB cluster connection port.
+     * @return (Available since 1.196.0+) PolarDB cluster connection port.
      * 
      */
     public Output<String> port() {
@@ -685,28 +653,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serverlessType);
     }
     /**
-     * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+     * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
      * 
      */
     @Export(name="sourceResourceId", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourceResourceId;
 
     /**
-     * @return The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+     * @return The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
      * 
      */
     public Output<Optional<String>> sourceResourceId() {
         return Codegen.optional(this.sourceResourceId);
     }
     /**
-     * (Available in 1.204.1+) PolarDB cluster status.
+     * (Available since 1.204.1+) PolarDB cluster status.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return (Available in 1.204.1+) PolarDB cluster status.
+     * @return (Available since 1.204.1+) PolarDB cluster status.
      * 
      */
     public Output<String> status() {
@@ -775,7 +743,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * (Available in 1.200.0+) The region where the TDE key resides.
+     * (Available since 1.200.0+) The region where the TDE key resides.
      * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      * 
@@ -784,7 +752,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<String> tdeRegion;
 
     /**
-     * @return (Available in 1.200.0+) The region where the TDE key resides.
+     * @return (Available since 1.200.0+) The region where the TDE key resides.
      * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      * 
@@ -807,6 +775,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> tdeStatus() {
         return Codegen.optional(this.tdeStatus);
+    }
+    /**
+     * Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
+     * 
+     */
+    @Export(name="upgradeType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> upgradeType;
+
+    /**
+     * @return Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
+     * 
+     */
+    public Output<Optional<String>> upgradeType() {
+        return Codegen.optional(this.upgradeType);
     }
     /**
      * The id of the VPC.

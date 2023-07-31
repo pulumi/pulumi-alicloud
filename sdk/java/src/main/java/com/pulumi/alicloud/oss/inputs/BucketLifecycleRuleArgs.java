@@ -23,14 +23,14 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     public static final BucketLifecycleRuleArgs Empty = new BucketLifecycleRuleArgs();
 
     /**
-     * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+     * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
      * 
      */
     @Import(name="abortMultipartUploads")
     private @Nullable Output<List<BucketLifecycleRuleAbortMultipartUploadArgs>> abortMultipartUploads;
 
     /**
-     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
      * 
      */
     public Optional<Output<List<BucketLifecycleRuleAbortMultipartUploadArgs>>> abortMultipartUploads() {
@@ -53,14 +53,14 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Specifies a period in the object&#39;s expire (documented below).
+     * Specifies a period in the object&#39;s expire. See `expiration` below.
      * 
      */
     @Import(name="expirations")
     private @Nullable Output<List<BucketLifecycleRuleExpirationArgs>> expirations;
 
     /**
-     * @return Specifies a period in the object&#39;s expire (documented below).
+     * @return Specifies a period in the object&#39;s expire. See `expiration` below.
      * 
      */
     public Optional<Output<List<BucketLifecycleRuleExpirationArgs>>> expirations() {
@@ -83,14 +83,14 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Specifies when noncurrent object versions expire (documented below).
+     * Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
      * 
      */
     @Import(name="noncurrentVersionExpirations")
     private @Nullable Output<List<BucketLifecycleRuleNoncurrentVersionExpirationArgs>> noncurrentVersionExpirations;
 
     /**
-     * @return Specifies when noncurrent object versions expire (documented below).
+     * @return Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
      * 
      */
     public Optional<Output<List<BucketLifecycleRuleNoncurrentVersionExpirationArgs>>> noncurrentVersionExpirations() {
@@ -98,7 +98,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Specifies when noncurrent object versions transitions (documented below).
+     * Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
      * 
      * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
      * 
@@ -107,7 +107,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     private @Nullable Output<List<BucketLifecycleRuleNoncurrentVersionTransitionArgs>> noncurrentVersionTransitions;
 
     /**
-     * @return Specifies when noncurrent object versions transitions (documented below).
+     * @return Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
      * 
      * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
      * 
@@ -132,14 +132,14 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+     * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
      * 
      */
     @Import(name="transitions")
     private @Nullable Output<List<BucketLifecycleRuleTransitionArgs>> transitions;
 
     /**
-     * @return Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+     * @return Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
      * 
      */
     public Optional<Output<List<BucketLifecycleRuleTransitionArgs>>> transitions() {
@@ -178,7 +178,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param abortMultipartUploads Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+         * @param abortMultipartUploads Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param abortMultipartUploads Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+         * @param abortMultipartUploads Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param abortMultipartUploads Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+         * @param abortMultipartUploads Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expirations Specifies a period in the object&#39;s expire (documented below).
+         * @param expirations Specifies a period in the object&#39;s expire. See `expiration` below.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expirations Specifies a period in the object&#39;s expire (documented below).
+         * @param expirations Specifies a period in the object&#39;s expire. See `expiration` below.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expirations Specifies a period in the object&#39;s expire (documented below).
+         * @param expirations Specifies a period in the object&#39;s expire. See `expiration` below.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param noncurrentVersionExpirations Specifies when noncurrent object versions expire (documented below).
+         * @param noncurrentVersionExpirations Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param noncurrentVersionExpirations Specifies when noncurrent object versions expire (documented below).
+         * @param noncurrentVersionExpirations Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param noncurrentVersionExpirations Specifies when noncurrent object versions expire (documented below).
+         * @param noncurrentVersionExpirations Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions (documented below).
+         * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
          * 
          * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
          * 
@@ -326,7 +326,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions (documented below).
+         * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
          * 
          * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
          * 
@@ -338,7 +338,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions (documented below).
+         * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
          * 
          * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
          * 
@@ -371,7 +371,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param transitions Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+         * @param transitions Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param transitions Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+         * @param transitions Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param transitions Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+         * @param transitions Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
          * 
          * @return builder
          * 

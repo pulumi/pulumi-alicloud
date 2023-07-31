@@ -13,21 +13,28 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
     public sealed class RuleTargetParamListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+        /// The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
         /// </summary>
         [Input("form", required: true)]
         public Input<string> Form { get; set; } = null!;
 
         /// <summary>
-        /// The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+        /// The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
         /// </summary>
         [Input("resourceKey", required: true)]
         public Input<string> ResourceKey { get; set; } = null!;
 
         /// <summary>
         /// The template of param.
+        /// </summary>
+        [Input("template")]
+        public Input<string>? Template { get; set; }
+
+        /// <summary>
+        /// The value of param.
         /// 
         /// &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,15 +44,10 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         /// {
         /// });
         /// ```
+        /// 
         /// In order to fix the diff, from version 1.160.0,
         /// this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
         /// If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
-        /// </summary>
-        [Input("template")]
-        public Input<string>? Template { get; set; }
-
-        /// <summary>
-        /// The value of param.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

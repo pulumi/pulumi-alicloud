@@ -260,9 +260,9 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         """
         Provides a Dbfs Auto Snap Shot Policy resource.
 
-        For information about Dbfs Auto Snap Shot Policy and how to use it, see [What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html).
+        For information about Dbfs Auto Snap Shot Policy and how to use it.
 
-        > **NOTE:** Available in v1.202.0+.
+        > **NOTE:** Available since v1.202.0.
 
         ## Example Usage
 
@@ -273,7 +273,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.databasefilesystem.AutoSnapShotPolicy("default",
-            policy_name="testTerraform",
+            policy_name="tf-example",
             repeat_weekdays=["2"],
             retention_days=1,
             time_points=["01"])
@@ -303,9 +303,9 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         """
         Provides a Dbfs Auto Snap Shot Policy resource.
 
-        For information about Dbfs Auto Snap Shot Policy and how to use it, see [What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html).
+        For information about Dbfs Auto Snap Shot Policy and how to use it.
 
-        > **NOTE:** Available in v1.202.0+.
+        > **NOTE:** Available since v1.202.0.
 
         ## Example Usage
 
@@ -316,7 +316,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.databasefilesystem.AutoSnapShotPolicy("default",
-            policy_name="testTerraform",
+            policy_name="tf-example",
             repeat_weekdays=["2"],
             retention_days=1,
             time_points=["01"])

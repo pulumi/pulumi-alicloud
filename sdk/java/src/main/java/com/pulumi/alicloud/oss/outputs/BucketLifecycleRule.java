@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketLifecycleRule {
     /**
-     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
      * 
      */
     private @Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads;
@@ -29,7 +29,7 @@ public final class BucketLifecycleRule {
      */
     private Boolean enabled;
     /**
-     * @return Specifies a period in the object&#39;s expire (documented below).
+     * @return Specifies a period in the object&#39;s expire. See `expiration` below.
      * 
      */
     private @Nullable List<BucketLifecycleRuleExpiration> expirations;
@@ -39,12 +39,12 @@ public final class BucketLifecycleRule {
      */
     private @Nullable String id;
     /**
-     * @return Specifies when noncurrent object versions expire (documented below).
+     * @return Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
      * 
      */
     private @Nullable List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations;
     /**
-     * @return Specifies when noncurrent object versions transitions (documented below).
+     * @return Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
      * 
      * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
      * 
@@ -56,14 +56,14 @@ public final class BucketLifecycleRule {
      */
     private @Nullable String prefix;
     /**
-     * @return Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+     * @return Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
      * 
      */
     private @Nullable List<BucketLifecycleRuleTransition> transitions;
 
     private BucketLifecycleRule() {}
     /**
-     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+     * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
      * 
      */
     public List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads() {
@@ -77,7 +77,7 @@ public final class BucketLifecycleRule {
         return this.enabled;
     }
     /**
-     * @return Specifies a period in the object&#39;s expire (documented below).
+     * @return Specifies a period in the object&#39;s expire. See `expiration` below.
      * 
      */
     public List<BucketLifecycleRuleExpiration> expirations() {
@@ -91,14 +91,14 @@ public final class BucketLifecycleRule {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Specifies when noncurrent object versions expire (documented below).
+     * @return Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
      * 
      */
     public List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations() {
         return this.noncurrentVersionExpirations == null ? List.of() : this.noncurrentVersionExpirations;
     }
     /**
-     * @return Specifies when noncurrent object versions transitions (documented below).
+     * @return Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
      * 
      * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
      * 
@@ -114,7 +114,7 @@ public final class BucketLifecycleRule {
         return Optional.ofNullable(this.prefix);
     }
     /**
-     * @return Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+     * @return Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
      * 
      */
     public List<BucketLifecycleRuleTransition> transitions() {

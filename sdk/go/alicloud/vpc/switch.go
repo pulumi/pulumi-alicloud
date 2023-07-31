@@ -18,6 +18,8 @@ import (
 //
 // For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
 //
+// > **NOTE:** Available since v1.0.0.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -195,7 +197,7 @@ type Switch struct {
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
 	// The IPv6 CIDR block of the VSwitch.
-	Ipv6CidrBlockMask pulumi.IntPtrOutput `pulumi:"ipv6CidrBlockMask"`
+	Ipv6CidrBlockMask pulumi.IntOutput `pulumi:"ipv6CidrBlockMask"`
 	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
@@ -512,8 +514,8 @@ func (o SwitchOutput) Ipv6CidrBlock() pulumi.StringOutput {
 }
 
 // The IPv6 CIDR block of the VSwitch.
-func (o SwitchOutput) Ipv6CidrBlockMask() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Switch) pulumi.IntPtrOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntPtrOutput)
+func (o SwitchOutput) Ipv6CidrBlockMask() pulumi.IntOutput {
+	return o.ApplyT(func(v *Switch) pulumi.IntOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntOutput)
 }
 
 // Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.

@@ -47,9 +47,17 @@ public final class GetPoliciesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.groupName);
     }
 
+    /**
+     * A list of ram group IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return A list of ram group IDs.
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -202,15 +210,33 @@ public final class GetPoliciesArgs extends com.pulumi.resources.InvokeArgs {
             return groupName(Output.of(groupName));
         }
 
+        /**
+         * @param ids A list of ram group IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of ram group IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids A list of ram group IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }

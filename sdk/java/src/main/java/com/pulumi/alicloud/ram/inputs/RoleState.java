@@ -109,7 +109,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
      * 
      * @deprecated
      * Field &#39;ram_users&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -120,7 +120,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> ramUsers;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
      * 
      * @deprecated
      * Field &#39;ram_users&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -147,7 +147,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
      * 
      * @deprecated
      * Field &#39;services&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -158,7 +158,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> services;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
      * 
      * @deprecated
      * Field &#39;services&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -170,7 +170,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
      * 
      * @deprecated
      * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -181,7 +181,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> version;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
      * 
      * @deprecated
      * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -352,7 +352,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ramUsers (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+         * @param ramUsers (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ramUsers (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+         * @param ramUsers (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ramUsers (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+         * @param ramUsers (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+         * @param services (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+         * @param services (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+         * @param services (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+         * @param version (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+         * @param version (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
          * 
          * @return builder
          * 

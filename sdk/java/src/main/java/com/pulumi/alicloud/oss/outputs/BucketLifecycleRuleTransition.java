@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -25,10 +26,21 @@ public final class BucketLifecycleRuleTransition {
      */
     private @Nullable Integer days;
     /**
-     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
      * 
      */
-    private @Nullable String storageClass;
+    private @Nullable Boolean isAccessTime;
+    /**
+     * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
+     * 
+     */
+    private @Nullable Boolean returnToStdWhenVisit;
+    /**
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
+     * 
+     */
+    private String storageClass;
 
     private BucketLifecycleRuleTransition() {}
     /**
@@ -48,11 +60,26 @@ public final class BucketLifecycleRuleTransition {
         return Optional.ofNullable(this.days);
     }
     /**
-     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
      * 
      */
-    public Optional<String> storageClass() {
-        return Optional.ofNullable(this.storageClass);
+    public Optional<Boolean> isAccessTime() {
+        return Optional.ofNullable(this.isAccessTime);
+    }
+    /**
+     * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
+     * 
+     */
+    public Optional<Boolean> returnToStdWhenVisit() {
+        return Optional.ofNullable(this.returnToStdWhenVisit);
+    }
+    /**
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
+     * 
+     */
+    public String storageClass() {
+        return this.storageClass;
     }
 
     public static Builder builder() {
@@ -66,12 +93,16 @@ public final class BucketLifecycleRuleTransition {
     public static final class Builder {
         private @Nullable String createdBeforeDate;
         private @Nullable Integer days;
-        private @Nullable String storageClass;
+        private @Nullable Boolean isAccessTime;
+        private @Nullable Boolean returnToStdWhenVisit;
+        private String storageClass;
         public Builder() {}
         public Builder(BucketLifecycleRuleTransition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdBeforeDate = defaults.createdBeforeDate;
     	      this.days = defaults.days;
+    	      this.isAccessTime = defaults.isAccessTime;
+    	      this.returnToStdWhenVisit = defaults.returnToStdWhenVisit;
     	      this.storageClass = defaults.storageClass;
         }
 
@@ -86,14 +117,26 @@ public final class BucketLifecycleRuleTransition {
             return this;
         }
         @CustomType.Setter
-        public Builder storageClass(@Nullable String storageClass) {
-            this.storageClass = storageClass;
+        public Builder isAccessTime(@Nullable Boolean isAccessTime) {
+            this.isAccessTime = isAccessTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder returnToStdWhenVisit(@Nullable Boolean returnToStdWhenVisit) {
+            this.returnToStdWhenVisit = returnToStdWhenVisit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storageClass(String storageClass) {
+            this.storageClass = Objects.requireNonNull(storageClass);
             return this;
         }
         public BucketLifecycleRuleTransition build() {
             final var o = new BucketLifecycleRuleTransition();
             o.createdBeforeDate = createdBeforeDate;
             o.days = days;
+            o.isAccessTime = isAccessTime;
+            o.returnToStdWhenVisit = returnToStdWhenVisit;
             o.storageClass = storageClass;
             return o;
         }

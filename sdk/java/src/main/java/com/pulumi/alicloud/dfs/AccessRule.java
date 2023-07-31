@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/doc-detail/207144.htm).
  * 
- * &gt; **NOTE:** Available in v1.140.0+.
+ * &gt; **NOTE:** Available since v1.140.0.
  * 
  * ## Example Usage
  * 

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -49,6 +51,8 @@ namespace Pulumi.AliCloud.Ram
 
         /// <summary>
         /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

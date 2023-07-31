@@ -8,4 +8,5 @@ import typing
 from .anycast_eip_address import *
 from .anycast_eip_address_attachment import *
 from .get_anycast_eip_addresses import *
+from ._inputs import *
 from . import outputs

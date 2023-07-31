@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provide RDS cluster instance endpoint public connection resources.
  * 
- * Information about RDS MySQL cluster endpoint address and how to use it, see [What is RDS MySQL cluster endpoint address](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-doc-rds-2014-08-15-api-doc-createdbinstanceendpointaddress).
+ * Information about RDS MySQL cluster endpoint address and how to use it, see [What is RDS DB Instance Endpoint Address](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbinstanceendpointaddress).
  * 
- * &gt; **NOTE:** Available in 1.204.0+.
+ * &gt; **NOTE:** Available since v1.204.0.
  * 
  * ## Import
  * 

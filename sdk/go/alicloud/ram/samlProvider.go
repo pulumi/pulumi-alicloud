@@ -16,7 +16,7 @@ import (
 //
 // For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
 //
-// > **NOTE:** Available in v1.114.0+.
+// > **NOTE:** Available since v1.114.0+.
 //
 // ## Example Usage
 //
@@ -37,7 +37,7 @@ import (
 //			_, err := ram.NewSamlProvider(ctx, "example", &ram.SamlProviderArgs{
 //				Description:                 pulumi.String("For Terraform Test"),
 //				EncodedsamlMetadataDocument: pulumi.String("your encodedsaml metadata document"),
-//				SamlProviderName:            pulumi.String("tf-testAcc"),
+//				SamlProviderName:            pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// This resource will help you to manager a Serverless Kubernetes Cluster. The cluster is same as container service created by web console.
+    /// This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
     /// 
-    /// &gt; **NOTE:** Available in 1.58.0+
+    /// &gt; **NOTE:** Available since v1.58.0.
     /// 
     /// &gt; **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
     /// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.CS
     public partial class ServerlessKubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        /// You can specific network plugin,log component,ingress component and so on. See `addons` below.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.ServerlessKubernetesAddon>> Addons { get; private set; } = null!;
@@ -150,6 +150,11 @@ namespace Pulumi.AliCloud.CS
         [Output("clusterSpec")]
         public Output<string> ClusterSpec { get; private set; } = null!;
 
+        /// <summary>
+        /// whether to create a v2 version cluster.
+        /// 
+        /// *Removed params*
+        /// </summary>
         [Output("createV2Cluster")]
         public Output<bool> CreateV2Cluster { get; private set; } = null!;
 
@@ -213,7 +218,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> NewNatGateway { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         /// </summary>
         [Output("privateZone")]
         public Output<bool?> PrivateZone { get; private set; } = null!;
@@ -228,7 +233,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         /// </summary>
         [Output("rrsaMetadata")]
         public Output<Outputs.ServerlessKubernetesRrsaMetadata> RrsaMetadata { get; private set; } = null!;
@@ -282,7 +287,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -349,7 +354,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        /// You can specific network plugin,log component,ingress component and so on. See `addons` below.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonArgs> Addons
         {
@@ -383,6 +388,11 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
+        /// <summary>
+        /// whether to create a v2 version cluster.
+        /// 
+        /// *Removed params*
+        /// </summary>
         [Input("createV2Cluster")]
         public Input<bool>? CreateV2Cluster { get; set; }
 
@@ -446,7 +456,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
@@ -466,7 +476,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         /// </summary>
         [Input("rrsaMetadata")]
         public Input<Inputs.ServerlessKubernetesRrsaMetadataArgs>? RrsaMetadata { get; set; }
@@ -532,7 +542,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -567,7 +577,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        /// You can specific network plugin,log component,ingress component and so on. See `addons` below.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonGetArgs> Addons
         {
@@ -601,6 +611,11 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
+        /// <summary>
+        /// whether to create a v2 version cluster.
+        /// 
+        /// *Removed params*
+        /// </summary>
         [Input("createV2Cluster")]
         public Input<bool>? CreateV2Cluster { get; set; }
 
@@ -664,7 +679,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
@@ -684,7 +699,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         /// </summary>
         [Input("rrsaMetadata")]
         public Input<Inputs.ServerlessKubernetesRrsaMetadataGetArgs>? RrsaMetadata { get; set; }
@@ -750,7 +765,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

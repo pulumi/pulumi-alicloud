@@ -14,151 +14,151 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
     public sealed class ErEnvConf
     {
         /// <summary>
-        /// The configuration of a presetCanaryAnhui environment. The `Block preset_canary_anhui` is same as `Block staging`.
+        /// The configuration of a presetCanaryAnhui environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryAnhui? PresetCanaryAnhui;
         /// <summary>
-        /// The configuration of a presetCanaryBeijing environment. The `Block preset_canary_beijing` is same as `Block staging`.
+        /// The configuration of a presetCanaryBeijing environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryBeijing? PresetCanaryBeijing;
         /// <summary>
-        /// The configuration of a presetCanaryChongqing environment. The `Block preset_canary_chongqing` is same as `Block staging`.
+        /// The configuration of a presetCanaryChongqing environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryChongqing? PresetCanaryChongqing;
         /// <summary>
-        /// The configuration of a presetCanaryFujian environment. The `Block preset_canary_fujian` is same as `Block staging`.
+        /// The configuration of a presetCanaryFujian environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryFujian? PresetCanaryFujian;
         /// <summary>
-        /// The configuration of a presetCanaryGansu environment. The `Block preset_canary_gansu` is same as `Block staging`.
+        /// The configuration of a presetCanaryGansu environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryGansu? PresetCanaryGansu;
         /// <summary>
-        /// The configuration of a presetCanaryGuangdong environment. The `Block preset_canary_guangdong` is same as `Block staging`.
+        /// The configuration of a presetCanaryGuangdong environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryGuangdong? PresetCanaryGuangdong;
         /// <summary>
-        /// The configuration of a presetCanaryGuangxi environment. The `Block preset_canary_guangxi` is same as `Block staging`.
+        /// The configuration of a presetCanaryGuangxi environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryGuangxi? PresetCanaryGuangxi;
         /// <summary>
-        /// The configuration of a presetCanaryGuizhou environment. The `Block preset_canary_guizhou` is same as `Block staging`.
+        /// The configuration of a presetCanaryGuizhou environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryGuizhou? PresetCanaryGuizhou;
         /// <summary>
-        /// The configuration of a presetCanaryHainan environment. The `Block preset_canary_hainan` is same as `Block staging`.
+        /// The configuration of a presetCanaryHainan environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHainan? PresetCanaryHainan;
         /// <summary>
-        /// The configuration of a presetCanaryHebei environment. The `Block preset_canary_hebei` is same as `Block staging`.
+        /// The configuration of a presetCanaryHebei environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHebei? PresetCanaryHebei;
         /// <summary>
-        /// The configuration of a presetCanaryHeilongjiang environment. The `Block preset_canary_heilongjiang` is same as `Block staging`.
+        /// The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHeilongjiang? PresetCanaryHeilongjiang;
         /// <summary>
-        /// The configuration of a presetCanaryHenan environment. The `Block preset_canary_henan` is same as `Block staging`.
+        /// The configuration of a presetCanaryHenan environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHenan? PresetCanaryHenan;
         /// <summary>
-        /// The configuration of a presetCanaryHongKong environment. The `Block preset_canary_hong_kong` is same as `Block staging`.
+        /// The configuration of a presetCanaryHongKong environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHongKong? PresetCanaryHongKong;
         /// <summary>
-        /// The configuration of a presetCanaryHubei environment. The `Block preset_canary_hubei` is same as `Block staging`.
+        /// The configuration of a presetCanaryHubei environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHubei? PresetCanaryHubei;
         /// <summary>
-        /// The configuration of a presetCanaryHunan environment. The `Block preset_canary_hunan` is same as `Block staging`.
+        /// The configuration of a presetCanaryHunan environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryHunan? PresetCanaryHunan;
         /// <summary>
-        /// The configuration of a presetCanaryJiangsu environment. The `Block preset_canary_jiangsu` is same as `Block staging`.
+        /// The configuration of a presetCanaryJiangsu environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryJiangsu? PresetCanaryJiangsu;
         /// <summary>
-        /// The configuration of a presetCanaryJiangxi environment. The `Block preset_canary_jiangxi` is same as `Block staging`.
+        /// The configuration of a presetCanaryJiangxi environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryJiangxi? PresetCanaryJiangxi;
         /// <summary>
-        /// The configuration of a presetCanaryJilin environment. The `Block preset_canary_jilin` is same as `Block staging`.
+        /// The configuration of a presetCanaryJilin environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryJilin? PresetCanaryJilin;
         /// <summary>
-        /// The configuration of a presetCanaryLiaoning environment. The `Block preset_canary_liaoning` is same as `Block staging`.
+        /// The configuration of a presetCanaryLiaoning environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryLiaoning? PresetCanaryLiaoning;
         /// <summary>
-        /// The configuration of a presetCanaryMacau environment. The `Block preset_canary_macau` is same as `Block staging`.
+        /// The configuration of a presetCanaryMacau environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryMacau? PresetCanaryMacau;
         /// <summary>
-        /// The configuration of a presetCanaryNeimenggu environment. The `Block preset_canary_neimenggu` is same as `Block staging`.
+        /// The configuration of a presetCanaryNeimenggu environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryNeimenggu? PresetCanaryNeimenggu;
         /// <summary>
-        /// The configuration of a presetCanaryNingxia environment. The `Block preset_canary_ningxia` is same as `Block staging`.
+        /// The configuration of a presetCanaryNingxia environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryNingxia? PresetCanaryNingxia;
         /// <summary>
-        /// The configuration of a presetCanaryOverseas environment. The `Block preset_canary_overseas` is same as `Block staging`.
+        /// The configuration of a presetCanaryOverseas environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryOverseas? PresetCanaryOverseas;
         /// <summary>
-        /// The configuration of a presetCanaryQinghai environment. The `Block preset_canary_qinghai` is same as `Block staging`.
+        /// The configuration of a presetCanaryQinghai environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryQinghai? PresetCanaryQinghai;
         /// <summary>
-        /// The configuration of a presetCanaryShaanxi environment. The `Block preset_canary_shaanxi` is same as `Block staging`.
+        /// The configuration of a presetCanaryShaanxi environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryShaanxi? PresetCanaryShaanxi;
         /// <summary>
-        /// The configuration of a presetCanaryShandong environment. The `Block preset_canary_shandong` is same as `Block staging`.
+        /// The configuration of a presetCanaryShandong environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryShandong? PresetCanaryShandong;
         /// <summary>
-        /// The configuration of a presetCanaryShanghai environment. The `Block preset_canary_shanghai` is same as `Block staging`.
+        /// The configuration of a presetCanaryShanghai environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryShanghai? PresetCanaryShanghai;
         /// <summary>
-        /// The configuration of a presetCanaryShanxi environment. The `Block preset_canary_shanxi` is same as `Block staging`.
+        /// The configuration of a presetCanaryShanxi environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryShanxi? PresetCanaryShanxi;
         /// <summary>
-        /// The configuration of a presetCanarySichuan environment. The `Block preset_canary_sichuan` is same as `Block staging`.
+        /// The configuration of a presetCanarySichuan environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanarySichuan? PresetCanarySichuan;
         /// <summary>
-        /// The configuration of a presetCanaryTaiwan environment. The `Block preset_canary_taiwan` is same as `Block staging`.
+        /// The configuration of a presetCanaryTaiwan environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryTaiwan? PresetCanaryTaiwan;
         /// <summary>
-        /// The configuration of a presetCanaryTianjin environment. The `Block preset_canary_tianjin` is same as `Block staging`.
+        /// The configuration of a presetCanaryTianjin environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryTianjin? PresetCanaryTianjin;
         /// <summary>
-        /// The configuration of a presetCanaryXinjiang environment. The `Block preset_canary_xinjiang` is same as `Block staging`.
+        /// The configuration of a presetCanaryXinjiang environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryXinjiang? PresetCanaryXinjiang;
         /// <summary>
-        /// The configuration of a presetCanaryXizang environment. The `Block preset_canary_xizang` is same as `Block staging`.
+        /// The configuration of a presetCanaryXizang environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryXizang? PresetCanaryXizang;
         /// <summary>
-        /// The configuration of a presetCanaryYunnan environment. The `Block preset_canary_yunnan` is same as `Block staging`.
+        /// The configuration of a presetCanaryYunnan environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryYunnan? PresetCanaryYunnan;
         /// <summary>
-        /// The configuration of a presetCanaryZhejiang environment. The `Block preset_canary_zhejiang` is same as `Block staging`.
+        /// The configuration of a presetCanaryZhejiang environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfPresetCanaryZhejiang? PresetCanaryZhejiang;
         /// <summary>
-        /// The configuration of a production environment. The `Block production` is same as `Block staging`.
+        /// The configuration of a production environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfProduction? Production;
         /// <summary>
-        /// The configuration of a staging environment. See the following `Block staging`.
+        /// The configuration of a staging environment. See `staging` below.
         /// </summary>
         public readonly Outputs.ErEnvConfStaging? Staging;
 

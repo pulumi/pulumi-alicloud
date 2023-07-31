@@ -123,6 +123,8 @@ def get_groups(name_regex: Optional[str] = None,
     """
     This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
 
+    > **NOTE:** Available since v1.0.0+.
+
     ## Example Usage
 
     ```python
@@ -171,6 +173,8 @@ def get_groups_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
     """
     This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available since v1.0.0+.
 
     ## Example Usage
 

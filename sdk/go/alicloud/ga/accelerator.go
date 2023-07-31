@@ -7,11 +7,46 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Global Accelerator (GA) Accelerator resource.
+//
+// For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createaccelerator).
+//
+// > **NOTE:** Available since v1.111.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ga.NewAccelerator(ctx, "example", &ga.AcceleratorArgs{
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Duration:      pulumi.Int(1),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Ga Accelerator can be imported using the id, e.g.
@@ -32,18 +67,26 @@ type Accelerator struct {
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType pulumi.StringOutput `pulumi:"bandwidthBillingType"`
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	CrossBorderMode pulumi.StringOutput `pulumi:"crossBorderMode"`
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus pulumi.BoolPtrOutput `pulumi:"crossBorderStatus"`
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-	Duration pulumi.IntOutput `pulumi:"duration"`
+	Duration pulumi.IntPtrOutput `pulumi:"duration"`
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
-	PricingCycle pulumi.StringOutput `pulumi:"pricingCycle"`
+	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo pulumi.StringPtrOutput `pulumi:"promotionOptionNo"`
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
-	Spec pulumi.StringOutput `pulumi:"spec"`
+	Spec pulumi.StringPtrOutput `pulumi:"spec"`
 	// The status of the GA instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -54,15 +97,9 @@ type Accelerator struct {
 func NewAccelerator(ctx *pulumi.Context,
 	name string, args *AcceleratorArgs, opts ...pulumi.ResourceOption) (*Accelerator, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AcceleratorArgs{}
 	}
 
-	if args.Duration == nil {
-		return nil, errors.New("invalid value for required argument 'Duration'")
-	}
-	if args.Spec == nil {
-		return nil, errors.New("invalid value for required argument 'Spec'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Accelerator
 	err := ctx.RegisterResource("alicloud:ga/accelerator:Accelerator", name, args, &resource, opts...)
@@ -94,14 +131,22 @@ type acceleratorState struct {
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	CrossBorderMode *string `pulumi:"crossBorderMode"`
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus *bool `pulumi:"crossBorderStatus"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
-	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration *int `pulumi:"duration"`
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType *string `pulumi:"paymentType"`
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
@@ -121,14 +166,22 @@ type AcceleratorState struct {
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType pulumi.StringPtrInput
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	CrossBorderMode pulumi.StringPtrInput
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus pulumi.BoolPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
-	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntPtrInput
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringPtrInput
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 	PricingCycle pulumi.StringPtrInput
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo pulumi.StringPtrInput
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
@@ -152,18 +205,26 @@ type acceleratorArgs struct {
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	CrossBorderMode *string `pulumi:"crossBorderMode"`
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus *bool `pulumi:"crossBorderStatus"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
-	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-	Duration int `pulumi:"duration"`
+	Duration *int `pulumi:"duration"`
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType *string `pulumi:"paymentType"`
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
-	Spec string `pulumi:"spec"`
+	Spec *string `pulumi:"spec"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -178,18 +239,26 @@ type AcceleratorArgs struct {
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType pulumi.StringPtrInput
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	CrossBorderMode pulumi.StringPtrInput
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus pulumi.BoolPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
-	// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
+	// The subscription duration.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-	Duration pulumi.IntInput
+	Duration pulumi.IntPtrInput
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringPtrInput
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
 	PricingCycle pulumi.StringPtrInput
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo pulumi.StringPtrInput
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
 	RenewalStatus pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
-	Spec pulumi.StringInput
+	Spec pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -301,21 +370,41 @@ func (o AcceleratorOutput) BandwidthBillingType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.BandwidthBillingType }).(pulumi.StringOutput)
 }
 
+// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+func (o AcceleratorOutput) CrossBorderMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.CrossBorderMode }).(pulumi.StringOutput)
+}
+
+// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+func (o AcceleratorOutput) CrossBorderStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.BoolPtrOutput { return v.CrossBorderStatus }).(pulumi.BoolPtrOutput)
+}
+
 // Descriptive information of the global acceleration instance.
 func (o AcceleratorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
+// The subscription duration.
 // * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
 // * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-func (o AcceleratorOutput) Duration() pulumi.IntOutput {
-	return o.ApplyT(func(v *Accelerator) pulumi.IntOutput { return v.Duration }).(pulumi.IntOutput)
+func (o AcceleratorOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.IntPtrOutput { return v.Duration }).(pulumi.IntPtrOutput)
+}
+
+// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+func (o AcceleratorOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // The billing cycle of the GA instance. Default value: `Month`. Valid values:
-func (o AcceleratorOutput) PricingCycle() pulumi.StringOutput {
-	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.PricingCycle }).(pulumi.StringOutput)
+func (o AcceleratorOutput) PricingCycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
+}
+
+// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+func (o AcceleratorOutput) PromotionOptionNo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringPtrOutput { return v.PromotionOptionNo }).(pulumi.StringPtrOutput)
 }
 
 // Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
@@ -324,8 +413,8 @@ func (o AcceleratorOutput) RenewalStatus() pulumi.StringOutput {
 }
 
 // The instance type of the GA instance. Specification of global acceleration instance. Valid values:
-func (o AcceleratorOutput) Spec() pulumi.StringOutput {
-	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
+func (o AcceleratorOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringPtrOutput { return v.Spec }).(pulumi.StringPtrOutput)
 }
 
 // The status of the GA instance.

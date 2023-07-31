@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
+// Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
+//
+// > **NOTE:** Available since v1.5.0.
 //
 // ## Example Usage
 //
@@ -21,7 +23,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -32,21 +33,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			creation := "Rds"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "dbdatabasebasic"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:        pulumi.StringRef("MySQL"),
+//				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -61,7 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
+//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
 //				Engine:          pulumi.String("MySQL"),
 //				EngineVersion:   pulumi.String("5.6"),
 //				InstanceType:    pulumi.String("rds.mysql.s1.small"),
@@ -73,7 +72,7 @@ import (
 //				return err
 //			}
 //			_, err = rds.NewDatabase(ctx, "defaultDatabase", &rds.DatabaseArgs{
-//				InstanceId: instance.ID(),
+//				InstanceId: defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -113,8 +112,7 @@ type Database struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Id of instance that can run database.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-	// and have no more than 64 characters.
+	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -168,8 +166,7 @@ type databaseState struct {
 	Description *string `pulumi:"description"`
 	// The Id of instance that can run database.
 	InstanceId *string `pulumi:"instanceId"`
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-	// and have no more than 64 characters.
+	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
 	Name *string `pulumi:"name"`
 }
 
@@ -191,8 +188,7 @@ type DatabaseState struct {
 	Description pulumi.StringPtrInput
 	// The Id of instance that can run database.
 	InstanceId pulumi.StringPtrInput
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-	// and have no more than 64 characters.
+	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
 	Name pulumi.StringPtrInput
 }
 
@@ -218,8 +214,7 @@ type databaseArgs struct {
 	Description *string `pulumi:"description"`
 	// The Id of instance that can run database.
 	InstanceId string `pulumi:"instanceId"`
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-	// and have no more than 64 characters.
+	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
 	Name *string `pulumi:"name"`
 }
 
@@ -242,8 +237,7 @@ type DatabaseArgs struct {
 	Description pulumi.StringPtrInput
 	// The Id of instance that can run database.
 	InstanceId pulumi.StringInput
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-	// and have no more than 64 characters.
+	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
 	Name pulumi.StringPtrInput
 }
 
@@ -360,8 +354,7 @@ func (o DatabaseOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-// and have no more than 64 characters.
+// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
 func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

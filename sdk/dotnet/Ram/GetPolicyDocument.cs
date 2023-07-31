@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source Generates a RAM policy document of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.184.0+.
+        /// &gt; **NOTE:** Available since v1.184.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var @default = new AliCloud.Ram.Policy("default", new()
         ///     {
-        ///         PolicyName = "tf-test",
+        ///         PolicyName = "tf-example",
         ///         PolicyDocument = basicExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var policy = new AliCloud.Ram.Policy("policy", new()
         ///     {
-        ///         PolicyName = "tf-test-condition",
+        ///         PolicyName = "tf-example-condition",
         ///         PolicyDocument = multipleCondition.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });
@@ -371,7 +371,7 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source Generates a RAM policy document of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.184.0+.
+        /// &gt; **NOTE:** Available since v1.184.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -409,7 +409,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var @default = new AliCloud.Ram.Policy("default", new()
         ///     {
-        ///         PolicyName = "tf-test",
+        ///         PolicyName = "tf-example",
         ///         PolicyDocument = basicExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });
@@ -514,7 +514,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var policy = new AliCloud.Ram.Policy("policy", new()
         ///     {
-        ///         PolicyName = "tf-test-condition",
+        ///         PolicyName = "tf-example-condition",
         ///         PolicyDocument = multipleCondition.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });
@@ -739,7 +739,7 @@ namespace Pulumi.AliCloud.Ram
         private List<Inputs.GetPolicyDocumentStatementArgs>? _statements;
 
         /// <summary>
-        /// Statement of the RAM policy document. See the following `Block statement`.
+        /// Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
         /// </summary>
         public List<Inputs.GetPolicyDocumentStatementArgs> Statements
         {
@@ -771,7 +771,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<Inputs.GetPolicyDocumentStatementInputArgs>? _statements;
 
         /// <summary>
-        /// Statement of the RAM policy document. See the following `Block statement`.
+        /// Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
         /// </summary>
         public InputList<Inputs.GetPolicyDocumentStatementInputArgs> Statements
         {

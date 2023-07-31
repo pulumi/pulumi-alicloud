@@ -875,9 +875,11 @@ class BackupPolicy(pulumi.CustomResource):
                  retention_period: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides an RDS instance backup policy resource and used to configure instance backup policy.
+        Provides an RDS instance backup policy resource and used to configure instance backup policy, see [What is DB Backup Policy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifybackuppolicy).
 
         > **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
+
+        > **NOTE:** Available since v1.5.0.
 
         ## Example Usage
 
@@ -886,13 +888,11 @@ class BackupPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "dbbackuppolicybasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
@@ -965,9 +965,11 @@ class BackupPolicy(pulumi.CustomResource):
                  args: BackupPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an RDS instance backup policy resource and used to configure instance backup policy.
+        Provides an RDS instance backup policy resource and used to configure instance backup policy, see [What is DB Backup Policy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifybackuppolicy).
 
         > **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
+
+        > **NOTE:** Available since v1.5.0.
 
         ## Example Usage
 
@@ -976,13 +978,11 @@ class BackupPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "dbbackuppolicybasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="172.16.0.0/16")

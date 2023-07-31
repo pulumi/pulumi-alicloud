@@ -20,8 +20,7 @@ type ClusterDbClusterIpArray struct {
 	// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
 	// **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
 	ModifyMode *string `pulumi:"modifyMode"`
-	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
-	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
+	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
 }
 
@@ -43,8 +42,7 @@ type ClusterDbClusterIpArrayArgs struct {
 	// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
 	// **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
 	ModifyMode pulumi.StringPtrInput `pulumi:"modifyMode"`
-	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
-	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
+	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput `pulumi:"securityIps"`
 }
 
@@ -111,8 +109,7 @@ func (o ClusterDbClusterIpArrayOutput) ModifyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDbClusterIpArray) *string { return v.ModifyMode }).(pulumi.StringPtrOutput)
 }
 
-// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
-// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
+// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 func (o ClusterDbClusterIpArrayOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterDbClusterIpArray) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }
@@ -138,7 +135,9 @@ func (o ClusterDbClusterIpArrayArrayOutput) Index(i pulumi.IntInput) ClusterDbCl
 }
 
 type ClusterParameter struct {
-	Name  string `pulumi:"name"`
+	// Kernel parameter name.
+	Name string `pulumi:"name"`
+	// Kernel parameter value.
 	Value string `pulumi:"value"`
 }
 
@@ -154,7 +153,9 @@ type ClusterParameterInput interface {
 }
 
 type ClusterParameterArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// Kernel parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Kernel parameter value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -209,10 +210,12 @@ func (o ClusterParameterOutput) ToClusterParameterOutputWithContext(ctx context.
 	return o
 }
 
+// Kernel parameter name.
 func (o ClusterParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Kernel parameter value.
 func (o ClusterParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterParameter) string { return v.Value }).(pulumi.StringOutput)
 }

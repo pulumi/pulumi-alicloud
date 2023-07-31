@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkv).
     /// 
-    /// &gt; **NOTE:** Available in v1.198.0+.
+    /// &gt; **NOTE:** Available since v1.198.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,21 +28,18 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultKvAccount = AliCloud.Dcdn.GetKvAccount.Invoke(new()
-    ///     {
-    ///         Status = "online",
-    ///     });
-    /// 
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultKvNamespace = new AliCloud.Dcdn.KvNamespace("defaultKvNamespace", new()
     ///     {
-    ///         Description = "wkmtest",
-    ///         Namespace = @var.Name,
+    ///         Description = name,
+    ///         Namespace = name,
     ///     });
     /// 
     ///     var defaultKv = new AliCloud.Dcdn.Kv("defaultKv", new()
     ///     {
-    ///         Value = "testvalue",
-    ///         Key = @var.Name,
+    ///         Value = "example-value",
+    ///         Key = name,
     ///         Namespace = defaultKvNamespace.Namespace,
     ///     });
     /// 
@@ -67,13 +64,13 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The name specified when the customer calls PutDcdnKvNamespace
+        /// The name specified when the customer calls PutDcdnKvNamespace.
         /// </summary>
         [Output("namespace")]
         public Output<string> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// The content of key, up to 2M(2*1000*1000)
+        /// The content of key, up to 2M(2*1000*1000).
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -131,13 +128,13 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The name specified when the customer calls PutDcdnKvNamespace
+        /// The name specified when the customer calls PutDcdnKvNamespace.
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
 
         /// <summary>
-        /// The content of key, up to 2M(2*1000*1000)
+        /// The content of key, up to 2M(2*1000*1000).
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -157,13 +154,13 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The name specified when the customer calls PutDcdnKvNamespace
+        /// The name specified when the customer calls PutDcdnKvNamespace.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// The content of key, up to 2M(2*1000*1000)
+        /// The content of key, up to 2M(2*1000*1000).
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+        /// Response code statistics. See `status` below.
         /// </summary>
         [Input("status")]
         public Input<Inputs.WafRuleRateLimitStatusArgs>? Status { get; set; }
 
         /// <summary>
-        /// The match subfield.
+        /// The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
         /// </summary>
         [Input("subKey")]
         public Input<string>? SubKey { get; set; }

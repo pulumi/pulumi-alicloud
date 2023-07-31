@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DCDN Ipa Domain and how to use it, see [What is Ipa Domain](https://www.alibabacloud.com/help/en/doc-detail/130634.html).
  * 
- * &gt; **NOTE:** Available in v1.158.0+.
+ * &gt; **NOTE:** Available since v1.158.0.
  * 
  * ## Example Usage
  * 
@@ -49,22 +49,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .nameRegex(&#34;default&#34;)
- *             .build());
+ *         final var config = ctx.config();
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;example.com&#34;);
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var example = new IpaDomain(&#34;example&#34;, IpaDomainArgs.builder()        
- *             .domainName(&#34;example.com&#34;)
+ *             .domainName(domainName)
  *             .resourceGroupId(default_.groups()[0].id())
+ *             .scope(&#34;global&#34;)
+ *             .status(&#34;online&#34;)
  *             .sources(IpaDomainSourceArgs.builder()
- *                 .content(&#34;1.1.1.1&#34;)
+ *                 .content(&#34;www.alicloud-provider.cn&#34;)
  *                 .port(80)
  *                 .priority(&#34;20&#34;)
- *                 .type(&#34;ipaddr&#34;)
+ *                 .type(&#34;domain&#34;)
  *                 .weight(10)
  *                 .build())
- *             .scope(&#34;overseas&#34;)
- *             .status(&#34;online&#34;)
  *             .build());
  * 
  *     }
@@ -125,14 +125,14 @@ public class IpaDomain extends com.pulumi.resources.CustomResource {
         return this.scope;
     }
     /**
-     * Sources. See the following `Block sources`.
+     * Sources. See `sources` below.
      * 
      */
     @Export(name="sources", type=List.class, parameters={IpaDomainSource.class})
     private Output<List<IpaDomainSource>> sources;
 
     /**
-     * @return Sources. See the following `Block sources`.
+     * @return Sources. See `sources` below.
      * 
      */
     public Output<List<IpaDomainSource>> sources() {

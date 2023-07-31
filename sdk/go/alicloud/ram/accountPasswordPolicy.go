@@ -96,7 +96,7 @@ type AccountPasswordPolicy struct {
 	RequireLowercaseCharacters pulumi.BoolPtrOutput `pulumi:"requireLowercaseCharacters"`
 	// Specifies if the occurrence of a number in the password is mandatory. Default to true.
 	RequireNumbers pulumi.BoolPtrOutput `pulumi:"requireNumbers"`
-	// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+	// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
 	RequireSymbols pulumi.BoolPtrOutput `pulumi:"requireSymbols"`
 	// Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
 	RequireUppercaseCharacters pulumi.BoolPtrOutput `pulumi:"requireUppercaseCharacters"`
@@ -146,7 +146,7 @@ type accountPasswordPolicyState struct {
 	RequireLowercaseCharacters *bool `pulumi:"requireLowercaseCharacters"`
 	// Specifies if the occurrence of a number in the password is mandatory. Default to true.
 	RequireNumbers *bool `pulumi:"requireNumbers"`
-	// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+	// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
 	RequireSymbols *bool `pulumi:"requireSymbols"`
 	// Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
 	RequireUppercaseCharacters *bool `pulumi:"requireUppercaseCharacters"`
@@ -167,7 +167,7 @@ type AccountPasswordPolicyState struct {
 	RequireLowercaseCharacters pulumi.BoolPtrInput
 	// Specifies if the occurrence of a number in the password is mandatory. Default to true.
 	RequireNumbers pulumi.BoolPtrInput
-	// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+	// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
 	RequireSymbols pulumi.BoolPtrInput
 	// Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
 	RequireUppercaseCharacters pulumi.BoolPtrInput
@@ -192,7 +192,7 @@ type accountPasswordPolicyArgs struct {
 	RequireLowercaseCharacters *bool `pulumi:"requireLowercaseCharacters"`
 	// Specifies if the occurrence of a number in the password is mandatory. Default to true.
 	RequireNumbers *bool `pulumi:"requireNumbers"`
-	// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+	// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
 	RequireSymbols *bool `pulumi:"requireSymbols"`
 	// Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
 	RequireUppercaseCharacters *bool `pulumi:"requireUppercaseCharacters"`
@@ -214,7 +214,7 @@ type AccountPasswordPolicyArgs struct {
 	RequireLowercaseCharacters pulumi.BoolPtrInput
 	// Specifies if the occurrence of a number in the password is mandatory. Default to true.
 	RequireNumbers pulumi.BoolPtrInput
-	// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+	// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
 	RequireSymbols pulumi.BoolPtrInput
 	// Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
 	RequireUppercaseCharacters pulumi.BoolPtrInput
@@ -342,7 +342,7 @@ func (o AccountPasswordPolicyOutput) RequireNumbers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.BoolPtrOutput { return v.RequireNumbers }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
 func (o AccountPasswordPolicyOutput) RequireSymbols() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.BoolPtrOutput { return v.RequireSymbols }).(pulumi.BoolPtrOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.133.0+.
+    /// &gt; **NOTE:** Available since v1.133.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,11 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Dfs.AccessGroup("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new AliCloud.Dfs.AccessGroup("default", new()
     ///     {
-    ///         AccessGroupName = "example_value",
+    ///         AccessGroupName = name,
     ///         NetworkType = "VPC",
     ///     });
     /// 

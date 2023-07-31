@@ -20,7 +20,7 @@ public final class GetUsersUser {
      */
     private String id;
     /**
-     * @return Last login date of the user. Removed from version 1.79.0.
+     * @return (Removed) Last login date of the user. Removed from version 1.79.0.
      * 
      */
     private String lastLoginDate;
@@ -46,7 +46,7 @@ public final class GetUsersUser {
         return this.id;
     }
     /**
-     * @return Last login date of the user. Removed from version 1.79.0.
+     * @return (Removed) Last login date of the user. Removed from version 1.79.0.
      * 
      */
     public String lastLoginDate() {

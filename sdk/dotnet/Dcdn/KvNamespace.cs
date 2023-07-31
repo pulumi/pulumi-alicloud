@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvnamespace).
     /// 
-    /// &gt; **NOTE:** Available in v1.198.0+.
+    /// &gt; **NOTE:** Available since v1.198.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,12 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = new AliCloud.Dcdn.KvNamespace("default", new()
     ///     {
-    ///         Description = "wkmtest",
-    ///         Namespace = @var.Namespace,
+    ///         Description = name,
+    ///         Namespace = name,
     ///     });
     /// 
     /// });

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service.
+ * This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is edge kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ack-edge-cluster).
  *
  * > **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
  * A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
@@ -22,9 +22,119 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
  *
- * > **NOTE:** Available in v1.103.0+.
+ * > **NOTE:** Available since v1.103.0.
  *
  * > **NOTE:** From version 1.185.0+, support new fields `clusterSpec`, `runtime` and `loadBalancerSpec`.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Master",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes", {
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
+ *     version: "1.20.11-aliyunedge.1",
+ *     workerNumber: 1,
+ *     password: "Test12345",
+ *     podCidr: "10.99.0.0/16",
+ *     serviceCidr: "172.16.0.0/16",
+ *     workerInstanceChargeType: "PostPaid",
+ *     newNatGateway: true,
+ *     nodeCidrMask: 24,
+ *     installCloudMonitor: true,
+ *     slbInternetEnabled: true,
+ *     isEnterpriseSecurityGroup: true,
+ *     workerDataDisks: [{
+ *         category: "cloud_ssd",
+ *         size: "200",
+ *         encrypted: "false",
+ *     }],
+ * });
+ * ```
+ *
+ * You could create a professional kubernetes edge cluster now.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Master",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes", {
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
+ *     version: "1.20.11-aliyunedge.1",
+ *     clusterSpec: "ack.pro.small",
+ *     workerNumber: 1,
+ *     password: "Test12345",
+ *     podCidr: "10.99.0.0/16",
+ *     serviceCidr: "172.16.0.0/16",
+ *     workerInstanceChargeType: "PostPaid",
+ *     newNatGateway: true,
+ *     nodeCidrMask: 24,
+ *     loadBalancerSpec: "slb.s2.small",
+ *     installCloudMonitor: true,
+ *     slbInternetEnabled: true,
+ *     isEnterpriseSecurityGroup: true,
+ *     addons: [{
+ *         name: "alibaba-log-controller",
+ *         config: "{\"IngressDashboardEnabled\":\"false\"}",
+ *     }],
+ *     workerDataDisks: [{
+ *         category: "cloud_ssd",
+ *         size: "200",
+ *         encrypted: "false",
+ *     }],
+ *     runtime: {
+ *         name: "containerd",
+ *         version: "1.5.10",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -63,7 +173,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     }
 
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. See `addons` below.
      */
     public readonly addons!: pulumi.Output<outputs.cs.EdgeKubernetesAddon[] | undefined>;
     /**
@@ -71,7 +181,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     * Nested attribute containing certificate authority data for your cluster.
      */
     public /*out*/ readonly certificateAuthority!: pulumi.Output<outputs.cs.EdgeKubernetesCertificateAuthority>;
     /**
@@ -84,6 +194,8 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     public readonly clientKey!: pulumi.Output<string | undefined>;
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     *
+     * *Removed params*
      */
     public readonly clusterCaCert!: pulumi.Output<string | undefined>;
     /**
@@ -124,12 +236,13 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     *
      * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+     *
+     * *Worker params*
      */
     public readonly loadBalancerSpec!: pulumi.Output<string>;
     /**
-     * A list of one element containing information about the associated log store. It contains the following attributes:
+     * A list of one element containing information about the associated log store. See `logConfig` below.
      *
      * @deprecated Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
      */
@@ -213,7 +326,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
      */
     public readonly workerDataDisks!: pulumi.Output<outputs.cs.EdgeKubernetesWorkerDataDisk[] | undefined>;
     /**
@@ -230,6 +343,10 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     public readonly workerDiskSize!: pulumi.Output<number | undefined>;
     /**
      * Worker node system disk auto snapshot policy.
+     *
+     * *Computed params*
+     *
+     * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
      */
     public readonly workerDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
@@ -390,7 +507,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
  */
 export interface EdgeKubernetesState {
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. See `addons` below.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
     /**
@@ -398,7 +515,7 @@ export interface EdgeKubernetesState {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     * Nested attribute containing certificate authority data for your cluster.
      */
     certificateAuthority?: pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority>;
     /**
@@ -411,6 +528,8 @@ export interface EdgeKubernetesState {
     clientKey?: pulumi.Input<string>;
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     *
+     * *Removed params*
      */
     clusterCaCert?: pulumi.Input<string>;
     /**
@@ -451,12 +570,13 @@ export interface EdgeKubernetesState {
     kubeConfig?: pulumi.Input<string>;
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     *
      * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+     *
+     * *Worker params*
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
-     * A list of one element containing information about the associated log store. It contains the following attributes:
+     * A list of one element containing information about the associated log store. See `logConfig` below.
      *
      * @deprecated Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
      */
@@ -540,7 +660,7 @@ export interface EdgeKubernetesState {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
      */
     workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
     /**
@@ -557,6 +677,10 @@ export interface EdgeKubernetesState {
     workerDiskSize?: pulumi.Input<number>;
     /**
      * Worker node system disk auto snapshot policy.
+     *
+     * *Computed params*
+     *
+     * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
      */
     workerDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
@@ -590,7 +714,7 @@ export interface EdgeKubernetesState {
  */
 export interface EdgeKubernetesArgs {
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. See `addons` below.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
     /**
@@ -607,6 +731,8 @@ export interface EdgeKubernetesArgs {
     clientKey?: pulumi.Input<string>;
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     *
+     * *Removed params*
      */
     clusterCaCert?: pulumi.Input<string>;
     /**
@@ -643,12 +769,13 @@ export interface EdgeKubernetesArgs {
     kubeConfig?: pulumi.Input<string>;
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     *
      * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+     *
+     * *Worker params*
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
-     * A list of one element containing information about the associated log store. It contains the following attributes:
+     * A list of one element containing information about the associated log store. See `logConfig` below.
      *
      * @deprecated Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
      */
@@ -716,7 +843,7 @@ export interface EdgeKubernetesArgs {
      */
     version?: pulumi.Input<string>;
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
      */
     workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
     /**
@@ -733,6 +860,10 @@ export interface EdgeKubernetesArgs {
     workerDiskSize?: pulumi.Input<number>;
     /**
      * Worker node system disk auto snapshot policy.
+     *
+     * *Computed params*
+     *
+     * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
      */
     workerDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**

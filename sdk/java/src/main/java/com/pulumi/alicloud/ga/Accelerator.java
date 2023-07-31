@@ -19,6 +19,46 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Global Accelerator (GA) Accelerator resource.
+ * 
+ * For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createaccelerator).
+ * 
+ * &gt; **NOTE:** Available since v1.111.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ga.Accelerator;
+ * import com.pulumi.alicloud.ga.AcceleratorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Accelerator(&#34;example&#34;, AcceleratorArgs.builder()        
+ *             .autoUseCoupon(true)
+ *             .duration(1)
+ *             .spec(&#34;1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Ga Accelerator can be imported using the id, e.g.
@@ -87,6 +127,34 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
         return this.bandwidthBillingType;
     }
     /**
+     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * 
+     */
+    @Export(name="crossBorderMode", type=String.class, parameters={})
+    private Output<String> crossBorderMode;
+
+    /**
+     * @return The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * 
+     */
+    public Output<String> crossBorderMode() {
+        return this.crossBorderMode;
+    }
+    /**
+     * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="crossBorderStatus", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> crossBorderStatus;
+
+    /**
+     * @return Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> crossBorderStatus() {
+        return Codegen.optional(this.crossBorderStatus);
+    }
+    /**
      * Descriptive information of the global acceleration instance.
      * 
      */
@@ -101,36 +169,64 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+     * The subscription duration.
      * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      * 
      */
     @Export(name="duration", type=Integer.class, parameters={})
-    private Output<Integer> duration;
+    private Output</* @Nullable */ Integer> duration;
 
     /**
-     * @return The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+     * @return The subscription duration.
      * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      * 
      */
-    public Output<Integer> duration() {
-        return this.duration;
+    public Output<Optional<Integer>> duration() {
+        return Codegen.optional(this.duration);
+    }
+    /**
+     * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    @Export(name="paymentType", type=String.class, parameters={})
+    private Output<String> paymentType;
+
+    /**
+     * @return The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
     }
     /**
      * The billing cycle of the GA instance. Default value: `Month`. Valid values:
      * 
      */
     @Export(name="pricingCycle", type=String.class, parameters={})
-    private Output<String> pricingCycle;
+    private Output</* @Nullable */ String> pricingCycle;
 
     /**
      * @return The billing cycle of the GA instance. Default value: `Month`. Valid values:
      * 
      */
-    public Output<String> pricingCycle() {
-        return this.pricingCycle;
+    public Output<Optional<String>> pricingCycle() {
+        return Codegen.optional(this.pricingCycle);
+    }
+    /**
+     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    @Export(name="promotionOptionNo", type=String.class, parameters={})
+    private Output</* @Nullable */ String> promotionOptionNo;
+
+    /**
+     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    public Output<Optional<String>> promotionOptionNo() {
+        return Codegen.optional(this.promotionOptionNo);
     }
     /**
      * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
@@ -151,14 +247,14 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="spec", type=String.class, parameters={})
-    private Output<String> spec;
+    private Output</* @Nullable */ String> spec;
 
     /**
      * @return The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      * 
      */
-    public Output<String> spec() {
-        return this.spec;
+    public Output<Optional<String>> spec() {
+        return Codegen.optional(this.spec);
     }
     /**
      * The status of the GA instance.
@@ -201,7 +297,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Accelerator(String name, AcceleratorArgs args) {
+    public Accelerator(String name, @Nullable AcceleratorArgs args) {
         this(name, args, null);
     }
     /**
@@ -210,7 +306,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Accelerator(String name, AcceleratorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Accelerator(String name, @Nullable AcceleratorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:ga/accelerator:Accelerator", name, args == null ? AcceleratorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

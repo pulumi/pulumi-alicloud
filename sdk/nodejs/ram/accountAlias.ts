@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM cloud account alias.
  *
+ * > **NOTE:** Available since v1.0.0+.
+ *
  * ## Example Usage
  *
  * ```typescript

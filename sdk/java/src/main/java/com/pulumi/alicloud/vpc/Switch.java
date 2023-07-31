@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * 
  * For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
  * 
+ * &gt; **NOTE:** Available since v1.0.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -290,14 +292,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ipv6CidrBlockMask", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> ipv6CidrBlockMask;
+    private Output<Integer> ipv6CidrBlockMask;
 
     /**
      * @return The IPv6 CIDR block of the VSwitch.
      * 
      */
-    public Output<Optional<Integer>> ipv6CidrBlockMask() {
-        return Codegen.optional(this.ipv6CidrBlockMask);
+    public Output<Integer> ipv6CidrBlockMask() {
+        return this.ipv6CidrBlockMask;
     }
     /**
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.

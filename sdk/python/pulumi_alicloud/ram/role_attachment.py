@@ -100,6 +100,8 @@ class RoleAttachment(pulumi.CustomResource):
         """
         Provides a RAM role attachment resource to bind role for several ECS instances.
 
+        > **NOTE:** Available since v1.0.0+.
+
         ## Example Usage
 
         ```python
@@ -182,6 +184,8 @@ class RoleAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a RAM role attachment resource to bind role for several ECS instances.
+
+        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 

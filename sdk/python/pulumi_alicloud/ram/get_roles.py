@@ -126,6 +126,8 @@ def get_roles(ids: Optional[Sequence[str]] = None,
     """
     This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
 
+    > **NOTE:** Available since v1.0.0+.
+
     ## Example Usage
 
     ```python
@@ -175,6 +177,8 @@ def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
     """
     This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available since v1.0.0+.
 
     ## Example Usage
 

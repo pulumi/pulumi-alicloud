@@ -14,49 +14,12 @@ import (
 
 // Provides a Eipanycast Anycast Eip Address Attachment resource.
 //
-// For information about Eipanycast Anycast Eip Address Attachment and how to use it, see [What is Anycast Eip Address Attachment](https://help.aliyun.com/document_detail/171857.html).
+// For information about Eipanycast Anycast Eip Address Attachment and how to use it, see [What is Anycast Eip Address Attachment](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-associateanycasteipaddress).
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
 //
 // > **NOTE:** The following regions support currently while Slb instance support bound.
 // [eu-west-1-gb33-a01,cn-hongkong-am4-c04,ap-southeast-os30-a01,us-west-ot7-a01,ap-south-in73-a01,ap-southeast-my88-a01]
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eipanycast"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAnycastEipAddress, err := eipanycast.NewAnycastEipAddress(ctx, "exampleAnycastEipAddress", &eipanycast.AnycastEipAddressArgs{
-//				ServiceLocation: pulumi.String("international"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eipanycast.NewAnycastEipAddressAttachment(ctx, "exampleAnycastEipAddressAttachment", &eipanycast.AnycastEipAddressAttachmentArgs{
-//				AnycastId:            exampleAnycastEipAddress.ID(),
-//				BindInstanceId:       pulumi.String("lb-j6chlcr8lffy7********"),
-//				BindInstanceRegionId: pulumi.String("cn-hongkong"),
-//				BindInstanceType:     pulumi.String("SlbInstance"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
@@ -64,22 +27,34 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example `anycast_id`:`bind_instance_id`:`bind_instance_region_id`:`bind_instance_type`
+//	$ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example <anycast_id>:<bind_instance_id>:<bind_instance_region_id>:<bind_instance_type>
 //
 // ```
 type AnycastEipAddressAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ID of Anycast EIP.
+	// The ID of the Anycast EIP instance.
 	AnycastId pulumi.StringOutput `pulumi:"anycastId"`
-	// The ID of bound instance.
+	// Binding mode, value:
+	// - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+	// - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+	AssociationMode pulumi.StringOutput `pulumi:"associationMode"`
+	// The ID of the cloud resource instance to be bound.
 	BindInstanceId pulumi.StringOutput `pulumi:"bindInstanceId"`
-	// The region ID of bound instance.
+	// The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
 	BindInstanceRegionId pulumi.StringOutput `pulumi:"bindInstanceRegionId"`
-	// The type of bound instance. Valid value: `SlbInstance`.
+	// The type of the cloud resource instance to be bound. Value:
+	// - **SlbInstance**: a private network SLB instance.
+	// - **NetworkInterface**: ENI.
 	BindInstanceType pulumi.StringOutput `pulumi:"bindInstanceType"`
-	// The time of bound instance.
+	// Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: 'YYYY-MM-DDThh:mm:ssZ'.
 	BindTime pulumi.StringOutput `pulumi:"bindTime"`
+	// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
+	PopLocations AnycastEipAddressAttachmentPopLocationArrayOutput `pulumi:"popLocations"`
+	// The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
+	// The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewAnycastEipAddressAttachment registers a new resource with the given unique name, arguments, and options.
@@ -124,29 +99,53 @@ func GetAnycastEipAddressAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AnycastEipAddressAttachment resources.
 type anycastEipAddressAttachmentState struct {
-	// The ID of Anycast EIP.
+	// The ID of the Anycast EIP instance.
 	AnycastId *string `pulumi:"anycastId"`
-	// The ID of bound instance.
+	// Binding mode, value:
+	// - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+	// - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+	AssociationMode *string `pulumi:"associationMode"`
+	// The ID of the cloud resource instance to be bound.
 	BindInstanceId *string `pulumi:"bindInstanceId"`
-	// The region ID of bound instance.
+	// The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
 	BindInstanceRegionId *string `pulumi:"bindInstanceRegionId"`
-	// The type of bound instance. Valid value: `SlbInstance`.
+	// The type of the cloud resource instance to be bound. Value:
+	// - **SlbInstance**: a private network SLB instance.
+	// - **NetworkInterface**: ENI.
 	BindInstanceType *string `pulumi:"bindInstanceType"`
-	// The time of bound instance.
+	// Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: 'YYYY-MM-DDThh:mm:ssZ'.
 	BindTime *string `pulumi:"bindTime"`
+	// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
+	PopLocations []AnycastEipAddressAttachmentPopLocation `pulumi:"popLocations"`
+	// The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
+	Status *string `pulumi:"status"`
 }
 
 type AnycastEipAddressAttachmentState struct {
-	// The ID of Anycast EIP.
+	// The ID of the Anycast EIP instance.
 	AnycastId pulumi.StringPtrInput
-	// The ID of bound instance.
+	// Binding mode, value:
+	// - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+	// - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+	AssociationMode pulumi.StringPtrInput
+	// The ID of the cloud resource instance to be bound.
 	BindInstanceId pulumi.StringPtrInput
-	// The region ID of bound instance.
+	// The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
 	BindInstanceRegionId pulumi.StringPtrInput
-	// The type of bound instance. Valid value: `SlbInstance`.
+	// The type of the cloud resource instance to be bound. Value:
+	// - **SlbInstance**: a private network SLB instance.
+	// - **NetworkInterface**: ENI.
 	BindInstanceType pulumi.StringPtrInput
-	// The time of bound instance.
+	// Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: 'YYYY-MM-DDThh:mm:ssZ'.
 	BindTime pulumi.StringPtrInput
+	// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
+	PopLocations AnycastEipAddressAttachmentPopLocationArrayInput
+	// The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+	PrivateIpAddress pulumi.StringPtrInput
+	// The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
+	Status pulumi.StringPtrInput
 }
 
 func (AnycastEipAddressAttachmentState) ElementType() reflect.Type {
@@ -154,26 +153,46 @@ func (AnycastEipAddressAttachmentState) ElementType() reflect.Type {
 }
 
 type anycastEipAddressAttachmentArgs struct {
-	// The ID of Anycast EIP.
+	// The ID of the Anycast EIP instance.
 	AnycastId string `pulumi:"anycastId"`
-	// The ID of bound instance.
+	// Binding mode, value:
+	// - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+	// - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+	AssociationMode *string `pulumi:"associationMode"`
+	// The ID of the cloud resource instance to be bound.
 	BindInstanceId string `pulumi:"bindInstanceId"`
-	// The region ID of bound instance.
+	// The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
 	BindInstanceRegionId string `pulumi:"bindInstanceRegionId"`
-	// The type of bound instance. Valid value: `SlbInstance`.
+	// The type of the cloud resource instance to be bound. Value:
+	// - **SlbInstance**: a private network SLB instance.
+	// - **NetworkInterface**: ENI.
 	BindInstanceType string `pulumi:"bindInstanceType"`
+	// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
+	PopLocations []AnycastEipAddressAttachmentPopLocation `pulumi:"popLocations"`
+	// The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 }
 
 // The set of arguments for constructing a AnycastEipAddressAttachment resource.
 type AnycastEipAddressAttachmentArgs struct {
-	// The ID of Anycast EIP.
+	// The ID of the Anycast EIP instance.
 	AnycastId pulumi.StringInput
-	// The ID of bound instance.
+	// Binding mode, value:
+	// - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+	// - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+	AssociationMode pulumi.StringPtrInput
+	// The ID of the cloud resource instance to be bound.
 	BindInstanceId pulumi.StringInput
-	// The region ID of bound instance.
+	// The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
 	BindInstanceRegionId pulumi.StringInput
-	// The type of bound instance. Valid value: `SlbInstance`.
+	// The type of the cloud resource instance to be bound. Value:
+	// - **SlbInstance**: a private network SLB instance.
+	// - **NetworkInterface**: ENI.
 	BindInstanceType pulumi.StringInput
+	// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
+	PopLocations AnycastEipAddressAttachmentPopLocationArrayInput
+	// The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+	PrivateIpAddress pulumi.StringPtrInput
 }
 
 func (AnycastEipAddressAttachmentArgs) ElementType() reflect.Type {
@@ -263,29 +282,55 @@ func (o AnycastEipAddressAttachmentOutput) ToAnycastEipAddressAttachmentOutputWi
 	return o
 }
 
-// The ID of Anycast EIP.
+// The ID of the Anycast EIP instance.
 func (o AnycastEipAddressAttachmentOutput) AnycastId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.AnycastId }).(pulumi.StringOutput)
 }
 
-// The ID of bound instance.
+// Binding mode, value:
+// - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+// - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+func (o AnycastEipAddressAttachmentOutput) AssociationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.AssociationMode }).(pulumi.StringOutput)
+}
+
+// The ID of the cloud resource instance to be bound.
 func (o AnycastEipAddressAttachmentOutput) BindInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.BindInstanceId }).(pulumi.StringOutput)
 }
 
-// The region ID of bound instance.
+// The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
 func (o AnycastEipAddressAttachmentOutput) BindInstanceRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.BindInstanceRegionId }).(pulumi.StringOutput)
 }
 
-// The type of bound instance. Valid value: `SlbInstance`.
+// The type of the cloud resource instance to be bound. Value:
+// - **SlbInstance**: a private network SLB instance.
+// - **NetworkInterface**: ENI.
 func (o AnycastEipAddressAttachmentOutput) BindInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.BindInstanceType }).(pulumi.StringOutput)
 }
 
-// The time of bound instance.
+// Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: 'YYYY-MM-DDThh:mm:ssZ'.
 func (o AnycastEipAddressAttachmentOutput) BindTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.BindTime }).(pulumi.StringOutput)
+}
+
+// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
+func (o AnycastEipAddressAttachmentOutput) PopLocations() AnycastEipAddressAttachmentPopLocationArrayOutput {
+	return o.ApplyT(func(v *AnycastEipAddressAttachment) AnycastEipAddressAttachmentPopLocationArrayOutput {
+		return v.PopLocations
+	}).(AnycastEipAddressAttachmentPopLocationArrayOutput)
+}
+
+// The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+func (o AnycastEipAddressAttachmentOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringPtrOutput { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
+func (o AnycastEipAddressAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 type AnycastEipAddressAttachmentArrayOutput struct{ *pulumi.OutputState }

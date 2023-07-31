@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a DBFS Instance Attachment resource.
  *
- * For information about DBFS Instance Attachment and how to use it, see [What is Instance Attachment](https://help.aliyun.com/document_detail/149726.html).
+ * For information about DBFS Instance Attachment and how to use it.
  *
- * > **NOTE:** Available in v1.156.0+.
+ * > **NOTE:** Available since v1.156.0.
  *
  * ## Example Usage
  *
@@ -19,42 +19,48 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const zoneId = "cn-hangzhou-i";
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: zoneId,
- * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
- *     description: "tf test",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- * });
- * const defaultImages = alicloud.ecs.getImages({
- *     owners: "system",
- *     nameRegex: "^centos_8",
- *     mostRecent: true,
- * });
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceName: _var.name,
- *     instanceType: "ecs.g7se.large",
+ * const exampleInstanceTypes = alicloud.ecs.getInstanceTypes({
  *     availabilityZone: zoneId,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     systemDiskCategory: "cloud_essd",
- *     securityGroups: [defaultSecurityGroup.id],
+ *     instanceTypeFamily: "ecs.g7se",
  * });
- * const defaultDatabasefilesystem_instanceInstance = new alicloud.databasefilesystem.Instance("defaultDatabasefilesystem/instanceInstance", {
+ * const exampleImages = Promise.all([exampleInstanceTypes, exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes).length]).then(([exampleInstanceTypes, length]) => alicloud.ecs.getImages({
+ *     instanceType: exampleInstanceTypes.instanceTypes[length - 1].id,
+ *     nameRegex: "^aliyun_2",
+ *     owners: "system",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: zoneId,
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     availabilityZone: zoneId,
+ *     instanceName: name,
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[1]?.id),
+ *     instanceType: Promise.all([exampleInstanceTypes, exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes).length]).then(([exampleInstanceTypes, length]) => exampleInstanceTypes.instanceTypes[length - 1].id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     vswitchId: exampleSwitch.id,
+ *     systemDiskCategory: "cloud_essd",
+ * });
+ * const exampleDatabasefilesystem_instanceInstance = new alicloud.databasefilesystem.Instance("exampleDatabasefilesystem/instanceInstance", {
  *     category: "standard",
- *     zoneId: defaultInstance.availabilityZone,
+ *     zoneId: zoneId,
  *     performanceLevel: "PL1",
- *     instanceName: _var.name,
+ *     instanceName: name,
  *     size: 100,
  * });
- * const example = new alicloud.databasefilesystem.InstanceAttachment("example", {
- *     ecsId: defaultInstance.id,
- *     instanceId: defaultDatabasefilesystem / instanceInstance.id,
+ * const exampleInstanceAttachment = new alicloud.databasefilesystem.InstanceAttachment("exampleInstanceAttachment", {
+ *     ecsId: exampleInstance.id,
+ *     instanceId: exampleDatabasefilesystem / instanceInstance.id,
  * });
  * ```
  *

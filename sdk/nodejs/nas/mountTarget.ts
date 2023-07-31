@@ -8,60 +8,11 @@ import * as utilities from "../utilities";
  * Provides a NAS Mount Target resource.
  * For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
  *
- * > **NOTE**: Available in v1.34.0+.
- *
- * > **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
- *
- * > **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
- * and it only can be achieved by creating a classic mount target mannually.
- * See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleZones = alicloud.nas.getZones({
- *     fileSystemType: "standard",
- * });
- * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
- *     protocolType: "NFS",
- *     storageType: "Performance",
- *     description: "terraform-example",
- *     encryptType: 1,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.zoneId),
- * });
- * const exampleAccessGroup = new alicloud.nas.AccessGroup("exampleAccessGroup", {
- *     accessGroupName: "terraform-example",
- *     accessGroupType: "Vpc",
- *     description: "terraform-example",
- *     fileSystemType: "standard",
- * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     vswitchName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.zoneId),
- * });
- * const exampleMountTarget = new alicloud.nas.MountTarget("exampleMountTarget", {
- *     fileSystemId: exampleFileSystem.id,
- *     accessGroupName: exampleAccessGroup.accessGroupName,
- *     vswitchId: exampleSwitch.id,
- * });
- * ```
+ * > **NOTE:** Available since v1.34.0.
  *
  * ## Import
  *
- * NAS MountTarget
- *
- * can be imported using the id, e.g.
+ * NAS MountTarget can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
@@ -104,9 +55,13 @@ export class MountTarget extends pulumi.CustomResource {
      */
     public readonly fileSystemId!: pulumi.Output<string>;
     /**
-     * The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+     * The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
      */
     public /*out*/ readonly mountTargetDomain!: pulumi.Output<string>;
+    /**
+     * mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+     */
+    public readonly networkType!: pulumi.Output<string>;
     /**
      * The ID of security group.
      */
@@ -115,6 +70,10 @@ export class MountTarget extends pulumi.CustomResource {
      * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
      */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * The ID of VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The ID of the VSwitch in the VPC where the mount target resides.
      */
@@ -136,8 +95,10 @@ export class MountTarget extends pulumi.CustomResource {
             resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
             resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
             resourceInputs["mountTargetDomain"] = state ? state.mountTargetDomain : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as MountTargetArgs | undefined;
@@ -146,8 +107,10 @@ export class MountTarget extends pulumi.CustomResource {
             }
             resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
             resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["mountTargetDomain"] = undefined /*out*/;
         }
@@ -169,9 +132,13 @@ export interface MountTargetState {
      */
     fileSystemId?: pulumi.Input<string>;
     /**
-     * The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+     * The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
      */
     mountTargetDomain?: pulumi.Input<string>;
+    /**
+     * mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+     */
+    networkType?: pulumi.Input<string>;
     /**
      * The ID of security group.
      */
@@ -180,6 +147,10 @@ export interface MountTargetState {
      * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The ID of VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The ID of the VSwitch in the VPC where the mount target resides.
      */
@@ -199,6 +170,10 @@ export interface MountTargetArgs {
      */
     fileSystemId: pulumi.Input<string>;
     /**
+     * mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+     */
+    networkType?: pulumi.Input<string>;
+    /**
      * The ID of security group.
      */
     securityGroupId?: pulumi.Input<string>;
@@ -206,6 +181,10 @@ export interface MountTargetArgs {
      * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The ID of VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The ID of the VSwitch in the VPC where the mount target resides.
      */

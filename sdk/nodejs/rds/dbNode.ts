@@ -5,8 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provide RDS cluster instance to increase node resources.
- * > **NOTE:** Available in 1.202.0+.
+ * Provide RDS cluster instance to increase node resources, see [What is RDS DB Node](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbnodes).
+ *
+ * > **NOTE:** Available since v1.202.0.
  *
  * ## Example Usage
  *
@@ -15,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testaccrdsdbnodes";
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "8.0",
@@ -24,35 +25,42 @@ import * as utilities from "../utilities";
  *     dbInstanceStorageType: "cloud_essd",
  * });
  * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
- *     zoneId: defaultZones.zones?.[0]?.id,
+ *     zoneId: defaultZones.ids?.[0],
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     category: "cluster",
  *     dbInstanceStorageType: "cloud_essd",
  *     instanceChargeType: "PostPaid",
  * }));
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
- * }));
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     vswitchName: name,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
  *     engine: "MySQL",
  *     engineVersion: "8.0",
- *     dbInstanceStorageType: "cloud_essd",
  *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
  *     instanceStorage: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     instanceChargeType: "Postpaid",
  *     instanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [defaultSecurityGroup.id],
  *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
  *     zoneIdSlaveA: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
  * });
- * const node = new alicloud.rds.DbNode("node", {
+ * const defaultDbNode = new alicloud.rds.DbNode("defaultDbNode", {
  *     dbInstanceId: defaultInstance.id,
  *     classCode: defaultInstance.instanceType,
- *     zoneId: defaultInstance.zoneId,
+ *     zoneId: defaultSwitch.zoneId,
  * });
  * ```
  *

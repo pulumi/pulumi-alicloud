@@ -13,77 +13,11 @@ namespace Pulumi.AliCloud.Nas
     /// Provides a NAS Mount Target resource.
     /// For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
     /// 
-    /// &gt; **NOTE**: Available in v1.34.0+.
-    /// 
-    /// &gt; **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
-    /// 
-    /// &gt; **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
-    /// and it only can be achieved by creating a classic mount target mannually.
-    /// See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleZones = AliCloud.Nas.GetZones.Invoke(new()
-    ///     {
-    ///         FileSystemType = "standard",
-    ///     });
-    /// 
-    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
-    ///     {
-    ///         ProtocolType = "NFS",
-    ///         StorageType = "Performance",
-    ///         Description = "terraform-example",
-    ///         EncryptType = 1,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
-    ///     });
-    /// 
-    ///     var exampleAccessGroup = new AliCloud.Nas.AccessGroup("exampleAccessGroup", new()
-    ///     {
-    ///         AccessGroupName = "terraform-example",
-    ///         AccessGroupType = "Vpc",
-    ///         Description = "terraform-example",
-    ///         FileSystemType = "standard",
-    ///     });
-    /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
-    ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.17.3.0/24",
-    ///     });
-    /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
-    ///     {
-    ///         VswitchName = "terraform-example",
-    ///         CidrBlock = "172.17.3.0/24",
-    ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
-    ///     });
-    /// 
-    ///     var exampleMountTarget = new AliCloud.Nas.MountTarget("exampleMountTarget", new()
-    ///     {
-    ///         FileSystemId = exampleFileSystem.Id,
-    ///         AccessGroupName = exampleAccessGroup.AccessGroupName,
-    ///         VswitchId = exampleSwitch.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.34.0.
     /// 
     /// ## Import
     /// 
-    /// NAS MountTarget
-    /// 
-    /// can be imported using the id, e.g.
+    /// NAS MountTarget can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
@@ -105,10 +39,16 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> FileSystemId { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        /// The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
         /// </summary>
         [Output("mountTargetDomain")]
         public Output<string> MountTargetDomain { get; private set; } = null!;
+
+        /// <summary>
+        /// mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+        /// </summary>
+        [Output("networkType")]
+        public Output<string> NetworkType { get; private set; } = null!;
 
         /// <summary>
         /// The ID of security group.
@@ -121,6 +61,12 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VSwitch in the VPC where the mount target resides.
@@ -187,6 +133,12 @@ namespace Pulumi.AliCloud.Nas
         public Input<string> FileSystemId { get; set; } = null!;
 
         /// <summary>
+        /// mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
         /// The ID of security group.
         /// </summary>
         [Input("securityGroupId")]
@@ -197,6 +149,12 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The ID of the VSwitch in the VPC where the mount target resides.
@@ -225,10 +183,16 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? FileSystemId { get; set; }
 
         /// <summary>
-        /// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        /// The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
         /// </summary>
         [Input("mountTargetDomain")]
         public Input<string>? MountTargetDomain { get; set; }
+
+        /// <summary>
+        /// mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
 
         /// <summary>
         /// The ID of security group.
@@ -241,6 +205,12 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The ID of the VSwitch in the VPC where the mount target resides.

@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ram.Inputs
         private List<Inputs.GetPolicyDocumentStatementConditionArgs>? _conditions;
 
         /// <summary>
-        /// Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        /// Specifies the condition that are required for a policy to take effect. See `condition` below.
         /// </summary>
         public List<Inputs.GetPolicyDocumentStatementConditionArgs> Conditions
         {
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ram.Inputs
         private List<Inputs.GetPolicyDocumentStatementPrincipalArgs>? _principals;
 
         /// <summary>
-        /// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        /// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
         /// </summary>
         public List<Inputs.GetPolicyDocumentStatementPrincipalArgs> Principals
         {

@@ -16,9 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+ * Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account, see [What is DB Account Privilege](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-grantaccountprivilege).
  * 
  * &gt; **NOTE:** At present, a database can only have one database owner.
+ * 
+ * &gt; **NOTE:** Available since v1.5.0.
  * 
  * ## Example Usage
  * ```java
@@ -27,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -56,10 +58,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;dbaccountprivilegebasic&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;5.6&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
@@ -92,9 +94,10 @@ import javax.annotation.Nullable;
  *         
  * }
  *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
- *             .instanceId(instance.id())
- *             .password(&#34;Test12345&#34;)
- *             .description(&#34;from terraform&#34;)
+ *             .dbInstanceId(instance.id())
+ *             .accountName(&#34;tfexample&#34;)
+ *             .accountPassword(&#34;Example12345&#34;)
+ *             .accountDescription(&#34;from terraform&#34;)
  *             .build());
  * 
  *         var privilege = new AccountPrivilege(&#34;privilege&#34;, AccountPrivilegeArgs.builder()        
@@ -168,8 +171,7 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-     * 
-     * Default to &#34;ReadOnly&#34;.
+     *   Default to &#34;ReadOnly&#34;.
      * 
      */
     @Export(name="privilege", type=String.class, parameters={})
@@ -182,8 +184,7 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-     * 
-     * Default to &#34;ReadOnly&#34;.
+     *   Default to &#34;ReadOnly&#34;.
      * 
      */
     public Output<Optional<String>> privilege() {

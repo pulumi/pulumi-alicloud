@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a RAM User Login Profile resource.
  * 
+ * &gt; **NOTE:** Available since v1.0.0+.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

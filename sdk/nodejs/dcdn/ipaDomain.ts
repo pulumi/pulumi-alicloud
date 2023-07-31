@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about DCDN Ipa Domain and how to use it, see [What is Ipa Domain](https://www.alibabacloud.com/help/en/doc-detail/130634.html).
  *
- * > **NOTE:** Available in v1.158.0+.
+ * > **NOTE:** Available since v1.158.0.
  *
  * ## Example Usage
  *
@@ -21,21 +21,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.resourcemanager.getResourceGroups({
- *     nameRegex: "default",
- * });
+ * const config = new pulumi.Config();
+ * const domainName = config.get("domainName") || "example.com";
+ * const default = alicloud.resourcemanager.getResourceGroups({});
  * const example = new alicloud.dcdn.IpaDomain("example", {
- *     domainName: "example.com",
+ *     domainName: domainName,
  *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ *     scope: "global",
+ *     status: "online",
  *     sources: [{
- *         content: "1.1.1.1",
+ *         content: "www.alicloud-provider.cn",
  *         port: 80,
  *         priority: "20",
- *         type: "ipaddr",
+ *         type: "domain",
  *         weight: 10,
  *     }],
- *     scope: "overseas",
- *     status: "online",
  * });
  * ```
  *
@@ -88,7 +88,7 @@ export class IpaDomain extends pulumi.CustomResource {
      */
     public readonly scope!: pulumi.Output<string>;
     /**
-     * Sources. See the following `Block sources`.
+     * Sources. See `sources` below.
      */
     public readonly sources!: pulumi.Output<outputs.dcdn.IpaDomainSource[]>;
     /**
@@ -150,7 +150,7 @@ export interface IpaDomainState {
      */
     scope?: pulumi.Input<string>;
     /**
-     * Sources. See the following `Block sources`.
+     * Sources. See `sources` below.
      */
     sources?: pulumi.Input<pulumi.Input<inputs.dcdn.IpaDomainSource>[]>;
     /**
@@ -176,7 +176,7 @@ export interface IpaDomainArgs {
      */
     scope?: pulumi.Input<string>;
     /**
-     * Sources. See the following `Block sources`.
+     * Sources. See `sources` below.
      */
     sources: pulumi.Input<pulumi.Input<inputs.dcdn.IpaDomainSource>[]>;
     /**

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/set-the-protection-policies#doc-api-dcdn-CreateDcdnWafPolicy).
     /// 
-    /// &gt; **NOTE:** Available in v1.184.0+.
+    /// &gt; **NOTE:** Available since v1.184.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,12 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var example = new AliCloud.Dcdn.WafPolicy("example", new()
     ///     {
     ///         DefenseScene = "waf_group",
-    ///         PolicyName = @var.Name,
+    ///         PolicyName = name,
     ///         PolicyType = "custom",
     ///         Status = "on",
     ///     });

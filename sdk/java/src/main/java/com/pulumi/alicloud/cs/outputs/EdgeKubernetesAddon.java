@@ -12,23 +12,43 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EdgeKubernetesAddon {
+    /**
+     * @return The ACK add-on configurations.
+     * 
+     */
     private @Nullable String config;
+    /**
+     * @return Disables the automatic installation of a component. Default is `false`.
+     * 
+     * The following example is the definition of addons block, The type of this field is list:
+     * 
+     */
     private @Nullable Boolean disabled;
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      * 
      */
     private @Nullable String name;
 
     private EdgeKubernetesAddon() {}
+    /**
+     * @return The ACK add-on configurations.
+     * 
+     */
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
     }
+    /**
+     * @return Disables the automatic installation of a component. Default is `false`.
+     * 
+     * The following example is the definition of addons block, The type of this field is list:
+     * 
+     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      * 
      */
     public Optional<String> name() {

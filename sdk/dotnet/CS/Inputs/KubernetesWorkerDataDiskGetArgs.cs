@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class KubernetesWorkerDataDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+        /// Worker node data disk auto snapshot policy.
         /// </summary>
         [Input("autoSnapshotPolicyId")]
         public Input<string>? AutoSnapshotPolicyId { get; set; }
@@ -24,6 +24,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// The device of the data disks.
+        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 
@@ -33,17 +36,20 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("encrypted")]
         public Input<string>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The id of the kms key.
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// The name of the data disks.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
@@ -54,6 +60,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("size")]
         public Input<string>? Size { get; set; }
 
+        /// <summary>
+        /// The id of snapshot.
+        /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 

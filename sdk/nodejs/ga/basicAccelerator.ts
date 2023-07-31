@@ -91,6 +91,10 @@ export class BasicAccelerator extends pulumi.CustomResource {
      */
     public readonly basicAcceleratorName!: pulumi.Output<string | undefined>;
     /**
+     * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     */
+    public readonly crossBorderStatus!: pulumi.Output<boolean | undefined>;
+    /**
      * The description of the Global Accelerator Basic Accelerator instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -101,9 +105,17 @@ export class BasicAccelerator extends pulumi.CustomResource {
      */
     public readonly duration!: pulumi.Output<number | undefined>;
     /**
+     * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     */
+    public readonly paymentType!: pulumi.Output<string>;
+    /**
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      */
     public readonly pricingCycle!: pulumi.Output<string | undefined>;
+    /**
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+     */
+    public readonly promotionOptionNo!: pulumi.Output<string | undefined>;
     /**
      * The status of the Basic Accelerator instance.
      */
@@ -132,9 +144,12 @@ export class BasicAccelerator extends pulumi.CustomResource {
             resourceInputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
             resourceInputs["bandwidthBillingType"] = state ? state.bandwidthBillingType : undefined;
             resourceInputs["basicAcceleratorName"] = state ? state.basicAcceleratorName : undefined;
+            resourceInputs["crossBorderStatus"] = state ? state.crossBorderStatus : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
+            resourceInputs["promotionOptionNo"] = state ? state.promotionOptionNo : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -145,9 +160,12 @@ export class BasicAccelerator extends pulumi.CustomResource {
             resourceInputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
             resourceInputs["bandwidthBillingType"] = args ? args.bandwidthBillingType : undefined;
             resourceInputs["basicAcceleratorName"] = args ? args.basicAcceleratorName : undefined;
+            resourceInputs["crossBorderStatus"] = args ? args.crossBorderStatus : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
+            resourceInputs["promotionOptionNo"] = args ? args.promotionOptionNo : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -185,6 +203,10 @@ export interface BasicAcceleratorState {
      */
     basicAcceleratorName?: pulumi.Input<string>;
     /**
+     * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     */
+    crossBorderStatus?: pulumi.Input<boolean>;
+    /**
      * The description of the Global Accelerator Basic Accelerator instance.
      */
     description?: pulumi.Input<string>;
@@ -195,9 +217,17 @@ export interface BasicAcceleratorState {
      */
     duration?: pulumi.Input<number>;
     /**
+     * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      */
     pricingCycle?: pulumi.Input<string>;
+    /**
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+     */
+    promotionOptionNo?: pulumi.Input<string>;
     /**
      * The status of the Basic Accelerator instance.
      */
@@ -237,6 +267,10 @@ export interface BasicAcceleratorArgs {
      */
     basicAcceleratorName?: pulumi.Input<string>;
     /**
+     * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     */
+    crossBorderStatus?: pulumi.Input<boolean>;
+    /**
      * The description of the Global Accelerator Basic Accelerator instance.
      */
     description?: pulumi.Input<string>;
@@ -247,9 +281,17 @@ export interface BasicAcceleratorArgs {
      */
     duration?: pulumi.Input<number>;
     /**
+     * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      */
     pricingCycle?: pulumi.Input<string>;
+    /**
+     * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+     */
+    promotionOptionNo?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

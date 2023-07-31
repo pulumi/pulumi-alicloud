@@ -32,7 +32,7 @@ class AccountPasswordPolicyArgs:
         :param pulumi.Input[int] password_reuse_prevention: User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
         :param pulumi.Input[bool] require_lowercase_characters: Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_numbers: Specifies if the occurrence of a number in the password is mandatory. Default to true.
-        :param pulumi.Input[bool] require_symbols: (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        :param pulumi.Input[bool] require_symbols: Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_uppercase_characters: Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
         """
         if hard_expiry is not None:
@@ -142,7 +142,7 @@ class AccountPasswordPolicyArgs:
     @pulumi.getter(name="requireSymbols")
     def require_symbols(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         """
         return pulumi.get(self, "require_symbols")
 
@@ -184,7 +184,7 @@ class _AccountPasswordPolicyState:
         :param pulumi.Input[int] password_reuse_prevention: User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
         :param pulumi.Input[bool] require_lowercase_characters: Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_numbers: Specifies if the occurrence of a number in the password is mandatory. Default to true.
-        :param pulumi.Input[bool] require_symbols: (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        :param pulumi.Input[bool] require_symbols: Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_uppercase_characters: Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
         """
         if hard_expiry is not None:
@@ -294,7 +294,7 @@ class _AccountPasswordPolicyState:
     @pulumi.getter(name="requireSymbols")
     def require_symbols(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         """
         return pulumi.get(self, "require_symbols")
 
@@ -376,7 +376,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] password_reuse_prevention: User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
         :param pulumi.Input[bool] require_lowercase_characters: Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_numbers: Specifies if the occurrence of a number in the password is mandatory. Default to true.
-        :param pulumi.Input[bool] require_symbols: (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        :param pulumi.Input[bool] require_symbols: Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_uppercase_characters: Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
         """
         ...
@@ -497,7 +497,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] password_reuse_prevention: User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
         :param pulumi.Input[bool] require_lowercase_characters: Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_numbers: Specifies if the occurrence of a number in the password is mandatory. Default to true.
-        :param pulumi.Input[bool] require_symbols: (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        :param pulumi.Input[bool] require_symbols: Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_uppercase_characters: Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -575,7 +575,7 @@ class AccountPasswordPolicy(pulumi.CustomResource):
     @pulumi.getter(name="requireSymbols")
     def require_symbols(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         """
         return pulumi.get(self, "require_symbols")
 

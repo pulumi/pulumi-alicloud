@@ -13,6 +13,8 @@ import (
 
 // This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
 //
+// > **NOTE:** Available since v1.0.0+.
+//
 // ## Example Usage
 //
 // ```go
@@ -57,8 +59,9 @@ type GetPoliciesArgs struct {
 	// Default to `true`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Filter results by a specific group name. Returned policies are attached to the specified group.
-	GroupName *string  `pulumi:"groupName"`
-	Ids       []string `pulumi:"ids"`
+	GroupName *string `pulumi:"groupName"`
+	// A list of ram group IDs.
+	Ids []string `pulumi:"ids"`
 	// A regex string to filter resulting policies by name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -86,7 +89,8 @@ type GetPoliciesResult struct {
 	Policies []GetPoliciesPolicy `pulumi:"policies"`
 	RoleName *string             `pulumi:"roleName"`
 	// Type of the policy.
-	Type     *string `pulumi:"type"`
+	Type *string `pulumi:"type"`
+	// The user name of  policy.
 	UserName *string `pulumi:"userName"`
 }
 
@@ -108,8 +112,9 @@ type GetPoliciesOutputArgs struct {
 	// Default to `true`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Filter results by a specific group name. Returned policies are attached to the specified group.
-	GroupName pulumi.StringPtrInput   `pulumi:"groupName"`
-	Ids       pulumi.StringArrayInput `pulumi:"ids"`
+	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
+	// A list of ram group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter resulting policies by name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -185,6 +190,7 @@ func (o GetPoliciesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The user name of  policy.
 func (o GetPoliciesResultOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }

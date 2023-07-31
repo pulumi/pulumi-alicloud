@@ -16,7 +16,7 @@ import (
 //
 // For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvnamespace).
 //
-// > **NOTE:** Available in v1.198.0+.
+// > **NOTE:** Available since v1.198.0.
 //
 // ## Example Usage
 //
@@ -29,14 +29,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := dcdn.NewKvNamespace(ctx, "default", &dcdn.KvNamespaceArgs{
-//				Description: pulumi.String("wkmtest"),
-//				Namespace:   pulumi.Any(_var.Namespace),
+//				Description: pulumi.String(name),
+//				Namespace:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

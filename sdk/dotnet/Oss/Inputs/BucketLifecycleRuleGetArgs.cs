@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketLifecycleRuleAbortMultipartUploadGetArgs>? _abortMultipartUploads;
 
         /// <summary>
-        /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+        /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
         /// </summary>
         public InputList<Inputs.BucketLifecycleRuleAbortMultipartUploadGetArgs> AbortMultipartUploads
         {
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketLifecycleRuleExpirationGetArgs>? _expirations;
 
         /// <summary>
-        /// Specifies a period in the object's expire (documented below).
+        /// Specifies a period in the object's expire. See `expiration` below.
         /// </summary>
         public InputList<Inputs.BucketLifecycleRuleExpirationGetArgs> Expirations
         {
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketLifecycleRuleNoncurrentVersionExpirationGetArgs>? _noncurrentVersionExpirations;
 
         /// <summary>
-        /// Specifies when noncurrent object versions expire (documented below).
+        /// Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
         /// </summary>
         public InputList<Inputs.BucketLifecycleRuleNoncurrentVersionExpirationGetArgs> NoncurrentVersionExpirations
         {
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketLifecycleRuleNoncurrentVersionTransitionGetArgs>? _noncurrentVersionTransitions;
 
         /// <summary>
-        /// Specifies when noncurrent object versions transitions (documented below).
+        /// Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
         /// 
         /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         private InputList<Inputs.BucketLifecycleRuleTransitionGetArgs>? _transitions;
 
         /// <summary>
-        /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+        /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
         /// </summary>
         public InputList<Inputs.BucketLifecycleRuleTransitionGetArgs> Transitions
         {

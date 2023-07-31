@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service.
+    /// This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ask-cluster-1).
+    /// 
+    /// &gt; **NOTE:** Available since v1.9.0.
     /// 
     /// &gt; **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
     /// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
@@ -51,25 +53,27 @@ namespace Pulumi.AliCloud.CS
     public partial class Kubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The addon you want to install in cluster.
+        /// The addon you want to install in cluster. See `addons` below.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.KubernetesAddon>> Addons { get; private set; } = null!;
 
         /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         [Output("apiAudiences")]
         public Output<ImmutableArray<string>> ApiAudiences { get; private set; } = null!;
 
         /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
+        /// 
+        /// *Removed params*
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        /// Nested attribute containing certificate authority data for your cluster.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.KubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
@@ -105,7 +109,7 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.KubernetesConnections> Connections { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         /// </summary>
         [Output("cpuPolicy")]
         public Output<string?> CpuPolicy { get; private set; } = null!;
@@ -129,7 +133,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> EnableSsh { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        /// Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         /// </summary>
         [Output("excludeAutoscalerNodes")]
         public Output<bool?> ExcludeAutoscalerNodes { get; private set; } = null!;
@@ -214,6 +218,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Master node system disk auto snapshot policy.
+        /// 
+        /// *Worker params*
         /// </summary>
         [Output("masterDiskSnapshotPolicyId")]
         public Output<string?> MasterDiskSnapshotPolicyId { get; private set; } = null!;
@@ -231,7 +237,9 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> MasterInstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// List of cluster master nodes.
+        /// The master nodes. See `master_nodes` below.
+        /// 
+        /// *Network params*
         /// </summary>
         [Output("masterNodes")]
         public Output<ImmutableArray<Outputs.KubernetesMasterNode>> MasterNodes { get; private set; } = null!;
@@ -288,7 +296,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> NodeNameMode { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        /// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         /// </summary>
         [Output("nodePortRange")]
         public Output<string> NodePortRange { get; private set; } = null!;
@@ -385,6 +393,8 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
         /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+        /// 
+        /// *Master params*
         /// </summary>
         [Output("slbInternetEnabled")]
         public Output<bool?> SlbInternetEnabled { get; private set; } = null!;
@@ -396,13 +406,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SlbIntranet { get; private set; } = null!;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        /// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.KubernetesTaint>> Taints { get; private set; } = null!;
@@ -420,7 +430,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> UserCa { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        /// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
@@ -438,13 +448,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Enable worker payment auto-renew, defaults to false.
+        /// Enable worker payment auto-renew, defaults to false.
         /// </summary>
         [Output("workerAutoRenew")]
         public Output<bool?> WorkerAutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        /// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Output("workerAutoRenewPeriod")]
         public Output<int> WorkerAutoRenewPeriod { get; private set; } = null!;
@@ -462,67 +472,71 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> WorkerDataDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
         /// </summary>
         [Output("workerDataDisks")]
         public Output<ImmutableArray<Outputs.KubernetesWorkerDataDisk>> WorkerDataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         /// </summary>
         [Output("workerDiskCategory")]
         public Output<string?> WorkerDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Output("workerDiskPerformanceLevel")]
         public Output<string?> WorkerDiskPerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+        /// The system disk size of worker node. Its valid value range [40~500] in GB.
         /// </summary>
         [Output("workerDiskSize")]
         public Output<int> WorkerDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+        /// Worker node system disk auto snapshot policy.
+        /// 
+        /// *Computed params*
+        /// 
+        /// You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
         /// </summary>
         [Output("workerDiskSnapshotPolicyId")]
         public Output<string?> WorkerDiskSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
+        /// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         /// </summary>
         [Output("workerInstanceChargeType")]
         public Output<string> WorkerInstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         /// </summary>
         [Output("workerInstanceTypes")]
         public Output<ImmutableArray<string>> WorkerInstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated from version 1.177.0)List of cluster worker nodes.
+        /// List of cluster worker nodes. See `worker_nodes` below.
         /// </summary>
         [Output("workerNodes")]
         public Output<ImmutableArray<Outputs.KubernetesWorkerNode>> WorkerNodes { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         /// </summary>
         [Output("workerNumber")]
         public Output<int?> WorkerNumber { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        /// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         /// </summary>
         [Output("workerPeriod")]
         public Output<int> WorkerPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Worker payment period unit, the valid value is `Month`.
+        /// Worker payment period unit, the valid value is `Month`.
         /// </summary>
         [Output("workerPeriodUnit")]
         public Output<string> WorkerPeriodUnit { get; private set; } = null!;
@@ -534,7 +548,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> WorkerRamRoleName { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) The vswitches used by workers.
+        /// The vswitches used by workers.
         /// </summary>
         [Output("workerVswitchIds")]
         public Output<ImmutableArray<string>> WorkerVswitchIds { get; private set; } = null!;
@@ -593,7 +607,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster.
+        /// The addon you want to install in cluster. See `addons` below.
         /// </summary>
         public InputList<Inputs.KubernetesAddonArgs> Addons
         {
@@ -605,7 +619,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _apiAudiences;
 
         /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         public InputList<string> ApiAudiences
         {
@@ -615,6 +629,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
+        /// 
+        /// *Removed params*
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -644,7 +660,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterDomain { get; set; }
 
         /// <summary>
-        /// (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         /// </summary>
         [Input("cpuPolicy")]
         public Input<string>? CpuPolicy { get; set; }
@@ -668,7 +684,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        /// Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         /// </summary>
         [Input("excludeAutoscalerNodes")]
         public Input<bool>? ExcludeAutoscalerNodes { get; set; }
@@ -759,6 +775,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Master node system disk auto snapshot policy.
+        /// 
+        /// *Worker params*
         /// </summary>
         [Input("masterDiskSnapshotPolicyId")]
         public Input<string>? MasterDiskSnapshotPolicyId { get; set; }
@@ -833,7 +851,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NodeNameMode { get; set; }
 
         /// <summary>
-        /// (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        /// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         /// </summary>
         [Input("nodePortRange")]
         public Input<string>? NodePortRange { get; set; }
@@ -945,6 +963,8 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
         /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+        /// 
+        /// *Master params*
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
@@ -953,7 +973,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -965,7 +985,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesTaintArgs>? _taints;
 
         /// <summary>
-        /// (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        /// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         /// </summary>
         [Obsolete(@"Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it")]
         public InputList<Inputs.KubernetesTaintArgs> Taints
@@ -987,7 +1007,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? UserCa { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        /// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -999,13 +1019,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// (Optional) Enable worker payment auto-renew, defaults to false.
+        /// Enable worker payment auto-renew, defaults to false.
         /// </summary>
         [Input("workerAutoRenew")]
         public Input<bool>? WorkerAutoRenew { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        /// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
@@ -1026,7 +1046,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesWorkerDataDiskArgs>? _workerDataDisks;
 
         /// <summary>
-        /// (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
         /// </summary>
         [Obsolete(@"Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it")]
         public InputList<Inputs.KubernetesWorkerDataDiskArgs> WorkerDataDisks
@@ -1036,31 +1056,35 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         /// </summary>
         [Input("workerDiskCategory")]
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Input("workerDiskPerformanceLevel")]
         public Input<string>? WorkerDiskPerformanceLevel { get; set; }
 
         /// <summary>
-        /// (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+        /// The system disk size of worker node. Its valid value range [40~500] in GB.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+        /// Worker node system disk auto snapshot policy.
+        /// 
+        /// *Computed params*
+        /// 
+        /// You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
         /// </summary>
         [Input("workerDiskSnapshotPolicyId")]
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
+        /// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
@@ -1069,7 +1093,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerInstanceTypes;
 
         /// <summary>
-        /// (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         /// </summary>
         [Obsolete(@"Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it")]
         public InputList<string> WorkerInstanceTypes
@@ -1079,19 +1103,19 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         /// </summary>
         [Input("workerNumber")]
         public Input<int>? WorkerNumber { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        /// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         /// </summary>
         [Input("workerPeriod")]
         public Input<int>? WorkerPeriod { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment period unit, the valid value is `Month`.
+        /// Worker payment period unit, the valid value is `Month`.
         /// </summary>
         [Input("workerPeriodUnit")]
         public Input<string>? WorkerPeriodUnit { get; set; }
@@ -1100,7 +1124,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerVswitchIds;
 
         /// <summary>
-        /// (Optional) The vswitches used by workers.
+        /// The vswitches used by workers.
         /// </summary>
         [Obsolete(@"Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it")]
         public InputList<string> WorkerVswitchIds
@@ -1121,7 +1145,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster.
+        /// The addon you want to install in cluster. See `addons` below.
         /// </summary>
         public InputList<Inputs.KubernetesAddonGetArgs> Addons
         {
@@ -1133,7 +1157,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _apiAudiences;
 
         /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         /// </summary>
         public InputList<string> ApiAudiences
         {
@@ -1143,12 +1167,14 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
+        /// 
+        /// *Removed params*
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        /// Nested attribute containing certificate authority data for your cluster.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.KubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
@@ -1184,7 +1210,7 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.KubernetesConnectionsGetArgs>? Connections { get; set; }
 
         /// <summary>
-        /// (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         /// </summary>
         [Input("cpuPolicy")]
         public Input<string>? CpuPolicy { get; set; }
@@ -1208,7 +1234,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        /// Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         /// </summary>
         [Input("excludeAutoscalerNodes")]
         public Input<bool>? ExcludeAutoscalerNodes { get; set; }
@@ -1299,6 +1325,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Master node system disk auto snapshot policy.
+        /// 
+        /// *Worker params*
         /// </summary>
         [Input("masterDiskSnapshotPolicyId")]
         public Input<string>? MasterDiskSnapshotPolicyId { get; set; }
@@ -1325,7 +1353,9 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesMasterNodeGetArgs>? _masterNodes;
 
         /// <summary>
-        /// List of cluster master nodes.
+        /// The master nodes. See `master_nodes` below.
+        /// 
+        /// *Network params*
         /// </summary>
         public InputList<Inputs.KubernetesMasterNodeGetArgs> MasterNodes
         {
@@ -1391,7 +1421,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NodeNameMode { get; set; }
 
         /// <summary>
-        /// (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        /// The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         /// </summary>
         [Input("nodePortRange")]
         public Input<string>? NodePortRange { get; set; }
@@ -1515,6 +1545,8 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
         /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+        /// 
+        /// *Master params*
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
@@ -1529,7 +1561,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -1541,7 +1573,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesTaintGetArgs>? _taints;
 
         /// <summary>
-        /// (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        /// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         /// </summary>
         [Obsolete(@"Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it")]
         public InputList<Inputs.KubernetesTaintGetArgs> Taints
@@ -1563,7 +1595,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? UserCa { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        /// Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -1581,13 +1613,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// (Optional) Enable worker payment auto-renew, defaults to false.
+        /// Enable worker payment auto-renew, defaults to false.
         /// </summary>
         [Input("workerAutoRenew")]
         public Input<bool>? WorkerAutoRenew { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        /// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
@@ -1608,7 +1640,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesWorkerDataDiskGetArgs>? _workerDataDisks;
 
         /// <summary>
-        /// (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
         /// </summary>
         [Obsolete(@"Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it")]
         public InputList<Inputs.KubernetesWorkerDataDiskGetArgs> WorkerDataDisks
@@ -1618,31 +1650,35 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         /// </summary>
         [Input("workerDiskCategory")]
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         [Input("workerDiskPerformanceLevel")]
         public Input<string>? WorkerDiskPerformanceLevel { get; set; }
 
         /// <summary>
-        /// (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+        /// The system disk size of worker node. Its valid value range [40~500] in GB.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+        /// Worker node system disk auto snapshot policy.
+        /// 
+        /// *Computed params*
+        /// 
+        /// You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
         /// </summary>
         [Input("workerDiskSnapshotPolicyId")]
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
+        /// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
@@ -1651,7 +1687,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerInstanceTypes;
 
         /// <summary>
-        /// (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         /// </summary>
         [Obsolete(@"Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it")]
         public InputList<string> WorkerInstanceTypes
@@ -1664,7 +1700,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesWorkerNodeGetArgs>? _workerNodes;
 
         /// <summary>
-        /// (Deprecated from version 1.177.0)List of cluster worker nodes.
+        /// List of cluster worker nodes. See `worker_nodes` below.
         /// </summary>
         [Obsolete(@"Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.")]
         public InputList<Inputs.KubernetesWorkerNodeGetArgs> WorkerNodes
@@ -1674,19 +1710,19 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         /// </summary>
         [Input("workerNumber")]
         public Input<int>? WorkerNumber { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        /// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         /// </summary>
         [Input("workerPeriod")]
         public Input<int>? WorkerPeriod { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment period unit, the valid value is `Month`.
+        /// Worker payment period unit, the valid value is `Month`.
         /// </summary>
         [Input("workerPeriodUnit")]
         public Input<string>? WorkerPeriodUnit { get; set; }
@@ -1701,7 +1737,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerVswitchIds;
 
         /// <summary>
-        /// (Optional) The vswitches used by workers.
+        /// The vswitches used by workers.
         /// </summary>
         [Obsolete(@"Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it")]
         public InputList<string> WorkerVswitchIds

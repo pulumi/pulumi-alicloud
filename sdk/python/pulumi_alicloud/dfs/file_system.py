@@ -297,7 +297,7 @@ class FileSystem(pulumi.CustomResource):
 
         For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
 
         ## Example Usage
 
@@ -310,7 +310,7 @@ class FileSystem(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAccFileSystem"
+            name = "tf-example"
         default_zones = alicloud.dfs.get_zones()
         default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
             storage_type=default_zones.zones[0].options[0].storage_type,
@@ -352,7 +352,7 @@ class FileSystem(pulumi.CustomResource):
 
         For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
 
         ## Example Usage
 
@@ -365,7 +365,7 @@ class FileSystem(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAccFileSystem"
+            name = "tf-example"
         default_zones = alicloud.dfs.get_zones()
         default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
             storage_type=default_zones.zones[0].options[0].storage_type,

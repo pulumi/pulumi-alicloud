@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM role attachment resource to bind role for several ECS instances.
  *
+ * > **NOTE:** Available since v1.0.0+.
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -23,7 +23,7 @@ type Subnet struct {
 	Description       pulumi.StringPtrOutput `pulumi:"description"`
 	EnableIpv6        pulumi.BoolPtrOutput   `pulumi:"enableIpv6"`
 	Ipv6CidrBlock     pulumi.StringOutput    `pulumi:"ipv6CidrBlock"`
-	Ipv6CidrBlockMask pulumi.IntPtrOutput    `pulumi:"ipv6CidrBlockMask"`
+	Ipv6CidrBlockMask pulumi.IntOutput       `pulumi:"ipv6CidrBlockMask"`
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name        pulumi.StringOutput `pulumi:"name"`
 	Status      pulumi.StringOutput `pulumi:"status"`
@@ -251,8 +251,8 @@ func (o SubnetOutput) Ipv6CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
 }
 
-func (o SubnetOutput) Ipv6CidrBlockMask() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Subnet) pulumi.IntPtrOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntPtrOutput)
+func (o SubnetOutput) Ipv6CidrBlockMask() pulumi.IntOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.IntOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntOutput)
 }
 
 // Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.

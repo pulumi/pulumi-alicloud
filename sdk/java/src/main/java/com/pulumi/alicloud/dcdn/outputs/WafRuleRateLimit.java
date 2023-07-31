@@ -19,12 +19,12 @@ public final class WafRuleRateLimit {
      */
     private @Nullable Integer interval;
     /**
-     * @return The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+     * @return Response code statistics. See `status` below.
      * 
      */
     private @Nullable WafRuleRateLimitStatus status;
     /**
-     * @return The match subfield.
+     * @return The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
      * 
      */
     private @Nullable String subKey;
@@ -53,14 +53,14 @@ public final class WafRuleRateLimit {
         return Optional.ofNullable(this.interval);
     }
     /**
-     * @return The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+     * @return Response code statistics. See `status` below.
      * 
      */
     public Optional<WafRuleRateLimitStatus> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The match subfield.
+     * @return The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
      * 
      */
     public Optional<String> subKey() {

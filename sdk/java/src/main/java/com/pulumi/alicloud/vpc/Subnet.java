@@ -69,10 +69,10 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return this.ipv6CidrBlock;
     }
     @Export(name="ipv6CidrBlockMask", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> ipv6CidrBlockMask;
+    private Output<Integer> ipv6CidrBlockMask;
 
-    public Output<Optional<Integer>> ipv6CidrBlockMask() {
-        return Codegen.optional(this.ipv6CidrBlockMask);
+    public Output<Integer> ipv6CidrBlockMask() {
+        return this.ipv6CidrBlockMask;
     }
     /**
      * @deprecated

@@ -22,8 +22,16 @@ public final class GetSamlProvidersResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of SAML Provider names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ram Saml Providers. Each element contains the following attributes:
+     * 
+     */
     private List<GetSamlProvidersProvider> providers;
 
     private GetSamlProvidersResult() {}
@@ -43,12 +51,20 @@ public final class GetSamlProvidersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of SAML Provider names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ram Saml Providers. Each element contains the following attributes:
+     * 
+     */
     public List<GetSamlProvidersProvider> providers() {
         return this.providers;
     }

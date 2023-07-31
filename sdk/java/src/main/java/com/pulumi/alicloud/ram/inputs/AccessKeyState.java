@@ -53,7 +53,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
@@ -63,7 +63,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> secret;
 
     /**
-     * @return (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * @return (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
@@ -200,7 +200,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secret (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+         * @param secret (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
          * If you use this, please protect your backend state file judiciously.
          * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
          * at the cost of preventing the use of the secret key in automation.
@@ -214,7 +214,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secret (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+         * @param secret (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
          * If you use this, please protect your backend state file judiciously.
          * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
          * at the cost of preventing the use of the secret key in automation.

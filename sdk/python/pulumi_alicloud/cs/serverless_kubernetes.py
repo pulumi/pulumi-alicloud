@@ -50,13 +50,16 @@ class ServerlessKubernetesArgs:
         """
         The set of arguments for constructing a ServerlessKubernetes resource.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin,log component,ingress component and so on. See `addons` below.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
+        :param pulumi.Input[bool] create_v2_cluster: whether to create a v2 version cluster.
+               
+               *Removed params*
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -68,9 +71,9 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
-        :param pulumi.Input[bool] private_zone: (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['ServerlessKubernetesRrsaMetadataArgs'] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input['ServerlessKubernetesRrsaMetadataArgs'] rrsa_metadata: Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
@@ -78,7 +81,7 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
-        :param pulumi.Input[str] vswitch_id: (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
         :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
         """
@@ -169,7 +172,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]]:
         """
-        ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        You can specific network plugin,log component,ingress component and so on. See `addons` below.
         """
         return pulumi.get(self, "addons")
 
@@ -230,6 +233,11 @@ class ServerlessKubernetesArgs:
     @property
     @pulumi.getter(name="createV2Cluster")
     def create_v2_cluster(self) -> Optional[pulumi.Input[bool]]:
+        """
+        whether to create a v2 version cluster.
+
+        *Removed params*
+        """
         return pulumi.get(self, "create_v2_cluster")
 
     @create_v2_cluster.setter
@@ -362,7 +370,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter(name="privateZone")
     def private_zone(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         """
         warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
         pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
@@ -398,7 +406,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter(name="rrsaMetadata")
     def rrsa_metadata(self) -> Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']]:
         """
-        (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         """
         return pulumi.get(self, "rrsa_metadata")
 
@@ -494,7 +502,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         """
         warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
         pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
@@ -566,13 +574,16 @@ class _ServerlessKubernetesState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerlessKubernetes resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin,log component,ingress component and so on. See `addons` below.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
+        :param pulumi.Input[bool] create_v2_cluster: whether to create a v2 version cluster.
+               
+               *Removed params*
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -584,9 +595,9 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
-        :param pulumi.Input[bool] private_zone: (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['ServerlessKubernetesRrsaMetadataArgs'] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input['ServerlessKubernetesRrsaMetadataArgs'] rrsa_metadata: Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
@@ -595,7 +606,7 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
-        :param pulumi.Input[str] vswitch_id: (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
         :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
         """
@@ -675,7 +686,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]]:
         """
-        ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        You can specific network plugin,log component,ingress component and so on. See `addons` below.
         """
         return pulumi.get(self, "addons")
 
@@ -736,6 +747,11 @@ class _ServerlessKubernetesState:
     @property
     @pulumi.getter(name="createV2Cluster")
     def create_v2_cluster(self) -> Optional[pulumi.Input[bool]]:
+        """
+        whether to create a v2 version cluster.
+
+        *Removed params*
+        """
         return pulumi.get(self, "create_v2_cluster")
 
     @create_v2_cluster.setter
@@ -868,7 +884,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter(name="privateZone")
     def private_zone(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         """
         warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
         pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
@@ -904,7 +920,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter(name="rrsaMetadata")
     def rrsa_metadata(self) -> Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']]:
         """
-        (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         """
         return pulumi.get(self, "rrsa_metadata")
 
@@ -1012,7 +1028,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         """
         warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
         pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
@@ -1086,9 +1102,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manager a Serverless Kubernetes Cluster. The cluster is same as container service created by web console.
+        This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
 
-        > **NOTE:** Available in 1.58.0+
+        > **NOTE:** Available since v1.58.0.
 
         > **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
         A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
@@ -1166,13 +1182,16 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]] addons: ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]] addons: You can specific network plugin,log component,ingress component and so on. See `addons` below.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
+        :param pulumi.Input[bool] create_v2_cluster: whether to create a v2 version cluster.
+               
+               *Removed params*
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -1184,9 +1203,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
-        :param pulumi.Input[bool] private_zone: (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']] rrsa_metadata: Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
@@ -1195,7 +1214,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
-        :param pulumi.Input[str] vswitch_id: (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
         :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
         """
@@ -1206,9 +1225,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  args: ServerlessKubernetesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manager a Serverless Kubernetes Cluster. The cluster is same as container service created by web console.
+        This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
 
-        > **NOTE:** Available in 1.58.0+
+        > **NOTE:** Available since v1.58.0.
 
         > **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
         A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
@@ -1429,13 +1448,16 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]] addons: ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]] addons: You can specific network plugin,log component,ingress component and so on. See `addons` below.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
+        :param pulumi.Input[bool] create_v2_cluster: whether to create a v2 version cluster.
+               
+               *Removed params*
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -1447,9 +1469,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
-        :param pulumi.Input[bool] private_zone: (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']] rrsa_metadata: Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
@@ -1458,7 +1480,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
-        :param pulumi.Input[str] vswitch_id: (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
         :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
         """
@@ -1503,7 +1525,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def addons(self) -> pulumi.Output[Sequence['outputs.ServerlessKubernetesAddon']]:
         """
-        ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        You can specific network plugin,log component,ingress component and so on. See `addons` below.
         """
         return pulumi.get(self, "addons")
 
@@ -1544,6 +1566,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createV2Cluster")
     def create_v2_cluster(self) -> pulumi.Output[bool]:
+        """
+        whether to create a v2 version cluster.
+
+        *Removed params*
+        """
         return pulumi.get(self, "create_v2_cluster")
 
     @property
@@ -1632,7 +1659,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="privateZone")
     def private_zone(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         """
         warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
         pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
@@ -1656,7 +1683,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="rrsaMetadata")
     def rrsa_metadata(self) -> pulumi.Output['outputs.ServerlessKubernetesRrsaMetadata']:
         """
-        (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         """
         return pulumi.get(self, "rrsa_metadata")
 
@@ -1728,7 +1755,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         """
         warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
         pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")

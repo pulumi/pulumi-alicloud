@@ -27,7 +27,7 @@ class RuleArgs:
         :param pulumi.Input[str] event_bus_name: The name of event bus.
         :param pulumi.Input[str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
         :param pulumi.Input[str] rule_name: The name of rule.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]] targets: The target of rule.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]] targets: The target of rule. See `targets` below.
         :param pulumi.Input[str] description: The description of rule.
         :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
         """
@@ -80,7 +80,7 @@ class RuleArgs:
     @pulumi.getter
     def targets(self) -> pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]:
         """
-        The target of rule.
+        The target of rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
@@ -129,7 +129,7 @@ class _RuleState:
         :param pulumi.Input[str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
         :param pulumi.Input[str] rule_name: The name of rule.
         :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]] targets: The target of rule.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]] targets: The target of rule. See `targets` below.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -208,7 +208,7 @@ class _RuleState:
     @pulumi.getter
     def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]]:
         """
-        The target of rule.
+        The target of rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
@@ -232,9 +232,9 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Event Bridge Rule resource.
 
-        For information about Event Bridge Rule and how to use it, see [What is Rule](https://help.aliyun.com/document_detail/167854.html).
+        For information about Event Bridge Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/eventbridge/latest/createrule-6).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -283,7 +283,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
         :param pulumi.Input[str] rule_name: The name of rule.
         :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleTargetArgs']]]] targets: The target of rule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleTargetArgs']]]] targets: The target of rule. See `targets` below.
         """
         ...
     @overload
@@ -294,9 +294,9 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Event Bridge Rule resource.
 
-        For information about Event Bridge Rule and how to use it, see [What is Rule](https://help.aliyun.com/document_detail/167854.html).
+        For information about Event Bridge Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/eventbridge/latest/createrule-6).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -410,7 +410,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
         :param pulumi.Input[str] rule_name: The name of rule.
         :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleTargetArgs']]]] targets: The target of rule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleTargetArgs']]]] targets: The target of rule. See `targets` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -468,7 +468,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def targets(self) -> pulumi.Output[Sequence['outputs.RuleTarget']]:
         """
-        The target of rule.
+        The target of rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 

@@ -14,9 +14,9 @@ import (
 
 // Provides a DCDN Accelerated Domain resource.
 //
-// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/130632.htm)
+// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm)
 //
-// > **NOTE:** Available in v1.131.0+.
+// > **NOTE:** Available since v1.131.0.
 //
 // ## Example Usage
 //
@@ -29,29 +29,35 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			domain, err := dcdn.NewDomain(ctx, "domain", &dcdn.DomainArgs{
-//				DomainName: pulumi.String("mydomain.alicloud-provider.cn"),
+//			cfg := config.New(ctx, "")
+//			domainName := "example.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
+//			exampleDomain, err := dcdn.NewDomain(ctx, "exampleDomain", &dcdn.DomainArgs{
+//				DomainName: pulumi.String(domainName),
 //				Scope:      pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{
 //						Content:  pulumi.String("1.1.1.1"),
-//						Type:     pulumi.String("ipaddr"),
-//						Priority: pulumi.String("20"),
 //						Port:     pulumi.Int(80),
-//						Weight:   pulumi.String("15"),
+//						Priority: pulumi.String("20"),
+//						Type:     pulumi.String("ipaddr"),
+//						Weight:   pulumi.String("10"),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewDomainConfig(ctx, "config", &dcdn.DomainConfigArgs{
-//				DomainName:   domain.DomainName,
+//			_, err = dcdn.NewDomainConfig(ctx, "exampleDomainConfig", &dcdn.DomainConfigArgs{
+//				DomainName:   exampleDomain.DomainName,
 //				FunctionName: pulumi.String("ip_allow_list_set"),
 //				FunctionArgs: dcdn.DomainConfigFunctionArgArray{
 //					&dcdn.DomainConfigFunctionArgArgs{
@@ -85,7 +91,7 @@ type DomainConfig struct {
 	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// The args of the domain config.
+	// The args of the domain config.  See `functionArgs` below.
 	FunctionArgs DomainConfigFunctionArgArrayOutput `pulumi:"functionArgs"`
 	// The name of the domain config.
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
@@ -136,7 +142,7 @@ type domainConfigState struct {
 	ConfigId *string `pulumi:"configId"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName *string `pulumi:"domainName"`
-	// The args of the domain config.
+	// The args of the domain config.  See `functionArgs` below.
 	FunctionArgs []DomainConfigFunctionArg `pulumi:"functionArgs"`
 	// The name of the domain config.
 	FunctionName *string `pulumi:"functionName"`
@@ -149,7 +155,7 @@ type DomainConfigState struct {
 	ConfigId pulumi.StringPtrInput
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringPtrInput
-	// The args of the domain config.
+	// The args of the domain config.  See `functionArgs` below.
 	FunctionArgs DomainConfigFunctionArgArrayInput
 	// The name of the domain config.
 	FunctionName pulumi.StringPtrInput
@@ -164,7 +170,7 @@ func (DomainConfigState) ElementType() reflect.Type {
 type domainConfigArgs struct {
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName string `pulumi:"domainName"`
-	// The args of the domain config.
+	// The args of the domain config.  See `functionArgs` below.
 	FunctionArgs []DomainConfigFunctionArg `pulumi:"functionArgs"`
 	// The name of the domain config.
 	FunctionName string `pulumi:"functionName"`
@@ -174,7 +180,7 @@ type domainConfigArgs struct {
 type DomainConfigArgs struct {
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringInput
-	// The args of the domain config.
+	// The args of the domain config.  See `functionArgs` below.
 	FunctionArgs DomainConfigFunctionArgArrayInput
 	// The name of the domain config.
 	FunctionName pulumi.StringInput
@@ -277,7 +283,7 @@ func (o DomainConfigOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainConfig) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// The args of the domain config.
+// The args of the domain config.  See `functionArgs` below.
 func (o DomainConfigOutput) FunctionArgs() DomainConfigFunctionArgArrayOutput {
 	return o.ApplyT(func(v *DomainConfig) DomainConfigFunctionArgArrayOutput { return v.FunctionArgs }).(DomainConfigFunctionArgArrayOutput)
 }

@@ -302,7 +302,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
 
         For information about RDS cross region backup settings and how to use them, see [What is cross region backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/modify-cross-region-backup-settings).
 
-        > **NOTE:** Available in 1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -311,13 +311,18 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "tf-testAccRdsCrossRegionBackupPolicy"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            category="HighAvailability")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            category="HighAvailability")
         regions = alicloud.rds.get_cross_regions()
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
@@ -325,18 +330,20 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[5].id,
+            zone_id=default_zones.ids[0],
             vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
+        default_instance = alicloud.rds.Instance("defaultInstance",
             engine="MySQL",
             engine_version="8.0",
-            db_instance_storage_type="local_ssd",
-            instance_type="rds.mysql.c1.large",
-            instance_storage=10,
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            category="HighAvailability",
+            instance_name=name,
             vswitch_id=default_switch.id,
-            instance_name=name)
-        policy = alicloud.rds.RdsInstanceCrossBackupPolicy("policy",
-            instance_id=instance.id,
+            db_instance_storage_type="local_ssd")
+        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy",
+            instance_id=default_instance.id,
             cross_backup_region=regions.ids[0])
         ```
 
@@ -368,7 +375,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
 
         For information about RDS cross region backup settings and how to use them, see [What is cross region backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/modify-cross-region-backup-settings).
 
-        > **NOTE:** Available in 1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -377,13 +384,18 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "tf-testAccRdsCrossRegionBackupPolicy"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            category="HighAvailability")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            category="HighAvailability")
         regions = alicloud.rds.get_cross_regions()
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
@@ -391,18 +403,20 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[5].id,
+            zone_id=default_zones.ids[0],
             vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
+        default_instance = alicloud.rds.Instance("defaultInstance",
             engine="MySQL",
             engine_version="8.0",
-            db_instance_storage_type="local_ssd",
-            instance_type="rds.mysql.c1.large",
-            instance_storage=10,
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            category="HighAvailability",
+            instance_name=name,
             vswitch_id=default_switch.id,
-            instance_name=name)
-        policy = alicloud.rds.RdsInstanceCrossBackupPolicy("policy",
-            instance_id=instance.id,
+            db_instance_storage_type="local_ssd")
+        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy",
+            instance_id=default_instance.id,
             cross_backup_region=regions.ids[0])
         ```
 

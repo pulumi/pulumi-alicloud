@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules).
     /// 
-    /// &gt; **NOTE:** Available in v1.201.0+.
+    /// &gt; **NOTE:** Available since v1.201.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,18 +28,20 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultWafPolicy = new AliCloud.Dcdn.WafPolicy("defaultWafPolicy", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var exampleWafPolicy = new AliCloud.Dcdn.WafPolicy("exampleWafPolicy", new()
     ///     {
-    ///         DefenseScene = "custom_acl",
-    ///         PolicyName = @var.Name,
+    ///         DefenseScene = "waf_group",
+    ///         PolicyName = name,
     ///         PolicyType = "custom",
     ///         Status = "on",
     ///     });
     /// 
-    ///     var defaultWafRule = new AliCloud.Dcdn.WafRule("defaultWafRule", new()
+    ///     var exampleWafRule = new AliCloud.Dcdn.WafRule("exampleWafRule", new()
     ///     {
-    ///         PolicyId = defaultWafPolicy.Id,
-    ///         RuleName = @var.Name,
+    ///         PolicyId = exampleWafPolicy.Id,
+    ///         RuleName = name,
     ///         Conditions = new[]
     ///         {
     ///             new AliCloud.Dcdn.Inputs.WafRuleConditionArgs
@@ -107,7 +109,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string?> CnRegionList { get; private set; } = null!;
 
         /// <summary>
-        /// Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+        /// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
         /// </summary>
         [Output("conditions")]
         public Output<ImmutableArray<Outputs.WafRuleCondition>> Conditions { get; private set; } = null!;
@@ -143,7 +145,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> PolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See the following `Block RateLimit`.
+        /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
         /// </summary>
         [Output("rateLimit")]
         public Output<Outputs.WafRuleRateLimit?> RateLimit { get; private set; } = null!;
@@ -258,7 +260,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.WafRuleConditionArgs>? _conditions;
 
         /// <summary>
-        /// Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+        /// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
         /// </summary>
         public InputList<Inputs.WafRuleConditionArgs> Conditions
         {
@@ -285,7 +287,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string> PolicyId { get; set; } = null!;
 
         /// <summary>
-        /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See the following `Block RateLimit`.
+        /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
         /// </summary>
         [Input("rateLimit")]
         public Input<Inputs.WafRuleRateLimitArgs>? RateLimit { get; set; }
@@ -386,7 +388,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.WafRuleConditionGetArgs>? _conditions;
 
         /// <summary>
-        /// Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+        /// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
         /// </summary>
         public InputList<Inputs.WafRuleConditionGetArgs> Conditions
         {
@@ -425,7 +427,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
-        /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See the following `Block RateLimit`.
+        /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
         /// </summary>
         [Input("rateLimit")]
         public Input<Inputs.WafRuleRateLimitGetArgs>? RateLimit { get; set; }

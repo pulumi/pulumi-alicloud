@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM User Login Profile resource.
  *
+ * > **NOTE:** Available since v1.0.0+.
+ *
  * ## Example Usage
  *
  * ```typescript

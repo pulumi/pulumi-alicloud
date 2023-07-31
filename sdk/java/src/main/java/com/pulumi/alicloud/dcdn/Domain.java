@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
  * 
- * &gt; **NOTE:** Available in v1.94.0+.
+ * &gt; **NOTE:** Available since v1.94.0.
  * 
  * &gt; **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
  * 
@@ -54,14 +54,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;example.com&#34;);
  *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
- *             .domainName(&#34;example.com&#34;)
+ *             .domainName(domainName)
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainSourceArgs.builder()
  *                 .content(&#34;1.1.1.1&#34;)
  *                 .port(&#34;80&#34;)
  *                 .priority(&#34;20&#34;)
  *                 .type(&#34;ipaddr&#34;)
+ *                 .weight(&#34;10&#34;)
  *                 .build())
  *             .build());
  * 
@@ -213,14 +216,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityToken);
     }
     /**
-     * The origin information.
+     * The origin information. See `sources` below.
      * 
      */
     @Export(name="sources", type=List.class, parameters={DomainSource.class})
     private Output<List<DomainSource>> sources;
 
     /**
-     * @return The origin information.
+     * @return The origin information. See `sources` below.
      * 
      */
     public Output<List<DomainSource>> sources() {

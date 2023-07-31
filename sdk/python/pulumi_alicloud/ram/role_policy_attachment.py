@@ -132,6 +132,8 @@ class RolePolicyAttachment(pulumi.CustomResource):
         """
         Provides a RAM Role attachment resource.
 
+        > **NOTE:** Available since v1.0.0+.
+
         ## Example Usage
 
         ```python
@@ -206,6 +208,8 @@ class RolePolicyAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a RAM Role attachment resource.
+
+        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 

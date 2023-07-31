@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -48,6 +50,8 @@ namespace Pulumi.AliCloud.Ram
 
         /// <summary>
         /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -99,6 +103,10 @@ namespace Pulumi.AliCloud.Ram
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of ram group IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
@@ -157,6 +165,10 @@ namespace Pulumi.AliCloud.Ram
 
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ram group IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
@@ -225,6 +237,9 @@ namespace Pulumi.AliCloud.Ram
         /// Type of the policy.
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// The user name of  policy.
+        /// </summary>
         public readonly string? UserName;
 
         [OutputConstructor]

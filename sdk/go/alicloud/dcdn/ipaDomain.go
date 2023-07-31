@@ -16,7 +16,7 @@ import (
 //
 // For information about DCDN Ipa Domain and how to use it, see [What is Ipa Domain](https://www.alibabacloud.com/help/en/doc-detail/130634.html).
 //
-// > **NOTE:** Available in v1.158.0+.
+// > **NOTE:** Available since v1.158.0.
 //
 // ## Example Usage
 //
@@ -30,31 +30,35 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-//				NameRegex: pulumi.StringRef("default"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			domainName := "example.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
-//				DomainName:      pulumi.String("example.com"),
+//				DomainName:      pulumi.String(domainName),
 //				ResourceGroupId: *pulumi.String(_default.Groups[0].Id),
+//				Scope:           pulumi.String("global"),
+//				Status:          pulumi.String("online"),
 //				Sources: dcdn.IpaDomainSourceArray{
 //					&dcdn.IpaDomainSourceArgs{
-//						Content:  pulumi.String("1.1.1.1"),
+//						Content:  pulumi.String("www.alicloud-provider.cn"),
 //						Port:     pulumi.Int(80),
 //						Priority: pulumi.String("20"),
-//						Type:     pulumi.String("ipaddr"),
+//						Type:     pulumi.String("domain"),
 //						Weight:   pulumi.Int(10),
 //					},
 //				},
-//				Scope:  pulumi.String("overseas"),
-//				Status: pulumi.String("online"),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +87,7 @@ type IpaDomain struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
 	Scope pulumi.StringOutput `pulumi:"scope"`
-	// Sources. See the following `Block sources`.
+	// Sources. See `sources` below.
 	Sources IpaDomainSourceArrayOutput `pulumi:"sources"`
 	// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -131,7 +135,7 @@ type ipaDomainState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
 	Scope *string `pulumi:"scope"`
-	// Sources. See the following `Block sources`.
+	// Sources. See `sources` below.
 	Sources []IpaDomainSource `pulumi:"sources"`
 	// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status *string `pulumi:"status"`
@@ -144,7 +148,7 @@ type IpaDomainState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
 	Scope pulumi.StringPtrInput
-	// Sources. See the following `Block sources`.
+	// Sources. See `sources` below.
 	Sources IpaDomainSourceArrayInput
 	// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status pulumi.StringPtrInput
@@ -161,7 +165,7 @@ type ipaDomainArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
 	Scope *string `pulumi:"scope"`
-	// Sources. See the following `Block sources`.
+	// Sources. See `sources` below.
 	Sources []IpaDomainSource `pulumi:"sources"`
 	// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status *string `pulumi:"status"`
@@ -175,7 +179,7 @@ type IpaDomainArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
 	Scope pulumi.StringPtrInput
-	// Sources. See the following `Block sources`.
+	// Sources. See `sources` below.
 	Sources IpaDomainSourceArrayInput
 	// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status pulumi.StringPtrInput
@@ -283,7 +287,7 @@ func (o IpaDomainOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpaDomain) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
 }
 
-// Sources. See the following `Block sources`.
+// Sources. See `sources` below.
 func (o IpaDomainOutput) Sources() IpaDomainSourceArrayOutput {
 	return o.ApplyT(func(v *IpaDomain) IpaDomainSourceArrayOutput { return v.Sources }).(IpaDomainSourceArrayOutput)
 }

@@ -7,8 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides an RDS readonly instance resource.
- * > **NOTE:** Available since v1.52.1+.
+ * Provides an RDS readonly instance resource, see [What is DB Readonly Instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createreadonlydbinstance).
+ *
+ * > **NOTE:** Available since v1.52.1.
  *
  * ## Example Usage
  *
@@ -17,39 +18,43 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Rds";
- * const name = config.get("name") || "dbInstancevpc";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "tf-example";
+ * const exampleZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.t1.small",
  *     instanceStorage: 20,
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
- *     vswitchId: defaultSwitch.id,
+ *     vswitchId: exampleSwitch.id,
  *     securityIps: [
  *         "10.168.1.12",
  *         "100.69.7.112",
  *     ],
  * });
- * const defaultReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance", {
- *     masterDbInstanceId: defaultInstance.id,
- *     zoneId: defaultInstance.zoneId,
- *     engineVersion: defaultInstance.engineVersion,
- *     instanceType: defaultInstance.instanceType,
- *     instanceStorage: 30,
- *     instanceName: `${name}ro`,
- *     vswitchId: defaultSwitch.id,
+ * const exampleReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance", {
+ *     zoneId: exampleInstance.zoneId,
+ *     masterDbInstanceId: exampleInstance.id,
+ *     engineVersion: exampleInstance.engineVersion,
+ *     instanceStorage: exampleInstance.instanceStorage,
+ *     instanceType: exampleInstance.instanceType,
+ *     instanceName: `${name}readonly`,
+ *     vswitchId: exampleSwitch.id,
  * });
  * ```
  *

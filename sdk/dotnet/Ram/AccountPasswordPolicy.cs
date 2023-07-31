@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<bool?> RequireNumbers { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        /// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         /// </summary>
         [Output("requireSymbols")]
         public Output<bool?> RequireSymbols { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? RequireNumbers { get; set; }
 
         /// <summary>
-        /// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        /// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         /// </summary>
         [Input("requireSymbols")]
         public Input<bool>? RequireSymbols { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? RequireNumbers { get; set; }
 
         /// <summary>
-        /// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+        /// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         /// </summary>
         [Input("requireSymbols")]
         public Input<bool>? RequireSymbols { get; set; }

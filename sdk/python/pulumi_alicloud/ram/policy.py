@@ -28,14 +28,14 @@ class PolicyArgs:
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[str] description: Description of the RAM policy. This name can have a string of 1 to 1024 characters.
-        :param pulumi.Input[str] document: It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+        :param pulumi.Input[str] document: It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+        :param pulumi.Input[str] name: It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         :param pulumi.Input[str] policy_document: Document of the RAM policy. It is required when the `statement` is not specified.
         :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[str] rotate_strategy: The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
-        :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]] statements: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -84,7 +84,7 @@ class PolicyArgs:
     @pulumi.getter
     def document(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+        It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         """
         warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
         pulumi.log.warn("""document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
@@ -111,7 +111,7 @@ class PolicyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+        It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
@@ -162,7 +162,7 @@ class PolicyArgs:
     @pulumi.getter
     def statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]]]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         """
         warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
         pulumi.log.warn("""statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
@@ -177,7 +177,7 @@ class PolicyArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
         warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
         pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
@@ -210,15 +210,15 @@ class _PolicyState:
         :param pulumi.Input[int] attachment_count: The policy attachment count.
         :param pulumi.Input[str] default_version: The default version of policy.
         :param pulumi.Input[str] description: Description of the RAM policy. This name can have a string of 1 to 1024 characters.
-        :param pulumi.Input[str] document: It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+        :param pulumi.Input[str] document: It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+        :param pulumi.Input[str] name: It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         :param pulumi.Input[str] policy_document: Document of the RAM policy. It is required when the `statement` is not specified.
         :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[str] rotate_strategy: The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]] statements: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         :param pulumi.Input[str] type: The policy type.
-        :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         :param pulumi.Input[str] version_id: The ID of default version policy.
         """
         if attachment_count is not None:
@@ -300,7 +300,7 @@ class _PolicyState:
     @pulumi.getter
     def document(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+        It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         """
         warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
         pulumi.log.warn("""document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
@@ -327,7 +327,7 @@ class _PolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+        It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
@@ -378,7 +378,7 @@ class _PolicyState:
     @pulumi.getter
     def statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]]]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         """
         warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
         pulumi.log.warn("""statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
@@ -405,7 +405,7 @@ class _PolicyState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
         warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
         pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
@@ -453,6 +453,8 @@ class Policy(pulumi.CustomResource):
 
         > **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
 
+        > **NOTE:** Available since v1.0.0+.
+
         ## Example Usage
 
         ```python
@@ -495,14 +497,14 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the RAM policy. This name can have a string of 1 to 1024 characters.
-        :param pulumi.Input[str] document: It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+        :param pulumi.Input[str] document: It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+        :param pulumi.Input[str] name: It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         :param pulumi.Input[str] policy_document: Document of the RAM policy. It is required when the `statement` is not specified.
         :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[str] rotate_strategy: The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
-        :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
         ...
     @overload
@@ -518,6 +520,8 @@ class Policy(pulumi.CustomResource):
         > **NOTE:** Each policy can own at most 5 versions and the oldest version will be removed after its version achieves 5.
 
         > **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
+
+        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 
@@ -649,15 +653,15 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[int] attachment_count: The policy attachment count.
         :param pulumi.Input[str] default_version: The default version of policy.
         :param pulumi.Input[str] description: Description of the RAM policy. This name can have a string of 1 to 1024 characters.
-        :param pulumi.Input[str] document: It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+        :param pulumi.Input[str] document: It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+        :param pulumi.Input[str] name: It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         :param pulumi.Input[str] policy_document: Document of the RAM policy. It is required when the `statement` is not specified.
         :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[str] rotate_strategy: The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         :param pulumi.Input[str] type: The policy type.
-        :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         :param pulumi.Input[str] version_id: The ID of default version policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -707,7 +711,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def document(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+        It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         """
         warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
         pulumi.log.warn("""document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
@@ -726,7 +730,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+        It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
@@ -761,7 +765,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def statements(self) -> pulumi.Output[Sequence['outputs.PolicyStatement']]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         """
         warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
         pulumi.log.warn("""statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
@@ -780,7 +784,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[Optional[str]]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
         warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
         pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)

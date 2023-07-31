@@ -20,6 +20,7 @@ class AnycastEipAddressArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a AnycastEipAddress resource.
@@ -29,6 +30,7 @@ class AnycastEipAddressArgs:
         :param pulumi.Input[str] description: Anycast EIP instance description.
         :param pulumi.Input[str] internet_charge_type: The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
         :param pulumi.Input[str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
         """
         pulumi.set(__self__, "service_location", service_location)
@@ -42,6 +44,8 @@ class AnycastEipAddressArgs:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -118,6 +122,18 @@ class AnycastEipAddressArgs:
         pulumi.set(self, "payment_type", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -139,6 +155,7 @@ class _AnycastEipAddressState:
                  description: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_location: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
@@ -150,6 +167,7 @@ class _AnycastEipAddressState:
         :param pulumi.Input[str] description: Anycast EIP instance description.
         :param pulumi.Input[str] internet_charge_type: The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
         :param pulumi.Input[str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
@@ -166,6 +184,8 @@ class _AnycastEipAddressState:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if service_location is not None:
             pulumi.set(__self__, "service_location", service_location)
         if status is not None:
@@ -246,6 +266,18 @@ class _AnycastEipAddressState:
         pulumi.set(self, "payment_type", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="serviceLocation")
     def service_location(self) -> Optional[pulumi.Input[str]]:
         """
@@ -292,15 +324,16 @@ class AnycastEipAddress(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_location: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
         Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
 
-        For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/).
+        For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
 
-        > **NOTE:** Available since v1.208.0.
+        > **NOTE:** Available since v1.113.0.
 
         ## Example Usage
 
@@ -320,21 +353,7 @@ class AnycastEipAddress(pulumi.CustomResource):
             bandwidth=200,
             service_location="international",
             internet_charge_type="PayByTraffic",
-            payment_type="PayAsYouGo",
-            tags=[
-                {
-                    "tagKey": "k1",
-                    "tagValue": "v1",
-                },
-                {
-                    "tagKey": "k2",
-                    "tagValue": "v2",
-                },
-                {
-                    "tagKey": "k3",
-                    "tagValue": "v3",
-                },
-            ])
+            payment_type="PayAsYouGo")
         ```
 
         ## Import
@@ -352,6 +371,7 @@ class AnycastEipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] description: Anycast EIP instance description.
         :param pulumi.Input[str] internet_charge_type: The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
         :param pulumi.Input[str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
         """
@@ -364,9 +384,9 @@ class AnycastEipAddress(pulumi.CustomResource):
         """
         Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
 
-        For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/).
+        For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
 
-        > **NOTE:** Available since v1.208.0.
+        > **NOTE:** Available since v1.113.0.
 
         ## Example Usage
 
@@ -386,21 +406,7 @@ class AnycastEipAddress(pulumi.CustomResource):
             bandwidth=200,
             service_location="international",
             internet_charge_type="PayByTraffic",
-            payment_type="PayAsYouGo",
-            tags=[
-                {
-                    "tagKey": "k1",
-                    "tagValue": "v1",
-                },
-                {
-                    "tagKey": "k2",
-                    "tagValue": "v2",
-                },
-                {
-                    "tagKey": "k3",
-                    "tagValue": "v3",
-                },
-            ])
+            payment_type="PayAsYouGo")
         ```
 
         ## Import
@@ -431,6 +437,7 @@ class AnycastEipAddress(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_location: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -447,6 +454,7 @@ class AnycastEipAddress(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["internet_charge_type"] = internet_charge_type
             __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if service_location is None and not opts.urn:
                 raise TypeError("Missing required property 'service_location'")
             __props__.__dict__["service_location"] = service_location
@@ -469,6 +477,7 @@ class AnycastEipAddress(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             service_location: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'AnycastEipAddress':
@@ -485,6 +494,7 @@ class AnycastEipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] description: Anycast EIP instance description.
         :param pulumi.Input[str] internet_charge_type: The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
         :param pulumi.Input[str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
@@ -499,6 +509,7 @@ class AnycastEipAddress(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["internet_charge_type"] = internet_charge_type
         __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["service_location"] = service_location
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -551,6 +562,14 @@ class AnycastEipAddress(pulumi.CustomResource):
         The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
         """
         return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="serviceLocation")

@@ -14,6 +14,8 @@ import (
 
 // Provides a RAM Role attachment resource.
 //
+// > **NOTE:** Available since v1.0.0+.
+//
 // ## Example Usage
 //
 // ```go

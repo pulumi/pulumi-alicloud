@@ -13,9 +13,9 @@ import (
 
 // Provides a RDS Account resource.
 //
-// For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/26263.htm).
+// For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createaccount).
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
 //
 // ## Example Usage
 //
@@ -26,7 +26,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -37,16 +36,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			creation := "Rds"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "dbaccountmysql"
+//			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:        pulumi.StringRef("MySQL"),
+//				EngineVersion: pulumi.StringRef("5.6"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:        pulumi.StringRef(defaultZones.Ids[0]),
+//				Engine:        pulumi.StringRef("MySQL"),
+//				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -61,16 +65,16 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
+//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
 //				Engine:          pulumi.String("MySQL"),
 //				EngineVersion:   pulumi.String("5.6"),
-//				InstanceType:    pulumi.String("rds.mysql.s1.small"),
+//				InstanceType:    *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceStorage: pulumi.Int(10),
 //				VswitchId:       defaultSwitch.ID(),
 //				InstanceName:    pulumi.String(name),
@@ -78,10 +82,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewRdsAccount(ctx, "account", &rds.RdsAccountArgs{
-//				DbInstanceId:    instance.ID(),
-//				AccountName:     pulumi.String("tftestnormal12"),
-//				AccountPassword: pulumi.String("Test12345"),
+//			_, err = rds.NewRdsAccount(ctx, "defaultRdsAccount", &rds.RdsAccountArgs{
+//				DbInstanceId:    defaultInstance.ID(),
+//				AccountName:     pulumi.String(name),
+//				AccountPassword: pulumi.String("Example1234"),
 //			})
 //			if err != nil {
 //				return err

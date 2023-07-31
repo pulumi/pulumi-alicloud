@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Dbfs Auto Snap Shot Policy resource.
  * 
- * For information about Dbfs Auto Snap Shot Policy and how to use it, see [What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html).
+ * For information about Dbfs Auto Snap Shot Policy and how to use it.
  * 
- * &gt; **NOTE:** Available in v1.202.0+.
+ * &gt; **NOTE:** Available since v1.202.0.
  * 
  * ## Example Usage
  * 
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AutoSnapShotPolicy(&#34;default&#34;, AutoSnapShotPolicyArgs.builder()        
- *             .policyName(&#34;testTerraform&#34;)
+ *             .policyName(&#34;tf-example&#34;)
  *             .repeatWeekdays(&#34;2&#34;)
  *             .retentionDays(1)
  *             .timePoints(&#34;01&#34;)

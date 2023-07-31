@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// <summary>
     /// Provides a Dbfs Auto Snap Shot Policy resource.
     /// 
-    /// For information about Dbfs Auto Snap Shot Policy and how to use it, see [What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html).
+    /// For information about Dbfs Auto Snap Shot Policy and how to use it.
     /// 
-    /// &gt; **NOTE:** Available in v1.202.0+.
+    /// &gt; **NOTE:** Available since v1.202.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// {
     ///     var @default = new AliCloud.DatabaseFilesystem.AutoSnapShotPolicy("default", new()
     ///     {
-    ///         PolicyName = "testTerraform",
+    ///         PolicyName = "tf-example",
     ///         RepeatWeekdays = new[]
     ///         {
     ///             "2",

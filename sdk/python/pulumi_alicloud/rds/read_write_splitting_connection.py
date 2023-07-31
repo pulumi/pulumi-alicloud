@@ -246,7 +246,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
+        Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
 
         > **NOTE:** Available since v1.48.0.
 
@@ -256,44 +256,49 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="Basic",
-            db_instance_storage_type="cloud_essd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
+            engine_version="5.7",
+            category="HighAvailability",
+            db_instance_storage_type="local_ssd")
+        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.ids[0],
             engine="MySQL",
-            engine_version="8.0",
-            category="Basic",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
+            engine_version="5.7",
+            category="HighAvailability",
+            db_instance_storage_type="local_ssd")
         example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
+            vpc_name=name,
             cidr_block="172.16.0.0/16")
         example_switch = alicloud.vpc.Switch("exampleSwitch",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=example_zones.zones[0].id,
-            vswitch_name="terraform-example")
+            vswitch_name=name)
         example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
         example_instance = alicloud.rds.Instance("exampleInstance",
             engine="MySQL",
-            engine_version="8.0",
+            engine_version="5.7",
+            category="HighAvailability",
             instance_type=example_instance_classes.instance_classes[0].instance_class,
             instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
             instance_charge_type="Postpaid",
-            instance_name="terraform-example",
+            db_instance_storage_type="local_ssd",
+            instance_name=name,
             vswitch_id=example_switch.id,
-            monitoring_period=60,
-            db_instance_storage_type="cloud_essd",
-            security_group_ids=[example_security_group.id])
+            security_ips=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ])
         example_read_only_instance = alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance",
             zone_id=example_instance.zone_id,
             master_db_instance_id=example_instance.id,
             engine_version=example_instance.engine_version,
             instance_storage=example_instance.instance_storage,
-            instance_type=example_instance_classes.instance_classes[1].instance_class,
-            instance_name="terraform-example-readonly",
+            instance_type=example_instance.instance_type,
+            instance_name=f"{name}readonly",
             vswitch_id=example_switch.id)
         example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection",
             instance_id=example_read_only_instance.master_db_instance_id,
@@ -327,7 +332,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
                  args: ReadWriteSplittingConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
+        Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
 
         > **NOTE:** Available since v1.48.0.
 
@@ -337,44 +342,49 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="Basic",
-            db_instance_storage_type="cloud_essd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
+            engine_version="5.7",
+            category="HighAvailability",
+            db_instance_storage_type="local_ssd")
+        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.ids[0],
             engine="MySQL",
-            engine_version="8.0",
-            category="Basic",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
+            engine_version="5.7",
+            category="HighAvailability",
+            db_instance_storage_type="local_ssd")
         example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
+            vpc_name=name,
             cidr_block="172.16.0.0/16")
         example_switch = alicloud.vpc.Switch("exampleSwitch",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=example_zones.zones[0].id,
-            vswitch_name="terraform-example")
+            vswitch_name=name)
         example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
         example_instance = alicloud.rds.Instance("exampleInstance",
             engine="MySQL",
-            engine_version="8.0",
+            engine_version="5.7",
+            category="HighAvailability",
             instance_type=example_instance_classes.instance_classes[0].instance_class,
             instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
             instance_charge_type="Postpaid",
-            instance_name="terraform-example",
+            db_instance_storage_type="local_ssd",
+            instance_name=name,
             vswitch_id=example_switch.id,
-            monitoring_period=60,
-            db_instance_storage_type="cloud_essd",
-            security_group_ids=[example_security_group.id])
+            security_ips=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ])
         example_read_only_instance = alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance",
             zone_id=example_instance.zone_id,
             master_db_instance_id=example_instance.id,
             engine_version=example_instance.engine_version,
             instance_storage=example_instance.instance_storage,
-            instance_type=example_instance_classes.instance_classes[1].instance_class,
-            instance_name="terraform-example-readonly",
+            instance_type=example_instance.instance_type,
+            instance_name=f"{name}readonly",
             vswitch_id=example_switch.id)
         example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection",
             instance_id=example_read_only_instance.master_db_instance_id,

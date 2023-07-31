@@ -2741,7 +2741,7 @@ export namespace alb {
          * The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
          * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
          */
-        weight: number;
+        weight?: number;
     }
 
     export interface ServerGroupStickySessionConfig {
@@ -11433,10 +11433,18 @@ export namespace cs {
     }
 
     export interface EdgeKubernetesAddon {
+        /**
+         * The ACK add-on configurations.
+         */
         config?: string;
+        /**
+         * Disables the automatic installation of a component. Default is `false`.
+         *
+         * The following example is the definition of addons block, The type of this field is list:
+         */
         disabled?: boolean;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: string;
     }
@@ -11506,14 +11514,20 @@ export namespace cs {
          * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
          */
         category?: string;
+        /**
+         * The device of the data disks.
+         */
         device?: string;
         /**
          * Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
          */
         encrypted?: string;
+        /**
+         * The id of the kms key.
+         */
         kmsKeyId?: string;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * The name of the data disks.
          */
         name?: string;
         /**
@@ -11524,6 +11538,9 @@ export namespace cs {
          * The size of a data disk, at least 40. Unit: GiB.
          */
         size?: string;
+        /**
+         * The id of snapshot.
+         */
         snapshotId?: string;
     }
 
@@ -12229,10 +12246,18 @@ export namespace cs {
     }
 
     export interface KubernetesAddon {
+        /**
+         * The ACK add-on configurations.
+         */
         config?: string;
+        /**
+         * Disables the automatic installation of a component. Default is `false`.
+         *
+         * The following example is the definition of addons block, The type of this field is list:
+         */
         disabled?: boolean;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: string;
     }
@@ -12288,15 +12313,15 @@ export namespace cs {
 
     export interface KubernetesMasterNode {
         /**
-         * ID of the node.
+         * The id of a node.
          */
         id: string;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * The name of a node.
          */
         name: string;
         /**
-         * The private IP address of node.
+         * The private ip of a node.
          */
         privateIp: string;
     }
@@ -12340,38 +12365,56 @@ export namespace cs {
     }
 
     export interface KubernetesTaint {
+        /**
+         * The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
+         */
         effect?: string;
+        /**
+         * The key of a taint.
+         */
         key?: string;
+        /**
+         * The key of a taint.
+         */
         value?: string;
     }
 
     export interface KubernetesWorkerDataDisk {
         /**
-         * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+         * Worker node data disk auto snapshot policy.
          */
         autoSnapshotPolicyId?: string;
         /**
          * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
          */
         category?: string;
+        /**
+         * The device of the data disks.
+         */
         device?: string;
         /**
          * Specifies whether to encrypt data disks. Valid values: true and false.
          */
         encrypted?: string;
+        /**
+         * The id of the kms key.
+         */
         kmsKeyId?: string;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * The name of the data disks.
          */
         name?: string;
         /**
-         * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          */
         performanceLevel?: string;
         /**
          * The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
          */
         size?: string;
+        /**
+         * The id of snapshot.
+         */
         snapshotId?: string;
     }
 
@@ -12381,7 +12424,7 @@ export namespace cs {
          */
         id: string;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * Node name.
          */
         name: string;
         /**
@@ -13289,151 +13332,151 @@ export namespace dcdn {
 
     export interface ErEnvConf {
         /**
-         * The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+         * The configuration of a presetCanaryAnhui environment. See `staging` below.
          */
         presetCanaryAnhui: outputs.dcdn.ErEnvConfPresetCanaryAnhui;
         /**
-         * The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+         * The configuration of a presetCanaryBeijing environment. See `staging` below.
          */
         presetCanaryBeijing: outputs.dcdn.ErEnvConfPresetCanaryBeijing;
         /**
-         * The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+         * The configuration of a presetCanaryChongqing environment. See `staging` below.
          */
         presetCanaryChongqing: outputs.dcdn.ErEnvConfPresetCanaryChongqing;
         /**
-         * The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+         * The configuration of a presetCanaryFujian environment. See `staging` below.
          */
         presetCanaryFujian: outputs.dcdn.ErEnvConfPresetCanaryFujian;
         /**
-         * The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+         * The configuration of a presetCanaryGansu environment. See `staging` below.
          */
         presetCanaryGansu: outputs.dcdn.ErEnvConfPresetCanaryGansu;
         /**
-         * The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+         * The configuration of a presetCanaryGuangdong environment. See `staging` below.
          */
         presetCanaryGuangdong: outputs.dcdn.ErEnvConfPresetCanaryGuangdong;
         /**
-         * The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+         * The configuration of a presetCanaryGuangxi environment. See `staging` below.
          */
         presetCanaryGuangxi: outputs.dcdn.ErEnvConfPresetCanaryGuangxi;
         /**
-         * The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+         * The configuration of a presetCanaryGuizhou environment. See `staging` below.
          */
         presetCanaryGuizhou: outputs.dcdn.ErEnvConfPresetCanaryGuizhou;
         /**
-         * The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+         * The configuration of a presetCanaryHainan environment. See `staging` below.
          */
         presetCanaryHainan: outputs.dcdn.ErEnvConfPresetCanaryHainan;
         /**
-         * The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+         * The configuration of a presetCanaryHebei environment. See `staging` below.
          */
         presetCanaryHebei: outputs.dcdn.ErEnvConfPresetCanaryHebei;
         /**
-         * The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+         * The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
          */
         presetCanaryHeilongjiang: outputs.dcdn.ErEnvConfPresetCanaryHeilongjiang;
         /**
-         * The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+         * The configuration of a presetCanaryHenan environment. See `staging` below.
          */
         presetCanaryHenan: outputs.dcdn.ErEnvConfPresetCanaryHenan;
         /**
-         * The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+         * The configuration of a presetCanaryHongKong environment. See `staging` below.
          */
         presetCanaryHongKong: outputs.dcdn.ErEnvConfPresetCanaryHongKong;
         /**
-         * The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+         * The configuration of a presetCanaryHubei environment. See `staging` below.
          */
         presetCanaryHubei: outputs.dcdn.ErEnvConfPresetCanaryHubei;
         /**
-         * The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+         * The configuration of a presetCanaryHunan environment. See `staging` below.
          */
         presetCanaryHunan: outputs.dcdn.ErEnvConfPresetCanaryHunan;
         /**
-         * The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+         * The configuration of a presetCanaryJiangsu environment. See `staging` below.
          */
         presetCanaryJiangsu: outputs.dcdn.ErEnvConfPresetCanaryJiangsu;
         /**
-         * The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+         * The configuration of a presetCanaryJiangxi environment. See `staging` below.
          */
         presetCanaryJiangxi: outputs.dcdn.ErEnvConfPresetCanaryJiangxi;
         /**
-         * The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+         * The configuration of a presetCanaryJilin environment. See `staging` below.
          */
         presetCanaryJilin: outputs.dcdn.ErEnvConfPresetCanaryJilin;
         /**
-         * The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+         * The configuration of a presetCanaryLiaoning environment. See `staging` below.
          */
         presetCanaryLiaoning: outputs.dcdn.ErEnvConfPresetCanaryLiaoning;
         /**
-         * The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+         * The configuration of a presetCanaryMacau environment. See `staging` below.
          */
         presetCanaryMacau: outputs.dcdn.ErEnvConfPresetCanaryMacau;
         /**
-         * The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+         * The configuration of a presetCanaryNeimenggu environment. See `staging` below.
          */
         presetCanaryNeimenggu: outputs.dcdn.ErEnvConfPresetCanaryNeimenggu;
         /**
-         * The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+         * The configuration of a presetCanaryNingxia environment. See `staging` below.
          */
         presetCanaryNingxia: outputs.dcdn.ErEnvConfPresetCanaryNingxia;
         /**
-         * The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+         * The configuration of a presetCanaryOverseas environment. See `staging` below.
          */
         presetCanaryOverseas: outputs.dcdn.ErEnvConfPresetCanaryOverseas;
         /**
-         * The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+         * The configuration of a presetCanaryQinghai environment. See `staging` below.
          */
         presetCanaryQinghai: outputs.dcdn.ErEnvConfPresetCanaryQinghai;
         /**
-         * The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+         * The configuration of a presetCanaryShaanxi environment. See `staging` below.
          */
         presetCanaryShaanxi: outputs.dcdn.ErEnvConfPresetCanaryShaanxi;
         /**
-         * The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+         * The configuration of a presetCanaryShandong environment. See `staging` below.
          */
         presetCanaryShandong: outputs.dcdn.ErEnvConfPresetCanaryShandong;
         /**
-         * The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+         * The configuration of a presetCanaryShanghai environment. See `staging` below.
          */
         presetCanaryShanghai: outputs.dcdn.ErEnvConfPresetCanaryShanghai;
         /**
-         * The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+         * The configuration of a presetCanaryShanxi environment. See `staging` below.
          */
         presetCanaryShanxi: outputs.dcdn.ErEnvConfPresetCanaryShanxi;
         /**
-         * The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+         * The configuration of a presetCanarySichuan environment. See `staging` below.
          */
         presetCanarySichuan: outputs.dcdn.ErEnvConfPresetCanarySichuan;
         /**
-         * The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+         * The configuration of a presetCanaryTaiwan environment. See `staging` below.
          */
         presetCanaryTaiwan: outputs.dcdn.ErEnvConfPresetCanaryTaiwan;
         /**
-         * The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+         * The configuration of a presetCanaryTianjin environment. See `staging` below.
          */
         presetCanaryTianjin: outputs.dcdn.ErEnvConfPresetCanaryTianjin;
         /**
-         * The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+         * The configuration of a presetCanaryXinjiang environment. See `staging` below.
          */
         presetCanaryXinjiang: outputs.dcdn.ErEnvConfPresetCanaryXinjiang;
         /**
-         * The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+         * The configuration of a presetCanaryXizang environment. See `staging` below.
          */
         presetCanaryXizang: outputs.dcdn.ErEnvConfPresetCanaryXizang;
         /**
-         * The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+         * The configuration of a presetCanaryYunnan environment. See `staging` below.
          */
         presetCanaryYunnan: outputs.dcdn.ErEnvConfPresetCanaryYunnan;
         /**
-         * The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+         * The configuration of a presetCanaryZhejiang environment. See `staging` below.
          */
         presetCanaryZhejiang: outputs.dcdn.ErEnvConfPresetCanaryZhejiang;
         /**
-         * The configuration of a production environment. The `Block production` is same as `Block staging`.
+         * The configuration of a production environment. See `staging` below.
          */
         production: outputs.dcdn.ErEnvConfProduction;
         /**
-         * The configuration of a staging environment. See the following `Block staging`.
+         * The configuration of a staging environment. See `staging` below.
          */
         staging: outputs.dcdn.ErEnvConfStaging;
     }
@@ -14399,11 +14442,11 @@ export namespace dcdn {
          */
         interval?: number;
         /**
-         * The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+         * Response code statistics. See `status` below.
          */
         status?: outputs.dcdn.WafRuleRateLimitStatus;
         /**
-         * The match subfield.
+         * The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
          */
         subKey?: string;
         /**
@@ -23608,6 +23651,13 @@ export namespace ehpc {
 }
 
 export namespace eipanycast {
+    export interface AnycastEipAddressAttachmentPopLocation {
+        /**
+         * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
+         */
+        popLocation?: string;
+    }
+
     export interface GetAnycastEipAddressesAddress {
         /**
          * Anycast EIP instance account ID.
@@ -25780,7 +25830,7 @@ export namespace eventbridge {
 
     export interface RuleTarget {
         /**
-         * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block deadLetterQueue`.
+         * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
          */
         deadLetterQueue?: outputs.eventbridge.RuleTargetDeadLetterQueue;
         /**
@@ -25788,7 +25838,7 @@ export namespace eventbridge {
          */
         endpoint: string;
         /**
-         * A list of param. See the following `Block paramList`.
+         * A list of param. See `paramList` below.
          */
         paramLists: outputs.eventbridge.RuleTargetParamList[];
         /**
@@ -25800,7 +25850,8 @@ export namespace eventbridge {
          */
         targetId: string;
         /**
-         * The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+         * The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          */
         type: string;
     }
@@ -25814,27 +25865,29 @@ export namespace eventbridge {
 
     export interface RuleTargetParamList {
         /**
-         * The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+         * The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
          */
         form: string;
         /**
-         * The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+         * The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
          */
         resourceKey: string;
         /**
          * The template of param.
-         *
-         * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * In order to fix the diff, from version 1.160.0,
-         * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
-         * If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
          */
         template?: string;
         /**
          * The value of param.
+         *
+         * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         *
+         * In order to fix the diff, from version 1.160.0,
+         * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+         * If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
          */
         value?: string;
     }
@@ -34702,6 +34755,13 @@ export namespace opensearch {
 }
 
 export namespace oss {
+    export interface BucketAccessMonitor {
+        /**
+         * The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+         */
+        status: string;
+    }
+
     export interface BucketCorsRule {
         /**
          * Specifies which headers are allowed.
@@ -34727,7 +34787,7 @@ export namespace oss {
 
     export interface BucketLifecycleRule {
         /**
-         * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+         * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abortMultipartUpload` below.
          */
         abortMultipartUploads?: outputs.oss.BucketLifecycleRuleAbortMultipartUpload[];
         /**
@@ -34735,7 +34795,7 @@ export namespace oss {
          */
         enabled: boolean;
         /**
-         * Specifies a period in the object's expire (documented below).
+         * Specifies a period in the object's expire. See `expiration` below.
          */
         expirations?: outputs.oss.BucketLifecycleRuleExpiration[];
         /**
@@ -34743,11 +34803,11 @@ export namespace oss {
          */
         id: string;
         /**
-         * Specifies when noncurrent object versions expire (documented below).
+         * Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
          */
         noncurrentVersionExpirations?: outputs.oss.BucketLifecycleRuleNoncurrentVersionExpiration[];
         /**
-         * Specifies when noncurrent object versions transitions (documented below).
+         * Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
          *
          * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
          */
@@ -34757,7 +34817,7 @@ export namespace oss {
          */
         prefix?: string;
         /**
-         * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+         * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
          */
         transitions?: outputs.oss.BucketLifecycleRuleTransition[];
     }
@@ -34815,7 +34875,16 @@ export namespace oss {
          */
         days: number;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+         * Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
+         */
+        isAccessTime?: boolean;
+        /**
+         * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+         */
+        returnToStdWhenVisit?: boolean;
+        /**
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
          */
         storageClass: string;
     }
@@ -34832,9 +34901,18 @@ export namespace oss {
          */
         days?: number;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+         * Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
          */
-        storageClass?: string;
+        isAccessTime?: boolean;
+        /**
+         * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+         */
+        returnToStdWhenVisit?: boolean;
+        /**
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+         */
+        storageClass: string;
     }
 
     export interface BucketLogging {
@@ -34929,7 +35007,7 @@ export namespace oss {
 
     export interface BucketTransferAcceleration {
         /**
-         * Specifies lifecycle rule status.
+         * Specifies the accelerate status of a bucket.
          */
         enabled: boolean;
     }
@@ -34937,8 +35015,6 @@ export namespace oss {
     export interface BucketVersioning {
         /**
          * Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-         *
-         * `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
          */
         status: string;
     }
@@ -35749,14 +35825,19 @@ export namespace polardb {
          */
         modifyMode?: string;
         /**
-         * This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
-         * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
+         * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
          */
         securityIps?: string[];
     }
 
     export interface ClusterParameter {
+        /**
+         * Kernel parameter name.
+         */
         name: string;
+        /**
+         * Kernel parameter value.
+         */
         value: string;
     }
 
@@ -37028,6 +37109,9 @@ export namespace ram {
          * Policy document of the policy.
          */
         document: string;
+        /**
+         * ID of the policy.
+         */
         id: string;
         /**
          * Name of the policy.
@@ -37065,7 +37149,7 @@ export namespace ram {
          */
         actions: string[];
         /**
-         * Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+         * Specifies the condition that are required for a policy to take effect. See `condition` below.
          */
         conditions?: outputs.ram.GetPolicyDocumentStatementCondition[];
         /**
@@ -37073,7 +37157,7 @@ export namespace ram {
          */
         effect?: string;
         /**
-         * Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+         * Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
          */
         principals?: outputs.ram.GetPolicyDocumentStatementPrincipal[];
         /**
@@ -37180,7 +37264,7 @@ export namespace ram {
          */
         id: string;
         /**
-         * Last login date of the user. Removed from version 1.79.0.
+         * (Removed) Last login date of the user. Removed from version 1.79.0.
          */
         lastLoginDate: string;
         /**
@@ -37191,15 +37275,15 @@ export namespace ram {
 
     export interface PolicyStatement {
         /**
-         * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
          */
         actions: string[];
         /**
-         * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
          */
         effect: string;
         /**
-         * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
          */
         resources: string[];
     }

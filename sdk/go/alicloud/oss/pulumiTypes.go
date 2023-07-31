@@ -13,6 +13,143 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BucketAccessMonitor struct {
+	// The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+	Status *string `pulumi:"status"`
+}
+
+// BucketAccessMonitorInput is an input type that accepts BucketAccessMonitorArgs and BucketAccessMonitorOutput values.
+// You can construct a concrete instance of `BucketAccessMonitorInput` via:
+//
+//	BucketAccessMonitorArgs{...}
+type BucketAccessMonitorInput interface {
+	pulumi.Input
+
+	ToBucketAccessMonitorOutput() BucketAccessMonitorOutput
+	ToBucketAccessMonitorOutputWithContext(context.Context) BucketAccessMonitorOutput
+}
+
+type BucketAccessMonitorArgs struct {
+	// The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (BucketAccessMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAccessMonitor)(nil)).Elem()
+}
+
+func (i BucketAccessMonitorArgs) ToBucketAccessMonitorOutput() BucketAccessMonitorOutput {
+	return i.ToBucketAccessMonitorOutputWithContext(context.Background())
+}
+
+func (i BucketAccessMonitorArgs) ToBucketAccessMonitorOutputWithContext(ctx context.Context) BucketAccessMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessMonitorOutput)
+}
+
+func (i BucketAccessMonitorArgs) ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput {
+	return i.ToBucketAccessMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i BucketAccessMonitorArgs) ToBucketAccessMonitorPtrOutputWithContext(ctx context.Context) BucketAccessMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessMonitorOutput).ToBucketAccessMonitorPtrOutputWithContext(ctx)
+}
+
+// BucketAccessMonitorPtrInput is an input type that accepts BucketAccessMonitorArgs, BucketAccessMonitorPtr and BucketAccessMonitorPtrOutput values.
+// You can construct a concrete instance of `BucketAccessMonitorPtrInput` via:
+//
+//	        BucketAccessMonitorArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketAccessMonitorPtrInput interface {
+	pulumi.Input
+
+	ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput
+	ToBucketAccessMonitorPtrOutputWithContext(context.Context) BucketAccessMonitorPtrOutput
+}
+
+type bucketAccessMonitorPtrType BucketAccessMonitorArgs
+
+func BucketAccessMonitorPtr(v *BucketAccessMonitorArgs) BucketAccessMonitorPtrInput {
+	return (*bucketAccessMonitorPtrType)(v)
+}
+
+func (*bucketAccessMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAccessMonitor)(nil)).Elem()
+}
+
+func (i *bucketAccessMonitorPtrType) ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput {
+	return i.ToBucketAccessMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketAccessMonitorPtrType) ToBucketAccessMonitorPtrOutputWithContext(ctx context.Context) BucketAccessMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessMonitorPtrOutput)
+}
+
+type BucketAccessMonitorOutput struct{ *pulumi.OutputState }
+
+func (BucketAccessMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAccessMonitor)(nil)).Elem()
+}
+
+func (o BucketAccessMonitorOutput) ToBucketAccessMonitorOutput() BucketAccessMonitorOutput {
+	return o
+}
+
+func (o BucketAccessMonitorOutput) ToBucketAccessMonitorOutputWithContext(ctx context.Context) BucketAccessMonitorOutput {
+	return o
+}
+
+func (o BucketAccessMonitorOutput) ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput {
+	return o.ToBucketAccessMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o BucketAccessMonitorOutput) ToBucketAccessMonitorPtrOutputWithContext(ctx context.Context) BucketAccessMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAccessMonitor) *BucketAccessMonitor {
+		return &v
+	}).(BucketAccessMonitorPtrOutput)
+}
+
+// The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+func (o BucketAccessMonitorOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketAccessMonitor) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type BucketAccessMonitorPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketAccessMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAccessMonitor)(nil)).Elem()
+}
+
+func (o BucketAccessMonitorPtrOutput) ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput {
+	return o
+}
+
+func (o BucketAccessMonitorPtrOutput) ToBucketAccessMonitorPtrOutputWithContext(ctx context.Context) BucketAccessMonitorPtrOutput {
+	return o
+}
+
+func (o BucketAccessMonitorPtrOutput) Elem() BucketAccessMonitorOutput {
+	return o.ApplyT(func(v *BucketAccessMonitor) BucketAccessMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret BucketAccessMonitor
+		return ret
+	}).(BucketAccessMonitorOutput)
+}
+
+// The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+func (o BucketAccessMonitorPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketAccessMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 type BucketCorsRule struct {
 	// Specifies which headers are allowed.
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
@@ -147,23 +284,23 @@ func (o BucketCorsRuleArrayOutput) Index(i pulumi.IntInput) BucketCorsRuleOutput
 }
 
 type BucketLifecycleRule struct {
-	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abortMultipartUpload` below.
 	AbortMultipartUploads []BucketLifecycleRuleAbortMultipartUpload `pulumi:"abortMultipartUploads"`
 	// Specifies lifecycle rule status.
 	Enabled bool `pulumi:"enabled"`
-	// Specifies a period in the object's expire (documented below).
+	// Specifies a period in the object's expire. See `expiration` below.
 	Expirations []BucketLifecycleRuleExpiration `pulumi:"expirations"`
 	// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 	Id *string `pulumi:"id"`
-	// Specifies when noncurrent object versions expire (documented below).
+	// Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
 	NoncurrentVersionExpirations []BucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpirations"`
-	// Specifies when noncurrent object versions transitions (documented below).
+	// Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
 	//
 	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 	NoncurrentVersionTransitions []BucketLifecycleRuleNoncurrentVersionTransition `pulumi:"noncurrentVersionTransitions"`
 	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
 	Prefix *string `pulumi:"prefix"`
-	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
 	Transitions []BucketLifecycleRuleTransition `pulumi:"transitions"`
 }
 
@@ -179,23 +316,23 @@ type BucketLifecycleRuleInput interface {
 }
 
 type BucketLifecycleRuleArgs struct {
-	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abortMultipartUpload` below.
 	AbortMultipartUploads BucketLifecycleRuleAbortMultipartUploadArrayInput `pulumi:"abortMultipartUploads"`
 	// Specifies lifecycle rule status.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Specifies a period in the object's expire (documented below).
+	// Specifies a period in the object's expire. See `expiration` below.
 	Expirations BucketLifecycleRuleExpirationArrayInput `pulumi:"expirations"`
 	// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies when noncurrent object versions expire (documented below).
+	// Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
 	NoncurrentVersionExpirations BucketLifecycleRuleNoncurrentVersionExpirationArrayInput `pulumi:"noncurrentVersionExpirations"`
-	// Specifies when noncurrent object versions transitions (documented below).
+	// Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
 	//
 	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 	NoncurrentVersionTransitions BucketLifecycleRuleNoncurrentVersionTransitionArrayInput `pulumi:"noncurrentVersionTransitions"`
 	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
 	Transitions BucketLifecycleRuleTransitionArrayInput `pulumi:"transitions"`
 }
 
@@ -250,7 +387,7 @@ func (o BucketLifecycleRuleOutput) ToBucketLifecycleRuleOutputWithContext(ctx co
 	return o
 }
 
-// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abortMultipartUpload` below.
 func (o BucketLifecycleRuleOutput) AbortMultipartUploads() BucketLifecycleRuleAbortMultipartUploadArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleAbortMultipartUpload { return v.AbortMultipartUploads }).(BucketLifecycleRuleAbortMultipartUploadArrayOutput)
 }
@@ -260,7 +397,7 @@ func (o BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Specifies a period in the object's expire (documented below).
+// Specifies a period in the object's expire. See `expiration` below.
 func (o BucketLifecycleRuleOutput) Expirations() BucketLifecycleRuleExpirationArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleExpiration { return v.Expirations }).(BucketLifecycleRuleExpirationArrayOutput)
 }
@@ -270,14 +407,14 @@ func (o BucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies when noncurrent object versions expire (documented below).
+// Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
 func (o BucketLifecycleRuleOutput) NoncurrentVersionExpirations() BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleNoncurrentVersionExpiration {
 		return v.NoncurrentVersionExpirations
 	}).(BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput)
 }
 
-// Specifies when noncurrent object versions transitions (documented below).
+// Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
 //
 // `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 func (o BucketLifecycleRuleOutput) NoncurrentVersionTransitions() BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput {
@@ -291,7 +428,7 @@ func (o BucketLifecycleRuleOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
 func (o BucketLifecycleRuleOutput) Transitions() BucketLifecycleRuleTransitionArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleTransition { return v.Transitions }).(BucketLifecycleRuleTransitionArrayOutput)
 }
@@ -672,7 +809,12 @@ type BucketLifecycleRuleNoncurrentVersionTransition struct {
 	//
 	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days int `pulumi:"days"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
+	IsAccessTime *bool `pulumi:"isAccessTime"`
+	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+	ReturnToStdWhenVisit *bool `pulumi:"returnToStdWhenVisit"`
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -692,7 +834,12 @@ type BucketLifecycleRuleNoncurrentVersionTransitionArgs struct {
 	//
 	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days pulumi.IntInput `pulumi:"days"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
+	IsAccessTime pulumi.BoolPtrInput `pulumi:"isAccessTime"`
+	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+	ReturnToStdWhenVisit pulumi.BoolPtrInput `pulumi:"returnToStdWhenVisit"`
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -754,7 +901,18 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) Days() pulumi.IntO
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) int { return v.Days }).(pulumi.IntOutput)
 }
 
-// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
+func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) IsAccessTime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) *bool { return v.IsAccessTime }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ReturnToStdWhenVisit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) *bool { return v.ReturnToStdWhenVisit }).(pulumi.BoolPtrOutput)
+}
+
+// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -786,8 +944,13 @@ type BucketLifecycleRuleTransition struct {
 	//
 	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days *int `pulumi:"days"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
-	StorageClass *string `pulumi:"storageClass"`
+	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
+	IsAccessTime *bool `pulumi:"isAccessTime"`
+	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+	ReturnToStdWhenVisit *bool `pulumi:"returnToStdWhenVisit"`
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+	StorageClass string `pulumi:"storageClass"`
 }
 
 // BucketLifecycleRuleTransitionInput is an input type that accepts BucketLifecycleRuleTransitionArgs and BucketLifecycleRuleTransitionOutput values.
@@ -808,8 +971,13 @@ type BucketLifecycleRuleTransitionArgs struct {
 	//
 	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days pulumi.IntPtrInput `pulumi:"days"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
-	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
+	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
+	IsAccessTime pulumi.BoolPtrInput `pulumi:"isAccessTime"`
+	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+	ReturnToStdWhenVisit pulumi.BoolPtrInput `pulumi:"returnToStdWhenVisit"`
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
 func (BucketLifecycleRuleTransitionArgs) ElementType() reflect.Type {
@@ -875,9 +1043,20 @@ func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
-func (o BucketLifecycleRuleTransitionOutput) StorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
+func (o BucketLifecycleRuleTransitionOutput) IsAccessTime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleTransition) *bool { return v.IsAccessTime }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+func (o BucketLifecycleRuleTransitionOutput) ReturnToStdWhenVisit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleTransition) *bool { return v.ReturnToStdWhenVisit }).(pulumi.BoolPtrOutput)
+}
+
+// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+func (o BucketLifecycleRuleTransitionOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleTransition) string { return v.StorageClass }).(pulumi.StringOutput)
 }
 
 type BucketLifecycleRuleTransitionArrayOutput struct{ *pulumi.OutputState }
@@ -2270,7 +2449,7 @@ func (o BucketServerSideEncryptionRulePtrOutput) SseAlgorithm() pulumi.StringPtr
 }
 
 type BucketTransferAcceleration struct {
-	// Specifies lifecycle rule status.
+	// Specifies the accelerate status of a bucket.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -2286,7 +2465,7 @@ type BucketTransferAccelerationInput interface {
 }
 
 type BucketTransferAccelerationArgs struct {
-	// Specifies lifecycle rule status.
+	// Specifies the accelerate status of a bucket.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -2367,7 +2546,7 @@ func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationPtrOutputW
 	}).(BucketTransferAccelerationPtrOutput)
 }
 
-// Specifies lifecycle rule status.
+// Specifies the accelerate status of a bucket.
 func (o BucketTransferAccelerationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketTransferAcceleration) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -2396,7 +2575,7 @@ func (o BucketTransferAccelerationPtrOutput) Elem() BucketTransferAccelerationOu
 	}).(BucketTransferAccelerationOutput)
 }
 
-// Specifies lifecycle rule status.
+// Specifies the accelerate status of a bucket.
 func (o BucketTransferAccelerationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketTransferAcceleration) *bool {
 		if v == nil {
@@ -2408,8 +2587,6 @@ func (o BucketTransferAccelerationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type BucketVersioning struct {
 	// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-	//
-	// `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
 	Status string `pulumi:"status"`
 }
 
@@ -2426,8 +2603,6 @@ type BucketVersioningInput interface {
 
 type BucketVersioningArgs struct {
 	// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-	//
-	// `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2509,8 +2684,6 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx conte
 }
 
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-//
-// `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
 func (o BucketVersioningOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketVersioning) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2540,8 +2713,6 @@ func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
 }
 
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-//
-// `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
 func (o BucketVersioningPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketVersioning) *string {
 		if v == nil {
@@ -4550,6 +4721,8 @@ func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorInput)(nil)).Elem(), BucketAccessMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorPtrInput)(nil)).Elem(), BucketAccessMonitorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleInput)(nil)).Elem(), BucketCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleArrayInput)(nil)).Elem(), BucketCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleInput)(nil)).Elem(), BucketLifecycleRuleArgs{})
@@ -4612,6 +4785,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableDefinedColumnArrayInput)(nil)).Elem(), GetTablesTableDefinedColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyInput)(nil)).Elem(), GetTablesTablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
+	pulumi.RegisterOutputType(BucketAccessMonitorOutput{})
+	pulumi.RegisterOutputType(BucketAccessMonitorPtrOutput{})
 	pulumi.RegisterOutputType(BucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(BucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleOutput{})

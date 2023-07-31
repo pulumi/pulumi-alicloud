@@ -262,79 +262,79 @@ func (o DomainSourceArrayOutput) Index(i pulumi.IntInput) DomainSourceOutput {
 }
 
 type ErEnvConf struct {
-	// The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+	// The configuration of a presetCanaryAnhui environment. See `staging` below.
 	PresetCanaryAnhui *ErEnvConfPresetCanaryAnhui `pulumi:"presetCanaryAnhui"`
-	// The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+	// The configuration of a presetCanaryBeijing environment. See `staging` below.
 	PresetCanaryBeijing *ErEnvConfPresetCanaryBeijing `pulumi:"presetCanaryBeijing"`
-	// The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+	// The configuration of a presetCanaryChongqing environment. See `staging` below.
 	PresetCanaryChongqing *ErEnvConfPresetCanaryChongqing `pulumi:"presetCanaryChongqing"`
-	// The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+	// The configuration of a presetCanaryFujian environment. See `staging` below.
 	PresetCanaryFujian *ErEnvConfPresetCanaryFujian `pulumi:"presetCanaryFujian"`
-	// The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+	// The configuration of a presetCanaryGansu environment. See `staging` below.
 	PresetCanaryGansu *ErEnvConfPresetCanaryGansu `pulumi:"presetCanaryGansu"`
-	// The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+	// The configuration of a presetCanaryGuangdong environment. See `staging` below.
 	PresetCanaryGuangdong *ErEnvConfPresetCanaryGuangdong `pulumi:"presetCanaryGuangdong"`
-	// The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+	// The configuration of a presetCanaryGuangxi environment. See `staging` below.
 	PresetCanaryGuangxi *ErEnvConfPresetCanaryGuangxi `pulumi:"presetCanaryGuangxi"`
-	// The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+	// The configuration of a presetCanaryGuizhou environment. See `staging` below.
 	PresetCanaryGuizhou *ErEnvConfPresetCanaryGuizhou `pulumi:"presetCanaryGuizhou"`
-	// The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+	// The configuration of a presetCanaryHainan environment. See `staging` below.
 	PresetCanaryHainan *ErEnvConfPresetCanaryHainan `pulumi:"presetCanaryHainan"`
-	// The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+	// The configuration of a presetCanaryHebei environment. See `staging` below.
 	PresetCanaryHebei *ErEnvConfPresetCanaryHebei `pulumi:"presetCanaryHebei"`
-	// The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+	// The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
 	PresetCanaryHeilongjiang *ErEnvConfPresetCanaryHeilongjiang `pulumi:"presetCanaryHeilongjiang"`
-	// The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+	// The configuration of a presetCanaryHenan environment. See `staging` below.
 	PresetCanaryHenan *ErEnvConfPresetCanaryHenan `pulumi:"presetCanaryHenan"`
-	// The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+	// The configuration of a presetCanaryHongKong environment. See `staging` below.
 	PresetCanaryHongKong *ErEnvConfPresetCanaryHongKong `pulumi:"presetCanaryHongKong"`
-	// The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+	// The configuration of a presetCanaryHubei environment. See `staging` below.
 	PresetCanaryHubei *ErEnvConfPresetCanaryHubei `pulumi:"presetCanaryHubei"`
-	// The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+	// The configuration of a presetCanaryHunan environment. See `staging` below.
 	PresetCanaryHunan *ErEnvConfPresetCanaryHunan `pulumi:"presetCanaryHunan"`
-	// The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+	// The configuration of a presetCanaryJiangsu environment. See `staging` below.
 	PresetCanaryJiangsu *ErEnvConfPresetCanaryJiangsu `pulumi:"presetCanaryJiangsu"`
-	// The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+	// The configuration of a presetCanaryJiangxi environment. See `staging` below.
 	PresetCanaryJiangxi *ErEnvConfPresetCanaryJiangxi `pulumi:"presetCanaryJiangxi"`
-	// The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+	// The configuration of a presetCanaryJilin environment. See `staging` below.
 	PresetCanaryJilin *ErEnvConfPresetCanaryJilin `pulumi:"presetCanaryJilin"`
-	// The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+	// The configuration of a presetCanaryLiaoning environment. See `staging` below.
 	PresetCanaryLiaoning *ErEnvConfPresetCanaryLiaoning `pulumi:"presetCanaryLiaoning"`
-	// The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+	// The configuration of a presetCanaryMacau environment. See `staging` below.
 	PresetCanaryMacau *ErEnvConfPresetCanaryMacau `pulumi:"presetCanaryMacau"`
-	// The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+	// The configuration of a presetCanaryNeimenggu environment. See `staging` below.
 	PresetCanaryNeimenggu *ErEnvConfPresetCanaryNeimenggu `pulumi:"presetCanaryNeimenggu"`
-	// The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+	// The configuration of a presetCanaryNingxia environment. See `staging` below.
 	PresetCanaryNingxia *ErEnvConfPresetCanaryNingxia `pulumi:"presetCanaryNingxia"`
-	// The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+	// The configuration of a presetCanaryOverseas environment. See `staging` below.
 	PresetCanaryOverseas *ErEnvConfPresetCanaryOverseas `pulumi:"presetCanaryOverseas"`
-	// The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+	// The configuration of a presetCanaryQinghai environment. See `staging` below.
 	PresetCanaryQinghai *ErEnvConfPresetCanaryQinghai `pulumi:"presetCanaryQinghai"`
-	// The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+	// The configuration of a presetCanaryShaanxi environment. See `staging` below.
 	PresetCanaryShaanxi *ErEnvConfPresetCanaryShaanxi `pulumi:"presetCanaryShaanxi"`
-	// The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+	// The configuration of a presetCanaryShandong environment. See `staging` below.
 	PresetCanaryShandong *ErEnvConfPresetCanaryShandong `pulumi:"presetCanaryShandong"`
-	// The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+	// The configuration of a presetCanaryShanghai environment. See `staging` below.
 	PresetCanaryShanghai *ErEnvConfPresetCanaryShanghai `pulumi:"presetCanaryShanghai"`
-	// The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+	// The configuration of a presetCanaryShanxi environment. See `staging` below.
 	PresetCanaryShanxi *ErEnvConfPresetCanaryShanxi `pulumi:"presetCanaryShanxi"`
-	// The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+	// The configuration of a presetCanarySichuan environment. See `staging` below.
 	PresetCanarySichuan *ErEnvConfPresetCanarySichuan `pulumi:"presetCanarySichuan"`
-	// The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+	// The configuration of a presetCanaryTaiwan environment. See `staging` below.
 	PresetCanaryTaiwan *ErEnvConfPresetCanaryTaiwan `pulumi:"presetCanaryTaiwan"`
-	// The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+	// The configuration of a presetCanaryTianjin environment. See `staging` below.
 	PresetCanaryTianjin *ErEnvConfPresetCanaryTianjin `pulumi:"presetCanaryTianjin"`
-	// The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+	// The configuration of a presetCanaryXinjiang environment. See `staging` below.
 	PresetCanaryXinjiang *ErEnvConfPresetCanaryXinjiang `pulumi:"presetCanaryXinjiang"`
-	// The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+	// The configuration of a presetCanaryXizang environment. See `staging` below.
 	PresetCanaryXizang *ErEnvConfPresetCanaryXizang `pulumi:"presetCanaryXizang"`
-	// The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+	// The configuration of a presetCanaryYunnan environment. See `staging` below.
 	PresetCanaryYunnan *ErEnvConfPresetCanaryYunnan `pulumi:"presetCanaryYunnan"`
-	// The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+	// The configuration of a presetCanaryZhejiang environment. See `staging` below.
 	PresetCanaryZhejiang *ErEnvConfPresetCanaryZhejiang `pulumi:"presetCanaryZhejiang"`
-	// The configuration of a production environment. The `Block production` is same as `Block staging`.
+	// The configuration of a production environment. See `staging` below.
 	Production *ErEnvConfProduction `pulumi:"production"`
-	// The configuration of a staging environment. See the following `Block staging`.
+	// The configuration of a staging environment. See `staging` below.
 	Staging *ErEnvConfStaging `pulumi:"staging"`
 }
 
@@ -350,79 +350,79 @@ type ErEnvConfInput interface {
 }
 
 type ErEnvConfArgs struct {
-	// The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+	// The configuration of a presetCanaryAnhui environment. See `staging` below.
 	PresetCanaryAnhui ErEnvConfPresetCanaryAnhuiPtrInput `pulumi:"presetCanaryAnhui"`
-	// The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+	// The configuration of a presetCanaryBeijing environment. See `staging` below.
 	PresetCanaryBeijing ErEnvConfPresetCanaryBeijingPtrInput `pulumi:"presetCanaryBeijing"`
-	// The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+	// The configuration of a presetCanaryChongqing environment. See `staging` below.
 	PresetCanaryChongqing ErEnvConfPresetCanaryChongqingPtrInput `pulumi:"presetCanaryChongqing"`
-	// The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+	// The configuration of a presetCanaryFujian environment. See `staging` below.
 	PresetCanaryFujian ErEnvConfPresetCanaryFujianPtrInput `pulumi:"presetCanaryFujian"`
-	// The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+	// The configuration of a presetCanaryGansu environment. See `staging` below.
 	PresetCanaryGansu ErEnvConfPresetCanaryGansuPtrInput `pulumi:"presetCanaryGansu"`
-	// The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+	// The configuration of a presetCanaryGuangdong environment. See `staging` below.
 	PresetCanaryGuangdong ErEnvConfPresetCanaryGuangdongPtrInput `pulumi:"presetCanaryGuangdong"`
-	// The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+	// The configuration of a presetCanaryGuangxi environment. See `staging` below.
 	PresetCanaryGuangxi ErEnvConfPresetCanaryGuangxiPtrInput `pulumi:"presetCanaryGuangxi"`
-	// The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+	// The configuration of a presetCanaryGuizhou environment. See `staging` below.
 	PresetCanaryGuizhou ErEnvConfPresetCanaryGuizhouPtrInput `pulumi:"presetCanaryGuizhou"`
-	// The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+	// The configuration of a presetCanaryHainan environment. See `staging` below.
 	PresetCanaryHainan ErEnvConfPresetCanaryHainanPtrInput `pulumi:"presetCanaryHainan"`
-	// The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+	// The configuration of a presetCanaryHebei environment. See `staging` below.
 	PresetCanaryHebei ErEnvConfPresetCanaryHebeiPtrInput `pulumi:"presetCanaryHebei"`
-	// The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+	// The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
 	PresetCanaryHeilongjiang ErEnvConfPresetCanaryHeilongjiangPtrInput `pulumi:"presetCanaryHeilongjiang"`
-	// The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+	// The configuration of a presetCanaryHenan environment. See `staging` below.
 	PresetCanaryHenan ErEnvConfPresetCanaryHenanPtrInput `pulumi:"presetCanaryHenan"`
-	// The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+	// The configuration of a presetCanaryHongKong environment. See `staging` below.
 	PresetCanaryHongKong ErEnvConfPresetCanaryHongKongPtrInput `pulumi:"presetCanaryHongKong"`
-	// The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+	// The configuration of a presetCanaryHubei environment. See `staging` below.
 	PresetCanaryHubei ErEnvConfPresetCanaryHubeiPtrInput `pulumi:"presetCanaryHubei"`
-	// The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+	// The configuration of a presetCanaryHunan environment. See `staging` below.
 	PresetCanaryHunan ErEnvConfPresetCanaryHunanPtrInput `pulumi:"presetCanaryHunan"`
-	// The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+	// The configuration of a presetCanaryJiangsu environment. See `staging` below.
 	PresetCanaryJiangsu ErEnvConfPresetCanaryJiangsuPtrInput `pulumi:"presetCanaryJiangsu"`
-	// The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+	// The configuration of a presetCanaryJiangxi environment. See `staging` below.
 	PresetCanaryJiangxi ErEnvConfPresetCanaryJiangxiPtrInput `pulumi:"presetCanaryJiangxi"`
-	// The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+	// The configuration of a presetCanaryJilin environment. See `staging` below.
 	PresetCanaryJilin ErEnvConfPresetCanaryJilinPtrInput `pulumi:"presetCanaryJilin"`
-	// The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+	// The configuration of a presetCanaryLiaoning environment. See `staging` below.
 	PresetCanaryLiaoning ErEnvConfPresetCanaryLiaoningPtrInput `pulumi:"presetCanaryLiaoning"`
-	// The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+	// The configuration of a presetCanaryMacau environment. See `staging` below.
 	PresetCanaryMacau ErEnvConfPresetCanaryMacauPtrInput `pulumi:"presetCanaryMacau"`
-	// The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+	// The configuration of a presetCanaryNeimenggu environment. See `staging` below.
 	PresetCanaryNeimenggu ErEnvConfPresetCanaryNeimengguPtrInput `pulumi:"presetCanaryNeimenggu"`
-	// The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+	// The configuration of a presetCanaryNingxia environment. See `staging` below.
 	PresetCanaryNingxia ErEnvConfPresetCanaryNingxiaPtrInput `pulumi:"presetCanaryNingxia"`
-	// The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+	// The configuration of a presetCanaryOverseas environment. See `staging` below.
 	PresetCanaryOverseas ErEnvConfPresetCanaryOverseasPtrInput `pulumi:"presetCanaryOverseas"`
-	// The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+	// The configuration of a presetCanaryQinghai environment. See `staging` below.
 	PresetCanaryQinghai ErEnvConfPresetCanaryQinghaiPtrInput `pulumi:"presetCanaryQinghai"`
-	// The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+	// The configuration of a presetCanaryShaanxi environment. See `staging` below.
 	PresetCanaryShaanxi ErEnvConfPresetCanaryShaanxiPtrInput `pulumi:"presetCanaryShaanxi"`
-	// The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+	// The configuration of a presetCanaryShandong environment. See `staging` below.
 	PresetCanaryShandong ErEnvConfPresetCanaryShandongPtrInput `pulumi:"presetCanaryShandong"`
-	// The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+	// The configuration of a presetCanaryShanghai environment. See `staging` below.
 	PresetCanaryShanghai ErEnvConfPresetCanaryShanghaiPtrInput `pulumi:"presetCanaryShanghai"`
-	// The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+	// The configuration of a presetCanaryShanxi environment. See `staging` below.
 	PresetCanaryShanxi ErEnvConfPresetCanaryShanxiPtrInput `pulumi:"presetCanaryShanxi"`
-	// The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+	// The configuration of a presetCanarySichuan environment. See `staging` below.
 	PresetCanarySichuan ErEnvConfPresetCanarySichuanPtrInput `pulumi:"presetCanarySichuan"`
-	// The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+	// The configuration of a presetCanaryTaiwan environment. See `staging` below.
 	PresetCanaryTaiwan ErEnvConfPresetCanaryTaiwanPtrInput `pulumi:"presetCanaryTaiwan"`
-	// The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+	// The configuration of a presetCanaryTianjin environment. See `staging` below.
 	PresetCanaryTianjin ErEnvConfPresetCanaryTianjinPtrInput `pulumi:"presetCanaryTianjin"`
-	// The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+	// The configuration of a presetCanaryXinjiang environment. See `staging` below.
 	PresetCanaryXinjiang ErEnvConfPresetCanaryXinjiangPtrInput `pulumi:"presetCanaryXinjiang"`
-	// The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+	// The configuration of a presetCanaryXizang environment. See `staging` below.
 	PresetCanaryXizang ErEnvConfPresetCanaryXizangPtrInput `pulumi:"presetCanaryXizang"`
-	// The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+	// The configuration of a presetCanaryYunnan environment. See `staging` below.
 	PresetCanaryYunnan ErEnvConfPresetCanaryYunnanPtrInput `pulumi:"presetCanaryYunnan"`
-	// The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+	// The configuration of a presetCanaryZhejiang environment. See `staging` below.
 	PresetCanaryZhejiang ErEnvConfPresetCanaryZhejiangPtrInput `pulumi:"presetCanaryZhejiang"`
-	// The configuration of a production environment. The `Block production` is same as `Block staging`.
+	// The configuration of a production environment. See `staging` below.
 	Production ErEnvConfProductionPtrInput `pulumi:"production"`
-	// The configuration of a staging environment. See the following `Block staging`.
+	// The configuration of a staging environment. See `staging` below.
 	Staging ErEnvConfStagingPtrInput `pulumi:"staging"`
 }
 
@@ -503,187 +503,187 @@ func (o ErEnvConfOutput) ToErEnvConfPtrOutputWithContext(ctx context.Context) Er
 	}).(ErEnvConfPtrOutput)
 }
 
-// The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+// The configuration of a presetCanaryAnhui environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryAnhui() ErEnvConfPresetCanaryAnhuiPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryAnhui { return v.PresetCanaryAnhui }).(ErEnvConfPresetCanaryAnhuiPtrOutput)
 }
 
-// The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+// The configuration of a presetCanaryBeijing environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryBeijing() ErEnvConfPresetCanaryBeijingPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryBeijing { return v.PresetCanaryBeijing }).(ErEnvConfPresetCanaryBeijingPtrOutput)
 }
 
-// The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+// The configuration of a presetCanaryChongqing environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryChongqing() ErEnvConfPresetCanaryChongqingPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryChongqing { return v.PresetCanaryChongqing }).(ErEnvConfPresetCanaryChongqingPtrOutput)
 }
 
-// The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+// The configuration of a presetCanaryFujian environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryFujian() ErEnvConfPresetCanaryFujianPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryFujian { return v.PresetCanaryFujian }).(ErEnvConfPresetCanaryFujianPtrOutput)
 }
 
-// The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+// The configuration of a presetCanaryGansu environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryGansu() ErEnvConfPresetCanaryGansuPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryGansu { return v.PresetCanaryGansu }).(ErEnvConfPresetCanaryGansuPtrOutput)
 }
 
-// The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+// The configuration of a presetCanaryGuangdong environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryGuangdong() ErEnvConfPresetCanaryGuangdongPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryGuangdong { return v.PresetCanaryGuangdong }).(ErEnvConfPresetCanaryGuangdongPtrOutput)
 }
 
-// The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+// The configuration of a presetCanaryGuangxi environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryGuangxi() ErEnvConfPresetCanaryGuangxiPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryGuangxi { return v.PresetCanaryGuangxi }).(ErEnvConfPresetCanaryGuangxiPtrOutput)
 }
 
-// The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+// The configuration of a presetCanaryGuizhou environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryGuizhou() ErEnvConfPresetCanaryGuizhouPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryGuizhou { return v.PresetCanaryGuizhou }).(ErEnvConfPresetCanaryGuizhouPtrOutput)
 }
 
-// The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+// The configuration of a presetCanaryHainan environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryHainan() ErEnvConfPresetCanaryHainanPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHainan { return v.PresetCanaryHainan }).(ErEnvConfPresetCanaryHainanPtrOutput)
 }
 
-// The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+// The configuration of a presetCanaryHebei environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryHebei() ErEnvConfPresetCanaryHebeiPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHebei { return v.PresetCanaryHebei }).(ErEnvConfPresetCanaryHebeiPtrOutput)
 }
 
-// The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+// The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryHeilongjiang() ErEnvConfPresetCanaryHeilongjiangPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHeilongjiang { return v.PresetCanaryHeilongjiang }).(ErEnvConfPresetCanaryHeilongjiangPtrOutput)
 }
 
-// The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+// The configuration of a presetCanaryHenan environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryHenan() ErEnvConfPresetCanaryHenanPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHenan { return v.PresetCanaryHenan }).(ErEnvConfPresetCanaryHenanPtrOutput)
 }
 
-// The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+// The configuration of a presetCanaryHongKong environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryHongKong() ErEnvConfPresetCanaryHongKongPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHongKong { return v.PresetCanaryHongKong }).(ErEnvConfPresetCanaryHongKongPtrOutput)
 }
 
-// The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+// The configuration of a presetCanaryHubei environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryHubei() ErEnvConfPresetCanaryHubeiPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHubei { return v.PresetCanaryHubei }).(ErEnvConfPresetCanaryHubeiPtrOutput)
 }
 
-// The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+// The configuration of a presetCanaryHunan environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryHunan() ErEnvConfPresetCanaryHunanPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHunan { return v.PresetCanaryHunan }).(ErEnvConfPresetCanaryHunanPtrOutput)
 }
 
-// The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+// The configuration of a presetCanaryJiangsu environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryJiangsu() ErEnvConfPresetCanaryJiangsuPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryJiangsu { return v.PresetCanaryJiangsu }).(ErEnvConfPresetCanaryJiangsuPtrOutput)
 }
 
-// The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+// The configuration of a presetCanaryJiangxi environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryJiangxi() ErEnvConfPresetCanaryJiangxiPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryJiangxi { return v.PresetCanaryJiangxi }).(ErEnvConfPresetCanaryJiangxiPtrOutput)
 }
 
-// The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+// The configuration of a presetCanaryJilin environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryJilin() ErEnvConfPresetCanaryJilinPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryJilin { return v.PresetCanaryJilin }).(ErEnvConfPresetCanaryJilinPtrOutput)
 }
 
-// The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+// The configuration of a presetCanaryLiaoning environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryLiaoning() ErEnvConfPresetCanaryLiaoningPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryLiaoning { return v.PresetCanaryLiaoning }).(ErEnvConfPresetCanaryLiaoningPtrOutput)
 }
 
-// The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+// The configuration of a presetCanaryMacau environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryMacau() ErEnvConfPresetCanaryMacauPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryMacau { return v.PresetCanaryMacau }).(ErEnvConfPresetCanaryMacauPtrOutput)
 }
 
-// The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+// The configuration of a presetCanaryNeimenggu environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryNeimenggu() ErEnvConfPresetCanaryNeimengguPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryNeimenggu { return v.PresetCanaryNeimenggu }).(ErEnvConfPresetCanaryNeimengguPtrOutput)
 }
 
-// The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+// The configuration of a presetCanaryNingxia environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryNingxia() ErEnvConfPresetCanaryNingxiaPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryNingxia { return v.PresetCanaryNingxia }).(ErEnvConfPresetCanaryNingxiaPtrOutput)
 }
 
-// The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+// The configuration of a presetCanaryOverseas environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryOverseas() ErEnvConfPresetCanaryOverseasPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryOverseas { return v.PresetCanaryOverseas }).(ErEnvConfPresetCanaryOverseasPtrOutput)
 }
 
-// The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+// The configuration of a presetCanaryQinghai environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryQinghai() ErEnvConfPresetCanaryQinghaiPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryQinghai { return v.PresetCanaryQinghai }).(ErEnvConfPresetCanaryQinghaiPtrOutput)
 }
 
-// The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+// The configuration of a presetCanaryShaanxi environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryShaanxi() ErEnvConfPresetCanaryShaanxiPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryShaanxi { return v.PresetCanaryShaanxi }).(ErEnvConfPresetCanaryShaanxiPtrOutput)
 }
 
-// The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+// The configuration of a presetCanaryShandong environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryShandong() ErEnvConfPresetCanaryShandongPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryShandong { return v.PresetCanaryShandong }).(ErEnvConfPresetCanaryShandongPtrOutput)
 }
 
-// The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+// The configuration of a presetCanaryShanghai environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryShanghai() ErEnvConfPresetCanaryShanghaiPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryShanghai { return v.PresetCanaryShanghai }).(ErEnvConfPresetCanaryShanghaiPtrOutput)
 }
 
-// The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+// The configuration of a presetCanaryShanxi environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryShanxi() ErEnvConfPresetCanaryShanxiPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryShanxi { return v.PresetCanaryShanxi }).(ErEnvConfPresetCanaryShanxiPtrOutput)
 }
 
-// The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+// The configuration of a presetCanarySichuan environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanarySichuan() ErEnvConfPresetCanarySichuanPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanarySichuan { return v.PresetCanarySichuan }).(ErEnvConfPresetCanarySichuanPtrOutput)
 }
 
-// The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+// The configuration of a presetCanaryTaiwan environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryTaiwan() ErEnvConfPresetCanaryTaiwanPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryTaiwan { return v.PresetCanaryTaiwan }).(ErEnvConfPresetCanaryTaiwanPtrOutput)
 }
 
-// The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+// The configuration of a presetCanaryTianjin environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryTianjin() ErEnvConfPresetCanaryTianjinPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryTianjin { return v.PresetCanaryTianjin }).(ErEnvConfPresetCanaryTianjinPtrOutput)
 }
 
-// The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+// The configuration of a presetCanaryXinjiang environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryXinjiang() ErEnvConfPresetCanaryXinjiangPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryXinjiang { return v.PresetCanaryXinjiang }).(ErEnvConfPresetCanaryXinjiangPtrOutput)
 }
 
-// The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+// The configuration of a presetCanaryXizang environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryXizang() ErEnvConfPresetCanaryXizangPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryXizang { return v.PresetCanaryXizang }).(ErEnvConfPresetCanaryXizangPtrOutput)
 }
 
-// The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+// The configuration of a presetCanaryYunnan environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryYunnan() ErEnvConfPresetCanaryYunnanPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryYunnan { return v.PresetCanaryYunnan }).(ErEnvConfPresetCanaryYunnanPtrOutput)
 }
 
-// The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+// The configuration of a presetCanaryZhejiang environment. See `staging` below.
 func (o ErEnvConfOutput) PresetCanaryZhejiang() ErEnvConfPresetCanaryZhejiangPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryZhejiang { return v.PresetCanaryZhejiang }).(ErEnvConfPresetCanaryZhejiangPtrOutput)
 }
 
-// The configuration of a production environment. The `Block production` is same as `Block staging`.
+// The configuration of a production environment. See `staging` below.
 func (o ErEnvConfOutput) Production() ErEnvConfProductionPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfProduction { return v.Production }).(ErEnvConfProductionPtrOutput)
 }
 
-// The configuration of a staging environment. See the following `Block staging`.
+// The configuration of a staging environment. See `staging` below.
 func (o ErEnvConfOutput) Staging() ErEnvConfStagingPtrOutput {
 	return o.ApplyT(func(v ErEnvConf) *ErEnvConfStaging { return v.Staging }).(ErEnvConfStagingPtrOutput)
 }
@@ -712,7 +712,7 @@ func (o ErEnvConfPtrOutput) Elem() ErEnvConfOutput {
 	}).(ErEnvConfOutput)
 }
 
-// The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+// The configuration of a presetCanaryAnhui environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryAnhui() ErEnvConfPresetCanaryAnhuiPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryAnhui {
 		if v == nil {
@@ -722,7 +722,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryAnhui() ErEnvConfPresetCanaryAnhuiPtrOut
 	}).(ErEnvConfPresetCanaryAnhuiPtrOutput)
 }
 
-// The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+// The configuration of a presetCanaryBeijing environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryBeijing() ErEnvConfPresetCanaryBeijingPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryBeijing {
 		if v == nil {
@@ -732,7 +732,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryBeijing() ErEnvConfPresetCanaryBeijingPt
 	}).(ErEnvConfPresetCanaryBeijingPtrOutput)
 }
 
-// The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+// The configuration of a presetCanaryChongqing environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryChongqing() ErEnvConfPresetCanaryChongqingPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryChongqing {
 		if v == nil {
@@ -742,7 +742,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryChongqing() ErEnvConfPresetCanaryChongqi
 	}).(ErEnvConfPresetCanaryChongqingPtrOutput)
 }
 
-// The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+// The configuration of a presetCanaryFujian environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryFujian() ErEnvConfPresetCanaryFujianPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryFujian {
 		if v == nil {
@@ -752,7 +752,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryFujian() ErEnvConfPresetCanaryFujianPtrO
 	}).(ErEnvConfPresetCanaryFujianPtrOutput)
 }
 
-// The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+// The configuration of a presetCanaryGansu environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryGansu() ErEnvConfPresetCanaryGansuPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryGansu {
 		if v == nil {
@@ -762,7 +762,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryGansu() ErEnvConfPresetCanaryGansuPtrOut
 	}).(ErEnvConfPresetCanaryGansuPtrOutput)
 }
 
-// The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+// The configuration of a presetCanaryGuangdong environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryGuangdong() ErEnvConfPresetCanaryGuangdongPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryGuangdong {
 		if v == nil {
@@ -772,7 +772,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryGuangdong() ErEnvConfPresetCanaryGuangdo
 	}).(ErEnvConfPresetCanaryGuangdongPtrOutput)
 }
 
-// The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+// The configuration of a presetCanaryGuangxi environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryGuangxi() ErEnvConfPresetCanaryGuangxiPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryGuangxi {
 		if v == nil {
@@ -782,7 +782,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryGuangxi() ErEnvConfPresetCanaryGuangxiPt
 	}).(ErEnvConfPresetCanaryGuangxiPtrOutput)
 }
 
-// The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+// The configuration of a presetCanaryGuizhou environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryGuizhou() ErEnvConfPresetCanaryGuizhouPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryGuizhou {
 		if v == nil {
@@ -792,7 +792,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryGuizhou() ErEnvConfPresetCanaryGuizhouPt
 	}).(ErEnvConfPresetCanaryGuizhouPtrOutput)
 }
 
-// The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+// The configuration of a presetCanaryHainan environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryHainan() ErEnvConfPresetCanaryHainanPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHainan {
 		if v == nil {
@@ -802,7 +802,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryHainan() ErEnvConfPresetCanaryHainanPtrO
 	}).(ErEnvConfPresetCanaryHainanPtrOutput)
 }
 
-// The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+// The configuration of a presetCanaryHebei environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryHebei() ErEnvConfPresetCanaryHebeiPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHebei {
 		if v == nil {
@@ -812,7 +812,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryHebei() ErEnvConfPresetCanaryHebeiPtrOut
 	}).(ErEnvConfPresetCanaryHebeiPtrOutput)
 }
 
-// The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+// The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryHeilongjiang() ErEnvConfPresetCanaryHeilongjiangPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHeilongjiang {
 		if v == nil {
@@ -822,7 +822,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryHeilongjiang() ErEnvConfPresetCanaryHeil
 	}).(ErEnvConfPresetCanaryHeilongjiangPtrOutput)
 }
 
-// The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+// The configuration of a presetCanaryHenan environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryHenan() ErEnvConfPresetCanaryHenanPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHenan {
 		if v == nil {
@@ -832,7 +832,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryHenan() ErEnvConfPresetCanaryHenanPtrOut
 	}).(ErEnvConfPresetCanaryHenanPtrOutput)
 }
 
-// The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+// The configuration of a presetCanaryHongKong environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryHongKong() ErEnvConfPresetCanaryHongKongPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHongKong {
 		if v == nil {
@@ -842,7 +842,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryHongKong() ErEnvConfPresetCanaryHongKong
 	}).(ErEnvConfPresetCanaryHongKongPtrOutput)
 }
 
-// The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+// The configuration of a presetCanaryHubei environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryHubei() ErEnvConfPresetCanaryHubeiPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHubei {
 		if v == nil {
@@ -852,7 +852,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryHubei() ErEnvConfPresetCanaryHubeiPtrOut
 	}).(ErEnvConfPresetCanaryHubeiPtrOutput)
 }
 
-// The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+// The configuration of a presetCanaryHunan environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryHunan() ErEnvConfPresetCanaryHunanPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHunan {
 		if v == nil {
@@ -862,7 +862,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryHunan() ErEnvConfPresetCanaryHunanPtrOut
 	}).(ErEnvConfPresetCanaryHunanPtrOutput)
 }
 
-// The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+// The configuration of a presetCanaryJiangsu environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryJiangsu() ErEnvConfPresetCanaryJiangsuPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryJiangsu {
 		if v == nil {
@@ -872,7 +872,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryJiangsu() ErEnvConfPresetCanaryJiangsuPt
 	}).(ErEnvConfPresetCanaryJiangsuPtrOutput)
 }
 
-// The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+// The configuration of a presetCanaryJiangxi environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryJiangxi() ErEnvConfPresetCanaryJiangxiPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryJiangxi {
 		if v == nil {
@@ -882,7 +882,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryJiangxi() ErEnvConfPresetCanaryJiangxiPt
 	}).(ErEnvConfPresetCanaryJiangxiPtrOutput)
 }
 
-// The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+// The configuration of a presetCanaryJilin environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryJilin() ErEnvConfPresetCanaryJilinPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryJilin {
 		if v == nil {
@@ -892,7 +892,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryJilin() ErEnvConfPresetCanaryJilinPtrOut
 	}).(ErEnvConfPresetCanaryJilinPtrOutput)
 }
 
-// The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+// The configuration of a presetCanaryLiaoning environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryLiaoning() ErEnvConfPresetCanaryLiaoningPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryLiaoning {
 		if v == nil {
@@ -902,7 +902,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryLiaoning() ErEnvConfPresetCanaryLiaoning
 	}).(ErEnvConfPresetCanaryLiaoningPtrOutput)
 }
 
-// The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+// The configuration of a presetCanaryMacau environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryMacau() ErEnvConfPresetCanaryMacauPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryMacau {
 		if v == nil {
@@ -912,7 +912,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryMacau() ErEnvConfPresetCanaryMacauPtrOut
 	}).(ErEnvConfPresetCanaryMacauPtrOutput)
 }
 
-// The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+// The configuration of a presetCanaryNeimenggu environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryNeimenggu() ErEnvConfPresetCanaryNeimengguPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryNeimenggu {
 		if v == nil {
@@ -922,7 +922,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryNeimenggu() ErEnvConfPresetCanaryNeimeng
 	}).(ErEnvConfPresetCanaryNeimengguPtrOutput)
 }
 
-// The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+// The configuration of a presetCanaryNingxia environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryNingxia() ErEnvConfPresetCanaryNingxiaPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryNingxia {
 		if v == nil {
@@ -932,7 +932,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryNingxia() ErEnvConfPresetCanaryNingxiaPt
 	}).(ErEnvConfPresetCanaryNingxiaPtrOutput)
 }
 
-// The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+// The configuration of a presetCanaryOverseas environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryOverseas() ErEnvConfPresetCanaryOverseasPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryOverseas {
 		if v == nil {
@@ -942,7 +942,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryOverseas() ErEnvConfPresetCanaryOverseas
 	}).(ErEnvConfPresetCanaryOverseasPtrOutput)
 }
 
-// The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+// The configuration of a presetCanaryQinghai environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryQinghai() ErEnvConfPresetCanaryQinghaiPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryQinghai {
 		if v == nil {
@@ -952,7 +952,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryQinghai() ErEnvConfPresetCanaryQinghaiPt
 	}).(ErEnvConfPresetCanaryQinghaiPtrOutput)
 }
 
-// The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+// The configuration of a presetCanaryShaanxi environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryShaanxi() ErEnvConfPresetCanaryShaanxiPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryShaanxi {
 		if v == nil {
@@ -962,7 +962,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryShaanxi() ErEnvConfPresetCanaryShaanxiPt
 	}).(ErEnvConfPresetCanaryShaanxiPtrOutput)
 }
 
-// The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+// The configuration of a presetCanaryShandong environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryShandong() ErEnvConfPresetCanaryShandongPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryShandong {
 		if v == nil {
@@ -972,7 +972,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryShandong() ErEnvConfPresetCanaryShandong
 	}).(ErEnvConfPresetCanaryShandongPtrOutput)
 }
 
-// The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+// The configuration of a presetCanaryShanghai environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryShanghai() ErEnvConfPresetCanaryShanghaiPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryShanghai {
 		if v == nil {
@@ -982,7 +982,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryShanghai() ErEnvConfPresetCanaryShanghai
 	}).(ErEnvConfPresetCanaryShanghaiPtrOutput)
 }
 
-// The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+// The configuration of a presetCanaryShanxi environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryShanxi() ErEnvConfPresetCanaryShanxiPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryShanxi {
 		if v == nil {
@@ -992,7 +992,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryShanxi() ErEnvConfPresetCanaryShanxiPtrO
 	}).(ErEnvConfPresetCanaryShanxiPtrOutput)
 }
 
-// The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+// The configuration of a presetCanarySichuan environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanarySichuan() ErEnvConfPresetCanarySichuanPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanarySichuan {
 		if v == nil {
@@ -1002,7 +1002,7 @@ func (o ErEnvConfPtrOutput) PresetCanarySichuan() ErEnvConfPresetCanarySichuanPt
 	}).(ErEnvConfPresetCanarySichuanPtrOutput)
 }
 
-// The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+// The configuration of a presetCanaryTaiwan environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryTaiwan() ErEnvConfPresetCanaryTaiwanPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryTaiwan {
 		if v == nil {
@@ -1012,7 +1012,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryTaiwan() ErEnvConfPresetCanaryTaiwanPtrO
 	}).(ErEnvConfPresetCanaryTaiwanPtrOutput)
 }
 
-// The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+// The configuration of a presetCanaryTianjin environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryTianjin() ErEnvConfPresetCanaryTianjinPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryTianjin {
 		if v == nil {
@@ -1022,7 +1022,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryTianjin() ErEnvConfPresetCanaryTianjinPt
 	}).(ErEnvConfPresetCanaryTianjinPtrOutput)
 }
 
-// The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+// The configuration of a presetCanaryXinjiang environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryXinjiang() ErEnvConfPresetCanaryXinjiangPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryXinjiang {
 		if v == nil {
@@ -1032,7 +1032,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryXinjiang() ErEnvConfPresetCanaryXinjiang
 	}).(ErEnvConfPresetCanaryXinjiangPtrOutput)
 }
 
-// The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+// The configuration of a presetCanaryXizang environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryXizang() ErEnvConfPresetCanaryXizangPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryXizang {
 		if v == nil {
@@ -1042,7 +1042,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryXizang() ErEnvConfPresetCanaryXizangPtrO
 	}).(ErEnvConfPresetCanaryXizangPtrOutput)
 }
 
-// The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+// The configuration of a presetCanaryYunnan environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryYunnan() ErEnvConfPresetCanaryYunnanPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryYunnan {
 		if v == nil {
@@ -1052,7 +1052,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryYunnan() ErEnvConfPresetCanaryYunnanPtrO
 	}).(ErEnvConfPresetCanaryYunnanPtrOutput)
 }
 
-// The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+// The configuration of a presetCanaryZhejiang environment. See `staging` below.
 func (o ErEnvConfPtrOutput) PresetCanaryZhejiang() ErEnvConfPresetCanaryZhejiangPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryZhejiang {
 		if v == nil {
@@ -1062,7 +1062,7 @@ func (o ErEnvConfPtrOutput) PresetCanaryZhejiang() ErEnvConfPresetCanaryZhejiang
 	}).(ErEnvConfPresetCanaryZhejiangPtrOutput)
 }
 
-// The configuration of a production environment. The `Block production` is same as `Block staging`.
+// The configuration of a production environment. See `staging` below.
 func (o ErEnvConfPtrOutput) Production() ErEnvConfProductionPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfProduction {
 		if v == nil {
@@ -1072,7 +1072,7 @@ func (o ErEnvConfPtrOutput) Production() ErEnvConfProductionPtrOutput {
 	}).(ErEnvConfProductionPtrOutput)
 }
 
-// The configuration of a staging environment. See the following `Block staging`.
+// The configuration of a staging environment. See `staging` below.
 func (o ErEnvConfPtrOutput) Staging() ErEnvConfStagingPtrOutput {
 	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfStaging {
 		if v == nil {
@@ -7817,9 +7817,9 @@ func (o WafRuleConditionArrayOutput) Index(i pulumi.IntInput) WafRuleConditionOu
 type WafRuleRateLimit struct {
 	// Statistical duration, 5-1800.
 	Interval *int `pulumi:"interval"`
-	// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+	// Response code statistics. See `status` below.
 	Status *WafRuleRateLimitStatus `pulumi:"status"`
-	// The match subfield.
+	// The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
 	SubKey *string `pulumi:"subKey"`
 	// The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
 	Target *string `pulumi:"target"`
@@ -7843,9 +7843,9 @@ type WafRuleRateLimitInput interface {
 type WafRuleRateLimitArgs struct {
 	// Statistical duration, 5-1800.
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+	// Response code statistics. See `status` below.
 	Status WafRuleRateLimitStatusPtrInput `pulumi:"status"`
-	// The match subfield.
+	// The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
 	SubKey pulumi.StringPtrInput `pulumi:"subKey"`
 	// The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
 	Target pulumi.StringPtrInput `pulumi:"target"`
@@ -7937,12 +7937,12 @@ func (o WafRuleRateLimitOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WafRuleRateLimit) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
-// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+// Response code statistics. See `status` below.
 func (o WafRuleRateLimitOutput) Status() WafRuleRateLimitStatusPtrOutput {
 	return o.ApplyT(func(v WafRuleRateLimit) *WafRuleRateLimitStatus { return v.Status }).(WafRuleRateLimitStatusPtrOutput)
 }
 
-// The match subfield.
+// The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
 func (o WafRuleRateLimitOutput) SubKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WafRuleRateLimit) *string { return v.SubKey }).(pulumi.StringPtrOutput)
 }
@@ -7996,7 +7996,7 @@ func (o WafRuleRateLimitPtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+// Response code statistics. See `status` below.
 func (o WafRuleRateLimitPtrOutput) Status() WafRuleRateLimitStatusPtrOutput {
 	return o.ApplyT(func(v *WafRuleRateLimit) *WafRuleRateLimitStatus {
 		if v == nil {
@@ -8006,7 +8006,7 @@ func (o WafRuleRateLimitPtrOutput) Status() WafRuleRateLimitStatusPtrOutput {
 	}).(WafRuleRateLimitStatusPtrOutput)
 }
 
-// The match subfield.
+// The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
 func (o WafRuleRateLimitPtrOutput) SubKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WafRuleRateLimit) *string {
 		if v == nil {

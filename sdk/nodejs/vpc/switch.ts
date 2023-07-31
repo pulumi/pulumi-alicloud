@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
  *
+ * > **NOTE:** Available since v1.0.0.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -154,7 +156,7 @@ export class Switch extends pulumi.CustomResource {
     /**
      * The IPv6 CIDR block of the VSwitch.
      */
-    public readonly ipv6CidrBlockMask!: pulumi.Output<number | undefined>;
+    public readonly ipv6CidrBlockMask!: pulumi.Output<number>;
     /**
      * Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      *

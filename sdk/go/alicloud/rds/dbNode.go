@@ -12,8 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provide RDS cluster instance to increase node resources.
-// > **NOTE:** Available in 1.202.0+.
+// Provide RDS cluster instance to increase node resources, see [What is RDS DB Node](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbnodes).
+//
+// > **NOTE:** Available since v1.202.0.
 //
 // ## Example Usage
 //
@@ -22,6 +23,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -32,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testaccrdsdbnodes"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -47,7 +49,7 @@ import (
 //				return err
 //			}
 //			defaultInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:                pulumi.StringRef(defaultZones.Zones[0].Id),
+//				ZoneId:                pulumi.StringRef(defaultZones.Ids[0]),
 //				Engine:                pulumi.StringRef("MySQL"),
 //				EngineVersion:         pulumi.StringRef("8.0"),
 //				Category:              pulumi.StringRef("cluster"),
@@ -57,37 +59,51 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
-//			}, nil)
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				InstanceType:          *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceStorage:       *pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
-//				VswitchId:             *pulumi.String(defaultSwitches.Ids[0]),
+//				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String(name),
-//				ZoneId:                *pulumi.String(defaultZones.Ids[0]),
-//				ZoneIdSlaveA:          *pulumi.String(defaultZones.Ids[0]),
+//				VswitchId:             defaultSwitch.ID(),
+//				MonitoringPeriod:      pulumi.Int(60),
+//				DbInstanceStorageType: pulumi.String("cloud_essd"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				ZoneId:       *pulumi.String(defaultZones.Ids[0]),
+//				ZoneIdSlaveA: *pulumi.String(defaultZones.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewDbNode(ctx, "node", &rds.DbNodeArgs{
+//			_, err = rds.NewDbNode(ctx, "defaultDbNode", &rds.DbNodeArgs{
 //				DbInstanceId: defaultInstance.ID(),
 //				ClassCode:    defaultInstance.InstanceType,
-//				ZoneId:       defaultInstance.ZoneId,
+//				ZoneId:       defaultSwitch.ZoneId,
 //			})
 //			if err != nil {
 //				return err

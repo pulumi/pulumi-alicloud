@@ -33,14 +33,14 @@ public final class GetPolicyDocumentStatement extends com.pulumi.resources.Invok
     }
 
     /**
-     * Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+     * Specifies the condition that are required for a policy to take effect. See `condition` below.
      * 
      */
     @Import(name="conditions")
     private @Nullable List<GetPolicyDocumentStatementCondition> conditions;
 
     /**
-     * @return Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+     * @return Specifies the condition that are required for a policy to take effect. See `condition` below.
      * 
      */
     public Optional<List<GetPolicyDocumentStatementCondition>> conditions() {
@@ -63,14 +63,14 @@ public final class GetPolicyDocumentStatement extends com.pulumi.resources.Invok
     }
 
     /**
-     * Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+     * Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
      * 
      */
     @Import(name="principals")
     private @Nullable List<GetPolicyDocumentStatementPrincipal> principals;
 
     /**
-     * @return Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+     * @return Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
      * 
      */
     public Optional<List<GetPolicyDocumentStatementPrincipal>> principals() {
@@ -142,7 +142,7 @@ public final class GetPolicyDocumentStatement extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param conditions Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+         * @param conditions Specifies the condition that are required for a policy to take effect. See `condition` below.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class GetPolicyDocumentStatement extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param conditions Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+         * @param conditions Specifies the condition that are required for a policy to take effect. See `condition` below.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class GetPolicyDocumentStatement extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param principals Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+         * @param principals Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class GetPolicyDocumentStatement extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param principals Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+         * @param principals Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
          * 
          * @return builder
          * 

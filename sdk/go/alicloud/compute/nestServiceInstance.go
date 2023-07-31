@@ -26,14 +26,16 @@ import (
 // package main
 //
 // import (
-// "fmt"
 //
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/compute"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/compute"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {

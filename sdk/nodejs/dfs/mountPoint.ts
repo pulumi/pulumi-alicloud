@@ -9,7 +9,52 @@ import * as utilities from "../utilities";
  *
  * For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.dfs.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
+ * });
+ * const defaultFileSystem = new alicloud.dfs.FileSystem("defaultFileSystem", {
+ *     storageType: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.options?.[0]?.storageType),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
+ *     protocolType: "HDFS",
+ *     description: name,
+ *     fileSystemName: name,
+ *     throughputMode: "Standard",
+ *     spaceCapacity: 1024,
+ * });
+ * const defaultAccessGroup = new alicloud.dfs.AccessGroup("defaultAccessGroup", {
+ *     accessGroupName: name,
+ *     description: name,
+ *     networkType: "VPC",
+ * });
+ * const defaultMountPoint = new alicloud.dfs.MountPoint("defaultMountPoint", {
+ *     description: name,
+ *     vpcId: defaultNetwork.id,
+ *     fileSystemId: defaultFileSystem.id,
+ *     accessGroupId: defaultAccessGroup.id,
+ *     networkType: "VPC",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * ```
  *
  * ## Import
  *

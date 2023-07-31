@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// Policy document of the policy.
         /// </summary>
         public readonly string Document;
+        /// <summary>
+        /// ID of the policy.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Name of the policy.

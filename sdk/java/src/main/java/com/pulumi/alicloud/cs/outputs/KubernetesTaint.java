@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesTaint {
+    /**
+     * @return The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
+     * 
+     */
     private @Nullable String effect;
+    /**
+     * @return The key of a taint.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return The key of a taint.
+     * 
+     */
     private @Nullable String value;
 
     private KubernetesTaint() {}
+    /**
+     * @return The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
+     * 
+     */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
+    /**
+     * @return The key of a taint.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return The key of a taint.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

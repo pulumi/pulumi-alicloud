@@ -34,7 +34,7 @@ class DomainArgs:
         """
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[str] domain_name: The name of the accelerated domain.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The origin information.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The origin information. See `sources` below.
         :param pulumi.Input[str] cert_name: Indicates the name of the certificate if the HTTPS protocol is enabled.
         :param pulumi.Input[str] cert_type: The type of the certificate. Valid values:
                `free`: a free certificate.
@@ -97,7 +97,7 @@ class DomainArgs:
     @pulumi.getter
     def sources(self) -> pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]:
         """
-        The origin information.
+        The origin information. See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -298,7 +298,7 @@ class _DomainState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: The acceleration region.
         :param pulumi.Input[str] security_token: The top-level domain name.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The origin information.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The origin information. See `sources` below.
         :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
@@ -454,7 +454,7 @@ class _DomainState:
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]]:
         """
-        The origin information.
+        The origin information. See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -559,7 +559,7 @@ class Domain(pulumi.CustomResource):
         """
         You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
 
-        > **NOTE:** Available in v1.94.0+.
+        > **NOTE:** Available since v1.94.0.
 
         > **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
 
@@ -575,14 +575,19 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
         example = alicloud.dcdn.Domain("example",
-            domain_name="example.com",
+            domain_name=domain_name,
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
                 port=80,
                 priority="20",
                 type="ipaddr",
+                weight="10",
             )])
         ```
 
@@ -607,7 +612,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: The acceleration region.
         :param pulumi.Input[str] security_token: The top-level domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information. See `sources` below.
         :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
@@ -624,7 +629,7 @@ class Domain(pulumi.CustomResource):
         """
         You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
 
-        > **NOTE:** Available in v1.94.0+.
+        > **NOTE:** Available since v1.94.0.
 
         > **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
 
@@ -640,14 +645,19 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
         example = alicloud.dcdn.Domain("example",
-            domain_name="example.com",
+            domain_name=domain_name,
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
                 port=80,
                 priority="20",
                 type="ipaddr",
+                weight="10",
             )])
         ```
 
@@ -763,7 +773,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: The acceleration region.
         :param pulumi.Input[str] security_token: The top-level domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information. See `sources` below.
         :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
@@ -872,7 +882,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def sources(self) -> pulumi.Output[Sequence['outputs.DomainSource']]:
         """
-        The origin information.
+        The origin information. See `sources` below.
         """
         return pulumi.get(self, "sources")
 

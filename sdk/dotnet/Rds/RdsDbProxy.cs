@@ -10,8 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
-    /// &gt; **NOTE:** Available since v1.193.0+.
+    /// Information about RDS database exclusive agent and its usage, see [What is RDS DB Proxy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifydbproxy).
+    /// 
+    /// &gt; **NOTE:** Available since v1.193.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,11 +25,11 @@ namespace Pulumi.AliCloud.Rds
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "Rds";
-    ///     var name = config.Get("name") ?? "dbInstancevpc";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
@@ -45,6 +46,11 @@ namespace Pulumi.AliCloud.Rds
     ///         VswitchName = name,
     ///     });
     /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
     ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
     ///     {
     ///         Engine = "MySQL",
@@ -59,12 +65,12 @@ namespace Pulumi.AliCloud.Rds
     /// 
     ///     var defaultReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("defaultReadOnlyInstance", new()
     ///     {
-    ///         MasterDbInstanceId = defaultInstance.Id,
     ///         ZoneId = defaultInstance.ZoneId,
+    ///         MasterDbInstanceId = defaultInstance.Id,
     ///         EngineVersion = defaultInstance.EngineVersion,
-    ///         InstanceType = "rds.mysql.s3.large",
-    ///         InstanceStorage = 20,
-    ///         InstanceName = $"{name}ro",
+    ///         InstanceStorage = defaultInstance.InstanceStorage,
+    ///         InstanceType = defaultInstance.InstanceType,
+    ///         InstanceName = $"{name}readonly",
     ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
@@ -75,7 +81,7 @@ namespace Pulumi.AliCloud.Rds
     ///         VpcId = defaultInstance.VpcId,
     ///         VswitchId = defaultInstance.VswitchId,
     ///         DbProxyInstanceNum = 2,
-    ///         DbProxyConnectionPrefix = "ttest001",
+    ///         DbProxyConnectionPrefix = "example",
     ///         DbProxyConnectStringPort = 3306,
     ///         DbProxyEndpointReadWriteMode = "ReadWrite",
     ///         ReadOnlyInstanceMaxDelayTime = 90,

@@ -281,9 +281,9 @@ class RdsBackup(pulumi.CustomResource):
         """
         Provides a RDS Backup resource.
 
-        For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/doc-detail/26272.htm).
+        For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createbackup).
 
-        > **NOTE:** Available in v1.149.0+.
+        > **NOTE:** Available since v1.149.0.
 
         ## Example Usage
 
@@ -333,9 +333,9 @@ class RdsBackup(pulumi.CustomResource):
         """
         Provides a RDS Backup resource.
 
-        For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/doc-detail/26272.htm).
+        For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createbackup).
 
-        > **NOTE:** Available in v1.149.0+.
+        > **NOTE:** Available since v1.149.0.
 
         ## Example Usage
 

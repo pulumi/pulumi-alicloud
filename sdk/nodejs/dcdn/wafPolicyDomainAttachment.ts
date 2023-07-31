@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/modify-the-domain-name-bound-to-a-protection-policies).
  *
- * > **NOTE:** Available in v1.186.0+.
+ * > **NOTE:** Available since v1.186.0.
  *
  * ## Example Usage
  *
@@ -19,28 +19,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDomain = new alicloud.dcdn.Domain("defaultDomain", {
- *     domainName: "example_domain_name",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const domainName = config.get("domainName") || "example.com";
+ * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
+ *     domainName: domainName,
+ *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",
  *         port: 80,
  *         priority: "20",
  *         type: "ipaddr",
+ *         weight: "10",
  *     }],
  * });
- * const defaultWafDomain = new alicloud.dcdn.WafDomain("defaultWafDomain", {
- *     domainName: defaultDomain.domainName,
+ * const exampleWafDomain = new alicloud.dcdn.WafDomain("exampleWafDomain", {
+ *     domainName: exampleDomain.domainName,
  *     clientIpTag: "X-Forwarded-For",
  * });
- * const defaultWafPolicy = new alicloud.dcdn.WafPolicy("defaultWafPolicy", {
- *     policyType: "custom",
- *     policyName: "example_value",
+ * const exampleWafPolicy = new alicloud.dcdn.WafPolicy("exampleWafPolicy", {
  *     defenseScene: "waf_group",
+ *     policyName: name,
+ *     policyType: "custom",
  *     status: "on",
  * });
- * const example = new alicloud.dcdn.WafPolicyDomainAttachment("example", {
- *     domainName: defaultWafDomain.domainName,
- *     policyId: defaultWafPolicy.id,
+ * const exampleWafPolicyDomainAttachment = new alicloud.dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment", {
+ *     domainName: exampleWafDomain.domainName,
+ *     policyId: exampleWafPolicy.id,
  * });
  * ```
  *

@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
  * 
- * For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/).
+ * For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
  * 
- * &gt; **NOTE:** Available since v1.208.0.
+ * &gt; **NOTE:** Available since v1.113.0.
  * 
  * ## Example Usage
  * 
@@ -57,19 +57,6 @@ import javax.annotation.Nullable;
  *             .serviceLocation(&#34;international&#34;)
  *             .internetChargeType(&#34;PayByTraffic&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .tags(            
- *                 Map.ofEntries(
- *                     Map.entry(&#34;tagKey&#34;, &#34;k1&#34;),
- *                     Map.entry(&#34;tagValue&#34;, &#34;v1&#34;)
- *                 ),
- *                 Map.ofEntries(
- *                     Map.entry(&#34;tagKey&#34;, &#34;k2&#34;),
- *                     Map.entry(&#34;tagValue&#34;, &#34;v2&#34;)
- *                 ),
- *                 Map.ofEntries(
- *                     Map.entry(&#34;tagKey&#34;, &#34;k3&#34;),
- *                     Map.entry(&#34;tagValue&#34;, &#34;v3&#34;)
- *                 ))
  *             .build());
  * 
  *     }
@@ -170,6 +157,20 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> paymentType() {
         return Codegen.optional(this.paymentType);
+    }
+    /**
+     * The ID of the resource group to which the instance belongs.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the instance belongs.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.

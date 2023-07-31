@@ -13,7 +13,7 @@ import (
 
 // This data source Generates a RAM policy document of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.184.0+.
+// > **NOTE:** Available since v1.184.0+.
 //
 // ## Example Usage
 // ### Basic Example
@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
-//				PolicyName:     pulumi.String("tf-test"),
+//				PolicyName:     pulumi.String("tf-example"),
 //				PolicyDocument: *pulumi.String(basicExample.Document),
 //				Force:          pulumi.Bool(true),
 //			})
@@ -153,7 +153,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				PolicyName:     pulumi.String("tf-test-condition"),
+//				PolicyName:     pulumi.String("tf-example-condition"),
 //				PolicyDocument: *pulumi.String(multipleCondition.Document),
 //				Force:          pulumi.Bool(true),
 //			})
@@ -405,7 +405,7 @@ func GetPolicyDocument(ctx *pulumi.Context, args *GetPolicyDocumentArgs, opts ..
 type GetPolicyDocumentArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Statement of the RAM policy document. See the following `Block statement`.
+	// Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
 	Statements []GetPolicyDocumentStatement `pulumi:"statements"`
 	// Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 	Version *string `pulumi:"version"`
@@ -439,7 +439,7 @@ func GetPolicyDocumentOutput(ctx *pulumi.Context, args GetPolicyDocumentOutputAr
 type GetPolicyDocumentOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Statement of the RAM policy document. See the following `Block statement`.
+	// Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
 	Statements GetPolicyDocumentStatementArrayInput `pulumi:"statements"`
 	// Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 	Version pulumi.StringPtrInput `pulumi:"version"`

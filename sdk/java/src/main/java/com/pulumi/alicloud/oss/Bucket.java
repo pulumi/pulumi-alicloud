@@ -6,6 +6,7 @@ package com.pulumi.alicloud.oss;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.oss.BucketArgs;
 import com.pulumi.alicloud.oss.inputs.BucketState;
+import com.pulumi.alicloud.oss.outputs.BucketAccessMonitor;
 import com.pulumi.alicloud.oss.outputs.BucketCorsRule;
 import com.pulumi.alicloud.oss.outputs.BucketLifecycleRule;
 import com.pulumi.alicloud.oss.outputs.BucketLogging;
@@ -30,6 +31,8 @@ import javax.annotation.Nullable;
  * Provides a resource to create a oss bucket and set its attribution.
  * 
  * &gt; **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
+ * 
+ * &gt; **NOTE:** Available since v1.2.0.
  * 
  * ## Example Usage
  * 
@@ -218,6 +221,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketVersioningArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketAccessMonitorArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -334,6 +338,30 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .versioning(BucketVersioningArgs.builder()
  *                 .status(&#34;Enabled&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_access_monitor_lifecycle = new Bucket(&#34;bucket-access-monitor-lifecycle&#34;, BucketArgs.builder()        
+ *             .accessMonitor(BucketAccessMonitorArgs.builder()
+ *                 .status(&#34;Enabled&#34;)
+ *                 .build())
+ *             .acl(&#34;private&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-lifecycle-%s&#34;, result)))
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .enabled(true)
+ *                 .id(&#34;rule-days-transition&#34;)
+ *                 .prefix(&#34;path/&#34;)
+ *                 .transitions(                
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .createdBeforeDate(&#34;2022-11-11&#34;)
+ *                         .isAccessTime(true)
+ *                         .returnToStdWhenVisit(true)
+ *                         .storageClass(&#34;IA&#34;)
+ *                         .build(),
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .createdBeforeDate(&#34;2021-11-11&#34;)
+ *                         .storageClass(&#34;Archive&#34;)
+ *                         .build())
  *                 .build())
  *             .build());
  * 
@@ -661,6 +689,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:oss/bucket:Bucket")
 public class Bucket extends com.pulumi.resources.CustomResource {
     /**
+     * A access monitor status of a bucket. See `access_monitor` below.
+     * 
+     */
+    @Export(name="accessMonitor", type=BucketAccessMonitor.class, parameters={})
+    private Output<BucketAccessMonitor> accessMonitor;
+
+    /**
+     * @return A access monitor status of a bucket. See `access_monitor` below.
+     * 
+     */
+    public Output<BucketAccessMonitor> accessMonitor() {
+        return this.accessMonitor;
+    }
+    /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
      * 
      */
@@ -681,14 +723,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bucket);
     }
     /**
-     * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+     * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
      * 
      */
     @Export(name="corsRules", type=List.class, parameters={BucketCorsRule.class})
     private Output</* @Nullable */ List<BucketCorsRule>> corsRules;
 
     /**
-     * @return A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+     * @return A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
      * 
      */
     public Output<Optional<List<BucketCorsRule>>> corsRules() {
@@ -751,14 +793,28 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return this.intranetEndpoint;
     }
     /**
-     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+     * A boolean that indicates lifecycle rules allow prefix overlap.
+     * 
+     */
+    @Export(name="lifecycleRuleAllowSameActionOverlap", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> lifecycleRuleAllowSameActionOverlap;
+
+    /**
+     * @return A boolean that indicates lifecycle rules allow prefix overlap.
+     * 
+     */
+    public Output<Optional<Boolean>> lifecycleRuleAllowSameActionOverlap() {
+        return Codegen.optional(this.lifecycleRuleAllowSameActionOverlap);
+    }
+    /**
+     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
      * 
      */
     @Export(name="lifecycleRules", type=List.class, parameters={BucketLifecycleRule.class})
     private Output</* @Nullable */ List<BucketLifecycleRule>> lifecycleRules;
 
     /**
-     * @return A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+     * @return A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
      * 
      */
     public Output<Optional<List<BucketLifecycleRule>>> lifecycleRules() {
@@ -779,14 +835,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
      * 
      */
     @Export(name="logging", type=BucketLogging.class, parameters={})
     private Output</* @Nullable */ BucketLogging> logging;
 
     /**
-     * @return A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+     * @return A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
      * 
      */
     public Output<Optional<BucketLogging>> logging() {
@@ -853,42 +909,42 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.redundancyType);
     }
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
      * 
      */
     @Export(name="refererConfig", type=BucketRefererConfig.class, parameters={})
     private Output</* @Nullable */ BucketRefererConfig> refererConfig;
 
     /**
-     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
      * 
      */
     public Output<Optional<BucketRefererConfig>> refererConfig() {
         return Codegen.optional(this.refererConfig);
     }
     /**
-     * A configuration of server-side encryption (documented below).
+     * A configuration of server-side encryption. See `server_side_encryption_rule` below.
      * 
      */
     @Export(name="serverSideEncryptionRule", type=BucketServerSideEncryptionRule.class, parameters={})
     private Output</* @Nullable */ BucketServerSideEncryptionRule> serverSideEncryptionRule;
 
     /**
-     * @return A configuration of server-side encryption (documented below).
+     * @return A configuration of server-side encryption. See `server_side_encryption_rule` below.
      * 
      */
     public Output<Optional<BucketServerSideEncryptionRule>> serverSideEncryptionRule() {
         return Codegen.optional(this.serverSideEncryptionRule);
     }
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
      * 
      */
     @Export(name="storageClass", type=String.class, parameters={})
     private Output</* @Nullable */ String> storageClass;
 
     /**
-     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
      * 
      */
     public Output<Optional<String>> storageClass() {
@@ -909,42 +965,42 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * A transfer acceleration status of a bucket (documented below).
+     * A transfer acceleration status of a bucket. See `transfer_acceleration` below.
      * 
      */
     @Export(name="transferAcceleration", type=BucketTransferAcceleration.class, parameters={})
     private Output</* @Nullable */ BucketTransferAcceleration> transferAcceleration;
 
     /**
-     * @return A transfer acceleration status of a bucket (documented below).
+     * @return A transfer acceleration status of a bucket. See `transfer_acceleration` below.
      * 
      */
     public Output<Optional<BucketTransferAcceleration>> transferAcceleration() {
         return Codegen.optional(this.transferAcceleration);
     }
     /**
-     * A state of versioning (documented below).
+     * A state of versioning. See `versioning` below.
      * 
      */
     @Export(name="versioning", type=BucketVersioning.class, parameters={})
     private Output</* @Nullable */ BucketVersioning> versioning;
 
     /**
-     * @return A state of versioning (documented below).
+     * @return A state of versioning. See `versioning` below.
      * 
      */
     public Output<Optional<BucketVersioning>> versioning() {
         return Codegen.optional(this.versioning);
     }
     /**
-     * A website object(documented below).
+     * A website configuration. See `website` below.
      * 
      */
     @Export(name="website", type=BucketWebsite.class, parameters={})
     private Output</* @Nullable */ BucketWebsite> website;
 
     /**
-     * @return A website object(documented below).
+     * @return A website configuration. See `website` below.
      * 
      */
     public Output<Optional<BucketWebsite>> website() {

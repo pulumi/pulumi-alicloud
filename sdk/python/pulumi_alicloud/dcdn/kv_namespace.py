@@ -118,7 +118,7 @@ class KvNamespace(pulumi.CustomResource):
 
         For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvnamespace).
 
-        > **NOTE:** Available in v1.198.0+.
+        > **NOTE:** Available since v1.198.0.
 
         ## Example Usage
 
@@ -128,9 +128,13 @@ class KvNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default = alicloud.dcdn.KvNamespace("default",
-            description="wkmtest",
-            namespace=var["namespace"])
+            description=name,
+            namespace=name)
         ```
 
         ## Import
@@ -157,7 +161,7 @@ class KvNamespace(pulumi.CustomResource):
 
         For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvnamespace).
 
-        > **NOTE:** Available in v1.198.0+.
+        > **NOTE:** Available since v1.198.0.
 
         ## Example Usage
 
@@ -167,9 +171,13 @@ class KvNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default = alicloud.dcdn.KvNamespace("default",
-            description="wkmtest",
-            namespace=var["namespace"])
+            description=name,
+            namespace=name)
         ```
 
         ## Import

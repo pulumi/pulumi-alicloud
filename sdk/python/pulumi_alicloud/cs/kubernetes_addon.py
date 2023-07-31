@@ -212,90 +212,11 @@ class KubernetesAddon(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manage addon in Kubernetes Cluster.
+        This resource will help you to manage addon in Kubernetes Cluster, see [What is kubernetes addon](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-install-a-component-in-an-ack-cluster).
 
-        > **NOTE:** Available in 1.150.0+.
-        **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
+        > **NOTE:** Available since v1.150.0.
 
-        ## Example Usage
-
-        **Create a managed cluster**
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-test"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4,
-            kubernetes_node_role="Worker")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.1.0.0/21")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            vpc_id=default_network.id,
-            cidr_block="10.1.1.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_pair_name=name)
-        default_managed_kubernetes = None
-        if 1 == True:
-            default_managed_kubernetes = alicloud.cs.ManagedKubernetes("defaultManagedKubernetes",
-                cluster_spec="ack.pro.small",
-                is_enterprise_security_group=True,
-                worker_number=2,
-                password="Hello1234",
-                pod_cidr="172.20.0.0/16",
-                service_cidr="172.21.0.0/20",
-                worker_vswitch_ids=[default_switch.id],
-                worker_instance_types=[default_instance_types.instance_types[0].id])
-        ```
-        **Installing of addon**
-        When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
-        * If the addon already exists in the cluster and its version is the same as the specified version, it will be skipped and will not be reinstalled.
-        * If the addon already exists in the cluster and its version is different from the specified version, the addon will be upgraded.
-        * If the addon does not exist in the cluster, it will be installed.
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_alicloud as alicloud
-
-        ack_node_problem_detector = alicloud.cs.KubernetesAddon("ack-node-problem-detector",
-            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
-            version="1.2.7")
-        nginx_ingress_controller = alicloud.cs.KubernetesAddon("nginxIngressController",
-            cluster_id=var["cluster_id"],
-            version="v1.1.2-aliyun.2",
-            config=json.dumps({
-                "CpuLimit": "",
-                "CpuRequest": "100m",
-                "EnableWebhook": True,
-                "HostNetwork": False,
-                "IngressSlbNetworkType": "internet",
-                "IngressSlbSpec": "slb.s2.small",
-                "MemoryLimit": "",
-                "MemoryRequest": "200Mi",
-                "NodeSelector": [],
-            }))
-        ```
-
-        **Upgrading of addon**
-        First, check the `next_version` field of the addon that can be upgraded to through the `.tfstate file`, then overwrite the `version` field with the value of `next_version` and apply.
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        ack_node_problem_detector = alicloud.cs.KubernetesAddon("ack-node-problem-detector",
-            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
-            version="1.2.8")
-        # upgrade from 1.2.7 to 1.2.8
-        ```
+        > **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
 
         ## Import
 
@@ -319,90 +240,11 @@ class KubernetesAddon(pulumi.CustomResource):
                  args: KubernetesAddonInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manage addon in Kubernetes Cluster.
+        This resource will help you to manage addon in Kubernetes Cluster, see [What is kubernetes addon](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-install-a-component-in-an-ack-cluster).
 
-        > **NOTE:** Available in 1.150.0+.
-        **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
+        > **NOTE:** Available since v1.150.0.
 
-        ## Example Usage
-
-        **Create a managed cluster**
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-test"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4,
-            kubernetes_node_role="Worker")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.1.0.0/21")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            vpc_id=default_network.id,
-            cidr_block="10.1.1.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_pair_name=name)
-        default_managed_kubernetes = None
-        if 1 == True:
-            default_managed_kubernetes = alicloud.cs.ManagedKubernetes("defaultManagedKubernetes",
-                cluster_spec="ack.pro.small",
-                is_enterprise_security_group=True,
-                worker_number=2,
-                password="Hello1234",
-                pod_cidr="172.20.0.0/16",
-                service_cidr="172.21.0.0/20",
-                worker_vswitch_ids=[default_switch.id],
-                worker_instance_types=[default_instance_types.instance_types[0].id])
-        ```
-        **Installing of addon**
-        When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
-        * If the addon already exists in the cluster and its version is the same as the specified version, it will be skipped and will not be reinstalled.
-        * If the addon already exists in the cluster and its version is different from the specified version, the addon will be upgraded.
-        * If the addon does not exist in the cluster, it will be installed.
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_alicloud as alicloud
-
-        ack_node_problem_detector = alicloud.cs.KubernetesAddon("ack-node-problem-detector",
-            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
-            version="1.2.7")
-        nginx_ingress_controller = alicloud.cs.KubernetesAddon("nginxIngressController",
-            cluster_id=var["cluster_id"],
-            version="v1.1.2-aliyun.2",
-            config=json.dumps({
-                "CpuLimit": "",
-                "CpuRequest": "100m",
-                "EnableWebhook": True,
-                "HostNetwork": False,
-                "IngressSlbNetworkType": "internet",
-                "IngressSlbSpec": "slb.s2.small",
-                "MemoryLimit": "",
-                "MemoryRequest": "200Mi",
-                "NodeSelector": [],
-            }))
-        ```
-
-        **Upgrading of addon**
-        First, check the `next_version` field of the addon that can be upgraded to through the `.tfstate file`, then overwrite the `version` field with the value of `next_version` and apply.
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        ack_node_problem_detector = alicloud.cs.KubernetesAddon("ack-node-problem-detector",
-            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
-            version="1.2.8")
-        # upgrade from 1.2.7 to 1.2.8
-        ```
+        > **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
 
         ## Import
 

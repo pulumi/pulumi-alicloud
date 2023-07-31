@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Event Bridge Rule resource.
  * 
- * For information about Event Bridge Rule and how to use it, see [What is Rule](https://help.aliyun.com/document_detail/167854.html).
+ * For information about Event Bridge Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/eventbridge/latest/createrule-6).
  * 
- * &gt; **NOTE:** Available in v1.129.0+.
+ * &gt; **NOTE:** Available since v1.129.0.
  * 
  * ## Example Usage
  * 
@@ -162,14 +162,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The target of rule.
+     * The target of rule. See `targets` below.
      * 
      */
     @Export(name="targets", type=List.class, parameters={RuleTarget.class})
     private Output<List<RuleTarget>> targets;
 
     /**
-     * @return The target of rule.
+     * @return The target of rule. See `targets` below.
      * 
      */
     public Output<List<RuleTarget>> targets() {

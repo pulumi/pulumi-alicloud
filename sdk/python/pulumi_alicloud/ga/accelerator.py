@@ -14,33 +14,39 @@ __all__ = ['AcceleratorArgs', 'Accelerator']
 @pulumi.input_type
 class AcceleratorArgs:
     def __init__(__self__, *,
-                 duration: pulumi.Input[int],
-                 spec: pulumi.Input[str],
                  accelerator_name: Optional[pulumi.Input[str]] = None,
                  auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
+                 cross_border_mode: Optional[pulumi.Input[str]] = None,
+                 cross_border_status: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Accelerator resource.
-        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
-               * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
-               * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
+        :param pulumi.Input[int] duration: The subscription duration.
+               * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+               * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "spec", spec)
         if accelerator_name is not None:
             pulumi.set(__self__, "accelerator_name", accelerator_name)
         if auto_renew_duration is not None:
@@ -49,40 +55,26 @@ class AcceleratorArgs:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if bandwidth_billing_type is not None:
             pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
+        if cross_border_mode is not None:
+            pulumi.set(__self__, "cross_border_mode", cross_border_mode)
+        if cross_border_status is not None:
+            pulumi.set(__self__, "cross_border_status", cross_border_status)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if promotion_option_no is not None:
+            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter
-    def duration(self) -> pulumi.Input[int]:
-        """
-        The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
-        * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
-        * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
-        """
-        return pulumi.get(self, "duration")
-
-    @duration.setter
-    def duration(self, value: pulumi.Input[int]):
-        pulumi.set(self, "duration", value)
-
-    @property
-    @pulumi.getter
-    def spec(self) -> pulumi.Input[str]:
-        """
-        The instance type of the GA instance. Specification of global acceleration instance. Valid values:
-        """
-        return pulumi.get(self, "spec")
-
-    @spec.setter
-    def spec(self, value: pulumi.Input[str]):
-        pulumi.set(self, "spec", value)
 
     @property
     @pulumi.getter(name="acceleratorName")
@@ -133,6 +125,30 @@ class AcceleratorArgs:
         pulumi.set(self, "bandwidth_billing_type", value)
 
     @property
+    @pulumi.getter(name="crossBorderMode")
+    def cross_border_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        """
+        return pulumi.get(self, "cross_border_mode")
+
+    @cross_border_mode.setter
+    def cross_border_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_border_mode", value)
+
+    @property
+    @pulumi.getter(name="crossBorderStatus")
+    def cross_border_status(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "cross_border_status")
+
+    @cross_border_status.setter
+    def cross_border_status(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cross_border_status", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -143,6 +159,32 @@ class AcceleratorArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The subscription duration.
+        * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+        * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
     @property
     @pulumi.getter(name="pricingCycle")
@@ -157,6 +199,18 @@ class AcceleratorArgs:
         pulumi.set(self, "pricing_cycle", value)
 
     @property
+    @pulumi.getter(name="promotionOptionNo")
+    def promotion_option_no(self) -> Optional[pulumi.Input[str]]:
+        """
+        The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "promotion_option_no")
+
+    @promotion_option_no.setter
+    def promotion_option_no(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "promotion_option_no", value)
+
+    @property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -167,6 +221,18 @@ class AcceleratorArgs:
     @renewal_status.setter
     def renewal_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance type of the GA instance. Specification of global acceleration instance. Valid values:
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spec", value)
 
     @property
     @pulumi.getter
@@ -188,9 +254,13 @@ class _AcceleratorState:
                  auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
+                 cross_border_mode: Optional[pulumi.Input[str]] = None,
+                 cross_border_status: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -201,11 +271,15 @@ class _AcceleratorState:
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+        :param pulumi.Input[int] duration: The subscription duration.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] status: The status of the GA instance.
@@ -219,12 +293,20 @@ class _AcceleratorState:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if bandwidth_billing_type is not None:
             pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
+        if cross_border_mode is not None:
+            pulumi.set(__self__, "cross_border_mode", cross_border_mode)
+        if cross_border_status is not None:
+            pulumi.set(__self__, "cross_border_status", cross_border_status)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if promotion_option_no is not None:
+            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if spec is not None:
@@ -283,6 +365,30 @@ class _AcceleratorState:
         pulumi.set(self, "bandwidth_billing_type", value)
 
     @property
+    @pulumi.getter(name="crossBorderMode")
+    def cross_border_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        """
+        return pulumi.get(self, "cross_border_mode")
+
+    @cross_border_mode.setter
+    def cross_border_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_border_mode", value)
+
+    @property
+    @pulumi.getter(name="crossBorderStatus")
+    def cross_border_status(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "cross_border_status")
+
+    @cross_border_status.setter
+    def cross_border_status(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cross_border_status", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -298,7 +404,7 @@ class _AcceleratorState:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[int]]:
         """
-        The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+        The subscription duration.
         * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         """
@@ -307,6 +413,18 @@ class _AcceleratorState:
     @duration.setter
     def duration(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
     @property
     @pulumi.getter(name="pricingCycle")
@@ -319,6 +437,18 @@ class _AcceleratorState:
     @pricing_cycle.setter
     def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pricing_cycle", value)
+
+    @property
+    @pulumi.getter(name="promotionOptionNo")
+    def promotion_option_no(self) -> Optional[pulumi.Input[str]]:
+        """
+        The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "promotion_option_no")
+
+    @promotion_option_no.setter
+    def promotion_option_no(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "promotion_option_no", value)
 
     @property
     @pulumi.getter(name="renewalStatus")
@@ -378,14 +508,38 @@ class Accelerator(pulumi.CustomResource):
                  auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
+                 cross_border_mode: Optional[pulumi.Input[str]] = None,
+                 cross_border_status: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
+        Provides a Global Accelerator (GA) Accelerator resource.
+
+        For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createaccelerator).
+
+        > **NOTE:** Available since v1.111.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ga.Accelerator("example",
+            auto_use_coupon=True,
+            duration=1,
+            spec="1")
+        ```
+
         ## Import
 
         Ga Accelerator can be imported using the id, e.g.
@@ -400,11 +554,15 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+        :param pulumi.Input[int] duration: The subscription duration.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -413,9 +571,29 @@ class Accelerator(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AcceleratorArgs,
+                 args: Optional[AcceleratorArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Global Accelerator (GA) Accelerator resource.
+
+        For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createaccelerator).
+
+        > **NOTE:** Available since v1.111.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ga.Accelerator("example",
+            auto_use_coupon=True,
+            duration=1,
+            spec="1")
+        ```
+
         ## Import
 
         Ga Accelerator can be imported using the id, e.g.
@@ -443,9 +621,13 @@ class Accelerator(pulumi.CustomResource):
                  auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
+                 cross_border_mode: Optional[pulumi.Input[str]] = None,
+                 cross_border_status: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -462,14 +644,14 @@ class Accelerator(pulumi.CustomResource):
             __props__.__dict__["auto_renew_duration"] = auto_renew_duration
             __props__.__dict__["auto_use_coupon"] = auto_use_coupon
             __props__.__dict__["bandwidth_billing_type"] = bandwidth_billing_type
+            __props__.__dict__["cross_border_mode"] = cross_border_mode
+            __props__.__dict__["cross_border_status"] = cross_border_status
             __props__.__dict__["description"] = description
-            if duration is None and not opts.urn:
-                raise TypeError("Missing required property 'duration'")
             __props__.__dict__["duration"] = duration
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["pricing_cycle"] = pricing_cycle
+            __props__.__dict__["promotion_option_no"] = promotion_option_no
             __props__.__dict__["renewal_status"] = renewal_status
-            if spec is None and not opts.urn:
-                raise TypeError("Missing required property 'spec'")
             __props__.__dict__["spec"] = spec
             __props__.__dict__["tags"] = tags
             __props__.__dict__["status"] = None
@@ -487,9 +669,13 @@ class Accelerator(pulumi.CustomResource):
             auto_renew_duration: Optional[pulumi.Input[int]] = None,
             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
             bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
+            cross_border_mode: Optional[pulumi.Input[str]] = None,
+            cross_border_status: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[int]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
+            promotion_option_no: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -505,11 +691,15 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+        :param pulumi.Input[int] duration: The subscription duration.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] status: The status of the GA instance.
@@ -523,9 +713,13 @@ class Accelerator(pulumi.CustomResource):
         __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["auto_use_coupon"] = auto_use_coupon
         __props__.__dict__["bandwidth_billing_type"] = bandwidth_billing_type
+        __props__.__dict__["cross_border_mode"] = cross_border_mode
+        __props__.__dict__["cross_border_status"] = cross_border_status
         __props__.__dict__["description"] = description
         __props__.__dict__["duration"] = duration
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
+        __props__.__dict__["promotion_option_no"] = promotion_option_no
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
@@ -565,6 +759,22 @@ class Accelerator(pulumi.CustomResource):
         return pulumi.get(self, "bandwidth_billing_type")
 
     @property
+    @pulumi.getter(name="crossBorderMode")
+    def cross_border_mode(self) -> pulumi.Output[str]:
+        """
+        The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        """
+        return pulumi.get(self, "cross_border_mode")
+
+    @property
+    @pulumi.getter(name="crossBorderStatus")
+    def cross_border_status(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "cross_border_status")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
@@ -574,21 +784,37 @@ class Accelerator(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def duration(self) -> pulumi.Output[int]:
+    def duration(self) -> pulumi.Output[Optional[int]]:
         """
-        The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+        The subscription duration.
         * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         """
         return pulumi.get(self, "duration")
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[str]:
+        """
+        The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> pulumi.Output[str]:
+    def pricing_cycle(self) -> pulumi.Output[Optional[str]]:
         """
         The billing cycle of the GA instance. Default value: `Month`. Valid values:
         """
         return pulumi.get(self, "pricing_cycle")
+
+    @property
+    @pulumi.getter(name="promotionOptionNo")
+    def promotion_option_no(self) -> pulumi.Output[Optional[str]]:
+        """
+        The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "promotion_option_no")
 
     @property
     @pulumi.getter(name="renewalStatus")
@@ -600,7 +826,7 @@ class Accelerator(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Output[str]:
+    def spec(self) -> pulumi.Output[Optional[str]]:
         """
         The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         """

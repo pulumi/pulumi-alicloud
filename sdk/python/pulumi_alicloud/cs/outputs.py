@@ -183,7 +183,11 @@ class EdgeKubernetesAddon(dict):
                  disabled: Optional[bool] = None,
                  name: Optional[str] = None):
         """
-        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str config: The ACK add-on configurations.
+        :param bool disabled: Disables the automatic installation of a component. Default is `false`.
+               
+               The following example is the definition of addons block, The type of this field is list:
+        :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -195,18 +199,26 @@ class EdgeKubernetesAddon(dict):
     @property
     @pulumi.getter
     def config(self) -> Optional[str]:
+        """
+        The ACK add-on configurations.
+        """
         return pulumi.get(self, "config")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        Disables the automatic installation of a component. Default is `false`.
+
+        The following example is the definition of addons block, The type of this field is list:
+        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         return pulumi.get(self, "name")
 
@@ -452,10 +464,13 @@ class EdgeKubernetesWorkerDataDisk(dict):
         """
         :param str auto_snapshot_policy_id: Worker node data disk auto snapshot policy.
         :param str category: The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        :param str device: The device of the data disks.
         :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
-        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str kms_key_id: The id of the kms key.
+        :param str name: The name of the data disks.
         :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param str size: The size of a data disk, at least 40. Unit: GiB.
+        :param str snapshot_id: The id of snapshot.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -495,6 +510,9 @@ class EdgeKubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter
     def device(self) -> Optional[str]:
+        """
+        The device of the data disks.
+        """
         return pulumi.get(self, "device")
 
     @property
@@ -508,13 +526,16 @@ class EdgeKubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
+        """
+        The id of the kms key.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        The name of the data disks.
         """
         return pulumi.get(self, "name")
 
@@ -537,6 +558,9 @@ class EdgeKubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
+        """
+        The id of snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
 
@@ -607,7 +631,11 @@ class KubernetesAddon(dict):
                  disabled: Optional[bool] = None,
                  name: Optional[str] = None):
         """
-        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str config: The ACK add-on configurations.
+        :param bool disabled: Disables the automatic installation of a component. Default is `false`.
+               
+               The following example is the definition of addons block, The type of this field is list:
+        :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -619,18 +647,26 @@ class KubernetesAddon(dict):
     @property
     @pulumi.getter
     def config(self) -> Optional[str]:
+        """
+        The ACK add-on configurations.
+        """
         return pulumi.get(self, "config")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        Disables the automatic installation of a component. Default is `false`.
+
+        The following example is the definition of addons block, The type of this field is list:
+        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         return pulumi.get(self, "name")
 
@@ -844,9 +880,9 @@ class KubernetesMasterNode(dict):
                  name: Optional[str] = None,
                  private_ip: Optional[str] = None):
         """
-        :param str id: ID of the node.
-        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
-        :param str private_ip: The private IP address of node.
+        :param str id: The id of a node.
+        :param str name: The name of a node.
+        :param str private_ip: The private ip of a node.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -859,7 +895,7 @@ class KubernetesMasterNode(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        ID of the node.
+        The id of a node.
         """
         return pulumi.get(self, "id")
 
@@ -867,7 +903,7 @@ class KubernetesMasterNode(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        The name of a node.
         """
         return pulumi.get(self, "name")
 
@@ -875,7 +911,7 @@ class KubernetesMasterNode(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[str]:
         """
-        The private IP address of node.
+        The private ip of a node.
         """
         return pulumi.get(self, "private_ip")
 
@@ -1016,6 +1052,11 @@ class KubernetesTaint(dict):
                  effect: Optional[str] = None,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
+        """
+        :param str effect: The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
+        :param str key: The key of a taint.
+        :param str value: The key of a taint.
+        """
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
         if key is not None:
@@ -1026,16 +1067,25 @@ class KubernetesTaint(dict):
     @property
     @pulumi.getter
     def effect(self) -> Optional[str]:
+        """
+        The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
+        """
         return pulumi.get(self, "effect")
 
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
+        """
+        The key of a taint.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The key of a taint.
+        """
         return pulumi.get(self, "value")
 
 
@@ -1075,12 +1125,15 @@ class KubernetesWorkerDataDisk(dict):
                  size: Optional[str] = None,
                  snapshot_id: Optional[str] = None):
         """
-        :param str auto_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+        :param str auto_snapshot_policy_id: Worker node data disk auto snapshot policy.
         :param str category: The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        :param str device: The device of the data disks.
         :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false.
-        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
-        :param str performance_level: (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param str kms_key_id: The id of the kms key.
+        :param str name: The name of the data disks.
+        :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param str size: The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
+        :param str snapshot_id: The id of snapshot.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -1105,7 +1158,7 @@ class KubernetesWorkerDataDisk(dict):
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[str]:
         """
-        (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+        Worker node data disk auto snapshot policy.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
@@ -1120,6 +1173,9 @@ class KubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter
     def device(self) -> Optional[str]:
+        """
+        The device of the data disks.
+        """
         return pulumi.get(self, "device")
 
     @property
@@ -1133,13 +1189,16 @@ class KubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
+        """
+        The id of the kms key.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        The name of the data disks.
         """
         return pulumi.get(self, "name")
 
@@ -1147,7 +1206,7 @@ class KubernetesWorkerDataDisk(dict):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
         """
-        (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -1162,6 +1221,9 @@ class KubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
+        """
+        The id of snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
 
@@ -1190,7 +1252,7 @@ class KubernetesWorkerNode(dict):
                  private_ip: Optional[str] = None):
         """
         :param str id: ID of the node.
-        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str name: Node name.
         :param str private_ip: The private IP address of node.
         """
         if id is not None:
@@ -1212,7 +1274,7 @@ class KubernetesWorkerNode(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        Node name.
         """
         return pulumi.get(self, "name")
 

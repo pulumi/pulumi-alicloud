@@ -11,9 +11,46 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AnycastEipAddressAttachmentPopLocation',
     'GetAnycastEipAddressesAddressResult',
     'GetAnycastEipAddressesAddressAnycastEipBindInfoListResult',
 ]
+
+@pulumi.output_type
+class AnycastEipAddressAttachmentPopLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "popLocation":
+            suggest = "pop_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnycastEipAddressAttachmentPopLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnycastEipAddressAttachmentPopLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnycastEipAddressAttachmentPopLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pop_location: Optional[str] = None):
+        """
+        :param str pop_location: The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
+        """
+        if pop_location is not None:
+            pulumi.set(__self__, "pop_location", pop_location)
+
+    @property
+    @pulumi.getter(name="popLocation")
+    def pop_location(self) -> Optional[str]:
+        """
+        The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
+        """
+        return pulumi.get(self, "pop_location")
+
 
 @pulumi.output_type
 class GetAnycastEipAddressesAddressResult(dict):

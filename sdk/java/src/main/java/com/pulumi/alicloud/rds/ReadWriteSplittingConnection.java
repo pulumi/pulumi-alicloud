@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
+ * Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
  * 
  * &gt; **NOTE:** Available since v1.48.0.
  * 
@@ -57,25 +57,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var exampleZones = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .category(&#34;Basic&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .engineVersion(&#34;5.7&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;local_ssd&#34;)
  *             .build());
  * 
  *         final var exampleInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .category(&#34;Basic&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .engineVersion(&#34;5.7&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;local_ssd&#34;)
  *             .build());
  * 
  *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
+ *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(&#34;terraform-example&#34;)
+ *             .vswitchName(name)
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
@@ -92,15 +92,17 @@ import javax.annotation.Nullable;
  * 
  *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
+ *             .engineVersion(&#34;5.7&#34;)
+ *             .category(&#34;HighAvailability&#34;)
  *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
  *             .instanceStorage(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .instanceChargeType(&#34;Postpaid&#34;)
- *             .instanceName(&#34;terraform-example&#34;)
+ *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *             .instanceName(name)
  *             .vswitchId(exampleSwitch.id())
- *             .monitoringPeriod(&#34;60&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .securityGroupIds(exampleSecurityGroup.id())
+ *             .securityIps(            
+ *                 &#34;10.168.1.12&#34;,
+ *                 &#34;100.69.7.112&#34;)
  *             .build());
  * 
  *         var exampleReadOnlyInstance = new ReadOnlyInstance(&#34;exampleReadOnlyInstance&#34;, ReadOnlyInstanceArgs.builder()        
@@ -108,8 +110,8 @@ import javax.annotation.Nullable;
  *             .masterDbInstanceId(exampleInstance.id())
  *             .engineVersion(exampleInstance.engineVersion())
  *             .instanceStorage(exampleInstance.instanceStorage())
- *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[1].instanceClass()))
- *             .instanceName(&#34;terraform-example-readonly&#34;)
+ *             .instanceType(exampleInstance.instanceType())
+ *             .instanceName(String.format(&#34;%sreadonly&#34;, name))
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 

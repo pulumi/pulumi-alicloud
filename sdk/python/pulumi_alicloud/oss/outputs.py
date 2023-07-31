@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BucketAccessMonitor',
     'BucketCorsRule',
     'BucketLifecycleRule',
     'BucketLifecycleRuleAbortMultipartUpload',
@@ -46,6 +47,25 @@ __all__ = [
     'GetTablesTableDefinedColumnResult',
     'GetTablesTablePrimaryKeyResult',
 ]
+
+@pulumi.output_type
+class BucketAccessMonitor(dict):
+    def __init__(__self__, *,
+                 status: Optional[str] = None):
+        """
+        :param str status: The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+        """
+        return pulumi.get(self, "status")
+
 
 @pulumi.output_type
 class BucketCorsRule(dict):
@@ -171,15 +191,15 @@ class BucketLifecycleRule(dict):
                  transitions: Optional[Sequence['outputs.BucketLifecycleRuleTransition']] = None):
         """
         :param bool enabled: Specifies lifecycle rule status.
-        :param Sequence['BucketLifecycleRuleAbortMultipartUploadArgs'] abort_multipart_uploads: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
-        :param Sequence['BucketLifecycleRuleExpirationArgs'] expirations: Specifies a period in the object's expire (documented below).
+        :param Sequence['BucketLifecycleRuleAbortMultipartUploadArgs'] abort_multipart_uploads: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
+        :param Sequence['BucketLifecycleRuleExpirationArgs'] expirations: Specifies a period in the object's expire. See `expiration` below.
         :param str id: Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
-        :param Sequence['BucketLifecycleRuleNoncurrentVersionExpirationArgs'] noncurrent_version_expirations: Specifies when noncurrent object versions expire (documented below).
-        :param Sequence['BucketLifecycleRuleNoncurrentVersionTransitionArgs'] noncurrent_version_transitions: Specifies when noncurrent object versions transitions (documented below).
+        :param Sequence['BucketLifecycleRuleNoncurrentVersionExpirationArgs'] noncurrent_version_expirations: Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
+        :param Sequence['BucketLifecycleRuleNoncurrentVersionTransitionArgs'] noncurrent_version_transitions: Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
                
                `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         :param str prefix: Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
-        :param Sequence['BucketLifecycleRuleTransitionArgs'] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+        :param Sequence['BucketLifecycleRuleTransitionArgs'] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
         """
         pulumi.set(__self__, "enabled", enabled)
         if abort_multipart_uploads is not None:
@@ -209,7 +229,7 @@ class BucketLifecycleRule(dict):
     @pulumi.getter(name="abortMultipartUploads")
     def abort_multipart_uploads(self) -> Optional[Sequence['outputs.BucketLifecycleRuleAbortMultipartUpload']]:
         """
-        Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+        Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
         """
         return pulumi.get(self, "abort_multipart_uploads")
 
@@ -217,7 +237,7 @@ class BucketLifecycleRule(dict):
     @pulumi.getter
     def expirations(self) -> Optional[Sequence['outputs.BucketLifecycleRuleExpiration']]:
         """
-        Specifies a period in the object's expire (documented below).
+        Specifies a period in the object's expire. See `expiration` below.
         """
         return pulumi.get(self, "expirations")
 
@@ -233,7 +253,7 @@ class BucketLifecycleRule(dict):
     @pulumi.getter(name="noncurrentVersionExpirations")
     def noncurrent_version_expirations(self) -> Optional[Sequence['outputs.BucketLifecycleRuleNoncurrentVersionExpiration']]:
         """
-        Specifies when noncurrent object versions expire (documented below).
+        Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
         """
         return pulumi.get(self, "noncurrent_version_expirations")
 
@@ -241,7 +261,7 @@ class BucketLifecycleRule(dict):
     @pulumi.getter(name="noncurrentVersionTransitions")
     def noncurrent_version_transitions(self) -> Optional[Sequence['outputs.BucketLifecycleRuleNoncurrentVersionTransition']]:
         """
-        Specifies when noncurrent object versions transitions (documented below).
+        Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
 
         `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         """
@@ -259,7 +279,7 @@ class BucketLifecycleRule(dict):
     @pulumi.getter
     def transitions(self) -> Optional[Sequence['outputs.BucketLifecycleRuleTransition']]:
         """
-        Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+        Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
         """
         return pulumi.get(self, "transitions")
 
@@ -427,6 +447,10 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
         suggest = None
         if key == "storageClass":
             suggest = "storage_class"
+        elif key == "isAccessTime":
+            suggest = "is_access_time"
+        elif key == "returnToStdWhenVisit":
+            suggest = "return_to_std_when_visit"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in BucketLifecycleRuleNoncurrentVersionTransition. Access the value via the '{suggest}' property getter instead.")
@@ -441,15 +465,24 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
 
     def __init__(__self__, *,
                  days: int,
-                 storage_class: str):
+                 storage_class: str,
+                 is_access_time: Optional[bool] = None,
+                 return_to_std_when_visit: Optional[bool] = None):
         """
         :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
                
                `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
-        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        :param bool is_access_time: Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+        :param bool return_to_std_when_visit: Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+               `NOTE`: One and only one of "created_before_date" and "days" can be specified in one transition configuration.
         """
         pulumi.set(__self__, "days", days)
         pulumi.set(__self__, "storage_class", storage_class)
+        if is_access_time is not None:
+            pulumi.set(__self__, "is_access_time", is_access_time)
+        if return_to_std_when_visit is not None:
+            pulumi.set(__self__, "return_to_std_when_visit", return_to_std_when_visit)
 
     @property
     @pulumi.getter
@@ -465,9 +498,26 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
         """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
         """
         return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="isAccessTime")
+    def is_access_time(self) -> Optional[bool]:
+        """
+        Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+        """
+        return pulumi.get(self, "is_access_time")
+
+    @property
+    @pulumi.getter(name="returnToStdWhenVisit")
+    def return_to_std_when_visit(self) -> Optional[bool]:
+        """
+        Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+        `NOTE`: One and only one of "created_before_date" and "days" can be specified in one transition configuration.
+        """
+        return pulumi.get(self, "return_to_std_when_visit")
 
 
 @pulumi.output_type
@@ -475,10 +525,14 @@ class BucketLifecycleRuleTransition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "createdBeforeDate":
-            suggest = "created_before_date"
-        elif key == "storageClass":
+        if key == "storageClass":
             suggest = "storage_class"
+        elif key == "createdBeforeDate":
+            suggest = "created_before_date"
+        elif key == "isAccessTime":
+            suggest = "is_access_time"
+        elif key == "returnToStdWhenVisit":
+            suggest = "return_to_std_when_visit"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in BucketLifecycleRuleTransition. Access the value via the '{suggest}' property getter instead.")
@@ -492,22 +546,38 @@ class BucketLifecycleRuleTransition(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 storage_class: str,
                  created_before_date: Optional[str] = None,
                  days: Optional[int] = None,
-                 storage_class: Optional[str] = None):
+                 is_access_time: Optional[bool] = None,
+                 return_to_std_when_visit: Optional[bool] = None):
         """
+        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
         :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
                
                `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
-        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+        :param bool is_access_time: Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+        :param bool return_to_std_when_visit: Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+               `NOTE`: One and only one of "created_before_date" and "days" can be specified in one transition configuration.
         """
+        pulumi.set(__self__, "storage_class", storage_class)
         if created_before_date is not None:
             pulumi.set(__self__, "created_before_date", created_before_date)
         if days is not None:
             pulumi.set(__self__, "days", days)
-        if storage_class is not None:
-            pulumi.set(__self__, "storage_class", storage_class)
+        if is_access_time is not None:
+            pulumi.set(__self__, "is_access_time", is_access_time)
+        if return_to_std_when_visit is not None:
+            pulumi.set(__self__, "return_to_std_when_visit", return_to_std_when_visit)
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        """
+        return pulumi.get(self, "storage_class")
 
     @property
     @pulumi.getter(name="createdBeforeDate")
@@ -528,12 +598,21 @@ class BucketLifecycleRuleTransition(dict):
         return pulumi.get(self, "days")
 
     @property
-    @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[str]:
+    @pulumi.getter(name="isAccessTime")
+    def is_access_time(self) -> Optional[bool]:
         """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+        Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
         """
-        return pulumi.get(self, "storage_class")
+        return pulumi.get(self, "is_access_time")
+
+    @property
+    @pulumi.getter(name="returnToStdWhenVisit")
+    def return_to_std_when_visit(self) -> Optional[bool]:
+        """
+        Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+        `NOTE`: One and only one of "created_before_date" and "days" can be specified in one transition configuration.
+        """
+        return pulumi.get(self, "return_to_std_when_visit")
 
 
 @pulumi.output_type
@@ -910,7 +989,7 @@ class BucketTransferAcceleration(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Specifies lifecycle rule status.
+        :param bool enabled: Specifies the accelerate status of a bucket.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -918,7 +997,7 @@ class BucketTransferAcceleration(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Specifies lifecycle rule status.
+        Specifies the accelerate status of a bucket.
         """
         return pulumi.get(self, "enabled")
 
@@ -929,8 +1008,6 @@ class BucketVersioning(dict):
                  status: str):
         """
         :param str status: Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-               
-               `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
         """
         pulumi.set(__self__, "status", status)
 
@@ -939,8 +1016,6 @@ class BucketVersioning(dict):
     def status(self) -> str:
         """
         Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-
-        `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
         """
         return pulumi.get(self, "status")
 

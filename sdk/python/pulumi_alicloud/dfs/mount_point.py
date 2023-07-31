@@ -280,7 +280,49 @@ class MountPoint(pulumi.CustomResource):
 
         For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.dfs.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_id)
+        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
+            storage_type=default_zones.zones[0].options[0].storage_type,
+            zone_id=default_zones.zones[0].zone_id,
+            protocol_type="HDFS",
+            description=name,
+            file_system_name=name,
+            throughput_mode="Standard",
+            space_capacity=1024)
+        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+            access_group_name=name,
+            description=name,
+            network_type="VPC")
+        default_mount_point = alicloud.dfs.MountPoint("defaultMountPoint",
+            description=name,
+            vpc_id=default_network.id,
+            file_system_id=default_file_system.id,
+            access_group_id=default_access_group.id,
+            network_type="VPC",
+            vswitch_id=default_switch.id)
+        ```
 
         ## Import
 
@@ -311,7 +353,49 @@ class MountPoint(pulumi.CustomResource):
 
         For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.dfs.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_id)
+        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
+            storage_type=default_zones.zones[0].options[0].storage_type,
+            zone_id=default_zones.zones[0].zone_id,
+            protocol_type="HDFS",
+            description=name,
+            file_system_name=name,
+            throughput_mode="Standard",
+            space_capacity=1024)
+        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+            access_group_name=name,
+            description=name,
+            network_type="VPC")
+        default_mount_point = alicloud.dfs.MountPoint("defaultMountPoint",
+            description=name,
+            vpc_id=default_network.id,
+            file_system_id=default_file_system.id,
+            access_group_id=default_access_group.id,
+            network_type="VPC",
+            vswitch_id=default_switch.id)
+        ```
 
         ## Import
 

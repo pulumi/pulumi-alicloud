@@ -10,6 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga
 {
     /// <summary>
+    /// Provides a Global Accelerator (GA) Accelerator resource.
+    /// 
+    /// For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createaccelerator).
+    /// 
+    /// &gt; **NOTE:** Available since v1.111.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Ga.Accelerator("example", new()
+    ///     {
+    ///         AutoUseCoupon = true,
+    ///         Duration = 1,
+    ///         Spec = "1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Ga Accelerator can be imported using the id, e.g.
@@ -46,24 +74,48 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> BandwidthBillingType { get; private set; } = null!;
 
         /// <summary>
+        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        /// </summary>
+        [Output("crossBorderMode")]
+        public Output<string> CrossBorderMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// </summary>
+        [Output("crossBorderStatus")]
+        public Output<bool?> CrossBorderStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Descriptive information of the global acceleration instance.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+        /// The subscription duration.
         /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         /// </summary>
         [Output("duration")]
-        public Output<int> Duration { get; private set; } = null!;
+        public Output<int?> Duration { get; private set; } = null!;
+
+        /// <summary>
+        /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// The billing cycle of the GA instance. Default value: `Month`. Valid values:
         /// </summary>
         [Output("pricingCycle")]
-        public Output<string> PricingCycle { get; private set; } = null!;
+        public Output<string?> PricingCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// </summary>
+        [Output("promotionOptionNo")]
+        public Output<string?> PromotionOptionNo { get; private set; } = null!;
 
         /// <summary>
         /// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
@@ -75,7 +127,7 @@ namespace Pulumi.AliCloud.Ga
         /// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         /// </summary>
         [Output("spec")]
-        public Output<string> Spec { get; private set; } = null!;
+        public Output<string?> Spec { get; private set; } = null!;
 
         /// <summary>
         /// The status of the GA instance.
@@ -97,7 +149,7 @@ namespace Pulumi.AliCloud.Ga
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Accelerator(string name, AcceleratorArgs args, CustomResourceOptions? options = null)
+        public Accelerator(string name, AcceleratorArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:ga/accelerator:Accelerator", name, args ?? new AcceleratorArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -160,24 +212,48 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthBillingType { get; set; }
 
         /// <summary>
+        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        /// </summary>
+        [Input("crossBorderMode")]
+        public Input<string>? CrossBorderMode { get; set; }
+
+        /// <summary>
+        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("crossBorderStatus")]
+        public Input<bool>? CrossBorderStatus { get; set; }
+
+        /// <summary>
         /// Descriptive information of the global acceleration instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+        /// The subscription duration.
         /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         /// </summary>
-        [Input("duration", required: true)]
-        public Input<int> Duration { get; set; } = null!;
+        [Input("duration")]
+        public Input<int>? Duration { get; set; }
+
+        /// <summary>
+        /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The billing cycle of the GA instance. Default value: `Month`. Valid values:
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// </summary>
+        [Input("promotionOptionNo")]
+        public Input<string>? PromotionOptionNo { get; set; }
 
         /// <summary>
         /// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
@@ -188,8 +264,8 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         /// </summary>
-        [Input("spec", required: true)]
-        public Input<string> Spec { get; set; } = null!;
+        [Input("spec")]
+        public Input<string>? Spec { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -236,13 +312,25 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthBillingType { get; set; }
 
         /// <summary>
+        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        /// </summary>
+        [Input("crossBorderMode")]
+        public Input<string>? CrossBorderMode { get; set; }
+
+        /// <summary>
+        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("crossBorderStatus")]
+        public Input<bool>? CrossBorderStatus { get; set; }
+
+        /// <summary>
         /// Descriptive information of the global acceleration instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+        /// The subscription duration.
         /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
         /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         /// </summary>
@@ -250,10 +338,22 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? Duration { get; set; }
 
         /// <summary>
+        /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
         /// The billing cycle of the GA instance. Default value: `Month`. Valid values:
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// </summary>
+        [Input("promotionOptionNo")]
+        public Input<string>? PromotionOptionNo { get; set; }
 
         /// <summary>
         /// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:

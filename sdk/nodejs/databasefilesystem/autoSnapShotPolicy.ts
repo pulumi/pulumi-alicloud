@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Dbfs Auto Snap Shot Policy resource.
  *
- * For information about Dbfs Auto Snap Shot Policy and how to use it, see [What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html).
+ * For information about Dbfs Auto Snap Shot Policy and how to use it.
  *
- * > **NOTE:** Available in v1.202.0+.
+ * > **NOTE:** Available since v1.202.0.
  *
  * ## Example Usage
  *
@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.databasefilesystem.AutoSnapShotPolicy("default", {
- *     policyName: "testTerraform",
+ *     policyName: "tf-example",
  *     repeatWeekdays: ["2"],
  *     retentionDays: 1,
  *     timePoints: ["01"],

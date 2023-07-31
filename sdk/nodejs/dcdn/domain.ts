@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
  *
- * > **NOTE:** Available in v1.94.0+.
+ * > **NOTE:** Available since v1.94.0.
  *
  * > **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
  *
@@ -25,14 +25,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const domainName = config.get("domainName") || "example.com";
  * const example = new alicloud.dcdn.Domain("example", {
- *     domainName: "example.com",
+ *     domainName: domainName,
  *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",
  *         port: 80,
  *         priority: "20",
  *         type: "ipaddr",
+ *         weight: "10",
  *     }],
  * });
  * ```
@@ -113,7 +116,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly securityToken!: pulumi.Output<string | undefined>;
     /**
-     * The origin information.
+     * The origin information. See `sources` below.
      */
     public readonly sources!: pulumi.Output<outputs.dcdn.DomainSource[]>;
     /**
@@ -244,7 +247,7 @@ export interface DomainState {
      */
     securityToken?: pulumi.Input<string>;
     /**
-     * The origin information.
+     * The origin information. See `sources` below.
      */
     sources?: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[]>;
     /**
@@ -313,7 +316,7 @@ export interface DomainArgs {
      */
     securityToken?: pulumi.Input<string>;
     /**
-     * The origin information.
+     * The origin information. See `sources` below.
      */
     sources: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[]>;
     /**

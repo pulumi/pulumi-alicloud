@@ -80,6 +80,36 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * 
+     */
+    @Import(name="crossBorderMode")
+    private @Nullable Output<String> crossBorderMode;
+
+    /**
+     * @return The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * 
+     */
+    public Optional<Output<String>> crossBorderMode() {
+        return Optional.ofNullable(this.crossBorderMode);
+    }
+
+    /**
+     * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="crossBorderStatus")
+    private @Nullable Output<Boolean> crossBorderStatus;
+
+    /**
+     * @return Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> crossBorderStatus() {
+        return Optional.ofNullable(this.crossBorderStatus);
+    }
+
+    /**
      * Descriptive information of the global acceleration instance.
      * 
      */
@@ -95,7 +125,7 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+     * The subscription duration.
      * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      * 
@@ -104,13 +134,28 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> duration;
 
     /**
-     * @return The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+     * @return The subscription duration.
      * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      * 
      */
     public Optional<Output<Integer>> duration() {
         return Optional.ofNullable(this.duration);
+    }
+
+    /**
+     * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
     }
 
     /**
@@ -126,6 +171,21 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> pricingCycle() {
         return Optional.ofNullable(this.pricingCycle);
+    }
+
+    /**
+     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    @Import(name="promotionOptionNo")
+    private @Nullable Output<String> promotionOptionNo;
+
+    /**
+     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    public Optional<Output<String>> promotionOptionNo() {
+        return Optional.ofNullable(this.promotionOptionNo);
     }
 
     /**
@@ -195,9 +255,13 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
         this.autoRenewDuration = $.autoRenewDuration;
         this.autoUseCoupon = $.autoUseCoupon;
         this.bandwidthBillingType = $.bandwidthBillingType;
+        this.crossBorderMode = $.crossBorderMode;
+        this.crossBorderStatus = $.crossBorderStatus;
         this.description = $.description;
         this.duration = $.duration;
+        this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
+        this.promotionOptionNo = $.promotionOptionNo;
         this.renewalStatus = $.renewalStatus;
         this.spec = $.spec;
         this.status = $.status;
@@ -307,6 +371,48 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossBorderMode(@Nullable Output<String> crossBorderMode) {
+            $.crossBorderMode = crossBorderMode;
+            return this;
+        }
+
+        /**
+         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossBorderMode(String crossBorderMode) {
+            return crossBorderMode(Output.of(crossBorderMode));
+        }
+
+        /**
+         * @param crossBorderStatus Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossBorderStatus(@Nullable Output<Boolean> crossBorderStatus) {
+            $.crossBorderStatus = crossBorderStatus;
+            return this;
+        }
+
+        /**
+         * @param crossBorderStatus Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossBorderStatus(Boolean crossBorderStatus) {
+            return crossBorderStatus(Output.of(crossBorderStatus));
+        }
+
+        /**
          * @param description Descriptive information of the global acceleration instance.
          * 
          * @return builder
@@ -328,7 +434,7 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duration The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+         * @param duration The subscription duration.
          * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
          * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
          * 
@@ -341,7 +447,7 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duration The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
+         * @param duration The subscription duration.
          * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
          * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
          * 
@@ -350,6 +456,27 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder duration(Integer duration) {
             return duration(Output.of(duration));
+        }
+
+        /**
+         * @param paymentType The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
         }
 
         /**
@@ -371,6 +498,27 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pricingCycle(String pricingCycle) {
             return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionOptionNo(@Nullable Output<String> promotionOptionNo) {
+            $.promotionOptionNo = promotionOptionNo;
+            return this;
+        }
+
+        /**
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionOptionNo(String promotionOptionNo) {
+            return promotionOptionNo(Output.of(promotionOptionNo));
         }
 
         /**

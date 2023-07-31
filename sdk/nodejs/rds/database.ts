@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
+ * Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
+ *
+ * > **NOTE:** Available since v1.5.0.
  *
  * ## Example Usage
  *
@@ -14,19 +16,22 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Rds";
- * const name = config.get("name") || "dbdatabasebasic";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const instance = new alicloud.rds.Instance("instance", {
+ * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.s1.small",
@@ -34,7 +39,7 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  * });
- * const defaultDatabase = new alicloud.rds.Database("defaultDatabase", {instanceId: instance.id});
+ * const defaultDatabase = new alicloud.rds.Database("defaultDatabase", {instanceId: defaultInstance.id});
  * ```
  *
  * ## Import
@@ -97,8 +102,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-     * and have no more than 64 characters.
+     * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -162,8 +166,7 @@ export interface DatabaseState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-     * and have no more than 64 characters.
+     * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
      */
     name?: pulumi.Input<string>;
 }
@@ -196,8 +199,7 @@ export interface DatabaseArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-     * and have no more than 64 characters.
+     * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
      */
     name?: pulumi.Input<string>;
 }

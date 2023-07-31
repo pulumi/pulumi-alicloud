@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
     [OutputType]
     public sealed class ClusterParameter
     {
+        /// <summary>
+        /// Kernel parameter name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Kernel parameter value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

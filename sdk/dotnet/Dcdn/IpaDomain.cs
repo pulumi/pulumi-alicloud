@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// For information about DCDN Ipa Domain and how to use it, see [What is Ipa Domain](https://www.alibabacloud.com/help/en/doc-detail/130634.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.158.0+.
+    /// &gt; **NOTE:** Available since v1.158.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,28 +28,27 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
-    ///     {
-    ///         NameRegex = "default",
-    ///     });
+    ///     var config = new Config();
+    ///     var domainName = config.Get("domainName") ?? "example.com";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var example = new AliCloud.Dcdn.IpaDomain("example", new()
     ///     {
-    ///         DomainName = "example.com",
+    ///         DomainName = domainName,
     ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         Scope = "global",
+    ///         Status = "online",
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Dcdn.Inputs.IpaDomainSourceArgs
     ///             {
-    ///                 Content = "1.1.1.1",
+    ///                 Content = "www.alicloud-provider.cn",
     ///                 Port = 80,
     ///                 Priority = "20",
-    ///                 Type = "ipaddr",
+    ///                 Type = "domain",
     ///                 Weight = 10,
     ///             },
     ///         },
-    ///         Scope = "overseas",
-    ///         Status = "online",
     ///     });
     /// 
     /// });
@@ -85,7 +84,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> Scope { get; private set; } = null!;
 
         /// <summary>
-        /// Sources. See the following `Block sources`.
+        /// Sources. See `sources` below.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.IpaDomainSource>> Sources { get; private set; } = null!;
@@ -164,7 +163,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.IpaDomainSourceArgs>? _sources;
 
         /// <summary>
-        /// Sources. See the following `Block sources`.
+        /// Sources. See `sources` below.
         /// </summary>
         public InputList<Inputs.IpaDomainSourceArgs> Sources
         {
@@ -208,7 +207,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.IpaDomainSourceGetArgs>? _sources;
 
         /// <summary>
-        /// Sources. See the following `Block sources`.
+        /// Sources. See `sources` below.
         /// </summary>
         public InputList<Inputs.IpaDomainSourceGetArgs> Sources
         {

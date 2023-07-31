@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules).
  *
- * > **NOTE:** Available in v1.201.0+.
+ * > **NOTE:** Available since v1.201.0.
  *
  * ## Example Usage
  *
@@ -21,15 +21,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultWafPolicy = new alicloud.dcdn.WafPolicy("defaultWafPolicy", {
- *     defenseScene: "custom_acl",
- *     policyName: _var.name,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const exampleWafPolicy = new alicloud.dcdn.WafPolicy("exampleWafPolicy", {
+ *     defenseScene: "waf_group",
+ *     policyName: name,
  *     policyType: "custom",
  *     status: "on",
  * });
- * const defaultWafRule = new alicloud.dcdn.WafRule("defaultWafRule", {
- *     policyId: defaultWafPolicy.id,
- *     ruleName: _var.name,
+ * const exampleWafRule = new alicloud.dcdn.WafRule("exampleWafRule", {
+ *     policyId: exampleWafPolicy.id,
+ *     ruleName: name,
  *     conditions: [
  *         {
  *             key: "URI",
@@ -109,7 +111,7 @@ export class WafRule extends pulumi.CustomResource {
      */
     public readonly cnRegionList!: pulumi.Output<string | undefined>;
     /**
-     * Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
+     * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
      */
     public readonly conditions!: pulumi.Output<outputs.dcdn.WafRuleCondition[] | undefined>;
     /**
@@ -133,7 +135,7 @@ export class WafRule extends pulumi.CustomResource {
      */
     public readonly policyId!: pulumi.Output<string>;
     /**
-     * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See the following `Block RateLimit`.
+     * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
      */
     public readonly rateLimit!: pulumi.Output<outputs.dcdn.WafRuleRateLimit | undefined>;
     /**
@@ -243,7 +245,7 @@ export interface WafRuleState {
      */
     cnRegionList?: pulumi.Input<string>;
     /**
-     * Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
+     * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.dcdn.WafRuleCondition>[]>;
     /**
@@ -267,7 +269,7 @@ export interface WafRuleState {
      */
     policyId?: pulumi.Input<string>;
     /**
-     * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See the following `Block RateLimit`.
+     * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
      */
     rateLimit?: pulumi.Input<inputs.dcdn.WafRuleRateLimit>;
     /**
@@ -317,7 +319,7 @@ export interface WafRuleArgs {
      */
     cnRegionList?: pulumi.Input<string>;
     /**
-     * Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
+     * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.dcdn.WafRuleCondition>[]>;
     /**
@@ -333,7 +335,7 @@ export interface WafRuleArgs {
      */
     policyId: pulumi.Input<string>;
     /**
-     * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See the following `Block RateLimit`.
+     * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
      */
     rateLimit?: pulumi.Input<inputs.dcdn.WafRuleRateLimit>;
     /**

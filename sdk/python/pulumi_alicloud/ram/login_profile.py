@@ -166,6 +166,8 @@ class LoginProfile(pulumi.CustomResource):
         """
         Provides a RAM User Login Profile resource.
 
+        > **NOTE:** Available since v1.0.0+.
+
         ## Example Usage
 
         ```python
@@ -206,6 +208,8 @@ class LoginProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a RAM User Login Profile resource.
+
+        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 

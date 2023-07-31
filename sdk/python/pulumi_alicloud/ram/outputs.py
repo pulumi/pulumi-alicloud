@@ -29,9 +29,9 @@ class PolicyStatement(dict):
                  effect: str,
                  resources: Sequence[str]):
         """
-        :param Sequence[str] actions: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
-        :param str effect: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
-        :param Sequence[str] resources: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+        :param Sequence[str] actions: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+        :param str effect: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+        :param Sequence[str] resources: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
@@ -41,7 +41,7 @@ class PolicyStatement(dict):
     @pulumi.getter
     def actions(self) -> Sequence[str]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
         """
         return pulumi.get(self, "actions")
 
@@ -49,7 +49,7 @@ class PolicyStatement(dict):
     @pulumi.getter
     def effect(self) -> str:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
         """
         return pulumi.get(self, "effect")
 
@@ -57,7 +57,7 @@ class PolicyStatement(dict):
     @pulumi.getter
     def resources(self) -> Sequence[str]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
         return pulumi.get(self, "resources")
 
@@ -113,6 +113,7 @@ class GetPoliciesPolicyResult(dict):
         :param str default_version: Default version of the policy.
         :param str description: Description of the policy.
         :param str document: Policy document of the policy.
+        :param str id: ID of the policy.
         :param str name: Name of the policy.
         :param str policy_document: Policy document of the policy.
         :param str policy_name: Name of the policy.
@@ -178,6 +179,9 @@ class GetPoliciesPolicyResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        ID of the policy.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -247,9 +251,9 @@ class GetPolicyDocumentStatementResult(dict):
                  resources: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] actions: Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
-        :param Sequence['GetPolicyDocumentStatementConditionArgs'] conditions: Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        :param Sequence['GetPolicyDocumentStatementConditionArgs'] conditions: Specifies the condition that are required for a policy to take effect. See `condition` below.
         :param str effect: This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
-        :param Sequence['GetPolicyDocumentStatementPrincipalArgs'] principals: Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        :param Sequence['GetPolicyDocumentStatementPrincipalArgs'] principals: Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
         :param Sequence[str] resources: List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
         """
         pulumi.set(__self__, "actions", actions)
@@ -274,7 +278,7 @@ class GetPolicyDocumentStatementResult(dict):
     @pulumi.getter
     def conditions(self) -> Optional[Sequence['outputs.GetPolicyDocumentStatementConditionResult']]:
         """
-        Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        Specifies the condition that are required for a policy to take effect. See `condition` below.
         """
         return pulumi.get(self, "conditions")
 
@@ -290,7 +294,7 @@ class GetPolicyDocumentStatementResult(dict):
     @pulumi.getter
     def principals(self) -> Optional[Sequence['outputs.GetPolicyDocumentStatementPrincipalResult']]:
         """
-        Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
         """
         return pulumi.get(self, "principals")
 
@@ -550,7 +554,7 @@ class GetUsersUserResult(dict):
         """
         :param str create_date: Creation date of the user.
         :param str id: The original id is user's name, but it is user id in 1.37.0+.
-        :param str last_login_date: Last login date of the user. Removed from version 1.79.0.
+        :param str last_login_date: (Removed) Last login date of the user. Removed from version 1.79.0.
         :param str name: Name of the user.
         """
         pulumi.set(__self__, "create_date", create_date)
@@ -578,7 +582,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="lastLoginDate")
     def last_login_date(self) -> str:
         """
-        Last login date of the user. Removed from version 1.79.0.
+        (Removed) Last login date of the user. Removed from version 1.79.0.
         """
         return pulumi.get(self, "last_login_date")
 

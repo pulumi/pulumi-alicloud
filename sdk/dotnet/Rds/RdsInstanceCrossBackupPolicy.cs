@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// For information about RDS cross region backup settings and how to use them, see [What is cross region backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/modify-cross-region-backup-settings).
     /// 
-    /// &gt; **NOTE:** Available in 1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,11 +27,22 @@ namespace Pulumi.AliCloud.Rds
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "Rds";
-    ///     var name = config.Get("name") ?? "tf-testAccRdsCrossRegionBackupPolicy";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         Category = "HighAvailability",
+    ///     });
+    /// 
+    ///     var defaultInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         Category = "HighAvailability",
     ///     });
     /// 
     ///     var regions = AliCloud.Rds.GetCrossRegions.Invoke();
@@ -46,24 +57,26 @@ namespace Pulumi.AliCloud.Rds
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[5]?.Id),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
-    ///         DbInstanceStorageType = "local_ssd",
-    ///         InstanceType = "rds.mysql.c1.large",
-    ///         InstanceStorage = 10,
-    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceType = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         Category = "HighAvailability",
     ///         InstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         DbInstanceStorageType = "local_ssd",
     ///     });
     /// 
-    ///     var policy = new AliCloud.Rds.RdsInstanceCrossBackupPolicy("policy", new()
+    ///     var defaultRdsInstanceCrossBackupPolicy = new AliCloud.Rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy", new()
     ///     {
-    ///         InstanceId = instance.Id,
+    ///         InstanceId = defaultInstance.Id,
     ///         CrossBackupRegion = regions.Apply(getCrossRegionsResult =&gt; getCrossRegionsResult.Ids[0]),
     ///     });
     /// 

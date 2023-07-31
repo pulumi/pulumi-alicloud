@@ -122,14 +122,14 @@ public final class AccountPasswordPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+     * Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      * 
      */
     @Import(name="requireSymbols")
     private @Nullable Output<Boolean> requireSymbols;
 
     /**
-     * @return (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+     * @return Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      * 
      */
     public Optional<Output<Boolean>> requireSymbols() {
@@ -331,7 +331,7 @@ public final class AccountPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requireSymbols (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+         * @param requireSymbols Specifies if the occurrence of a special character in the password is mandatory. Default to true.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class AccountPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requireSymbols (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+         * @param requireSymbols Specifies if the occurrence of a special character in the password is mandatory. Default to true.
          * 
          * @return builder
          * 

@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
  * 
+ * &gt; **NOTE:** Available since v1.0.0+.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -132,7 +134,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+     * It has been deprecated since provider version 1.114.0 and `policy_document` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
@@ -143,7 +145,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output<String> document;
 
     /**
-     * @return It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+     * @return It has been deprecated since provider version 1.114.0 and `policy_document` instead.
      * 
      */
     public Output<String> document() {
@@ -164,7 +166,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
-     * It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+     * It has been deprecated since provider version 1.114.0 and `policy_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
@@ -175,7 +177,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+     * @return It has been deprecated since provider version 1.114.0 and `policy_name` instead.
      * 
      */
     public Output<String> name() {
@@ -224,7 +226,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rotateStrategy);
     }
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
      * 
      * @deprecated
      * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -235,7 +237,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output<List<PolicyStatement>> statements;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
      * 
      */
     public Output<List<PolicyStatement>> statements() {
@@ -256,7 +258,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      * 
      * @deprecated
      * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -267,7 +269,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> version;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      * 
      */
     public Output<Optional<String>> version() {

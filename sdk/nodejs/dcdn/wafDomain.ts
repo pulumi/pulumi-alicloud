@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/batch-configure-domain-name-protection).
  *
- * > **NOTE:** Available in v1.185.0+.
+ * > **NOTE:** Available since v1.185.0.
  *
  * ## Example Usage
  *
@@ -19,17 +19,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDomain = new alicloud.dcdn.Domain("defaultDomain", {
- *     domainName: _var.domain_name,
+ * const config = new pulumi.Config();
+ * const domainName = config.get("domainName") || "example.com";
+ * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
+ *     domainName: domainName,
+ *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",
  *         port: 80,
  *         priority: "20",
  *         type: "ipaddr",
+ *         weight: "10",
  *     }],
  * });
- * const defaultWafDomain = new alicloud.dcdn.WafDomain("defaultWafDomain", {
- *     domainName: defaultDomain.domainName,
+ * const exampleWafDomain = new alicloud.dcdn.WafDomain("exampleWafDomain", {
+ *     domainName: exampleDomain.domainName,
  *     clientIpTag: "X-Forwarded-For",
  * });
  * ```

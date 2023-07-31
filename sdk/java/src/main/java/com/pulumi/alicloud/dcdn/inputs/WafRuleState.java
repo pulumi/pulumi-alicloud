@@ -64,14 +64,14 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+     * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
      * 
      */
     @Import(name="conditions")
     private @Nullable Output<List<WafRuleConditionArgs>> conditions;
 
     /**
-     * @return Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+     * @return Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
      * 
      */
     public Optional<Output<List<WafRuleConditionArgs>>> conditions() {
@@ -154,14 +154,14 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See the following `Block RateLimit`.
+     * The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
      * 
      */
     @Import(name="rateLimit")
     private @Nullable Output<WafRuleRateLimitArgs> rateLimit;
 
     /**
-     * @return The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See the following `Block RateLimit`.
+     * @return The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
      * 
      */
     public Optional<Output<WafRuleRateLimitArgs>> rateLimit() {
@@ -377,7 +377,7 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+         * @param conditions Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+         * @param conditions Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+         * @param conditions Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rateLimit The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See the following `Block RateLimit`.
+         * @param rateLimit The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rateLimit The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See the following `Block RateLimit`.
+         * @param rateLimit The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
          * 
          * @return builder
          * 

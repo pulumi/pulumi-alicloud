@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/createroutine).
  *
- * > **NOTE:** Available in v1.201.0+.
+ * > **NOTE:** Available since v1.201.0.
  *
  * ## Example Usage
  *
@@ -21,19 +21,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const _default = new alicloud.dcdn.Er("default", {
- *     description: "tf-example-description",
+ *     erName: name,
+ *     description: name,
  *     envConf: {
- *         production: {
- *             allowedHosts: ["example.com"],
- *             specName: "5ms",
- *         },
  *         staging: {
- *             allowedHosts: ["example.com"],
  *             specName: "5ms",
+ *             allowedHosts: ["example.com"],
+ *         },
+ *         production: {
+ *             specName: "5ms",
+ *             allowedHosts: ["example.com"],
  *         },
  *     },
- *     erName: "tf-example-name",
  * });
  * ```
  *
@@ -78,7 +80,7 @@ export class Er extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The configurations of the specified environment. See the following `Block envConf`.
+     * The configurations of the specified environment. See `envConf` below.
      */
     public readonly envConf!: pulumi.Output<outputs.dcdn.ErEnvConf>;
     /**
@@ -125,7 +127,7 @@ export interface ErState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The configurations of the specified environment. See the following `Block envConf`.
+     * The configurations of the specified environment. See `envConf` below.
      */
     envConf?: pulumi.Input<inputs.dcdn.ErEnvConf>;
     /**
@@ -143,7 +145,7 @@ export interface ErArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The configurations of the specified environment. See the following `Block envConf`.
+     * The configurations of the specified environment. See `envConf` below.
      */
     envConf?: pulumi.Input<inputs.dcdn.ErEnvConf>;
     /**

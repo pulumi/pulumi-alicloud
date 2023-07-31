@@ -21,14 +21,20 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         /// </summary>
         public readonly string? Category;
+        /// <summary>
+        /// The device of the data disks.
+        /// </summary>
         public readonly string? Device;
         /// <summary>
         /// Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
         /// </summary>
         public readonly string? Encrypted;
+        /// <summary>
+        /// The id of the kms key.
+        /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// The name of the data disks.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -39,6 +45,9 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The size of a data disk, at least 40. Unit: GiB.
         /// </summary>
         public readonly string? Size;
+        /// <summary>
+        /// The id of snapshot.
+        /// </summary>
         public readonly string? SnapshotId;
 
         [OutputConstructor]

@@ -168,7 +168,7 @@ class SamlProvider(pulumi.CustomResource):
 
         For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
 
-        > **NOTE:** Available in v1.114.0+.
+        > **NOTE:** Available since v1.114.0+.
 
         ## Example Usage
 
@@ -181,7 +181,7 @@ class SamlProvider(pulumi.CustomResource):
         example = alicloud.ram.SamlProvider("example",
             description="For Terraform Test",
             encodedsaml_metadata_document="your encodedsaml metadata document",
-            saml_provider_name="tf-testAcc")
+            saml_provider_name="terraform-example")
         ```
 
         ## Import
@@ -209,7 +209,7 @@ class SamlProvider(pulumi.CustomResource):
 
         For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
 
-        > **NOTE:** Available in v1.114.0+.
+        > **NOTE:** Available since v1.114.0+.
 
         ## Example Usage
 
@@ -222,7 +222,7 @@ class SamlProvider(pulumi.CustomResource):
         example = alicloud.ram.SamlProvider("example",
             description="For Terraform Test",
             encodedsaml_metadata_document="your encodedsaml metadata document",
-            saml_provider_name="tf-testAcc")
+            saml_provider_name="terraform-example")
         ```
 
         ## Import

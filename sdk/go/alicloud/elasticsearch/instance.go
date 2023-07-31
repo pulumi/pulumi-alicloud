@@ -12,56 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Elasticsearch instance resource. It contains data nodes, dedicated master node(optional) and etc. It can be associated with private IP whitelists and kibana IP whitelist.
-//
-// > **NOTE:** Only one operation is supported in a request. So if `dataNodeSpec` and `dataNodeDiskSize` are both changed, system will respond error.
-//
-// > **NOTE:** At present, `version` can not be modified once instance has been created.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/elasticsearch"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := elasticsearch.NewInstance(ctx, "instance", &elasticsearch.InstanceArgs{
-//				ClientNodeAmount:   pulumi.Int(2),
-//				ClientNodeSpec:     pulumi.String("elasticsearch.sn2ne.large"),
-//				DataNodeAmount:     pulumi.Int(2),
-//				DataNodeDiskSize:   pulumi.Int(20),
-//				DataNodeDiskType:   pulumi.String("cloud_ssd"),
-//				DataNodeSpec:       pulumi.String("elasticsearch.sn2ne.large"),
-//				Description:        pulumi.String("description"),
-//				InstanceChargeType: pulumi.String("PostPaid"),
-//				Password:           pulumi.String("Your password"),
-//				Protocol:           pulumi.String("HTTPS"),
-//				Tags: pulumi.AnyMap{
-//					"key1": pulumi.Any("value1"),
-//					"key2": pulumi.Any("value2"),
-//				},
-//				Version:   pulumi.String("5.5.3_with_X-Pack"),
-//				VswitchId: pulumi.String("some vswitch id"),
-//				ZoneCount: pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Elasticsearch can be imported using the id, e.g.
@@ -74,6 +24,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	ClientNodeAmount pulumi.IntPtrOutput `pulumi:"clientNodeAmount"`
 	// The client node spec. If specified, client node will be created.
@@ -82,6 +34,8 @@ type Instance struct {
 	DataNodeAmount pulumi.IntOutput `pulumi:"dataNodeAmount"`
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted pulumi.BoolPtrOutput `pulumi:"dataNodeDiskEncrypted"`
+	// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+	DataNodeDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"dataNodeDiskPerformanceLevel"`
 	// The single data node storage space.
 	DataNodeDiskSize pulumi.IntOutput `pulumi:"dataNodeDiskSize"`
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
@@ -110,10 +64,12 @@ type Instance struct {
 	KibanaPrivateWhitelists pulumi.StringArrayOutput `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayOutput `pulumi:"kibanaWhitelists"`
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+	MasterNodeDiskType pulumi.StringPtrOutput `pulumi:"masterNodeDiskType"`
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec pulumi.StringPtrOutput `pulumi:"masterNodeSpec"`
 	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
@@ -126,21 +82,23 @@ type Instance struct {
 	PrivateWhitelists pulumi.StringArrayOutput `pulumi:"privateWhitelists"`
 	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
-	// (Available in 1.197.0+) Instance connection public domain.
+	// Instance connection public domain.
 	PublicDomain pulumi.StringOutput `pulumi:"publicDomain"`
-	// (Available in 1.197.0+) Instance connection public port.
+	// Instance connection public port.
 	PublicPort pulumi.IntOutput `pulumi:"publicPort"`
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
-	// The Id of resource group which the Elasticsearch instance belongs.
+	// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+	RenewStatus pulumi.StringPtrOutput `pulumi:"renewStatus"`
+	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+	RenewalDurationUnit pulumi.StringPtrOutput `pulumi:"renewalDurationUnit"`
+	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
 	SettingConfig pulumi.MapOutput `pulumi:"settingConfig"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -205,6 +163,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	ClientNodeAmount *int `pulumi:"clientNodeAmount"`
 	// The client node spec. If specified, client node will be created.
@@ -213,6 +173,8 @@ type instanceState struct {
 	DataNodeAmount *int `pulumi:"dataNodeAmount"`
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted *bool `pulumi:"dataNodeDiskEncrypted"`
+	// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+	DataNodeDiskPerformanceLevel *string `pulumi:"dataNodeDiskPerformanceLevel"`
 	// The single data node storage space.
 	DataNodeDiskSize *int `pulumi:"dataNodeDiskSize"`
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
@@ -241,10 +203,12 @@ type instanceState struct {
 	KibanaPrivateWhitelists []string `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists []string `pulumi:"kibanaWhitelists"`
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+	MasterNodeDiskType *string `pulumi:"masterNodeDiskType"`
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec *string `pulumi:"masterNodeSpec"`
 	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
@@ -257,21 +221,23 @@ type instanceState struct {
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
 	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
 	Protocol *string `pulumi:"protocol"`
-	// (Available in 1.197.0+) Instance connection public domain.
+	// Instance connection public domain.
 	PublicDomain *string `pulumi:"publicDomain"`
-	// (Available in 1.197.0+) Instance connection public port.
+	// Instance connection public port.
 	PublicPort *int `pulumi:"publicPort"`
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
-	// The Id of resource group which the Elasticsearch instance belongs.
+	// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+	RenewStatus *string `pulumi:"renewStatus"`
+	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
+	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
 	SettingConfig map[string]interface{} `pulumi:"settingConfig"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version *string `pulumi:"version"`
@@ -282,6 +248,8 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+	AutoRenewDuration pulumi.IntPtrInput
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	ClientNodeAmount pulumi.IntPtrInput
 	// The client node spec. If specified, client node will be created.
@@ -290,6 +258,8 @@ type InstanceState struct {
 	DataNodeAmount pulumi.IntPtrInput
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted pulumi.BoolPtrInput
+	// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+	DataNodeDiskPerformanceLevel pulumi.StringPtrInput
 	// The single data node storage space.
 	DataNodeDiskSize pulumi.IntPtrInput
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
@@ -318,10 +288,12 @@ type InstanceState struct {
 	KibanaPrivateWhitelists pulumi.StringArrayInput
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayInput
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
+	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+	MasterNodeDiskType pulumi.StringPtrInput
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec pulumi.StringPtrInput
 	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
@@ -334,21 +306,23 @@ type InstanceState struct {
 	PrivateWhitelists pulumi.StringArrayInput
 	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
 	Protocol pulumi.StringPtrInput
-	// (Available in 1.197.0+) Instance connection public domain.
+	// Instance connection public domain.
 	PublicDomain pulumi.StringPtrInput
-	// (Available in 1.197.0+) Instance connection public port.
+	// Instance connection public port.
 	PublicPort pulumi.IntPtrInput
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists pulumi.StringArrayInput
-	// The Id of resource group which the Elasticsearch instance belongs.
+	// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+	RenewStatus pulumi.StringPtrInput
+	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+	RenewalDurationUnit pulumi.StringPtrInput
+	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
 	SettingConfig pulumi.MapInput
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags pulumi.MapInput
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version pulumi.StringPtrInput
@@ -363,6 +337,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	ClientNodeAmount *int `pulumi:"clientNodeAmount"`
 	// The client node spec. If specified, client node will be created.
@@ -371,6 +347,8 @@ type instanceArgs struct {
 	DataNodeAmount int `pulumi:"dataNodeAmount"`
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted *bool `pulumi:"dataNodeDiskEncrypted"`
+	// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+	DataNodeDiskPerformanceLevel *string `pulumi:"dataNodeDiskPerformanceLevel"`
 	// The single data node storage space.
 	DataNodeDiskSize int `pulumi:"dataNodeDiskSize"`
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
@@ -393,10 +371,12 @@ type instanceArgs struct {
 	KibanaPrivateWhitelists []string `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists []string `pulumi:"kibanaWhitelists"`
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+	MasterNodeDiskType *string `pulumi:"masterNodeDiskType"`
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec *string `pulumi:"masterNodeSpec"`
 	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
@@ -409,13 +389,15 @@ type instanceArgs struct {
 	Protocol *string `pulumi:"protocol"`
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
-	// The Id of resource group which the Elasticsearch instance belongs.
+	// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+	RenewStatus *string `pulumi:"renewStatus"`
+	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
+	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
 	SettingConfig map[string]interface{} `pulumi:"settingConfig"`
 	// A mapping of tags to assign to the resource.
-	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version string `pulumi:"version"`
@@ -427,6 +409,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+	AutoRenewDuration pulumi.IntPtrInput
 	// The Elasticsearch cluster's client node quantity, between 2 and 25.
 	ClientNodeAmount pulumi.IntPtrInput
 	// The client node spec. If specified, client node will be created.
@@ -435,6 +419,8 @@ type InstanceArgs struct {
 	DataNodeAmount pulumi.IntInput
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted pulumi.BoolPtrInput
+	// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+	DataNodeDiskPerformanceLevel pulumi.StringPtrInput
 	// The single data node storage space.
 	DataNodeDiskSize pulumi.IntInput
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
@@ -457,10 +443,12 @@ type InstanceArgs struct {
 	KibanaPrivateWhitelists pulumi.StringArrayInput
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayInput
-	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
+	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+	MasterNodeDiskType pulumi.StringPtrInput
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec pulumi.StringPtrInput
 	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
@@ -473,13 +461,15 @@ type InstanceArgs struct {
 	Protocol pulumi.StringPtrInput
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists pulumi.StringArrayInput
-	// The Id of resource group which the Elasticsearch instance belongs.
+	// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+	RenewStatus pulumi.StringPtrInput
+	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+	RenewalDurationUnit pulumi.StringPtrInput
+	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
 	SettingConfig pulumi.MapInput
 	// A mapping of tags to assign to the resource.
-	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags pulumi.MapInput
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version pulumi.StringInput
@@ -576,6 +566,11 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+func (o InstanceOutput) AutoRenewDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.AutoRenewDuration }).(pulumi.IntPtrOutput)
+}
+
 // The Elasticsearch cluster's client node quantity, between 2 and 25.
 func (o InstanceOutput) ClientNodeAmount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ClientNodeAmount }).(pulumi.IntPtrOutput)
@@ -594,6 +589,11 @@ func (o InstanceOutput) DataNodeAmount() pulumi.IntOutput {
 // If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 func (o InstanceOutput) DataNodeDiskEncrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DataNodeDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+func (o InstanceOutput) DataNodeDiskPerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DataNodeDiskPerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
 // The single data node storage space.
@@ -666,7 +666,7 @@ func (o InstanceOutput) KibanaWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.KibanaWhitelists }).(pulumi.StringArrayOutput)
 }
 
-// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
 }
@@ -674,6 +674,11 @@ func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 func (o InstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+func (o InstanceOutput) MasterNodeDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MasterNodeDiskType }).(pulumi.StringPtrOutput)
 }
 
 // The dedicated master node spec. If specified, dedicated master node will be created.
@@ -706,12 +711,12 @@ func (o InstanceOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// (Available in 1.197.0+) Instance connection public domain.
+// Instance connection public domain.
 func (o InstanceOutput) PublicDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PublicDomain }).(pulumi.StringOutput)
 }
 
-// (Available in 1.197.0+) Instance connection public port.
+// Instance connection public port.
 func (o InstanceOutput) PublicPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PublicPort }).(pulumi.IntOutput)
 }
@@ -721,7 +726,17 @@ func (o InstanceOutput) PublicWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.PublicWhitelists }).(pulumi.StringArrayOutput)
 }
 
-// The Id of resource group which the Elasticsearch instance belongs.
+// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+func (o InstanceOutput) RenewStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewStatus }).(pulumi.StringPtrOutput)
+}
+
+// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+func (o InstanceOutput) RenewalDurationUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalDurationUnit }).(pulumi.StringPtrOutput)
+}
+
+// The ID of resource group which the Elasticsearch instance belongs.
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -737,8 +752,6 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 func (o InstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvnamespace).
  * 
- * &gt; **NOTE:** Available in v1.198.0+.
+ * &gt; **NOTE:** Available since v1.198.0.
  * 
  * ## Example Usage
  * 
@@ -44,9 +44,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var default_ = new KvNamespace(&#34;default&#34;, KvNamespaceArgs.builder()        
- *             .description(&#34;wkmtest&#34;)
- *             .namespace(var_.namespace())
+ *             .description(name)
+ *             .namespace(name)
  *             .build());
  * 
  *     }

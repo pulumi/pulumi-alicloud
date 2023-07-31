@@ -23,7 +23,7 @@ class ErArgs:
         The set of arguments for constructing a Er resource.
         :param pulumi.Input[str] er_name: The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
         :param pulumi.Input[str] description: Routine The description of the routine.
-        :param pulumi.Input['ErEnvConfArgs'] env_conf: The configurations of the specified environment. See the following `Block env_conf`.
+        :param pulumi.Input['ErEnvConfArgs'] env_conf: The configurations of the specified environment. See `env_conf` below.
         """
         pulumi.set(__self__, "er_name", er_name)
         if description is not None:
@@ -59,7 +59,7 @@ class ErArgs:
     @pulumi.getter(name="envConf")
     def env_conf(self) -> Optional[pulumi.Input['ErEnvConfArgs']]:
         """
-        The configurations of the specified environment. See the following `Block env_conf`.
+        The configurations of the specified environment. See `env_conf` below.
         """
         return pulumi.get(self, "env_conf")
 
@@ -77,7 +77,7 @@ class _ErState:
         """
         Input properties used for looking up and filtering Er resources.
         :param pulumi.Input[str] description: Routine The description of the routine.
-        :param pulumi.Input['ErEnvConfArgs'] env_conf: The configurations of the specified environment. See the following `Block env_conf`.
+        :param pulumi.Input['ErEnvConfArgs'] env_conf: The configurations of the specified environment. See `env_conf` below.
         :param pulumi.Input[str] er_name: The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
         """
         if description is not None:
@@ -103,7 +103,7 @@ class _ErState:
     @pulumi.getter(name="envConf")
     def env_conf(self) -> Optional[pulumi.Input['ErEnvConfArgs']]:
         """
-        The configurations of the specified environment. See the following `Block env_conf`.
+        The configurations of the specified environment. See `env_conf` below.
         """
         return pulumi.get(self, "env_conf")
 
@@ -138,7 +138,7 @@ class Er(pulumi.CustomResource):
 
         For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/createroutine).
 
-        > **NOTE:** Available in v1.201.0+.
+        > **NOTE:** Available since v1.201.0.
 
         ## Example Usage
 
@@ -148,19 +148,23 @@ class Er(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default = alicloud.dcdn.Er("default",
-            description="tf-example-description",
+            er_name=name,
+            description=name,
             env_conf=alicloud.dcdn.ErEnvConfArgs(
-                production=alicloud.dcdn.ErEnvConfProductionArgs(
-                    allowed_hosts=["example.com"],
-                    spec_name="5ms",
-                ),
                 staging=alicloud.dcdn.ErEnvConfStagingArgs(
-                    allowed_hosts=["example.com"],
                     spec_name="5ms",
+                    allowed_hosts=["example.com"],
                 ),
-            ),
-            er_name="tf-example-name")
+                production=alicloud.dcdn.ErEnvConfProductionArgs(
+                    spec_name="5ms",
+                    allowed_hosts=["example.com"],
+                ),
+            ))
         ```
 
         ## Import
@@ -174,7 +178,7 @@ class Er(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Routine The description of the routine.
-        :param pulumi.Input[pulumi.InputType['ErEnvConfArgs']] env_conf: The configurations of the specified environment. See the following `Block env_conf`.
+        :param pulumi.Input[pulumi.InputType['ErEnvConfArgs']] env_conf: The configurations of the specified environment. See `env_conf` below.
         :param pulumi.Input[str] er_name: The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
         """
         ...
@@ -188,7 +192,7 @@ class Er(pulumi.CustomResource):
 
         For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/createroutine).
 
-        > **NOTE:** Available in v1.201.0+.
+        > **NOTE:** Available since v1.201.0.
 
         ## Example Usage
 
@@ -198,19 +202,23 @@ class Er(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default = alicloud.dcdn.Er("default",
-            description="tf-example-description",
+            er_name=name,
+            description=name,
             env_conf=alicloud.dcdn.ErEnvConfArgs(
-                production=alicloud.dcdn.ErEnvConfProductionArgs(
-                    allowed_hosts=["example.com"],
-                    spec_name="5ms",
-                ),
                 staging=alicloud.dcdn.ErEnvConfStagingArgs(
-                    allowed_hosts=["example.com"],
                     spec_name="5ms",
+                    allowed_hosts=["example.com"],
                 ),
-            ),
-            er_name="tf-example-name")
+                production=alicloud.dcdn.ErEnvConfProductionArgs(
+                    spec_name="5ms",
+                    allowed_hosts=["example.com"],
+                ),
+            ))
         ```
 
         ## Import
@@ -274,7 +282,7 @@ class Er(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Routine The description of the routine.
-        :param pulumi.Input[pulumi.InputType['ErEnvConfArgs']] env_conf: The configurations of the specified environment. See the following `Block env_conf`.
+        :param pulumi.Input[pulumi.InputType['ErEnvConfArgs']] env_conf: The configurations of the specified environment. See `env_conf` below.
         :param pulumi.Input[str] er_name: The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -298,7 +306,7 @@ class Er(pulumi.CustomResource):
     @pulumi.getter(name="envConf")
     def env_conf(self) -> pulumi.Output['outputs.ErEnvConf']:
         """
-        The configurations of the specified environment. See the following `Block env_conf`.
+        The configurations of the specified environment. See `env_conf` below.
         """
         return pulumi.get(self, "env_conf")
 

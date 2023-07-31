@@ -10,11 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
+    /// Provides an RDS connection resource to allocate an Internet connection string for RDS instance, see [What is DB Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocateinstancepublicconnection).
     /// 
     /// &gt; **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
     ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-    /// **NOTE:** Available since v1.5.0+.
+    /// 
+    /// &gt; **NOTE:** Available since v1.5.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,11 +28,11 @@ namespace Pulumi.AliCloud.Rds
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "Rds";
-    ///     var name = config.Get("name") ?? "dbconnectionbasic";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
@@ -48,7 +49,7 @@ namespace Pulumi.AliCloud.Rds
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
@@ -58,9 +59,9 @@ namespace Pulumi.AliCloud.Rds
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var foo = new AliCloud.Rds.Connection("foo", new()
+    ///     var defaultConnection = new AliCloud.Rds.Connection("defaultConnection", new()
     ///     {
-    ///         InstanceId = instance.Id,
+    ///         InstanceId = defaultInstance.Id,
     ///         ConnectionPrefix = "testabc",
     ///     });
     /// 

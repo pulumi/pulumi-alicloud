@@ -53,236 +53,28 @@ public final class RamFunctions {
     public static CompletableFuture<GetAccountAliasResult> getAccountAliasPlain(GetAccountAliasPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getAccountAlias:getAccountAlias", TypeShape.of(GetAccountAliasResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * This data source provides an alias for the Alibaba Cloud account.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
-     *             .outputFile(&#34;alias.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetAccountAliasesResult> getAccountAliases() {
         return getAccountAliases(GetAccountAliasesArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * This data source provides an alias for the Alibaba Cloud account.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
-     *             .outputFile(&#34;alias.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetAccountAliasesResult> getAccountAliasesPlain() {
         return getAccountAliasesPlain(GetAccountAliasesPlainArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * This data source provides an alias for the Alibaba Cloud account.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
-     *             .outputFile(&#34;alias.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetAccountAliasesResult> getAccountAliases(GetAccountAliasesArgs args) {
         return getAccountAliases(args, InvokeOptions.Empty);
     }
-    /**
-     * This data source provides an alias for the Alibaba Cloud account.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
-     *             .outputFile(&#34;alias.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetAccountAliasesResult> getAccountAliasesPlain(GetAccountAliasesPlainArgs args) {
         return getAccountAliasesPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * This data source provides an alias for the Alibaba Cloud account.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
-     *             .outputFile(&#34;alias.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetAccountAliasesResult> getAccountAliases(GetAccountAliasesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ram/getAccountAliases:getAccountAliases", TypeShape.of(GetAccountAliasesResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * This data source provides an alias for the Alibaba Cloud account.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
-     *             .outputFile(&#34;alias.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetAccountAliasesResult> getAccountAliasesPlain(GetAccountAliasesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getAccountAliases:getAccountAliases", TypeShape.of(GetAccountAliasesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -324,6 +116,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -363,6 +157,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -404,6 +200,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -443,6 +241,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -484,6 +284,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -523,6 +325,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -565,6 +369,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -605,6 +411,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -647,6 +455,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -687,6 +497,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -729,6 +541,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -770,7 +584,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0+.
      * 
      * ## Example Usage
      * ### Basic Example
@@ -809,7 +623,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test&#34;)
+     *             .policyName(&#34;tf-example&#34;)
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -907,7 +721,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyName(&#34;tf-example-condition&#34;)
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1153,7 +967,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0+.
      * 
      * ## Example Usage
      * ### Basic Example
@@ -1192,7 +1006,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test&#34;)
+     *             .policyName(&#34;tf-example&#34;)
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1290,7 +1104,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyName(&#34;tf-example-condition&#34;)
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1536,7 +1350,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0+.
      * 
      * ## Example Usage
      * ### Basic Example
@@ -1575,7 +1389,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test&#34;)
+     *             .policyName(&#34;tf-example&#34;)
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1673,7 +1487,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyName(&#34;tf-example-condition&#34;)
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1919,7 +1733,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0+.
      * 
      * ## Example Usage
      * ### Basic Example
@@ -1958,7 +1772,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test&#34;)
+     *             .policyName(&#34;tf-example&#34;)
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2056,7 +1870,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyName(&#34;tf-example-condition&#34;)
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2302,7 +2116,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0+.
      * 
      * ## Example Usage
      * ### Basic Example
@@ -2341,7 +2155,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test&#34;)
+     *             .policyName(&#34;tf-example&#34;)
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2439,7 +2253,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyName(&#34;tf-example-condition&#34;)
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2685,7 +2499,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0+.
      * 
      * ## Example Usage
      * ### Basic Example
@@ -2724,7 +2538,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test&#34;)
+     *             .policyName(&#34;tf-example&#34;)
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2822,7 +2636,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyName(&#34;tf-example-condition&#34;)
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -3068,6 +2882,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3108,6 +2924,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -3150,6 +2968,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3190,6 +3010,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -3232,6 +3054,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3272,6 +3096,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -3314,7 +3140,7 @@ public final class RamFunctions {
     /**
      * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.114.0+.
+     * &gt; **NOTE:** Available since v1.114.0+.
      * 
      * ## Example Usage
      * 
@@ -3357,7 +3183,7 @@ public final class RamFunctions {
     /**
      * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.114.0+.
+     * &gt; **NOTE:** Available since v1.114.0+.
      * 
      * ## Example Usage
      * 
@@ -3400,7 +3226,7 @@ public final class RamFunctions {
     /**
      * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.114.0+.
+     * &gt; **NOTE:** Available since v1.114.0+.
      * 
      * ## Example Usage
      * 
@@ -3443,7 +3269,7 @@ public final class RamFunctions {
     /**
      * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.114.0+.
+     * &gt; **NOTE:** Available since v1.114.0+.
      * 
      * ## Example Usage
      * 
@@ -3486,7 +3312,7 @@ public final class RamFunctions {
     /**
      * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.114.0+.
+     * &gt; **NOTE:** Available since v1.114.0+.
      * 
      * ## Example Usage
      * 
@@ -3529,7 +3355,7 @@ public final class RamFunctions {
     /**
      * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.114.0+.
+     * &gt; **NOTE:** Available since v1.114.0+.
      * 
      * ## Example Usage
      * 
@@ -3571,6 +3397,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -3614,6 +3442,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3655,6 +3485,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java
@@ -3698,6 +3530,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3740,6 +3574,8 @@ public final class RamFunctions {
     /**
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3781,6 +3617,8 @@ public final class RamFunctions {
     }
     /**
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
      * 
      * ## Example Usage
      * ```java

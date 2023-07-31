@@ -33,14 +33,14 @@ public final class GetPolicyDocumentArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Statement of the RAM policy document. See the following `Block statement`.
+     * Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
      * 
      */
     @Import(name="statements")
     private @Nullable Output<List<GetPolicyDocumentStatementArgs>> statements;
 
     /**
-     * @return Statement of the RAM policy document. See the following `Block statement`.
+     * @return Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
      * 
      */
     public Optional<Output<List<GetPolicyDocumentStatementArgs>>> statements() {
@@ -110,7 +110,7 @@ public final class GetPolicyDocumentArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param statements Statement of the RAM policy document. See the following `Block statement`.
+         * @param statements Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GetPolicyDocumentArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param statements Statement of the RAM policy document. See the following `Block statement`.
+         * @param statements Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetPolicyDocumentArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param statements Statement of the RAM policy document. See the following `Block statement`.
+         * @param statements Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
          * 
          * @return builder
          * 

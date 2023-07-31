@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkv).
  * 
- * &gt; **NOTE:** Available in v1.198.0+.
+ * &gt; **NOTE:** Available since v1.198.0.
  * 
  * ## Example Usage
  * 
@@ -29,8 +29,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.dcdn.DcdnFunctions;
- * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
  * import com.pulumi.alicloud.dcdn.KvNamespace;
  * import com.pulumi.alicloud.dcdn.KvNamespaceArgs;
  * import com.pulumi.alicloud.dcdn.Kv;
@@ -48,18 +46,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultKvAccount = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
- *             .status(&#34;online&#34;)
- *             .build());
- * 
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var defaultKvNamespace = new KvNamespace(&#34;defaultKvNamespace&#34;, KvNamespaceArgs.builder()        
- *             .description(&#34;wkmtest&#34;)
- *             .namespace(var_.name())
+ *             .description(name)
+ *             .namespace(name)
  *             .build());
  * 
  *         var defaultKv = new Kv(&#34;defaultKv&#34;, KvArgs.builder()        
- *             .value(&#34;testvalue&#34;)
- *             .key(var_.name())
+ *             .value(&#34;example-value&#34;)
+ *             .key(name)
  *             .namespace(defaultKvNamespace.namespace())
  *             .build());
  * 
@@ -93,28 +89,28 @@ public class Kv extends com.pulumi.resources.CustomResource {
         return this.key;
     }
     /**
-     * The name specified when the customer calls PutDcdnKvNamespace
+     * The name specified when the customer calls PutDcdnKvNamespace.
      * 
      */
     @Export(name="namespace", type=String.class, parameters={})
     private Output<String> namespace;
 
     /**
-     * @return The name specified when the customer calls PutDcdnKvNamespace
+     * @return The name specified when the customer calls PutDcdnKvNamespace.
      * 
      */
     public Output<String> namespace() {
         return this.namespace;
     }
     /**
-     * The content of key, up to 2M(2*1000*1000)
+     * The content of key, up to 2M(2*1000*1000).
      * 
      */
     @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**
-     * @return The content of key, up to 2M(2*1000*1000)
+     * @return The content of key, up to 2M(2*1000*1000).
      * 
      */
     public Output<String> value() {

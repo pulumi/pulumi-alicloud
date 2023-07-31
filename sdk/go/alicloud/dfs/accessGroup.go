@@ -16,7 +16,7 @@ import (
 //
 // For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -29,13 +29,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dfs.NewAccessGroup(ctx, "example", &dfs.AccessGroupArgs{
-//				AccessGroupName: pulumi.String("example_value"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
+//				AccessGroupName: pulumi.String(name),
 //				NetworkType:     pulumi.String("VPC"),
 //			})
 //			if err != nil {
