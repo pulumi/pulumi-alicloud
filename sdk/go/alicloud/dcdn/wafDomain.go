@@ -16,7 +16,7 @@ import (
 //
 // For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/batch-configure-domain-name-protection).
 //
-// > **NOTE:** Available in v1.185.0+.
+// > **NOTE:** Available since v1.185.0.
 //
 // ## Example Usage
 //
@@ -29,27 +29,35 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultDomain, err := dcdn.NewDomain(ctx, "defaultDomain", &dcdn.DomainArgs{
-//				DomainName: pulumi.Any(_var.Domain_name),
+//			cfg := config.New(ctx, "")
+//			domainName := "example.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
+//			exampleDomain, err := dcdn.NewDomain(ctx, "exampleDomain", &dcdn.DomainArgs{
+//				DomainName: pulumi.String(domainName),
+//				Scope:      pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{
 //						Content:  pulumi.String("1.1.1.1"),
 //						Port:     pulumi.Int(80),
 //						Priority: pulumi.String("20"),
 //						Type:     pulumi.String("ipaddr"),
+//						Weight:   pulumi.String("10"),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewWafDomain(ctx, "defaultWafDomain", &dcdn.WafDomainArgs{
-//				DomainName:  defaultDomain.DomainName,
+//			_, err = dcdn.NewWafDomain(ctx, "exampleWafDomain", &dcdn.WafDomainArgs{
+//				DomainName:  exampleDomain.DomainName,
 //				ClientIpTag: pulumi.String("X-Forwarded-For"),
 //			})
 //			if err != nil {

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.EipAnycast
     /// <summary>
     /// Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
     /// 
-    /// For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/).
+    /// For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
     /// 
-    /// &gt; **NOTE:** Available since v1.208.0.
+    /// &gt; **NOTE:** Available since v1.113.0.
     /// 
     /// ## Example Usage
     /// 
@@ -38,24 +38,6 @@ namespace Pulumi.AliCloud.EipAnycast
     ///         ServiceLocation = "international",
     ///         InternetChargeType = "PayByTraffic",
     ///         PaymentType = "PayAsYouGo",
-    ///         Tags = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "tagKey", "k1" },
-    ///                 { "tagValue", "v1" },
-    ///             },
-    ///             
-    ///             {
-    ///                 { "tagKey", "k2" },
-    ///                 { "tagValue", "v2" },
-    ///             },
-    ///             
-    ///             {
-    ///                 { "tagKey", "k3" },
-    ///                 { "tagValue", "v3" },
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });
@@ -107,6 +89,12 @@ namespace Pulumi.AliCloud.EipAnycast
         /// </summary>
         [Output("paymentType")]
         public Output<string?> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group to which the instance belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
@@ -203,6 +191,12 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
+        /// The ID of the resource group to which the instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         /// </summary>
         [Input("serviceLocation", required: true)]
@@ -263,6 +257,12 @@ namespace Pulumi.AliCloud.EipAnycast
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which the instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.

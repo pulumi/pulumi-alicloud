@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Dcdn
     /// <summary>
     /// Provides a DCDN Accelerated Domain resource.
     /// 
-    /// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/130632.htm)
+    /// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm)
     /// 
-    /// &gt; **NOTE:** Available in v1.131.0+.
+    /// &gt; **NOTE:** Available since v1.131.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,27 +28,28 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new Domain config.
-    ///     var domain = new AliCloud.Dcdn.Domain("domain", new()
+    ///     var config = new Config();
+    ///     var domainName = config.Get("domainName") ?? "example.com";
+    ///     var exampleDomain = new AliCloud.Dcdn.Domain("exampleDomain", new()
     ///     {
-    ///         DomainName = "mydomain.alicloud-provider.cn",
+    ///         DomainName = domainName,
     ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Dcdn.Inputs.DomainSourceArgs
     ///             {
     ///                 Content = "1.1.1.1",
-    ///                 Type = "ipaddr",
-    ///                 Priority = "20",
     ///                 Port = 80,
-    ///                 Weight = "15",
+    ///                 Priority = "20",
+    ///                 Type = "ipaddr",
+    ///                 Weight = "10",
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var config = new AliCloud.Dcdn.DomainConfig("config", new()
+    ///     var exampleDomainConfig = new AliCloud.Dcdn.DomainConfig("exampleDomainConfig", new()
     ///     {
-    ///         DomainName = domain.DomainName,
+    ///         DomainName = exampleDomain.DomainName,
     ///         FunctionName = "ip_allow_list_set",
     ///         FunctionArgs = new[]
     ///         {
@@ -87,7 +88,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The args of the domain config.
+        /// The args of the domain config.  See `function_args` below.
         /// </summary>
         [Output("functionArgs")]
         public Output<ImmutableArray<Outputs.DomainConfigFunctionArg>> FunctionArgs { get; private set; } = null!;
@@ -160,7 +161,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainConfigFunctionArgArgs>? _functionArgs;
 
         /// <summary>
-        /// The args of the domain config.
+        /// The args of the domain config.  See `function_args` below.
         /// </summary>
         public InputList<Inputs.DomainConfigFunctionArgArgs> FunctionArgs
         {
@@ -198,7 +199,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainConfigFunctionArgGetArgs>? _functionArgs;
 
         /// <summary>
-        /// The args of the domain config.
+        /// The args of the domain config.  See `function_args` below.
         /// </summary>
         public InputList<Inputs.DomainConfigFunctionArgGetArgs> FunctionArgs
         {

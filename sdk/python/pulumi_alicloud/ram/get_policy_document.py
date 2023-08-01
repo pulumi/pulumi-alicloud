@@ -92,7 +92,7 @@ def get_policy_document(output_file: Optional[str] = None,
     """
     This data source Generates a RAM policy document of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.184.0+.
+    > **NOTE:** Available since v1.184.0+.
 
     ## Example Usage
     ### Basic Example
@@ -111,7 +111,7 @@ def get_policy_document(output_file: Optional[str] = None,
             ],
         )])
     default = alicloud.ram.Policy("default",
-        policy_name="tf-test",
+        policy_name="tf-example",
         policy_document=basic_example.document,
         force=True)
     ```
@@ -171,7 +171,7 @@ def get_policy_document(output_file: Optional[str] = None,
             ),
         ])
     policy = alicloud.ram.Policy("policy",
-        policy_name="tf-test-condition",
+        policy_name="tf-example-condition",
         policy_document=multiple_condition.document,
         force=True)
     ```
@@ -261,7 +261,7 @@ def get_policy_document(output_file: Optional[str] = None,
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']] statements: Statement of the RAM policy document. See the following `Block statement`.
+    :param Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
     :param str version: Version of the RAM policy document. Valid value is `1`. Default value is `1`.
     """
     __args__ = dict()
@@ -287,7 +287,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
     """
     This data source Generates a RAM policy document of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.184.0+.
+    > **NOTE:** Available since v1.184.0+.
 
     ## Example Usage
     ### Basic Example
@@ -306,7 +306,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
             ],
         )])
     default = alicloud.ram.Policy("default",
-        policy_name="tf-test",
+        policy_name="tf-example",
         policy_document=basic_example.document,
         force=True)
     ```
@@ -366,7 +366,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
             ),
         ])
     policy = alicloud.ram.Policy("policy",
-        policy_name="tf-test-condition",
+        policy_name="tf-example-condition",
         policy_document=multiple_condition.document,
         force=True)
     ```
@@ -456,7 +456,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']] statements: Statement of the RAM policy document. See the following `Block statement`.
+    :param Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
     :param str version: Version of the RAM policy document. Valid value is `1`. Default value is `1`.
     """
     ...

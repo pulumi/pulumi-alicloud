@@ -5,98 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manage addon in Kubernetes Cluster.
+ * This resource will help you to manage addon in Kubernetes Cluster, see [What is kubernetes addon](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-install-a-component-in-an-ack-cluster).
  *
- * > **NOTE:** Available in 1.150.0+.
- * **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
+ * > **NOTE:** Available since v1.150.0.
  *
- * ## Example Usage
- *
- * **Create a managed cluster**
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-test";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
- *     cpuCoreCount: 2,
- *     memorySize: 4,
- *     kubernetesNodeRole: "Worker",
- * }));
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.1.0.0/21",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "10.1.1.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
- * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyPairName: name});
- * let defaultManagedKubernetes: alicloud.cs.ManagedKubernetes | undefined;
- * if (1 == true) {
- *     defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("defaultManagedKubernetes", {
- *         clusterSpec: "ack.pro.small",
- *         isEnterpriseSecurityGroup: true,
- *         workerNumber: 2,
- *         password: "Hello1234",
- *         podCidr: "172.20.0.0/16",
- *         serviceCidr: "172.21.0.0/20",
- *         workerVswitchIds: [defaultSwitch.id],
- *         workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
- *     });
- * }
- * ```
- * **Installing of addon**
- * When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
- * * If the addon already exists in the cluster and its version is the same as the specified version, it will be skipped and will not be reinstalled.
- * * If the addon already exists in the cluster and its version is different from the specified version, the addon will be upgraded.
- * * If the addon does not exist in the cluster, it will be installed.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ack_node_problem_detector = new alicloud.cs.KubernetesAddon("ack-node-problem-detector", {
- *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
- *     version: "1.2.7",
- * });
- * const nginxIngressController = new alicloud.cs.KubernetesAddon("nginxIngressController", {
- *     clusterId: _var.cluster_id,
- *     version: "v1.1.2-aliyun.2",
- *     config: JSON.stringify({
- *         CpuLimit: "",
- *         CpuRequest: "100m",
- *         EnableWebhook: true,
- *         HostNetwork: false,
- *         IngressSlbNetworkType: "internet",
- *         IngressSlbSpec: "slb.s2.small",
- *         MemoryLimit: "",
- *         MemoryRequest: "200Mi",
- *         NodeSelector: [],
- *     }),
- * });
- * ```
- *
- * **Upgrading of addon**
- * First, check the `nextVersion` field of the addon that can be upgraded to through the `.tfstate file`, then overwrite the `version` field with the value of `nextVersion` and apply.
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ack_node_problem_detector = new alicloud.cs.KubernetesAddon("ack-node-problem-detector", {
- *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
- *     version: "1.2.8",
- * });
- * // upgrade from 1.2.7 to 1.2.8
- * ```
+ * > **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
  *
  * ## Import
  *

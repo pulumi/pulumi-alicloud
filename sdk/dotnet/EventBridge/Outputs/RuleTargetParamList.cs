@@ -14,17 +14,22 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     public sealed class RuleTargetParamList
     {
         /// <summary>
-        /// The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+        /// The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
         /// </summary>
         public readonly string Form;
         /// <summary>
-        /// The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+        /// The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
         /// </summary>
         public readonly string ResourceKey;
         /// <summary>
         /// The template of param.
+        /// </summary>
+        public readonly string? Template;
+        /// <summary>
+        /// The value of param.
         /// 
         /// &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,13 +39,10 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// {
         /// });
         /// ```
+        /// 
         /// In order to fix the diff, from version 1.160.0,
         /// this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
         /// If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
-        /// </summary>
-        public readonly string? Template;
-        /// <summary>
-        /// The value of param.
         /// </summary>
         public readonly string? Value;
 

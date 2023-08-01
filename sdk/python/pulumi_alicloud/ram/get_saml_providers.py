@@ -71,6 +71,9 @@ class GetSamlProvidersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of SAML Provider names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -81,6 +84,9 @@ class GetSamlProvidersResult:
     @property
     @pulumi.getter
     def providers(self) -> Sequence['outputs.GetSamlProvidersProviderResult']:
+        """
+        A list of Ram Saml Providers. Each element contains the following attributes:
+        """
         return pulumi.get(self, "providers")
 
 
@@ -107,7 +113,7 @@ def get_saml_providers(enable_details: Optional[bool] = None,
     """
     This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.114.0+.
+    > **NOTE:** Available since v1.114.0+.
 
     ## Example Usage
 
@@ -155,7 +161,7 @@ def get_saml_providers_output(enable_details: Optional[pulumi.Input[Optional[boo
     """
     This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.114.0+.
+    > **NOTE:** Available since v1.114.0+.
 
     ## Example Usage
 

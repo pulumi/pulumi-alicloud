@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Last login date of the user. Removed from version 1.79.0.
+        /// (Removed) Last login date of the user. Removed from version 1.79.0.
         /// </summary>
         public readonly string LastLoginDate;
         /// <summary>

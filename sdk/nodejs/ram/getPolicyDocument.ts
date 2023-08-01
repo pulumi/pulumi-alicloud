@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source Generates a RAM policy document of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.184.0+.
+ * > **NOTE:** Available since v1.184.0+.
  *
  * ## Example Usage
  * ### Basic Example
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const _default = new alicloud.ram.Policy("default", {
- *     policyName: "tf-test",
+ *     policyName: "tf-example",
  *     policyDocument: basicExample.then(basicExample => basicExample.document),
  *     force: true,
  * });
@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * const policy = new alicloud.ram.Policy("policy", {
- *     policyName: "tf-test-condition",
+ *     policyName: "tf-example-condition",
  *     policyDocument: multipleCondition.then(multipleCondition => multipleCondition.document),
  *     force: true,
  * });
@@ -211,7 +211,7 @@ export interface GetPolicyDocumentArgs {
      */
     outputFile?: string;
     /**
-     * Statement of the RAM policy document. See the following `Block statement`.
+     * Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
      */
     statements?: inputs.ram.GetPolicyDocumentStatement[];
     /**
@@ -239,7 +239,7 @@ export interface GetPolicyDocumentResult {
 /**
  * This data source Generates a RAM policy document of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.184.0+.
+ * > **NOTE:** Available since v1.184.0+.
  *
  * ## Example Usage
  * ### Basic Example
@@ -260,7 +260,7 @@ export interface GetPolicyDocumentResult {
  *     }],
  * });
  * const _default = new alicloud.ram.Policy("default", {
- *     policyName: "tf-test",
+ *     policyName: "tf-example",
  *     policyDocument: basicExample.then(basicExample => basicExample.document),
  *     force: true,
  * });
@@ -323,7 +323,7 @@ export interface GetPolicyDocumentResult {
  *     ],
  * });
  * const policy = new alicloud.ram.Policy("policy", {
- *     policyName: "tf-test-condition",
+ *     policyName: "tf-example-condition",
  *     policyDocument: multipleCondition.then(multipleCondition => multipleCondition.document),
  *     force: true,
  * });
@@ -434,7 +434,7 @@ export interface GetPolicyDocumentOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Statement of the RAM policy document. See the following `Block statement`.
+     * Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
      */
     statements?: pulumi.Input<pulumi.Input<inputs.ram.GetPolicyDocumentStatementArgs>[]>;
     /**

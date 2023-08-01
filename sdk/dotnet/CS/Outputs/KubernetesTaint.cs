@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class KubernetesTaint
     {
+        /// <summary>
+        /// The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
+        /// </summary>
         public readonly string? Effect;
+        /// <summary>
+        /// The key of a taint.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// The key of a taint.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

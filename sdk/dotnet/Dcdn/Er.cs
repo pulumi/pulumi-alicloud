@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/createroutine).
     /// 
-    /// &gt; **NOTE:** Available in v1.201.0+.
+    /// &gt; **NOTE:** Available since v1.201.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,29 +28,31 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = new AliCloud.Dcdn.Er("default", new()
     ///     {
-    ///         Description = "tf-example-description",
+    ///         ErName = name,
+    ///         Description = name,
     ///         EnvConf = new AliCloud.Dcdn.Inputs.ErEnvConfArgs
     ///         {
-    ///             Production = new AliCloud.Dcdn.Inputs.ErEnvConfProductionArgs
-    ///             {
-    ///                 AllowedHosts = new[]
-    ///                 {
-    ///                     "example.com",
-    ///                 },
-    ///                 SpecName = "5ms",
-    ///             },
     ///             Staging = new AliCloud.Dcdn.Inputs.ErEnvConfStagingArgs
     ///             {
+    ///                 SpecName = "5ms",
     ///                 AllowedHosts = new[]
     ///                 {
     ///                     "example.com",
     ///                 },
+    ///             },
+    ///             Production = new AliCloud.Dcdn.Inputs.ErEnvConfProductionArgs
+    ///             {
     ///                 SpecName = "5ms",
+    ///                 AllowedHosts = new[]
+    ///                 {
+    ///                     "example.com",
+    ///                 },
     ///             },
     ///         },
-    ///         ErName = "tf-example-name",
     ///     });
     /// 
     /// });
@@ -74,7 +76,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of the specified environment. See the following `Block env_conf`.
+        /// The configurations of the specified environment. See `env_conf` below.
         /// </summary>
         [Output("envConf")]
         public Output<Outputs.ErEnvConf> EnvConf { get; private set; } = null!;
@@ -138,7 +140,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The configurations of the specified environment. See the following `Block env_conf`.
+        /// The configurations of the specified environment. See `env_conf` below.
         /// </summary>
         [Input("envConf")]
         public Input<Inputs.ErEnvConfArgs>? EnvConf { get; set; }
@@ -164,7 +166,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The configurations of the specified environment. See the following `Block env_conf`.
+        /// The configurations of the specified environment. See `env_conf` below.
         /// </summary>
         [Input("envConf")]
         public Input<Inputs.ErEnvConfGetArgs>? EnvConf { get; set; }

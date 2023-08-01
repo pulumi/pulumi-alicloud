@@ -16,24 +16,32 @@ class MountTargetArgs:
     def __init__(__self__, *,
                  file_system_id: pulumi.Input[str],
                  access_group_name: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MountTarget resource.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
         :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
+        :param pulumi.Input[str] network_type: mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
         :param pulumi.Input[str] security_group_id: The ID of security group.
         :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+        :param pulumi.Input[str] vpc_id: The ID of VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
         """
         pulumi.set(__self__, "file_system_id", file_system_id)
         if access_group_name is not None:
             pulumi.set(__self__, "access_group_name", access_group_name)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
@@ -62,6 +70,18 @@ class MountTargetArgs:
         pulumi.set(self, "access_group_name", value)
 
     @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -86,6 +106,18 @@ class MountTargetArgs:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -104,16 +136,20 @@ class _MountTargetState:
                  access_group_name: Optional[pulumi.Input[str]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  mount_target_domain: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MountTarget resources.
         :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
-        :param pulumi.Input[str] mount_target_domain: The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        :param pulumi.Input[str] mount_target_domain: The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+        :param pulumi.Input[str] network_type: mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
         :param pulumi.Input[str] security_group_id: The ID of security group.
         :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+        :param pulumi.Input[str] vpc_id: The ID of VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
         """
         if access_group_name is not None:
@@ -122,10 +158,14 @@ class _MountTargetState:
             pulumi.set(__self__, "file_system_id", file_system_id)
         if mount_target_domain is not None:
             pulumi.set(__self__, "mount_target_domain", mount_target_domain)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
@@ -157,13 +197,25 @@ class _MountTargetState:
     @pulumi.getter(name="mountTargetDomain")
     def mount_target_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
         """
         return pulumi.get(self, "mount_target_domain")
 
     @mount_target_domain.setter
     def mount_target_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_target_domain", value)
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -190,6 +242,18 @@ class _MountTargetState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -209,61 +273,21 @@ class MountTarget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a NAS Mount Target resource.
         For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 
-        > **NOTE**: Available in v1.34.0+.
-
-        > **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
-
-        > **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
-        and it only can be achieved by creating a classic mount target mannually.
-        See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="standard")
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
-            encrypt_type=1,
-            zone_id=example_zones.zones[0].zone_id)
-        example_access_group = alicloud.nas.AccessGroup("exampleAccessGroup",
-            access_group_name="terraform-example",
-            access_group_type="Vpc",
-            description="terraform-example",
-            file_system_type="standard")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].zone_id)
-        example_mount_target = alicloud.nas.MountTarget("exampleMountTarget",
-            file_system_id=example_file_system.id,
-            access_group_name=example_access_group.access_group_name,
-            vswitch_id=example_switch.id)
-        ```
+        > **NOTE:** Available since v1.34.0.
 
         ## Import
 
-        NAS MountTarget
-
-        can be imported using the id, e.g.
+        NAS MountTarget can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
@@ -273,8 +297,10 @@ class MountTarget(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
+        :param pulumi.Input[str] network_type: mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
         :param pulumi.Input[str] security_group_id: The ID of security group.
         :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+        :param pulumi.Input[str] vpc_id: The ID of VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
         """
         ...
@@ -287,53 +313,11 @@ class MountTarget(pulumi.CustomResource):
         Provides a NAS Mount Target resource.
         For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 
-        > **NOTE**: Available in v1.34.0+.
-
-        > **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
-
-        > **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
-        and it only can be achieved by creating a classic mount target mannually.
-        See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="standard")
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
-            encrypt_type=1,
-            zone_id=example_zones.zones[0].zone_id)
-        example_access_group = alicloud.nas.AccessGroup("exampleAccessGroup",
-            access_group_name="terraform-example",
-            access_group_type="Vpc",
-            description="terraform-example",
-            file_system_type="standard")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].zone_id)
-        example_mount_target = alicloud.nas.MountTarget("exampleMountTarget",
-            file_system_id=example_file_system.id,
-            access_group_name=example_access_group.access_group_name,
-            vswitch_id=example_switch.id)
-        ```
+        > **NOTE:** Available since v1.34.0.
 
         ## Import
 
-        NAS MountTarget
-
-        can be imported using the id, e.g.
+        NAS MountTarget can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
@@ -356,8 +340,10 @@ class MountTarget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -372,8 +358,10 @@ class MountTarget(pulumi.CustomResource):
             if file_system_id is None and not opts.urn:
                 raise TypeError("Missing required property 'file_system_id'")
             __props__.__dict__["file_system_id"] = file_system_id
+            __props__.__dict__["network_type"] = network_type
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["status"] = status
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["mount_target_domain"] = None
         super(MountTarget, __self__).__init__(
@@ -389,8 +377,10 @@ class MountTarget(pulumi.CustomResource):
             access_group_name: Optional[pulumi.Input[str]] = None,
             file_system_id: Optional[pulumi.Input[str]] = None,
             mount_target_domain: Optional[pulumi.Input[str]] = None,
+            network_type: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'MountTarget':
         """
         Get an existing MountTarget resource's state with the given name, id, and optional extra
@@ -401,9 +391,11 @@ class MountTarget(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
-        :param pulumi.Input[str] mount_target_domain: The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        :param pulumi.Input[str] mount_target_domain: The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+        :param pulumi.Input[str] network_type: mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
         :param pulumi.Input[str] security_group_id: The ID of security group.
         :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+        :param pulumi.Input[str] vpc_id: The ID of VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -413,8 +405,10 @@ class MountTarget(pulumi.CustomResource):
         __props__.__dict__["access_group_name"] = access_group_name
         __props__.__dict__["file_system_id"] = file_system_id
         __props__.__dict__["mount_target_domain"] = mount_target_domain
+        __props__.__dict__["network_type"] = network_type
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return MountTarget(resource_name, opts=opts, __props__=__props__)
 
@@ -438,9 +432,17 @@ class MountTarget(pulumi.CustomResource):
     @pulumi.getter(name="mountTargetDomain")
     def mount_target_domain(self) -> pulumi.Output[str]:
         """
-        The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
         """
         return pulumi.get(self, "mount_target_domain")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> pulumi.Output[str]:
+        """
+        mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+        """
+        return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -457,6 +459,14 @@ class MountTarget(pulumi.CustomResource):
         Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The ID of VPC.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

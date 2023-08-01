@@ -100,6 +100,8 @@ class GroupMembership(pulumi.CustomResource):
         """
         Provides a RAM Group membership resource.
 
+        > **NOTE:** Available since v1.0.0+.
+
         ## Example Usage
 
         ```python
@@ -151,6 +153,8 @@ class GroupMembership(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a RAM Group membership resource.
+
+        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 

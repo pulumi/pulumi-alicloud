@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+    /// Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account, see [What is DB Account Privilege](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-grantaccountprivilege).
     /// 
     /// &gt; **NOTE:** At present, a database can only have one database owner.
+    /// 
+    /// &gt; **NOTE:** Available since v1.5.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,11 +27,11 @@ namespace Pulumi.AliCloud.Rds
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "Rds";
-    ///     var name = config.Get("name") ?? "dbaccountprivilegebasic";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
@@ -68,9 +70,10 @@ namespace Pulumi.AliCloud.Rds
     ///     }
     ///     var account = new AliCloud.Rds.Account("account", new()
     ///     {
-    ///         InstanceId = instance.Id,
-    ///         Password = "Test12345",
-    ///         Description = "from terraform",
+    ///         DbInstanceId = instance.Id,
+    ///         AccountName = "tfexample",
+    ///         AccountPassword = "Example12345",
+    ///         AccountDescription = "from terraform",
     ///     });
     /// 
     ///     var privilege = new AliCloud.Rds.AccountPrivilege("privilege", new()
@@ -120,7 +123,6 @@ namespace Pulumi.AliCloud.Rds
         /// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-        /// 
         /// Default to "ReadOnly".
         /// </summary>
         [Output("privilege")]
@@ -203,7 +205,6 @@ namespace Pulumi.AliCloud.Rds
         /// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-        /// 
         /// Default to "ReadOnly".
         /// </summary>
         [Input("privilege")]
@@ -248,7 +249,6 @@ namespace Pulumi.AliCloud.Rds
         /// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-        /// 
         /// Default to "ReadOnly".
         /// </summary>
         [Input("privilege")]

@@ -24,7 +24,7 @@ class IpaDomainArgs:
         """
         The set of arguments for constructing a IpaDomain resource.
         :param pulumi.Input[str] domain_name: The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
-        :param pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]] sources: Sources. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]] sources: Sources. See `sources` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
         :param pulumi.Input[str] scope: The accelerated region. Valid values: `domestic`, `global`, `overseas`.
         :param pulumi.Input[str] status: The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
@@ -54,7 +54,7 @@ class IpaDomainArgs:
     @pulumi.getter
     def sources(self) -> pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]]:
         """
-        Sources. See the following `Block sources`.
+        Sources. See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -112,7 +112,7 @@ class _IpaDomainState:
         :param pulumi.Input[str] domain_name: The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
         :param pulumi.Input[str] scope: The accelerated region. Valid values: `domestic`, `global`, `overseas`.
-        :param pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]] sources: Sources. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]] sources: Sources. See `sources` below.
         :param pulumi.Input[str] status: The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
         """
         if domain_name is not None:
@@ -166,7 +166,7 @@ class _IpaDomainState:
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]]]:
         """
-        Sources. See the following `Block sources`.
+        Sources. See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -203,7 +203,7 @@ class IpaDomain(pulumi.CustomResource):
 
         For information about DCDN Ipa Domain and how to use it, see [What is Ipa Domain](https://www.alibabacloud.com/help/en/doc-detail/130634.html).
 
-        > **NOTE:** Available in v1.158.0+.
+        > **NOTE:** Available since v1.158.0.
 
         ## Example Usage
 
@@ -213,19 +213,23 @@ class IpaDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        default = alicloud.resourcemanager.get_resource_groups()
         example = alicloud.dcdn.IpaDomain("example",
-            domain_name="example.com",
+            domain_name=domain_name,
             resource_group_id=default.groups[0].id,
+            scope="global",
+            status="online",
             sources=[alicloud.dcdn.IpaDomainSourceArgs(
-                content="1.1.1.1",
+                content="www.alicloud-provider.cn",
                 port=80,
                 priority="20",
-                type="ipaddr",
+                type="domain",
                 weight=10,
-            )],
-            scope="overseas",
-            status="online")
+            )])
         ```
 
         ## Import
@@ -241,7 +245,7 @@ class IpaDomain(pulumi.CustomResource):
         :param pulumi.Input[str] domain_name: The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
         :param pulumi.Input[str] scope: The accelerated region. Valid values: `domestic`, `global`, `overseas`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpaDomainSourceArgs']]]] sources: Sources. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpaDomainSourceArgs']]]] sources: Sources. See `sources` below.
         :param pulumi.Input[str] status: The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
         """
         ...
@@ -255,7 +259,7 @@ class IpaDomain(pulumi.CustomResource):
 
         For information about DCDN Ipa Domain and how to use it, see [What is Ipa Domain](https://www.alibabacloud.com/help/en/doc-detail/130634.html).
 
-        > **NOTE:** Available in v1.158.0+.
+        > **NOTE:** Available since v1.158.0.
 
         ## Example Usage
 
@@ -265,19 +269,23 @@ class IpaDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        default = alicloud.resourcemanager.get_resource_groups()
         example = alicloud.dcdn.IpaDomain("example",
-            domain_name="example.com",
+            domain_name=domain_name,
             resource_group_id=default.groups[0].id,
+            scope="global",
+            status="online",
             sources=[alicloud.dcdn.IpaDomainSourceArgs(
-                content="1.1.1.1",
+                content="www.alicloud-provider.cn",
                 port=80,
                 priority="20",
-                type="ipaddr",
+                type="domain",
                 weight=10,
-            )],
-            scope="overseas",
-            status="online")
+            )])
         ```
 
         ## Import
@@ -351,7 +359,7 @@ class IpaDomain(pulumi.CustomResource):
         :param pulumi.Input[str] domain_name: The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
         :param pulumi.Input[str] scope: The accelerated region. Valid values: `domestic`, `global`, `overseas`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpaDomainSourceArgs']]]] sources: Sources. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpaDomainSourceArgs']]]] sources: Sources. See `sources` below.
         :param pulumi.Input[str] status: The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -393,7 +401,7 @@ class IpaDomain(pulumi.CustomResource):
     @pulumi.getter
     def sources(self) -> pulumi.Output[Sequence['outputs.IpaDomainSource']]:
         """
-        Sources. See the following `Block sources`.
+        Sources. See `sources` below.
         """
         return pulumi.get(self, "sources")
 

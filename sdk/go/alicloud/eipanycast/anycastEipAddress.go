@@ -14,9 +14,9 @@ import (
 
 // Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
 //
-// For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/).
+// For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
 //
-// > **NOTE:** Available since v1.208.0.
+// > **NOTE:** Available since v1.113.0.
 //
 // ## Example Usage
 //
@@ -47,20 +47,6 @@ import (
 //				ServiceLocation:       pulumi.String("international"),
 //				InternetChargeType:    pulumi.String("PayByTraffic"),
 //				PaymentType:           pulumi.String("PayAsYouGo"),
-//				Tags: pulumi.AnyMap{
-//					pulumi.Any{
-//						TagKey:   "k1",
-//						TagValue: "v1",
-//					},
-//					pulumi.Any{
-//						TagKey:   "k2",
-//						TagValue: "v2",
-//					},
-//					pulumi.Any{
-//						TagKey:   "k3",
-//						TagValue: "v3",
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -95,6 +81,8 @@ type AnycastEipAddress struct {
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation pulumi.StringOutput `pulumi:"serviceLocation"`
 	// The status of the resource.
@@ -148,6 +136,8 @@ type anycastEipAddressState struct {
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType *string `pulumi:"paymentType"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation *string `pulumi:"serviceLocation"`
 	// The status of the resource.
@@ -169,6 +159,8 @@ type AnycastEipAddressState struct {
 	InternetChargeType pulumi.StringPtrInput
 	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType pulumi.StringPtrInput
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation pulumi.StringPtrInput
 	// The status of the resource.
@@ -192,6 +184,8 @@ type anycastEipAddressArgs struct {
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType *string `pulumi:"paymentType"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation string `pulumi:"serviceLocation"`
 	// List of resource-bound tags.
@@ -210,6 +204,8 @@ type AnycastEipAddressArgs struct {
 	InternetChargeType pulumi.StringPtrInput
 	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 	PaymentType pulumi.StringPtrInput
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation pulumi.StringInput
 	// List of resource-bound tags.
@@ -331,6 +327,11 @@ func (o AnycastEipAddressOutput) InternetChargeType() pulumi.StringPtrOutput {
 // The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
 func (o AnycastEipAddressOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group to which the instance belongs.
+func (o AnycastEipAddressOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.

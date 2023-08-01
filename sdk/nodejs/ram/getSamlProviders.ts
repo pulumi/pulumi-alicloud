@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.114.0+.
+ * > **NOTE:** Available since v1.114.0+.
  *
  * ## Example Usage
  *
@@ -71,14 +71,20 @@ export interface GetSamlProvidersResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of SAML Provider names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ram Saml Providers. Each element contains the following attributes:
+     */
     readonly providers: outputs.ram.GetSamlProvidersProvider[];
 }
 /**
  * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.114.0+.
+ * > **NOTE:** Available since v1.114.0+.
  *
  * ## Example Usage
  *

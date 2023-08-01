@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/modify-the-domain-name-bound-to-a-protection-policies).
     /// 
-    /// &gt; **NOTE:** Available in v1.186.0+.
+    /// &gt; **NOTE:** Available since v1.186.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,13 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultDomain = new AliCloud.Dcdn.Domain("defaultDomain", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var domainName = config.Get("domainName") ?? "example.com";
+    ///     var exampleDomain = new AliCloud.Dcdn.Domain("exampleDomain", new()
     ///     {
-    ///         DomainName = "example_domain_name",
+    ///         DomainName = domainName,
+    ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Dcdn.Inputs.DomainSourceArgs
@@ -39,28 +43,29 @@ namespace Pulumi.AliCloud.Dcdn
     ///                 Port = 80,
     ///                 Priority = "20",
     ///                 Type = "ipaddr",
+    ///                 Weight = "10",
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var defaultWafDomain = new AliCloud.Dcdn.WafDomain("defaultWafDomain", new()
+    ///     var exampleWafDomain = new AliCloud.Dcdn.WafDomain("exampleWafDomain", new()
     ///     {
-    ///         DomainName = defaultDomain.DomainName,
+    ///         DomainName = exampleDomain.DomainName,
     ///         ClientIpTag = "X-Forwarded-For",
     ///     });
     /// 
-    ///     var defaultWafPolicy = new AliCloud.Dcdn.WafPolicy("defaultWafPolicy", new()
+    ///     var exampleWafPolicy = new AliCloud.Dcdn.WafPolicy("exampleWafPolicy", new()
     ///     {
-    ///         PolicyType = "custom",
-    ///         PolicyName = "example_value",
     ///         DefenseScene = "waf_group",
+    ///         PolicyName = name,
+    ///         PolicyType = "custom",
     ///         Status = "on",
     ///     });
     /// 
-    ///     var example = new AliCloud.Dcdn.WafPolicyDomainAttachment("example", new()
+    ///     var exampleWafPolicyDomainAttachment = new AliCloud.Dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment", new()
     ///     {
-    ///         DomainName = defaultWafDomain.DomainName,
-    ///         PolicyId = defaultWafPolicy.Id,
+    ///         DomainName = exampleWafDomain.DomainName,
+    ///         PolicyId = exampleWafPolicy.Id,
     ///     });
     /// 
     /// });

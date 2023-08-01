@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
  * 
- * &gt; **NOTE:** Available in v1.114.0+.
+ * &gt; **NOTE:** Available since v1.114.0+.
  * 
  * ## Example Usage
  * 
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *         var example = new SamlProvider(&#34;example&#34;, SamlProviderArgs.builder()        
  *             .description(&#34;For Terraform Test&#34;)
  *             .encodedsamlMetadataDocument(&#34;your encodedsaml metadata document&#34;)
- *             .samlProviderName(&#34;tf-testAcc&#34;)
+ *             .samlProviderName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *     }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
+    /// Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
     /// 
     /// &gt; **NOTE:** Available since v1.48.0.
     /// 
@@ -24,28 +24,28 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var exampleZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
-    ///         EngineVersion = "8.0",
-    ///         InstanceChargeType = "PostPaid",
-    ///         Category = "Basic",
-    ///         DbInstanceStorageType = "cloud_essd",
+    ///         EngineVersion = "5.7",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "local_ssd",
     ///     });
     /// 
     ///     var exampleInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
     ///     {
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///         Engine = "MySQL",
-    ///         EngineVersion = "8.0",
-    ///         Category = "Basic",
-    ///         DbInstanceStorageType = "cloud_essd",
-    ///         InstanceChargeType = "PostPaid",
+    ///         EngineVersion = "5.7",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "local_ssd",
     ///     });
     /// 
     ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         VpcName = "terraform-example",
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Rds
     ///         VpcId = exampleNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = "terraform-example",
+    ///         VswitchName = name,
     ///     });
     /// 
     ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
@@ -65,17 +65,18 @@ namespace Pulumi.AliCloud.Rds
     ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
     ///     {
     ///         Engine = "MySQL",
-    ///         EngineVersion = "8.0",
+    ///         EngineVersion = "5.7",
+    ///         Category = "HighAvailability",
     ///         InstanceType = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
     ///         InstanceStorage = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
     ///         InstanceChargeType = "Postpaid",
-    ///         InstanceName = "terraform-example",
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         InstanceName = name,
     ///         VswitchId = exampleSwitch.Id,
-    ///         MonitoringPeriod = 60,
-    ///         DbInstanceStorageType = "cloud_essd",
-    ///         SecurityGroupIds = new[]
+    ///         SecurityIps = new[]
     ///         {
-    ///             exampleSecurityGroup.Id,
+    ///             "10.168.1.12",
+    ///             "100.69.7.112",
     ///         },
     ///     });
     /// 
@@ -85,8 +86,8 @@ namespace Pulumi.AliCloud.Rds
     ///         MasterDbInstanceId = exampleInstance.Id,
     ///         EngineVersion = exampleInstance.EngineVersion,
     ///         InstanceStorage = exampleInstance.InstanceStorage,
-    ///         InstanceType = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[1]?.InstanceClass),
-    ///         InstanceName = "terraform-example-readonly",
+    ///         InstanceType = exampleInstance.InstanceType,
+    ///         InstanceName = $"{name}readonly",
     ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 

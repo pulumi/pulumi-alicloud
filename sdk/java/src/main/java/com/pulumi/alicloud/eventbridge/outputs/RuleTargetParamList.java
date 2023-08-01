@@ -12,17 +12,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleTargetParamList {
     /**
-     * @return The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+     * @return The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
      */
     private String form;
     /**
-     * @return The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+     * @return The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
      * 
      */
     private String resourceKey;
     /**
      * @return The template of param.
+     * 
+     */
+    private @Nullable String template;
+    /**
+     * @return The value of param.
      * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
      * ```java
@@ -47,28 +52,24 @@ public final class RuleTargetParamList {
      *     }
      * }
      * ```
+     * 
      * In order to fix the diff, from version 1.160.0,
      * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
      * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
-     * 
-     */
-    private @Nullable String template;
-    /**
-     * @return The value of param.
      * 
      */
     private @Nullable String value;
 
     private RuleTargetParamList() {}
     /**
-     * @return The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+     * @return The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
      */
     public String form() {
         return this.form;
     }
     /**
-     * @return The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+     * @return The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
      * 
      */
     public String resourceKey() {
@@ -77,6 +78,13 @@ public final class RuleTargetParamList {
     /**
      * @return The template of param.
      * 
+     */
+    public Optional<String> template() {
+        return Optional.ofNullable(this.template);
+    }
+    /**
+     * @return The value of param.
+     * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
      * ```java
      * package generated_program;
@@ -100,16 +108,10 @@ public final class RuleTargetParamList {
      *     }
      * }
      * ```
+     * 
      * In order to fix the diff, from version 1.160.0,
      * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
      * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
-     * 
-     */
-    public Optional<String> template() {
-        return Optional.ofNullable(this.template);
-    }
-    /**
-     * @return The value of param.
      * 
      */
     public Optional<String> value() {

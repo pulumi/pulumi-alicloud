@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/createroutine).
  * 
- * &gt; **NOTE:** Available in v1.201.0+.
+ * &gt; **NOTE:** Available since v1.201.0.
  * 
  * ## Example Usage
  * 
@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.dcdn.Er;
  * import com.pulumi.alicloud.dcdn.ErArgs;
  * import com.pulumi.alicloud.dcdn.inputs.ErEnvConfArgs;
- * import com.pulumi.alicloud.dcdn.inputs.ErEnvConfProductionArgs;
  * import com.pulumi.alicloud.dcdn.inputs.ErEnvConfStagingArgs;
+ * import com.pulumi.alicloud.dcdn.inputs.ErEnvConfProductionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,19 +49,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var default_ = new Er(&#34;default&#34;, ErArgs.builder()        
- *             .description(&#34;tf-example-description&#34;)
+ *             .erName(name)
+ *             .description(name)
  *             .envConf(ErEnvConfArgs.builder()
- *                 .production(ErEnvConfProductionArgs.builder()
- *                     .allowedHosts(&#34;example.com&#34;)
- *                     .specName(&#34;5ms&#34;)
- *                     .build())
  *                 .staging(ErEnvConfStagingArgs.builder()
- *                     .allowedHosts(&#34;example.com&#34;)
  *                     .specName(&#34;5ms&#34;)
+ *                     .allowedHosts(&#34;example.com&#34;)
+ *                     .build())
+ *                 .production(ErEnvConfProductionArgs.builder()
+ *                     .specName(&#34;5ms&#34;)
+ *                     .allowedHosts(&#34;example.com&#34;)
  *                     .build())
  *                 .build())
- *             .erName(&#34;tf-example-name&#34;)
  *             .build());
  * 
  *     }
@@ -94,14 +96,14 @@ public class Er extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The configurations of the specified environment. See the following `Block env_conf`.
+     * The configurations of the specified environment. See `env_conf` below.
      * 
      */
     @Export(name="envConf", type=ErEnvConf.class, parameters={})
     private Output<ErEnvConf> envConf;
 
     /**
-     * @return The configurations of the specified environment. See the following `Block env_conf`.
+     * @return The configurations of the specified environment. See `env_conf` below.
      * 
      */
     public Output<ErEnvConf> envConf() {

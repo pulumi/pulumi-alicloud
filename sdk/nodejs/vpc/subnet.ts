@@ -45,7 +45,7 @@ export class Subnet extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly ipv6CidrBlock!: pulumi.Output<string>;
-    public readonly ipv6CidrBlockMask!: pulumi.Output<number | undefined>;
+    public readonly ipv6CidrBlockMask!: pulumi.Output<number>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */

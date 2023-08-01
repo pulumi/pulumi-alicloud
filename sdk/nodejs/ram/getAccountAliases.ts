@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * This data source provides an alias for the Alibaba Cloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const aliasDs = alicloud.ram.getAccountAliases({
- *     outputFile: "alias.txt",
- * });
- * export const accountAlias = aliasDs.then(aliasDs => aliasDs.accountAlias);
- * ```
- */
 export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasesResult> {
     args = args || {};
 
@@ -32,9 +17,6 @@ export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.In
  * A collection of arguments for invoking getAccountAliases.
  */
 export interface GetAccountAliasesArgs {
-    /**
-     * File name where to save data source results (after running `pulumi preview`).
-     */
     outputFile?: string;
 }
 
@@ -42,9 +24,6 @@ export interface GetAccountAliasesArgs {
  * A collection of values returned by getAccountAliases.
  */
 export interface GetAccountAliasesResult {
-    /**
-     * Alias of the account.
-     */
     readonly accountAlias: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -52,21 +31,6 @@ export interface GetAccountAliasesResult {
     readonly id: string;
     readonly outputFile?: string;
 }
-/**
- * This data source provides an alias for the Alibaba Cloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const aliasDs = alicloud.ram.getAccountAliases({
- *     outputFile: "alias.txt",
- * });
- * export const accountAlias = aliasDs.then(aliasDs => aliasDs.accountAlias);
- * ```
- */
 export function getAccountAliasesOutput(args?: GetAccountAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAliasesResult> {
     return pulumi.output(args).apply((a: any) => getAccountAliases(a, opts))
 }
@@ -75,8 +39,5 @@ export function getAccountAliasesOutput(args?: GetAccountAliasesOutputArgs, opts
  * A collection of arguments for invoking getAccountAliases.
  */
 export interface GetAccountAliasesOutputArgs {
-    /**
-     * File name where to save data source results (after running `pulumi preview`).
-     */
     outputFile?: pulumi.Input<string>;
 }

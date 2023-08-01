@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/set-the-protection-policies#doc-api-dcdn-CreateDcdnWafPolicy).
  *
- * > **NOTE:** Available in v1.184.0+.
+ * > **NOTE:** Available since v1.184.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
  * const example = new alicloud.dcdn.WafPolicy("example", {
  *     defenseScene: "waf_group",
- *     policyName: _var.name,
+ *     policyName: name,
  *     policyType: "custom",
  *     status: "on",
  * });

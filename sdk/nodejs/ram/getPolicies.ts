@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
  *
+ * > **NOTE:** Available since v1.0.0+.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -52,6 +54,9 @@ export interface GetPoliciesArgs {
      * Filter results by a specific group name. Returned policies are attached to the specified group.
      */
     groupName?: string;
+    /**
+     * A list of ram group IDs.
+     */
     ids?: string[];
     /**
      * A regex string to filter resulting policies by name.
@@ -101,10 +106,15 @@ export interface GetPoliciesResult {
      * Type of the policy.
      */
     readonly type?: string;
+    /**
+     * The user name of  policy.
+     */
     readonly userName?: string;
 }
 /**
  * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available since v1.0.0+.
  *
  * ## Example Usage
  *
@@ -137,6 +147,9 @@ export interface GetPoliciesOutputArgs {
      * Filter results by a specific group name. Returned policies are attached to the specified group.
      */
     groupName?: pulumi.Input<string>;
+    /**
+     * A list of ram group IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A regex string to filter resulting policies by name.

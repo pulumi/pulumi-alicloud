@@ -17,6 +17,8 @@ import (
 //
 // > **NOTE:**  From version 1.98.0, if not set `pgpKey`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
 //
+// > **NOTE:** Available since v1.0.0+.
+//
 // ## Example Usage
 //
 // Output the secret to a file.
@@ -99,7 +101,7 @@ type AccessKey struct {
 	KeyFingerprint pulumi.StringOutput `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey pulumi.StringPtrOutput `pulumi:"pgpKey"`
-	// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+	// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
 	// If you use this, please protect your backend state file judiciously.
 	// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
 	// at the cost of preventing the use of the secret key in automation.
@@ -151,7 +153,7 @@ type accessKeyState struct {
 	KeyFingerprint *string `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey *string `pulumi:"pgpKey"`
-	// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+	// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
 	// If you use this, please protect your backend state file judiciously.
 	// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
 	// at the cost of preventing the use of the secret key in automation.
@@ -170,7 +172,7 @@ type AccessKeyState struct {
 	KeyFingerprint pulumi.StringPtrInput
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey pulumi.StringPtrInput
-	// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+	// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
 	// If you use this, please protect your backend state file judiciously.
 	// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
 	// at the cost of preventing the use of the secret key in automation.
@@ -311,7 +313,7 @@ func (o AccessKeyOutput) PgpKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.PgpKey }).(pulumi.StringPtrOutput)
 }
 
-// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
 // If you use this, please protect your backend state file judiciously.
 // Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
 // at the cost of preventing the use of the secret key in automation.

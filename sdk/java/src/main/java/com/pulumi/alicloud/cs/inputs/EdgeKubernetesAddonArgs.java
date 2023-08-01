@@ -16,29 +16,49 @@ public final class EdgeKubernetesAddonArgs extends com.pulumi.resources.Resource
 
     public static final EdgeKubernetesAddonArgs Empty = new EdgeKubernetesAddonArgs();
 
+    /**
+     * The ACK add-on configurations.
+     * 
+     */
     @Import(name="config")
     private @Nullable Output<String> config;
 
+    /**
+     * @return The ACK add-on configurations.
+     * 
+     */
     public Optional<Output<String>> config() {
         return Optional.ofNullable(this.config);
     }
 
+    /**
+     * Disables the automatic installation of a component. Default is `false`.
+     * 
+     * The following example is the definition of addons block, The type of this field is list:
+     * 
+     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
+    /**
+     * @return Disables the automatic installation of a component. Default is `false`.
+     * 
+     * The following example is the definition of addons block, The type of this field is list:
+     * 
+     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
     /**
-     * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,26 +91,54 @@ public final class EdgeKubernetesAddonArgs extends com.pulumi.resources.Resource
             $ = new EdgeKubernetesAddonArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param config The ACK add-on configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(@Nullable Output<String> config) {
             $.config = config;
             return this;
         }
 
+        /**
+         * @param config The ACK add-on configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(String config) {
             return config(Output.of(config));
         }
 
+        /**
+         * @param disabled Disables the automatic installation of a component. Default is `false`.
+         * 
+         * The following example is the definition of addons block, The type of this field is list:
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
+        /**
+         * @param disabled Disables the automatic installation of a component. Default is `false`.
+         * 
+         * The following example is the definition of addons block, The type of this field is list:
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          * 
          * @return builder
          * 
@@ -101,7 +149,7 @@ public final class EdgeKubernetesAddonArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          * 
          * @return builder
          * 

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a RDS Account resource.
  *
- * For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/26263.htm).
+ * For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createaccount).
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -20,11 +20,16 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Rds";
- * const name = config.get("name") || "dbaccountmysql";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
  * });
+ * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: defaultZones.ids?.[0],
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ * }));
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
@@ -32,21 +37,21 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
  *     vswitchName: name,
  * });
- * const instance = new alicloud.rds.Instance("instance", {
+ * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
- *     instanceType: "rds.mysql.s1.small",
+ *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
  *     instanceStorage: 10,
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  * });
- * const account = new alicloud.rds.RdsAccount("account", {
- *     dbInstanceId: instance.id,
- *     accountName: "tftestnormal12",
- *     accountPassword: "Test12345",
+ * const defaultRdsAccount = new alicloud.rds.RdsAccount("defaultRdsAccount", {
+ *     dbInstanceId: defaultInstance.id,
+ *     accountName: name,
+ *     accountPassword: "Example1234",
  * });
  * ```
  *

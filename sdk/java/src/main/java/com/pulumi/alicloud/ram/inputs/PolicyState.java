@@ -65,7 +65,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+     * It has been deprecated since provider version 1.114.0 and `policy_document` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
@@ -76,7 +76,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> document;
 
     /**
-     * @return It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+     * @return It has been deprecated since provider version 1.114.0 and `policy_document` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
@@ -103,7 +103,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+     * It has been deprecated since provider version 1.114.0 and `policy_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
@@ -114,7 +114,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+     * @return It has been deprecated since provider version 1.114.0 and `policy_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
@@ -171,7 +171,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
      * 
      * @deprecated
      * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -182,7 +182,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<PolicyStatementArgs>> statements;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
      * 
      * @deprecated
      * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -209,7 +209,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      * 
      * @deprecated
      * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -220,7 +220,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> version;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      * 
      * @deprecated
      * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -346,7 +346,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param document It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+         * @param document It has been deprecated since provider version 1.114.0 and `policy_document` instead.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param document It has been deprecated from provider version 1.114.0 and `policy_document` instead.
+         * @param document It has been deprecated since provider version 1.114.0 and `policy_document` instead.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+         * @param name It has been deprecated since provider version 1.114.0 and `policy_name` instead.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+         * @param name It has been deprecated since provider version 1.114.0 and `policy_name` instead.
          * 
          * @return builder
          * 
@@ -488,7 +488,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statements (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+         * @param statements (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statements (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+         * @param statements (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
          * 
          * @return builder
          * 
@@ -517,7 +517,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statements (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+         * @param statements (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+         * @param version (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+         * @param version (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
          * 
          * @return builder
          * 

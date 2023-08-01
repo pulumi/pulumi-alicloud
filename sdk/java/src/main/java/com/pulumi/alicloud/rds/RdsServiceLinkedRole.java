@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about RDS Service Linked Role and how to use it, see [What is Service Linked Role.](https://www.alibabacloud.com/help/en/doc-detail/171226.htm).
  * 
- * &gt; **NOTE:** Available in v1.189.0+.
+ * &gt; **NOTE:** Available since v1.189.0.
  * 
  * ## Example Usage
  * 

@@ -23,9 +23,9 @@ class PolicyStatementArgs:
                  effect: pulumi.Input[str],
                  resources: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
-        :param pulumi.Input[str] effect: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+        :param pulumi.Input[str] effect: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
@@ -35,7 +35,7 @@ class PolicyStatementArgs:
     @pulumi.getter
     def actions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
         """
         return pulumi.get(self, "actions")
 
@@ -47,7 +47,7 @@ class PolicyStatementArgs:
     @pulumi.getter
     def effect(self) -> pulumi.Input[str]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
         """
         return pulumi.get(self, "effect")
 
@@ -59,7 +59,7 @@ class PolicyStatementArgs:
     @pulumi.getter
     def resources(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
         return pulumi.get(self, "resources")
 
@@ -78,9 +78,9 @@ class GetPolicyDocumentStatementArgs:
                  resources: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] actions: Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
-        :param Sequence['GetPolicyDocumentStatementConditionArgs'] conditions: Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        :param Sequence['GetPolicyDocumentStatementConditionArgs'] conditions: Specifies the condition that are required for a policy to take effect. See `condition` below.
         :param str effect: This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
-        :param Sequence['GetPolicyDocumentStatementPrincipalArgs'] principals: Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        :param Sequence['GetPolicyDocumentStatementPrincipalArgs'] principals: Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
         :param Sequence[str] resources: List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
         """
         pulumi.set(__self__, "actions", actions)
@@ -109,7 +109,7 @@ class GetPolicyDocumentStatementArgs:
     @pulumi.getter
     def conditions(self) -> Optional[Sequence['GetPolicyDocumentStatementConditionArgs']]:
         """
-        Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        Specifies the condition that are required for a policy to take effect. See `condition` below.
         """
         return pulumi.get(self, "conditions")
 
@@ -133,7 +133,7 @@ class GetPolicyDocumentStatementArgs:
     @pulumi.getter
     def principals(self) -> Optional[Sequence['GetPolicyDocumentStatementPrincipalArgs']]:
         """
-        Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
         """
         return pulumi.get(self, "principals")
 

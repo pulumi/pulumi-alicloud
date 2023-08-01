@@ -68,6 +68,8 @@ class AccountAlias(pulumi.CustomResource):
         """
         Provides a RAM cloud account alias.
 
+        > **NOTE:** Available since v1.0.0+.
+
         ## Example Usage
 
         ```python
@@ -98,6 +100,8 @@ class AccountAlias(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a RAM cloud account alias.
+
+        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 

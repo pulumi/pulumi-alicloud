@@ -10,77 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB
 {
     /// <summary>
-    /// Provides a PolarDB cluster resource. A PolarDB cluster is an isolated database
-    /// environment in the cloud. A PolarDB cluster can contain multiple user-created
-    /// databases.
-    /// 
-    /// &gt; **NOTE:** Available in v1.66.0+.
-    /// 
-    /// ## Example Usage
-    /// ### Create a PolarDB MySQL cluster
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
-    ///     {
-    ///         DbType = "MySQL",
-    ///         DbVersion = "8.0",
-    ///         PayType = "PostPaid",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
-    ///         VswitchName = "terraform-example",
-    ///     });
-    /// 
-    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
-    ///     {
-    ///         DbType = "MySQL",
-    ///         DbVersion = "8.0",
-    ///         DbNodeClass = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass),
-    ///         PayType = "PostPaid",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         Description = "terraform-example",
-    ///         DbClusterIpArrays = new[]
-    ///         {
-    ///             new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
-    ///             {
-    ///                 DbClusterIpArrayName = "default",
-    ///                 SecurityIps = new[]
-    ///                 {
-    ///                     "1.2.3.4",
-    ///                     "1.2.3.5",
-    ///                 },
-    ///             },
-    ///             new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
-    ///             {
-    ///                 DbClusterIpArrayName = "default2",
-    ///                 SecurityIps = new[]
-    ///                 {
-    ///                     "1.2.3.6",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// PolarDB cluster can be imported using the id, e.g.
@@ -106,13 +35,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         /// </summary>
         [Output("backupRetentionPolicyOnClusterDeletion")]
         public Output<string> BackupRetentionPolicyOnClusterDeletion { get; private set; } = null!;
 
         /// <summary>
-        /// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        /// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
         /// &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         /// </summary>
         [Output("cloneDataPoint")]
@@ -125,33 +54,33 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> CollectorStatus { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.81.0+) PolarDB cluster connection string.
+        /// (Available since 1.81.0+) PolarDB cluster connection string.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.204.1+) PolarDB cluster creation time.
+        /// (Available since 1.204.1+) PolarDB cluster creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
         /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         /// </summary>
         [Output("creationCategory")]
         public Output<string> CreationCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
         /// &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         /// </summary>
         [Output("creationOption")]
         public Output<string> CreationOption { get; private set; } = null!;
 
         /// <summary>
-        /// db_cluster_ip_array defines how users can send requests to your API.
+        /// db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         /// </summary>
         [Output("dbClusterIpArrays")]
         public Output<ImmutableArray<Outputs.ClusterDbClusterIpArray>> DbClusterIpArrays { get; private set; } = null!;
@@ -178,7 +107,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbType { get; private set; } = null!;
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        /// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         /// </summary>
         [Output("dbVersion")]
         public Output<string> DbVersion { get; private set; } = null!;
@@ -208,6 +137,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("encryptionKey")]
         public Output<string?> EncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+        /// </summary>
+        [Output("fromTimeService")]
+        public Output<string?> FromTimeService { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the global database network (GDN).
@@ -243,7 +178,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ClusterParameter>> Parameters { get; private set; } = null!;
@@ -262,7 +197,21 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.196.0+) PolarDB cluster connection port.
+        /// The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        /// &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        /// </summary>
+        [Output("plannedEndTime")]
+        public Output<string?> PlannedEndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        /// &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        /// </summary>
+        [Output("plannedStartTime")]
+        public Output<string?> PlannedStartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since 1.196.0+) PolarDB cluster connection port.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -342,13 +291,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> ServerlessType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         /// </summary>
         [Output("sourceResourceId")]
         public Output<string?> SourceResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.204.1+) PolarDB cluster status.
+        /// (Available since 1.204.1+) PolarDB cluster status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -381,7 +330,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.200.0+) The region where the TDE key resides.
+        /// (Available since 1.200.0+) The region where the TDE key resides.
         /// &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
         /// &gt; **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         /// </summary>
@@ -394,6 +343,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("tdeStatus")]
         public Output<string?> TdeStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
+        /// </summary>
+        [Output("upgradeType")]
+        public Output<string?> UpgradeType { get; private set; } = null!;
 
         /// <summary>
         /// The id of the VPC.
@@ -474,13 +429,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         /// </summary>
         [Input("backupRetentionPolicyOnClusterDeletion")]
         public Input<string>? BackupRetentionPolicyOnClusterDeletion { get; set; }
 
         /// <summary>
-        /// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        /// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
         /// &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         /// </summary>
         [Input("cloneDataPoint")]
@@ -493,14 +448,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CollectorStatus { get; set; }
 
         /// <summary>
-        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
         /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         /// </summary>
         [Input("creationCategory")]
         public Input<string>? CreationCategory { get; set; }
 
         /// <summary>
-        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
         /// &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         /// </summary>
         [Input("creationOption")]
@@ -510,7 +465,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterDbClusterIpArrayArgs>? _dbClusterIpArrays;
 
         /// <summary>
-        /// db_cluster_ip_array defines how users can send requests to your API.
+        /// db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         /// </summary>
         public InputList<Inputs.ClusterDbClusterIpArrayArgs> DbClusterIpArrays
         {
@@ -540,7 +495,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbType { get; set; } = null!;
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        /// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         /// </summary>
         [Input("dbVersion", required: true)]
         public Input<string> DbVersion { get; set; } = null!;
@@ -570,6 +525,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+        /// </summary>
+        [Input("fromTimeService")]
+        public Input<string>? FromTimeService { get; set; }
 
         /// <summary>
         /// The ID of the global database network (GDN).
@@ -608,7 +569,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         /// </summary>
         public InputList<Inputs.ClusterParameterArgs> Parameters
         {
@@ -628,6 +589,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        /// &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        /// </summary>
+        [Input("plannedEndTime")]
+        public Input<string>? PlannedEndTime { get; set; }
+
+        /// <summary>
+        /// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        /// &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        /// </summary>
+        [Input("plannedStartTime")]
+        public Input<string>? PlannedStartTime { get; set; }
 
         /// <summary>
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -716,7 +691,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ServerlessType { get; set; }
 
         /// <summary>
-        /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         /// </summary>
         [Input("sourceResourceId")]
         public Input<string>? SourceResourceId { get; set; }
@@ -762,6 +737,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
+        /// Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
+        /// </summary>
+        [Input("upgradeType")]
+        public Input<string>? UpgradeType { get; set; }
+
+        /// <summary>
         /// The id of the VPC.
         /// </summary>
         [Input("vpcId")]
@@ -802,13 +783,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         /// </summary>
         [Input("backupRetentionPolicyOnClusterDeletion")]
         public Input<string>? BackupRetentionPolicyOnClusterDeletion { get; set; }
 
         /// <summary>
-        /// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        /// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
         /// &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         /// </summary>
         [Input("cloneDataPoint")]
@@ -821,26 +802,26 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CollectorStatus { get; set; }
 
         /// <summary>
-        /// (Available in 1.81.0+) PolarDB cluster connection string.
+        /// (Available since 1.81.0+) PolarDB cluster connection string.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
-        /// (Available in 1.204.1+) PolarDB cluster creation time.
+        /// (Available since 1.204.1+) PolarDB cluster creation time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
         /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         /// </summary>
         [Input("creationCategory")]
         public Input<string>? CreationCategory { get; set; }
 
         /// <summary>
-        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
         /// &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         /// </summary>
         [Input("creationOption")]
@@ -850,7 +831,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterDbClusterIpArrayGetArgs>? _dbClusterIpArrays;
 
         /// <summary>
-        /// db_cluster_ip_array defines how users can send requests to your API.
+        /// db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         /// </summary>
         public InputList<Inputs.ClusterDbClusterIpArrayGetArgs> DbClusterIpArrays
         {
@@ -880,7 +861,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbType { get; set; }
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        /// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         /// </summary>
         [Input("dbVersion")]
         public Input<string>? DbVersion { get; set; }
@@ -910,6 +891,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
+        /// </summary>
+        [Input("fromTimeService")]
+        public Input<string>? FromTimeService { get; set; }
 
         /// <summary>
         /// The ID of the global database network (GDN).
@@ -948,7 +935,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
+        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         /// </summary>
         public InputList<Inputs.ClusterParameterGetArgs> Parameters
         {
@@ -970,7 +957,21 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// (Available in 1.196.0+) PolarDB cluster connection port.
+        /// The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        /// &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
+        /// </summary>
+        [Input("plannedEndTime")]
+        public Input<string>? PlannedEndTime { get; set; }
+
+        /// <summary>
+        /// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+        /// &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        /// </summary>
+        [Input("plannedStartTime")]
+        public Input<string>? PlannedStartTime { get; set; }
+
+        /// <summary>
+        /// (Available since 1.196.0+) PolarDB cluster connection port.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
@@ -1062,13 +1063,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ServerlessType { get; set; }
 
         /// <summary>
-        /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         /// </summary>
         [Input("sourceResourceId")]
         public Input<string>? SourceResourceId { get; set; }
 
         /// <summary>
-        /// (Available in 1.204.1+) PolarDB cluster status.
+        /// (Available since 1.204.1+) PolarDB cluster status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -1107,7 +1108,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// (Available in 1.200.0+) The region where the TDE key resides.
+        /// (Available since 1.200.0+) The region where the TDE key resides.
         /// &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
         /// &gt; **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         /// </summary>
@@ -1120,6 +1121,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
+
+        /// <summary>
+        /// Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
+        /// </summary>
+        [Input("upgradeType")]
+        public Input<string>? UpgradeType { get; set; }
 
         /// <summary>
         /// The id of the VPC.

@@ -21,9 +21,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource will help you to manager a Serverless Kubernetes Cluster. The cluster is same as container service created by web console.
+ * This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
  * 
- * &gt; **NOTE:** Available in 1.58.0+
+ * &gt; **NOTE:** Available since v1.58.0.
  * 
  * &gt; **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
  * A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
@@ -134,14 +134,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/serverlessKubernetes:ServerlessKubernetes")
 public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
-     * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     * You can specific network plugin,log component,ingress component and so on. See `addons` below.
      * 
      */
     @Export(name="addons", type=List.class, parameters={ServerlessKubernetesAddon.class})
     private Output<List<ServerlessKubernetesAddon>> addons;
 
     /**
-     * @return ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     * @return You can specific network plugin,log component,ingress component and so on. See `addons` below.
      * 
      */
     public Output<List<ServerlessKubernetesAddon>> addons() {
@@ -207,9 +207,21 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> clusterSpec() {
         return this.clusterSpec;
     }
+    /**
+     * whether to create a v2 version cluster.
+     * 
+     * *Removed params*
+     * 
+     */
     @Export(name="createV2Cluster", type=Boolean.class, parameters={})
     private Output<Boolean> createV2Cluster;
 
+    /**
+     * @return whether to create a v2 version cluster.
+     * 
+     * *Removed params*
+     * 
+     */
     public Output<Boolean> createV2Cluster() {
         return this.createV2Cluster;
     }
@@ -354,7 +366,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.newNatGateway);
     }
     /**
-     * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
      * 
      * @deprecated
      * Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
@@ -365,7 +377,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> privateZone;
 
     /**
-     * @return (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * @return Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
      * 
      */
     public Output<Optional<Boolean>> privateZone() {
@@ -392,14 +404,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retainResources);
     }
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
      * 
      */
     @Export(name="rrsaMetadata", type=ServerlessKubernetesRrsaMetadata.class, parameters={})
     private Output<ServerlessKubernetesRrsaMetadata> rrsaMetadata;
 
     /**
-     * @return (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * @return Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
      * 
      */
     public Output<ServerlessKubernetesRrsaMetadata> rrsaMetadata() {
@@ -518,7 +530,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+     * The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
      * 
      * @deprecated
      * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.91.0. New field &#39;vswitch_ids&#39; replace it.
@@ -529,7 +541,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     private Output<String> vswitchId;
 
     /**
-     * @return (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+     * @return The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
      * 
      */
     public Output<String> vswitchId() {

@@ -9,18 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECS instance resource.
  *
- * > **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitchId`. One instance can only belong to one VSwitch.
- *
- * > **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC, VSwitchId Cannot be modified after creation.
- *
- * > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `isOutdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
- *
- * > **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
- *
- * > **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
- *  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
- *
- * > **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
+ * > **NOTE:** Available since v1.0.0
  *
  * ## Example Usage
  *
@@ -29,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "auto_provisioning_group";
+ * const name = config.get("name") || "terraform-example";
  * // Create a new ECS instance for VPC
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     vpcName: name,
@@ -60,10 +49,10 @@ import * as utilities from "../utilities";
  *     securityGroups: [group].map(__item => __item.id),
  *     instanceType: "ecs.n4.large",
  *     systemDiskCategory: "cloud_efficiency",
- *     systemDiskName: "test_foo_system_disk_name",
+ *     systemDiskName: name,
  *     systemDiskDescription: "test_foo_system_disk_description",
  *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
- *     instanceName: "test_foo",
+ *     instanceName: name,
  *     vswitchId: vswitch.id,
  *     internetMaxBandwidthOut: 10,
  *     dataDisks: [{
@@ -126,7 +115,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The automatic release time of the `PostPaid` instance. 
      * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
      */
     public readonly autoReleaseTime!: pulumi.Output<string | undefined>;
     /**
@@ -148,7 +137,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly creditSpecification!: pulumi.Output<string>;
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `dataDisks` below.
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.InstanceDataDisk[] | undefined>;
     /**
@@ -170,13 +159,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dedicatedHostId!: pulumi.Output<string | undefined>;
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
+     * Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+     * The group number of the instance in a deployment set when the deployment set is use.
      */
     public /*out*/ readonly deploymentSetGroupNo!: pulumi.Output<string>;
     /**
@@ -184,7 +173,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly deploymentSetId!: pulumi.Output<string | undefined>;
     /**
-     * The description of the data disk.
+     * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -231,6 +220,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly includeDataDisks!: pulumi.Output<boolean | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+     * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+     * there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     public readonly instanceName!: pulumi.Output<string | undefined>;
@@ -245,7 +237,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      *
-     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
+     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
      */
     public readonly internetMaxBandwidthIn!: pulumi.Output<number>;
     /**
@@ -291,13 +283,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly maintenanceNotify!: pulumi.Output<boolean | undefined>;
     /**
-     * The time of maintenance. See the following `Block maintenanceTime`.
+     * The time of maintenance. See `maintenanceTime` below.
      */
     public readonly maintenanceTime!: pulumi.Output<outputs.ecs.InstanceMaintenanceTime | undefined>;
     /**
      * The memory size of the instance. Unit: MiB.
      */
     public /*out*/ readonly memory!: pulumi.Output<number>;
+    /**
+     * The ID of the ENI.
+     */
+    public /*out*/ readonly networkInterfaceId!: pulumi.Output<string>;
     /**
      * The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      */
@@ -401,7 +397,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly systemDiskAutoSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
     /**
@@ -442,12 +438,6 @@ export class Instance extends pulumi.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-     * It supports to setting a base64-encoded value, and it is the recommended usage.
-     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-     */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
@@ -511,6 +501,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenanceNotify"] = state ? state.maintenanceNotify : undefined;
             resourceInputs["maintenanceTime"] = state ? state.maintenanceTime : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
             resourceInputs["operatorType"] = state ? state.operatorType : undefined;
             resourceInputs["osName"] = state ? state.osName : undefined;
             resourceInputs["osType"] = state ? state.osType : undefined;
@@ -628,6 +619,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["cpu"] = undefined /*out*/;
             resourceInputs["deploymentSetGroupNo"] = undefined /*out*/;
             resourceInputs["memory"] = undefined /*out*/;
+            resourceInputs["networkInterfaceId"] = undefined /*out*/;
             resourceInputs["osName"] = undefined /*out*/;
             resourceInputs["osType"] = undefined /*out*/;
             resourceInputs["primaryIpAddress"] = undefined /*out*/;
@@ -653,7 +645,7 @@ export interface InstanceState {
     /**
      * The automatic release time of the `PostPaid` instance. 
      * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
      */
     autoReleaseTime?: pulumi.Input<string>;
     /**
@@ -675,7 +667,7 @@ export interface InstanceState {
      */
     creditSpecification?: pulumi.Input<string>;
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `dataDisks` below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
     /**
@@ -697,13 +689,13 @@ export interface InstanceState {
      */
     dedicatedHostId?: pulumi.Input<string>;
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
+     * Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+     * The group number of the instance in a deployment set when the deployment set is use.
      */
     deploymentSetGroupNo?: pulumi.Input<string>;
     /**
@@ -711,7 +703,7 @@ export interface InstanceState {
      */
     deploymentSetId?: pulumi.Input<string>;
     /**
-     * The description of the data disk.
+     * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
     /**
@@ -758,6 +750,9 @@ export interface InstanceState {
     includeDataDisks?: pulumi.Input<boolean>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+     * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+     * there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
      */
     instanceChargeType?: pulumi.Input<string>;
     instanceName?: pulumi.Input<string>;
@@ -772,7 +767,7 @@ export interface InstanceState {
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      *
-     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
+     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
      */
     internetMaxBandwidthIn?: pulumi.Input<number>;
     /**
@@ -818,13 +813,17 @@ export interface InstanceState {
      */
     maintenanceNotify?: pulumi.Input<boolean>;
     /**
-     * The time of maintenance. See the following `Block maintenanceTime`.
+     * The time of maintenance. See `maintenanceTime` below.
      */
     maintenanceTime?: pulumi.Input<inputs.ecs.InstanceMaintenanceTime>;
     /**
      * The memory size of the instance. Unit: MiB.
      */
     memory?: pulumi.Input<number>;
+    /**
+     * The ID of the ENI.
+     */
+    networkInterfaceId?: pulumi.Input<string>;
     /**
      * The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      */
@@ -928,7 +927,7 @@ export interface InstanceState {
      */
     systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
@@ -969,12 +968,6 @@ export interface InstanceState {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-     * It supports to setting a base64-encoded value, and it is the recommended usage.
-     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-     */
     userData?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
@@ -1001,7 +994,7 @@ export interface InstanceArgs {
     /**
      * The automatic release time of the `PostPaid` instance. 
      * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
      */
     autoReleaseTime?: pulumi.Input<string>;
     /**
@@ -1019,7 +1012,7 @@ export interface InstanceArgs {
      */
     creditSpecification?: pulumi.Input<string>;
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `dataDisks` below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
     /**
@@ -1041,7 +1034,7 @@ export interface InstanceArgs {
      */
     dedicatedHostId?: pulumi.Input<string>;
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
+     * Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
@@ -1051,7 +1044,7 @@ export interface InstanceArgs {
      */
     deploymentSetId?: pulumi.Input<string>;
     /**
-     * The description of the data disk.
+     * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
     /**
@@ -1098,6 +1091,9 @@ export interface InstanceArgs {
     includeDataDisks?: pulumi.Input<boolean>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+     * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+     * there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
      */
     instanceChargeType?: pulumi.Input<string>;
     instanceName?: pulumi.Input<string>;
@@ -1112,7 +1108,7 @@ export interface InstanceArgs {
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      *
-     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
+     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
      */
     internetMaxBandwidthIn?: pulumi.Input<number>;
     /**
@@ -1158,7 +1154,7 @@ export interface InstanceArgs {
      */
     maintenanceNotify?: pulumi.Input<boolean>;
     /**
-     * The time of maintenance. See the following `Block maintenanceTime`.
+     * The time of maintenance. See `maintenanceTime` below.
      */
     maintenanceTime?: pulumi.Input<inputs.ecs.InstanceMaintenanceTime>;
     /**
@@ -1248,7 +1244,7 @@ export interface InstanceArgs {
      */
     systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
@@ -1289,12 +1285,6 @@ export interface InstanceArgs {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-     * It supports to setting a base64-encoded value, and it is the recommended usage.
-     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-     */
     userData?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.

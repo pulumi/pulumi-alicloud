@@ -166,7 +166,7 @@ class WafPolicy(pulumi.CustomResource):
 
         For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/set-the-protection-policies#doc-api-dcdn-CreateDcdnWafPolicy).
 
-        > **NOTE:** Available in v1.184.0+.
+        > **NOTE:** Available since v1.184.0.
 
         ## Example Usage
 
@@ -176,9 +176,13 @@ class WafPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         example = alicloud.dcdn.WafPolicy("example",
             defense_scene="waf_group",
-            policy_name=var["name"],
+            policy_name=name,
             policy_type="custom",
             status="on")
         ```
@@ -209,7 +213,7 @@ class WafPolicy(pulumi.CustomResource):
 
         For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/set-the-protection-policies#doc-api-dcdn-CreateDcdnWafPolicy).
 
-        > **NOTE:** Available in v1.184.0+.
+        > **NOTE:** Available since v1.184.0.
 
         ## Example Usage
 
@@ -219,9 +223,13 @@ class WafPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         example = alicloud.dcdn.WafPolicy("example",
             defense_scene="waf_group",
-            policy_name=var["name"],
+            policy_name=name,
             policy_type="custom",
             status="on")
         ```

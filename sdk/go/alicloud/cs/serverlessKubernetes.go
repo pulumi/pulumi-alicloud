@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource will help you to manager a Serverless Kubernetes Cluster. The cluster is same as container service created by web console.
+// This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
 //
-// > **NOTE:** Available in 1.58.0+
+// > **NOTE:** Available since v1.58.0.
 //
 // > **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
 // A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
@@ -131,7 +131,7 @@ import (
 type ServerlessKubernetes struct {
 	pulumi.CustomResourceState
 
-	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
 	Addons ServerlessKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
@@ -142,8 +142,11 @@ type ServerlessKubernetes struct {
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
-	ClusterSpec     pulumi.StringOutput `pulumi:"clusterSpec"`
-	CreateV2Cluster pulumi.BoolOutput   `pulumi:"createV2Cluster"`
+	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
+	// whether to create a v2 version cluster.
+	//
+	// *Removed params*
+	CreateV2Cluster pulumi.BoolOutput `pulumi:"createV2Cluster"`
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -167,14 +170,14 @@ type ServerlessKubernetes struct {
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
-	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone pulumi.BoolPtrOutput `pulumi:"privateZone"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput      `pulumi:"resourceGroupId"`
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
-	// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
 	RrsaMetadata ServerlessKubernetesRrsaMetadataOutput `pulumi:"rrsaMetadata"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -192,7 +195,7 @@ type ServerlessKubernetes struct {
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
@@ -235,7 +238,7 @@ func GetServerlessKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerlessKubernetes resources.
 type serverlessKubernetesState struct {
-	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -246,8 +249,11 @@ type serverlessKubernetesState struct {
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
-	ClusterSpec     *string `pulumi:"clusterSpec"`
-	CreateV2Cluster *bool   `pulumi:"createV2Cluster"`
+	ClusterSpec *string `pulumi:"clusterSpec"`
+	// whether to create a v2 version cluster.
+	//
+	// *Removed params*
+	CreateV2Cluster *bool `pulumi:"createV2Cluster"`
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -271,14 +277,14 @@ type serverlessKubernetesState struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone *bool `pulumi:"privateZone"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
 	RrsaMetadata *ServerlessKubernetesRrsaMetadata `pulumi:"rrsaMetadata"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -296,7 +302,7 @@ type serverlessKubernetesState struct {
 	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId *string `pulumi:"vpcId"`
-	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -307,7 +313,7 @@ type serverlessKubernetesState struct {
 }
 
 type ServerlessKubernetesState struct {
-	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
 	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -318,7 +324,10 @@ type ServerlessKubernetesState struct {
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
-	ClusterSpec     pulumi.StringPtrInput
+	ClusterSpec pulumi.StringPtrInput
+	// whether to create a v2 version cluster.
+	//
+	// *Removed params*
 	CreateV2Cluster pulumi.BoolPtrInput
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
@@ -343,14 +352,14 @@ type ServerlessKubernetesState struct {
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrInput
-	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone pulumi.BoolPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
 	RrsaMetadata ServerlessKubernetesRrsaMetadataPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
@@ -368,7 +377,7 @@ type ServerlessKubernetesState struct {
 	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringPtrInput
-	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId pulumi.StringPtrInput
@@ -383,7 +392,7 @@ func (ServerlessKubernetesState) ElementType() reflect.Type {
 }
 
 type serverlessKubernetesArgs struct {
-	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -394,8 +403,11 @@ type serverlessKubernetesArgs struct {
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
-	ClusterSpec     *string `pulumi:"clusterSpec"`
-	CreateV2Cluster *bool   `pulumi:"createV2Cluster"`
+	ClusterSpec *string `pulumi:"clusterSpec"`
+	// whether to create a v2 version cluster.
+	//
+	// *Removed params*
+	CreateV2Cluster *bool `pulumi:"createV2Cluster"`
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -419,14 +431,14 @@ type serverlessKubernetesArgs struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone *bool `pulumi:"privateZone"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
 	RrsaMetadata *ServerlessKubernetesRrsaMetadata `pulumi:"rrsaMetadata"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -444,7 +456,7 @@ type serverlessKubernetesArgs struct {
 	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId string `pulumi:"vpcId"`
-	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -456,7 +468,7 @@ type serverlessKubernetesArgs struct {
 
 // The set of arguments for constructing a ServerlessKubernetes resource.
 type ServerlessKubernetesArgs struct {
-	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
 	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -467,7 +479,10 @@ type ServerlessKubernetesArgs struct {
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
-	ClusterSpec     pulumi.StringPtrInput
+	ClusterSpec pulumi.StringPtrInput
+	// whether to create a v2 version cluster.
+	//
+	// *Removed params*
 	CreateV2Cluster pulumi.BoolPtrInput
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
@@ -492,14 +507,14 @@ type ServerlessKubernetesArgs struct {
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrInput
-	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone pulumi.BoolPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
 	RrsaMetadata ServerlessKubernetesRrsaMetadataPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
@@ -517,7 +532,7 @@ type ServerlessKubernetesArgs struct {
 	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringInput
-	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId pulumi.StringPtrInput
@@ -614,7 +629,7 @@ func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutputWithContext(ctx 
 	return o
 }
 
-// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+// You can specific network plugin,log component,ingress component and so on. See `addons` below.
 func (o ServerlessKubernetesOutput) Addons() ServerlessKubernetesAddonArrayOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesAddonArrayOutput { return v.Addons }).(ServerlessKubernetesAddonArrayOutput)
 }
@@ -641,6 +656,9 @@ func (o ServerlessKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
 }
 
+// whether to create a v2 version cluster.
+//
+// *Removed params*
 func (o ServerlessKubernetesOutput) CreateV2Cluster() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolOutput { return v.CreateV2Cluster }).(pulumi.BoolOutput)
 }
@@ -698,7 +716,7 @@ func (o ServerlessKubernetesOutput) NewNatGateway() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.NewNatGateway }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 //
 // Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 func (o ServerlessKubernetesOutput) PrivateZone() pulumi.BoolPtrOutput {
@@ -714,7 +732,7 @@ func (o ServerlessKubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }
 
-// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
 func (o ServerlessKubernetesOutput) RrsaMetadata() ServerlessKubernetesRrsaMetadataOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesRrsaMetadataOutput { return v.RrsaMetadata }).(ServerlessKubernetesRrsaMetadataOutput)
 }
@@ -759,7 +777,7 @@ func (o ServerlessKubernetesOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 //
 // Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 func (o ServerlessKubernetesOutput) VswitchId() pulumi.StringOutput {

@@ -46,18 +46,33 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+     * The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
      * 
      */
     @Import(name="mountTargetDomain")
     private @Nullable Output<String> mountTargetDomain;
 
     /**
-     * @return The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+     * @return The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
      * 
      */
     public Optional<Output<String>> mountTargetDomain() {
         return Optional.ofNullable(this.mountTargetDomain);
+    }
+
+    /**
+     * mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * 
+     */
+    @Import(name="networkType")
+    private @Nullable Output<String> networkType;
+
+    /**
+     * @return mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * 
+     */
+    public Optional<Output<String>> networkType() {
+        return Optional.ofNullable(this.networkType);
     }
 
     /**
@@ -91,6 +106,21 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The ID of VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The ID of the VSwitch in the VPC where the mount target resides.
      * 
      */
@@ -111,8 +141,10 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         this.accessGroupName = $.accessGroupName;
         this.fileSystemId = $.fileSystemId;
         this.mountTargetDomain = $.mountTargetDomain;
+        this.networkType = $.networkType;
         this.securityGroupId = $.securityGroupId;
         this.status = $.status;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
     }
 
@@ -177,7 +209,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mountTargetDomain The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+         * @param mountTargetDomain The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
          * 
          * @return builder
          * 
@@ -188,13 +220,34 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mountTargetDomain The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+         * @param mountTargetDomain The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
          * 
          * @return builder
          * 
          */
         public Builder mountTargetDomain(String mountTargetDomain) {
             return mountTargetDomain(Output.of(mountTargetDomain));
+        }
+
+        /**
+         * @param networkType mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkType(@Nullable Output<String> networkType) {
+            $.networkType = networkType;
+            return this;
+        }
+
+        /**
+         * @param networkType mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkType(String networkType) {
+            return networkType(Output.of(networkType));
         }
 
         /**
@@ -237,6 +290,27 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param vpcId The ID of VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

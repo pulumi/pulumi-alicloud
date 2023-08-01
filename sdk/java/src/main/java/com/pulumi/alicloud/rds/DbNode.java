@@ -14,8 +14,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provide RDS cluster instance to increase node resources.
- * &gt; **NOTE:** Available in 1.202.0+.
+ * Provide RDS cluster instance to increase node resources, see [What is RDS DB Node](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbnodes).
+ * 
+ * &gt; **NOTE:** Available since v1.202.0.
  * 
  * ## Example Usage
  * ```java
@@ -27,9 +28,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.rds.RdsFunctions;
  * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.rds.Instance;
  * import com.pulumi.alicloud.rds.InstanceArgs;
  * import com.pulumi.alicloud.rds.DbNode;
@@ -48,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccrdsdbnodes&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
@@ -58,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .category(&#34;cluster&#34;)
@@ -66,31 +70,41 @@ import javax.annotation.Nullable;
  *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
  *             .instanceType(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
  *             .instanceStorage(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .instanceChargeType(&#34;Postpaid&#34;)
  *             .instanceName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .monitoringPeriod(&#34;60&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .securityGroupIds(defaultSecurityGroup.id())
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .zoneIdSlaveA(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
- *         var node = new DbNode(&#34;node&#34;, DbNodeArgs.builder()        
+ *         var defaultDbNode = new DbNode(&#34;defaultDbNode&#34;, DbNodeArgs.builder()        
  *             .dbInstanceId(defaultInstance.id())
  *             .classCode(defaultInstance.instanceType())
- *             .zoneId(defaultInstance.zoneId())
+ *             .zoneId(defaultSwitch.zoneId())
  *             .build());
  * 
  *     }

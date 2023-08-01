@@ -298,30 +298,12 @@ class AutoscalingConfig(pulumi.CustomResource):
                  utilization_threshold: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you configure auto scaling for the kubernetes cluster.
+        This resource will help you configure auto scaling for the kubernetes cluster, see [What is autoscaling config](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-configure-auto-scaling).
 
-        > **NOTE:** Available in v1.127.0+.
-        **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
+        > **NOTE:** Available since v1.127.0.
+
+        > **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
         **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
-
-        ## Example Usage
-
-        If you do not have an existing cluster, you need to create an ACK cluster through cs.ManagedKubernetes first, and then configure automatic scaling.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.cs.AutoscalingConfig("default",
-            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
-            cool_down_duration="10m",
-            unneeded_duration="10m",
-            utilization_threshold="0.5",
-            gpu_utilization_threshold="0.5",
-            scan_interval="30s",
-            scale_down_enabled=True,
-            expander="least-waste")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -341,30 +323,12 @@ class AutoscalingConfig(pulumi.CustomResource):
                  args: Optional[AutoscalingConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you configure auto scaling for the kubernetes cluster.
+        This resource will help you configure auto scaling for the kubernetes cluster, see [What is autoscaling config](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-configure-auto-scaling).
 
-        > **NOTE:** Available in v1.127.0+.
-        **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
+        > **NOTE:** Available since v1.127.0.
+
+        > **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
         **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
-
-        ## Example Usage
-
-        If you do not have an existing cluster, you need to create an ACK cluster through cs.ManagedKubernetes first, and then configure automatic scaling.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.cs.AutoscalingConfig("default",
-            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
-            cool_down_duration="10m",
-            unneeded_duration="10m",
-            utilization_threshold="0.5",
-            gpu_utilization_threshold="0.5",
-            scan_interval="30s",
-            scale_down_enabled=True,
-            expander="least-waste")
-        ```
 
         :param str resource_name: The name of the resource.
         :param AutoscalingConfigArgs args: The arguments to use to populate this resource's properties.

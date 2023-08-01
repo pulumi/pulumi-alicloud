@@ -18,8 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Information about RDS database exclusive agent and its usage, see [Dedicated proxy (read/write splitting).](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/dedicated-proxy).
- * &gt; **NOTE:** Available since v1.193.0+.
+ * Information about RDS database exclusive agent and its usage, see [What is RDS DB Proxy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifydbproxy).
+ * 
+ * &gt; **NOTE:** Available since v1.193.0.
  * 
  * ## Example Usage
  * ```java
@@ -28,12 +29,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.rds.Instance;
  * import com.pulumi.alicloud.rds.InstanceArgs;
  * import com.pulumi.alicloud.rds.ReadOnlyInstance;
@@ -55,10 +58,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;dbInstancevpc&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;5.6&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
@@ -73,6 +76,10 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .build());
  * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;5.7&#34;)
@@ -85,12 +92,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultReadOnlyInstance = new ReadOnlyInstance(&#34;defaultReadOnlyInstance&#34;, ReadOnlyInstanceArgs.builder()        
- *             .masterDbInstanceId(defaultInstance.id())
  *             .zoneId(defaultInstance.zoneId())
+ *             .masterDbInstanceId(defaultInstance.id())
  *             .engineVersion(defaultInstance.engineVersion())
- *             .instanceType(&#34;rds.mysql.s3.large&#34;)
- *             .instanceStorage(&#34;20&#34;)
- *             .instanceName(String.format(&#34;%sro&#34;, name))
+ *             .instanceStorage(defaultInstance.instanceStorage())
+ *             .instanceType(defaultInstance.instanceType())
+ *             .instanceName(String.format(&#34;%sreadonly&#34;, name))
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
@@ -100,7 +107,7 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultInstance.vpcId())
  *             .vswitchId(defaultInstance.vswitchId())
  *             .dbProxyInstanceNum(2)
- *             .dbProxyConnectionPrefix(&#34;ttest001&#34;)
+ *             .dbProxyConnectionPrefix(&#34;example&#34;)
  *             .dbProxyConnectStringPort(3306)
  *             .dbProxyEndpointReadWriteMode(&#34;ReadWrite&#34;)
  *             .readOnlyInstanceMaxDelayTime(90)

@@ -15,11 +15,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
+ * Provides an RDS connection resource to allocate an Internet connection string for RDS instance, see [What is DB Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocateinstancepublicconnection).
  * 
  * &gt; **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
- * **NOTE:** Available since v1.5.0+.
+ * 
+ * &gt; **NOTE:** Available since v1.5.0.
  * 
  * ## Example Usage
  * ```java
@@ -28,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -52,10 +53,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;dbconnectionbasic&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;5.6&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
@@ -70,7 +71,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;5.6&#34;)
  *             .instanceType(&#34;rds.mysql.t1.small&#34;)
@@ -79,8 +80,8 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var foo = new Connection(&#34;foo&#34;, ConnectionArgs.builder()        
- *             .instanceId(instance.id())
+ *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *             .instanceId(defaultInstance.id())
  *             .connectionPrefix(&#34;testabc&#34;)
  *             .build());
  * 

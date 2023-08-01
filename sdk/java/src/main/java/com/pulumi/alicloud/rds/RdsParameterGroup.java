@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
  * 
- * &gt; **NOTE:** Available since v1.119.0+.
+ * &gt; **NOTE:** Available since v1.119.0.
  * 
  * ## Example Usage
  * 
@@ -48,6 +48,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var default_ = new RdsParameterGroup(&#34;default&#34;, RdsParameterGroupArgs.builder()        
  *             .engine(&#34;mysql&#34;)
  *             .engineVersion(&#34;5.7&#34;)
@@ -60,8 +62,8 @@ import javax.annotation.Nullable;
  *                     .paramName(&#34;wait_timeout&#34;)
  *                     .paramValue(&#34;86460&#34;)
  *                     .build())
- *             .parameterGroupDesc(&#34;rdsparameter&#34;)
- *             .parameterGroupName(&#34;rds1234&#34;)
+ *             .parameterGroupDesc(name)
+ *             .parameterGroupName(name)
  *             .build());
  * 
  *     }

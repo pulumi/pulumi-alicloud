@@ -94,6 +94,21 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The ID of the resource group to which the instance belongs.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the instance belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
      * 
      */
@@ -131,6 +146,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         this.description = $.description;
         this.internetChargeType = $.internetChargeType;
         this.paymentType = $.paymentType;
+        this.resourceGroupId = $.resourceGroupId;
         this.serviceLocation = $.serviceLocation;
         this.tags = $.tags;
     }
@@ -256,6 +272,27 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

@@ -10,38 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// This resource will help you configure auto scaling for the kubernetes cluster.
+    /// This resource will help you configure auto scaling for the kubernetes cluster, see [What is autoscaling config](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-configure-auto-scaling).
     /// 
-    /// &gt; **NOTE:** Available in v1.127.0+.
-    /// **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
+    /// &gt; **NOTE:** Available since v1.127.0.
+    /// 
+    /// &gt; **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
     /// **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// If you do not have an existing cluster, you need to create an ACK cluster through alicloud.cs.ManagedKubernetes first, and then configure automatic scaling.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CS.AutoscalingConfig("default", new()
-    ///     {
-    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///         CoolDownDuration = "10m",
-    ///         UnneededDuration = "10m",
-    ///         UtilizationThreshold = "0.5",
-    ///         GpuUtilizationThreshold = "0.5",
-    ///         ScanInterval = "30s",
-    ///         ScaleDownEnabled = true,
-    ///         Expander = "least-waste",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/autoscalingConfig:AutoscalingConfig")]
     public partial class AutoscalingConfig : global::Pulumi.CustomResource

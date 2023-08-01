@@ -14,9 +14,9 @@ import (
 
 // Provides a DBFS Instance resource.
 //
-// For information about DBFS Instance and how to use it, see [What is Instance](https://help.aliyun.com/document_detail/149726.html).
+// For information about DBFS Instance and how to use it.
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -29,16 +29,23 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasefilesystem"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := databasefilesystem.NewInstance(ctx, "example", &databasefilesystem.InstanceArgs{
-//				Category:     pulumi.String("standard"),
-//				InstanceName: pulumi.String("example_value"),
-//				Size:         pulumi.Int(1),
-//				ZoneId:       pulumi.String("example_value"),
+//				Category:         pulumi.String("standard"),
+//				ZoneId:           pulumi.String("cn-hangzhou-i"),
+//				PerformanceLevel: pulumi.String("PL1"),
+//				InstanceName:     pulumi.String(name),
+//				Size:             pulumi.Int(100),
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +72,7 @@ type Instance struct {
 	Category pulumi.StringOutput `pulumi:"category"`
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot pulumi.BoolPtrOutput `pulumi:"deleteSnapshot"`
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists InstanceEcsListArrayOutput `pulumi:"ecsLists"`
@@ -136,7 +143,7 @@ type instanceState struct {
 	Category *string `pulumi:"category"`
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot *bool `pulumi:"deleteSnapshot"`
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists []InstanceEcsList `pulumi:"ecsLists"`
@@ -169,7 +176,7 @@ type InstanceState struct {
 	Category pulumi.StringPtrInput
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot pulumi.BoolPtrInput
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists InstanceEcsListArrayInput
@@ -206,7 +213,7 @@ type instanceArgs struct {
 	Category *string `pulumi:"category"`
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot *bool `pulumi:"deleteSnapshot"`
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists []InstanceEcsList `pulumi:"ecsLists"`
@@ -238,7 +245,7 @@ type InstanceArgs struct {
 	Category pulumi.StringPtrInput
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot pulumi.BoolPtrInput
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists InstanceEcsListArrayInput
@@ -361,7 +368,7 @@ func (o InstanceOutput) DeleteSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeleteSnapshot }).(pulumi.BoolPtrOutput)
 }
 
-// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 //
 // Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 func (o InstanceOutput) EcsLists() InstanceEcsListArrayOutput {

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/batch-configure-domain-name-protection).
     /// 
-    /// &gt; **NOTE:** Available in v1.185.0+.
+    /// &gt; **NOTE:** Available since v1.185.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,12 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultDomain = new AliCloud.Dcdn.Domain("defaultDomain", new()
+    ///     var config = new Config();
+    ///     var domainName = config.Get("domainName") ?? "example.com";
+    ///     var exampleDomain = new AliCloud.Dcdn.Domain("exampleDomain", new()
     ///     {
-    ///         DomainName = @var.Domain_name,
+    ///         DomainName = domainName,
+    ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Dcdn.Inputs.DomainSourceArgs
@@ -39,13 +42,14 @@ namespace Pulumi.AliCloud.Dcdn
     ///                 Port = 80,
     ///                 Priority = "20",
     ///                 Type = "ipaddr",
+    ///                 Weight = "10",
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var defaultWafDomain = new AliCloud.Dcdn.WafDomain("defaultWafDomain", new()
+    ///     var exampleWafDomain = new AliCloud.Dcdn.WafDomain("exampleWafDomain", new()
     ///     {
-    ///         DomainName = defaultDomain.DomainName,
+    ///         DomainName = exampleDomain.DomainName,
     ///         ClientIpTag = "X-Forwarded-For",
     ///     });
     /// 

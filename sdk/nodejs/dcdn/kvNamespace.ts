@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvnamespace).
  *
- * > **NOTE:** Available in v1.198.0+.
+ * > **NOTE:** Available since v1.198.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const _default = new alicloud.dcdn.KvNamespace("default", {
- *     description: "wkmtest",
- *     namespace: _var.namespace,
+ *     description: name,
+ *     namespace: name,
  * });
  * ```
  *

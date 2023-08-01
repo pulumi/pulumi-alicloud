@@ -13,223 +13,223 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
     public sealed class ErEnvConfGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of a presetCanaryAnhui environment. The `Block preset_canary_anhui` is same as `Block staging`.
+        /// The configuration of a presetCanaryAnhui environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryAnhui")]
         public Input<Inputs.ErEnvConfPresetCanaryAnhuiGetArgs>? PresetCanaryAnhui { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryBeijing environment. The `Block preset_canary_beijing` is same as `Block staging`.
+        /// The configuration of a presetCanaryBeijing environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryBeijing")]
         public Input<Inputs.ErEnvConfPresetCanaryBeijingGetArgs>? PresetCanaryBeijing { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryChongqing environment. The `Block preset_canary_chongqing` is same as `Block staging`.
+        /// The configuration of a presetCanaryChongqing environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryChongqing")]
         public Input<Inputs.ErEnvConfPresetCanaryChongqingGetArgs>? PresetCanaryChongqing { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryFujian environment. The `Block preset_canary_fujian` is same as `Block staging`.
+        /// The configuration of a presetCanaryFujian environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryFujian")]
         public Input<Inputs.ErEnvConfPresetCanaryFujianGetArgs>? PresetCanaryFujian { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryGansu environment. The `Block preset_canary_gansu` is same as `Block staging`.
+        /// The configuration of a presetCanaryGansu environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryGansu")]
         public Input<Inputs.ErEnvConfPresetCanaryGansuGetArgs>? PresetCanaryGansu { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryGuangdong environment. The `Block preset_canary_guangdong` is same as `Block staging`.
+        /// The configuration of a presetCanaryGuangdong environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryGuangdong")]
         public Input<Inputs.ErEnvConfPresetCanaryGuangdongGetArgs>? PresetCanaryGuangdong { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryGuangxi environment. The `Block preset_canary_guangxi` is same as `Block staging`.
+        /// The configuration of a presetCanaryGuangxi environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryGuangxi")]
         public Input<Inputs.ErEnvConfPresetCanaryGuangxiGetArgs>? PresetCanaryGuangxi { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryGuizhou environment. The `Block preset_canary_guizhou` is same as `Block staging`.
+        /// The configuration of a presetCanaryGuizhou environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryGuizhou")]
         public Input<Inputs.ErEnvConfPresetCanaryGuizhouGetArgs>? PresetCanaryGuizhou { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHainan environment. The `Block preset_canary_hainan` is same as `Block staging`.
+        /// The configuration of a presetCanaryHainan environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryHainan")]
         public Input<Inputs.ErEnvConfPresetCanaryHainanGetArgs>? PresetCanaryHainan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHebei environment. The `Block preset_canary_hebei` is same as `Block staging`.
+        /// The configuration of a presetCanaryHebei environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryHebei")]
         public Input<Inputs.ErEnvConfPresetCanaryHebeiGetArgs>? PresetCanaryHebei { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHeilongjiang environment. The `Block preset_canary_heilongjiang` is same as `Block staging`.
+        /// The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryHeilongjiang")]
         public Input<Inputs.ErEnvConfPresetCanaryHeilongjiangGetArgs>? PresetCanaryHeilongjiang { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHenan environment. The `Block preset_canary_henan` is same as `Block staging`.
+        /// The configuration of a presetCanaryHenan environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryHenan")]
         public Input<Inputs.ErEnvConfPresetCanaryHenanGetArgs>? PresetCanaryHenan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHongKong environment. The `Block preset_canary_hong_kong` is same as `Block staging`.
+        /// The configuration of a presetCanaryHongKong environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryHongKong")]
         public Input<Inputs.ErEnvConfPresetCanaryHongKongGetArgs>? PresetCanaryHongKong { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHubei environment. The `Block preset_canary_hubei` is same as `Block staging`.
+        /// The configuration of a presetCanaryHubei environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryHubei")]
         public Input<Inputs.ErEnvConfPresetCanaryHubeiGetArgs>? PresetCanaryHubei { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryHunan environment. The `Block preset_canary_hunan` is same as `Block staging`.
+        /// The configuration of a presetCanaryHunan environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryHunan")]
         public Input<Inputs.ErEnvConfPresetCanaryHunanGetArgs>? PresetCanaryHunan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryJiangsu environment. The `Block preset_canary_jiangsu` is same as `Block staging`.
+        /// The configuration of a presetCanaryJiangsu environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryJiangsu")]
         public Input<Inputs.ErEnvConfPresetCanaryJiangsuGetArgs>? PresetCanaryJiangsu { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryJiangxi environment. The `Block preset_canary_jiangxi` is same as `Block staging`.
+        /// The configuration of a presetCanaryJiangxi environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryJiangxi")]
         public Input<Inputs.ErEnvConfPresetCanaryJiangxiGetArgs>? PresetCanaryJiangxi { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryJilin environment. The `Block preset_canary_jilin` is same as `Block staging`.
+        /// The configuration of a presetCanaryJilin environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryJilin")]
         public Input<Inputs.ErEnvConfPresetCanaryJilinGetArgs>? PresetCanaryJilin { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryLiaoning environment. The `Block preset_canary_liaoning` is same as `Block staging`.
+        /// The configuration of a presetCanaryLiaoning environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryLiaoning")]
         public Input<Inputs.ErEnvConfPresetCanaryLiaoningGetArgs>? PresetCanaryLiaoning { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryMacau environment. The `Block preset_canary_macau` is same as `Block staging`.
+        /// The configuration of a presetCanaryMacau environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryMacau")]
         public Input<Inputs.ErEnvConfPresetCanaryMacauGetArgs>? PresetCanaryMacau { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryNeimenggu environment. The `Block preset_canary_neimenggu` is same as `Block staging`.
+        /// The configuration of a presetCanaryNeimenggu environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryNeimenggu")]
         public Input<Inputs.ErEnvConfPresetCanaryNeimengguGetArgs>? PresetCanaryNeimenggu { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryNingxia environment. The `Block preset_canary_ningxia` is same as `Block staging`.
+        /// The configuration of a presetCanaryNingxia environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryNingxia")]
         public Input<Inputs.ErEnvConfPresetCanaryNingxiaGetArgs>? PresetCanaryNingxia { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryOverseas environment. The `Block preset_canary_overseas` is same as `Block staging`.
+        /// The configuration of a presetCanaryOverseas environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryOverseas")]
         public Input<Inputs.ErEnvConfPresetCanaryOverseasGetArgs>? PresetCanaryOverseas { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryQinghai environment. The `Block preset_canary_qinghai` is same as `Block staging`.
+        /// The configuration of a presetCanaryQinghai environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryQinghai")]
         public Input<Inputs.ErEnvConfPresetCanaryQinghaiGetArgs>? PresetCanaryQinghai { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryShaanxi environment. The `Block preset_canary_shaanxi` is same as `Block staging`.
+        /// The configuration of a presetCanaryShaanxi environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryShaanxi")]
         public Input<Inputs.ErEnvConfPresetCanaryShaanxiGetArgs>? PresetCanaryShaanxi { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryShandong environment. The `Block preset_canary_shandong` is same as `Block staging`.
+        /// The configuration of a presetCanaryShandong environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryShandong")]
         public Input<Inputs.ErEnvConfPresetCanaryShandongGetArgs>? PresetCanaryShandong { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryShanghai environment. The `Block preset_canary_shanghai` is same as `Block staging`.
+        /// The configuration of a presetCanaryShanghai environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryShanghai")]
         public Input<Inputs.ErEnvConfPresetCanaryShanghaiGetArgs>? PresetCanaryShanghai { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryShanxi environment. The `Block preset_canary_shanxi` is same as `Block staging`.
+        /// The configuration of a presetCanaryShanxi environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryShanxi")]
         public Input<Inputs.ErEnvConfPresetCanaryShanxiGetArgs>? PresetCanaryShanxi { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanarySichuan environment. The `Block preset_canary_sichuan` is same as `Block staging`.
+        /// The configuration of a presetCanarySichuan environment. See `staging` below.
         /// </summary>
         [Input("presetCanarySichuan")]
         public Input<Inputs.ErEnvConfPresetCanarySichuanGetArgs>? PresetCanarySichuan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryTaiwan environment. The `Block preset_canary_taiwan` is same as `Block staging`.
+        /// The configuration of a presetCanaryTaiwan environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryTaiwan")]
         public Input<Inputs.ErEnvConfPresetCanaryTaiwanGetArgs>? PresetCanaryTaiwan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryTianjin environment. The `Block preset_canary_tianjin` is same as `Block staging`.
+        /// The configuration of a presetCanaryTianjin environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryTianjin")]
         public Input<Inputs.ErEnvConfPresetCanaryTianjinGetArgs>? PresetCanaryTianjin { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryXinjiang environment. The `Block preset_canary_xinjiang` is same as `Block staging`.
+        /// The configuration of a presetCanaryXinjiang environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryXinjiang")]
         public Input<Inputs.ErEnvConfPresetCanaryXinjiangGetArgs>? PresetCanaryXinjiang { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryXizang environment. The `Block preset_canary_xizang` is same as `Block staging`.
+        /// The configuration of a presetCanaryXizang environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryXizang")]
         public Input<Inputs.ErEnvConfPresetCanaryXizangGetArgs>? PresetCanaryXizang { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryYunnan environment. The `Block preset_canary_yunnan` is same as `Block staging`.
+        /// The configuration of a presetCanaryYunnan environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryYunnan")]
         public Input<Inputs.ErEnvConfPresetCanaryYunnanGetArgs>? PresetCanaryYunnan { get; set; }
 
         /// <summary>
-        /// The configuration of a presetCanaryZhejiang environment. The `Block preset_canary_zhejiang` is same as `Block staging`.
+        /// The configuration of a presetCanaryZhejiang environment. See `staging` below.
         /// </summary>
         [Input("presetCanaryZhejiang")]
         public Input<Inputs.ErEnvConfPresetCanaryZhejiangGetArgs>? PresetCanaryZhejiang { get; set; }
 
         /// <summary>
-        /// The configuration of a production environment. The `Block production` is same as `Block staging`.
+        /// The configuration of a production environment. See `staging` below.
         /// </summary>
         [Input("production")]
         public Input<Inputs.ErEnvConfProductionGetArgs>? Production { get; set; }
 
         /// <summary>
-        /// The configuration of a staging environment. See the following `Block staging`.
+        /// The configuration of a staging environment. See `staging` below.
         /// </summary>
         [Input("staging")]
         public Input<Inputs.ErEnvConfStagingGetArgs>? Staging { get; set; }

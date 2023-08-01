@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
  * 
- * &gt; **NOTE:** Available in v1.140.0+.
+ * &gt; **NOTE:** Available since v1.140.0.
  * 
  * ## Example Usage
  * 
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccFileSystem&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultZones = DfsFunctions.getZones();
  * 
  *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        

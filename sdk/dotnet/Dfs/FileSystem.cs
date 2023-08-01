@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.140.0+.
+    /// &gt; **NOTE:** Available since v1.140.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Dfs
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAccFileSystem";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.Dfs.GetZones.Invoke();
     /// 
     ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("defaultFileSystem", new()

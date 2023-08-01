@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkv).
  *
- * > **NOTE:** Available in v1.198.0+.
+ * > **NOTE:** Available since v1.198.0.
  *
  * ## Example Usage
  *
@@ -19,16 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultKvAccount = alicloud.dcdn.getKvAccount({
- *     status: "online",
- * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultKvNamespace = new alicloud.dcdn.KvNamespace("defaultKvNamespace", {
- *     description: "wkmtest",
- *     namespace: _var.name,
+ *     description: name,
+ *     namespace: name,
  * });
  * const defaultKv = new alicloud.dcdn.Kv("defaultKv", {
- *     value: "testvalue",
- *     key: _var.name,
+ *     value: "example-value",
+ *     key: name,
  *     namespace: defaultKvNamespace.namespace,
  * });
  * ```
@@ -74,11 +73,11 @@ export class Kv extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * The name specified when the customer calls PutDcdnKvNamespace
+     * The name specified when the customer calls PutDcdnKvNamespace.
      */
     public readonly namespace!: pulumi.Output<string>;
     /**
-     * The content of key, up to 2M(2*1000*1000)
+     * The content of key, up to 2M(2*1000*1000).
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -127,11 +126,11 @@ export interface KvState {
      */
     key?: pulumi.Input<string>;
     /**
-     * The name specified when the customer calls PutDcdnKvNamespace
+     * The name specified when the customer calls PutDcdnKvNamespace.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * The content of key, up to 2M(2*1000*1000)
+     * The content of key, up to 2M(2*1000*1000).
      */
     value?: pulumi.Input<string>;
 }
@@ -145,11 +144,11 @@ export interface KvArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * The name specified when the customer calls PutDcdnKvNamespace
+     * The name specified when the customer calls PutDcdnKvNamespace.
      */
     namespace: pulumi.Input<string>;
     /**
-     * The content of key, up to 2M(2*1000*1000)
+     * The content of key, up to 2M(2*1000*1000).
      */
     value: pulumi.Input<string>;
 }

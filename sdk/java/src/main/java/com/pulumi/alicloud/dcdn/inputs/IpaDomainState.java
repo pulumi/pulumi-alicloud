@@ -63,14 +63,14 @@ public final class IpaDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sources. See the following `Block sources`.
+     * Sources. See `sources` below.
      * 
      */
     @Import(name="sources")
     private @Nullable Output<List<IpaDomainSourceArgs>> sources;
 
     /**
-     * @return Sources. See the following `Block sources`.
+     * @return Sources. See `sources` below.
      * 
      */
     public Optional<Output<List<IpaDomainSourceArgs>>> sources() {
@@ -184,7 +184,7 @@ public final class IpaDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources Sources. See the following `Block sources`.
+         * @param sources Sources. See `sources` below.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class IpaDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources Sources. See the following `Block sources`.
+         * @param sources Sources. See `sources` below.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class IpaDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources Sources. See the following `Block sources`.
+         * @param sources Sources. See `sources` below.
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about RDS cross region backup settings and how to use them, see [What is cross region backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/modify-cross-region-backup-settings).
  * 
- * &gt; **NOTE:** Available in 1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * ```java
@@ -28,9 +28,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
  * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -54,10 +54,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRdsCrossRegionBackupPolicy&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *             .category(&#34;HighAvailability&#34;)
  *             .build());
  * 
  *         final var regions = RdsFunctions.getCrossRegions();
@@ -70,22 +80,24 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[5].id()))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
- *             .dbInstanceStorageType(&#34;local_ssd&#34;)
- *             .instanceType(&#34;rds.mysql.c1.large&#34;)
- *             .instanceStorage(&#34;10&#34;)
- *             .vswitchId(defaultSwitch.id())
+ *             .instanceType(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceChargeType(&#34;Postpaid&#34;)
+ *             .category(&#34;HighAvailability&#34;)
  *             .instanceName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .dbInstanceStorageType(&#34;local_ssd&#34;)
  *             .build());
  * 
- *         var policy = new RdsInstanceCrossBackupPolicy(&#34;policy&#34;, RdsInstanceCrossBackupPolicyArgs.builder()        
- *             .instanceId(instance.id())
+ *         var defaultRdsInstanceCrossBackupPolicy = new RdsInstanceCrossBackupPolicy(&#34;defaultRdsInstanceCrossBackupPolicy&#34;, RdsInstanceCrossBackupPolicyArgs.builder()        
+ *             .instanceId(defaultInstance.id())
  *             .crossBackupRegion(regions.applyValue(getCrossRegionsResult -&gt; getCrossRegionsResult.ids()[0]))
  *             .build());
  * 

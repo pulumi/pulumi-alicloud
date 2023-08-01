@@ -27,7 +27,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service.
+ * This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is edge kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ack-edge-cluster).
  * 
  * &gt; **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
  * A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
@@ -42,9 +42,185 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
  * 
- * &gt; **NOTE:** Available in v1.103.0+.
+ * &gt; **NOTE:** Available since v1.103.0.
  * 
  * &gt; **NOTE:** From version 1.185.0+, support new fields `cluster_spec`, `runtime` and `load_balancer_spec`.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cs.EdgeKubernetes;
+ * import com.pulumi.alicloud.cs.EdgeKubernetesArgs;
+ * import com.pulumi.alicloud.cs.inputs.EdgeKubernetesWorkerDataDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(4)
+ *             .memorySize(8)
+ *             .kubernetesNodeRole(&#34;Master&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultEdgeKubernetes = new EdgeKubernetes(&#34;defaultEdgeKubernetes&#34;, EdgeKubernetesArgs.builder()        
+ *             .workerVswitchIds(defaultSwitch.id())
+ *             .workerInstanceTypes(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .version(&#34;1.20.11-aliyunedge.1&#34;)
+ *             .workerNumber(&#34;1&#34;)
+ *             .password(&#34;Test12345&#34;)
+ *             .podCidr(&#34;10.99.0.0/16&#34;)
+ *             .serviceCidr(&#34;172.16.0.0/16&#34;)
+ *             .workerInstanceChargeType(&#34;PostPaid&#34;)
+ *             .newNatGateway(&#34;true&#34;)
+ *             .nodeCidrMask(&#34;24&#34;)
+ *             .installCloudMonitor(&#34;true&#34;)
+ *             .slbInternetEnabled(&#34;true&#34;)
+ *             .isEnterpriseSecurityGroup(&#34;true&#34;)
+ *             .workerDataDisks(EdgeKubernetesWorkerDataDiskArgs.builder()
+ *                 .category(&#34;cloud_ssd&#34;)
+ *                 .size(&#34;200&#34;)
+ *                 .encrypted(&#34;false&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * You could create a professional kubernetes edge cluster now.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cs.EdgeKubernetes;
+ * import com.pulumi.alicloud.cs.EdgeKubernetesArgs;
+ * import com.pulumi.alicloud.cs.inputs.EdgeKubernetesAddonArgs;
+ * import com.pulumi.alicloud.cs.inputs.EdgeKubernetesWorkerDataDiskArgs;
+ * import com.pulumi.alicloud.cs.inputs.EdgeKubernetesRuntimeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(4)
+ *             .memorySize(8)
+ *             .kubernetesNodeRole(&#34;Master&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultEdgeKubernetes = new EdgeKubernetes(&#34;defaultEdgeKubernetes&#34;, EdgeKubernetesArgs.builder()        
+ *             .workerVswitchIds(defaultSwitch.id())
+ *             .workerInstanceTypes(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .version(&#34;1.20.11-aliyunedge.1&#34;)
+ *             .clusterSpec(&#34;ack.pro.small&#34;)
+ *             .workerNumber(&#34;1&#34;)
+ *             .password(&#34;Test12345&#34;)
+ *             .podCidr(&#34;10.99.0.0/16&#34;)
+ *             .serviceCidr(&#34;172.16.0.0/16&#34;)
+ *             .workerInstanceChargeType(&#34;PostPaid&#34;)
+ *             .newNatGateway(&#34;true&#34;)
+ *             .nodeCidrMask(&#34;24&#34;)
+ *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .installCloudMonitor(&#34;true&#34;)
+ *             .slbInternetEnabled(&#34;true&#34;)
+ *             .isEnterpriseSecurityGroup(&#34;true&#34;)
+ *             .addons(EdgeKubernetesAddonArgs.builder()
+ *                 .name(&#34;alibaba-log-controller&#34;)
+ *                 .config(&#34;{\&#34;IngressDashboardEnabled\&#34;:\&#34;false\&#34;}&#34;)
+ *                 .build())
+ *             .workerDataDisks(EdgeKubernetesWorkerDataDiskArgs.builder()
+ *                 .category(&#34;cloud_ssd&#34;)
+ *                 .size(&#34;200&#34;)
+ *                 .encrypted(&#34;false&#34;)
+ *                 .build())
+ *             .runtime(EdgeKubernetesRuntimeArgs.builder()
+ *                 .name(&#34;containerd&#34;)
+ *                 .version(&#34;1.5.10&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -58,14 +234,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/edgeKubernetes:EdgeKubernetes")
 public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     /**
-     * The addon you want to install in cluster.
+     * The addon you want to install in cluster. See `addons` below.
      * 
      */
     @Export(name="addons", type=List.class, parameters={EdgeKubernetesAddon.class})
     private Output</* @Nullable */ List<EdgeKubernetesAddon>> addons;
 
     /**
-     * @return The addon you want to install in cluster.
+     * @return The addon you want to install in cluster. See `addons` below.
      * 
      */
     public Output<Optional<List<EdgeKubernetesAddon>>> addons() {
@@ -86,14 +262,14 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
-     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     * Nested attribute containing certificate authority data for your cluster.
      * 
      */
     @Export(name="certificateAuthority", type=EdgeKubernetesCertificateAuthority.class, parameters={})
     private Output<EdgeKubernetesCertificateAuthority> certificateAuthority;
 
     /**
-     * @return (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     * @return Nested attribute containing certificate authority data for your cluster.
      * 
      */
     public Output<EdgeKubernetesCertificateAuthority> certificateAuthority() {
@@ -130,12 +306,16 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      * 
+     * *Removed params*
+     * 
      */
     @Export(name="clusterCaCert", type=String.class, parameters={})
     private Output</* @Nullable */ String> clusterCaCert;
 
     /**
      * @return The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     * 
+     * *Removed params*
      * 
      */
     public Output<Optional<String>> clusterCaCert() {
@@ -263,8 +443,9 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     }
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     * 
      * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * 
+     * *Worker params*
      * 
      */
     @Export(name="loadBalancerSpec", type=String.class, parameters={})
@@ -272,15 +453,16 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     * 
      * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * 
+     * *Worker params*
      * 
      */
     public Output<String> loadBalancerSpec() {
         return this.loadBalancerSpec;
     }
     /**
-     * A list of one element containing information about the associated log store. It contains the following attributes:
+     * A list of one element containing information about the associated log store. See `log_config` below.
      * 
      * @deprecated
      * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
@@ -291,7 +473,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ EdgeKubernetesLogConfig> logConfig;
 
     /**
-     * @return A list of one element containing information about the associated log store. It contains the following attributes:
+     * @return A list of one element containing information about the associated log store. See `log_config` below.
      * 
      */
     public Output<Optional<EdgeKubernetesLogConfig>> logConfig() {
@@ -576,14 +758,14 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     * The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
      * 
      */
     @Export(name="workerDataDisks", type=List.class, parameters={EdgeKubernetesWorkerDataDisk.class})
     private Output</* @Nullable */ List<EdgeKubernetesWorkerDataDisk>> workerDataDisks;
 
     /**
-     * @return The data disk configurations of worker nodes, such as the disk type and disk size.
+     * @return The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
      * 
      */
     public Output<Optional<List<EdgeKubernetesWorkerDataDisk>>> workerDataDisks() {
@@ -634,12 +816,20 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * Worker node system disk auto snapshot policy.
      * 
+     * *Computed params*
+     * 
+     * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
+     * 
      */
     @Export(name="workerDiskSnapshotPolicyId", type=String.class, parameters={})
     private Output</* @Nullable */ String> workerDiskSnapshotPolicyId;
 
     /**
      * @return Worker node system disk auto snapshot policy.
+     * 
+     * *Computed params*
+     * 
+     * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
      * 
      */
     public Output<Optional<String>> workerDiskSnapshotPolicyId() {

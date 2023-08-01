@@ -19,14 +19,14 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     public static final RuleTargetArgs Empty = new RuleTargetArgs();
 
     /**
-     * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+     * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
      * 
      */
     @Import(name="deadLetterQueue")
     private @Nullable Output<RuleTargetDeadLetterQueueArgs> deadLetterQueue;
 
     /**
-     * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+     * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
      * 
      */
     public Optional<Output<RuleTargetDeadLetterQueueArgs>> deadLetterQueue() {
@@ -49,14 +49,14 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of param. See the following `Block param_list`.
+     * A list of param. See `param_list` below.
      * 
      */
     @Import(name="paramLists", required=true)
     private Output<List<RuleTargetParamListArgs>> paramLists;
 
     /**
-     * @return A list of param. See the following `Block param_list`.
+     * @return A list of param. See `param_list` below.
      * 
      */
     public Output<List<RuleTargetParamListArgs>> paramLists() {
@@ -94,14 +94,16 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+     * The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+     * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+     * @return The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+     * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
      * 
      */
     public Output<String> type() {
@@ -138,7 +140,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterQueue Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+         * @param deadLetterQueue Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
          * 
          * @return builder
          * 
@@ -149,7 +151,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterQueue Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+         * @param deadLetterQueue Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
          * 
          * @return builder
          * 
@@ -180,7 +182,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists A list of param. See the following `Block param_list`.
+         * @param paramLists A list of param. See `param_list` below.
          * 
          * @return builder
          * 
@@ -191,7 +193,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists A list of param. See the following `Block param_list`.
+         * @param paramLists A list of param. See `param_list` below.
          * 
          * @return builder
          * 
@@ -201,7 +203,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists A list of param. See the following `Block param_list`.
+         * @param paramLists A list of param. See `param_list` below.
          * 
          * @return builder
          * 
@@ -253,7 +255,8 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+         * @param type The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          * 
          * @return builder
          * 
@@ -264,7 +267,8 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+         * @param type The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          * 
          * @return builder
          * 

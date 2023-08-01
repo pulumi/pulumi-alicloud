@@ -16,7 +16,7 @@ import (
 //
 // For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/createroutine).
 //
-// > **NOTE:** Available in v1.201.0+.
+// > **NOTE:** Available since v1.201.0.
 //
 // ## Example Usage
 //
@@ -29,28 +29,34 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := dcdn.NewEr(ctx, "default", &dcdn.ErArgs{
-//				Description: pulumi.String("tf-example-description"),
+//				ErName:      pulumi.String(name),
+//				Description: pulumi.String(name),
 //				EnvConf: &dcdn.ErEnvConfArgs{
-//					Production: &dcdn.ErEnvConfProductionArgs{
-//						AllowedHosts: pulumi.StringArray{
-//							pulumi.String("example.com"),
-//						},
-//						SpecName: pulumi.String("5ms"),
-//					},
 //					Staging: &dcdn.ErEnvConfStagingArgs{
+//						SpecName: pulumi.String("5ms"),
 //						AllowedHosts: pulumi.StringArray{
 //							pulumi.String("example.com"),
 //						},
+//					},
+//					Production: &dcdn.ErEnvConfProductionArgs{
 //						SpecName: pulumi.String("5ms"),
+//						AllowedHosts: pulumi.StringArray{
+//							pulumi.String("example.com"),
+//						},
 //					},
 //				},
-//				ErName: pulumi.String("tf-example-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -75,7 +81,7 @@ type Er struct {
 
 	// Routine The description of the routine.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The configurations of the specified environment. See the following `Block envConf`.
+	// The configurations of the specified environment. See `envConf` below.
 	EnvConf ErEnvConfOutput `pulumi:"envConf"`
 	// The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
 	ErName pulumi.StringOutput `pulumi:"erName"`
@@ -116,7 +122,7 @@ func GetEr(ctx *pulumi.Context,
 type erState struct {
 	// Routine The description of the routine.
 	Description *string `pulumi:"description"`
-	// The configurations of the specified environment. See the following `Block envConf`.
+	// The configurations of the specified environment. See `envConf` below.
 	EnvConf *ErEnvConf `pulumi:"envConf"`
 	// The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
 	ErName *string `pulumi:"erName"`
@@ -125,7 +131,7 @@ type erState struct {
 type ErState struct {
 	// Routine The description of the routine.
 	Description pulumi.StringPtrInput
-	// The configurations of the specified environment. See the following `Block envConf`.
+	// The configurations of the specified environment. See `envConf` below.
 	EnvConf ErEnvConfPtrInput
 	// The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
 	ErName pulumi.StringPtrInput
@@ -138,7 +144,7 @@ func (ErState) ElementType() reflect.Type {
 type erArgs struct {
 	// Routine The description of the routine.
 	Description *string `pulumi:"description"`
-	// The configurations of the specified environment. See the following `Block envConf`.
+	// The configurations of the specified environment. See `envConf` below.
 	EnvConf *ErEnvConf `pulumi:"envConf"`
 	// The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
 	ErName string `pulumi:"erName"`
@@ -148,7 +154,7 @@ type erArgs struct {
 type ErArgs struct {
 	// Routine The description of the routine.
 	Description pulumi.StringPtrInput
-	// The configurations of the specified environment. See the following `Block envConf`.
+	// The configurations of the specified environment. See `envConf` below.
 	EnvConf ErEnvConfPtrInput
 	// The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
 	ErName pulumi.StringInput
@@ -246,7 +252,7 @@ func (o ErOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Er) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The configurations of the specified environment. See the following `Block envConf`.
+// The configurations of the specified environment. See `envConf` below.
 func (o ErOutput) EnvConf() ErEnvConfOutput {
 	return o.ApplyT(func(v *Er) ErEnvConfOutput { return v.EnvConf }).(ErEnvConfOutput)
 }

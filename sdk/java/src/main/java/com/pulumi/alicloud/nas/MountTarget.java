@@ -18,94 +18,11 @@ import javax.annotation.Nullable;
  * Provides a NAS Mount Target resource.
  * For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
  * 
- * &gt; **NOTE**: Available in v1.34.0+.
- * 
- * &gt; **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
- * 
- * &gt; **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
- * and it only can be achieved by creating a classic mount target mannually.
- * See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.nas.NasFunctions;
- * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.nas.FileSystem;
- * import com.pulumi.alicloud.nas.FileSystemArgs;
- * import com.pulumi.alicloud.nas.AccessGroup;
- * import com.pulumi.alicloud.nas.AccessGroupArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.nas.MountTarget;
- * import com.pulumi.alicloud.nas.MountTargetArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var exampleZones = NasFunctions.getZones(GetZonesArgs.builder()
- *             .fileSystemType(&#34;standard&#34;)
- *             .build());
- * 
- *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
- *             .protocolType(&#34;NFS&#34;)
- *             .storageType(&#34;Performance&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .encryptType(&#34;1&#34;)
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
- *             .build());
- * 
- *         var exampleAccessGroup = new AccessGroup(&#34;exampleAccessGroup&#34;, AccessGroupArgs.builder()        
- *             .accessGroupName(&#34;terraform-example&#34;)
- *             .accessGroupType(&#34;Vpc&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .fileSystemType(&#34;standard&#34;)
- *             .build());
- * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
- *             .build());
- * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
- *             .vpcId(exampleNetwork.id())
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
- *             .build());
- * 
- *         var exampleMountTarget = new MountTarget(&#34;exampleMountTarget&#34;, MountTargetArgs.builder()        
- *             .fileSystemId(exampleFileSystem.id())
- *             .accessGroupName(exampleAccessGroup.accessGroupName())
- *             .vswitchId(exampleSwitch.id())
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.34.0.
  * 
  * ## Import
  * 
- * NAS MountTarget
- * 
- * can be imported using the id, e.g.
+ * NAS MountTarget can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
@@ -143,18 +60,32 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
         return this.fileSystemId;
     }
     /**
-     * The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+     * The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
      * 
      */
     @Export(name="mountTargetDomain", type=String.class, parameters={})
     private Output<String> mountTargetDomain;
 
     /**
-     * @return The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+     * @return The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
      * 
      */
     public Output<String> mountTargetDomain() {
         return this.mountTargetDomain;
+    }
+    /**
+     * mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * 
+     */
+    @Export(name="networkType", type=String.class, parameters={})
+    private Output<String> networkType;
+
+    /**
+     * @return mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * 
+     */
+    public Output<String> networkType() {
+        return this.networkType;
     }
     /**
      * The ID of security group.
@@ -183,6 +114,20 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The ID of VPC.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The ID of VPC.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
     /**
      * The ID of the VSwitch in the VPC where the mount target resides.

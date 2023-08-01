@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a RAM cloud account alias.
  * 
+ * &gt; **NOTE:** Available since v1.0.0+.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

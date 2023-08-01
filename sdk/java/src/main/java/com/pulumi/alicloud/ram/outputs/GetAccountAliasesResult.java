@@ -11,10 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountAliasesResult {
-    /**
-     * @return Alias of the account.
-     * 
-     */
     private String accountAlias;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,10 +20,6 @@ public final class GetAccountAliasesResult {
     private @Nullable String outputFile;
 
     private GetAccountAliasesResult() {}
-    /**
-     * @return Alias of the account.
-     * 
-     */
     public String accountAlias() {
         return this.accountAlias;
     }

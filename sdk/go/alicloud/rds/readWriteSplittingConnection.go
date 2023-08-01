@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
+// Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
 //
 // > **NOTE:** Available since v1.48.0.
 //
@@ -23,38 +23,44 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			exampleZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
 //				Engine:                pulumi.StringRef("MySQL"),
-//				EngineVersion:         pulumi.StringRef("8.0"),
-//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
-//				Category:              pulumi.StringRef("Basic"),
-//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//				EngineVersion:         pulumi.StringRef("5.7"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			exampleInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:                pulumi.StringRef(exampleZones.Zones[0].Id),
+//				ZoneId:                pulumi.StringRef(exampleZones.Ids[0]),
 //				Engine:                pulumi.StringRef("MySQL"),
-//				EngineVersion:         pulumi.StringRef("8.0"),
-//				Category:              pulumi.StringRef("Basic"),
-//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
-//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				EngineVersion:         pulumi.StringRef("5.7"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -64,12 +70,12 @@ import (
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
-//				VswitchName: pulumi.String("terraform-example"),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//			_, err = ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
@@ -77,16 +83,17 @@ import (
 //			}
 //			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
-//				EngineVersion:         pulumi.String("8.0"),
+//				EngineVersion:         pulumi.String("5.7"),
+//				Category:              pulumi.String("HighAvailability"),
 //				InstanceType:          *pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceStorage:       *pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
-//				InstanceName:          pulumi.String("terraform-example"),
+//				DbInstanceStorageType: pulumi.String("local_ssd"),
+//				InstanceName:          pulumi.String(name),
 //				VswitchId:             exampleSwitch.ID(),
-//				MonitoringPeriod:      pulumi.Int(60),
-//				DbInstanceStorageType: pulumi.String("cloud_essd"),
-//				SecurityGroupIds: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.168.1.12"),
+//					pulumi.String("100.69.7.112"),
 //				},
 //			})
 //			if err != nil {
@@ -97,8 +104,8 @@ import (
 //				MasterDbInstanceId: exampleInstance.ID(),
 //				EngineVersion:      exampleInstance.EngineVersion,
 //				InstanceStorage:    exampleInstance.InstanceStorage,
-//				InstanceType:       *pulumi.String(exampleInstanceClasses.InstanceClasses[1].InstanceClass),
-//				InstanceName:       pulumi.String("terraform-example-readonly"),
+//				InstanceType:       exampleInstance.InstanceType,
+//				InstanceName:       pulumi.String(fmt.Sprintf("%vreadonly", name)),
 //				VswitchId:          exampleSwitch.ID(),
 //			})
 //			if err != nil {

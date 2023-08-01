@@ -161,14 +161,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The origin information.
+     * The origin information. See `sources` below.
      * 
      */
     @Import(name="sources")
     private @Nullable Output<List<DomainSourceArgs>> sources;
 
     /**
-     * @return The origin information.
+     * @return The origin information. See `sources` below.
      * 
      */
     public Optional<Output<List<DomainSourceArgs>>> sources() {
@@ -500,7 +500,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The origin information.
+         * @param sources The origin information. See `sources` below.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The origin information.
+         * @param sources The origin information. See `sources` below.
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The origin information.
+         * @param sources The origin information. See `sources` below.
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
     public static final KubernetesWorkerDataDiskArgs Empty = new KubernetesWorkerDataDiskArgs();
 
     /**
-     * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+     * Worker node data disk auto snapshot policy.
      * 
      */
     @Import(name="autoSnapshotPolicyId")
     private @Nullable Output<String> autoSnapshotPolicyId;
 
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+     * @return Worker node data disk auto snapshot policy.
      * 
      */
     public Optional<Output<String>> autoSnapshotPolicyId() {
@@ -45,9 +45,17 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.category);
     }
 
+    /**
+     * The device of the data disks.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The device of the data disks.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
@@ -67,22 +75,30 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.encrypted);
     }
 
+    /**
+     * The id of the kms key.
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
+    /**
+     * @return The id of the kms key.
+     * 
+     */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
     /**
-     * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * The name of the data disks.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of the data disks.
      * 
      */
     public Optional<Output<String>> name() {
@@ -90,14 +106,14 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -119,9 +135,17 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.size);
     }
 
+    /**
+     * The id of snapshot.
+     * 
+     */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
+    /**
+     * @return The id of snapshot.
+     * 
+     */
     public Optional<Output<String>> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }
@@ -159,7 +183,7 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param autoSnapshotPolicyId (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+         * @param autoSnapshotPolicyId Worker node data disk auto snapshot policy.
          * 
          * @return builder
          * 
@@ -170,7 +194,7 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param autoSnapshotPolicyId (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+         * @param autoSnapshotPolicyId Worker node data disk auto snapshot policy.
          * 
          * @return builder
          * 
@@ -200,11 +224,23 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
             return category(Output.of(category));
         }
 
+        /**
+         * @param device The device of the data disks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The device of the data disks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }
@@ -230,17 +266,29 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
             return encrypted(Output.of(encrypted));
         }
 
+        /**
+         * @param kmsKeyId The id of the kms key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param kmsKeyId The id of the kms key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name The name of the data disks.
          * 
          * @return builder
          * 
@@ -251,7 +299,7 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name The name of the data disks.
          * 
          * @return builder
          * 
@@ -261,7 +309,7 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param performanceLevel (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param performanceLevel Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -272,7 +320,7 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param performanceLevel (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param performanceLevel Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -302,11 +350,23 @@ public final class KubernetesWorkerDataDiskArgs extends com.pulumi.resources.Res
             return size(Output.of(size));
         }
 
+        /**
+         * @param snapshotId The id of snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotId(@Nullable Output<String> snapshotId) {
             $.snapshotId = snapshotId;
             return this;
         }
 
+        /**
+         * @param snapshotId The id of snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotId(String snapshotId) {
             return snapshotId(Output.of(snapshotId));
         }

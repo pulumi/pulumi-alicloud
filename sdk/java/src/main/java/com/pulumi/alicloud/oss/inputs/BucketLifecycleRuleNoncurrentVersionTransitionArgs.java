@@ -5,9 +5,12 @@ package com.pulumi.alicloud.oss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends com.pulumi.resources.ResourceArgs {
@@ -34,14 +37,46 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
     }
 
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+     * Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+     * 
+     */
+    @Import(name="isAccessTime")
+    private @Nullable Output<Boolean> isAccessTime;
+
+    /**
+     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+     * 
+     */
+    public Optional<Output<Boolean>> isAccessTime() {
+        return Optional.ofNullable(this.isAccessTime);
+    }
+
+    /**
+     * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
+     * 
+     */
+    @Import(name="returnToStdWhenVisit")
+    private @Nullable Output<Boolean> returnToStdWhenVisit;
+
+    /**
+     * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> returnToStdWhenVisit() {
+        return Optional.ofNullable(this.returnToStdWhenVisit);
+    }
+
+    /**
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
      * 
      */
     @Import(name="storageClass", required=true)
     private Output<String> storageClass;
 
     /**
-     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
      * 
      */
     public Output<String> storageClass() {
@@ -52,6 +87,8 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
 
     private BucketLifecycleRuleNoncurrentVersionTransitionArgs(BucketLifecycleRuleNoncurrentVersionTransitionArgs $) {
         this.days = $.days;
+        this.isAccessTime = $.isAccessTime;
+        this.returnToStdWhenVisit = $.returnToStdWhenVisit;
         this.storageClass = $.storageClass;
     }
 
@@ -99,7 +136,51 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
         }
 
         /**
-         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+         * @param isAccessTime Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAccessTime(@Nullable Output<Boolean> isAccessTime) {
+            $.isAccessTime = isAccessTime;
+            return this;
+        }
+
+        /**
+         * @param isAccessTime Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAccessTime(Boolean isAccessTime) {
+            return isAccessTime(Output.of(isAccessTime));
+        }
+
+        /**
+         * @param returnToStdWhenVisit Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+         * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder returnToStdWhenVisit(@Nullable Output<Boolean> returnToStdWhenVisit) {
+            $.returnToStdWhenVisit = returnToStdWhenVisit;
+            return this;
+        }
+
+        /**
+         * @param returnToStdWhenVisit Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+         * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder returnToStdWhenVisit(Boolean returnToStdWhenVisit) {
+            return returnToStdWhenVisit(Output.of(returnToStdWhenVisit));
+        }
+
+        /**
+         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
          * 
          * @return builder
          * 
@@ -110,7 +191,7 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
         }
 
         /**
-         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
+         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
          * 
          * @return builder
          * 

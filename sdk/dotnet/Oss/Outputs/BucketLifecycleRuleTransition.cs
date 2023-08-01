@@ -24,9 +24,18 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly int? Days;
         /// <summary>
-        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+        /// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
         /// </summary>
-        public readonly string? StorageClass;
+        public readonly bool? IsAccessTime;
+        /// <summary>
+        /// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+        /// `NOTE`: One and only one of "created_before_date" and "days" can be specified in one transition configuration.
+        /// </summary>
+        public readonly bool? ReturnToStdWhenVisit;
+        /// <summary>
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        /// </summary>
+        public readonly string StorageClass;
 
         [OutputConstructor]
         private BucketLifecycleRuleTransition(
@@ -34,10 +43,16 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             int? days,
 
-            string? storageClass)
+            bool? isAccessTime,
+
+            bool? returnToStdWhenVisit,
+
+            string storageClass)
         {
             CreatedBeforeDate = createdBeforeDate;
             Days = days;
+            IsAccessTime = isAccessTime;
+            ReturnToStdWhenVisit = returnToStdWhenVisit;
             StorageClass = storageClass;
         }
     }

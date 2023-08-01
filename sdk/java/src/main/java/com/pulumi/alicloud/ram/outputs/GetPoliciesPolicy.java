@@ -35,6 +35,10 @@ public final class GetPoliciesPolicy {
      * 
      */
     private String document;
+    /**
+     * @return ID of the policy.
+     * 
+     */
     private String id;
     /**
      * @return Name of the policy.
@@ -108,6 +112,10 @@ public final class GetPoliciesPolicy {
     public String document() {
         return this.document;
     }
+    /**
+     * @return ID of the policy.
+     * 
+     */
     public String id() {
         return this.id;
     }

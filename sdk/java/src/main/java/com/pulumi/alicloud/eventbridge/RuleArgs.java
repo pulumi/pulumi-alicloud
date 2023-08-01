@@ -93,14 +93,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The target of rule.
+     * The target of rule. See `targets` below.
      * 
      */
     @Import(name="targets", required=true)
     private Output<List<RuleTargetArgs>> targets;
 
     /**
-     * @return The target of rule.
+     * @return The target of rule. See `targets` below.
      * 
      */
     public Output<List<RuleTargetArgs>> targets() {
@@ -242,7 +242,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targets The target of rule.
+         * @param targets The target of rule. See `targets` below.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targets The target of rule.
+         * @param targets The target of rule. See `targets` below.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targets The target of rule.
+         * @param targets The target of rule. See `targets` below.
          * 
          * @return builder
          * 

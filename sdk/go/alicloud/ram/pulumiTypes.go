@@ -14,11 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type PolicyStatement struct {
-	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
 	Actions []string `pulumi:"actions"`
-	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
 	Effect string `pulumi:"effect"`
-	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -34,11 +34,11 @@ type PolicyStatementInput interface {
 }
 
 type PolicyStatementArgs struct {
-	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -93,17 +93,17 @@ func (o PolicyStatementOutput) ToPolicyStatementOutputWithContext(ctx context.Co
 	return o
 }
 
-// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
 func (o PolicyStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
 func (o PolicyStatementOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
 func (o PolicyStatementOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -245,7 +245,8 @@ type GetPoliciesPolicy struct {
 	Description string `pulumi:"description"`
 	// Policy document of the policy.
 	Document string `pulumi:"document"`
-	Id       string `pulumi:"id"`
+	// ID of the policy.
+	Id string `pulumi:"id"`
 	// Name of the policy.
 	Name string `pulumi:"name"`
 	// Policy document of the policy.
@@ -284,7 +285,8 @@ type GetPoliciesPolicyArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Policy document of the policy.
 	Document pulumi.StringInput `pulumi:"document"`
-	Id       pulumi.StringInput `pulumi:"id"`
+	// ID of the policy.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the policy.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Policy document of the policy.
@@ -377,6 +379,7 @@ func (o GetPoliciesPolicyOutput) Document() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Document }).(pulumi.StringOutput)
 }
 
+// ID of the policy.
 func (o GetPoliciesPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -439,11 +442,11 @@ func (o GetPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetPoliciesPolicy
 type GetPolicyDocumentStatement struct {
 	// Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
 	Actions []string `pulumi:"actions"`
-	// Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+	// Specifies the condition that are required for a policy to take effect. See `condition` below.
 	Conditions []GetPolicyDocumentStatementCondition `pulumi:"conditions"`
 	// This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
 	Effect *string `pulumi:"effect"`
-	// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+	// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
 	Principals []GetPolicyDocumentStatementPrincipal `pulumi:"principals"`
 	// List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
 	Resources []string `pulumi:"resources"`
@@ -463,11 +466,11 @@ type GetPolicyDocumentStatementInput interface {
 type GetPolicyDocumentStatementArgs struct {
 	// Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+	// Specifies the condition that are required for a policy to take effect. See `condition` below.
 	Conditions GetPolicyDocumentStatementConditionArrayInput `pulumi:"conditions"`
 	// This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+	// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
 	Principals GetPolicyDocumentStatementPrincipalArrayInput `pulumi:"principals"`
 	// List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
@@ -529,7 +532,7 @@ func (o GetPolicyDocumentStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPolicyDocumentStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+// Specifies the condition that are required for a policy to take effect. See `condition` below.
 func (o GetPolicyDocumentStatementOutput) Conditions() GetPolicyDocumentStatementConditionArrayOutput {
 	return o.ApplyT(func(v GetPolicyDocumentStatement) []GetPolicyDocumentStatementCondition { return v.Conditions }).(GetPolicyDocumentStatementConditionArrayOutput)
 }
@@ -539,7 +542,7 @@ func (o GetPolicyDocumentStatementOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyDocumentStatement) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
-// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
 func (o GetPolicyDocumentStatementOutput) Principals() GetPolicyDocumentStatementPrincipalArrayOutput {
 	return o.ApplyT(func(v GetPolicyDocumentStatement) []GetPolicyDocumentStatementPrincipal { return v.Principals }).(GetPolicyDocumentStatementPrincipalArrayOutput)
 }
@@ -1097,7 +1100,7 @@ type GetUsersUser struct {
 	CreateDate string `pulumi:"createDate"`
 	// The original id is user's name, but it is user id in 1.37.0+.
 	Id string `pulumi:"id"`
-	// Last login date of the user. Removed from version 1.79.0.
+	// (Removed) Last login date of the user. Removed from version 1.79.0.
 	LastLoginDate string `pulumi:"lastLoginDate"`
 	// Name of the user.
 	Name string `pulumi:"name"`
@@ -1119,7 +1122,7 @@ type GetUsersUserArgs struct {
 	CreateDate pulumi.StringInput `pulumi:"createDate"`
 	// The original id is user's name, but it is user id in 1.37.0+.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Last login date of the user. Removed from version 1.79.0.
+	// (Removed) Last login date of the user. Removed from version 1.79.0.
 	LastLoginDate pulumi.StringInput `pulumi:"lastLoginDate"`
 	// Name of the user.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -1186,7 +1189,7 @@ func (o GetUsersUserOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Last login date of the user. Removed from version 1.79.0.
+// (Removed) Last login date of the user. Removed from version 1.79.0.
 func (o GetUsersUserOutput) LastLoginDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.LastLoginDate }).(pulumi.StringOutput)
 }

@@ -75,14 +75,20 @@ type BasicAccelerator struct {
 	BandwidthBillingType pulumi.StringPtrOutput `pulumi:"bandwidthBillingType"`
 	// The name of the Global Accelerator Basic Accelerator instance.
 	BasicAcceleratorName pulumi.StringPtrOutput `pulumi:"basicAcceleratorName"`
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus pulumi.BoolPtrOutput `pulumi:"crossBorderStatus"`
 	// The description of the Global Accelerator Basic Accelerator instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The subscription duration. Default value: `1`.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
 	Duration pulumi.IntPtrOutput `pulumi:"duration"`
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo pulumi.StringPtrOutput `pulumi:"promotionOptionNo"`
 	// The status of the Basic Accelerator instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -131,14 +137,20 @@ type basicAcceleratorState struct {
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// The name of the Global Accelerator Basic Accelerator instance.
 	BasicAcceleratorName *string `pulumi:"basicAcceleratorName"`
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus *bool `pulumi:"crossBorderStatus"`
 	// The description of the Global Accelerator Basic Accelerator instance.
 	Description *string `pulumi:"description"`
 	// The subscription duration. Default value: `1`.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
 	Duration *int `pulumi:"duration"`
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType *string `pulumi:"paymentType"`
 	// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
 	// The status of the Basic Accelerator instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -158,14 +170,20 @@ type BasicAcceleratorState struct {
 	BandwidthBillingType pulumi.StringPtrInput
 	// The name of the Global Accelerator Basic Accelerator instance.
 	BasicAcceleratorName pulumi.StringPtrInput
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus pulumi.BoolPtrInput
 	// The description of the Global Accelerator Basic Accelerator instance.
 	Description pulumi.StringPtrInput
 	// The subscription duration. Default value: `1`.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
 	Duration pulumi.IntPtrInput
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringPtrInput
 	// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
 	PricingCycle pulumi.StringPtrInput
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo pulumi.StringPtrInput
 	// The status of the Basic Accelerator instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -189,14 +207,20 @@ type basicAcceleratorArgs struct {
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// The name of the Global Accelerator Basic Accelerator instance.
 	BasicAcceleratorName *string `pulumi:"basicAcceleratorName"`
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus *bool `pulumi:"crossBorderStatus"`
 	// The description of the Global Accelerator Basic Accelerator instance.
 	Description *string `pulumi:"description"`
 	// The subscription duration. Default value: `1`.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
 	Duration *int `pulumi:"duration"`
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType *string `pulumi:"paymentType"`
 	// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -215,14 +239,20 @@ type BasicAcceleratorArgs struct {
 	BandwidthBillingType pulumi.StringPtrInput
 	// The name of the Global Accelerator Basic Accelerator instance.
 	BasicAcceleratorName pulumi.StringPtrInput
+	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+	CrossBorderStatus pulumi.BoolPtrInput
 	// The description of the Global Accelerator Basic Accelerator instance.
 	Description pulumi.StringPtrInput
 	// The subscription duration. Default value: `1`.
 	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
 	Duration pulumi.IntPtrInput
+	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringPtrInput
 	// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
 	PricingCycle pulumi.StringPtrInput
+	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+	PromotionOptionNo pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -344,6 +374,11 @@ func (o BasicAcceleratorOutput) BasicAcceleratorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BasicAccelerator) pulumi.StringPtrOutput { return v.BasicAcceleratorName }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+func (o BasicAcceleratorOutput) CrossBorderStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BasicAccelerator) pulumi.BoolPtrOutput { return v.CrossBorderStatus }).(pulumi.BoolPtrOutput)
+}
+
 // The description of the Global Accelerator Basic Accelerator instance.
 func (o BasicAcceleratorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BasicAccelerator) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -356,9 +391,19 @@ func (o BasicAcceleratorOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BasicAccelerator) pulumi.IntPtrOutput { return v.Duration }).(pulumi.IntPtrOutput)
 }
 
+// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+func (o BasicAcceleratorOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BasicAccelerator) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
 // The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
 func (o BasicAcceleratorOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BasicAccelerator) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
+}
+
+// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
+func (o BasicAcceleratorOutput) PromotionOptionNo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicAccelerator) pulumi.StringPtrOutput { return v.PromotionOptionNo }).(pulumi.StringPtrOutput)
 }
 
 // The status of the Basic Accelerator instance.

@@ -135,7 +135,7 @@ class AccessGroup(pulumi.CustomResource):
 
         For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -145,8 +145,12 @@ class AccessGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.dfs.AccessGroup("example",
-            access_group_name="example_value",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.dfs.AccessGroup("default",
+            access_group_name=name,
             network_type="VPC")
         ```
 
@@ -175,7 +179,7 @@ class AccessGroup(pulumi.CustomResource):
 
         For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -185,8 +189,12 @@ class AccessGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.dfs.AccessGroup("example",
-            access_group_name="example_value",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.dfs.AccessGroup("default",
+            access_group_name=name,
             network_type="VPC")
         ```
 

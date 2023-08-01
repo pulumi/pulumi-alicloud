@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+ * Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account, see [What is DB Account Privilege](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-grantaccountprivilege).
  *
  * > **NOTE:** At present, a database can only have one database owner.
+ *
+ * > **NOTE:** Available since v1.5.0.
  *
  * ## Example Usage
  *
@@ -16,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Rds";
- * const name = config.get("name") || "dbaccountprivilegebasic";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: name,
@@ -47,9 +49,10 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * const account = new alicloud.rds.Account("account", {
- *     instanceId: instance.id,
- *     password: "Test12345",
- *     description: "from terraform",
+ *     dbInstanceId: instance.id,
+ *     accountName: "tfexample",
+ *     accountPassword: "Example12345",
+ *     accountDescription: "from terraform",
  * });
  * const privilege = new alicloud.rds.AccountPrivilege("privilege", {
  *     instanceId: instance.id,
@@ -114,7 +117,6 @@ export class AccountPrivilege extends pulumi.CustomResource {
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-     *
      * Default to "ReadOnly".
      */
     public readonly privilege!: pulumi.Output<string | undefined>;
@@ -180,7 +182,6 @@ export interface AccountPrivilegeState {
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-     *
      * Default to "ReadOnly".
      */
     privilege?: pulumi.Input<string>;
@@ -209,7 +210,6 @@ export interface AccountPrivilegeArgs {
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-     *
      * Default to "ReadOnly".
      */
     privilege?: pulumi.Input<string>;

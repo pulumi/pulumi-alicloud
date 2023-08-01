@@ -99,7 +99,7 @@ export class AccountPasswordPolicy extends pulumi.CustomResource {
      */
     public readonly requireNumbers!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+     * Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      */
     public readonly requireSymbols!: pulumi.Output<boolean | undefined>;
     /**
@@ -179,7 +179,7 @@ export interface AccountPasswordPolicyState {
      */
     requireNumbers?: pulumi.Input<boolean>;
     /**
-     * (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+     * Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      */
     requireSymbols?: pulumi.Input<boolean>;
     /**
@@ -221,7 +221,7 @@ export interface AccountPasswordPolicyArgs {
      */
     requireNumbers?: pulumi.Input<boolean>;
     /**
-     * (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+     * Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      */
     requireSymbols?: pulumi.Input<boolean>;
     /**

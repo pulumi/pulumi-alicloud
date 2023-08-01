@@ -97,7 +97,7 @@ class _AccessKeyState:
         Input properties used for looking up and filtering AccessKey resources.
         :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the secret
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
-        :param pulumi.Input[str] secret: (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        :param pulumi.Input[str] secret: (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
                If you use this, please protect your backend state file judiciously.
                Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
                at the cost of preventing the use of the secret key in automation.
@@ -157,7 +157,7 @@ class _AccessKeyState:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
         If you use this, please protect your backend state file judiciously.
         Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
         at the cost of preventing the use of the secret key in automation.
@@ -222,6 +222,8 @@ class AccessKey(pulumi.CustomResource):
 
         > **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
 
+        > **NOTE:** Available since v1.0.0+.
+
         ## Example Usage
 
         Output the secret to a file.
@@ -278,6 +280,8 @@ class AccessKey(pulumi.CustomResource):
         > **NOTE:**  You should set the `secret_file` if you want to get the access key.
 
         > **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
+
+        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 
@@ -379,7 +383,7 @@ class AccessKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the secret
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
-        :param pulumi.Input[str] secret: (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        :param pulumi.Input[str] secret: (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
                If you use this, please protect your backend state file judiciously.
                Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
                at the cost of preventing the use of the secret key in automation.
@@ -425,7 +429,7 @@ class AccessKey(pulumi.CustomResource):
     @pulumi.getter
     def secret(self) -> pulumi.Output[str]:
         """
-        (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
         If you use this, please protect your backend state file judiciously.
         Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
         at the cost of preventing the use of the secret key in automation.

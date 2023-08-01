@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccFileSystem";
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.dfs.getZones({});
  * const defaultFileSystem = new alicloud.dfs.FileSystem("defaultFileSystem", {
  *     storageType: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.options?.[0]?.storageType),

@@ -122,6 +122,9 @@ class GetPoliciesResult:
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
+        """
+        The user name of  policy.
+        """
         return pulumi.get(self, "user_name")
 
 
@@ -156,6 +159,8 @@ def get_policies(enable_details: Optional[bool] = None,
     """
     This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
 
+    > **NOTE:** Available since v1.0.0+.
+
     ## Example Usage
 
     ```python
@@ -172,6 +177,7 @@ def get_policies(enable_details: Optional[bool] = None,
 
     :param bool enable_details: Default to `true`. Set it to true can output more details.
     :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
+    :param Sequence[str] ids: A list of ram group IDs.
     :param str name_regex: A regex string to filter resulting policies by name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str role_name: Filter results by a specific role name. Returned policies are attached to the specified role.
@@ -217,6 +223,8 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     """
     This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
 
+    > **NOTE:** Available since v1.0.0+.
+
     ## Example Usage
 
     ```python
@@ -233,6 +241,7 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
 
     :param bool enable_details: Default to `true`. Set it to true can output more details.
     :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
+    :param Sequence[str] ids: A list of ram group IDs.
     :param str name_regex: A regex string to filter resulting policies by name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str role_name: Filter results by a specific role name. Returned policies are attached to the specified role.

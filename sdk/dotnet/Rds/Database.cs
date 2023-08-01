@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
+    /// Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
+    /// 
+    /// &gt; **NOTE:** Available since v1.5.0.
     /// 
     /// ## Example Usage
     /// 
@@ -23,15 +25,16 @@ namespace Pulumi.AliCloud.Rds
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "Rds";
-    ///     var name = config.Get("name") ?? "dbdatabasebasic";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -43,7 +46,7 @@ namespace Pulumi.AliCloud.Rds
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
@@ -55,7 +58,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     ///     var defaultDatabase = new AliCloud.Rds.Database("defaultDatabase", new()
     ///     {
-    ///         InstanceId = instance.Id,
+    ///         InstanceId = defaultInstance.Id,
     ///     });
     /// 
     /// });
@@ -102,8 +105,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-        /// and have no more than 64 characters.
+        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -184,8 +186,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-        /// and have no more than 64 characters.
+        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -228,8 +229,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
-        /// and have no more than 64 characters.
+        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

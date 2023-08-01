@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about RAM Security Preference and how to use it, see [What is Security Preference](https://www.alibabacloud.com/help/en/doc-detail/186694.htm).
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0+.
  *
  * ## Example Usage
  *

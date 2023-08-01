@@ -16,7 +16,7 @@ import (
 //
 // For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkv).
 //
-// > **NOTE:** Available in v1.198.0+.
+// > **NOTE:** Available since v1.198.0.
 //
 // ## Example Usage
 //
@@ -29,27 +29,27 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dcdn.GetKvAccount(ctx, &dcdn.GetKvAccountArgs{
-//				Status: pulumi.StringRef("online"),
-//			}, nil)
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
 //			defaultKvNamespace, err := dcdn.NewKvNamespace(ctx, "defaultKvNamespace", &dcdn.KvNamespaceArgs{
-//				Description: pulumi.String("wkmtest"),
-//				Namespace:   pulumi.Any(_var.Name),
+//				Description: pulumi.String(name),
+//				Namespace:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dcdn.NewKv(ctx, "defaultKv", &dcdn.KvArgs{
-//				Value:     pulumi.String("testvalue"),
-//				Key:       pulumi.Any(_var.Name),
+//				Value:     pulumi.String("example-value"),
+//				Key:       pulumi.String(name),
 //				Namespace: defaultKvNamespace.Namespace,
 //			})
 //			if err != nil {
@@ -75,9 +75,9 @@ type Kv struct {
 
 	// The name of the key to Put, the longest 512, cannot contain spaces.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// The name specified when the customer calls PutDcdnKvNamespace
+	// The name specified when the customer calls PutDcdnKvNamespace.
 	Namespace pulumi.StringOutput `pulumi:"namespace"`
-	// The content of key, up to 2M(2*1000*1000)
+	// The content of key, up to 2M(2*1000*1000).
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -122,18 +122,18 @@ func GetKv(ctx *pulumi.Context,
 type kvState struct {
 	// The name of the key to Put, the longest 512, cannot contain spaces.
 	Key *string `pulumi:"key"`
-	// The name specified when the customer calls PutDcdnKvNamespace
+	// The name specified when the customer calls PutDcdnKvNamespace.
 	Namespace *string `pulumi:"namespace"`
-	// The content of key, up to 2M(2*1000*1000)
+	// The content of key, up to 2M(2*1000*1000).
 	Value *string `pulumi:"value"`
 }
 
 type KvState struct {
 	// The name of the key to Put, the longest 512, cannot contain spaces.
 	Key pulumi.StringPtrInput
-	// The name specified when the customer calls PutDcdnKvNamespace
+	// The name specified when the customer calls PutDcdnKvNamespace.
 	Namespace pulumi.StringPtrInput
-	// The content of key, up to 2M(2*1000*1000)
+	// The content of key, up to 2M(2*1000*1000).
 	Value pulumi.StringPtrInput
 }
 
@@ -144,9 +144,9 @@ func (KvState) ElementType() reflect.Type {
 type kvArgs struct {
 	// The name of the key to Put, the longest 512, cannot contain spaces.
 	Key string `pulumi:"key"`
-	// The name specified when the customer calls PutDcdnKvNamespace
+	// The name specified when the customer calls PutDcdnKvNamespace.
 	Namespace string `pulumi:"namespace"`
-	// The content of key, up to 2M(2*1000*1000)
+	// The content of key, up to 2M(2*1000*1000).
 	Value string `pulumi:"value"`
 }
 
@@ -154,9 +154,9 @@ type kvArgs struct {
 type KvArgs struct {
 	// The name of the key to Put, the longest 512, cannot contain spaces.
 	Key pulumi.StringInput
-	// The name specified when the customer calls PutDcdnKvNamespace
+	// The name specified when the customer calls PutDcdnKvNamespace.
 	Namespace pulumi.StringInput
-	// The content of key, up to 2M(2*1000*1000)
+	// The content of key, up to 2M(2*1000*1000).
 	Value pulumi.StringInput
 }
 
@@ -252,12 +252,12 @@ func (o KvOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kv) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// The name specified when the customer calls PutDcdnKvNamespace
+// The name specified when the customer calls PutDcdnKvNamespace.
 func (o KvOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kv) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// The content of key, up to 2M(2*1000*1000)
+// The content of key, up to 2M(2*1000*1000).
 func (o KvOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kv) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

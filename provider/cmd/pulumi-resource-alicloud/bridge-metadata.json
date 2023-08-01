@@ -3162,7 +3162,12 @@
                 "current": "alicloud:eipanycast/anycastEipAddress:AnycastEipAddress"
             },
             "alicloud_eipanycast_anycast_eip_address_attachment": {
-                "current": "alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment"
+                "current": "alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment",
+                "fields": {
+                    "pop_locations": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_elasticsearch_instance": {
                 "current": "alicloud:elasticsearch/instance:Instance",
@@ -4725,6 +4730,9 @@
             "alicloud_oss_bucket": {
                 "current": "alicloud:oss/bucket:Bucket",
                 "fields": {
+                    "access_monitor": {
+                        "maxItemsOne": true
+                    },
                     "cors_rule": {
                         "maxItemsOne": false,
                         "elem": {
@@ -29044,6 +29052,7 @@
                 "maintenanceAction": "maintenance_action",
                 "maintenanceNotify": "maintenance_notify",
                 "maintenanceTime": "maintenance_time",
+                "networkInterfaceId": "network_interface_id",
                 "operatorType": "operator_type",
                 "osName": "os_name",
                 "osType": "os_type",
@@ -30024,19 +30033,26 @@
                 "stderrRedirectPath": "stderr_redirect_path",
                 "stdoutRedirectPath": "stdout_redirect_path"
             },
+            "alicloud:eipanycast/AnycastEipAddressAttachmentPopLocation:AnycastEipAddressAttachmentPopLocation": {
+                "popLocation": "pop_location"
+            },
             "alicloud:eipanycast/anycastEipAddress:AnycastEipAddress": {
                 "anycastEipAddressName": "anycast_eip_address_name",
                 "createTime": "create_time",
                 "internetChargeType": "internet_charge_type",
                 "paymentType": "payment_type",
+                "resourceGroupId": "resource_group_id",
                 "serviceLocation": "service_location"
             },
             "alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment": {
                 "anycastId": "anycast_id",
+                "associationMode": "association_mode",
                 "bindInstanceId": "bind_instance_id",
                 "bindInstanceRegionId": "bind_instance_region_id",
                 "bindInstanceType": "bind_instance_type",
-                "bindTime": "bind_time"
+                "bindTime": "bind_time",
+                "popLocations": "pop_locations",
+                "privateIpAddress": "private_ip_address"
             },
             "alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses": {
                 "anycastEipAddressName": "anycast_eip_address_name",
@@ -30087,10 +30103,12 @@
                 "multiZoneIds": "multi_zone_ids"
             },
             "alicloud:elasticsearch/instance:Instance": {
+                "autoRenewDuration": "auto_renew_duration",
                 "clientNodeAmount": "client_node_amount",
                 "clientNodeSpec": "client_node_spec",
                 "dataNodeAmount": "data_node_amount",
                 "dataNodeDiskEncrypted": "data_node_disk_encrypted",
+                "dataNodeDiskPerformanceLevel": "data_node_disk_performance_level",
                 "dataNodeDiskSize": "data_node_disk_size",
                 "dataNodeDiskType": "data_node_disk_type",
                 "dataNodeSpec": "data_node_spec",
@@ -30105,11 +30123,14 @@
                 "kibanaWhitelists": "kibana_whitelist",
                 "kmsEncryptedPassword": "kms_encrypted_password",
                 "kmsEncryptionContext": "kms_encryption_context",
+                "masterNodeDiskType": "master_node_disk_type",
                 "masterNodeSpec": "master_node_spec",
                 "privateWhitelists": "private_whitelist",
                 "publicDomain": "public_domain",
                 "publicPort": "public_port",
                 "publicWhitelists": "public_whitelist",
+                "renewStatus": "renew_status",
+                "renewalDurationUnit": "renewal_duration_unit",
                 "resourceGroupId": "resource_group_id",
                 "settingConfig": "setting_config",
                 "vswitchId": "vswitch_id",
@@ -31540,7 +31561,11 @@
                 "autoRenewDuration": "auto_renew_duration",
                 "autoUseCoupon": "auto_use_coupon",
                 "bandwidthBillingType": "bandwidth_billing_type",
+                "crossBorderMode": "cross_border_mode",
+                "crossBorderStatus": "cross_border_status",
+                "paymentType": "payment_type",
                 "pricingCycle": "pricing_cycle",
+                "promotionOptionNo": "promotion_option_no",
                 "renewalStatus": "renewal_status"
             },
             "alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment": {
@@ -31611,7 +31636,10 @@
                 "autoUseCoupon": "auto_use_coupon",
                 "bandwidthBillingType": "bandwidth_billing_type",
                 "basicAcceleratorName": "basic_accelerator_name",
-                "pricingCycle": "pricing_cycle"
+                "crossBorderStatus": "cross_border_status",
+                "paymentType": "payment_type",
+                "pricingCycle": "pricing_cycle",
+                "promotionOptionNo": "promotion_option_no"
             },
             "alicloud:ga/basicEndpoint:BasicEndpoint": {
                 "acceleratorId": "accelerator_id",
@@ -34604,7 +34632,9 @@
                 "accessGroupName": "access_group_name",
                 "fileSystemId": "file_system_id",
                 "mountTargetDomain": "mount_target_domain",
+                "networkType": "network_type",
                 "securityGroupId": "security_group_id",
+                "vpcId": "vpc_id",
                 "vswitchId": "vswitch_id"
             },
             "alicloud:nas/recycleBin:RecycleBin": {
@@ -35187,10 +35217,14 @@
                 "expiredObjectDeleteMarker": "expired_object_delete_marker"
             },
             "alicloud:oss/BucketLifecycleRuleNoncurrentVersionTransition:BucketLifecycleRuleNoncurrentVersionTransition": {
+                "isAccessTime": "is_access_time",
+                "returnToStdWhenVisit": "return_to_std_when_visit",
                 "storageClass": "storage_class"
             },
             "alicloud:oss/BucketLifecycleRuleTransition:BucketLifecycleRuleTransition": {
                 "createdBeforeDate": "created_before_date",
+                "isAccessTime": "is_access_time",
+                "returnToStdWhenVisit": "return_to_std_when_visit",
                 "storageClass": "storage_class"
             },
             "alicloud:oss/BucketLogging:BucketLogging": {
@@ -35222,11 +35256,13 @@
                 "indexDocument": "index_document"
             },
             "alicloud:oss/bucket:Bucket": {
+                "accessMonitor": "access_monitor",
                 "corsRules": "cors_rule",
                 "creationDate": "creation_date",
                 "extranetEndpoint": "extranet_endpoint",
                 "forceDestroy": "force_destroy",
                 "intranetEndpoint": "intranet_endpoint",
+                "lifecycleRuleAllowSameActionOverlap": "lifecycle_rule_allow_same_action_overlap",
                 "lifecycleRules": "lifecycle_rule",
                 "loggingIsenable": "logging_isenable",
                 "redundancyType": "redundancy_type",
@@ -35578,12 +35614,15 @@
                 "deletionLock": "deletion_lock",
                 "encryptNewTables": "encrypt_new_tables",
                 "encryptionKey": "encryption_key",
+                "fromTimeService": "from_time_service",
                 "gdnId": "gdn_id",
                 "hotStandbyCluster": "hot_standby_cluster",
                 "imciSwitch": "imci_switch",
                 "maintainTime": "maintain_time",
                 "modifyType": "modify_type",
                 "payType": "pay_type",
+                "plannedEndTime": "planned_end_time",
+                "plannedStartTime": "planned_start_time",
                 "renewalStatus": "renewal_status",
                 "resourceGroupId": "resource_group_id",
                 "roleArn": "role_arn",
@@ -35601,6 +35640,7 @@
                 "subCategory": "sub_category",
                 "tdeRegion": "tde_region",
                 "tdeStatus": "tde_status",
+                "upgradeType": "upgrade_type",
                 "vpcId": "vpc_id",
                 "vswitchId": "vswitch_id",
                 "zoneId": "zone_id"

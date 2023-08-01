@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Ipv6CidrBlock { get; private set; } = null!;
 
         [Output("ipv6CidrBlockMask")]
-        public Output<int?> Ipv6CidrBlockMask { get; private set; } = null!;
+        public Output<int> Ipv6CidrBlockMask { get; private set; } = null!;
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

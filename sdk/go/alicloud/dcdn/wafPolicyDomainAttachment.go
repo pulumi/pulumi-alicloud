@@ -16,7 +16,7 @@ import (
 //
 // For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/modify-the-domain-name-bound-to-a-protection-policies).
 //
-// > **NOTE:** Available in v1.186.0+.
+// > **NOTE:** Available since v1.186.0.
 //
 // ## Example Usage
 //
@@ -29,44 +29,56 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultDomain, err := dcdn.NewDomain(ctx, "defaultDomain", &dcdn.DomainArgs{
-//				DomainName: pulumi.String("example_domain_name"),
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			domainName := "example.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
+//			exampleDomain, err := dcdn.NewDomain(ctx, "exampleDomain", &dcdn.DomainArgs{
+//				DomainName: pulumi.String(domainName),
+//				Scope:      pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{
 //						Content:  pulumi.String("1.1.1.1"),
 //						Port:     pulumi.Int(80),
 //						Priority: pulumi.String("20"),
 //						Type:     pulumi.String("ipaddr"),
+//						Weight:   pulumi.String("10"),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultWafDomain, err := dcdn.NewWafDomain(ctx, "defaultWafDomain", &dcdn.WafDomainArgs{
-//				DomainName:  defaultDomain.DomainName,
+//			exampleWafDomain, err := dcdn.NewWafDomain(ctx, "exampleWafDomain", &dcdn.WafDomainArgs{
+//				DomainName:  exampleDomain.DomainName,
 //				ClientIpTag: pulumi.String("X-Forwarded-For"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultWafPolicy, err := dcdn.NewWafPolicy(ctx, "defaultWafPolicy", &dcdn.WafPolicyArgs{
-//				PolicyType:   pulumi.String("custom"),
-//				PolicyName:   pulumi.String("example_value"),
+//			exampleWafPolicy, err := dcdn.NewWafPolicy(ctx, "exampleWafPolicy", &dcdn.WafPolicyArgs{
 //				DefenseScene: pulumi.String("waf_group"),
+//				PolicyName:   pulumi.String(name),
+//				PolicyType:   pulumi.String("custom"),
 //				Status:       pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewWafPolicyDomainAttachment(ctx, "example", &dcdn.WafPolicyDomainAttachmentArgs{
-//				DomainName: defaultWafDomain.DomainName,
-//				PolicyId:   defaultWafPolicy.ID(),
+//			_, err = dcdn.NewWafPolicyDomainAttachment(ctx, "exampleWafPolicyDomainAttachment", &dcdn.WafPolicyDomainAttachmentArgs{
+//				DomainName: exampleWafDomain.DomainName,
+//				PolicyId:   exampleWafPolicy.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a DCDN Accelerated Domain resource.
  *
- * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/130632.htm)
+ * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm)
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *
@@ -21,20 +21,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a new Domain config.
- * const domain = new alicloud.dcdn.Domain("domain", {
- *     domainName: "mydomain.alicloud-provider.cn",
+ * const config = new pulumi.Config();
+ * const domainName = config.get("domainName") || "example.com";
+ * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
+ *     domainName: domainName,
  *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",
- *         type: "ipaddr",
- *         priority: "20",
  *         port: 80,
- *         weight: "15",
+ *         priority: "20",
+ *         type: "ipaddr",
+ *         weight: "10",
  *     }],
  * });
- * const config = new alicloud.dcdn.DomainConfig("config", {
- *     domainName: domain.domainName,
+ * const exampleDomainConfig = new alicloud.dcdn.DomainConfig("exampleDomainConfig", {
+ *     domainName: exampleDomain.domainName,
  *     functionName: "ip_allow_list_set",
  *     functionArgs: [{
  *         argName: "ip_list",
@@ -88,7 +89,7 @@ export class DomainConfig extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
-     * The args of the domain config.
+     * The args of the domain config.  See `functionArgs` below.
      */
     public readonly functionArgs!: pulumi.Output<outputs.dcdn.DomainConfigFunctionArg[]>;
     /**
@@ -153,7 +154,7 @@ export interface DomainConfigState {
      */
     domainName?: pulumi.Input<string>;
     /**
-     * The args of the domain config.
+     * The args of the domain config.  See `functionArgs` below.
      */
     functionArgs?: pulumi.Input<pulumi.Input<inputs.dcdn.DomainConfigFunctionArg>[]>;
     /**
@@ -175,7 +176,7 @@ export interface DomainConfigArgs {
      */
     domainName: pulumi.Input<string>;
     /**
-     * The args of the domain config.
+     * The args of the domain config.  See `functionArgs` below.
      */
     functionArgs: pulumi.Input<pulumi.Input<inputs.dcdn.DomainConfigFunctionArg>[]>;
     /**

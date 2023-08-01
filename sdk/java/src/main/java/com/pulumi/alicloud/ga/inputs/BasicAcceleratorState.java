@@ -110,6 +110,21 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="crossBorderStatus")
+    private @Nullable Output<Boolean> crossBorderStatus;
+
+    /**
+     * @return Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> crossBorderStatus() {
+        return Optional.ofNullable(this.crossBorderStatus);
+    }
+
+    /**
      * The description of the Global Accelerator Basic Accelerator instance.
      * 
      */
@@ -144,6 +159,21 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
+    }
+
+    /**
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      * 
      */
@@ -156,6 +186,21 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> pricingCycle() {
         return Optional.ofNullable(this.pricingCycle);
+    }
+
+    /**
+     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    @Import(name="promotionOptionNo")
+    private @Nullable Output<String> promotionOptionNo;
+
+    /**
+     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    public Optional<Output<String>> promotionOptionNo() {
+        return Optional.ofNullable(this.promotionOptionNo);
     }
 
     /**
@@ -197,9 +242,12 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
         this.autoUseCoupon = $.autoUseCoupon;
         this.bandwidthBillingType = $.bandwidthBillingType;
         this.basicAcceleratorName = $.basicAcceleratorName;
+        this.crossBorderStatus = $.crossBorderStatus;
         this.description = $.description;
         this.duration = $.duration;
+        this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
+        this.promotionOptionNo = $.promotionOptionNo;
         this.status = $.status;
         this.tags = $.tags;
     }
@@ -349,6 +397,27 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param crossBorderStatus Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossBorderStatus(@Nullable Output<Boolean> crossBorderStatus) {
+            $.crossBorderStatus = crossBorderStatus;
+            return this;
+        }
+
+        /**
+         * @param crossBorderStatus Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossBorderStatus(Boolean crossBorderStatus) {
+            return crossBorderStatus(Output.of(crossBorderStatus));
+        }
+
+        /**
          * @param description The description of the Global Accelerator Basic Accelerator instance.
          * 
          * @return builder
@@ -395,6 +464,27 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param paymentType The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
+        }
+
+        /**
          * @param pricingCycle The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
          * 
          * @return builder
@@ -413,6 +503,27 @@ public final class BasicAcceleratorState extends com.pulumi.resources.ResourceAr
          */
         public Builder pricingCycle(String pricingCycle) {
             return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionOptionNo(@Nullable Output<String> promotionOptionNo) {
+            $.promotionOptionNo = promotionOptionNo;
+            return this;
+        }
+
+        /**
+         * @param promotionOptionNo The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder promotionOptionNo(String promotionOptionNo) {
+            return promotionOptionNo(Output.of(promotionOptionNo));
         }
 
         /**

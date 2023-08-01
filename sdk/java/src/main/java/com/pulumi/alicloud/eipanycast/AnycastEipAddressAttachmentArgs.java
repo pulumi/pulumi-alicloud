@@ -3,10 +3,14 @@
 
 package com.pulumi.alicloud.eipanycast;
 
+import com.pulumi.alicloud.eipanycast.inputs.AnycastEipAddressAttachmentPopLocationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,14 +18,14 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
     public static final AnycastEipAddressAttachmentArgs Empty = new AnycastEipAddressAttachmentArgs();
 
     /**
-     * The ID of Anycast EIP.
+     * The ID of the Anycast EIP instance.
      * 
      */
     @Import(name="anycastId", required=true)
     private Output<String> anycastId;
 
     /**
-     * @return The ID of Anycast EIP.
+     * @return The ID of the Anycast EIP instance.
      * 
      */
     public Output<String> anycastId() {
@@ -29,14 +33,33 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The ID of bound instance.
+     * Binding mode, value:
+     * - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+     * - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+     * 
+     */
+    @Import(name="associationMode")
+    private @Nullable Output<String> associationMode;
+
+    /**
+     * @return Binding mode, value:
+     * - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+     * - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+     * 
+     */
+    public Optional<Output<String>> associationMode() {
+        return Optional.ofNullable(this.associationMode);
+    }
+
+    /**
+     * The ID of the cloud resource instance to be bound.
      * 
      */
     @Import(name="bindInstanceId", required=true)
     private Output<String> bindInstanceId;
 
     /**
-     * @return The ID of bound instance.
+     * @return The ID of the cloud resource instance to be bound.
      * 
      */
     public Output<String> bindInstanceId() {
@@ -44,14 +67,14 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The region ID of bound instance.
+     * The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
      * 
      */
     @Import(name="bindInstanceRegionId", required=true)
     private Output<String> bindInstanceRegionId;
 
     /**
-     * @return The region ID of bound instance.
+     * @return The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
      * 
      */
     public Output<String> bindInstanceRegionId() {
@@ -59,27 +82,64 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The type of bound instance. Valid value: `SlbInstance`.
+     * The type of the cloud resource instance to be bound. Value:
+     * - **SlbInstance**: a private network SLB instance.
+     * - **NetworkInterface**: ENI.
      * 
      */
     @Import(name="bindInstanceType", required=true)
     private Output<String> bindInstanceType;
 
     /**
-     * @return The type of bound instance. Valid value: `SlbInstance`.
+     * @return The type of the cloud resource instance to be bound. Value:
+     * - **SlbInstance**: a private network SLB instance.
+     * - **NetworkInterface**: ENI.
      * 
      */
     public Output<String> bindInstanceType() {
         return this.bindInstanceType;
     }
 
+    /**
+     * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+     * 
+     */
+    @Import(name="popLocations")
+    private @Nullable Output<List<AnycastEipAddressAttachmentPopLocationArgs>> popLocations;
+
+    /**
+     * @return The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+     * 
+     */
+    public Optional<Output<List<AnycastEipAddressAttachmentPopLocationArgs>>> popLocations() {
+        return Optional.ofNullable(this.popLocations);
+    }
+
+    /**
+     * The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+     * 
+     */
+    @Import(name="privateIpAddress")
+    private @Nullable Output<String> privateIpAddress;
+
+    /**
+     * @return The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+     * 
+     */
+    public Optional<Output<String>> privateIpAddress() {
+        return Optional.ofNullable(this.privateIpAddress);
+    }
+
     private AnycastEipAddressAttachmentArgs() {}
 
     private AnycastEipAddressAttachmentArgs(AnycastEipAddressAttachmentArgs $) {
         this.anycastId = $.anycastId;
+        this.associationMode = $.associationMode;
         this.bindInstanceId = $.bindInstanceId;
         this.bindInstanceRegionId = $.bindInstanceRegionId;
         this.bindInstanceType = $.bindInstanceType;
+        this.popLocations = $.popLocations;
+        this.privateIpAddress = $.privateIpAddress;
     }
 
     public static Builder builder() {
@@ -101,7 +161,7 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param anycastId The ID of Anycast EIP.
+         * @param anycastId The ID of the Anycast EIP instance.
          * 
          * @return builder
          * 
@@ -112,7 +172,7 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param anycastId The ID of Anycast EIP.
+         * @param anycastId The ID of the Anycast EIP instance.
          * 
          * @return builder
          * 
@@ -122,7 +182,32 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bindInstanceId The ID of bound instance.
+         * @param associationMode Binding mode, value:
+         * - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+         * - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associationMode(@Nullable Output<String> associationMode) {
+            $.associationMode = associationMode;
+            return this;
+        }
+
+        /**
+         * @param associationMode Binding mode, value:
+         * - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
+         * - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associationMode(String associationMode) {
+            return associationMode(Output.of(associationMode));
+        }
+
+        /**
+         * @param bindInstanceId The ID of the cloud resource instance to be bound.
          * 
          * @return builder
          * 
@@ -133,7 +218,7 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bindInstanceId The ID of bound instance.
+         * @param bindInstanceId The ID of the cloud resource instance to be bound.
          * 
          * @return builder
          * 
@@ -143,7 +228,7 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bindInstanceRegionId The region ID of bound instance.
+         * @param bindInstanceRegionId The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
          * 
          * @return builder
          * 
@@ -154,7 +239,7 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bindInstanceRegionId The region ID of bound instance.
+         * @param bindInstanceRegionId The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
          * 
          * @return builder
          * 
@@ -164,7 +249,9 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bindInstanceType The type of bound instance. Valid value: `SlbInstance`.
+         * @param bindInstanceType The type of the cloud resource instance to be bound. Value:
+         * - **SlbInstance**: a private network SLB instance.
+         * - **NetworkInterface**: ENI.
          * 
          * @return builder
          * 
@@ -175,13 +262,67 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bindInstanceType The type of bound instance. Valid value: `SlbInstance`.
+         * @param bindInstanceType The type of the cloud resource instance to be bound. Value:
+         * - **SlbInstance**: a private network SLB instance.
+         * - **NetworkInterface**: ENI.
          * 
          * @return builder
          * 
          */
         public Builder bindInstanceType(String bindInstanceType) {
             return bindInstanceType(Output.of(bindInstanceType));
+        }
+
+        /**
+         * @param popLocations The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder popLocations(@Nullable Output<List<AnycastEipAddressAttachmentPopLocationArgs>> popLocations) {
+            $.popLocations = popLocations;
+            return this;
+        }
+
+        /**
+         * @param popLocations The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder popLocations(List<AnycastEipAddressAttachmentPopLocationArgs> popLocations) {
+            return popLocations(Output.of(popLocations));
+        }
+
+        /**
+         * @param popLocations The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder popLocations(AnycastEipAddressAttachmentPopLocationArgs... popLocations) {
+            return popLocations(List.of(popLocations));
+        }
+
+        /**
+         * @param privateIpAddress The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateIpAddress(@Nullable Output<String> privateIpAddress) {
+            $.privateIpAddress = privateIpAddress;
+            return this;
+        }
+
+        /**
+         * @param privateIpAddress The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateIpAddress(String privateIpAddress) {
+            return privateIpAddress(Output.of(privateIpAddress));
         }
 
         public AnycastEipAddressAttachmentArgs build() {

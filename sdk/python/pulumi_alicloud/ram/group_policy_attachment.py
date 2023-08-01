@@ -132,6 +132,8 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         """
         Provides a RAM Group Policy attachment resource.
 
+        > **NOTE:** Available since v1.0.0+.
+
         ## Example Usage
 
         ```python
@@ -190,6 +192,8 @@ class GroupPolicyAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a RAM Group Policy attachment resource.
+
+        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 

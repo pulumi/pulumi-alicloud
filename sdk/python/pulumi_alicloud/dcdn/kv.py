@@ -20,8 +20,8 @@ class KvArgs:
         """
         The set of arguments for constructing a Kv resource.
         :param pulumi.Input[str] key: The name of the key to Put, the longest 512, cannot contain spaces.
-        :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace
-        :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000)
+        :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace.
+        :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000).
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "namespace", namespace)
@@ -43,7 +43,7 @@ class KvArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        The name specified when the customer calls PutDcdnKvNamespace
+        The name specified when the customer calls PutDcdnKvNamespace.
         """
         return pulumi.get(self, "namespace")
 
@@ -55,7 +55,7 @@ class KvArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        The content of key, up to 2M(2*1000*1000)
+        The content of key, up to 2M(2*1000*1000).
         """
         return pulumi.get(self, "value")
 
@@ -73,8 +73,8 @@ class _KvState:
         """
         Input properties used for looking up and filtering Kv resources.
         :param pulumi.Input[str] key: The name of the key to Put, the longest 512, cannot contain spaces.
-        :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace
-        :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000)
+        :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace.
+        :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000).
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -99,7 +99,7 @@ class _KvState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        The name specified when the customer calls PutDcdnKvNamespace
+        The name specified when the customer calls PutDcdnKvNamespace.
         """
         return pulumi.get(self, "namespace")
 
@@ -111,7 +111,7 @@ class _KvState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The content of key, up to 2M(2*1000*1000)
+        The content of key, up to 2M(2*1000*1000).
         """
         return pulumi.get(self, "value")
 
@@ -134,7 +134,7 @@ class Kv(pulumi.CustomResource):
 
         For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkv).
 
-        > **NOTE:** Available in v1.198.0+.
+        > **NOTE:** Available since v1.198.0.
 
         ## Example Usage
 
@@ -144,13 +144,16 @@ class Kv(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_kv_account = alicloud.dcdn.get_kv_account(status="online")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_kv_namespace = alicloud.dcdn.KvNamespace("defaultKvNamespace",
-            description="wkmtest",
-            namespace=var["name"])
+            description=name,
+            namespace=name)
         default_kv = alicloud.dcdn.Kv("defaultKv",
-            value="testvalue",
-            key=var["name"],
+            value="example-value",
+            key=name,
             namespace=default_kv_namespace.namespace)
         ```
 
@@ -165,8 +168,8 @@ class Kv(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The name of the key to Put, the longest 512, cannot contain spaces.
-        :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace
-        :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000)
+        :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace.
+        :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000).
         """
         ...
     @overload
@@ -179,7 +182,7 @@ class Kv(pulumi.CustomResource):
 
         For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkv).
 
-        > **NOTE:** Available in v1.198.0+.
+        > **NOTE:** Available since v1.198.0.
 
         ## Example Usage
 
@@ -189,13 +192,16 @@ class Kv(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_kv_account = alicloud.dcdn.get_kv_account(status="online")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_kv_namespace = alicloud.dcdn.KvNamespace("defaultKvNamespace",
-            description="wkmtest",
-            namespace=var["name"])
+            description=name,
+            namespace=name)
         default_kv = alicloud.dcdn.Kv("defaultKv",
-            value="testvalue",
-            key=var["name"],
+            value="example-value",
+            key=name,
             namespace=default_kv_namespace.namespace)
         ```
 
@@ -264,8 +270,8 @@ class Kv(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The name of the key to Put, the longest 512, cannot contain spaces.
-        :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace
-        :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000)
+        :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace.
+        :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -288,7 +294,7 @@ class Kv(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[str]:
         """
-        The name specified when the customer calls PutDcdnKvNamespace
+        The name specified when the customer calls PutDcdnKvNamespace.
         """
         return pulumi.get(self, "namespace")
 
@@ -296,7 +302,7 @@ class Kv(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
         """
-        The content of key, up to 2M(2*1000*1000)
+        The content of key, up to 2M(2*1000*1000).
         """
         return pulumi.get(self, "value")
 

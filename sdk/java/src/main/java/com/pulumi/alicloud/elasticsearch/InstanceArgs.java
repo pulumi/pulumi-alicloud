@@ -21,6 +21,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
+     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+     * 
+     */
+    @Import(name="autoRenewDuration")
+    private @Nullable Output<Integer> autoRenewDuration;
+
+    /**
+     * @return Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+     * 
+     */
+    public Optional<Output<Integer>> autoRenewDuration() {
+        return Optional.ofNullable(this.autoRenewDuration);
+    }
+
+    /**
      * The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
      */
@@ -78,6 +93,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> dataNodeDiskEncrypted() {
         return Optional.ofNullable(this.dataNodeDiskEncrypted);
+    }
+
+    /**
+     * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+     * 
+     */
+    @Import(name="dataNodeDiskPerformanceLevel")
+    private @Nullable Output<String> dataNodeDiskPerformanceLevel;
+
+    /**
+     * @return Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+     * 
+     */
+    public Optional<Output<String>> dataNodeDiskPerformanceLevel() {
+        return Optional.ofNullable(this.dataNodeDiskPerformanceLevel);
     }
 
     /**
@@ -246,14 +276,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
     @Import(name="kmsEncryptedPassword")
     private @Nullable Output<String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+     * @return An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
     public Optional<Output<String>> kmsEncryptedPassword() {
@@ -273,6 +303,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,Object>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
+    }
+
+    /**
+     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     * 
+     */
+    @Import(name="masterNodeDiskType")
+    private @Nullable Output<String> masterNodeDiskType;
+
+    /**
+     * @return The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     * 
+     */
+    public Optional<Output<String>> masterNodeDiskType() {
+        return Optional.ofNullable(this.masterNodeDiskType);
     }
 
     /**
@@ -366,14 +411,44 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of resource group which the Elasticsearch instance belongs.
+     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+     * 
+     */
+    @Import(name="renewStatus")
+    private @Nullable Output<String> renewStatus;
+
+    /**
+     * @return The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+     * 
+     */
+    public Optional<Output<String>> renewStatus() {
+        return Optional.ofNullable(this.renewStatus);
+    }
+
+    /**
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * 
+     */
+    @Import(name="renewalDurationUnit")
+    private @Nullable Output<String> renewalDurationUnit;
+
+    /**
+     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * 
+     */
+    public Optional<Output<String>> renewalDurationUnit() {
+        return Optional.ofNullable(this.renewalDurationUnit);
+    }
+
+    /**
+     * The ID of resource group which the Elasticsearch instance belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the Elasticsearch instance belongs.
+     * @return The ID of resource group which the Elasticsearch instance belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -397,8 +472,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A mapping of tags to assign to the resource.
-     * - key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It can be a null string.
      * 
      */
     @Import(name="tags")
@@ -406,8 +479,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A mapping of tags to assign to the resource.
-     * - key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It cannot be a null string.
-     * - value: It can be up to 128 characters in length. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It can be a null string.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -462,10 +533,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.autoRenewDuration = $.autoRenewDuration;
         this.clientNodeAmount = $.clientNodeAmount;
         this.clientNodeSpec = $.clientNodeSpec;
         this.dataNodeAmount = $.dataNodeAmount;
         this.dataNodeDiskEncrypted = $.dataNodeDiskEncrypted;
+        this.dataNodeDiskPerformanceLevel = $.dataNodeDiskPerformanceLevel;
         this.dataNodeDiskSize = $.dataNodeDiskSize;
         this.dataNodeDiskType = $.dataNodeDiskType;
         this.dataNodeSpec = $.dataNodeSpec;
@@ -479,12 +552,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.kibanaWhitelists = $.kibanaWhitelists;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.masterNodeDiskType = $.masterNodeDiskType;
         this.masterNodeSpec = $.masterNodeSpec;
         this.password = $.password;
         this.period = $.period;
         this.privateWhitelists = $.privateWhitelists;
         this.protocol = $.protocol;
         this.publicWhitelists = $.publicWhitelists;
+        this.renewStatus = $.renewStatus;
+        this.renewalDurationUnit = $.renewalDurationUnit;
         this.resourceGroupId = $.resourceGroupId;
         this.settingConfig = $.settingConfig;
         this.tags = $.tags;
@@ -509,6 +585,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoRenewDuration Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(@Nullable Output<Integer> autoRenewDuration) {
+            $.autoRenewDuration = autoRenewDuration;
+            return this;
+        }
+
+        /**
+         * @param autoRenewDuration Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(Integer autoRenewDuration) {
+            return autoRenewDuration(Output.of(autoRenewDuration));
         }
 
         /**
@@ -593,6 +690,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataNodeDiskEncrypted(Boolean dataNodeDiskEncrypted) {
             return dataNodeDiskEncrypted(Output.of(dataNodeDiskEncrypted));
+        }
+
+        /**
+         * @param dataNodeDiskPerformanceLevel Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataNodeDiskPerformanceLevel(@Nullable Output<String> dataNodeDiskPerformanceLevel) {
+            $.dataNodeDiskPerformanceLevel = dataNodeDiskPerformanceLevel;
+            return this;
+        }
+
+        /**
+         * @param dataNodeDiskPerformanceLevel Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataNodeDiskPerformanceLevel(String dataNodeDiskPerformanceLevel) {
+            return dataNodeDiskPerformanceLevel(Output.of(dataNodeDiskPerformanceLevel));
         }
 
         /**
@@ -847,7 +965,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+         * @param kmsEncryptedPassword An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
          * 
          * @return builder
          * 
@@ -858,7 +976,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsEncryptedPassword An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+         * @param kmsEncryptedPassword An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
          * 
          * @return builder
          * 
@@ -886,6 +1004,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsEncryptionContext(Map<String,Object> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
+        }
+
+        /**
+         * @param masterNodeDiskType The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterNodeDiskType(@Nullable Output<String> masterNodeDiskType) {
+            $.masterNodeDiskType = masterNodeDiskType;
+            return this;
+        }
+
+        /**
+         * @param masterNodeDiskType The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterNodeDiskType(String masterNodeDiskType) {
+            return masterNodeDiskType(Output.of(masterNodeDiskType));
         }
 
         /**
@@ -1035,7 +1174,49 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the Elasticsearch instance belongs.
+         * @param renewStatus The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewStatus(@Nullable Output<String> renewStatus) {
+            $.renewStatus = renewStatus;
+            return this;
+        }
+
+        /**
+         * @param renewStatus The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewStatus(String renewStatus) {
+            return renewStatus(Output.of(renewStatus));
+        }
+
+        /**
+         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalDurationUnit(@Nullable Output<String> renewalDurationUnit) {
+            $.renewalDurationUnit = renewalDurationUnit;
+            return this;
+        }
+
+        /**
+         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalDurationUnit(String renewalDurationUnit) {
+            return renewalDurationUnit(Output.of(renewalDurationUnit));
+        }
+
+        /**
+         * @param resourceGroupId The ID of resource group which the Elasticsearch instance belongs.
          * 
          * @return builder
          * 
@@ -1046,7 +1227,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the Elasticsearch instance belongs.
+         * @param resourceGroupId The ID of resource group which the Elasticsearch instance belongs.
          * 
          * @return builder
          * 
@@ -1078,8 +1259,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * - key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It cannot be a null string.
-         * - value: It can be up to 128 characters in length. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It can be a null string.
          * 
          * @return builder
          * 
@@ -1091,8 +1270,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * - key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It cannot be a null string.
-         * - value: It can be up to 128 characters in length. It cannot contain &#34;http://&#34; and &#34;https://&#34;. It can be a null string.
          * 
          * @return builder
          * 

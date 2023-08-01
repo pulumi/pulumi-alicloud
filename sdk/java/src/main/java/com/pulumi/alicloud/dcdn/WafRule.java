@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules).
  * 
- * &gt; **NOTE:** Available in v1.201.0+.
+ * &gt; **NOTE:** Available since v1.201.0.
  * 
  * ## Example Usage
  * 
@@ -53,16 +53,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultWafPolicy = new WafPolicy(&#34;defaultWafPolicy&#34;, WafPolicyArgs.builder()        
- *             .defenseScene(&#34;custom_acl&#34;)
- *             .policyName(var_.name())
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         var exampleWafPolicy = new WafPolicy(&#34;exampleWafPolicy&#34;, WafPolicyArgs.builder()        
+ *             .defenseScene(&#34;waf_group&#34;)
+ *             .policyName(name)
  *             .policyType(&#34;custom&#34;)
  *             .status(&#34;on&#34;)
  *             .build());
  * 
- *         var defaultWafRule = new WafRule(&#34;defaultWafRule&#34;, WafRuleArgs.builder()        
- *             .policyId(defaultWafPolicy.id())
- *             .ruleName(var_.name())
+ *         var exampleWafRule = new WafRule(&#34;exampleWafRule&#34;, WafRuleArgs.builder()        
+ *             .policyId(exampleWafPolicy.id())
+ *             .ruleName(name)
  *             .conditions(            
  *                 WafRuleConditionArgs.builder()
  *                     .key(&#34;URI&#34;)
@@ -149,14 +151,14 @@ public class WafRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cnRegionList);
     }
     /**
-     * Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+     * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
      * 
      */
     @Export(name="conditions", type=List.class, parameters={WafRuleCondition.class})
     private Output</* @Nullable */ List<WafRuleCondition>> conditions;
 
     /**
-     * @return Conditions that trigger the rule. See the following `Block Conditions`. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+     * @return Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
      * 
      */
     public Output<Optional<List<WafRuleCondition>>> conditions() {
@@ -233,14 +235,14 @@ public class WafRule extends com.pulumi.resources.CustomResource {
         return this.policyId;
     }
     /**
-     * The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See the following `Block RateLimit`.
+     * The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
      * 
      */
     @Export(name="rateLimit", type=WafRuleRateLimit.class, parameters={})
     private Output</* @Nullable */ WafRuleRateLimit> rateLimit;
 
     /**
-     * @return The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See the following `Block RateLimit`.
+     * @return The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
      * 
      */
     public Output<Optional<WafRuleRateLimit>> rateLimit() {

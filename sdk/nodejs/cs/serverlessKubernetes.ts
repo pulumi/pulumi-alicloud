@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manager a Serverless Kubernetes Cluster. The cluster is same as container service created by web console.
+ * This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
  *
- * > **NOTE:** Available in 1.58.0+
+ * > **NOTE:** Available since v1.58.0.
  *
  * > **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
  * A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
@@ -117,7 +117,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     }
 
     /**
-     * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     * You can specific network plugin,log component,ingress component and so on. See `addons` below.
      */
     public readonly addons!: pulumi.Output<outputs.cs.ServerlessKubernetesAddon[]>;
     /**
@@ -138,6 +138,11 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      * - ack.pro.small: Professional serverless clusters.
      */
     public readonly clusterSpec!: pulumi.Output<string>;
+    /**
+     * whether to create a v2 version cluster.
+     *
+     * *Removed params*
+     */
     public readonly createV2Cluster!: pulumi.Output<boolean>;
     /**
      * Whether enable the deletion protection or not.
@@ -181,7 +186,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
      * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
@@ -192,7 +197,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly retainResources!: pulumi.Output<string[] | undefined>;
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
      */
     public readonly rrsaMetadata!: pulumi.Output<outputs.cs.ServerlessKubernetesRrsaMetadata>;
     /**
@@ -228,7 +233,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     * The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
      */
@@ -333,7 +338,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
  */
 export interface ServerlessKubernetesState {
     /**
-     * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     * You can specific network plugin,log component,ingress component and so on. See `addons` below.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
@@ -354,6 +359,11 @@ export interface ServerlessKubernetesState {
      * - ack.pro.small: Professional serverless clusters.
      */
     clusterSpec?: pulumi.Input<string>;
+    /**
+     * whether to create a v2 version cluster.
+     *
+     * *Removed params*
+     */
     createV2Cluster?: pulumi.Input<boolean>;
     /**
      * Whether enable the deletion protection or not.
@@ -397,7 +407,7 @@ export interface ServerlessKubernetesState {
      */
     newNatGateway?: pulumi.Input<boolean>;
     /**
-     * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
      * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
@@ -408,7 +418,7 @@ export interface ServerlessKubernetesState {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
      */
     rrsaMetadata?: pulumi.Input<inputs.cs.ServerlessKubernetesRrsaMetadata>;
     /**
@@ -444,7 +454,7 @@ export interface ServerlessKubernetesState {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     * The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
      */
@@ -464,7 +474,7 @@ export interface ServerlessKubernetesState {
  */
 export interface ServerlessKubernetesArgs {
     /**
-     * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     * You can specific network plugin,log component,ingress component and so on. See `addons` below.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
@@ -485,6 +495,11 @@ export interface ServerlessKubernetesArgs {
      * - ack.pro.small: Professional serverless clusters.
      */
     clusterSpec?: pulumi.Input<string>;
+    /**
+     * whether to create a v2 version cluster.
+     *
+     * *Removed params*
+     */
     createV2Cluster?: pulumi.Input<boolean>;
     /**
      * Whether enable the deletion protection or not.
@@ -528,7 +543,7 @@ export interface ServerlessKubernetesArgs {
      */
     newNatGateway?: pulumi.Input<boolean>;
     /**
-     * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
      * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
@@ -539,7 +554,7 @@ export interface ServerlessKubernetesArgs {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
      */
     rrsaMetadata?: pulumi.Input<inputs.cs.ServerlessKubernetesRrsaMetadata>;
     /**
@@ -575,7 +590,7 @@ export interface ServerlessKubernetesArgs {
      */
     vpcId: pulumi.Input<string>;
     /**
-     * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     * The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
      */

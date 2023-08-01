@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about RDS cross region backup settings and how to use them, see [What is cross region backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/modify-cross-region-backup-settings).
  *
- * > **NOTE:** Available in 1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -18,11 +18,20 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Rds";
- * const name = config.get("name") || "tf-testAccRdsCrossRegionBackupPolicy";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     dbInstanceStorageType: "local_ssd",
+ *     category: "HighAvailability",
  * });
+ * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: defaultZones.ids?.[0],
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     dbInstanceStorageType: "local_ssd",
+ *     category: "HighAvailability",
+ * }));
  * const regions = alicloud.rds.getCrossRegions({});
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: name,
@@ -31,20 +40,22 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[5]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
  *     vswitchName: name,
  * });
- * const instance = new alicloud.rds.Instance("instance", {
+ * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
  *     engine: "MySQL",
  *     engineVersion: "8.0",
- *     dbInstanceStorageType: "local_ssd",
- *     instanceType: "rds.mysql.c1.large",
- *     instanceStorage: 10,
- *     vswitchId: defaultSwitch.id,
+ *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
+ *     category: "HighAvailability",
  *     instanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     dbInstanceStorageType: "local_ssd",
  * });
- * const policy = new alicloud.rds.RdsInstanceCrossBackupPolicy("policy", {
- *     instanceId: instance.id,
+ * const defaultRdsInstanceCrossBackupPolicy = new alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy", {
+ *     instanceId: defaultInstance.id,
  *     crossBackupRegion: regions.then(regions => regions.ids?.[0]),
  * });
  * ```

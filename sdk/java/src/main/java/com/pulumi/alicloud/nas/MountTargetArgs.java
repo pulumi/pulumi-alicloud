@@ -46,6 +46,21 @@ public final class MountTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * 
+     */
+    @Import(name="networkType")
+    private @Nullable Output<String> networkType;
+
+    /**
+     * @return mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * 
+     */
+    public Optional<Output<String>> networkType() {
+        return Optional.ofNullable(this.networkType);
+    }
+
+    /**
      * The ID of security group.
      * 
      */
@@ -76,6 +91,21 @@ public final class MountTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The ID of VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The ID of the VSwitch in the VPC where the mount target resides.
      * 
      */
@@ -95,8 +125,10 @@ public final class MountTargetArgs extends com.pulumi.resources.ResourceArgs {
     private MountTargetArgs(MountTargetArgs $) {
         this.accessGroupName = $.accessGroupName;
         this.fileSystemId = $.fileSystemId;
+        this.networkType = $.networkType;
         this.securityGroupId = $.securityGroupId;
         this.status = $.status;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
     }
 
@@ -161,6 +193,27 @@ public final class MountTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param networkType mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkType(@Nullable Output<String> networkType) {
+            $.networkType = networkType;
+            return this;
+        }
+
+        /**
+         * @param networkType mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkType(String networkType) {
+            return networkType(Output.of(networkType));
+        }
+
+        /**
          * @param securityGroupId The ID of security group.
          * 
          * @return builder
@@ -200,6 +253,27 @@ public final class MountTargetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param vpcId The ID of VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

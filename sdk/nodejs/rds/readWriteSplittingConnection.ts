@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
+ * Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
  *
  * > **NOTE:** Available since v1.48.0.
  *
@@ -15,51 +15,54 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const exampleZones = alicloud.rds.getZones({
  *     engine: "MySQL",
- *     engineVersion: "8.0",
- *     instanceChargeType: "PostPaid",
- *     category: "Basic",
- *     dbInstanceStorageType: "cloud_essd",
+ *     engineVersion: "5.7",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "local_ssd",
  * });
  * const exampleInstanceClasses = exampleZones.then(exampleZones => alicloud.rds.getInstanceClasses({
- *     zoneId: exampleZones.zones?.[0]?.id,
+ *     zoneId: exampleZones.ids?.[0],
  *     engine: "MySQL",
- *     engineVersion: "8.0",
- *     category: "Basic",
- *     dbInstanceStorageType: "cloud_essd",
- *     instanceChargeType: "PostPaid",
+ *     engineVersion: "5.7",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "local_ssd",
  * }));
  * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: "terraform-example",
+ *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
- *     vswitchName: "terraform-example",
+ *     vswitchName: name,
  * });
  * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
  * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
  *     engine: "MySQL",
- *     engineVersion: "8.0",
+ *     engineVersion: "5.7",
+ *     category: "HighAvailability",
  *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.instanceClass),
  *     instanceStorage: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
  *     instanceChargeType: "Postpaid",
- *     instanceName: "terraform-example",
+ *     dbInstanceStorageType: "local_ssd",
+ *     instanceName: name,
  *     vswitchId: exampleSwitch.id,
- *     monitoringPeriod: 60,
- *     dbInstanceStorageType: "cloud_essd",
- *     securityGroupIds: [exampleSecurityGroup.id],
+ *     securityIps: [
+ *         "10.168.1.12",
+ *         "100.69.7.112",
+ *     ],
  * });
  * const exampleReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance", {
  *     zoneId: exampleInstance.zoneId,
  *     masterDbInstanceId: exampleInstance.id,
  *     engineVersion: exampleInstance.engineVersion,
  *     instanceStorage: exampleInstance.instanceStorage,
- *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[1]?.instanceClass),
- *     instanceName: "terraform-example-readonly",
+ *     instanceType: exampleInstance.instanceType,
+ *     instanceName: `${name}readonly`,
  *     vswitchId: exampleSwitch.id,
  * });
  * const exampleReadWriteSplittingConnection = new alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", {

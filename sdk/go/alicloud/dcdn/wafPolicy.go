@@ -16,7 +16,7 @@ import (
 //
 // For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/set-the-protection-policies#doc-api-dcdn-CreateDcdnWafPolicy).
 //
-// > **NOTE:** Available in v1.184.0+.
+// > **NOTE:** Available since v1.184.0.
 //
 // ## Example Usage
 //
@@ -29,14 +29,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := dcdn.NewWafPolicy(ctx, "example", &dcdn.WafPolicyArgs{
 //				DefenseScene: pulumi.String("waf_group"),
-//				PolicyName:   pulumi.Any(_var.Name),
+//				PolicyName:   pulumi.String(name),
 //				PolicyType:   pulumi.String("custom"),
 //				Status:       pulumi.String("on"),
 //			})

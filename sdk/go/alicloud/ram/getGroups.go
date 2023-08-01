@@ -13,6 +13,8 @@ import (
 
 // This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
 //
+// > **NOTE:** Available since v1.0.0+.
+//
 // ## Example Usage
 //
 // ```go

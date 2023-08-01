@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+// Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account, see [What is DB Account Privilege](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-grantaccountprivilege).
 //
 // > **NOTE:** At present, a database can only have one database owner.
+//
+// > **NOTE:** Available since v1.5.0.
 //
 // ## Example Usage
 //
@@ -23,7 +25,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -34,16 +35,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			creation := "Rds"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "dbaccountprivilegebasic"
+//			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:        pulumi.StringRef("MySQL"),
+//				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -89,9 +87,10 @@ import (
 //				db = append(db, __res)
 //			}
 //			account, err := rds.NewAccount(ctx, "account", &rds.AccountArgs{
-//				InstanceId:  instance.ID(),
-//				Password:    pulumi.String("Test12345"),
-//				Description: pulumi.String("from terraform"),
+//				DbInstanceId:       instance.ID(),
+//				AccountName:        pulumi.String("tfexample"),
+//				AccountPassword:    pulumi.String("Example12345"),
+//				AccountDescription: pulumi.String("from terraform"),
 //			})
 //			if err != nil {
 //				return err
@@ -139,8 +138,7 @@ type AccountPrivilege struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-	//
-	// Default to "ReadOnly".
+	//   Default to "ReadOnly".
 	Privilege pulumi.StringPtrOutput `pulumi:"privilege"`
 }
 
@@ -195,8 +193,7 @@ type accountPrivilegeState struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-	//
-	// Default to "ReadOnly".
+	//   Default to "ReadOnly".
 	Privilege *string `pulumi:"privilege"`
 }
 
@@ -213,8 +210,7 @@ type AccountPrivilegeState struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-	//
-	// Default to "ReadOnly".
+	//   Default to "ReadOnly".
 	Privilege pulumi.StringPtrInput
 }
 
@@ -235,8 +231,7 @@ type accountPrivilegeArgs struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-	//
-	// Default to "ReadOnly".
+	//   Default to "ReadOnly".
 	Privilege *string `pulumi:"privilege"`
 }
 
@@ -254,8 +249,7 @@ type AccountPrivilegeArgs struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-	//
-	// Default to "ReadOnly".
+	//   Default to "ReadOnly".
 	Privilege pulumi.StringPtrInput
 }
 
@@ -362,13 +356,12 @@ func (o AccountPrivilegeOutput) InstanceId() pulumi.StringOutput {
 }
 
 // The privilege of one account access database. Valid values:
-// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
-// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
-// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
-// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
-// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-//
-// Default to "ReadOnly".
+//   - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+//   - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+//   - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+//   - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+//   - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+//     Default to "ReadOnly".
 func (o AccountPrivilegeOutput) Privilege() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringPtrOutput { return v.Privilege }).(pulumi.StringPtrOutput)
 }

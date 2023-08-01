@@ -29,14 +29,14 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name specified when the customer calls PutDcdnKvNamespace
+     * The name specified when the customer calls PutDcdnKvNamespace.
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return The name specified when the customer calls PutDcdnKvNamespace
+     * @return The name specified when the customer calls PutDcdnKvNamespace.
      * 
      */
     public Output<String> namespace() {
@@ -44,14 +44,14 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The content of key, up to 2M(2*1000*1000)
+     * The content of key, up to 2M(2*1000*1000).
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The content of key, up to 2M(2*1000*1000)
+     * @return The content of key, up to 2M(2*1000*1000).
      * 
      */
     public Output<String> value() {
@@ -106,7 +106,7 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespace The name specified when the customer calls PutDcdnKvNamespace
+         * @param namespace The name specified when the customer calls PutDcdnKvNamespace.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespace The name specified when the customer calls PutDcdnKvNamespace
+         * @param namespace The name specified when the customer calls PutDcdnKvNamespace.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The content of key, up to 2M(2*1000*1000)
+         * @param value The content of key, up to 2M(2*1000*1000).
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The content of key, up to 2M(2*1000*1000)
+         * @param value The content of key, up to 2M(2*1000*1000).
          * 
          * @return builder
          * 

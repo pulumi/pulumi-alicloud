@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.114.0+.
+    /// &gt; **NOTE:** Available since v1.114.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Ram
     ///     {
     ///         Description = "For Terraform Test",
     ///         EncodedsamlMetadataDocument = "your encodedsaml metadata document",
-    ///         SamlProviderName = "tf-testAcc",
+    ///         SamlProviderName = "terraform-example",
     ///     });
     /// 
     /// });

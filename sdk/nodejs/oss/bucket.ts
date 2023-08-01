@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
  *
+ * > **NOTE:** Available since v1.2.0.
+ *
  * ## Example Usage
  *
  * Private Bucket
@@ -209,6 +211,30 @@ import * as utilities from "../utilities";
  *         status: "Enabled",
  *     },
  * });
+ * const bucket_access_monitor_lifecycle = new alicloud.oss.Bucket("bucket-access-monitor-lifecycle", {
+ *     accessMonitor: {
+ *         status: "Enabled",
+ *     },
+ *     acl: "private",
+ *     bucket: pulumi.interpolate`example-lifecycle-${_default.result}`,
+ *     lifecycleRules: [{
+ *         enabled: true,
+ *         id: "rule-days-transition",
+ *         prefix: "path/",
+ *         transitions: [
+ *             {
+ *                 createdBeforeDate: "2022-11-11",
+ *                 isAccessTime: true,
+ *                 returnToStdWhenVisit: true,
+ *                 storageClass: "IA",
+ *             },
+ *             {
+ *                 createdBeforeDate: "2021-11-11",
+ *                 storageClass: "Archive",
+ *             },
+ *         ],
+ *     }],
+ * });
  * ```
  *
  * Set bucket policy
@@ -401,12 +427,16 @@ export class Bucket extends pulumi.CustomResource {
     }
 
     /**
+     * A access monitor status of a bucket. See `accessMonitor` below.
+     */
+    public readonly accessMonitor!: pulumi.Output<outputs.oss.BucketAccessMonitor>;
+    /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
      */
     public readonly acl!: pulumi.Output<string | undefined>;
     public readonly bucket!: pulumi.Output<string | undefined>;
     /**
-     * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+     * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
      */
     public readonly corsRules!: pulumi.Output<outputs.oss.BucketCorsRule[] | undefined>;
     /**
@@ -426,7 +456,11 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly intranetEndpoint!: pulumi.Output<string>;
     /**
-     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+     * A boolean that indicates lifecycle rules allow prefix overlap.
+     */
+    public readonly lifecycleRuleAllowSameActionOverlap!: pulumi.Output<boolean | undefined>;
+    /**
+     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
      */
     public readonly lifecycleRules!: pulumi.Output<outputs.oss.BucketLifecycleRule[] | undefined>;
     /**
@@ -434,7 +468,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly location!: pulumi.Output<string>;
     /**
-     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
      */
     public readonly logging!: pulumi.Output<outputs.oss.BucketLogging | undefined>;
     /**
@@ -456,15 +490,15 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly redundancyType!: pulumi.Output<string | undefined>;
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
      */
     public readonly refererConfig!: pulumi.Output<outputs.oss.BucketRefererConfig | undefined>;
     /**
-     * A configuration of server-side encryption (documented below).
+     * A configuration of server-side encryption. See `serverSideEncryptionRule` below.
      */
     public readonly serverSideEncryptionRule!: pulumi.Output<outputs.oss.BucketServerSideEncryptionRule | undefined>;
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
      */
     public readonly storageClass!: pulumi.Output<string | undefined>;
     /**
@@ -472,15 +506,15 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * A transfer acceleration status of a bucket (documented below).
+     * A transfer acceleration status of a bucket. See `transferAcceleration` below.
      */
     public readonly transferAcceleration!: pulumi.Output<outputs.oss.BucketTransferAcceleration | undefined>;
     /**
-     * A state of versioning (documented below).
+     * A state of versioning. See `versioning` below.
      */
     public readonly versioning!: pulumi.Output<outputs.oss.BucketVersioning | undefined>;
     /**
-     * A website object(documented below).
+     * A website configuration. See `website` below.
      */
     public readonly website!: pulumi.Output<outputs.oss.BucketWebsite | undefined>;
 
@@ -497,6 +531,7 @@ export class Bucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketState | undefined;
+            resourceInputs["accessMonitor"] = state ? state.accessMonitor : undefined;
             resourceInputs["acl"] = state ? state.acl : undefined;
             resourceInputs["bucket"] = state ? state.bucket : undefined;
             resourceInputs["corsRules"] = state ? state.corsRules : undefined;
@@ -504,6 +539,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["extranetEndpoint"] = state ? state.extranetEndpoint : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["intranetEndpoint"] = state ? state.intranetEndpoint : undefined;
+            resourceInputs["lifecycleRuleAllowSameActionOverlap"] = state ? state.lifecycleRuleAllowSameActionOverlap : undefined;
             resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["logging"] = state ? state.logging : undefined;
@@ -520,10 +556,12 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["website"] = state ? state.website : undefined;
         } else {
             const args = argsOrState as BucketArgs | undefined;
+            resourceInputs["accessMonitor"] = args ? args.accessMonitor : undefined;
             resourceInputs["acl"] = args ? args.acl : undefined;
             resourceInputs["bucket"] = args ? args.bucket : undefined;
             resourceInputs["corsRules"] = args ? args.corsRules : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["lifecycleRuleAllowSameActionOverlap"] = args ? args.lifecycleRuleAllowSameActionOverlap : undefined;
             resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
             resourceInputs["logging"] = args ? args.logging : undefined;
             resourceInputs["loggingIsenable"] = args ? args.loggingIsenable : undefined;
@@ -552,12 +590,16 @@ export class Bucket extends pulumi.CustomResource {
  */
 export interface BucketState {
     /**
+     * A access monitor status of a bucket. See `accessMonitor` below.
+     */
+    accessMonitor?: pulumi.Input<inputs.oss.BucketAccessMonitor>;
+    /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
      */
     acl?: pulumi.Input<string>;
     bucket?: pulumi.Input<string>;
     /**
-     * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+     * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
      */
     corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsRule>[]>;
     /**
@@ -577,7 +619,11 @@ export interface BucketState {
      */
     intranetEndpoint?: pulumi.Input<string>;
     /**
-     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+     * A boolean that indicates lifecycle rules allow prefix overlap.
+     */
+    lifecycleRuleAllowSameActionOverlap?: pulumi.Input<boolean>;
+    /**
+     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
      */
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRule>[]>;
     /**
@@ -585,7 +631,7 @@ export interface BucketState {
      */
     location?: pulumi.Input<string>;
     /**
-     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
      */
     logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
@@ -607,15 +653,15 @@ export interface BucketState {
      */
     redundancyType?: pulumi.Input<string>;
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
      */
     refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
     /**
-     * A configuration of server-side encryption (documented below).
+     * A configuration of server-side encryption. See `serverSideEncryptionRule` below.
      */
     serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
      */
     storageClass?: pulumi.Input<string>;
     /**
@@ -623,15 +669,15 @@ export interface BucketState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A transfer acceleration status of a bucket (documented below).
+     * A transfer acceleration status of a bucket. See `transferAcceleration` below.
      */
     transferAcceleration?: pulumi.Input<inputs.oss.BucketTransferAcceleration>;
     /**
-     * A state of versioning (documented below).
+     * A state of versioning. See `versioning` below.
      */
     versioning?: pulumi.Input<inputs.oss.BucketVersioning>;
     /**
-     * A website object(documented below).
+     * A website configuration. See `website` below.
      */
     website?: pulumi.Input<inputs.oss.BucketWebsite>;
 }
@@ -641,12 +687,16 @@ export interface BucketState {
  */
 export interface BucketArgs {
     /**
+     * A access monitor status of a bucket. See `accessMonitor` below.
+     */
+    accessMonitor?: pulumi.Input<inputs.oss.BucketAccessMonitor>;
+    /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
      */
     acl?: pulumi.Input<string>;
     bucket?: pulumi.Input<string>;
     /**
-     * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+     * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
      */
     corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsRule>[]>;
     /**
@@ -654,11 +704,15 @@ export interface BucketArgs {
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**
-     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+     * A boolean that indicates lifecycle rules allow prefix overlap.
+     */
+    lifecycleRuleAllowSameActionOverlap?: pulumi.Input<boolean>;
+    /**
+     * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
      */
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRule>[]>;
     /**
-     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+     * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
      */
     logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
@@ -676,15 +730,15 @@ export interface BucketArgs {
      */
     redundancyType?: pulumi.Input<string>;
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
      */
     refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
     /**
-     * A configuration of server-side encryption (documented below).
+     * A configuration of server-side encryption. See `serverSideEncryptionRule` below.
      */
     serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
      */
     storageClass?: pulumi.Input<string>;
     /**
@@ -692,15 +746,15 @@ export interface BucketArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A transfer acceleration status of a bucket (documented below).
+     * A transfer acceleration status of a bucket. See `transferAcceleration` below.
      */
     transferAcceleration?: pulumi.Input<inputs.oss.BucketTransferAcceleration>;
     /**
-     * A state of versioning (documented below).
+     * A state of versioning. See `versioning` below.
      */
     versioning?: pulumi.Input<inputs.oss.BucketVersioning>;
     /**
-     * A website object(documented below).
+     * A website configuration. See `website` below.
      */
     website?: pulumi.Input<inputs.oss.BucketWebsite>;
 }

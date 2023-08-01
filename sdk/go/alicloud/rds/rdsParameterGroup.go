@@ -16,7 +16,7 @@ import (
 //
 // For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
 //
-// > **NOTE:** Available since v1.119.0+.
+// > **NOTE:** Available since v1.119.0.
 //
 // ## Example Usage
 //
@@ -29,11 +29,17 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := rds.NewRdsParameterGroup(ctx, "default", &rds.RdsParameterGroupArgs{
 //				Engine:        pulumi.String("mysql"),
 //				EngineVersion: pulumi.String("5.7"),
@@ -47,8 +53,8 @@ import (
 //						ParamValue: pulumi.String("86460"),
 //					},
 //				},
-//				ParameterGroupDesc: pulumi.String("rdsparameter"),
-//				ParameterGroupName: pulumi.String("rds1234"),
+//				ParameterGroupDesc: pulumi.String(name),
+//				ParameterGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

@@ -2373,10 +2373,18 @@ export namespace cs {
     }
 
     export interface EdgeKubernetesAddon {
+        /**
+         * The ACK add-on configurations.
+         */
         config?: pulumi.Input<string>;
+        /**
+         * Disables the automatic installation of a component. Default is `false`.
+         *
+         * The following example is the definition of addons block, The type of this field is list:
+         */
         disabled?: pulumi.Input<boolean>;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: pulumi.Input<string>;
     }
@@ -2446,14 +2454,20 @@ export namespace cs {
          * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
          */
         category?: pulumi.Input<string>;
+        /**
+         * The device of the data disks.
+         */
         device?: pulumi.Input<string>;
         /**
          * Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
          */
         encrypted?: pulumi.Input<string>;
+        /**
+         * The id of the kms key.
+         */
         kmsKeyId?: pulumi.Input<string>;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * The name of the data disks.
          */
         name?: pulumi.Input<string>;
         /**
@@ -2464,6 +2478,9 @@ export namespace cs {
          * The size of a data disk, at least 40. Unit: GiB.
          */
         size?: pulumi.Input<string>;
+        /**
+         * The id of snapshot.
+         */
         snapshotId?: pulumi.Input<string>;
     }
 
@@ -2583,10 +2600,18 @@ export namespace cs {
     }
 
     export interface KubernetesAddon {
+        /**
+         * The ACK add-on configurations.
+         */
         config?: pulumi.Input<string>;
+        /**
+         * Disables the automatic installation of a component. Default is `false`.
+         *
+         * The following example is the definition of addons block, The type of this field is list:
+         */
         disabled?: pulumi.Input<boolean>;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: pulumi.Input<string>;
     }
@@ -2642,15 +2667,15 @@ export namespace cs {
 
     export interface KubernetesMasterNode {
         /**
-         * ID of the node.
+         * The id of a node.
          */
         id?: pulumi.Input<string>;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * The name of a node.
          */
         name?: pulumi.Input<string>;
         /**
-         * The private IP address of node.
+         * The private ip of a node.
          */
         privateIp?: pulumi.Input<string>;
     }
@@ -2694,38 +2719,56 @@ export namespace cs {
     }
 
     export interface KubernetesTaint {
+        /**
+         * The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
+         */
         effect?: pulumi.Input<string>;
+        /**
+         * The key of a taint.
+         */
         key?: pulumi.Input<string>;
+        /**
+         * The key of a taint.
+         */
         value?: pulumi.Input<string>;
     }
 
     export interface KubernetesWorkerDataDisk {
         /**
-         * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+         * Worker node data disk auto snapshot policy.
          */
         autoSnapshotPolicyId?: pulumi.Input<string>;
         /**
          * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
          */
         category?: pulumi.Input<string>;
+        /**
+         * The device of the data disks.
+         */
         device?: pulumi.Input<string>;
         /**
          * Specifies whether to encrypt data disks. Valid values: true and false.
          */
         encrypted?: pulumi.Input<string>;
+        /**
+         * The id of the kms key.
+         */
         kmsKeyId?: pulumi.Input<string>;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * The name of the data disks.
          */
         name?: pulumi.Input<string>;
         /**
-         * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          */
         performanceLevel?: pulumi.Input<string>;
         /**
          * The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
          */
         size?: pulumi.Input<string>;
+        /**
+         * The id of snapshot.
+         */
         snapshotId?: pulumi.Input<string>;
     }
 
@@ -2735,7 +2778,7 @@ export namespace cs {
          */
         id?: pulumi.Input<string>;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * Node name.
          */
         name?: pulumi.Input<string>;
         /**
@@ -3247,151 +3290,151 @@ export namespace dcdn {
 
     export interface ErEnvConf {
         /**
-         * The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+         * The configuration of a presetCanaryAnhui environment. See `staging` below.
          */
         presetCanaryAnhui?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryAnhui>;
         /**
-         * The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+         * The configuration of a presetCanaryBeijing environment. See `staging` below.
          */
         presetCanaryBeijing?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryBeijing>;
         /**
-         * The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+         * The configuration of a presetCanaryChongqing environment. See `staging` below.
          */
         presetCanaryChongqing?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryChongqing>;
         /**
-         * The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+         * The configuration of a presetCanaryFujian environment. See `staging` below.
          */
         presetCanaryFujian?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryFujian>;
         /**
-         * The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+         * The configuration of a presetCanaryGansu environment. See `staging` below.
          */
         presetCanaryGansu?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGansu>;
         /**
-         * The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+         * The configuration of a presetCanaryGuangdong environment. See `staging` below.
          */
         presetCanaryGuangdong?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGuangdong>;
         /**
-         * The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+         * The configuration of a presetCanaryGuangxi environment. See `staging` below.
          */
         presetCanaryGuangxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGuangxi>;
         /**
-         * The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+         * The configuration of a presetCanaryGuizhou environment. See `staging` below.
          */
         presetCanaryGuizhou?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGuizhou>;
         /**
-         * The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+         * The configuration of a presetCanaryHainan environment. See `staging` below.
          */
         presetCanaryHainan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHainan>;
         /**
-         * The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+         * The configuration of a presetCanaryHebei environment. See `staging` below.
          */
         presetCanaryHebei?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHebei>;
         /**
-         * The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+         * The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
          */
         presetCanaryHeilongjiang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHeilongjiang>;
         /**
-         * The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+         * The configuration of a presetCanaryHenan environment. See `staging` below.
          */
         presetCanaryHenan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHenan>;
         /**
-         * The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+         * The configuration of a presetCanaryHongKong environment. See `staging` below.
          */
         presetCanaryHongKong?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHongKong>;
         /**
-         * The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+         * The configuration of a presetCanaryHubei environment. See `staging` below.
          */
         presetCanaryHubei?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHubei>;
         /**
-         * The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+         * The configuration of a presetCanaryHunan environment. See `staging` below.
          */
         presetCanaryHunan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHunan>;
         /**
-         * The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+         * The configuration of a presetCanaryJiangsu environment. See `staging` below.
          */
         presetCanaryJiangsu?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryJiangsu>;
         /**
-         * The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+         * The configuration of a presetCanaryJiangxi environment. See `staging` below.
          */
         presetCanaryJiangxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryJiangxi>;
         /**
-         * The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+         * The configuration of a presetCanaryJilin environment. See `staging` below.
          */
         presetCanaryJilin?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryJilin>;
         /**
-         * The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+         * The configuration of a presetCanaryLiaoning environment. See `staging` below.
          */
         presetCanaryLiaoning?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryLiaoning>;
         /**
-         * The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+         * The configuration of a presetCanaryMacau environment. See `staging` below.
          */
         presetCanaryMacau?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryMacau>;
         /**
-         * The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+         * The configuration of a presetCanaryNeimenggu environment. See `staging` below.
          */
         presetCanaryNeimenggu?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryNeimenggu>;
         /**
-         * The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+         * The configuration of a presetCanaryNingxia environment. See `staging` below.
          */
         presetCanaryNingxia?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryNingxia>;
         /**
-         * The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+         * The configuration of a presetCanaryOverseas environment. See `staging` below.
          */
         presetCanaryOverseas?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryOverseas>;
         /**
-         * The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+         * The configuration of a presetCanaryQinghai environment. See `staging` below.
          */
         presetCanaryQinghai?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryQinghai>;
         /**
-         * The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+         * The configuration of a presetCanaryShaanxi environment. See `staging` below.
          */
         presetCanaryShaanxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShaanxi>;
         /**
-         * The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+         * The configuration of a presetCanaryShandong environment. See `staging` below.
          */
         presetCanaryShandong?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShandong>;
         /**
-         * The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+         * The configuration of a presetCanaryShanghai environment. See `staging` below.
          */
         presetCanaryShanghai?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShanghai>;
         /**
-         * The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+         * The configuration of a presetCanaryShanxi environment. See `staging` below.
          */
         presetCanaryShanxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShanxi>;
         /**
-         * The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+         * The configuration of a presetCanarySichuan environment. See `staging` below.
          */
         presetCanarySichuan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanarySichuan>;
         /**
-         * The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+         * The configuration of a presetCanaryTaiwan environment. See `staging` below.
          */
         presetCanaryTaiwan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryTaiwan>;
         /**
-         * The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+         * The configuration of a presetCanaryTianjin environment. See `staging` below.
          */
         presetCanaryTianjin?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryTianjin>;
         /**
-         * The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+         * The configuration of a presetCanaryXinjiang environment. See `staging` below.
          */
         presetCanaryXinjiang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryXinjiang>;
         /**
-         * The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+         * The configuration of a presetCanaryXizang environment. See `staging` below.
          */
         presetCanaryXizang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryXizang>;
         /**
-         * The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+         * The configuration of a presetCanaryYunnan environment. See `staging` below.
          */
         presetCanaryYunnan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryYunnan>;
         /**
-         * The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+         * The configuration of a presetCanaryZhejiang environment. See `staging` below.
          */
         presetCanaryZhejiang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryZhejiang>;
         /**
-         * The configuration of a production environment. The `Block production` is same as `Block staging`.
+         * The configuration of a production environment. See `staging` below.
          */
         production?: pulumi.Input<inputs.dcdn.ErEnvConfProduction>;
         /**
-         * The configuration of a staging environment. See the following `Block staging`.
+         * The configuration of a staging environment. See `staging` below.
          */
         staging?: pulumi.Input<inputs.dcdn.ErEnvConfStaging>;
     }
@@ -3999,11 +4042,11 @@ export namespace dcdn {
          */
         interval?: pulumi.Input<number>;
         /**
-         * The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+         * Response code statistics. See `status` below.
          */
         status?: pulumi.Input<inputs.dcdn.WafRuleRateLimitStatus>;
         /**
-         * The match subfield.
+         * The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `subKey`.
          */
         subKey?: pulumi.Input<string>;
         /**
@@ -5365,6 +5408,13 @@ export namespace ehpc {
 }
 
 export namespace eipanycast {
+    export interface AnycastEipAddressAttachmentPopLocation {
+        /**
+         * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
+         */
+        popLocation?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace elasticsearch {
@@ -6368,7 +6418,7 @@ export namespace ess {
 export namespace eventbridge {
     export interface RuleTarget {
         /**
-         * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block deadLetterQueue`.
+         * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
          */
         deadLetterQueue?: pulumi.Input<inputs.eventbridge.RuleTargetDeadLetterQueue>;
         /**
@@ -6376,7 +6426,7 @@ export namespace eventbridge {
          */
         endpoint: pulumi.Input<string>;
         /**
-         * A list of param. See the following `Block paramList`.
+         * A list of param. See `paramList` below.
          */
         paramLists: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTargetParamList>[]>;
         /**
@@ -6388,7 +6438,8 @@ export namespace eventbridge {
          */
         targetId: pulumi.Input<string>;
         /**
-         * The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+         * The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          */
         type: pulumi.Input<string>;
     }
@@ -6402,27 +6453,29 @@ export namespace eventbridge {
 
     export interface RuleTargetParamList {
         /**
-         * The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+         * The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
          */
         form: pulumi.Input<string>;
         /**
-         * The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+         * The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
          */
         resourceKey: pulumi.Input<string>;
         /**
          * The template of param.
-         *
-         * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * In order to fix the diff, from version 1.160.0,
-         * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
-         * If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
          */
         template?: pulumi.Input<string>;
         /**
          * The value of param.
+         *
+         * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         *
+         * In order to fix the diff, from version 1.160.0,
+         * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+         * If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
          */
         value?: pulumi.Input<string>;
     }
@@ -8141,6 +8194,13 @@ export namespace opensearch {
 }
 
 export namespace oss {
+    export interface BucketAccessMonitor {
+        /**
+         * The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+         */
+        status?: pulumi.Input<string>;
+    }
+
     export interface BucketCorsRule {
         /**
          * Specifies which headers are allowed.
@@ -8166,7 +8226,7 @@ export namespace oss {
 
     export interface BucketLifecycleRule {
         /**
-         * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+         * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abortMultipartUpload` below.
          */
         abortMultipartUploads?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleAbortMultipartUpload>[]>;
         /**
@@ -8174,7 +8234,7 @@ export namespace oss {
          */
         enabled: pulumi.Input<boolean>;
         /**
-         * Specifies a period in the object's expire (documented below).
+         * Specifies a period in the object's expire. See `expiration` below.
          */
         expirations?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleExpiration>[]>;
         /**
@@ -8182,11 +8242,11 @@ export namespace oss {
          */
         id?: pulumi.Input<string>;
         /**
-         * Specifies when noncurrent object versions expire (documented below).
+         * Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
          */
         noncurrentVersionExpirations?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleNoncurrentVersionExpiration>[]>;
         /**
-         * Specifies when noncurrent object versions transitions (documented below).
+         * Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
          *
          * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
          */
@@ -8196,7 +8256,7 @@ export namespace oss {
          */
         prefix?: pulumi.Input<string>;
         /**
-         * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
+         * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
          */
         transitions?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleTransition>[]>;
     }
@@ -8254,7 +8314,16 @@ export namespace oss {
          */
         days: pulumi.Input<number>;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+         * Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
+         */
+        isAccessTime?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+         */
+        returnToStdWhenVisit?: pulumi.Input<boolean>;
+        /**
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
          */
         storageClass: pulumi.Input<string>;
     }
@@ -8271,9 +8340,18 @@ export namespace oss {
          */
         days?: pulumi.Input<number>;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+         * Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
          */
-        storageClass?: pulumi.Input<string>;
+        isAccessTime?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
+         */
+        returnToStdWhenVisit?: pulumi.Input<boolean>;
+        /**
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+         */
+        storageClass: pulumi.Input<string>;
     }
 
     export interface BucketLogging {
@@ -8368,7 +8446,7 @@ export namespace oss {
 
     export interface BucketTransferAcceleration {
         /**
-         * Specifies lifecycle rule status.
+         * Specifies the accelerate status of a bucket.
          */
         enabled: pulumi.Input<boolean>;
     }
@@ -8376,8 +8454,6 @@ export namespace oss {
     export interface BucketVersioning {
         /**
          * Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-         *
-         * `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
          */
         status: pulumi.Input<string>;
     }
@@ -8534,14 +8610,19 @@ export namespace polardb {
          */
         modifyMode?: pulumi.Input<string>;
         /**
-         * This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
-         * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
+         * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
          */
         securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ClusterParameter {
+        /**
+         * Kernel parameter name.
+         */
         name: pulumi.Input<string>;
+        /**
+         * Kernel parameter value.
+         */
         value: pulumi.Input<string>;
     }
 
@@ -8753,7 +8834,7 @@ export namespace ram {
          */
         actions: string[];
         /**
-         * Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+         * Specifies the condition that are required for a policy to take effect. See `condition` below.
          */
         conditions?: inputs.ram.GetPolicyDocumentStatementCondition[];
         /**
@@ -8761,7 +8842,7 @@ export namespace ram {
          */
         effect?: string;
         /**
-         * Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+         * Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
          */
         principals?: inputs.ram.GetPolicyDocumentStatementPrincipal[];
         /**
@@ -8776,7 +8857,7 @@ export namespace ram {
          */
         actions: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+         * Specifies the condition that are required for a policy to take effect. See `condition` below.
          */
         conditions?: pulumi.Input<pulumi.Input<inputs.ram.GetPolicyDocumentStatementConditionArgs>[]>;
         /**
@@ -8784,7 +8865,7 @@ export namespace ram {
          */
         effect?: pulumi.Input<string>;
         /**
-         * Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+         * Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
          */
         principals?: pulumi.Input<pulumi.Input<inputs.ram.GetPolicyDocumentStatementPrincipalArgs>[]>;
         /**
@@ -8847,15 +8928,15 @@ export namespace ram {
 
     export interface PolicyStatement {
         /**
-         * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
          */
         actions: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
          */
         effect: pulumi.Input<string>;
         /**
-         * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
          */
         resources: pulumi.Input<pulumi.Input<string>[]>;
     }

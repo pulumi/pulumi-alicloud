@@ -20,9 +20,12 @@ class BasicAcceleratorArgs:
                  auto_use_coupon: Optional[pulumi.Input[str]] = None,
                  bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
                  basic_accelerator_name: Optional[pulumi.Input[str]] = None,
+                 cross_border_status: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a BasicAccelerator resource.
@@ -32,11 +35,14 @@ class BasicAcceleratorArgs:
         :param pulumi.Input[str] auto_use_coupon: Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         :param pulumi.Input[str] basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
+        :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: The description of the Global Accelerator Basic Accelerator instance.
         :param pulumi.Input[int] duration: The subscription duration. Default value: `1`.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+        :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if auto_pay is not None:
@@ -51,12 +57,18 @@ class BasicAcceleratorArgs:
             pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
         if basic_accelerator_name is not None:
             pulumi.set(__self__, "basic_accelerator_name", basic_accelerator_name)
+        if cross_border_status is not None:
+            pulumi.set(__self__, "cross_border_status", cross_border_status)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if promotion_option_no is not None:
+            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -133,6 +145,18 @@ class BasicAcceleratorArgs:
         pulumi.set(self, "basic_accelerator_name", value)
 
     @property
+    @pulumi.getter(name="crossBorderStatus")
+    def cross_border_status(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "cross_border_status")
+
+    @cross_border_status.setter
+    def cross_border_status(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cross_border_status", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -159,6 +183,18 @@ class BasicAcceleratorArgs:
         pulumi.set(self, "duration", value)
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
@@ -169,6 +205,18 @@ class BasicAcceleratorArgs:
     @pricing_cycle.setter
     def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pricing_cycle", value)
+
+    @property
+    @pulumi.getter(name="promotionOptionNo")
+    def promotion_option_no(self) -> Optional[pulumi.Input[str]]:
+        """
+        The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "promotion_option_no")
+
+    @promotion_option_no.setter
+    def promotion_option_no(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "promotion_option_no", value)
 
     @property
     @pulumi.getter
@@ -192,9 +240,12 @@ class _BasicAcceleratorState:
                  auto_use_coupon: Optional[pulumi.Input[str]] = None,
                  bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
                  basic_accelerator_name: Optional[pulumi.Input[str]] = None,
+                 cross_border_status: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
@@ -205,11 +256,14 @@ class _BasicAcceleratorState:
         :param pulumi.Input[str] auto_use_coupon: Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         :param pulumi.Input[str] basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
+        :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: The description of the Global Accelerator Basic Accelerator instance.
         :param pulumi.Input[int] duration: The subscription duration. Default value: `1`.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+        :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] status: The status of the Basic Accelerator instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -225,12 +279,18 @@ class _BasicAcceleratorState:
             pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
         if basic_accelerator_name is not None:
             pulumi.set(__self__, "basic_accelerator_name", basic_accelerator_name)
+        if cross_border_status is not None:
+            pulumi.set(__self__, "cross_border_status", cross_border_status)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if promotion_option_no is not None:
+            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -309,6 +369,18 @@ class _BasicAcceleratorState:
         pulumi.set(self, "basic_accelerator_name", value)
 
     @property
+    @pulumi.getter(name="crossBorderStatus")
+    def cross_border_status(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "cross_border_status")
+
+    @cross_border_status.setter
+    def cross_border_status(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cross_border_status", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -335,6 +407,18 @@ class _BasicAcceleratorState:
         pulumi.set(self, "duration", value)
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
@@ -345,6 +429,18 @@ class _BasicAcceleratorState:
     @pricing_cycle.setter
     def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pricing_cycle", value)
+
+    @property
+    @pulumi.getter(name="promotionOptionNo")
+    def promotion_option_no(self) -> Optional[pulumi.Input[str]]:
+        """
+        The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "promotion_option_no")
+
+    @promotion_option_no.setter
+    def promotion_option_no(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "promotion_option_no", value)
 
     @property
     @pulumi.getter
@@ -382,9 +478,12 @@ class BasicAccelerator(pulumi.CustomResource):
                  auto_use_coupon: Optional[pulumi.Input[str]] = None,
                  bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
                  basic_accelerator_name: Optional[pulumi.Input[str]] = None,
+                 cross_border_status: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -428,11 +527,14 @@ class BasicAccelerator(pulumi.CustomResource):
         :param pulumi.Input[str] auto_use_coupon: Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         :param pulumi.Input[str] basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
+        :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: The description of the Global Accelerator Basic Accelerator instance.
         :param pulumi.Input[int] duration: The subscription duration. Default value: `1`.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+        :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -495,9 +597,12 @@ class BasicAccelerator(pulumi.CustomResource):
                  auto_use_coupon: Optional[pulumi.Input[str]] = None,
                  bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
                  basic_accelerator_name: Optional[pulumi.Input[str]] = None,
+                 cross_border_status: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 promotion_option_no: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -514,9 +619,12 @@ class BasicAccelerator(pulumi.CustomResource):
             __props__.__dict__["auto_use_coupon"] = auto_use_coupon
             __props__.__dict__["bandwidth_billing_type"] = bandwidth_billing_type
             __props__.__dict__["basic_accelerator_name"] = basic_accelerator_name
+            __props__.__dict__["cross_border_status"] = cross_border_status
             __props__.__dict__["description"] = description
             __props__.__dict__["duration"] = duration
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["pricing_cycle"] = pricing_cycle
+            __props__.__dict__["promotion_option_no"] = promotion_option_no
             __props__.__dict__["tags"] = tags
             __props__.__dict__["status"] = None
         super(BasicAccelerator, __self__).__init__(
@@ -535,9 +643,12 @@ class BasicAccelerator(pulumi.CustomResource):
             auto_use_coupon: Optional[pulumi.Input[str]] = None,
             bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
             basic_accelerator_name: Optional[pulumi.Input[str]] = None,
+            cross_border_status: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[int]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
+            promotion_option_no: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'BasicAccelerator':
         """
@@ -553,11 +664,14 @@ class BasicAccelerator(pulumi.CustomResource):
         :param pulumi.Input[str] auto_use_coupon: Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         :param pulumi.Input[str] basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
+        :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: The description of the Global Accelerator Basic Accelerator instance.
         :param pulumi.Input[int] duration: The subscription duration. Default value: `1`.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
+        :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] status: The status of the Basic Accelerator instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -571,9 +685,12 @@ class BasicAccelerator(pulumi.CustomResource):
         __props__.__dict__["auto_use_coupon"] = auto_use_coupon
         __props__.__dict__["bandwidth_billing_type"] = bandwidth_billing_type
         __props__.__dict__["basic_accelerator_name"] = basic_accelerator_name
+        __props__.__dict__["cross_border_status"] = cross_border_status
         __props__.__dict__["description"] = description
         __props__.__dict__["duration"] = duration
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
+        __props__.__dict__["promotion_option_no"] = promotion_option_no
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         return BasicAccelerator(resource_name, opts=opts, __props__=__props__)
@@ -627,6 +744,14 @@ class BasicAccelerator(pulumi.CustomResource):
         return pulumi.get(self, "basic_accelerator_name")
 
     @property
+    @pulumi.getter(name="crossBorderStatus")
+    def cross_border_status(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "cross_border_status")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
@@ -645,12 +770,28 @@ class BasicAccelerator(pulumi.CustomResource):
         return pulumi.get(self, "duration")
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[str]:
+        """
+        The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> pulumi.Output[Optional[str]]:
         """
         The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "pricing_cycle")
+
+    @property
+    @pulumi.getter(name="promotionOptionNo")
+    def promotion_option_no(self) -> pulumi.Output[Optional[str]]:
+        """
+        The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "promotion_option_no")
 
     @property
     @pulumi.getter

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
  *
- * > **NOTE:** Available since v1.119.0+.
+ * > **NOTE:** Available since v1.119.0.
  *
  * ## Example Usage
  *
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
  * const _default = new alicloud.rds.RdsParameterGroup("default", {
  *     engine: "mysql",
  *     engineVersion: "5.7",
@@ -34,8 +36,8 @@ import * as utilities from "../utilities";
  *             paramValue: "86460",
  *         },
  *     ],
- *     parameterGroupDesc: "rdsparameter",
- *     parameterGroupName: "rds1234",
+ *     parameterGroupDesc: name,
+ *     parameterGroupName: name,
  * });
  * ```
  *

@@ -192,14 +192,14 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requireNumbers);
     }
     /**
-     * (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+     * Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      * 
      */
     @Export(name="requireSymbols", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> requireSymbols;
 
     /**
-     * @return (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+     * @return Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      * 
      */
     public Output<Optional<Boolean>> requireSymbols() {

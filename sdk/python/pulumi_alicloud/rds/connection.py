@@ -205,11 +205,12 @@ class Connection(pulumi.CustomResource):
                  port: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
+        Provides an RDS connection resource to allocate an Internet connection string for RDS instance, see [What is DB Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocateinstancepublicconnection).
 
         > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-        **NOTE:** Available since v1.5.0+.
+
+        > **NOTE:** Available since v1.5.0.
 
         ## Example Usage
 
@@ -218,13 +219,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "dbconnectionbasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+            name = "tf_example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
@@ -233,15 +232,15 @@ class Connection(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
             vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
+        default_instance = alicloud.rds.Instance("defaultInstance",
             engine="MySQL",
             engine_version="5.6",
             instance_type="rds.mysql.t1.small",
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)
-        foo = alicloud.rds.Connection("foo",
-            instance_id=instance.id,
+        default_connection = alicloud.rds.Connection("defaultConnection",
+            instance_id=default_instance.id,
             connection_prefix="testabc")
         ```
 
@@ -269,11 +268,12 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
+        Provides an RDS connection resource to allocate an Internet connection string for RDS instance, see [What is DB Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocateinstancepublicconnection).
 
         > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-        **NOTE:** Available since v1.5.0+.
+
+        > **NOTE:** Available since v1.5.0.
 
         ## Example Usage
 
@@ -282,13 +282,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
         name = config.get("name")
         if name is None:
-            name = "dbconnectionbasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+            name = "tf_example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
@@ -297,15 +295,15 @@ class Connection(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
             vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
+        default_instance = alicloud.rds.Instance("defaultInstance",
             engine="MySQL",
             engine_version="5.6",
             instance_type="rds.mysql.t1.small",
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)
-        foo = alicloud.rds.Connection("foo",
-            instance_id=instance.id,
+        default_connection = alicloud.rds.Connection("defaultConnection",
+            instance_id=default_instance.id,
             connection_prefix="testabc")
         ```
 

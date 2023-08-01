@@ -25,18 +25,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECS instance resource.
  * 
- * &gt; **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
- * 
- * &gt; **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC, VSwitchId Cannot be modified after creation.
- * 
- * &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
- * 
- * &gt; **NOTE:** At present, &#39;PrePaid&#39; instance cannot be deleted and must wait it to be outdated and release it automatically.
- * 
- * &gt; **NOTE:** The resource supports modifying instance charge type from &#39;PrePaid&#39; to &#39;PostPaid&#39; from version 1.9.6.
- *  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don&#39;t modify instance charge type frequentlly in one month`.
- * 
- * &gt; **NOTE:**  There is unsupported &#39;deletion_protection&#39; attribute when the instance is spot
+ * &gt; **NOTE:** Available since v1.0.0
  * 
  * ## Example Usage
  * ```java
@@ -72,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;auto_provisioning_group&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
@@ -106,10 +95,10 @@ import javax.annotation.Nullable;
  *             .securityGroups(group.stream().map(element -&gt; element.id()).collect(toList()))
  *             .instanceType(&#34;ecs.n4.large&#34;)
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .systemDiskName(&#34;test_foo_system_disk_name&#34;)
+ *             .systemDiskName(name)
  *             .systemDiskDescription(&#34;test_foo_system_disk_description&#34;)
  *             .imageId(&#34;ubuntu_18_04_64_20G_alibase_20190624.vhd&#34;)
- *             .instanceName(&#34;test_foo&#34;)
+ *             .instanceName(name)
  *             .vswitchId(vswitch.id())
  *             .internetMaxBandwidthOut(10)
  *             .dataDisks(InstanceDataDiskArgs.builder()
@@ -162,7 +151,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The automatic release time of the `PostPaid` instance.
      * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
      * 
      */
     @Export(name="autoReleaseTime", type=String.class, parameters={})
@@ -171,7 +160,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The automatic release time of the `PostPaid` instance.
      * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
      * 
      */
     public Output<Optional<String>> autoReleaseTime() {
@@ -238,14 +227,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.creditSpecification;
     }
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `data_disks` below.
      * 
      */
     @Export(name="dataDisks", type=List.class, parameters={InstanceDataDisk.class})
     private Output</* @Nullable */ List<InstanceDataDisk>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance.
+     * @return The list of data disks created with instance. See `data_disks` below.
      * 
      */
     public Output<Optional<List<InstanceDataDisk>>> dataDisks() {
@@ -294,7 +283,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dedicatedHostId);
     }
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
+     * Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      * 
@@ -303,7 +292,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether enable the deletion protection or not. Default value: `false`.
+     * @return Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      * 
@@ -312,14 +301,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+     * The group number of the instance in a deployment set when the deployment set is use.
      * 
      */
     @Export(name="deploymentSetGroupNo", type=String.class, parameters={})
     private Output<String> deploymentSetGroupNo;
 
     /**
-     * @return (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+     * @return The group number of the instance in a deployment set when the deployment set is use.
      * 
      */
     public Output<String> deploymentSetGroupNo() {
@@ -340,14 +329,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deploymentSetId);
     }
     /**
-     * The description of the data disk.
+     * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the data disk.
+     * @return Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
      */
     public Output<Optional<String>> description() {
@@ -493,6 +482,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+     * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+     * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
      * 
      */
     @Export(name="instanceChargeType", type=String.class, parameters={})
@@ -500,6 +492,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+     * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+     * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
      * 
      */
     public Output<Optional<String>> instanceChargeType() {
@@ -543,10 +538,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      * 
      * @deprecated
-     * The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
+     * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
      * 
      */
-    @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2. */
+    @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
     @Export(name="internetMaxBandwidthIn", type=Integer.class, parameters={})
     private Output<Integer> internetMaxBandwidthIn;
 
@@ -702,14 +697,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceNotify);
     }
     /**
-     * The time of maintenance. See the following `Block maintenance_time`.
+     * The time of maintenance. See `maintenance_time` below.
      * 
      */
     @Export(name="maintenanceTime", type=InstanceMaintenanceTime.class, parameters={})
     private Output</* @Nullable */ InstanceMaintenanceTime> maintenanceTime;
 
     /**
-     * @return The time of maintenance. See the following `Block maintenance_time`.
+     * @return The time of maintenance. See `maintenance_time` below.
      * 
      */
     public Output<Optional<InstanceMaintenanceTime>> maintenanceTime() {
@@ -728,6 +723,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> memory() {
         return this.memory;
+    }
+    /**
+     * The ID of the ENI.
+     * 
+     */
+    @Export(name="networkInterfaceId", type=String.class, parameters={})
+    private Output<String> networkInterfaceId;
+
+    /**
+     * @return The ID of the ENI.
+     * 
+     */
+    public Output<String> networkInterfaceId() {
+        return this.networkInterfaceId;
     }
     /**
      * The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
@@ -1070,14 +1079,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskAutoSnapshotPolicyId);
     }
     /**
-     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
+     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
      * 
      */
     @Export(name="systemDiskCategory", type=String.class, parameters={})
     private Output</* @Nullable */ String> systemDiskCategory;
 
     /**
-     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
+     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
      * 
      */
     public Output<Optional<String>> systemDiskCategory() {
@@ -1213,23 +1222,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-     * It supports to setting a base64-encoded value, and it is the recommended usage.
-     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-     * 
-     */
     @Export(name="userData", type=String.class, parameters={})
     private Output</* @Nullable */ String> userData;
 
-    /**
-     * @return User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-     * It supports to setting a base64-encoded value, and it is the recommended usage.
-     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-     * 
-     */
     public Output<Optional<String>> userData() {
         return Codegen.optional(this.userData);
     }

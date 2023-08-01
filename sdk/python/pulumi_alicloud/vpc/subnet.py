@@ -502,7 +502,7 @@ class Subnet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv6CidrBlockMask")
-    def ipv6_cidr_block_mask(self) -> pulumi.Output[Optional[int]]:
+    def ipv6_cidr_block_mask(self) -> pulumi.Output[int]:
         return pulumi.get(self, "ipv6_cidr_block_mask")
 
     @property

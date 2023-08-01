@@ -103,7 +103,7 @@ class WafDomain(pulumi.CustomResource):
 
         For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/batch-configure-domain-name-protection).
 
-        > **NOTE:** Available in v1.185.0+.
+        > **NOTE:** Available since v1.185.0.
 
         ## Example Usage
 
@@ -113,16 +113,22 @@ class WafDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_domain = alicloud.dcdn.Domain("defaultDomain",
-            domain_name=var["domain_name"],
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        example_domain = alicloud.dcdn.Domain("exampleDomain",
+            domain_name=domain_name,
+            scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
                 port=80,
                 priority="20",
                 type="ipaddr",
+                weight="10",
             )])
-        default_waf_domain = alicloud.dcdn.WafDomain("defaultWafDomain",
-            domain_name=default_domain.domain_name,
+        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
+            domain_name=example_domain.domain_name,
             client_ip_tag="X-Forwarded-For")
         ```
 
@@ -150,7 +156,7 @@ class WafDomain(pulumi.CustomResource):
 
         For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/batch-configure-domain-name-protection).
 
-        > **NOTE:** Available in v1.185.0+.
+        > **NOTE:** Available since v1.185.0.
 
         ## Example Usage
 
@@ -160,16 +166,22 @@ class WafDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_domain = alicloud.dcdn.Domain("defaultDomain",
-            domain_name=var["domain_name"],
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        example_domain = alicloud.dcdn.Domain("exampleDomain",
+            domain_name=domain_name,
+            scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
                 port=80,
                 priority="20",
                 type="ipaddr",
+                weight="10",
             )])
-        default_waf_domain = alicloud.dcdn.WafDomain("defaultWafDomain",
-            domain_name=default_domain.domain_name,
+        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
+            domain_name=example_domain.domain_name,
             client_ip_tag="X-Forwarded-For")
         ```
 

@@ -16,7 +16,87 @@ import (
 //
 // For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := dfs.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFileSystem, err := dfs.NewFileSystem(ctx, "defaultFileSystem", &dfs.FileSystemArgs{
+//				StorageType:    *pulumi.String(defaultZones.Zones[0].Options[0].StorageType),
+//				ZoneId:         *pulumi.String(defaultZones.Zones[0].ZoneId),
+//				ProtocolType:   pulumi.String("HDFS"),
+//				Description:    pulumi.String(name),
+//				FileSystemName: pulumi.String(name),
+//				ThroughputMode: pulumi.String("Standard"),
+//				SpaceCapacity:  pulumi.Int(1024),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "defaultAccessGroup", &dfs.AccessGroupArgs{
+//				AccessGroupName: pulumi.String(name),
+//				Description:     pulumi.String(name),
+//				NetworkType:     pulumi.String("VPC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dfs.NewMountPoint(ctx, "defaultMountPoint", &dfs.MountPointArgs{
+//				Description:   pulumi.String(name),
+//				VpcId:         defaultNetwork.ID(),
+//				FileSystemId:  defaultFileSystem.ID(),
+//				AccessGroupId: defaultAccessGroup.ID(),
+//				NetworkType:   pulumi.String("VPC"),
+//				VswitchId:     defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -32,14 +32,14 @@ public final class ErArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of the specified environment. See the following `Block env_conf`.
+     * The configurations of the specified environment. See `env_conf` below.
      * 
      */
     @Import(name="envConf")
     private @Nullable Output<ErEnvConfArgs> envConf;
 
     /**
-     * @return The configurations of the specified environment. See the following `Block env_conf`.
+     * @return The configurations of the specified environment. See `env_conf` below.
      * 
      */
     public Optional<Output<ErEnvConfArgs>> envConf() {
@@ -109,7 +109,7 @@ public final class ErArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envConf The configurations of the specified environment. See the following `Block env_conf`.
+         * @param envConf The configurations of the specified environment. See `env_conf` below.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ErArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envConf The configurations of the specified environment. See the following `Block env_conf`.
+         * @param envConf The configurations of the specified environment. See `env_conf` below.
          * 
          * @return builder
          * 

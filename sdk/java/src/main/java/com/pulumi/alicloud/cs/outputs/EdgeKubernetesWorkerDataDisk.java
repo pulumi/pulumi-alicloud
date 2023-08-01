@@ -21,15 +21,23 @@ public final class EdgeKubernetesWorkerDataDisk {
      * 
      */
     private @Nullable String category;
+    /**
+     * @return The device of the data disks.
+     * 
+     */
     private @Nullable String device;
     /**
      * @return Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
      * 
      */
     private @Nullable String encrypted;
+    /**
+     * @return The id of the kms key.
+     * 
+     */
     private @Nullable String kmsKeyId;
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of the data disks.
      * 
      */
     private @Nullable String name;
@@ -43,6 +51,10 @@ public final class EdgeKubernetesWorkerDataDisk {
      * 
      */
     private @Nullable String size;
+    /**
+     * @return The id of snapshot.
+     * 
+     */
     private @Nullable String snapshotId;
 
     private EdgeKubernetesWorkerDataDisk() {}
@@ -60,6 +72,10 @@ public final class EdgeKubernetesWorkerDataDisk {
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return The device of the data disks.
+     * 
+     */
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
@@ -70,11 +86,15 @@ public final class EdgeKubernetesWorkerDataDisk {
     public Optional<String> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
+    /**
+     * @return The id of the kms key.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of the data disks.
      * 
      */
     public Optional<String> name() {
@@ -94,6 +114,10 @@ public final class EdgeKubernetesWorkerDataDisk {
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
+    /**
+     * @return The id of snapshot.
+     * 
+     */
     public Optional<String> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }

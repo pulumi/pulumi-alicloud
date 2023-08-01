@@ -45,9 +45,17 @@ public final class EdgeKubernetesWorkerDataDiskArgs extends com.pulumi.resources
         return Optional.ofNullable(this.category);
     }
 
+    /**
+     * The device of the data disks.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The device of the data disks.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
@@ -67,22 +75,30 @@ public final class EdgeKubernetesWorkerDataDiskArgs extends com.pulumi.resources
         return Optional.ofNullable(this.encrypted);
     }
 
+    /**
+     * The id of the kms key.
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
+    /**
+     * @return The id of the kms key.
+     * 
+     */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
     /**
-     * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * The name of the data disks.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of the data disks.
      * 
      */
     public Optional<Output<String>> name() {
@@ -119,9 +135,17 @@ public final class EdgeKubernetesWorkerDataDiskArgs extends com.pulumi.resources
         return Optional.ofNullable(this.size);
     }
 
+    /**
+     * The id of snapshot.
+     * 
+     */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
+    /**
+     * @return The id of snapshot.
+     * 
+     */
     public Optional<Output<String>> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }
@@ -200,11 +224,23 @@ public final class EdgeKubernetesWorkerDataDiskArgs extends com.pulumi.resources
             return category(Output.of(category));
         }
 
+        /**
+         * @param device The device of the data disks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The device of the data disks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }
@@ -230,17 +266,29 @@ public final class EdgeKubernetesWorkerDataDiskArgs extends com.pulumi.resources
             return encrypted(Output.of(encrypted));
         }
 
+        /**
+         * @param kmsKeyId The id of the kms key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param kmsKeyId The id of the kms key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name The name of the data disks.
          * 
          * @return builder
          * 
@@ -251,7 +299,7 @@ public final class EdgeKubernetesWorkerDataDiskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name The name of the data disks.
          * 
          * @return builder
          * 
@@ -302,11 +350,23 @@ public final class EdgeKubernetesWorkerDataDiskArgs extends com.pulumi.resources
             return size(Output.of(size));
         }
 
+        /**
+         * @param snapshotId The id of snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotId(@Nullable Output<String> snapshotId) {
             $.snapshotId = snapshotId;
             return this;
         }
 
+        /**
+         * @param snapshotId The id of snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotId(String snapshotId) {
             return snapshotId(Output.of(snapshotId));
         }

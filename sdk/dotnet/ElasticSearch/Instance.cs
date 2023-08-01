@@ -10,49 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ElasticSearch
 {
     /// <summary>
-    /// Provides a Elasticsearch instance resource. It contains data nodes, dedicated master node(optional) and etc. It can be associated with private IP whitelists and kibana IP whitelist.
-    /// 
-    /// &gt; **NOTE:** Only one operation is supported in a request. So if `data_node_spec` and `data_node_disk_size` are both changed, system will respond error.
-    /// 
-    /// &gt; **NOTE:** At present, `version` can not be modified once instance has been created.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var instance = new AliCloud.ElasticSearch.Instance("instance", new()
-    ///     {
-    ///         ClientNodeAmount = 2,
-    ///         ClientNodeSpec = "elasticsearch.sn2ne.large",
-    ///         DataNodeAmount = 2,
-    ///         DataNodeDiskSize = 20,
-    ///         DataNodeDiskType = "cloud_ssd",
-    ///         DataNodeSpec = "elasticsearch.sn2ne.large",
-    ///         Description = "description",
-    ///         InstanceChargeType = "PostPaid",
-    ///         Password = "Your password",
-    ///         Protocol = "HTTPS",
-    ///         Tags = 
-    ///         {
-    ///             { "key1", "value1" },
-    ///             { "key2", "value2" },
-    ///         },
-    ///         Version = "5.5.3_with_X-Pack",
-    ///         VswitchId = "some vswitch id",
-    ///         ZoneCount = 2,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Elasticsearch can be imported using the id, e.g.
@@ -64,6 +21,12 @@ namespace Pulumi.AliCloud.ElasticSearch
     [AliCloudResourceType("alicloud:elasticsearch/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        /// </summary>
+        [Output("autoRenewDuration")]
+        public Output<int?> AutoRenewDuration { get; private set; } = null!;
+
         /// <summary>
         /// The Elasticsearch cluster's client node quantity, between 2 and 25.
         /// </summary>
@@ -87,6 +50,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Output("dataNodeDiskEncrypted")]
         public Output<bool?> DataNodeDiskEncrypted { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+        /// </summary>
+        [Output("dataNodeDiskPerformanceLevel")]
+        public Output<string?> DataNodeDiskPerformanceLevel { get; private set; } = null!;
 
         /// <summary>
         /// The single data node storage space.
@@ -173,7 +142,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<ImmutableArray<string>> KibanaWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
@@ -183,6 +152,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+
+        /// <summary>
+        /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+        /// </summary>
+        [Output("masterNodeDiskType")]
+        public Output<string?> MasterNodeDiskType { get; private set; } = null!;
 
         /// <summary>
         /// The dedicated master node spec. If specified, dedicated master node will be created.
@@ -221,13 +196,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.197.0+) Instance connection public domain.
+        /// Instance connection public domain.
         /// </summary>
         [Output("publicDomain")]
         public Output<string> PublicDomain { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.197.0+) Instance connection public port.
+        /// Instance connection public port.
         /// </summary>
         [Output("publicPort")]
         public Output<int> PublicPort { get; private set; } = null!;
@@ -239,7 +214,19 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<ImmutableArray<string>> PublicWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the Elasticsearch instance belongs.
+        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        /// </summary>
+        [Output("renewStatus")]
+        public Output<string?> RenewStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        /// </summary>
+        [Output("renewalDurationUnit")]
+        public Output<string?> RenewalDurationUnit { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of resource group which the Elasticsearch instance belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -257,9 +244,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. 
-        /// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-        /// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -333,6 +318,12 @@ namespace Pulumi.AliCloud.ElasticSearch
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<int>? AutoRenewDuration { get; set; }
+
+        /// <summary>
         /// The Elasticsearch cluster's client node quantity, between 2 and 25.
         /// </summary>
         [Input("clientNodeAmount")]
@@ -355,6 +346,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("dataNodeDiskEncrypted")]
         public Input<bool>? DataNodeDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+        /// </summary>
+        [Input("dataNodeDiskPerformanceLevel")]
+        public Input<string>? DataNodeDiskPerformanceLevel { get; set; }
 
         /// <summary>
         /// The single data node storage space.
@@ -435,7 +432,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -451,6 +448,12 @@ namespace Pulumi.AliCloud.ElasticSearch
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+        /// </summary>
+        [Input("masterNodeDiskType")]
+        public Input<string>? MasterNodeDiskType { get; set; }
 
         /// <summary>
         /// The dedicated master node spec. If specified, dedicated master node will be created.
@@ -511,7 +514,19 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The Id of resource group which the Elasticsearch instance belongs.
+        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        /// </summary>
+        [Input("renewStatus")]
+        public Input<string>? RenewStatus { get; set; }
+
+        /// <summary>
+        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        /// </summary>
+        [Input("renewalDurationUnit")]
+        public Input<string>? RenewalDurationUnit { get; set; }
+
+        /// <summary>
+        /// The ID of resource group which the Elasticsearch instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -532,9 +547,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. 
-        /// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-        /// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -569,6 +582,12 @@ namespace Pulumi.AliCloud.ElasticSearch
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<int>? AutoRenewDuration { get; set; }
+
+        /// <summary>
         /// The Elasticsearch cluster's client node quantity, between 2 and 25.
         /// </summary>
         [Input("clientNodeAmount")]
@@ -591,6 +610,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("dataNodeDiskEncrypted")]
         public Input<bool>? DataNodeDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
+        /// </summary>
+        [Input("dataNodeDiskPerformanceLevel")]
+        public Input<string>? DataNodeDiskPerformanceLevel { get; set; }
 
         /// <summary>
         /// The single data node storage space.
@@ -689,7 +714,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
+        /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -705,6 +730,12 @@ namespace Pulumi.AliCloud.ElasticSearch
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+        /// </summary>
+        [Input("masterNodeDiskType")]
+        public Input<string>? MasterNodeDiskType { get; set; }
 
         /// <summary>
         /// The dedicated master node spec. If specified, dedicated master node will be created.
@@ -759,13 +790,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// (Available in 1.197.0+) Instance connection public domain.
+        /// Instance connection public domain.
         /// </summary>
         [Input("publicDomain")]
         public Input<string>? PublicDomain { get; set; }
 
         /// <summary>
-        /// (Available in 1.197.0+) Instance connection public port.
+        /// Instance connection public port.
         /// </summary>
         [Input("publicPort")]
         public Input<int>? PublicPort { get; set; }
@@ -783,7 +814,19 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The Id of resource group which the Elasticsearch instance belongs.
+        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        /// </summary>
+        [Input("renewStatus")]
+        public Input<string>? RenewStatus { get; set; }
+
+        /// <summary>
+        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        /// </summary>
+        [Input("renewalDurationUnit")]
+        public Input<string>? RenewalDurationUnit { get; set; }
+
+        /// <summary>
+        /// The ID of resource group which the Elasticsearch instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -810,9 +853,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. 
-        /// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
-        /// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {

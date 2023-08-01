@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
     /// 
-    /// &gt; **NOTE:** Available since v1.119.0+.
+    /// &gt; **NOTE:** Available since v1.119.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = new AliCloud.Rds.RdsParameterGroup("default", new()
     ///     {
     ///         Engine = "mysql",
@@ -45,8 +47,8 @@ namespace Pulumi.AliCloud.Rds
     ///                 ParamValue = "86460",
     ///             },
     ///         },
-    ///         ParameterGroupDesc = "rdsparameter",
-    ///         ParameterGroupName = "rds1234",
+    ///         ParameterGroupDesc = name,
+    ///         ParameterGroupName = name,
     ///     });
     /// 
     /// });

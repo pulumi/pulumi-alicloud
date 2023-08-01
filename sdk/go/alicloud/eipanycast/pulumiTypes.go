@@ -13,6 +13,103 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AnycastEipAddressAttachmentPopLocation struct {
+	// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
+	PopLocation *string `pulumi:"popLocation"`
+}
+
+// AnycastEipAddressAttachmentPopLocationInput is an input type that accepts AnycastEipAddressAttachmentPopLocationArgs and AnycastEipAddressAttachmentPopLocationOutput values.
+// You can construct a concrete instance of `AnycastEipAddressAttachmentPopLocationInput` via:
+//
+//	AnycastEipAddressAttachmentPopLocationArgs{...}
+type AnycastEipAddressAttachmentPopLocationInput interface {
+	pulumi.Input
+
+	ToAnycastEipAddressAttachmentPopLocationOutput() AnycastEipAddressAttachmentPopLocationOutput
+	ToAnycastEipAddressAttachmentPopLocationOutputWithContext(context.Context) AnycastEipAddressAttachmentPopLocationOutput
+}
+
+type AnycastEipAddressAttachmentPopLocationArgs struct {
+	// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
+	PopLocation pulumi.StringPtrInput `pulumi:"popLocation"`
+}
+
+func (AnycastEipAddressAttachmentPopLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnycastEipAddressAttachmentPopLocation)(nil)).Elem()
+}
+
+func (i AnycastEipAddressAttachmentPopLocationArgs) ToAnycastEipAddressAttachmentPopLocationOutput() AnycastEipAddressAttachmentPopLocationOutput {
+	return i.ToAnycastEipAddressAttachmentPopLocationOutputWithContext(context.Background())
+}
+
+func (i AnycastEipAddressAttachmentPopLocationArgs) ToAnycastEipAddressAttachmentPopLocationOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPopLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentPopLocationOutput)
+}
+
+// AnycastEipAddressAttachmentPopLocationArrayInput is an input type that accepts AnycastEipAddressAttachmentPopLocationArray and AnycastEipAddressAttachmentPopLocationArrayOutput values.
+// You can construct a concrete instance of `AnycastEipAddressAttachmentPopLocationArrayInput` via:
+//
+//	AnycastEipAddressAttachmentPopLocationArray{ AnycastEipAddressAttachmentPopLocationArgs{...} }
+type AnycastEipAddressAttachmentPopLocationArrayInput interface {
+	pulumi.Input
+
+	ToAnycastEipAddressAttachmentPopLocationArrayOutput() AnycastEipAddressAttachmentPopLocationArrayOutput
+	ToAnycastEipAddressAttachmentPopLocationArrayOutputWithContext(context.Context) AnycastEipAddressAttachmentPopLocationArrayOutput
+}
+
+type AnycastEipAddressAttachmentPopLocationArray []AnycastEipAddressAttachmentPopLocationInput
+
+func (AnycastEipAddressAttachmentPopLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AnycastEipAddressAttachmentPopLocation)(nil)).Elem()
+}
+
+func (i AnycastEipAddressAttachmentPopLocationArray) ToAnycastEipAddressAttachmentPopLocationArrayOutput() AnycastEipAddressAttachmentPopLocationArrayOutput {
+	return i.ToAnycastEipAddressAttachmentPopLocationArrayOutputWithContext(context.Background())
+}
+
+func (i AnycastEipAddressAttachmentPopLocationArray) ToAnycastEipAddressAttachmentPopLocationArrayOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPopLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentPopLocationArrayOutput)
+}
+
+type AnycastEipAddressAttachmentPopLocationOutput struct{ *pulumi.OutputState }
+
+func (AnycastEipAddressAttachmentPopLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnycastEipAddressAttachmentPopLocation)(nil)).Elem()
+}
+
+func (o AnycastEipAddressAttachmentPopLocationOutput) ToAnycastEipAddressAttachmentPopLocationOutput() AnycastEipAddressAttachmentPopLocationOutput {
+	return o
+}
+
+func (o AnycastEipAddressAttachmentPopLocationOutput) ToAnycastEipAddressAttachmentPopLocationOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPopLocationOutput {
+	return o
+}
+
+// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
+func (o AnycastEipAddressAttachmentPopLocationOutput) PopLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnycastEipAddressAttachmentPopLocation) *string { return v.PopLocation }).(pulumi.StringPtrOutput)
+}
+
+type AnycastEipAddressAttachmentPopLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (AnycastEipAddressAttachmentPopLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AnycastEipAddressAttachmentPopLocation)(nil)).Elem()
+}
+
+func (o AnycastEipAddressAttachmentPopLocationArrayOutput) ToAnycastEipAddressAttachmentPopLocationArrayOutput() AnycastEipAddressAttachmentPopLocationArrayOutput {
+	return o
+}
+
+func (o AnycastEipAddressAttachmentPopLocationArrayOutput) ToAnycastEipAddressAttachmentPopLocationArrayOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPopLocationArrayOutput {
+	return o
+}
+
+func (o AnycastEipAddressAttachmentPopLocationArrayOutput) Index(i pulumi.IntInput) AnycastEipAddressAttachmentPopLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AnycastEipAddressAttachmentPopLocation {
+		return vs[0].([]AnycastEipAddressAttachmentPopLocation)[vs[1].(int)]
+	}).(AnycastEipAddressAttachmentPopLocationOutput)
+}
+
 type GetAnycastEipAddressesAddress struct {
 	// Anycast EIP instance account ID.
 	AliUid int `pulumi:"aliUid"`
@@ -354,10 +451,14 @@ func (o GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput) Index(i 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressAttachmentPopLocationInput)(nil)).Elem(), AnycastEipAddressAttachmentPopLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressAttachmentPopLocationArrayInput)(nil)).Elem(), AnycastEipAddressAttachmentPopLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAnycastEipAddressesAddressInput)(nil)).Elem(), GetAnycastEipAddressesAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAnycastEipAddressesAddressArrayInput)(nil)).Elem(), GetAnycastEipAddressesAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAnycastEipAddressesAddressAnycastEipBindInfoListInput)(nil)).Elem(), GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayInput)(nil)).Elem(), GetAnycastEipAddressesAddressAnycastEipBindInfoListArray{})
+	pulumi.RegisterOutputType(AnycastEipAddressAttachmentPopLocationOutput{})
+	pulumi.RegisterOutputType(AnycastEipAddressAttachmentPopLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetAnycastEipAddressesAddressOutput{})
 	pulumi.RegisterOutputType(GetAnycastEipAddressesAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput{})

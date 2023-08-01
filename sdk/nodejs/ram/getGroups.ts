@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
  *
+ * > **NOTE:** Available since v1.0.0+.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -86,6 +88,8 @@ export interface GetGroupsResult {
 }
 /**
  * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available since v1.0.0+.
  *
  * ## Example Usage
  *

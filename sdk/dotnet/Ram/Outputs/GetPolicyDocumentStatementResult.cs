@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Actions;
         /// <summary>
-        /// Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        /// Specifies the condition that are required for a policy to take effect. See `condition` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyDocumentStatementConditionResult> Conditions;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        /// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyDocumentStatementPrincipalResult> Principals;
         /// <summary>

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Event Bridge Rule resource.
  *
- * For information about Event Bridge Rule and how to use it, see [What is Rule](https://help.aliyun.com/document_detail/167854.html).
+ * For information about Event Bridge Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/eventbridge/latest/createrule-6).
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -103,7 +103,7 @@ export class Rule extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The target of rule.
+     * The target of rule. See `targets` below.
      */
     public readonly targets!: pulumi.Output<outputs.eventbridge.RuleTarget[]>;
 
@@ -177,7 +177,7 @@ export interface RuleState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The target of rule.
+     * The target of rule. See `targets` below.
      */
     targets?: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[]>;
 }
@@ -207,7 +207,7 @@ export interface RuleArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The target of rule.
+     * The target of rule. See `targets` below.
      */
     targets: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[]>;
 }

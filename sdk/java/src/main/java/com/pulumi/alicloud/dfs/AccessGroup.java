@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
  * 
- * &gt; **NOTE:** Available in v1.133.0+.
+ * &gt; **NOTE:** Available since v1.133.0.
  * 
  * ## Example Usage
  * 
@@ -45,8 +45,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AccessGroup(&#34;example&#34;, AccessGroupArgs.builder()        
- *             .accessGroupName(&#34;example_value&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var default_ = new AccessGroup(&#34;default&#34;, AccessGroupArgs.builder()        
+ *             .accessGroupName(name)
  *             .networkType(&#34;VPC&#34;)
  *             .build());
  * 

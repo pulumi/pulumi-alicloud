@@ -19,7 +19,86 @@ import javax.annotation.Nullable;
  * 
  * For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
  * 
- * &gt; **NOTE:** Available in v1.140.0+.
+ * &gt; **NOTE:** Available since v1.140.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dfs.DfsFunctions;
+ * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.dfs.FileSystem;
+ * import com.pulumi.alicloud.dfs.FileSystemArgs;
+ * import com.pulumi.alicloud.dfs.AccessGroup;
+ * import com.pulumi.alicloud.dfs.AccessGroupArgs;
+ * import com.pulumi.alicloud.dfs.MountPoint;
+ * import com.pulumi.alicloud.dfs.MountPointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = DfsFunctions.getZones();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .build());
+ * 
+ *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
+ *             .storageType(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].options()[0].storageType()))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .protocolType(&#34;HDFS&#34;)
+ *             .description(name)
+ *             .fileSystemName(name)
+ *             .throughputMode(&#34;Standard&#34;)
+ *             .spaceCapacity(&#34;1024&#34;)
+ *             .build());
+ * 
+ *         var defaultAccessGroup = new AccessGroup(&#34;defaultAccessGroup&#34;, AccessGroupArgs.builder()        
+ *             .accessGroupName(name)
+ *             .description(name)
+ *             .networkType(&#34;VPC&#34;)
+ *             .build());
+ * 
+ *         var defaultMountPoint = new MountPoint(&#34;defaultMountPoint&#34;, MountPointArgs.builder()        
+ *             .description(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .fileSystemId(defaultFileSystem.id())
+ *             .accessGroupId(defaultAccessGroup.id())
+ *             .networkType(&#34;VPC&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

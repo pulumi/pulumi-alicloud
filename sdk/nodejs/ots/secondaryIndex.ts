@@ -19,12 +19,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraformtest";
- * const pks = config.getObject("pks") || [
+ * const pks = config.getObject<Array<string>>("pks") || [
  *     "pk1",
  *     "pk2",
  *     "pk3",
  * ];
- * const definedCols = config.getObject("definedCols") || [
+ * const definedCols = config.getObject<Array<string>>("definedCols") || [
  *     "col1",
  *     "col2",
  *     "col3",

@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/set-the-protection-policies#doc-api-dcdn-CreateDcdnWafPolicy).
  * 
- * &gt; **NOTE:** Available in v1.184.0+.
+ * &gt; **NOTE:** Available since v1.184.0.
  * 
  * ## Example Usage
  * 
@@ -44,9 +44,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var example = new WafPolicy(&#34;example&#34;, WafPolicyArgs.builder()        
  *             .defenseScene(&#34;waf_group&#34;)
- *             .policyName(var_.name())
+ *             .policyName(name)
  *             .policyType(&#34;custom&#34;)
  *             .status(&#34;on&#34;)
  *             .build());

@@ -456,6 +456,8 @@ class Switch(pulumi.CustomResource):
 
         For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
 
+        > **NOTE:** Available since v1.0.0.
+
         ## Example Usage
 
         Basic Usage
@@ -555,6 +557,8 @@ class Switch(pulumi.CustomResource):
         You can use to the existing vpc module  to create a VPC and several VSwitches one-click.
 
         For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
 
@@ -805,7 +809,7 @@ class Switch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv6CidrBlockMask")
-    def ipv6_cidr_block_mask(self) -> pulumi.Output[Optional[int]]:
+    def ipv6_cidr_block_mask(self) -> pulumi.Output[int]:
         """
         The IPv6 CIDR block of the VSwitch.
         """

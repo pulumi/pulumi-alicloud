@@ -16,7 +16,7 @@ import (
 //
 // For information about RDS cross region backup settings and how to use them, see [What is cross region backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/modify-cross-region-backup-settings).
 //
-// > **NOTE:** Available in 1.195.0+.
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -25,7 +25,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -36,16 +35,25 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			creation := "Rds"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "tf-testAccRdsCrossRegionBackupPolicy"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(defaultZones.Ids[0]),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
+//				Category:              pulumi.StringRef("HighAvailability"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -64,26 +72,28 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[5].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
+//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				DbInstanceStorageType: pulumi.String("local_ssd"),
-//				InstanceType:          pulumi.String("rds.mysql.c1.large"),
-//				InstanceStorage:       pulumi.Int(10),
-//				VswitchId:             defaultSwitch.ID(),
+//				InstanceType:          *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       *pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceChargeType:    pulumi.String("Postpaid"),
+//				Category:              pulumi.String("HighAvailability"),
 //				InstanceName:          pulumi.String(name),
+//				VswitchId:             defaultSwitch.ID(),
+//				DbInstanceStorageType: pulumi.String("local_ssd"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewRdsInstanceCrossBackupPolicy(ctx, "policy", &rds.RdsInstanceCrossBackupPolicyArgs{
-//				InstanceId:        instance.ID(),
+//			_, err = rds.NewRdsInstanceCrossBackupPolicy(ctx, "defaultRdsInstanceCrossBackupPolicy", &rds.RdsInstanceCrossBackupPolicyArgs{
+//				InstanceId:        defaultInstance.ID(),
 //				CrossBackupRegion: *pulumi.String(regions.Ids[0]),
 //			})
 //			if err != nil {

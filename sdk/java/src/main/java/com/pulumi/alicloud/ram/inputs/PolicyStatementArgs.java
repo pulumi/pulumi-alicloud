@@ -15,14 +15,14 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
     public static final PolicyStatementArgs Empty = new PolicyStatementArgs();
 
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
      * 
      */
     @Import(name="actions", required=true)
     private Output<List<String>> actions;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
      * 
      */
     public Output<List<String>> actions() {
@@ -30,14 +30,14 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
      * 
      */
     @Import(name="effect", required=true)
     private Output<String> effect;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
      * 
      */
     public Output<String> effect() {
@@ -45,14 +45,14 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
      * 
      */
     @Import(name="resources", required=true)
     private Output<List<String>> resources;
 
     /**
-     * @return (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
      * 
      */
     public Output<List<String>> resources() {
@@ -86,7 +86,7 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param actions (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+         * @param actions (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param actions (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+         * @param actions (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param actions (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+         * @param actions (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param effect (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+         * @param effect (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param effect (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+         * @param effect (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resources (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+         * @param resources (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resources (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+         * @param resources (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class PolicyStatementArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resources (It has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+         * @param resources (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone&#39;s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
          * 
          * @return builder
          * 

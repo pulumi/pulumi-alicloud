@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KubernetesWorkerDataDisk {
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+     * @return Worker node data disk auto snapshot policy.
      * 
      */
     private @Nullable String autoSnapshotPolicyId;
@@ -21,20 +21,28 @@ public final class KubernetesWorkerDataDisk {
      * 
      */
     private @Nullable String category;
+    /**
+     * @return The device of the data disks.
+     * 
+     */
     private @Nullable String device;
     /**
      * @return Specifies whether to encrypt data disks. Valid values: true and false.
      * 
      */
     private @Nullable String encrypted;
+    /**
+     * @return The id of the kms key.
+     * 
+     */
     private @Nullable String kmsKeyId;
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of the data disks.
      * 
      */
     private @Nullable String name;
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     private @Nullable String performanceLevel;
@@ -43,11 +51,15 @@ public final class KubernetesWorkerDataDisk {
      * 
      */
     private @Nullable String size;
+    /**
+     * @return The id of snapshot.
+     * 
+     */
     private @Nullable String snapshotId;
 
     private KubernetesWorkerDataDisk() {}
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+     * @return Worker node data disk auto snapshot policy.
      * 
      */
     public Optional<String> autoSnapshotPolicyId() {
@@ -60,6 +72,10 @@ public final class KubernetesWorkerDataDisk {
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return The device of the data disks.
+     * 
+     */
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
@@ -70,18 +86,22 @@ public final class KubernetesWorkerDataDisk {
     public Optional<String> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
+    /**
+     * @return The id of the kms key.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of the data disks.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public Optional<String> performanceLevel() {
@@ -94,6 +114,10 @@ public final class KubernetesWorkerDataDisk {
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
+    /**
+     * @return The id of snapshot.
+     * 
+     */
     public Optional<String> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }

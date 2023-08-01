@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.EventBridge
     /// <summary>
     /// Provides a Event Bridge Rule resource.
     /// 
-    /// For information about Event Bridge Rule and how to use it, see [What is Rule](https://help.aliyun.com/document_detail/167854.html).
+    /// For information about Event Bridge Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/eventbridge/latest/createrule-6).
     /// 
-    /// &gt; **NOTE:** Available in v1.129.0+.
+    /// &gt; **NOTE:** Available since v1.129.0.
     /// 
     /// ## Example Usage
     /// 
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The target of rule.
+        /// The target of rule. See `targets` below.
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.RuleTarget>> Targets { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.EventBridge
         private InputList<Inputs.RuleTargetArgs>? _targets;
 
         /// <summary>
-        /// The target of rule.
+        /// The target of rule. See `targets` below.
         /// </summary>
         public InputList<Inputs.RuleTargetArgs> Targets
         {
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.EventBridge
         private InputList<Inputs.RuleTargetGetArgs>? _targets;
 
         /// <summary>
-        /// The target of rule.
+        /// The target of rule. See `targets` below.
         /// </summary>
         public InputList<Inputs.RuleTargetGetArgs> Targets
         {

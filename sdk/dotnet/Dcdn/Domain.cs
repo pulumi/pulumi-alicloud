@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// <summary>
     /// You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.94.0+.
+    /// &gt; **NOTE:** Available since v1.94.0.
     /// 
     /// &gt; **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
     /// 
@@ -32,9 +32,11 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var domainName = config.Get("domainName") ?? "example.com";
     ///     var example = new AliCloud.Dcdn.Domain("example", new()
     ///     {
-    ///         DomainName = "example.com",
+    ///         DomainName = domainName,
     ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {
@@ -44,6 +46,7 @@ namespace Pulumi.AliCloud.Dcdn
     ///                 Port = 80,
     ///                 Priority = "20",
     ///                 Type = "ipaddr",
+    ///                 Weight = "10",
     ///             },
     ///         },
     ///     });
@@ -120,7 +123,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string?> SecurityToken { get; private set; } = null!;
 
         /// <summary>
-        /// The origin information.
+        /// The origin information. See `sources` below.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.DomainSource>> Sources { get; private set; } = null!;
@@ -262,7 +265,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainSourceArgs>? _sources;
 
         /// <summary>
-        /// The origin information.
+        /// The origin information. See `sources` below.
         /// </summary>
         public InputList<Inputs.DomainSourceArgs> Sources
         {
@@ -381,7 +384,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainSourceGetArgs>? _sources;
 
         /// <summary>
-        /// The origin information.
+        /// The origin information. See `sources` below.
         /// </summary>
         public InputList<Inputs.DomainSourceGetArgs> Sources
         {

@@ -15,91 +15,11 @@ import (
 // Provides a NAS Mount Target resource.
 // For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 //
-// > **NOTE**: Available in v1.34.0+.
-//
-// > **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
-//
-// > **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
-// and it only can be achieved by creating a classic mount target mannually.
-// See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
-//				FileSystemType: pulumi.StringRef("standard"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
-//				ProtocolType: pulumi.String("NFS"),
-//				StorageType:  pulumi.String("Performance"),
-//				Description:  pulumi.String("terraform-example"),
-//				EncryptType:  pulumi.Int(1),
-//				ZoneId:       *pulumi.String(exampleZones.Zones[0].ZoneId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleAccessGroup, err := nas.NewAccessGroup(ctx, "exampleAccessGroup", &nas.AccessGroupArgs{
-//				AccessGroupName: pulumi.String("terraform-example"),
-//				AccessGroupType: pulumi.String("Vpc"),
-//				Description:     pulumi.String("terraform-example"),
-//				FileSystemType:  pulumi.String("standard"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("172.17.3.0/24"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("terraform-example"),
-//				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      *pulumi.String(exampleZones.Zones[0].ZoneId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = nas.NewMountTarget(ctx, "exampleMountTarget", &nas.MountTargetArgs{
-//				FileSystemId:    exampleFileSystem.ID(),
-//				AccessGroupName: exampleAccessGroup.AccessGroupName,
-//				VswitchId:       exampleSwitch.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.34.0.
 //
 // ## Import
 //
-// # NAS MountTarget
-//
-// can be imported using the id, e.g.
+// NAS MountTarget can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -113,12 +33,16 @@ type MountTarget struct {
 	AccessGroupName pulumi.StringPtrOutput `pulumi:"accessGroupName"`
 	// The ID of the file system.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
-	// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+	// The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
 	MountTargetDomain pulumi.StringOutput `pulumi:"mountTargetDomain"`
+	// mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The ID of security group.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The ID of VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
@@ -160,12 +84,16 @@ type mountTargetState struct {
 	AccessGroupName *string `pulumi:"accessGroupName"`
 	// The ID of the file system.
 	FileSystemId *string `pulumi:"fileSystemId"`
-	// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+	// The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
 	MountTargetDomain *string `pulumi:"mountTargetDomain"`
+	// mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+	NetworkType *string `pulumi:"networkType"`
 	// The ID of security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status *string `pulumi:"status"`
+	// The ID of VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -175,12 +103,16 @@ type MountTargetState struct {
 	AccessGroupName pulumi.StringPtrInput
 	// The ID of the file system.
 	FileSystemId pulumi.StringPtrInput
-	// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+	// The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
 	MountTargetDomain pulumi.StringPtrInput
+	// mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+	NetworkType pulumi.StringPtrInput
 	// The ID of security group.
 	SecurityGroupId pulumi.StringPtrInput
 	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status pulumi.StringPtrInput
+	// The ID of VPC.
+	VpcId pulumi.StringPtrInput
 	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId pulumi.StringPtrInput
 }
@@ -194,10 +126,14 @@ type mountTargetArgs struct {
 	AccessGroupName *string `pulumi:"accessGroupName"`
 	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`
+	// mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+	NetworkType *string `pulumi:"networkType"`
 	// The ID of security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status *string `pulumi:"status"`
+	// The ID of VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -208,10 +144,14 @@ type MountTargetArgs struct {
 	AccessGroupName pulumi.StringPtrInput
 	// The ID of the file system.
 	FileSystemId pulumi.StringInput
+	// mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+	NetworkType pulumi.StringPtrInput
 	// The ID of security group.
 	SecurityGroupId pulumi.StringPtrInput
 	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 	Status pulumi.StringPtrInput
+	// The ID of VPC.
+	VpcId pulumi.StringPtrInput
 	// The ID of the VSwitch in the VPC where the mount target resides.
 	VswitchId pulumi.StringPtrInput
 }
@@ -313,9 +253,14 @@ func (o MountTargetOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountTarget) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
 }
 
-// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+// The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
 func (o MountTargetOutput) MountTargetDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountTarget) pulumi.StringOutput { return v.MountTargetDomain }).(pulumi.StringOutput)
+}
+
+// mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+func (o MountTargetOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountTarget) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // The ID of security group.
@@ -326,6 +271,11 @@ func (o MountTargetOutput) SecurityGroupId() pulumi.StringPtrOutput {
 // Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
 func (o MountTargetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountTarget) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of VPC.
+func (o MountTargetOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountTarget) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The ID of the VSwitch in the VPC where the mount target resides.

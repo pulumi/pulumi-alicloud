@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
  *
- * > **NOTE:** Available in v1.114.0+.
+ * > **NOTE:** Available since v1.114.0+.
  *
  * ## Example Usage
  *
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const example = new alicloud.ram.SamlProvider("example", {
  *     description: "For Terraform Test",
  *     encodedsamlMetadataDocument: "your encodedsaml metadata document",
- *     samlProviderName: "tf-testAcc",
+ *     samlProviderName: "terraform-example",
  * });
  * ```
  *

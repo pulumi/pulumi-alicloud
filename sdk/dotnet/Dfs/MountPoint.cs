@@ -14,7 +14,68 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.140.0+.
+    /// &gt; **NOTE:** Available since v1.140.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Dfs.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///     });
+    /// 
+    ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("defaultFileSystem", new()
+    ///     {
+    ///         StorageType = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         ProtocolType = "HDFS",
+    ///         Description = name,
+    ///         FileSystemName = name,
+    ///         ThroughputMode = "Standard",
+    ///         SpaceCapacity = 1024,
+    ///     });
+    /// 
+    ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("defaultAccessGroup", new()
+    ///     {
+    ///         AccessGroupName = name,
+    ///         Description = name,
+    ///         NetworkType = "VPC",
+    ///     });
+    /// 
+    ///     var defaultMountPoint = new AliCloud.Dfs.MountPoint("defaultMountPoint", new()
+    ///     {
+    ///         Description = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         FileSystemId = defaultFileSystem.Id,
+    ///         AccessGroupId = defaultAccessGroup.Id,
+    ///         NetworkType = "VPC",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

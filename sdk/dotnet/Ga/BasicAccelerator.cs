@@ -90,6 +90,12 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> BasicAcceleratorName { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// </summary>
+        [Output("crossBorderStatus")]
+        public Output<bool?> CrossBorderStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the Global Accelerator Basic Accelerator instance.
         /// </summary>
         [Output("description")]
@@ -104,10 +110,22 @@ namespace Pulumi.AliCloud.Ga
         public Output<int?> Duration { get; private set; } = null!;
 
         /// <summary>
+        /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
         /// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// </summary>
+        [Output("promotionOptionNo")]
+        public Output<string?> PromotionOptionNo { get; private set; } = null!;
 
         /// <summary>
         /// The status of the Basic Accelerator instance.
@@ -204,6 +222,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BasicAcceleratorName { get; set; }
 
         /// <summary>
+        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("crossBorderStatus")]
+        public Input<bool>? CrossBorderStatus { get; set; }
+
+        /// <summary>
         /// The description of the Global Accelerator Basic Accelerator instance.
         /// </summary>
         [Input("description")]
@@ -218,10 +242,22 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? Duration { get; set; }
 
         /// <summary>
+        /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
         /// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// </summary>
+        [Input("promotionOptionNo")]
+        public Input<string>? PromotionOptionNo { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -280,6 +316,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BasicAcceleratorName { get; set; }
 
         /// <summary>
+        /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("crossBorderStatus")]
+        public Input<bool>? CrossBorderStatus { get; set; }
+
+        /// <summary>
         /// The description of the Global Accelerator Basic Accelerator instance.
         /// </summary>
         [Input("description")]
@@ -294,10 +336,22 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? Duration { get; set; }
 
         /// <summary>
+        /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
         /// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        /// </summary>
+        [Input("promotionOptionNo")]
+        public Input<string>? PromotionOptionNo { get; set; }
 
         /// <summary>
         /// The status of the Basic Accelerator instance.

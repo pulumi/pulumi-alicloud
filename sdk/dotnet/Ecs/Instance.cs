@@ -12,18 +12,7 @@ namespace Pulumi.AliCloud.Ecs
     /// <summary>
     /// Provides a ECS instance resource.
     /// 
-    /// &gt; **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
-    /// 
-    /// &gt; **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC, VSwitchId Cannot be modified after creation.
-    /// 
-    /// &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
-    /// 
-    /// &gt; **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
-    /// 
-    /// &gt; **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
-    ///  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
-    /// 
-    /// &gt; **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
+    /// &gt; **NOTE:** Available since v1.0.0
     /// 
     /// ## Example Usage
     /// 
@@ -36,7 +25,7 @@ namespace Pulumi.AliCloud.Ecs
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "auto_provisioning_group";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     // Create a new ECS instance for VPC
     ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
     ///     {
@@ -81,10 +70,10 @@ namespace Pulumi.AliCloud.Ecs
     ///         }.Select(__item =&gt; __item.Id).ToList(),
     ///         InstanceType = "ecs.n4.large",
     ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskName = "test_foo_system_disk_name",
+    ///         SystemDiskName = name,
     ///         SystemDiskDescription = "test_foo_system_disk_description",
     ///         ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
-    ///         InstanceName = "test_foo",
+    ///         InstanceName = name,
     ///         VswitchId = vswitch.Id,
     ///         InternetMaxBandwidthOut = 10,
     ///         DataDisks = new[]
@@ -128,7 +117,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The automatic release time of the `PostPaid` instance. 
         /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-        /// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+        /// Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         /// </summary>
         [Output("autoReleaseTime")]
         public Output<string?> AutoReleaseTime { get; private set; } = null!;
@@ -160,7 +149,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> CreditSpecification { get; private set; } = null!;
 
         /// <summary>
-        /// The list of data disks created with instance.
+        /// The list of data disks created with instance. See `data_disks` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.InstanceDataDisk>> DataDisks { get; private set; } = null!;
@@ -186,7 +175,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> DedicatedHostId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -194,7 +183,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+        /// The group number of the instance in a deployment set when the deployment set is use.
         /// </summary>
         [Output("deploymentSetGroupNo")]
         public Output<string> DeploymentSetGroupNo { get; private set; } = null!;
@@ -206,7 +195,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> DeploymentSetId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -273,6 +262,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+        /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+        /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -359,7 +351,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> MaintenanceNotify { get; private set; } = null!;
 
         /// <summary>
-        /// The time of maintenance. See the following `Block maintenance_time`.
+        /// The time of maintenance. See `maintenance_time` below.
         /// </summary>
         [Output("maintenanceTime")]
         public Output<Outputs.InstanceMaintenanceTime?> MaintenanceTime { get; private set; } = null!;
@@ -369,6 +361,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("memory")]
         public Output<int> Memory { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the ENI.
+        /// </summary>
+        [Output("networkInterfaceId")]
+        public Output<string> NetworkInterfaceId { get; private set; } = null!;
 
         /// <summary>
         /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
@@ -516,7 +514,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
+        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string?> SystemDiskCategory { get; private set; } = null!;
@@ -577,12 +575,6 @@ namespace Pulumi.AliCloud.Ecs
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-        /// It supports to setting a base64-encoded value, and it is the recommended usage.
-        /// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-        /// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-        /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
@@ -659,7 +651,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The automatic release time of the `PostPaid` instance. 
         /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-        /// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+        /// Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         /// </summary>
         [Input("autoReleaseTime")]
         public Input<string>? AutoReleaseTime { get; set; }
@@ -688,7 +680,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.InstanceDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance.
+        /// The list of data disks created with instance. See `data_disks` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskArgs> DataDisks
         {
@@ -717,7 +709,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DedicatedHostId { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -731,7 +723,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -798,6 +790,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+        /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+        /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -896,7 +891,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? MaintenanceNotify { get; set; }
 
         /// <summary>
-        /// The time of maintenance. See the following `Block maintenance_time`.
+        /// The time of maintenance. See `maintenance_time` below.
         /// </summary>
         [Input("maintenanceTime")]
         public Input<Inputs.InstanceMaintenanceTimeArgs>? MaintenanceTime { get; set; }
@@ -1045,7 +1040,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
+        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1112,12 +1107,6 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-        /// It supports to setting a base64-encoded value, and it is the recommended usage.
-        /// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-        /// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
@@ -1158,7 +1147,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The automatic release time of the `PostPaid` instance. 
         /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
-        /// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+        /// Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         /// </summary>
         [Input("autoReleaseTime")]
         public Input<string>? AutoReleaseTime { get; set; }
@@ -1193,7 +1182,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.InstanceDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance.
+        /// The list of data disks created with instance. See `data_disks` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskGetArgs> DataDisks
         {
@@ -1222,7 +1211,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DedicatedHostId { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -1230,7 +1219,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+        /// The group number of the instance in a deployment set when the deployment set is use.
         /// </summary>
         [Input("deploymentSetGroupNo")]
         public Input<string>? DeploymentSetGroupNo { get; set; }
@@ -1242,7 +1231,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -1309,6 +1298,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
+        /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+        /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -1407,7 +1399,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? MaintenanceNotify { get; set; }
 
         /// <summary>
-        /// The time of maintenance. See the following `Block maintenance_time`.
+        /// The time of maintenance. See `maintenance_time` below.
         /// </summary>
         [Input("maintenanceTime")]
         public Input<Inputs.InstanceMaintenanceTimeGetArgs>? MaintenanceTime { get; set; }
@@ -1417,6 +1409,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("memory")]
         public Input<int>? Memory { get; set; }
+
+        /// <summary>
+        /// The ID of the ENI.
+        /// </summary>
+        [Input("networkInterfaceId")]
+        public Input<string>? NetworkInterfaceId { get; set; }
 
         /// <summary>
         /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
@@ -1586,7 +1584,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
+        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1653,12 +1651,6 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-        /// It supports to setting a base64-encoded value, and it is the recommended usage.
-        /// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
-        /// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 

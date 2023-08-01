@@ -20,7 +20,7 @@ public final class GetPolicyDocumentStatement {
      */
     private List<String> actions;
     /**
-     * @return Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+     * @return Specifies the condition that are required for a policy to take effect. See `condition` below.
      * 
      */
     private @Nullable List<GetPolicyDocumentStatementCondition> conditions;
@@ -30,7 +30,7 @@ public final class GetPolicyDocumentStatement {
      */
     private @Nullable String effect;
     /**
-     * @return Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+     * @return Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
      * 
      */
     private @Nullable List<GetPolicyDocumentStatementPrincipal> principals;
@@ -49,7 +49,7 @@ public final class GetPolicyDocumentStatement {
         return this.actions;
     }
     /**
-     * @return Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+     * @return Specifies the condition that are required for a policy to take effect. See `condition` below.
      * 
      */
     public List<GetPolicyDocumentStatementCondition> conditions() {
@@ -63,7 +63,7 @@ public final class GetPolicyDocumentStatement {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+     * @return Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
      * 
      */
     public List<GetPolicyDocumentStatementPrincipal> principals() {

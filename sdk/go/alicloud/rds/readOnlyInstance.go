@@ -12,8 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an RDS readonly instance resource.
-// > **NOTE:** Available since v1.52.1+.
+// Provides an RDS readonly instance resource, see [What is DB Readonly Instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createreadonlydbinstance).
+//
+// > **NOTE:** Available since v1.52.1.
 //
 // ## Example Usage
 //
@@ -24,7 +25,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -35,43 +36,47 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			creation := "Rds"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "dbInstancevpc"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			exampleZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:        pulumi.StringRef("MySQL"),
+//				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+//			_, err = ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
 //				Engine:             pulumi.String("MySQL"),
 //				EngineVersion:      pulumi.String("5.6"),
 //				InstanceType:       pulumi.String("rds.mysql.t1.small"),
 //				InstanceStorage:    pulumi.Int(20),
 //				InstanceChargeType: pulumi.String("Postpaid"),
 //				InstanceName:       pulumi.String(name),
-//				VswitchId:          defaultSwitch.ID(),
+//				VswitchId:          exampleSwitch.ID(),
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("100.69.7.112"),
@@ -80,14 +85,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewReadOnlyInstance(ctx, "defaultReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
-//				MasterDbInstanceId: defaultInstance.ID(),
-//				ZoneId:             defaultInstance.ZoneId,
-//				EngineVersion:      defaultInstance.EngineVersion,
-//				InstanceType:       defaultInstance.InstanceType,
-//				InstanceStorage:    pulumi.Int(30),
-//				InstanceName:       pulumi.String(fmt.Sprintf("%vro", name)),
-//				VswitchId:          defaultSwitch.ID(),
+//			_, err = rds.NewReadOnlyInstance(ctx, "exampleReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
+//				ZoneId:             exampleInstance.ZoneId,
+//				MasterDbInstanceId: exampleInstance.ID(),
+//				EngineVersion:      exampleInstance.EngineVersion,
+//				InstanceStorage:    exampleInstance.InstanceStorage,
+//				InstanceType:       exampleInstance.InstanceType,
+//				InstanceName:       pulumi.String(fmt.Sprintf("%vreadonly", name)),
+//				VswitchId:          exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.114.0+.
+        /// &gt; **NOTE:** Available since v1.114.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.114.0+.
+        /// &gt; **NOTE:** Available since v1.114.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -180,8 +180,14 @@ namespace Pulumi.AliCloud.Ram
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of SAML Provider names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ram Saml Providers. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSamlProvidersProviderResult> Providers;
 
         [OutputConstructor]

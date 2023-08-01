@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// &gt; **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
     /// 
+    /// &gt; **NOTE:** Available since v1.2.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Private Bucket
@@ -319,6 +321,40 @@ namespace Pulumi.AliCloud.Oss
     ///         },
     ///     });
     /// 
+    ///     var bucket_access_monitor_lifecycle = new AliCloud.Oss.Bucket("bucket-access-monitor-lifecycle", new()
+    ///     {
+    ///         AccessMonitor = new AliCloud.Oss.Inputs.BucketAccessMonitorArgs
+    ///         {
+    ///             Status = "Enabled",
+    ///         },
+    ///         Acl = "private",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-lifecycle-{result}"),
+    ///         LifecycleRules = new[]
+    ///         {
+    ///             new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Id = "rule-days-transition",
+    ///                 Prefix = "path/",
+    ///                 Transitions = new[]
+    ///                 {
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs
+    ///                     {
+    ///                         CreatedBeforeDate = "2022-11-11",
+    ///                         IsAccessTime = true,
+    ///                         ReturnToStdWhenVisit = true,
+    ///                         StorageClass = "IA",
+    ///                     },
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs
+    ///                     {
+    ///                         CreatedBeforeDate = "2021-11-11",
+    ///                         StorageClass = "Archive",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -559,6 +595,12 @@ namespace Pulumi.AliCloud.Oss
     public partial class Bucket : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// A access monitor status of a bucket. See `access_monitor` below.
+        /// </summary>
+        [Output("accessMonitor")]
+        public Output<Outputs.BucketAccessMonitor> AccessMonitor { get; private set; } = null!;
+
+        /// <summary>
         /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
         /// </summary>
         [Output("acl")]
@@ -568,7 +610,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string?> BucketName { get; private set; } = null!;
 
         /// <summary>
-        /// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+        /// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         /// </summary>
         [Output("corsRules")]
         public Output<ImmutableArray<Outputs.BucketCorsRule>> CorsRules { get; private set; } = null!;
@@ -598,7 +640,13 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> IntranetEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+        /// A boolean that indicates lifecycle rules allow prefix overlap.
+        /// </summary>
+        [Output("lifecycleRuleAllowSameActionOverlap")]
+        public Output<bool?> LifecycleRuleAllowSameActionOverlap { get; private set; } = null!;
+
+        /// <summary>
+        /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
         /// </summary>
         [Output("lifecycleRules")]
         public Output<ImmutableArray<Outputs.BucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
@@ -610,7 +658,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+        /// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
         /// </summary>
         [Output("logging")]
         public Output<Outputs.BucketLogging?> Logging { get; private set; } = null!;
@@ -640,19 +688,19 @@ namespace Pulumi.AliCloud.Oss
         public Output<string?> RedundancyType { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+        /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
         /// </summary>
         [Output("refererConfig")]
         public Output<Outputs.BucketRefererConfig?> RefererConfig { get; private set; } = null!;
 
         /// <summary>
-        /// A configuration of server-side encryption (documented below).
+        /// A configuration of server-side encryption. See `server_side_encryption_rule` below.
         /// </summary>
         [Output("serverSideEncryptionRule")]
         public Output<Outputs.BucketServerSideEncryptionRule?> ServerSideEncryptionRule { get; private set; } = null!;
 
         /// <summary>
-        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
         /// </summary>
         [Output("storageClass")]
         public Output<string?> StorageClass { get; private set; } = null!;
@@ -664,19 +712,19 @@ namespace Pulumi.AliCloud.Oss
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// A transfer acceleration status of a bucket (documented below).
+        /// A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         /// </summary>
         [Output("transferAcceleration")]
         public Output<Outputs.BucketTransferAcceleration?> TransferAcceleration { get; private set; } = null!;
 
         /// <summary>
-        /// A state of versioning (documented below).
+        /// A state of versioning. See `versioning` below.
         /// </summary>
         [Output("versioning")]
         public Output<Outputs.BucketVersioning?> Versioning { get; private set; } = null!;
 
         /// <summary>
-        /// A website object(documented below).
+        /// A website configuration. See `website` below.
         /// </summary>
         [Output("website")]
         public Output<Outputs.BucketWebsite?> Website { get; private set; } = null!;
@@ -728,6 +776,12 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A access monitor status of a bucket. See `access_monitor` below.
+        /// </summary>
+        [Input("accessMonitor")]
+        public Input<Inputs.BucketAccessMonitorArgs>? AccessMonitor { get; set; }
+
+        /// <summary>
         /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
         /// </summary>
         [Input("acl")]
@@ -740,7 +794,7 @@ namespace Pulumi.AliCloud.Oss
         private InputList<Inputs.BucketCorsRuleArgs>? _corsRules;
 
         /// <summary>
-        /// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+        /// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         /// </summary>
         public InputList<Inputs.BucketCorsRuleArgs> CorsRules
         {
@@ -754,11 +808,17 @@ namespace Pulumi.AliCloud.Oss
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// A boolean that indicates lifecycle rules allow prefix overlap.
+        /// </summary>
+        [Input("lifecycleRuleAllowSameActionOverlap")]
+        public Input<bool>? LifecycleRuleAllowSameActionOverlap { get; set; }
+
         [Input("lifecycleRules")]
         private InputList<Inputs.BucketLifecycleRuleArgs>? _lifecycleRules;
 
         /// <summary>
-        /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+        /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
         /// </summary>
         public InputList<Inputs.BucketLifecycleRuleArgs> LifecycleRules
         {
@@ -767,7 +827,7 @@ namespace Pulumi.AliCloud.Oss
         }
 
         /// <summary>
-        /// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+        /// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
         /// </summary>
         [Input("logging")]
         public Input<Inputs.BucketLoggingArgs>? Logging { get; set; }
@@ -791,19 +851,19 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? RedundancyType { get; set; }
 
         /// <summary>
-        /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+        /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
         /// </summary>
         [Input("refererConfig")]
         public Input<Inputs.BucketRefererConfigArgs>? RefererConfig { get; set; }
 
         /// <summary>
-        /// A configuration of server-side encryption (documented below).
+        /// A configuration of server-side encryption. See `server_side_encryption_rule` below.
         /// </summary>
         [Input("serverSideEncryptionRule")]
         public Input<Inputs.BucketServerSideEncryptionRuleArgs>? ServerSideEncryptionRule { get; set; }
 
         /// <summary>
-        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -821,19 +881,19 @@ namespace Pulumi.AliCloud.Oss
         }
 
         /// <summary>
-        /// A transfer acceleration status of a bucket (documented below).
+        /// A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         /// </summary>
         [Input("transferAcceleration")]
         public Input<Inputs.BucketTransferAccelerationArgs>? TransferAcceleration { get; set; }
 
         /// <summary>
-        /// A state of versioning (documented below).
+        /// A state of versioning. See `versioning` below.
         /// </summary>
         [Input("versioning")]
         public Input<Inputs.BucketVersioningArgs>? Versioning { get; set; }
 
         /// <summary>
-        /// A website object(documented below).
+        /// A website configuration. See `website` below.
         /// </summary>
         [Input("website")]
         public Input<Inputs.BucketWebsiteArgs>? Website { get; set; }
@@ -847,6 +907,12 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A access monitor status of a bucket. See `access_monitor` below.
+        /// </summary>
+        [Input("accessMonitor")]
+        public Input<Inputs.BucketAccessMonitorGetArgs>? AccessMonitor { get; set; }
+
+        /// <summary>
         /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
         /// </summary>
         [Input("acl")]
@@ -859,7 +925,7 @@ namespace Pulumi.AliCloud.Oss
         private InputList<Inputs.BucketCorsRuleGetArgs>? _corsRules;
 
         /// <summary>
-        /// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+        /// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         /// </summary>
         public InputList<Inputs.BucketCorsRuleGetArgs> CorsRules
         {
@@ -891,11 +957,17 @@ namespace Pulumi.AliCloud.Oss
         [Input("intranetEndpoint")]
         public Input<string>? IntranetEndpoint { get; set; }
 
+        /// <summary>
+        /// A boolean that indicates lifecycle rules allow prefix overlap.
+        /// </summary>
+        [Input("lifecycleRuleAllowSameActionOverlap")]
+        public Input<bool>? LifecycleRuleAllowSameActionOverlap { get; set; }
+
         [Input("lifecycleRules")]
         private InputList<Inputs.BucketLifecycleRuleGetArgs>? _lifecycleRules;
 
         /// <summary>
-        /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+        /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
         /// </summary>
         public InputList<Inputs.BucketLifecycleRuleGetArgs> LifecycleRules
         {
@@ -910,7 +982,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+        /// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
         /// </summary>
         [Input("logging")]
         public Input<Inputs.BucketLoggingGetArgs>? Logging { get; set; }
@@ -940,19 +1012,19 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? RedundancyType { get; set; }
 
         /// <summary>
-        /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+        /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
         /// </summary>
         [Input("refererConfig")]
         public Input<Inputs.BucketRefererConfigGetArgs>? RefererConfig { get; set; }
 
         /// <summary>
-        /// A configuration of server-side encryption (documented below).
+        /// A configuration of server-side encryption. See `server_side_encryption_rule` below.
         /// </summary>
         [Input("serverSideEncryptionRule")]
         public Input<Inputs.BucketServerSideEncryptionRuleGetArgs>? ServerSideEncryptionRule { get; set; }
 
         /// <summary>
-        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -970,19 +1042,19 @@ namespace Pulumi.AliCloud.Oss
         }
 
         /// <summary>
-        /// A transfer acceleration status of a bucket (documented below).
+        /// A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         /// </summary>
         [Input("transferAcceleration")]
         public Input<Inputs.BucketTransferAccelerationGetArgs>? TransferAcceleration { get; set; }
 
         /// <summary>
-        /// A state of versioning (documented below).
+        /// A state of versioning. See `versioning` below.
         /// </summary>
         [Input("versioning")]
         public Input<Inputs.BucketVersioningGetArgs>? Versioning { get; set; }
 
         /// <summary>
-        /// A website object(documented below).
+        /// A website configuration. See `website` below.
         /// </summary>
         [Input("website")]
         public Input<Inputs.BucketWebsiteGetArgs>? Website { get; set; }

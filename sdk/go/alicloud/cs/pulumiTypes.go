@@ -244,9 +244,13 @@ func (o ClusterNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeOutput {
 }
 
 type EdgeKubernetesAddon struct {
-	Config   *string `pulumi:"config"`
-	Disabled *bool   `pulumi:"disabled"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The ACK add-on configurations.
+	Config *string `pulumi:"config"`
+	// Disables the automatic installation of a component. Default is `false`.
+	//
+	// The following example is the definition of addons block, The type of this field is list:
+	Disabled *bool `pulumi:"disabled"`
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name *string `pulumi:"name"`
 }
 
@@ -262,9 +266,13 @@ type EdgeKubernetesAddonInput interface {
 }
 
 type EdgeKubernetesAddonArgs struct {
-	Config   pulumi.StringPtrInput `pulumi:"config"`
-	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The ACK add-on configurations.
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	// Disables the automatic installation of a component. Default is `false`.
+	//
+	// The following example is the definition of addons block, The type of this field is list:
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -319,15 +327,19 @@ func (o EdgeKubernetesAddonOutput) ToEdgeKubernetesAddonOutputWithContext(ctx co
 	return o
 }
 
+// The ACK add-on configurations.
 func (o EdgeKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
+// Disables the automatic installation of a component. Default is `false`.
+//
+// The following example is the definition of addons block, The type of this field is list:
 func (o EdgeKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 func (o EdgeKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1038,16 +1050,19 @@ type EdgeKubernetesWorkerDataDisk struct {
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
-	Device   *string `pulumi:"device"`
+	// The device of the data disks.
+	Device *string `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
 	Encrypted *string `pulumi:"encrypted"`
-	KmsKeyId  *string `pulumi:"kmsKeyId"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The id of the kms key.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The name of the data disks.
 	Name *string `pulumi:"name"`
 	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of a data disk, at least 40. Unit: GiB.
-	Size       *string `pulumi:"size"`
+	Size *string `pulumi:"size"`
+	// The id of snapshot.
 	SnapshotId *string `pulumi:"snapshotId"`
 }
 
@@ -1067,16 +1082,19 @@ type EdgeKubernetesWorkerDataDiskArgs struct {
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	Device   pulumi.StringPtrInput `pulumi:"device"`
+	// The device of the data disks.
+	Device pulumi.StringPtrInput `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
-	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The id of the kms key.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The name of the data disks.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of a data disk, at least 40. Unit: GiB.
-	Size       pulumi.StringPtrInput `pulumi:"size"`
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// The id of snapshot.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
@@ -1141,6 +1159,7 @@ func (o EdgeKubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// The device of the data disks.
 func (o EdgeKubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
@@ -1150,11 +1169,12 @@ func (o EdgeKubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
 
+// The id of the kms key.
 func (o EdgeKubernetesWorkerDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// The name of the data disks.
 func (o EdgeKubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1169,6 +1189,7 @@ func (o EdgeKubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
 
+// The id of snapshot.
 func (o EdgeKubernetesWorkerDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -1309,9 +1330,13 @@ func (o EdgeKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) EdgeKubern
 }
 
 type KubernetesAddonType struct {
-	Config   *string `pulumi:"config"`
-	Disabled *bool   `pulumi:"disabled"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The ACK add-on configurations.
+	Config *string `pulumi:"config"`
+	// Disables the automatic installation of a component. Default is `false`.
+	//
+	// The following example is the definition of addons block, The type of this field is list:
+	Disabled *bool `pulumi:"disabled"`
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name *string `pulumi:"name"`
 }
 
@@ -1327,9 +1352,13 @@ type KubernetesAddonTypeInput interface {
 }
 
 type KubernetesAddonTypeArgs struct {
-	Config   pulumi.StringPtrInput `pulumi:"config"`
-	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The ACK add-on configurations.
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	// Disables the automatic installation of a component. Default is `false`.
+	//
+	// The following example is the definition of addons block, The type of this field is list:
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -1384,15 +1413,19 @@ func (o KubernetesAddonTypeOutput) ToKubernetesAddonTypeOutputWithContext(ctx co
 	return o
 }
 
+// The ACK add-on configurations.
 func (o KubernetesAddonTypeOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAddonType) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
+// Disables the automatic installation of a component. Default is `false`.
+//
+// The following example is the definition of addons block, The type of this field is list:
 func (o KubernetesAddonTypeOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KubernetesAddonType) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 func (o KubernetesAddonTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAddonType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1902,11 +1935,11 @@ func (o KubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
 }
 
 type KubernetesMasterNode struct {
-	// ID of the node.
+	// The id of a node.
 	Id *string `pulumi:"id"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The name of a node.
 	Name *string `pulumi:"name"`
-	// The private IP address of node.
+	// The private ip of a node.
 	PrivateIp *string `pulumi:"privateIp"`
 }
 
@@ -1922,11 +1955,11 @@ type KubernetesMasterNodeInput interface {
 }
 
 type KubernetesMasterNodeArgs struct {
-	// ID of the node.
+	// The id of a node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The name of a node.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The private IP address of node.
+	// The private ip of a node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
 }
 
@@ -1981,17 +2014,17 @@ func (o KubernetesMasterNodeOutput) ToKubernetesMasterNodeOutputWithContext(ctx 
 	return o
 }
 
-// ID of the node.
+// The id of a node.
 func (o KubernetesMasterNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// The name of a node.
 func (o KubernetesMasterNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The private IP address of node.
+// The private ip of a node.
 func (o KubernetesMasterNodeOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
@@ -2315,9 +2348,12 @@ func (o KubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type KubernetesTaint struct {
+	// The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
 	Effect *string `pulumi:"effect"`
-	Key    *string `pulumi:"key"`
-	Value  *string `pulumi:"value"`
+	// The key of a taint.
+	Key *string `pulumi:"key"`
+	// The key of a taint.
+	Value *string `pulumi:"value"`
 }
 
 // KubernetesTaintInput is an input type that accepts KubernetesTaintArgs and KubernetesTaintOutput values.
@@ -2332,9 +2368,12 @@ type KubernetesTaintInput interface {
 }
 
 type KubernetesTaintArgs struct {
+	// The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	Key    pulumi.StringPtrInput `pulumi:"key"`
-	Value  pulumi.StringPtrInput `pulumi:"value"`
+	// The key of a taint.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The key of a taint.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (KubernetesTaintArgs) ElementType() reflect.Type {
@@ -2388,14 +2427,17 @@ func (o KubernetesTaintOutput) ToKubernetesTaintOutputWithContext(ctx context.Co
 	return o
 }
 
+// The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
 func (o KubernetesTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
+// The key of a taint.
 func (o KubernetesTaintOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The key of a taint.
 func (o KubernetesTaintOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2421,20 +2463,23 @@ func (o KubernetesTaintArrayOutput) Index(i pulumi.IntInput) KubernetesTaintOutp
 }
 
 type KubernetesWorkerDataDisk struct {
-	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+	// Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
-	Device   *string `pulumi:"device"`
+	// The device of the data disks.
+	Device *string `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false.
 	Encrypted *string `pulumi:"encrypted"`
-	KmsKeyId  *string `pulumi:"kmsKeyId"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The id of the kms key.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The name of the data disks.
 	Name *string `pulumi:"name"`
-	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-	Size       *string `pulumi:"size"`
+	Size *string `pulumi:"size"`
+	// The id of snapshot.
 	SnapshotId *string `pulumi:"snapshotId"`
 }
 
@@ -2450,20 +2495,23 @@ type KubernetesWorkerDataDiskInput interface {
 }
 
 type KubernetesWorkerDataDiskArgs struct {
-	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+	// Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	Device   pulumi.StringPtrInput `pulumi:"device"`
+	// The device of the data disks.
+	Device pulumi.StringPtrInput `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false.
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
-	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The id of the kms key.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The name of the data disks.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-	Size       pulumi.StringPtrInput `pulumi:"size"`
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// The id of snapshot.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
@@ -2518,7 +2566,7 @@ func (o KubernetesWorkerDataDiskOutput) ToKubernetesWorkerDataDiskOutputWithCont
 	return o
 }
 
-// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+// Worker node data disk auto snapshot policy.
 func (o KubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -2528,6 +2576,7 @@ func (o KubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// The device of the data disks.
 func (o KubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
@@ -2537,16 +2586,17 @@ func (o KubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
 
+// The id of the kms key.
 func (o KubernetesWorkerDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// The name of the data disks.
 func (o KubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 func (o KubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
@@ -2556,6 +2606,7 @@ func (o KubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
 
+// The id of snapshot.
 func (o KubernetesWorkerDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -2583,7 +2634,7 @@ func (o KubernetesWorkerDataDiskArrayOutput) Index(i pulumi.IntInput) Kubernetes
 type KubernetesWorkerNode struct {
 	// ID of the node.
 	Id *string `pulumi:"id"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// Node name.
 	Name *string `pulumi:"name"`
 	// The private IP address of node.
 	PrivateIp *string `pulumi:"privateIp"`
@@ -2603,7 +2654,7 @@ type KubernetesWorkerNodeInput interface {
 type KubernetesWorkerNodeArgs struct {
 	// ID of the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// Node name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The private IP address of node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
@@ -2665,7 +2716,7 @@ func (o KubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// Node name.
 func (o KubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

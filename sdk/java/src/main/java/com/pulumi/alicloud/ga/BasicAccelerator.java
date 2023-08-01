@@ -159,6 +159,20 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.basicAcceleratorName);
     }
     /**
+     * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="crossBorderStatus", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> crossBorderStatus;
+
+    /**
+     * @return Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> crossBorderStatus() {
+        return Codegen.optional(this.crossBorderStatus);
+    }
+    /**
      * The description of the Global Accelerator Basic Accelerator instance.
      * 
      */
@@ -191,6 +205,20 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.duration);
     }
     /**
+     * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    @Export(name="paymentType", type=String.class, parameters={})
+    private Output<String> paymentType;
+
+    /**
+     * @return The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
+    }
+    /**
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      * 
      */
@@ -203,6 +231,20 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> pricingCycle() {
         return Codegen.optional(this.pricingCycle);
+    }
+    /**
+     * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    @Export(name="promotionOptionNo", type=String.class, parameters={})
+    private Output</* @Nullable */ String> promotionOptionNo;
+
+    /**
+     * @return The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+     * 
+     */
+    public Output<Optional<String>> promotionOptionNo() {
+        return Codegen.optional(this.promotionOptionNo);
     }
     /**
      * The status of the Basic Accelerator instance.
