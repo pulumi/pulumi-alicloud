@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// For information about NLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer).
     /// 
-    /// &gt; **NOTE:** Available in v1.191.0+.
+    /// &gt; **NOTE:** Available since v1.191.0.
     /// 
     /// ## Example Usage
     /// 
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Nlb
         /// The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         /// </summary>
         [Output("bandwidthPackageId")]
-        public Output<string?> BandwidthPackageId { get; private set; } = null!;
+        public Output<string> BandwidthPackageId { get; private set; } = null!;
 
         /// <summary>
         /// The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.LoadBalancerZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -355,7 +355,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<Inputs.LoadBalancerZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingArgs> ZoneMappings
         {
@@ -493,7 +493,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<Inputs.LoadBalancerZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+        /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingGetArgs> ZoneMappings
         {

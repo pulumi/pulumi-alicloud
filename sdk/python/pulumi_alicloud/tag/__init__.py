@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_meta_tags import *
+from .meta_tag import *
 from .policy import *
 from .policy_attachment import *
 from . import outputs

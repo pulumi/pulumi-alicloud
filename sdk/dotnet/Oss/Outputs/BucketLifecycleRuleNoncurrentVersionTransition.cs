@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly bool? ReturnToStdWhenVisit;
         /// <summary>
-        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         /// </summary>
         public readonly string StorageClass;
 

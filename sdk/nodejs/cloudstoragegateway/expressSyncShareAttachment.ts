@@ -7,79 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Storage Gateway Express Sync Share Attachment resource.
  *
- * For information about Cloud Storage Gateway Express Sync Share Attachment and how to use it, see [What is Express Sync Share Attachment](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+ * For information about Cloud Storage Gateway Express Sync Share Attachment and how to use it, see [What is Express Sync Share Attachment](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/addsharestoexpresssync).
  *
- * > **NOTE:** Available in v1.144.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tftest";
- * const region = config.get("region") || "cn-shanghai";
- * const defaultStocks = alicloud.cloudstoragegateway.getStocks({
- *     gatewayClass: "Standard",
- * });
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: name,
- *     cidrBlock: "192.16.0.0/12",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: vpc.id,
- *     cidrBlock: "192.16.0.0/21",
- *     zoneId: defaultStocks.then(defaultStocks => defaultStocks.stocks?.[0]?.zoneId),
- *     vswitchName: name,
- * });
- * const defaultStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("defaultStorageBundle", {storageBundleName: name});
- * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
- *     description: "tf-acctestDesalone",
- *     gatewayClass: "Standard",
- *     type: "File",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitch.id,
- *     releaseAfterExpiration: true,
- *     publicNetworkBandwidth: 10,
- *     storageBundleId: defaultStorageBundle.id,
- *     location: "Cloud",
- *     gatewayName: name,
- * });
- * const defaultGatewayCacheDisk = new alicloud.cloudstoragegateway.GatewayCacheDisk("defaultGatewayCacheDisk", {
- *     cacheDiskCategory: "cloud_efficiency",
- *     gatewayId: defaultGateway.id,
- *     cacheDiskSizeInGb: 50,
- * });
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: name});
- * const defaultGatewayFileShare = new alicloud.cloudstoragegateway.GatewayFileShare("defaultGatewayFileShare", {
- *     gatewayFileShareName: name,
- *     gatewayId: defaultGateway.id,
- *     localPath: defaultGatewayCacheDisk.localFilePath,
- *     ossBucketName: defaultBucket.bucket,
- *     ossEndpoint: defaultBucket.extranetEndpoint,
- *     protocol: "NFS",
- *     remoteSync: false,
- *     feLimit: 0,
- *     backendLimit: 0,
- *     cacheMode: "Cache",
- *     squash: "none",
- *     lagPeriod: 5,
- * });
- * const defaultExpressSync = new alicloud.cloudstoragegateway.ExpressSync("defaultExpressSync", {
- *     bucketName: defaultGatewayFileShare.ossBucketName,
- *     bucketRegion: region,
- *     description: name,
- *     expressSyncName: name,
- * });
- * const defaultExpressSyncShareAttachment = new alicloud.cloudstoragegateway.ExpressSyncShareAttachment("defaultExpressSyncShareAttachment", {
- *     expressSyncId: defaultExpressSync.id,
- *     gatewayId: defaultGateway.id,
- *     shareName: defaultGatewayFileShare.gatewayFileShareName,
- * });
- * ```
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Import
  *

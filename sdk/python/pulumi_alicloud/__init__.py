@@ -796,6 +796,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "arms/prometheusMonitoring",
+  "fqn": "pulumi_alicloud.arms",
+  "classes": {
+   "alicloud:arms/prometheusMonitoring:PrometheusMonitoring": "PrometheusMonitoring"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "arms/remoteWrite",
   "fqn": "pulumi_alicloud.arms",
   "classes": {
@@ -4444,6 +4452,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "nlb/listenerAdditionalCertificateAttachment",
+  "fqn": "pulumi_alicloud.nlb",
+  "classes": {
+   "alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment": "ListenerAdditionalCertificateAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "nlb/loadBalancer",
   "fqn": "pulumi_alicloud.nlb",
   "classes": {
@@ -4456,6 +4472,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.nlb",
   "classes": {
    "alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment": "LoadBalancerSecurityGroupAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "nlb/loadbalancerCommonBandwidthPackageAttachment",
+  "fqn": "pulumi_alicloud.nlb",
+  "classes": {
+   "alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment": "LoadbalancerCommonBandwidthPackageAttachment"
   }
  },
  {
@@ -5776,6 +5800,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sms",
   "classes": {
    "alicloud:sms/shortUrl:ShortUrl": "ShortUrl"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "tag/metaTag",
+  "fqn": "pulumi_alicloud.tag",
+  "classes": {
+   "alicloud:tag/metaTag:MetaTag": "MetaTag"
   }
  },
  {

@@ -13,37 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.edas.K8sSlbAttachment("example", {
- *     appId: "your_app_id",
- *     slbConfigs: [
- *         {
- *             portMappings: [{
- *                 certId: "your tls cert id",
- *                 loadbalancerProtocol: "TCP",
- *                 servicePort: {
- *                     port: 80,
- *                     protocol: "TCP",
- *                     targetPort: 8080,
- *                 },
- *             }],
- *             scheduler: "rr",
- *             slbId: "your slb instance id",
- *             specification: "slb.s1.small",
- *             type: "internet",
- *         },
- *         {},
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.

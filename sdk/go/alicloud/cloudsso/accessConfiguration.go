@@ -14,9 +14,9 @@ import (
 
 // Provides a Cloud SSO Access Configuration resource.
 //
-// For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
+// For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createaccessconfiguration).
 //
-// > **NOTE:** Available in v1.145.0+.
+// > **NOTE:** Available since v1.145.0.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -44,7 +44,7 @@ type AccessConfiguration struct {
 	//
 	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies pulumi.BoolPtrOutput `pulumi:"forceRemovePermissionPolicies"`
-	// The Policy List. See the following `Block permissionPolicies`.
+	// The Policy List. See `permissionPolicies` below.
 	PermissionPolicies AccessConfigurationPermissionPolicyArrayOutput `pulumi:"permissionPolicies"`
 	// The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
 	RelayState pulumi.StringPtrOutput `pulumi:"relayState"`
@@ -100,7 +100,7 @@ type accessConfigurationState struct {
 	//
 	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies *bool `pulumi:"forceRemovePermissionPolicies"`
-	// The Policy List. See the following `Block permissionPolicies`.
+	// The Policy List. See `permissionPolicies` below.
 	PermissionPolicies []AccessConfigurationPermissionPolicy `pulumi:"permissionPolicies"`
 	// The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
 	RelayState *string `pulumi:"relayState"`
@@ -121,7 +121,7 @@ type AccessConfigurationState struct {
 	//
 	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies pulumi.BoolPtrInput
-	// The Policy List. See the following `Block permissionPolicies`.
+	// The Policy List. See `permissionPolicies` below.
 	PermissionPolicies AccessConfigurationPermissionPolicyArrayInput
 	// The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
 	RelayState pulumi.StringPtrInput
@@ -144,7 +144,7 @@ type accessConfigurationArgs struct {
 	//
 	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies *bool `pulumi:"forceRemovePermissionPolicies"`
-	// The Policy List. See the following `Block permissionPolicies`.
+	// The Policy List. See `permissionPolicies` below.
 	PermissionPolicies []AccessConfigurationPermissionPolicy `pulumi:"permissionPolicies"`
 	// The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
 	RelayState *string `pulumi:"relayState"`
@@ -164,7 +164,7 @@ type AccessConfigurationArgs struct {
 	//
 	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies pulumi.BoolPtrInput
-	// The Policy List. See the following `Block permissionPolicies`.
+	// The Policy List. See `permissionPolicies` below.
 	PermissionPolicies AccessConfigurationPermissionPolicyArrayInput
 	// The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
 	RelayState pulumi.StringPtrInput
@@ -286,7 +286,7 @@ func (o AccessConfigurationOutput) ForceRemovePermissionPolicies() pulumi.BoolPt
 	return o.ApplyT(func(v *AccessConfiguration) pulumi.BoolPtrOutput { return v.ForceRemovePermissionPolicies }).(pulumi.BoolPtrOutput)
 }
 
-// The Policy List. See the following `Block permissionPolicies`.
+// The Policy List. See `permissionPolicies` below.
 func (o AccessConfigurationOutput) PermissionPolicies() AccessConfigurationPermissionPolicyArrayOutput {
 	return o.ApplyT(func(v *AccessConfiguration) AccessConfigurationPermissionPolicyArrayOutput {
 		return v.PermissionPolicies

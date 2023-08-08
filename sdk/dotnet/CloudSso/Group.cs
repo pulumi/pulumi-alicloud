@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CloudSso
     /// <summary>
     /// Provides a Cloud SSO Group resource.
     /// 
-    /// For information about Cloud SSO Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/doc-detail/264683.html).
+    /// For information about Cloud SSO Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-creategroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.138.0+.
+    /// &gt; **NOTE:** Available since v1.138.0.
     /// 
     /// ## Import
     /// 

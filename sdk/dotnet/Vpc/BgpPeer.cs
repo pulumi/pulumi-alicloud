@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.153.0+.
+    /// &gt; **NOTE:** Available since v1.153.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,38 +25,50 @@ namespace Pulumi.AliCloud.Vpc
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultPhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke();
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     {
+    ///         NameRegex = "^preserved-NODELETING",
+    ///     });
     /// 
-    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("defaultVirtualBorderRouter", new()
+    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     {
+    ///         Max = 2999,
+    ///         Min = 1,
+    ///     });
+    /// 
+    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = defaultPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
-    ///         VirtualBorderRouterName = "example_value",
-    ///         VlanId = 120,
+    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VirtualBorderRouterName = name,
+    ///         VlanId = vlanId.Id,
     ///         MinRxInterval = 1000,
     ///         MinTxInterval = 1000,
     ///         DetectMultiplier = 10,
     ///     });
     /// 
-    ///     var defaultBgpGroup = new AliCloud.Vpc.BgpGroup("defaultBgpGroup", new()
+    ///     var exampleBgpGroup = new AliCloud.Vpc.BgpGroup("exampleBgpGroup", new()
     ///     {
     ///         AuthKey = "YourPassword+12345678",
-    ///         BgpGroupName = "example_value",
-    ///         Description = "example_value",
-    ///         LocalAsn = 64512,
+    ///         BgpGroupName = name,
+    ///         Description = name,
     ///         PeerAsn = 1111,
-    ///         RouterId = defaultVirtualBorderRouter.Id,
+    ///         RouterId = exampleVirtualBorderRouter.Id,
+    ///         IsFakeAsn = true,
     ///     });
     /// 
-    ///     var defaultBgpPeer = new AliCloud.Vpc.BgpPeer("defaultBgpPeer", new()
+    ///     var exampleBgpPeer = new AliCloud.Vpc.BgpPeer("exampleBgpPeer", new()
     ///     {
     ///         BfdMultiHop = 10,
-    ///         BgpGroupId = defaultBgpGroup.Id,
+    ///         BgpGroupId = exampleBgpGroup.Id,
     ///         EnableBfd = true,
     ///         IpVersion = "IPV4",
     ///         PeerIpAddress = "1.1.1.1",

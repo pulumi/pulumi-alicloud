@@ -365,6 +365,24 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         var bucket_tag_lifecycle = new Bucket(&#34;bucket-tag-lifecycle&#34;, BucketArgs.builder()        
+ *             .acl(&#34;private&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-lifecycle-%s&#34;, result)))
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .enabled(true)
+ *                 .id(&#34;rule-days-transition&#34;)
+ *                 .prefix(&#34;path/&#34;)
+ *                 .tags(Map.ofEntries(
+ *                     Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+ *                     Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+ *                 ))
+ *                 .transitions(BucketLifecycleRuleTransitionArgs.builder()
+ *                     .createdBeforeDate(&#34;2022-11-11&#34;)
+ *                     .storageClass(&#34;IA&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
  *     }
  * }
  * ```
@@ -937,14 +955,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serverSideEncryptionRule);
     }
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34;, &#34;ColdArchive&#34; and &#34;DeepColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0. &#34;DeepColdArchive&#34; is available since 1.209.0.
      * 
      */
     @Export(name="storageClass", type=String.class, parameters={})
     private Output</* @Nullable */ String> storageClass;
 
     /**
-     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0.
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34;, &#34;ColdArchive&#34; and &#34;DeepColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0. &#34;DeepColdArchive&#34; is available since 1.209.0.
      * 
      */
     public Output<Optional<String>> storageClass() {

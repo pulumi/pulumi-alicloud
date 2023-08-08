@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Express Connect Virtual Physical Connection and how to use it, see [What is Virtual Physical Connection](https://www.alibabacloud.com/help/en/express-connect/latest/createvirtualphysicalconnection#doc-api-Vpc-CreateVirtualPhysicalConnection).
  *
- * > **NOTE:** Available in v1.196.0+.
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
  *
@@ -18,18 +18,26 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const defaultPhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const defaultVirtualPhysicalConnection = new alicloud.expressconnect.VirtualPhysicalConnection("defaultVirtualPhysicalConnection", {
- *     virtualPhysicalConnectionName: "amp_resource_test",
- *     description: "amp_resource_test",
+ * const vlanId = new random.RandomInteger("vlanId", {
+ *     max: 2999,
+ *     min: 1,
+ * });
+ * const default = alicloud.getAccount({});
+ * const exampleVirtualPhysicalConnection = new alicloud.expressconnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection", {
+ *     virtualPhysicalConnectionName: name,
+ *     description: name,
  *     orderMode: "PayByPhysicalConnectionOwner",
- *     parentPhysicalConnectionId: defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.ids?.[0]),
+ *     parentPhysicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.ids?.[0]),
  *     spec: "50M",
- *     vlanId: 789,
- *     vpconnAliUid: "1234567890",
+ *     vlanId: vlanId.id,
+ *     vpconnAliUid: _default.then(_default => _default.id),
  * });
  * ```
  *

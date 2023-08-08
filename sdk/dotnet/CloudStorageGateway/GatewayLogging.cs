@@ -12,85 +12,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// <summary>
     /// Provides a Cloud Storage Gateway Gateway Logging resource.
     /// 
-    /// For information about Cloud Storage Gateway Gateway Logging and how to use it, see [What is Gateway Logging](https://www.alibabacloud.com/help/en/doc-detail/108299.htm).
+    /// For information about Cloud Storage Gateway Gateway Logging and how to use it, see [What is Gateway Logging](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaylogging).
     /// 
-    /// &gt; **NOTE:** Available in v1.144.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example";
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
-    ///     });
-    /// 
-    ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("defaultStorageBundle", new()
-    ///     {
-    ///         StorageBundleName = name,
-    ///     });
-    /// 
-    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
-    ///     {
-    ///         Description = "tf-acctestDesalone",
-    ///         GatewayClass = "Basic",
-    ///         Type = "File",
-    ///         PaymentType = "PayAsYouGo",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         ReleaseAfterExpiration = true,
-    ///         PublicNetworkBandwidth = 10,
-    ///         StorageBundleId = defaultStorageBundle.Id,
-    ///         Location = "Cloud",
-    ///         GatewayName = name,
-    ///     });
-    /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
-    ///     {
-    ///         Description = "created by terraform",
-    ///     });
-    /// 
-    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
-    ///     {
-    ///         Project = defaultProject.Name,
-    ///         ShardCount = 3,
-    ///         AutoSplit = true,
-    ///         MaxSplitShardCount = 60,
-    ///         AppendMeta = true,
-    ///     });
-    /// 
-    ///     var defaultGatewayLogging = new AliCloud.CloudStorageGateway.GatewayLogging("defaultGatewayLogging", new()
-    ///     {
-    ///         GatewayId = defaultGateway.Id,
-    ///         SlsLogstore = defaultStore.Name,
-    ///         SlsProject = defaultProject.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.144.0.
     /// 
     /// ## Import
     /// 

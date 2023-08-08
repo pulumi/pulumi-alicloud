@@ -295,11 +295,13 @@ type BucketLifecycleRule struct {
 	// Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
 	NoncurrentVersionExpirations []BucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpirations"`
 	// Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
-	//
-	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 	NoncurrentVersionTransitions []BucketLifecycleRuleNoncurrentVersionTransition `pulumi:"noncurrentVersionTransitions"`
 	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
 	Prefix *string `pulumi:"prefix"`
+	// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+	//
+	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
 	Transitions []BucketLifecycleRuleTransition `pulumi:"transitions"`
 }
@@ -327,11 +329,13 @@ type BucketLifecycleRuleArgs struct {
 	// Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
 	NoncurrentVersionExpirations BucketLifecycleRuleNoncurrentVersionExpirationArrayInput `pulumi:"noncurrentVersionExpirations"`
 	// Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
-	//
-	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 	NoncurrentVersionTransitions BucketLifecycleRuleNoncurrentVersionTransitionArrayInput `pulumi:"noncurrentVersionTransitions"`
 	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+	//
+	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
+	Tags pulumi.MapInput `pulumi:"tags"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
 	Transitions BucketLifecycleRuleTransitionArrayInput `pulumi:"transitions"`
 }
@@ -415,8 +419,6 @@ func (o BucketLifecycleRuleOutput) NoncurrentVersionExpirations() BucketLifecycl
 }
 
 // Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
-//
-// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 func (o BucketLifecycleRuleOutput) NoncurrentVersionTransitions() BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleNoncurrentVersionTransition {
 		return v.NoncurrentVersionTransitions
@@ -426,6 +428,13 @@ func (o BucketLifecycleRuleOutput) NoncurrentVersionTransitions() BucketLifecycl
 // Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
 func (o BucketLifecycleRuleOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+//
+// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
+func (o BucketLifecycleRuleOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v BucketLifecycleRule) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
@@ -814,7 +823,7 @@ type BucketLifecycleRuleNoncurrentVersionTransition struct {
 	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
 	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 	ReturnToStdWhenVisit *bool `pulumi:"returnToStdWhenVisit"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -839,7 +848,7 @@ type BucketLifecycleRuleNoncurrentVersionTransitionArgs struct {
 	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
 	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 	ReturnToStdWhenVisit pulumi.BoolPtrInput `pulumi:"returnToStdWhenVisit"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -912,7 +921,7 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ReturnToStdWhenVis
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) *bool { return v.ReturnToStdWhenVisit }).(pulumi.BoolPtrOutput)
 }
 
-// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -949,7 +958,7 @@ type BucketLifecycleRuleTransition struct {
 	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
 	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 	ReturnToStdWhenVisit *bool `pulumi:"returnToStdWhenVisit"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -976,7 +985,7 @@ type BucketLifecycleRuleTransitionArgs struct {
 	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
 	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 	ReturnToStdWhenVisit pulumi.BoolPtrInput `pulumi:"returnToStdWhenVisit"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -1054,7 +1063,7 @@ func (o BucketLifecycleRuleTransitionOutput) ReturnToStdWhenVisit() pulumi.BoolP
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *bool { return v.ReturnToStdWhenVisit }).(pulumi.BoolPtrOutput)
 }
 
-// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 func (o BucketLifecycleRuleTransitionOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) string { return v.StorageClass }).(pulumi.StringOutput)
 }

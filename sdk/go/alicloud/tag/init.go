@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:tag/metaTag:MetaTag":
+		r = &MetaTag{}
 	case "alicloud:tag/policy:Policy":
 		r = &Policy{}
 	case "alicloud:tag/policyAttachment:PolicyAttachment":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"tag/metaTag",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"tag/policy",

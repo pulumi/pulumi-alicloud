@@ -181,44 +181,9 @@ class GatewayCacheDisk(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway Cache Disk resource.
 
-        For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/zh/doc-detail/170294.htm).
+        For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
 
-        > **NOTE:** Available in v1.144.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_stocks = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="example_value",
-            cidr_block="172.16.0.0/12")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=example_stocks.stocks[0].zone_id,
-            vswitch_name="example_value")
-        example_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("exampleStorageBundle", storage_bundle_name="example_value")
-        example_gateway = alicloud.cloudstoragegateway.Gateway("exampleGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=example_switch.id,
-            release_after_expiration=True,
-            public_network_bandwidth=10,
-            storage_bundle_id=example_storage_bundle.id,
-            location="Cloud",
-            gateway_name="example_value")
-        example_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("exampleGatewayCacheDisk",
-            cache_disk_category="cloud_efficiency",
-            gateway_id=alicloud_cloud_storage_gateway_gateways["example"]["id"],
-            cache_disk_size_in_gb=50)
-        ```
+        > **NOTE:** Available since v1.144.0.
 
         ## Import
 
@@ -243,44 +208,9 @@ class GatewayCacheDisk(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway Cache Disk resource.
 
-        For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/zh/doc-detail/170294.htm).
+        For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
 
-        > **NOTE:** Available in v1.144.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_stocks = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="example_value",
-            cidr_block="172.16.0.0/12")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=example_stocks.stocks[0].zone_id,
-            vswitch_name="example_value")
-        example_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("exampleStorageBundle", storage_bundle_name="example_value")
-        example_gateway = alicloud.cloudstoragegateway.Gateway("exampleGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=example_switch.id,
-            release_after_expiration=True,
-            public_network_bandwidth=10,
-            storage_bundle_id=example_storage_bundle.id,
-            location="Cloud",
-            gateway_name="example_value")
-        example_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("exampleGatewayCacheDisk",
-            cache_disk_category="cloud_efficiency",
-            gateway_id=alicloud_cloud_storage_gateway_gateways["example"]["id"],
-            cache_disk_size_in_gb=50)
-        ```
+        > **NOTE:** Available since v1.144.0.
 
         ## Import
 

@@ -16,6 +16,7 @@ from .db_node import *
 from .ddr_instance import *
 from .get_accounts import *
 from .get_character_set_names import *
+from .get_class_details import *
 from .get_collation_time_zones import *
 from .get_cross_region_backups import *
 from .get_cross_regions import *

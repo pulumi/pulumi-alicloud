@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Express Connect Vbr Pconn Association and how to use it, see [What is Vbr Pconn Association](https://www.alibabacloud.com/help/en/express-connect/latest/associatephysicalconnectiontovirtualborderrouter#doc-api-Vpc-AssociatePhysicalConnectionToVirtualBorderRouter).
  * 
- * &gt; **NOTE:** Available in v1.196.0+.
+ * &gt; **NOTE:** Available since v1.196.0.
  * 
  * ## Example Usage
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.expressconnect.VbrPconnAssociation;
@@ -51,30 +53,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var examplePhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex(&#34;^preserved-NODELETING&#34;)
  *             .build());
  * 
- *         var defaultVirtualBorderRouter = new VirtualBorderRouter(&#34;defaultVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
+ *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
+ *             .max(2999)
+ *             .min(1)
+ *             .build());
+ * 
+ *         var exampleVirtualBorderRouter = new VirtualBorderRouter(&#34;exampleVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
  *             .localGatewayIp(&#34;10.0.0.1&#34;)
  *             .peerGatewayIp(&#34;10.0.0.2&#34;)
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .physicalConnectionId(nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
- *             .virtualBorderRouterName(var_.name())
- *             .vlanId(100)
+ *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *             .virtualBorderRouterName(name)
+ *             .vlanId(vlanId.id())
  *             .minRxInterval(1000)
  *             .minTxInterval(1000)
  *             .detectMultiplier(10)
+ *             .enableIpv6(true)
+ *             .localIpv6GatewayIp(&#34;2408:4004:cc:400::1&#34;)
+ *             .peerIpv6GatewayIp(&#34;2408:4004:cc:400::2&#34;)
+ *             .peeringIpv6SubnetMask(&#34;2408:4004:cc:400::/56&#34;)
  *             .build());
  * 
- *         var defaultVbrPconnAssociation = new VbrPconnAssociation(&#34;defaultVbrPconnAssociation&#34;, VbrPconnAssociationArgs.builder()        
+ *         var exampleVbrPconnAssociation = new VbrPconnAssociation(&#34;exampleVbrPconnAssociation&#34;, VbrPconnAssociationArgs.builder()        
  *             .peerGatewayIp(&#34;10.0.0.6&#34;)
  *             .localGatewayIp(&#34;10.0.0.5&#34;)
- *             .physicalConnectionId(nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[1].id()))
- *             .vbrId(defaultVirtualBorderRouter.id())
+ *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[2].id()))
+ *             .vbrId(exampleVirtualBorderRouter.id())
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .vlanId(1122)
- *             .enableIpv6(false)
+ *             .vlanId(vlanId.id().applyValue(id -&gt; id + 2))
+ *             .enableIpv6(true)
+ *             .localIpv6GatewayIp(&#34;2408:4004:cc::3&#34;)
+ *             .peerIpv6GatewayIp(&#34;2408:4004:cc::4&#34;)
+ *             .peeringIpv6SubnetMask(&#34;2408:4004:cc::/56&#34;)
  *             .build());
  * 
  *     }

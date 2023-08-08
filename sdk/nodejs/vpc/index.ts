@@ -95,6 +95,11 @@ export const getEnhancedNatAvailableZones: typeof import("./getEnhancedNatAvaila
 export const getEnhancedNatAvailableZonesOutput: typeof import("./getEnhancedNatAvailableZones").getEnhancedNatAvailableZonesOutput = null as any;
 utilities.lazyLoad(exports, ["getEnhancedNatAvailableZones","getEnhancedNatAvailableZonesOutput"], () => require("./getEnhancedNatAvailableZones"));
 
+export { GetFlowLogServiceArgs, GetFlowLogServiceResult, GetFlowLogServiceOutputArgs } from "./getFlowLogService";
+export const getFlowLogService: typeof import("./getFlowLogService").getFlowLogService = null as any;
+export const getFlowLogServiceOutput: typeof import("./getFlowLogService").getFlowLogServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getFlowLogService","getFlowLogServiceOutput"], () => require("./getFlowLogService"));
+
 export { GetForwardEntriesArgs, GetForwardEntriesResult, GetForwardEntriesOutputArgs } from "./getForwardEntries";
 export const getForwardEntries: typeof import("./getForwardEntries").getForwardEntries = null as any;
 export const getForwardEntriesOutput: typeof import("./getForwardEntries").getForwardEntriesOutput = null as any;

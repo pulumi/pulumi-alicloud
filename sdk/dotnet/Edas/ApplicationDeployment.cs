@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Edas
 {
     /// <summary>
-    /// Deploys applications on EDAS.
+    /// Deploys applications on EDAS, see [What is EDAS Application Deployment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-deployapplication).
     /// 
-    /// &gt; **NOTE:** Available in 1.82.0+
+    /// &gt; **NOTE:** Available since v1.82.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,12 +26,99 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Edas.ApplicationDeployment("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         AppId = @var.App_id,
-    ///         GroupId = @var.Group_id,
-    ///         PackageVersion = @var.Package_version,
-    ///         WarUrl = @var.War_url,
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceName = name,
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.Edas.Cluster("defaultCluster", new()
+    ///     {
+    ///         ClusterName = name,
+    ///         ClusterType = 2,
+    ///         NetworkMode = 2,
+    ///         LogicalRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstanceClusterAttachment = new AliCloud.Edas.InstanceClusterAttachment("defaultInstanceClusterAttachment", new()
+    ///     {
+    ///         ClusterId = defaultCluster.Id,
+    ///         InstanceIds = new[]
+    ///         {
+    ///             defaultInstance.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultApplication = new AliCloud.Edas.Application("defaultApplication", new()
+    ///     {
+    ///         ApplicationName = name,
+    ///         ClusterId = defaultCluster.Id,
+    ///         PackageType = "JAR",
+    ///     });
+    /// 
+    ///     var defaultDeployGroup = new AliCloud.Edas.DeployGroup("defaultDeployGroup", new()
+    ///     {
+    ///         AppId = defaultApplication.Id,
+    ///         GroupName = name,
+    ///     });
+    /// 
+    ///     var defaultApplicationDeployment = new AliCloud.Edas.ApplicationDeployment("defaultApplicationDeployment", new()
+    ///     {
+    ///         AppId = defaultApplication.Id,
+    ///         GroupId = "all",
+    ///         WarUrl = "http://edas-sz.oss-cn-shenzhen.aliyuncs.com/prod/demo/SPRING_CLOUD_CONSUMER.jar",
     ///     });
     /// 
     /// });

@@ -47,14 +47,18 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The saml identity provider configuration.
+     * The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+     * 
+     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
      * 
      */
     @Import(name="samlIdentityProviderConfiguration")
     private @Nullable Output<DirectorySamlIdentityProviderConfigurationArgs> samlIdentityProviderConfiguration;
 
     /**
-     * @return The saml identity provider configuration.
+     * @return The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+     * 
+     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
      * 
      */
     public Optional<Output<DirectorySamlIdentityProviderConfigurationArgs>> samlIdentityProviderConfiguration() {
@@ -146,7 +150,9 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlIdentityProviderConfiguration The saml identity provider configuration.
+         * @param samlIdentityProviderConfiguration The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+         * 
+         * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
          * 
          * @return builder
          * 
@@ -157,7 +163,9 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlIdentityProviderConfiguration The saml identity provider configuration.
+         * @param samlIdentityProviderConfiguration The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+         * 
+         * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
          * 
          * @return builder
          * 

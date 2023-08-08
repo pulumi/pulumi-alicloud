@@ -16,7 +16,7 @@ import (
 //
 // For information about NLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer).
 //
-// > **NOTE:** Available in v1.191.0+.
+// > **NOTE:** Available since v1.191.0.
 //
 // ## Example Usage
 //
@@ -120,7 +120,7 @@ type LoadBalancer struct {
 	// - Intranet: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
 	AddressType pulumi.StringOutput `pulumi:"addressType"`
 	// The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
-	BandwidthPackageId pulumi.StringPtrOutput `pulumi:"bandwidthPackageId"`
+	BandwidthPackageId pulumi.StringOutput `pulumi:"bandwidthPackageId"`
 	// The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Specifies whether to enable cross-zone load balancing for the NLB instance.
@@ -151,7 +151,7 @@ type LoadBalancer struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The ID of the VPC where the NLB instance is deployed.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zoneMappings`.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings LoadBalancerZoneMappingArrayOutput `pulumi:"zoneMappings"`
 }
 
@@ -234,7 +234,7 @@ type loadBalancerState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC where the NLB instance is deployed.
 	VpcId *string `pulumi:"vpcId"`
-	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zoneMappings`.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings []LoadBalancerZoneMapping `pulumi:"zoneMappings"`
 }
 
@@ -279,7 +279,7 @@ type LoadBalancerState struct {
 	Tags pulumi.MapInput
 	// The ID of the VPC where the NLB instance is deployed.
 	VpcId pulumi.StringPtrInput
-	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zoneMappings`.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings LoadBalancerZoneMappingArrayInput
 }
 
@@ -318,7 +318,7 @@ type loadBalancerArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC where the NLB instance is deployed.
 	VpcId string `pulumi:"vpcId"`
-	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zoneMappings`.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings []LoadBalancerZoneMapping `pulumi:"zoneMappings"`
 }
 
@@ -354,7 +354,7 @@ type LoadBalancerArgs struct {
 	Tags pulumi.MapInput
 	// The ID of the VPC where the NLB instance is deployed.
 	VpcId pulumi.StringInput
-	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zoneMappings`.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings LoadBalancerZoneMappingArrayInput
 }
 
@@ -460,8 +460,8 @@ func (o LoadBalancerOutput) AddressType() pulumi.StringOutput {
 }
 
 // The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
-func (o LoadBalancerOutput) BandwidthPackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.BandwidthPackageId }).(pulumi.StringPtrOutput)
+func (o LoadBalancerOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
 }
 
 // The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
@@ -539,7 +539,7 @@ func (o LoadBalancerOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zoneMappings`.
+// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 func (o LoadBalancerOutput) ZoneMappings() LoadBalancerZoneMappingArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerZoneMappingArrayOutput { return v.ZoneMappings }).(LoadBalancerZoneMappingArrayOutput)
 }

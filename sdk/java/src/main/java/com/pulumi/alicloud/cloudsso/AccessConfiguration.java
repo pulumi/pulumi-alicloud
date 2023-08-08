@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud SSO Access Configuration resource.
  * 
- * For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
+ * For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createaccessconfiguration).
  * 
- * &gt; **NOTE:** Available in v1.145.0+.
+ * &gt; **NOTE:** Available since v1.145.0.
  * 
  * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  * 
@@ -113,14 +113,14 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceRemovePermissionPolicies);
     }
     /**
-     * The Policy List. See the following `Block permission_policies`.
+     * The Policy List. See `permission_policies` below.
      * 
      */
     @Export(name="permissionPolicies", type=List.class, parameters={AccessConfigurationPermissionPolicy.class})
     private Output</* @Nullable */ List<AccessConfigurationPermissionPolicy>> permissionPolicies;
 
     /**
-     * @return The Policy List. See the following `Block permission_policies`.
+     * @return The Policy List. See `permission_policies` below.
      * 
      */
     public Output<Optional<List<AccessConfigurationPermissionPolicy>>> permissionPolicies() {

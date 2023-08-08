@@ -70,6 +70,11 @@ export type PrometheusAlertRule = import("./prometheusAlertRule").PrometheusAler
 export const PrometheusAlertRule: typeof import("./prometheusAlertRule").PrometheusAlertRule = null as any;
 utilities.lazyLoad(exports, ["PrometheusAlertRule"], () => require("./prometheusAlertRule"));
 
+export { PrometheusMonitoringArgs, PrometheusMonitoringState } from "./prometheusMonitoring";
+export type PrometheusMonitoring = import("./prometheusMonitoring").PrometheusMonitoring;
+export const PrometheusMonitoring: typeof import("./prometheusMonitoring").PrometheusMonitoring = null as any;
+utilities.lazyLoad(exports, ["PrometheusMonitoring"], () => require("./prometheusMonitoring"));
+
 export { RemoteWriteArgs, RemoteWriteState } from "./remoteWrite";
 export type RemoteWrite = import("./remoteWrite").RemoteWrite;
 export const RemoteWrite: typeof import("./remoteWrite").RemoteWrite = null as any;
@@ -92,6 +97,8 @@ const _module = {
                 return new Prometheus(name, <any>undefined, { urn })
             case "alicloud:arms/prometheusAlertRule:PrometheusAlertRule":
                 return new PrometheusAlertRule(name, <any>undefined, { urn })
+            case "alicloud:arms/prometheusMonitoring:PrometheusMonitoring":
+                return new PrometheusMonitoring(name, <any>undefined, { urn })
             case "alicloud:arms/remoteWrite:RemoteWrite":
                 return new RemoteWrite(name, <any>undefined, { urn })
             default:
@@ -105,4 +112,5 @@ pulumi.runtime.registerResourceModule("alicloud", "arms/dispatchRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/integrationExporter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheusAlertRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/prometheusMonitoring", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/remoteWrite", _module)

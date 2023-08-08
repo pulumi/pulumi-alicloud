@@ -14,73 +14,9 @@ import (
 
 // Provides a Cloud Storage Gateway Gateway SMB User resource.
 //
-// For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+// For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaysmbuser).
 //
-// > **NOTE:** Available in v1.142.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			example, err := cloudstoragegateway.NewStorageBundle(ctx, "example", &cloudstoragegateway.StorageBundleArgs{
-//				StorageBundleName: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
-//				Description:            pulumi.String("tf-acctestDesalone"),
-//				GatewayClass:           pulumi.String("Standard"),
-//				Type:                   pulumi.String("File"),
-//				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              *pulumi.String(defaultSwitches.Ids[0]),
-//				ReleaseAfterExpiration: pulumi.Bool(false),
-//				PublicNetworkBandwidth: pulumi.Int(40),
-//				StorageBundleId:        example.ID(),
-//				Location:               pulumi.String("Cloud"),
-//				GatewayName:            pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudstoragegateway.NewGatewaySmbUser(ctx, "defaultGatewaySmbUser", &cloudstoragegateway.GatewaySmbUserArgs{
-//				Username:  pulumi.String("your_username"),
-//				Password:  pulumi.String("password"),
-//				GatewayId: defaultGateway.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Import
 //

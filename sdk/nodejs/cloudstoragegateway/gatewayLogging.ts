@@ -7,60 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Storage Gateway Gateway Logging resource.
  *
- * For information about Cloud Storage Gateway Gateway Logging and how to use it, see [What is Gateway Logging](https://www.alibabacloud.com/help/en/doc-detail/108299.htm).
+ * For information about Cloud Storage Gateway Gateway Logging and how to use it, see [What is Gateway Logging](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaylogging).
  *
- * > **NOTE:** Available in v1.144.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "example";
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("defaultStorageBundle", {storageBundleName: name});
- * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
- *     description: "tf-acctestDesalone",
- *     gatewayClass: "Basic",
- *     type: "File",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitch.id,
- *     releaseAfterExpiration: true,
- *     publicNetworkBandwidth: 10,
- *     storageBundleId: defaultStorageBundle.id,
- *     location: "Cloud",
- *     gatewayName: name,
- * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {description: "created by terraform"});
- * const defaultStore = new alicloud.log.Store("defaultStore", {
- *     project: defaultProject.name,
- *     shardCount: 3,
- *     autoSplit: true,
- *     maxSplitShardCount: 60,
- *     appendMeta: true,
- * });
- * const defaultGatewayLogging = new alicloud.cloudstoragegateway.GatewayLogging("defaultGatewayLogging", {
- *     gatewayId: defaultGateway.id,
- *     slsLogstore: defaultStore.name,
- *     slsProject: defaultProject.name,
- * });
- * ```
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Import
  *

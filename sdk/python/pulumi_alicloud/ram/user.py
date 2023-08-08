@@ -25,7 +25,7 @@ class UserArgs:
         :param pulumi.Input[str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
         :param pulumi.Input[str] display_name: Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
         :param pulumi.Input[str] email: Email of the RAM user.
-        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value: `false`.
         :param pulumi.Input[str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
@@ -82,7 +82,7 @@ class UserArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter is used for resource destroy. Default value is `false`.
+        This parameter is used for resource destroy. Default value: `false`.
         """
         return pulumi.get(self, "force")
 
@@ -129,7 +129,7 @@ class _UserState:
         :param pulumi.Input[str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
         :param pulumi.Input[str] display_name: Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
         :param pulumi.Input[str] email: Email of the RAM user.
-        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value: `false`.
         :param pulumi.Input[str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
@@ -186,7 +186,7 @@ class _UserState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter is used for resource destroy. Default value is `false`.
+        This parameter is used for resource destroy. Default value: `false`.
         """
         return pulumi.get(self, "force")
 
@@ -234,11 +234,15 @@ class User(pulumi.CustomResource):
         """
         Provides a RAM User resource.
 
+        For information about RAM User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createuser).
+
         > **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
 
-        > **NOTE:** Available since v1.0.0+.
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -255,7 +259,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        RAM user can be imported using the id, e.g.
+        RAM User can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:ram/user:User example 123456789xxx
@@ -266,7 +270,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
         :param pulumi.Input[str] display_name: Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
         :param pulumi.Input[str] email: Email of the RAM user.
-        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value: `false`.
         :param pulumi.Input[str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
@@ -279,11 +283,15 @@ class User(pulumi.CustomResource):
         """
         Provides a RAM User resource.
 
+        For information about RAM User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createuser).
+
         > **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
 
-        > **NOTE:** Available since v1.0.0+.
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -300,7 +308,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        RAM user can be imported using the id, e.g.
+        RAM User can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:ram/user:User example 123456789xxx
@@ -368,7 +376,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
         :param pulumi.Input[str] display_name: Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
         :param pulumi.Input[str] email: Email of the RAM user.
-        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value: `false`.
         :param pulumi.Input[str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
@@ -412,7 +420,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        This parameter is used for resource destroy. Default value is `false`.
+        This parameter is used for resource destroy. Default value: `false`.
         """
         return pulumi.get(self, "force")
 

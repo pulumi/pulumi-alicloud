@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Edas
 {
     /// <summary>
-    /// Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/doc-detail/85029.htm).
+    /// Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertk8sapplication).
     /// 
-    /// &gt; **NOTE:** Available since v1.105.0
+    /// &gt; **NOTE:** Available since v1.105.0.
     /// 
     /// ## Import
     /// 

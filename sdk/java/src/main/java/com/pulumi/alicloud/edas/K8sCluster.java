@@ -18,39 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides an EDAS K8s cluster resource. For information about EDAS K8s Cluster and how to use it, see[What is EDAS K8s Cluster](https://www.alibabacloud.com/help/en/doc-detail/85108.htm).
  * 
- * &gt; **NOTE:** Available in 1.93.0+
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.edas.K8sCluster;
- * import com.pulumi.alicloud.edas.K8sClusterArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new K8sCluster(&#34;default&#34;, K8sClusterArgs.builder()        
- *             .csClusterId(&#34;xxxx-xxx-xxx&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.93.0.
  * 
  * ## Import
  * 

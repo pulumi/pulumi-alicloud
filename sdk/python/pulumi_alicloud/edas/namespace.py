@@ -176,7 +176,7 @@ class Namespace(pulumi.CustomResource):
 
         For information about EDAS Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/insertorupdateregion).
 
-        > **NOTE:** Available in v1.173.0+.
+        > **NOTE:** Available since v1.173.0.
 
         ## Example Usage
 
@@ -186,9 +186,16 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.edas.Namespace("example",
-            namespace_logical_id="example_value",
-            namespace_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_namespace = alicloud.edas.Namespace("defaultNamespace",
+            debug_enable=False,
+            description=name,
+            namespace_logical_id=f"{default_regions.regions[0].id}:example",
+            namespace_name=name)
         ```
 
         ## Import
@@ -219,7 +226,7 @@ class Namespace(pulumi.CustomResource):
 
         For information about EDAS Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/insertorupdateregion).
 
-        > **NOTE:** Available in v1.173.0+.
+        > **NOTE:** Available since v1.173.0.
 
         ## Example Usage
 
@@ -229,9 +236,16 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.edas.Namespace("example",
-            namespace_logical_id="example_value",
-            namespace_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_namespace = alicloud.edas.Namespace("defaultNamespace",
+            debug_enable=False,
+            description=name,
+            namespace_logical_id=f"{default_regions.regions[0].id}:example",
+            namespace_name=name)
         ```
 
         ## Import

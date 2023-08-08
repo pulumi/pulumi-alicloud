@@ -18,54 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.194.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := edas.NewK8sSlbAttachment(ctx, "example", &edas.K8sSlbAttachmentArgs{
-//				AppId: pulumi.String("your_app_id"),
-//				SlbConfigs: edas.K8sSlbAttachmentSlbConfigArray{
-//					&edas.K8sSlbAttachmentSlbConfigArgs{
-//						PortMappings: edas.K8sSlbAttachmentSlbConfigPortMappingArray{
-//							&edas.K8sSlbAttachmentSlbConfigPortMappingArgs{
-//								CertId:               pulumi.String("your tls cert id"),
-//								LoadbalancerProtocol: pulumi.String("TCP"),
-//								ServicePort: &edas.K8sSlbAttachmentSlbConfigPortMappingServicePortArgs{
-//									Port:       pulumi.Int(80),
-//									Protocol:   pulumi.String("TCP"),
-//									TargetPort: pulumi.Int(8080),
-//								},
-//							},
-//						},
-//						Scheduler:     pulumi.String("rr"),
-//						SlbId:         pulumi.String("your slb instance id"),
-//						Specification: pulumi.String("slb.s1.small"),
-//						Type:          pulumi.String("internet"),
-//					},
-//					nil,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.

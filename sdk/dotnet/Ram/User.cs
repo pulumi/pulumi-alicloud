@@ -12,11 +12,15 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM User resource.
     /// 
+    /// For information about RAM User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createuser).
+    /// 
     /// &gt; **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
     /// 
-    /// &gt; **NOTE:** Available since v1.0.0+.
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -41,7 +45,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM user can be imported using the id, e.g.
+    /// RAM User can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:ram/user:User example 123456789xxx
@@ -69,7 +73,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// This parameter is used for resource destroy. Default value: `false`.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -151,7 +155,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// This parameter is used for resource destroy. Default value: `false`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -195,7 +199,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// This parameter is used for resource destroy. Default value: `false`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }

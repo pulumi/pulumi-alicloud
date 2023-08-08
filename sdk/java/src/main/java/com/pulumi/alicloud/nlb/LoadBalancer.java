@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * For information about NLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer).
  * 
- * &gt; **NOTE:** Available in v1.191.0+.
+ * &gt; **NOTE:** Available since v1.191.0.
  * 
  * ## Example Usage
  * 
@@ -162,14 +162,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bandwidthPackageId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> bandwidthPackageId;
+    private Output<String> bandwidthPackageId;
 
     /**
      * @return The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
      * 
      */
-    public Output<Optional<String>> bandwidthPackageId() {
-        return Codegen.optional(this.bandwidthPackageId);
+    public Output<String> bandwidthPackageId() {
+        return this.bandwidthPackageId;
     }
     /**
      * The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
@@ -382,14 +382,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
      * 
      */
     @Export(name="zoneMappings", type=List.class, parameters={LoadBalancerZoneMapping.class})
     private Output<List<LoadBalancerZoneMapping>> zoneMappings;
 
     /**
-     * @return Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+     * @return Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
      * 
      */
     public Output<List<LoadBalancerZoneMapping>> zoneMappings() {

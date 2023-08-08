@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Tag
     /// For information about Tag Policy Attachment and how to use it,
     /// see [What is Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/attach-policy).
     /// 
-    /// &gt; **NOTE:** Available in v1.204.0+.
+    /// &gt; **NOTE:** Available since v1.204.0.
     /// 
     /// ## Import
     /// 

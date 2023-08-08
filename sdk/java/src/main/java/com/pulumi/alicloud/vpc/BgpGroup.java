@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VPC Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
  * 
- * &gt; **NOTE:** Available in v1.152.0+.
+ * &gt; **NOTE:** Available since v1.152.0.
  * 
  * ## Example Usage
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.vpc.BgpGroup;
@@ -51,27 +53,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var examplePhysicalConnections = ExpressconnectFunctions.getPhysicalConnections();
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var examplePhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *             .nameRegex(&#34;^preserved-NODELETING&#34;)
+ *             .build());
+ * 
+ *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
+ *             .max(2999)
+ *             .min(1)
+ *             .build());
  * 
  *         var exampleVirtualBorderRouter = new VirtualBorderRouter(&#34;exampleVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
  *             .localGatewayIp(&#34;10.0.0.1&#34;)
  *             .peerGatewayIp(&#34;10.0.0.2&#34;)
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
  *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
- *             .virtualBorderRouterName(var_.name())
- *             .vlanId(120)
+ *             .virtualBorderRouterName(name)
+ *             .vlanId(vlanId.id())
  *             .minRxInterval(1000)
  *             .minTxInterval(1000)
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var default_ = new BgpGroup(&#34;default&#34;, BgpGroupArgs.builder()        
+ *         var exampleBgpGroup = new BgpGroup(&#34;exampleBgpGroup&#34;, BgpGroupArgs.builder()        
  *             .authKey(&#34;YourPassword+12345678&#34;)
- *             .bgpGroupName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
- *             .localAsn(64512)
+ *             .bgpGroupName(name)
+ *             .description(name)
  *             .peerAsn(1111)
  *             .routerId(exampleVirtualBorderRouter.id())
+ *             .isFakeAsn(true)
  *             .build());
  * 
  *     }

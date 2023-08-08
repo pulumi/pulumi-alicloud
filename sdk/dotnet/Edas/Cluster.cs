@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Edas
 {
     /// <summary>
-    /// Provides an EDAS cluster resource.
+    /// Provides an EDAS cluster resource, see [What is EDAS Cluster](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertcluster).
     /// 
-    /// &gt; **NOTE:** Available in 1.82.0+
+    /// &gt; **NOTE:** Available since v1.82.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,13 +26,26 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Edas.Cluster("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         ClusterName = @var.Cluster_name,
-    ///         ClusterType = @var.Cluster_type,
-    ///         NetworkMode = @var.Network_mode,
-    ///         LogicalRegionId = @var.Logical_region_id,
-    ///         VpcId = @var.Vpc_id,
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.Edas.Cluster("defaultCluster", new()
+    ///     {
+    ///         ClusterName = name,
+    ///         ClusterType = 2,
+    ///         NetworkMode = 2,
+    ///         LogicalRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     /// });

@@ -101,9 +101,9 @@ class StorageBundle(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Storage Bundle resource.
 
-        For information about Cloud Storage Gateway Storage Bundle and how to use it, see [What is Storage Bundle](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Storage Bundle and how to use it, see [What is Storage Bundle](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/createstoragebundle).
 
-        > **NOTE:** Available in v1.116.0+.
+        > **NOTE:** Available since v1.116.0.
 
         ## Example Usage
 
@@ -138,9 +138,9 @@ class StorageBundle(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Storage Bundle resource.
 
-        For information about Cloud Storage Gateway Storage Bundle and how to use it, see [What is Storage Bundle](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Storage Bundle and how to use it, see [What is Storage Bundle](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/createstoragebundle).
 
-        > **NOTE:** Available in v1.116.0+.
+        > **NOTE:** Available since v1.116.0.
 
         ## Example Usage
 

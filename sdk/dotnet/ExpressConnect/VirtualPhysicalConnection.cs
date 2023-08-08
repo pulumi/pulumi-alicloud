@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// For information about Express Connect Virtual Physical Connection and how to use it, see [What is Virtual Physical Connection](https://www.alibabacloud.com/help/en/express-connect/latest/createvirtualphysicalconnection#doc-api-Vpc-CreateVirtualPhysicalConnection).
     /// 
-    /// &gt; **NOTE:** Available in v1.196.0+.
+    /// &gt; **NOTE:** Available since v1.196.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,23 +25,34 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultPhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var defaultVirtualPhysicalConnection = new AliCloud.ExpressConnect.VirtualPhysicalConnection("defaultVirtualPhysicalConnection", new()
+    ///     var vlanId = new Random.RandomInteger("vlanId", new()
     ///     {
-    ///         VirtualPhysicalConnectionName = "amp_resource_test",
-    ///         Description = "amp_resource_test",
+    ///         Max = 2999,
+    ///         Min = 1,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var exampleVirtualPhysicalConnection = new AliCloud.ExpressConnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection", new()
+    ///     {
+    ///         VirtualPhysicalConnectionName = name,
+    ///         Description = name,
     ///         OrderMode = "PayByPhysicalConnectionOwner",
-    ///         ParentPhysicalConnectionId = defaultPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[0]),
+    ///         ParentPhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[0]),
     ///         Spec = "50M",
-    ///         VlanId = 789,
-    ///         VpconnAliUid = "1234567890",
+    ///         VlanId = vlanId.Id,
+    ///         VpconnAliUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///     });
     /// 
     /// });

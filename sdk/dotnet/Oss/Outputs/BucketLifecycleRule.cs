@@ -35,14 +35,18 @@ namespace Pulumi.AliCloud.Oss.Outputs
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionExpiration> NoncurrentVersionExpirations;
         /// <summary>
         /// Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
-        /// 
-        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionTransition> NoncurrentVersionTransitions;
         /// <summary>
         /// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
         /// </summary>
         public readonly string? Prefix;
+        /// <summary>
+        /// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+        /// 
+        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
         /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
         /// </summary>
@@ -64,6 +68,8 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             string? prefix,
 
+            ImmutableDictionary<string, object>? tags,
+
             ImmutableArray<Outputs.BucketLifecycleRuleTransition> transitions)
         {
             AbortMultipartUploads = abortMultipartUploads;
@@ -73,6 +79,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
             NoncurrentVersionExpirations = noncurrentVersionExpirations;
             NoncurrentVersionTransitions = noncurrentVersionTransitions;
             Prefix = prefix;
+            Tags = tags;
             Transitions = transitions;
         }
     }

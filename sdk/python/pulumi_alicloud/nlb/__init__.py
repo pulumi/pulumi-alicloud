@@ -12,8 +12,10 @@ from .get_server_group_server_attachments import *
 from .get_server_groups import *
 from .get_zones import *
 from .listener import *
+from .listener_additional_certificate_attachment import *
 from .load_balancer import *
 from .load_balancer_security_group_attachment import *
+from .loadbalancer_common_bandwidth_package_attachment import *
 from .security_policy import *
 from .server_group import *
 from .server_group_server_attachment import *

@@ -11,8 +11,10 @@ import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleTransitionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -100,16 +102,12 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     /**
      * Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
      * 
-     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
-     * 
      */
     @Import(name="noncurrentVersionTransitions")
     private @Nullable Output<List<BucketLifecycleRuleNoncurrentVersionTransitionArgs>> noncurrentVersionTransitions;
 
     /**
      * @return Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
-     * 
-     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
      * 
      */
     public Optional<Output<List<BucketLifecycleRuleNoncurrentVersionTransitionArgs>>> noncurrentVersionTransitions() {
@@ -129,6 +127,25 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
+    }
+
+    /**
+     * Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
+     * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
+     * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -156,6 +173,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         this.noncurrentVersionExpirations = $.noncurrentVersionExpirations;
         this.noncurrentVersionTransitions = $.noncurrentVersionTransitions;
         this.prefix = $.prefix;
+        this.tags = $.tags;
         this.transitions = $.transitions;
     }
 
@@ -315,8 +333,6 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         /**
          * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
          * 
-         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
-         * 
          * @return builder
          * 
          */
@@ -328,8 +344,6 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         /**
          * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
          * 
-         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
-         * 
          * @return builder
          * 
          */
@@ -339,8 +353,6 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
 
         /**
          * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
-         * 
-         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
          * 
          * @return builder
          * 
@@ -368,6 +380,31 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
          */
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
+        }
+
+        /**
+         * @param tags Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
+         * 
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
+         * 
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

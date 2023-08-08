@@ -196,9 +196,9 @@ class Cluster(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an EDAS cluster resource.
+        Provides an EDAS cluster resource, see [What is EDAS Cluster](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertcluster).
 
-        > **NOTE:** Available in 1.82.0+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -208,12 +208,20 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.edas.Cluster("default",
-            cluster_name=var["cluster_name"],
-            cluster_type=var["cluster_type"],
-            network_mode=var["network_mode"],
-            logical_region_id=var["logical_region_id"],
-            vpc_id=var["vpc_id"])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
         ```
 
         ## Import
@@ -239,9 +247,9 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an EDAS cluster resource.
+        Provides an EDAS cluster resource, see [What is EDAS Cluster](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertcluster).
 
-        > **NOTE:** Available in 1.82.0+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -251,12 +259,20 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.edas.Cluster("default",
-            cluster_name=var["cluster_name"],
-            cluster_type=var["cluster_type"],
-            network_mode=var["network_mode"],
-            logical_region_id=var["logical_region_id"],
-            vpc_id=var["vpc_id"])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
         ```
 
         ## Import

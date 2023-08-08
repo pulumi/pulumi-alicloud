@@ -48,7 +48,7 @@ class BucketArgs:
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
-        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input['BucketTransferAccelerationArgs'] transfer_acceleration: A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning. See `versioning` below.
@@ -254,7 +254,7 @@ class BucketArgs:
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         """
         return pulumi.get(self, "storage_class")
 
@@ -356,7 +356,7 @@ class _BucketState:
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
-        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input['BucketTransferAccelerationArgs'] transfer_acceleration: A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning. See `versioning` below.
@@ -632,7 +632,7 @@ class _BucketState:
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         """
         return pulumi.get(self, "storage_class")
 
@@ -926,6 +926,22 @@ class Bucket(pulumi.CustomResource):
                     ),
                 ],
             )])
+        bucket_tag_lifecycle = alicloud.oss.Bucket("bucket-tag-lifecycle",
+            acl="private",
+            bucket=default.result.apply(lambda result: f"example-lifecycle-{result}"),
+            lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                enabled=True,
+                id="rule-days-transition",
+                prefix="path/",
+                tags={
+                    "key1": "value1",
+                    "key2": "value2",
+                },
+                transitions=[alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                    created_before_date="2022-11-11",
+                    storage_class="IA",
+                )],
+            )])
         ```
 
         Set bucket policy
@@ -1087,7 +1103,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
-        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input[pulumi.InputType['BucketTransferAccelerationArgs']] transfer_acceleration: A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: A state of versioning. See `versioning` below.
@@ -1311,6 +1327,22 @@ class Bucket(pulumi.CustomResource):
                         storage_class="Archive",
                     ),
                 ],
+            )])
+        bucket_tag_lifecycle = alicloud.oss.Bucket("bucket-tag-lifecycle",
+            acl="private",
+            bucket=default.result.apply(lambda result: f"example-lifecycle-{result}"),
+            lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                enabled=True,
+                id="rule-days-transition",
+                prefix="path/",
+                tags={
+                    "key1": "value1",
+                    "key2": "value2",
+                },
+                transitions=[alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                    created_before_date="2022-11-11",
+                    storage_class="IA",
+                )],
             )])
         ```
 
@@ -1584,7 +1616,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
-        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input[pulumi.InputType['BucketTransferAccelerationArgs']] transfer_acceleration: A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: A state of versioning. See `versioning` below.
@@ -1767,7 +1799,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> pulumi.Output[Optional[str]]:
         """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         """
         return pulumi.get(self, "storage_class")
 

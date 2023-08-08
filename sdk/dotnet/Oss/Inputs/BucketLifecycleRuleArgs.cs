@@ -65,8 +65,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
 
         /// <summary>
         /// Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
-        /// 
-        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         /// </summary>
         public InputList<Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs> NoncurrentVersionTransitions
         {
@@ -79,6 +77,20 @@ namespace Pulumi.AliCloud.Oss.Inputs
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+        /// 
+        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         [Input("transitions")]
         private InputList<Inputs.BucketLifecycleRuleTransitionArgs>? _transitions;

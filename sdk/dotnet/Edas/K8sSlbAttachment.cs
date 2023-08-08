@@ -16,51 +16,6 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Edas.K8sSlbAttachment("example", new()
-    ///     {
-    ///         AppId = "your_app_id",
-    ///         SlbConfigs = new[]
-    ///         {
-    ///             new AliCloud.Edas.Inputs.K8sSlbAttachmentSlbConfigArgs
-    ///             {
-    ///                 PortMappings = new[]
-    ///                 {
-    ///                     new AliCloud.Edas.Inputs.K8sSlbAttachmentSlbConfigPortMappingArgs
-    ///                     {
-    ///                         CertId = "your tls cert id",
-    ///                         LoadbalancerProtocol = "TCP",
-    ///                         ServicePort = new AliCloud.Edas.Inputs.K8sSlbAttachmentSlbConfigPortMappingServicePortArgs
-    ///                         {
-    ///                             Port = 80,
-    ///                             Protocol = "TCP",
-    ///                             TargetPort = 8080,
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Scheduler = "rr",
-    ///                 SlbId = "your slb instance id",
-    ///                 Specification = "slb.s1.small",
-    ///                 Type = "internet",
-    ///             },
-    ///             null,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.

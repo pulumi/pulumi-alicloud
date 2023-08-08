@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/doc-detail/44852.htm).
  * 
- * &gt; **NOTE:** Available in v1.132.0+.
+ * &gt; **NOTE:** Available since v1.132.0.
  * 
  * ## Example Usage
  * 

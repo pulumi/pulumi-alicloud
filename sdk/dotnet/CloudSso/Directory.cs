@@ -12,31 +12,11 @@ namespace Pulumi.AliCloud.CloudSso
     /// <summary>
     /// Provides a Cloud SSO Directory resource.
     /// 
-    /// For information about Cloud SSO Directory and how to use it, see [What is Directory](https://www.alibabacloud.com/help/doc-detail/263624.html).
+    /// For information about Cloud SSO Directory and how to use it, see [What is Directory](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createdirectory).
     /// 
-    /// &gt; **NOTE:** Available in v1.135.0+.
+    /// &gt; **NOTE:** Available since v1.135.0.
     /// 
     /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CloudSso.Directory("default", new()
-    ///     {
-    ///         DirectoryName = "example-value",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
@@ -62,7 +42,9 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> MfaAuthenticationStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The saml identity provider configuration.
+        /// The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+        /// 
+        /// &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
         /// </summary>
         [Output("samlIdentityProviderConfiguration")]
         public Output<Outputs.DirectorySamlIdentityProviderConfiguration> SamlIdentityProviderConfiguration { get; private set; } = null!;
@@ -132,7 +114,9 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? MfaAuthenticationStatus { get; set; }
 
         /// <summary>
-        /// The saml identity provider configuration.
+        /// The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+        /// 
+        /// &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
         /// </summary>
         [Input("samlIdentityProviderConfiguration")]
         public Input<Inputs.DirectorySamlIdentityProviderConfigurationArgs>? SamlIdentityProviderConfiguration { get; set; }
@@ -164,7 +148,9 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? MfaAuthenticationStatus { get; set; }
 
         /// <summary>
-        /// The saml identity provider configuration.
+        /// The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+        /// 
+        /// &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
         /// </summary>
         [Input("samlIdentityProviderConfiguration")]
         public Input<Inputs.DirectorySamlIdentityProviderConfigurationGetArgs>? SamlIdentityProviderConfiguration { get; set; }

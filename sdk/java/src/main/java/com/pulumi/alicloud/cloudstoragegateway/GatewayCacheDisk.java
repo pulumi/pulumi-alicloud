@@ -17,86 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Storage Gateway Gateway Cache Disk resource.
  * 
- * For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/zh/doc-detail/170294.htm).
+ * For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
  * 
- * &gt; **NOTE:** Available in v1.144.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
- * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
- * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
- * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
- * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
- * import com.pulumi.alicloud.cloudstoragegateway.GatewayCacheDisk;
- * import com.pulumi.alicloud.cloudstoragegateway.GatewayCacheDiskArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var exampleStocks = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
- *             .gatewayClass(&#34;Standard&#34;)
- *             .build());
- * 
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;example_value&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .build());
- * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(vpc.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(exampleStocks.applyValue(getStocksResult -&gt; getStocksResult.stocks()[0].zoneId()))
- *             .vswitchName(&#34;example_value&#34;)
- *             .build());
- * 
- *         var exampleStorageBundle = new StorageBundle(&#34;exampleStorageBundle&#34;, StorageBundleArgs.builder()        
- *             .storageBundleName(&#34;example_value&#34;)
- *             .build());
- * 
- *         var exampleGateway = new Gateway(&#34;exampleGateway&#34;, GatewayArgs.builder()        
- *             .description(&#34;tf-acctestDesalone&#34;)
- *             .gatewayClass(&#34;Standard&#34;)
- *             .type(&#34;File&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .vswitchId(exampleSwitch.id())
- *             .releaseAfterExpiration(true)
- *             .publicNetworkBandwidth(10)
- *             .storageBundleId(exampleStorageBundle.id())
- *             .location(&#34;Cloud&#34;)
- *             .gatewayName(&#34;example_value&#34;)
- *             .build());
- * 
- *         var exampleGatewayCacheDisk = new GatewayCacheDisk(&#34;exampleGatewayCacheDisk&#34;, GatewayCacheDiskArgs.builder()        
- *             .cacheDiskCategory(&#34;cloud_efficiency&#34;)
- *             .gatewayId(alicloud_cloud_storage_gateway_gateways.example().id())
- *             .cacheDiskSizeInGb(50)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.144.0.
  * 
  * ## Import
  * 

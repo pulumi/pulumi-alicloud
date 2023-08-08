@@ -12,62 +12,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// <summary>
     /// Provides a Cloud Storage Gateway: Gateway resource.
     /// 
-    /// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+    /// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
     /// 
-    /// &gt; **NOTE:** Available in v1.132.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
-    ///     {
-    ///         VpcName = "tf_test_foo",
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = vpc.Id,
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = "tf-testAccCsgName",
-    ///     });
-    /// 
-    ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
-    ///     {
-    ///         StorageBundleName = "example_value",
-    ///     });
-    /// 
-    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
-    ///     {
-    ///         Description = "tf-acctestDesalone",
-    ///         GatewayClass = "Standard",
-    ///         Type = "File",
-    ///         PaymentType = "PayAsYouGo",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         ReleaseAfterExpiration = false,
-    ///         PublicNetworkBandwidth = 40,
-    ///         StorageBundleId = example.Id,
-    ///         Location = "Cloud",
-    ///         GatewayName = "tf-acctestGatewayName",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.132.0.
     /// 
     /// ## Import
     /// 

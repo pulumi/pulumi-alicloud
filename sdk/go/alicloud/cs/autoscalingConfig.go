@@ -16,7 +16,8 @@ import (
 // > **NOTE:** Available since v1.127.0.
 //
 // > **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scaleDownEnabled`.
-// **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+//
+// > **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
 type AutoscalingConfig struct {
 	pulumi.CustomResourceState
 
@@ -24,14 +25,28 @@ type AutoscalingConfig struct {
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration pulumi.StringPtrOutput `pulumi:"coolDownDuration"`
+	// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+	DaemonsetEvictionForNodes pulumi.BoolPtrOutput `pulumi:"daemonsetEvictionForNodes"`
 	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
 	Expander pulumi.StringPtrOutput `pulumi:"expander"`
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold pulumi.StringPtrOutput `pulumi:"gpuUtilizationThreshold"`
+	// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+	MaxGracefulTerminationSec pulumi.IntPtrOutput `pulumi:"maxGracefulTerminationSec"`
+	// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+	MinReplicaCount pulumi.IntPtrOutput `pulumi:"minReplicaCount"`
+	// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+	RecycleNodeDeletionEnabled pulumi.BoolPtrOutput `pulumi:"recycleNodeDeletionEnabled"`
 	// Specify whether to allow the scale-in of nodes. Default is `true`.
 	ScaleDownEnabled pulumi.BoolPtrOutput `pulumi:"scaleDownEnabled"`
+	// Should CA scale up when there 0 ready nodes. Default is `true`.
+	ScaleUpFromZero pulumi.BoolPtrOutput `pulumi:"scaleUpFromZero"`
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval pulumi.StringPtrOutput `pulumi:"scanInterval"`
+	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+	SkipNodesWithLocalStorage pulumi.BoolPtrOutput `pulumi:"skipNodesWithLocalStorage"`
+	// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+	SkipNodesWithSystemPods pulumi.BoolPtrOutput `pulumi:"skipNodesWithSystemPods"`
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration pulumi.StringPtrOutput `pulumi:"unneededDuration"`
 	// The scale-in threshold. Default is `0.5`.
@@ -72,14 +87,28 @@ type autoscalingConfigState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration *string `pulumi:"coolDownDuration"`
+	// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+	DaemonsetEvictionForNodes *bool `pulumi:"daemonsetEvictionForNodes"`
 	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
 	Expander *string `pulumi:"expander"`
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold *string `pulumi:"gpuUtilizationThreshold"`
+	// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+	MaxGracefulTerminationSec *int `pulumi:"maxGracefulTerminationSec"`
+	// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+	MinReplicaCount *int `pulumi:"minReplicaCount"`
+	// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+	RecycleNodeDeletionEnabled *bool `pulumi:"recycleNodeDeletionEnabled"`
 	// Specify whether to allow the scale-in of nodes. Default is `true`.
 	ScaleDownEnabled *bool `pulumi:"scaleDownEnabled"`
+	// Should CA scale up when there 0 ready nodes. Default is `true`.
+	ScaleUpFromZero *bool `pulumi:"scaleUpFromZero"`
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval *string `pulumi:"scanInterval"`
+	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+	SkipNodesWithLocalStorage *bool `pulumi:"skipNodesWithLocalStorage"`
+	// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+	SkipNodesWithSystemPods *bool `pulumi:"skipNodesWithSystemPods"`
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration *string `pulumi:"unneededDuration"`
 	// The scale-in threshold. Default is `0.5`.
@@ -91,14 +120,28 @@ type AutoscalingConfigState struct {
 	ClusterId pulumi.StringPtrInput
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration pulumi.StringPtrInput
+	// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+	DaemonsetEvictionForNodes pulumi.BoolPtrInput
 	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
 	Expander pulumi.StringPtrInput
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold pulumi.StringPtrInput
+	// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+	MaxGracefulTerminationSec pulumi.IntPtrInput
+	// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+	MinReplicaCount pulumi.IntPtrInput
+	// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+	RecycleNodeDeletionEnabled pulumi.BoolPtrInput
 	// Specify whether to allow the scale-in of nodes. Default is `true`.
 	ScaleDownEnabled pulumi.BoolPtrInput
+	// Should CA scale up when there 0 ready nodes. Default is `true`.
+	ScaleUpFromZero pulumi.BoolPtrInput
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval pulumi.StringPtrInput
+	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+	SkipNodesWithLocalStorage pulumi.BoolPtrInput
+	// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+	SkipNodesWithSystemPods pulumi.BoolPtrInput
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration pulumi.StringPtrInput
 	// The scale-in threshold. Default is `0.5`.
@@ -114,14 +157,28 @@ type autoscalingConfigArgs struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration *string `pulumi:"coolDownDuration"`
+	// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+	DaemonsetEvictionForNodes *bool `pulumi:"daemonsetEvictionForNodes"`
 	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
 	Expander *string `pulumi:"expander"`
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold *string `pulumi:"gpuUtilizationThreshold"`
+	// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+	MaxGracefulTerminationSec *int `pulumi:"maxGracefulTerminationSec"`
+	// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+	MinReplicaCount *int `pulumi:"minReplicaCount"`
+	// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+	RecycleNodeDeletionEnabled *bool `pulumi:"recycleNodeDeletionEnabled"`
 	// Specify whether to allow the scale-in of nodes. Default is `true`.
 	ScaleDownEnabled *bool `pulumi:"scaleDownEnabled"`
+	// Should CA scale up when there 0 ready nodes. Default is `true`.
+	ScaleUpFromZero *bool `pulumi:"scaleUpFromZero"`
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval *string `pulumi:"scanInterval"`
+	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+	SkipNodesWithLocalStorage *bool `pulumi:"skipNodesWithLocalStorage"`
+	// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+	SkipNodesWithSystemPods *bool `pulumi:"skipNodesWithSystemPods"`
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration *string `pulumi:"unneededDuration"`
 	// The scale-in threshold. Default is `0.5`.
@@ -134,14 +191,28 @@ type AutoscalingConfigArgs struct {
 	ClusterId pulumi.StringPtrInput
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration pulumi.StringPtrInput
+	// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+	DaemonsetEvictionForNodes pulumi.BoolPtrInput
 	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
 	Expander pulumi.StringPtrInput
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold pulumi.StringPtrInput
+	// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+	MaxGracefulTerminationSec pulumi.IntPtrInput
+	// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+	MinReplicaCount pulumi.IntPtrInput
+	// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+	RecycleNodeDeletionEnabled pulumi.BoolPtrInput
 	// Specify whether to allow the scale-in of nodes. Default is `true`.
 	ScaleDownEnabled pulumi.BoolPtrInput
+	// Should CA scale up when there 0 ready nodes. Default is `true`.
+	ScaleUpFromZero pulumi.BoolPtrInput
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval pulumi.StringPtrInput
+	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+	SkipNodesWithLocalStorage pulumi.BoolPtrInput
+	// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+	SkipNodesWithSystemPods pulumi.BoolPtrInput
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration pulumi.StringPtrInput
 	// The scale-in threshold. Default is `0.5`.
@@ -245,6 +316,11 @@ func (o AutoscalingConfigOutput) CoolDownDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.CoolDownDuration }).(pulumi.StringPtrOutput)
 }
 
+// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+func (o AutoscalingConfigOutput) DaemonsetEvictionForNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.BoolPtrOutput { return v.DaemonsetEvictionForNodes }).(pulumi.BoolPtrOutput)
+}
+
 // The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
 func (o AutoscalingConfigOutput) Expander() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.Expander }).(pulumi.StringPtrOutput)
@@ -255,14 +331,44 @@ func (o AutoscalingConfigOutput) GpuUtilizationThreshold() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.GpuUtilizationThreshold }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+func (o AutoscalingConfigOutput) MaxGracefulTerminationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.IntPtrOutput { return v.MaxGracefulTerminationSec }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+func (o AutoscalingConfigOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.IntPtrOutput { return v.MinReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+func (o AutoscalingConfigOutput) RecycleNodeDeletionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.BoolPtrOutput { return v.RecycleNodeDeletionEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Specify whether to allow the scale-in of nodes. Default is `true`.
 func (o AutoscalingConfigOutput) ScaleDownEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AutoscalingConfig) pulumi.BoolPtrOutput { return v.ScaleDownEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Should CA scale up when there 0 ready nodes. Default is `true`.
+func (o AutoscalingConfigOutput) ScaleUpFromZero() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.BoolPtrOutput { return v.ScaleUpFromZero }).(pulumi.BoolPtrOutput)
+}
+
 // The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 func (o AutoscalingConfigOutput) ScanInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.ScanInterval }).(pulumi.StringPtrOutput)
+}
+
+// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+func (o AutoscalingConfigOutput) SkipNodesWithLocalStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.BoolPtrOutput { return v.SkipNodesWithLocalStorage }).(pulumi.BoolPtrOutput)
+}
+
+// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+func (o AutoscalingConfigOutput) SkipNodesWithSystemPods() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.BoolPtrOutput { return v.SkipNodesWithSystemPods }).(pulumi.BoolPtrOutput)
 }
 
 // The unneeded duration. Default is `10m`.

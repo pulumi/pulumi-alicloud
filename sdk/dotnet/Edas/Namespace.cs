@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// For information about EDAS Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/insertorupdateregion).
     /// 
-    /// &gt; **NOTE:** Available in v1.173.0+.
+    /// &gt; **NOTE:** Available since v1.173.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,19 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Edas.Namespace("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         NamespaceLogicalId = "example_value",
-    ///         NamespaceName = "example_value",
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Edas.Namespace("defaultNamespace", new()
+    ///     {
+    ///         DebugEnable = false,
+    ///         Description = name,
+    ///         NamespaceLogicalId = $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example",
+    ///         NamespaceName = name,
     ///     });
     /// 
     /// });

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Express Connect Router Interface and how to use it, see What is Router Interface.
  *
- * > **NOTE:** Available in v1.199.0+.
+ * > **NOTE:** Available since v1.199.0.
  *
  * ## Example Usage
  *
@@ -19,18 +19,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: _var.name,
- *     cidrBlock: "10.1.0.0/21",
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
  * });
  * const defaultRouterInterface = new alicloud.expressconnect.RouterInterface("defaultRouterInterface", {
- *     description: _var.name,
- *     oppositeRegionId: "cn-hangzhou",
+ *     description: name,
+ *     oppositeRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
  *     routerId: defaultNetwork.routerId,
  *     role: "InitiatingSide",
  *     routerType: "VRouter",
  *     paymentType: "PayAsYouGo",
- *     routerInterfaceName: _var.name,
+ *     routerInterfaceName: name,
  *     spec: "Mini.2",
  * });
  * ```

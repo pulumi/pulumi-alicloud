@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// For information about Express Connect Vbr Pconn Association and how to use it, see [What is Vbr Pconn Association](https://www.alibabacloud.com/help/en/express-connect/latest/associatephysicalconnectiontovirtualborderrouter#doc-api-Vpc-AssociatePhysicalConnectionToVirtualBorderRouter).
     /// 
-    /// &gt; **NOTE:** Available in v1.196.0+.
+    /// &gt; **NOTE:** Available since v1.196.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,36 +25,52 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var nameRegex = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("defaultVirtualBorderRouter", new()
+    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     {
+    ///         Max = 2999,
+    ///         Min = 1,
+    ///     });
+    /// 
+    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = nameRegex.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
-    ///         VirtualBorderRouterName = @var.Name,
-    ///         VlanId = 100,
+    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VirtualBorderRouterName = name,
+    ///         VlanId = vlanId.Id,
     ///         MinRxInterval = 1000,
     ///         MinTxInterval = 1000,
     ///         DetectMultiplier = 10,
+    ///         EnableIpv6 = true,
+    ///         LocalIpv6GatewayIp = "2408:4004:cc:400::1",
+    ///         PeerIpv6GatewayIp = "2408:4004:cc:400::2",
+    ///         PeeringIpv6SubnetMask = "2408:4004:cc:400::/56",
     ///     });
     /// 
-    ///     var defaultVbrPconnAssociation = new AliCloud.ExpressConnect.VbrPconnAssociation("defaultVbrPconnAssociation", new()
+    ///     var exampleVbrPconnAssociation = new AliCloud.ExpressConnect.VbrPconnAssociation("exampleVbrPconnAssociation", new()
     ///     {
     ///         PeerGatewayIp = "10.0.0.6",
     ///         LocalGatewayIp = "10.0.0.5",
-    ///         PhysicalConnectionId = nameRegex.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[1]?.Id),
-    ///         VbrId = defaultVirtualBorderRouter.Id,
+    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[2]?.Id),
+    ///         VbrId = exampleVirtualBorderRouter.Id,
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         VlanId = 1122,
-    ///         EnableIpv6 = false,
+    ///         VlanId = vlanId.Id.Apply(id =&gt; id + 2),
+    ///         EnableIpv6 = true,
+    ///         LocalIpv6GatewayIp = "2408:4004:cc::3",
+    ///         PeerIpv6GatewayIp = "2408:4004:cc::4",
+    ///         PeeringIpv6SubnetMask = "2408:4004:cc::/56",
     ///     });
     /// 
     /// });

@@ -114,9 +114,9 @@ class DeployGroup(pulumi.CustomResource):
                  group_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an EDAS deploy group resource.
+        Provides an EDAS deploy group resource, see [What is EDAS Deploy Group](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertdeploygroup).
 
-        > **NOTE:** Available in 1.82.0+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -126,9 +126,27 @@ class DeployGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.edas.DeployGroup("default",
-            app_id=var["app_id"],
-            group_name=var["group_name"])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="JAR")
+        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+            app_id=default_application.id,
+            group_name=name)
         ```
 
         ## Import
@@ -151,9 +169,9 @@ class DeployGroup(pulumi.CustomResource):
                  args: DeployGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an EDAS deploy group resource.
+        Provides an EDAS deploy group resource, see [What is EDAS Deploy Group](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertdeploygroup).
 
-        > **NOTE:** Available in 1.82.0+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -163,9 +181,27 @@ class DeployGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.edas.DeployGroup("default",
-            app_id=var["app_id"],
-            group_name=var["group_name"])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="JAR")
+        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+            app_id=default_application.id,
+            group_name=name)
         ```
 
         ## Import

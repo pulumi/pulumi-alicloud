@@ -8,6 +8,8 @@ import com.pulumi.alicloud.rds.inputs.GetAccountsArgs;
 import com.pulumi.alicloud.rds.inputs.GetAccountsPlainArgs;
 import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
 import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesPlainArgs;
+import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
+import com.pulumi.alicloud.rds.inputs.GetClassDetailsPlainArgs;
 import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
 import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesPlainArgs;
 import com.pulumi.alicloud.rds.inputs.GetCrossRegionBackupsArgs;
@@ -34,6 +36,7 @@ import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
 import com.pulumi.alicloud.rds.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.rds.outputs.GetAccountsResult;
 import com.pulumi.alicloud.rds.outputs.GetCharacterSetNamesResult;
+import com.pulumi.alicloud.rds.outputs.GetClassDetailsResult;
 import com.pulumi.alicloud.rds.outputs.GetCollationTimeZonesResult;
 import com.pulumi.alicloud.rds.outputs.GetCrossRegionBackupsResult;
 import com.pulumi.alicloud.rds.outputs.GetCrossRegionsResult;
@@ -384,6 +387,182 @@ public final class RdsFunctions {
      */
     public static CompletableFuture<GetCharacterSetNamesResult> getCharacterSetNamesPlain(GetCharacterSetNamesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getCharacterSetNames:getCharacterSetNames", TypeShape.of(GetCharacterSetNamesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides details of the Rds specifications of current Alibaba Cloud users.
+     * 
+     * For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
+     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
+     *             .commodityCode(&#34;bards&#34;)
+     *             .engine(&#34;MySQL&#34;)
+     *             .engineVersion(&#34;8.0&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClassDetailsResult> getClassDetails(GetClassDetailsArgs args) {
+        return getClassDetails(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides details of the Rds specifications of current Alibaba Cloud users.
+     * 
+     * For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
+     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
+     *             .commodityCode(&#34;bards&#34;)
+     *             .engine(&#34;MySQL&#34;)
+     *             .engineVersion(&#34;8.0&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClassDetailsResult> getClassDetailsPlain(GetClassDetailsPlainArgs args) {
+        return getClassDetailsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides details of the Rds specifications of current Alibaba Cloud users.
+     * 
+     * For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
+     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
+     *             .commodityCode(&#34;bards&#34;)
+     *             .engine(&#34;MySQL&#34;)
+     *             .engineVersion(&#34;8.0&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClassDetailsResult> getClassDetails(GetClassDetailsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getClassDetails:getClassDetails", TypeShape.of(GetClassDetailsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides details of the Rds specifications of current Alibaba Cloud users.
+     * 
+     * For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
+     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
+     *             .commodityCode(&#34;bards&#34;)
+     *             .engine(&#34;MySQL&#34;)
+     *             .engineVersion(&#34;8.0&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClassDetailsResult> getClassDetailsPlain(GetClassDetailsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:rds/getClassDetails:getClassDetails", TypeShape.of(GetClassDetailsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.

@@ -23,6 +23,7 @@ from .get_bgp_peers import *
 from .get_common_bandwidth_packages import *
 from .get_dhcp_options_sets import *
 from .get_enhanced_nat_available_zones import *
+from .get_flow_log_service import *
 from .get_forward_entries import *
 from .get_havips import *
 from .get_ipsec_servers import *

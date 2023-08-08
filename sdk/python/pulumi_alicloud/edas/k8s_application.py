@@ -1111,9 +1111,9 @@ class K8sApplication(pulumi.CustomResource):
                  web_container: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/doc-detail/85029.htm).
+        Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertk8sapplication).
 
-        > **NOTE:** Available since v1.105.0
+        > **NOTE:** Available since v1.105.0.
 
         ## Import
 
@@ -1166,9 +1166,9 @@ class K8sApplication(pulumi.CustomResource):
                  args: K8sApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/doc-detail/85029.htm).
+        Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertk8sapplication).
 
-        > **NOTE:** Available since v1.105.0
+        > **NOTE:** Available since v1.105.0.
 
         ## Import
 

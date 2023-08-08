@@ -16,7 +16,7 @@ import (
 //
 // For information about Express Connect Router Interface and how to use it, see What is Router Interface.
 //
-// > **NOTE:** Available in v1.199.0+.
+// > **NOTE:** Available since v1.199.0.
 //
 // ## Example Usage
 //
@@ -27,29 +27,42 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.Any(_var.Name),
-//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = expressconnect.NewRouterInterface(ctx, "defaultRouterInterface", &expressconnect.RouterInterfaceArgs{
-//				Description:         pulumi.Any(_var.Name),
-//				OppositeRegionId:    pulumi.String("cn-hangzhou"),
+//				Description:         pulumi.String(name),
+//				OppositeRegionId:    *pulumi.String(defaultRegions.Regions[0].Id),
 //				RouterId:            defaultNetwork.RouterId,
 //				Role:                pulumi.String("InitiatingSide"),
 //				RouterType:          pulumi.String("VRouter"),
 //				PaymentType:         pulumi.String("PayAsYouGo"),
-//				RouterInterfaceName: pulumi.Any(_var.Name),
+//				RouterInterfaceName: pulumi.String(name),
 //				Spec:                pulumi.String("Mini.2"),
 //			})
 //			if err != nil {

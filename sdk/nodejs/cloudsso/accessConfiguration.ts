@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud SSO Access Configuration resource.
  *
- * For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
+ * For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createaccessconfiguration).
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
@@ -74,7 +74,7 @@ export class AccessConfiguration extends pulumi.CustomResource {
      */
     public readonly forceRemovePermissionPolicies!: pulumi.Output<boolean | undefined>;
     /**
-     * The Policy List. See the following `Block permissionPolicies`.
+     * The Policy List. See `permissionPolicies` below.
      */
     public readonly permissionPolicies!: pulumi.Output<outputs.cloudsso.AccessConfigurationPermissionPolicy[] | undefined>;
     /**
@@ -156,7 +156,7 @@ export interface AccessConfigurationState {
      */
     forceRemovePermissionPolicies?: pulumi.Input<boolean>;
     /**
-     * The Policy List. See the following `Block permissionPolicies`.
+     * The Policy List. See `permissionPolicies` below.
      */
     permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[]>;
     /**
@@ -192,7 +192,7 @@ export interface AccessConfigurationArgs {
      */
     forceRemovePermissionPolicies?: pulumi.Input<boolean>;
     /**
-     * The Policy List. See the following `Block permissionPolicies`.
+     * The Policy List. See `permissionPolicies` below.
      */
     permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[]>;
     /**

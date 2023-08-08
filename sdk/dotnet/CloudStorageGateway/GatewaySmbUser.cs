@@ -12,60 +12,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// <summary>
     /// Provides a Cloud Storage Gateway Gateway SMB User resource.
     /// 
-    /// For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+    /// For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaysmbuser).
     /// 
-    /// &gt; **NOTE:** Available in v1.142.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "default-NODELETING",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///     });
-    /// 
-    ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
-    ///     {
-    ///         StorageBundleName = "example_value",
-    ///     });
-    /// 
-    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
-    ///     {
-    ///         Description = "tf-acctestDesalone",
-    ///         GatewayClass = "Standard",
-    ///         Type = "File",
-    ///         PaymentType = "PayAsYouGo",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         ReleaseAfterExpiration = false,
-    ///         PublicNetworkBandwidth = 40,
-    ///         StorageBundleId = example.Id,
-    ///         Location = "Cloud",
-    ///         GatewayName = "example_value",
-    ///     });
-    /// 
-    ///     var defaultGatewaySmbUser = new AliCloud.CloudStorageGateway.GatewaySmbUser("defaultGatewaySmbUser", new()
-    ///     {
-    ///         Username = "your_username",
-    ///         Password = "password",
-    ///         GatewayId = defaultGateway.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.142.0.
     /// 
     /// ## Import
     /// 

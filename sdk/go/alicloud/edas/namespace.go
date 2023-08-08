@@ -16,7 +16,7 @@ import (
 //
 // For information about EDAS Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/insertorupdateregion).
 //
-// > **NOTE:** Available in v1.173.0+.
+// > **NOTE:** Available since v1.173.0.
 //
 // ## Example Usage
 //
@@ -27,16 +27,33 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := edas.NewNamespace(ctx, "example", &edas.NamespaceArgs{
-//				NamespaceLogicalId: pulumi.String("example_value"),
-//				NamespaceName:      pulumi.String("example_value"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = edas.NewNamespace(ctx, "defaultNamespace", &edas.NamespaceArgs{
+//				DebugEnable:        pulumi.Bool(false),
+//				Description:        pulumi.String(name),
+//				NamespaceLogicalId: pulumi.String(fmt.Sprintf("%v:example", defaultRegions.Regions[0].Id)),
+//				NamespaceName:      pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

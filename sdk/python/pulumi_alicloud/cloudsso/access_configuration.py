@@ -31,7 +31,7 @@ class AccessConfigurationArgs:
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See the following `Block permission_policies`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
         """
@@ -102,7 +102,7 @@ class AccessConfigurationArgs:
     @pulumi.getter(name="permissionPolicies")
     def permission_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]:
         """
-        The Policy List. See the following `Block permission_policies`.
+        The Policy List. See `permission_policies` below.
         """
         return pulumi.get(self, "permission_policies")
 
@@ -155,7 +155,7 @@ class _AccessConfigurationState:
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See the following `Block permission_policies`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
         """
@@ -242,7 +242,7 @@ class _AccessConfigurationState:
     @pulumi.getter(name="permissionPolicies")
     def permission_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]:
         """
-        The Policy List. See the following `Block permission_policies`.
+        The Policy List. See `permission_policies` below.
         """
         return pulumi.get(self, "permission_policies")
 
@@ -291,9 +291,9 @@ class AccessConfiguration(pulumi.CustomResource):
         """
         Provides a Cloud SSO Access Configuration resource.
 
-        For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
+        For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createaccessconfiguration).
 
-        > **NOTE:** Available in v1.145.0+.
+        > **NOTE:** Available since v1.145.0.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -313,7 +313,7 @@ class AccessConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessConfigurationPermissionPolicyArgs']]]] permission_policies: The Policy List. See the following `Block permission_policies`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessConfigurationPermissionPolicyArgs']]]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
         """
@@ -326,9 +326,9 @@ class AccessConfiguration(pulumi.CustomResource):
         """
         Provides a Cloud SSO Access Configuration resource.
 
-        For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
+        For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createaccessconfiguration).
 
-        > **NOTE:** Available in v1.145.0+.
+        > **NOTE:** Available since v1.145.0.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -415,7 +415,7 @@ class AccessConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessConfigurationPermissionPolicyArgs']]]] permission_policies: The Policy List. See the following `Block permission_policies`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessConfigurationPermissionPolicyArgs']]]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
         """
@@ -479,7 +479,7 @@ class AccessConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="permissionPolicies")
     def permission_policies(self) -> pulumi.Output[Optional[Sequence['outputs.AccessConfigurationPermissionPolicy']]]:
         """
-        The Policy List. See the following `Block permission_policies`.
+        The Policy List. See `permission_policies` below.
         """
         return pulumi.get(self, "permission_policies")
 

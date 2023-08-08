@@ -16,7 +16,7 @@ import (
 //
 // For information about Express Connect Grant Rule To Cen and how to use it, see [What is Grant Rule To Cen](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/grantinstancetocen).
 //
-// > **NOTE:** Available in v1.196.0+.
+// > **NOTE:** Available since v1.196.0.
 //
 // ## Example Usage
 //
@@ -30,43 +30,60 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf-example"),
+//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(2999),
+//				Min: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "defaultVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
-//				LocalGatewayIp:       pulumi.String("10.0.0.1"),
-//				PeerGatewayIp:        pulumi.String("10.0.0.2"),
-//				PeeringSubnetMask:    pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId: *pulumi.String(defaultPhysicalConnections.Connections[0].Id),
-//				VlanId:               pulumi.Int(1),
-//				MinRxInterval:        pulumi.Int(1000),
-//				MinTxInterval:        pulumi.Int(1000),
-//				DetectMultiplier:     pulumi.Int(10),
+//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//				LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//				PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//				PhysicalConnectionId:    *pulumi.String(examplePhysicalConnections.Connections[0].Id),
+//				VirtualBorderRouterName: pulumi.String(name),
+//				VlanId:                  vlanId.ID(),
+//				MinRxInterval:           pulumi.Int(1000),
+//				MinTxInterval:           pulumi.Int(1000),
+//				DetectMultiplier:        pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = expressconnect.NewGrantRuleToCen(ctx, "defaultGrantRuleToCen", &expressconnect.GrantRuleToCenArgs{
-//				CenId:      defaultInstance.ID(),
-//				CenOwnerId: *pulumi.String(defaultAccount.Id),
-//				InstanceId: defaultVirtualBorderRouter.ID(),
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = expressconnect.NewGrantRuleToCen(ctx, "exampleGrantRuleToCen", &expressconnect.GrantRuleToCenArgs{
+//				CenId:      exampleInstance.ID(),
+//				CenOwnerId: *pulumi.String(_default.Id),
+//				InstanceId: exampleVirtualBorderRouter.ID(),
 //			})
 //			if err != nil {
 //				return err

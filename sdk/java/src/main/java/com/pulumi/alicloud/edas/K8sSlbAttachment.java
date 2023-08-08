@@ -22,56 +22,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.194.0.
  * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.edas.K8sSlbAttachment;
- * import com.pulumi.alicloud.edas.K8sSlbAttachmentArgs;
- * import com.pulumi.alicloud.edas.inputs.K8sSlbAttachmentSlbConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new K8sSlbAttachment(&#34;example&#34;, K8sSlbAttachmentArgs.builder()        
- *             .appId(&#34;your_app_id&#34;)
- *             .slbConfigs(            
- *                 K8sSlbAttachmentSlbConfigArgs.builder()
- *                     .portMappings(K8sSlbAttachmentSlbConfigPortMappingArgs.builder()
- *                         .certId(&#34;your tls cert id&#34;)
- *                         .loadbalancerProtocol(&#34;TCP&#34;)
- *                         .servicePort(K8sSlbAttachmentSlbConfigPortMappingServicePortArgs.builder()
- *                             .port(80)
- *                             .protocol(&#34;TCP&#34;)
- *                             .targetPort(8080)
- *                             .build())
- *                         .build())
- *                     .scheduler(&#34;rr&#34;)
- *                     .slbId(&#34;your slb instance id&#34;)
- *                     .specification(&#34;slb.s1.small&#34;)
- *                     .type(&#34;internet&#34;)
- *                     .build(),
- *                 )
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.

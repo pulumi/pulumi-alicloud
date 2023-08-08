@@ -16,7 +16,7 @@ import (
 //
 // For information about Express Connect Virtual Physical Connection and how to use it, see [What is Virtual Physical Connection](https://www.alibabacloud.com/help/en/express-connect/latest/createvirtualphysicalconnection#doc-api-Vpc-CreateVirtualPhysicalConnection).
 //
-// > **NOTE:** Available in v1.196.0+.
+// > **NOTE:** Available since v1.196.0.
 //
 // ## Example Usage
 //
@@ -27,27 +27,46 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
 //				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = expressconnect.NewVirtualPhysicalConnection(ctx, "defaultVirtualPhysicalConnection", &expressconnect.VirtualPhysicalConnectionArgs{
-//				VirtualPhysicalConnectionName: pulumi.String("amp_resource_test"),
-//				Description:                   pulumi.String("amp_resource_test"),
+//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(2999),
+//				Min: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = expressconnect.NewVirtualPhysicalConnection(ctx, "exampleVirtualPhysicalConnection", &expressconnect.VirtualPhysicalConnectionArgs{
+//				VirtualPhysicalConnectionName: pulumi.String(name),
+//				Description:                   pulumi.String(name),
 //				OrderMode:                     pulumi.String("PayByPhysicalConnectionOwner"),
-//				ParentPhysicalConnectionId:    *pulumi.String(defaultPhysicalConnections.Ids[0]),
+//				ParentPhysicalConnectionId:    *pulumi.String(examplePhysicalConnections.Ids[0]),
 //				Spec:                          pulumi.String("50M"),
-//				VlanId:                        pulumi.Int(789),
-//				VpconnAliUid:                  pulumi.String("1234567890"),
+//				VlanId:                        vlanId.ID(),
+//				VpconnAliUid:                  *pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

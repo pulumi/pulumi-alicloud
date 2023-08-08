@@ -197,9 +197,9 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
         """
         Provides a Cloud SSO Access Configuration Provisioning resource.
 
-        For information about Cloud SSO Access Configuration Provisioning and how to use it, see [What is Access Configuration Provisioning](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
+        For information about Cloud SSO Access Configuration Provisioning and how to use it, see [What is Access Configuration Provisioning](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-addpermissionpolicytoaccessconfiguration).
 
-        > **NOTE:** Available in v1.148.0+.
+        > **NOTE:** Available since v1.148.0.
 
         ## Import
 
@@ -226,9 +226,9 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
         """
         Provides a Cloud SSO Access Configuration Provisioning resource.
 
-        For information about Cloud SSO Access Configuration Provisioning and how to use it, see [What is Access Configuration Provisioning](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
+        For information about Cloud SSO Access Configuration Provisioning and how to use it, see [What is Access Configuration Provisioning](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-addpermissionpolicytoaccessconfiguration).
 
-        > **NOTE:** Available in v1.148.0+.
+        > **NOTE:** Available since v1.148.0.
 
         ## Import
 

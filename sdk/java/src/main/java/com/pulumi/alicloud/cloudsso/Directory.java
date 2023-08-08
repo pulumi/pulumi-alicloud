@@ -18,43 +18,11 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud SSO Directory resource.
  * 
- * For information about Cloud SSO Directory and how to use it, see [What is Directory](https://www.alibabacloud.com/help/doc-detail/263624.html).
+ * For information about Cloud SSO Directory and how to use it, see [What is Directory](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createdirectory).
  * 
- * &gt; **NOTE:** Available in v1.135.0+.
+ * &gt; **NOTE:** Available since v1.135.0.
  * 
  * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cloudsso.Directory;
- * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Directory(&#34;default&#34;, DirectoryArgs.builder()        
- *             .directoryName(&#34;example-value&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
@@ -96,14 +64,18 @@ public class Directory extends com.pulumi.resources.CustomResource {
         return this.mfaAuthenticationStatus;
     }
     /**
-     * The saml identity provider configuration.
+     * The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+     * 
+     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
      * 
      */
     @Export(name="samlIdentityProviderConfiguration", type=DirectorySamlIdentityProviderConfiguration.class, parameters={})
     private Output<DirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfiguration;
 
     /**
-     * @return The saml identity provider configuration.
+     * @return The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+     * 
+     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
      * 
      */
     public Output<DirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfiguration() {

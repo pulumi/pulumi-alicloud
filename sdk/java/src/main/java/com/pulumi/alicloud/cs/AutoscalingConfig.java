@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,7 +22,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available since v1.127.0.
  * 
  * &gt; **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
- * **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+ * 
+ * &gt; **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
  * 
  */
 @ResourceType(type="alicloud:cs/autoscalingConfig:AutoscalingConfig")
@@ -55,6 +57,20 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.coolDownDuration);
     }
     /**
+     * If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+     * 
+     */
+    @Export(name="daemonsetEvictionForNodes", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> daemonsetEvictionForNodes;
+
+    /**
+     * @return If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> daemonsetEvictionForNodes() {
+        return Codegen.optional(this.daemonsetEvictionForNodes);
+    }
+    /**
      * The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
      * 
      */
@@ -83,6 +99,48 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gpuUtilizationThreshold);
     }
     /**
+     * Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+     * 
+     */
+    @Export(name="maxGracefulTerminationSec", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> maxGracefulTerminationSec;
+
+    /**
+     * @return Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+     * 
+     */
+    public Output<Optional<Integer>> maxGracefulTerminationSec() {
+        return Codegen.optional(this.maxGracefulTerminationSec);
+    }
+    /**
+     * Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+     * 
+     */
+    @Export(name="minReplicaCount", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> minReplicaCount;
+
+    /**
+     * @return Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+     * 
+     */
+    public Output<Optional<Integer>> minReplicaCount() {
+        return Codegen.optional(this.minReplicaCount);
+    }
+    /**
+     * Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+     * 
+     */
+    @Export(name="recycleNodeDeletionEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> recycleNodeDeletionEnabled;
+
+    /**
+     * @return Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> recycleNodeDeletionEnabled() {
+        return Codegen.optional(this.recycleNodeDeletionEnabled);
+    }
+    /**
      * Specify whether to allow the scale-in of nodes. Default is `true`.
      * 
      */
@@ -97,6 +155,20 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.scaleDownEnabled);
     }
     /**
+     * Should CA scale up when there 0 ready nodes. Default is `true`.
+     * 
+     */
+    @Export(name="scaleUpFromZero", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> scaleUpFromZero;
+
+    /**
+     * @return Should CA scale up when there 0 ready nodes. Default is `true`.
+     * 
+     */
+    public Output<Optional<Boolean>> scaleUpFromZero() {
+        return Codegen.optional(this.scaleUpFromZero);
+    }
+    /**
      * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      * 
      */
@@ -109,6 +181,34 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> scanInterval() {
         return Codegen.optional(this.scanInterval);
+    }
+    /**
+     * If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+     * 
+     */
+    @Export(name="skipNodesWithLocalStorage", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> skipNodesWithLocalStorage;
+
+    /**
+     * @return If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> skipNodesWithLocalStorage() {
+        return Codegen.optional(this.skipNodesWithLocalStorage);
+    }
+    /**
+     * If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+     * 
+     */
+    @Export(name="skipNodesWithSystemPods", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> skipNodesWithSystemPods;
+
+    /**
+     * @return If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+     * 
+     */
+    public Output<Optional<Boolean>> skipNodesWithSystemPods() {
+        return Codegen.optional(this.skipNodesWithSystemPods);
     }
     /**
      * The unneeded duration. Default is `10m`.

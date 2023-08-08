@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Storage Gateway Storage Bundle resource.
  * 
- * For information about Cloud Storage Gateway Storage Bundle and how to use it, see [What is Storage Bundle](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+ * For information about Cloud Storage Gateway Storage Bundle and how to use it, see [What is Storage Bundle](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/createstoragebundle).
  * 
- * &gt; **NOTE:** Available in v1.116.0+.
+ * &gt; **NOTE:** Available since v1.116.0.
  * 
  * ## Example Usage
  * 

@@ -60,6 +60,11 @@ export const getCharacterSetNames: typeof import("./getCharacterSetNames").getCh
 export const getCharacterSetNamesOutput: typeof import("./getCharacterSetNames").getCharacterSetNamesOutput = null as any;
 utilities.lazyLoad(exports, ["getCharacterSetNames","getCharacterSetNamesOutput"], () => require("./getCharacterSetNames"));
 
+export { GetClassDetailsArgs, GetClassDetailsResult, GetClassDetailsOutputArgs } from "./getClassDetails";
+export const getClassDetails: typeof import("./getClassDetails").getClassDetails = null as any;
+export const getClassDetailsOutput: typeof import("./getClassDetails").getClassDetailsOutput = null as any;
+utilities.lazyLoad(exports, ["getClassDetails","getClassDetailsOutput"], () => require("./getClassDetails"));
+
 export { GetCollationTimeZonesArgs, GetCollationTimeZonesResult, GetCollationTimeZonesOutputArgs } from "./getCollationTimeZones";
 export const getCollationTimeZones: typeof import("./getCollationTimeZones").getCollationTimeZones = null as any;
 export const getCollationTimeZonesOutput: typeof import("./getCollationTimeZones").getCollationTimeZonesOutput = null as any;

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CloudSso
     /// <summary>
     /// Provides a Cloud SSO Access Configuration resource.
     /// 
-    /// For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
+    /// For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createaccessconfiguration).
     /// 
-    /// &gt; **NOTE:** Available in v1.145.0+.
+    /// &gt; **NOTE:** Available since v1.145.0.
     /// 
     /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
     /// 
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<bool?> ForceRemovePermissionPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// The Policy List. See the following `Block permission_policies`.
+        /// The Policy List. See `permission_policies` below.
         /// </summary>
         [Output("permissionPolicies")]
         public Output<ImmutableArray<Outputs.AccessConfigurationPermissionPolicy>> PermissionPolicies { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.CloudSso
         private InputList<Inputs.AccessConfigurationPermissionPolicyArgs>? _permissionPolicies;
 
         /// <summary>
-        /// The Policy List. See the following `Block permission_policies`.
+        /// The Policy List. See `permission_policies` below.
         /// </summary>
         public InputList<Inputs.AccessConfigurationPermissionPolicyArgs> PermissionPolicies
         {
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.CloudSso
         private InputList<Inputs.AccessConfigurationPermissionPolicyGetArgs>? _permissionPolicies;
 
         /// <summary>
-        /// The Policy List. See the following `Block permission_policies`.
+        /// The Policy List. See `permission_policies` below.
         /// </summary>
         public InputList<Inputs.AccessConfigurationPermissionPolicyGetArgs> PermissionPolicies
         {

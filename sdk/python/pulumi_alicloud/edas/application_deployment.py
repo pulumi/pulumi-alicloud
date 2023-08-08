@@ -179,9 +179,9 @@ class ApplicationDeployment(pulumi.CustomResource):
                  war_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Deploys applications on EDAS.
+        Deploys applications on EDAS, see [What is EDAS Application Deployment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-deployapplication).
 
-        > **NOTE:** Available in 1.82.0+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -191,11 +191,53 @@ class ApplicationDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.edas.ApplicationDeployment("default",
-            app_id=var["app_id"],
-            group_id=var["group_id"],
-            package_version=var["package_version"],
-            war_url=var["war_url"])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
+            cluster_id=default_cluster.id,
+            instance_ids=[default_instance.id])
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="JAR")
+        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+            app_id=default_application.id,
+            group_name=name)
+        default_application_deployment = alicloud.edas.ApplicationDeployment("defaultApplicationDeployment",
+            app_id=default_application.id,
+            group_id="all",
+            war_url="http://edas-sz.oss-cn-shenzhen.aliyuncs.com/prod/demo/SPRING_CLOUD_CONSUMER.jar")
         ```
 
         :param str resource_name: The name of the resource.
@@ -212,9 +254,9 @@ class ApplicationDeployment(pulumi.CustomResource):
                  args: ApplicationDeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Deploys applications on EDAS.
+        Deploys applications on EDAS, see [What is EDAS Application Deployment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-deployapplication).
 
-        > **NOTE:** Available in 1.82.0+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -224,11 +266,53 @@ class ApplicationDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.edas.ApplicationDeployment("default",
-            app_id=var["app_id"],
-            group_id=var["group_id"],
-            package_version=var["package_version"],
-            war_url=var["war_url"])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
+            cluster_id=default_cluster.id,
+            instance_ids=[default_instance.id])
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="JAR")
+        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+            app_id=default_application.id,
+            group_name=name)
+        default_application_deployment = alicloud.edas.ApplicationDeployment("defaultApplicationDeployment",
+            app_id=default_application.id,
+            group_id="all",
+            war_url="http://edas-sz.oss-cn-shenzhen.aliyuncs.com/prod/demo/SPRING_CLOUD_CONSUMER.jar")
         ```
 
         :param str resource_name: The name of the resource.
