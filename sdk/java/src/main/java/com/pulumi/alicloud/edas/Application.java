@@ -17,20 +17,25 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates an EDAS ecs application on EDAS. The application will be deployed when `group_id` and `war_url` are given.
+ * Creates an EDAS ecs application on EDAS, see [What is EDAS Application](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertapplication). The application will be deployed when `group_id` and `war_url` are given.
  * 
- * &gt; **NOTE:** Available since v1.82.0
+ * &gt; **NOTE:** Available since v1.82.0.
  * 
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.edas.Cluster;
+ * import com.pulumi.alicloud.edas.ClusterArgs;
  * import com.pulumi.alicloud.edas.Application;
  * import com.pulumi.alicloud.edas.ApplicationArgs;
  * import java.util.List;
@@ -46,19 +51,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Application(&#34;default&#34;, ApplicationArgs.builder()        
- *             .applicationName(&#34;xxx&#34;)
- *             .clusterId(&#34;xxx&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *             .clusterName(name)
+ *             .clusterType(&#34;2&#34;)
+ *             .networkMode(&#34;2&#34;)
+ *             .logicalRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+ *             .applicationName(name)
+ *             .clusterId(defaultCluster.id())
  *             .packageType(&#34;JAR&#34;)
- *             .buildPackId(xxx)
- *             .descriotion(&#34;xxx&#34;)
- *             .healthCheckUrl(&#34;xxx&#34;)
- *             .logicalRegionId(&#34;cn-xxxx:xxx&#34;)
- *             .componentIds(xxx)
- *             .ecuInfos(&#34;xxx&#34;)
- *             .groupId(&#34;xxx&#34;)
- *             .packageVersion(&#34;xxx&#34;)
- *             .warUrl(&#34;http://xxx&#34;)
  *             .build());
  * 
  *     }

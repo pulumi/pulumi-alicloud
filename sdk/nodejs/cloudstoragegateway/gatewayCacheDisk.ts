@@ -7,50 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Storage Gateway Gateway Cache Disk resource.
  *
- * For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/zh/doc-detail/170294.htm).
+ * For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
  *
- * > **NOTE:** Available in v1.144.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleStocks = alicloud.cloudstoragegateway.getStocks({
- *     gatewayClass: "Standard",
- * });
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: "example_value",
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     vpcId: vpc.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: exampleStocks.then(exampleStocks => exampleStocks.stocks?.[0]?.zoneId),
- *     vswitchName: "example_value",
- * });
- * const exampleStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("exampleStorageBundle", {storageBundleName: "example_value"});
- * const exampleGateway = new alicloud.cloudstoragegateway.Gateway("exampleGateway", {
- *     description: "tf-acctestDesalone",
- *     gatewayClass: "Standard",
- *     type: "File",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: exampleSwitch.id,
- *     releaseAfterExpiration: true,
- *     publicNetworkBandwidth: 10,
- *     storageBundleId: exampleStorageBundle.id,
- *     location: "Cloud",
- *     gatewayName: "example_value",
- * });
- * const exampleGatewayCacheDisk = new alicloud.cloudstoragegateway.GatewayCacheDisk("exampleGatewayCacheDisk", {
- *     cacheDiskCategory: "cloud_efficiency",
- *     gatewayId: alicloud_cloud_storage_gateway_gateways.example.id,
- *     cacheDiskSizeInGb: 50,
- * });
- * ```
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Import
  *

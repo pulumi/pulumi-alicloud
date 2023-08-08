@@ -444,40 +444,9 @@ class Gateway(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway: Gateway resource.
 
-        For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
 
-        > **NOTE:** Available in v1.132.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
-            cidr_block="172.16.0.0/12")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name="tf-testAccCsgName")
-        example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-        default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            release_after_expiration=False,
-            public_network_bandwidth=40,
-            storage_bundle_id=example.id,
-            location="Cloud",
-            gateway_name="tf-acctestGatewayName")
-        ```
+        > **NOTE:** Available since v1.132.0.
 
         ## Import
 
@@ -511,40 +480,9 @@ class Gateway(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway: Gateway resource.
 
-        For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
 
-        > **NOTE:** Available in v1.132.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
-            cidr_block="172.16.0.0/12")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name="tf-testAccCsgName")
-        example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-        default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            release_after_expiration=False,
-            public_network_bandwidth=40,
-            storage_bundle_id=example.id,
-            location="Cloud",
-            gateway_name="tf-acctestGatewayName")
-        ```
+        > **NOTE:** Available since v1.132.0.
 
         ## Import
 

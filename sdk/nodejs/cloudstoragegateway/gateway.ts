@@ -7,45 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Storage Gateway: Gateway resource.
  *
- * For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+ * For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
  *
- * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: "tf_test_foo",
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: vpc.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: "tf-testAccCsgName",
- * });
- * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
- * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
- *     description: "tf-acctestDesalone",
- *     gatewayClass: "Standard",
- *     type: "File",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitch.id,
- *     releaseAfterExpiration: false,
- *     publicNetworkBandwidth: 40,
- *     storageBundleId: example.id,
- *     location: "Cloud",
- *     gatewayName: "tf-acctestGatewayName",
- * });
- * ```
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Import
  *

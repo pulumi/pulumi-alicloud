@@ -134,7 +134,7 @@ class PolicyAttachment(pulumi.CustomResource):
         For information about Tag Policy Attachment and how to use it,
         see [What is Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/attach-policy).
 
-        > **NOTE:** Available in v1.204.0+.
+        > **NOTE:** Available since v1.204.0.
 
         ## Import
 
@@ -161,7 +161,7 @@ class PolicyAttachment(pulumi.CustomResource):
         For information about Tag Policy Attachment and how to use it,
         see [What is Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/attach-policy).
 
-        > **NOTE:** Available in v1.204.0+.
+        > **NOTE:** Available since v1.204.0.
 
         ## Import
 

@@ -12,27 +12,7 @@ namespace Pulumi.AliCloud.Edas
     /// <summary>
     /// Provides an EDAS K8s cluster resource. For information about EDAS K8s Cluster and how to use it, see[What is EDAS K8s Cluster](https://www.alibabacloud.com/help/en/doc-detail/85108.htm).
     /// 
-    /// &gt; **NOTE:** Available in 1.93.0+
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Edas.K8sCluster("default", new()
-    ///     {
-    ///         CsClusterId = "xxxx-xxx-xxx",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.93.0.
     /// 
     /// ## Import
     /// 

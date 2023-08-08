@@ -235,6 +235,23 @@ import * as utilities from "../utilities";
  *         ],
  *     }],
  * });
+ * const bucket_tag_lifecycle = new alicloud.oss.Bucket("bucket-tag-lifecycle", {
+ *     acl: "private",
+ *     bucket: pulumi.interpolate`example-lifecycle-${_default.result}`,
+ *     lifecycleRules: [{
+ *         enabled: true,
+ *         id: "rule-days-transition",
+ *         prefix: "path/",
+ *         tags: {
+ *             key1: "value1",
+ *             key2: "value2",
+ *         },
+ *         transitions: [{
+ *             createdBeforeDate: "2022-11-11",
+ *             storageClass: "IA",
+ *         }],
+ *     }],
+ * });
  * ```
  *
  * Set bucket policy
@@ -498,7 +515,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly serverSideEncryptionRule!: pulumi.Output<outputs.oss.BucketServerSideEncryptionRule | undefined>;
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
      */
     public readonly storageClass!: pulumi.Output<string | undefined>;
     /**
@@ -661,7 +678,7 @@ export interface BucketState {
      */
     serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
      */
     storageClass?: pulumi.Input<string>;
     /**
@@ -738,7 +755,7 @@ export interface BucketArgs {
      */
     serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
-     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
      */
     storageClass?: pulumi.Input<string>;
     /**

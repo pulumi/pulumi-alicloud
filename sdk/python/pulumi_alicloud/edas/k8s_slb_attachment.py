@@ -107,36 +107,6 @@ class K8sSlbAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.edas.K8sSlbAttachment("example",
-            app_id="your_app_id",
-            slb_configs=[
-                alicloud.edas.K8sSlbAttachmentSlbConfigArgs(
-                    port_mappings=[alicloud.edas.K8sSlbAttachmentSlbConfigPortMappingArgs(
-                        cert_id="your tls cert id",
-                        loadbalancer_protocol="TCP",
-                        service_port=alicloud.edas.K8sSlbAttachmentSlbConfigPortMappingServicePortArgs(
-                            port=80,
-                            protocol="TCP",
-                            target_port=8080,
-                        ),
-                    )],
-                    scheduler="rr",
-                    slb_id="your slb instance id",
-                    specification="slb.s1.small",
-                    type="internet",
-                ),
-                alicloud.edas.K8sSlbAttachmentSlbConfigArgs(),
-            ])
-        ```
-
         ## Import
 
         Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.
@@ -162,36 +132,6 @@ class K8sSlbAttachment(pulumi.CustomResource):
         For information about EDAS k8s slb attachment and how to use it, see [What is k8s slb attachment](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/bindk8sslb).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.edas.K8sSlbAttachment("example",
-            app_id="your_app_id",
-            slb_configs=[
-                alicloud.edas.K8sSlbAttachmentSlbConfigArgs(
-                    port_mappings=[alicloud.edas.K8sSlbAttachmentSlbConfigPortMappingArgs(
-                        cert_id="your tls cert id",
-                        loadbalancer_protocol="TCP",
-                        service_port=alicloud.edas.K8sSlbAttachmentSlbConfigPortMappingServicePortArgs(
-                            port=80,
-                            protocol="TCP",
-                            target_port=8080,
-                        ),
-                    )],
-                    scheduler="rr",
-                    slb_id="your slb instance id",
-                    specification="slb.s1.small",
-                    type="internet",
-                ),
-                alicloud.edas.K8sSlbAttachmentSlbConfigArgs(),
-            ])
-        ```
 
         ## Import
 

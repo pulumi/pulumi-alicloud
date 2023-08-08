@@ -18,11 +18,15 @@ import javax.annotation.Nullable;
 /**
  * Provides a RAM User resource.
  * 
+ * For information about RAM User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createuser).
+ * 
  * &gt; **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
  * 
- * &gt; **NOTE:** Available since v1.0.0+.
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * ```java
  * package generated_program;
  * 
@@ -58,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM user can be imported using the id, e.g.
+ * RAM User can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:ram/user:User example 123456789xxx
@@ -110,14 +114,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.email);
     }
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * This parameter is used for resource destroy. Default value: `false`.
      * 
      */
     @Export(name="force", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return This parameter is used for resource destroy. Default value: `false`.
      * 
      */
     public Output<Optional<Boolean>> force() {

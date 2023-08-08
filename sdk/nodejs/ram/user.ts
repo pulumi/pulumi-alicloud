@@ -7,11 +7,15 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM User resource.
  *
+ * For information about RAM User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createuser).
+ *
  * > **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +33,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RAM user can be imported using the id, e.g.
+ * RAM User can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:ram/user:User example 123456789xxx
@@ -76,7 +80,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string | undefined>;
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * This parameter is used for resource destroy. Default value: `false`.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
@@ -138,7 +142,7 @@ export interface UserState {
      */
     email?: pulumi.Input<string>;
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * This parameter is used for resource destroy. Default value: `false`.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -168,7 +172,7 @@ export interface UserArgs {
      */
     email?: pulumi.Input<string>;
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * This parameter is used for resource destroy. Default value: `false`.
      */
     force?: pulumi.Input<boolean>;
     /**

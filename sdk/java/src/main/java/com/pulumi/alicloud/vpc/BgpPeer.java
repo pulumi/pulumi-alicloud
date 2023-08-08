@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
  * 
- * &gt; **NOTE:** Available in v1.153.0+.
+ * &gt; **NOTE:** Available since v1.153.0.
  * 
  * ## Example Usage
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.vpc.BgpGroup;
@@ -53,32 +55,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections();
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var examplePhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *             .nameRegex(&#34;^preserved-NODELETING&#34;)
+ *             .build());
  * 
- *         var defaultVirtualBorderRouter = new VirtualBorderRouter(&#34;defaultVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
+ *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
+ *             .max(2999)
+ *             .min(1)
+ *             .build());
+ * 
+ *         var exampleVirtualBorderRouter = new VirtualBorderRouter(&#34;exampleVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
  *             .localGatewayIp(&#34;10.0.0.1&#34;)
  *             .peerGatewayIp(&#34;10.0.0.2&#34;)
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .physicalConnectionId(defaultPhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
- *             .virtualBorderRouterName(&#34;example_value&#34;)
- *             .vlanId(120)
+ *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *             .virtualBorderRouterName(name)
+ *             .vlanId(vlanId.id())
  *             .minRxInterval(1000)
  *             .minTxInterval(1000)
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var defaultBgpGroup = new BgpGroup(&#34;defaultBgpGroup&#34;, BgpGroupArgs.builder()        
+ *         var exampleBgpGroup = new BgpGroup(&#34;exampleBgpGroup&#34;, BgpGroupArgs.builder()        
  *             .authKey(&#34;YourPassword+12345678&#34;)
- *             .bgpGroupName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
- *             .localAsn(64512)
+ *             .bgpGroupName(name)
+ *             .description(name)
  *             .peerAsn(1111)
- *             .routerId(defaultVirtualBorderRouter.id())
+ *             .routerId(exampleVirtualBorderRouter.id())
+ *             .isFakeAsn(true)
  *             .build());
  * 
- *         var defaultBgpPeer = new BgpPeer(&#34;defaultBgpPeer&#34;, BgpPeerArgs.builder()        
+ *         var exampleBgpPeer = new BgpPeer(&#34;exampleBgpPeer&#34;, BgpPeerArgs.builder()        
  *             .bfdMultiHop(&#34;10&#34;)
- *             .bgpGroupId(defaultBgpGroup.id())
+ *             .bgpGroupId(exampleBgpGroup.id())
  *             .enableBfd(true)
  *             .ipVersion(&#34;IPV4&#34;)
  *             .peerIpAddress(&#34;1.1.1.1&#34;)

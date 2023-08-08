@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about VPC Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.152.0+.
+    /// &gt; **NOTE:** Available since v1.152.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,10 +25,22 @@ namespace Pulumi.AliCloud.Vpc
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke();
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     {
+    ///         NameRegex = "^preserved-NODELETING",
+    ///     });
+    /// 
+    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     {
+    ///         Max = 2999,
+    ///         Min = 1,
+    ///     });
     /// 
     ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
     ///     {
@@ -36,21 +48,21 @@ namespace Pulumi.AliCloud.Vpc
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
     ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
-    ///         VirtualBorderRouterName = @var.Name,
-    ///         VlanId = 120,
+    ///         VirtualBorderRouterName = name,
+    ///         VlanId = vlanId.Id,
     ///         MinRxInterval = 1000,
     ///         MinTxInterval = 1000,
     ///         DetectMultiplier = 10,
     ///     });
     /// 
-    ///     var @default = new AliCloud.Vpc.BgpGroup("default", new()
+    ///     var exampleBgpGroup = new AliCloud.Vpc.BgpGroup("exampleBgpGroup", new()
     ///     {
     ///         AuthKey = "YourPassword+12345678",
-    ///         BgpGroupName = "example_value",
-    ///         Description = "example_value",
-    ///         LocalAsn = 64512,
+    ///         BgpGroupName = name,
+    ///         Description = name,
     ///         PeerAsn = 1111,
     ///         RouterId = exampleVirtualBorderRouter.Id,
+    ///         IsFakeAsn = true,
     ///     });
     /// 
     /// });

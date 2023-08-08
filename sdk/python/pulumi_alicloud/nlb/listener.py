@@ -669,7 +669,7 @@ class Listener(pulumi.CustomResource):
 
         For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createlistener-nl).
 
-        > **NOTE:** Available in v1.191.0+.
+        > **NOTE:** Available since v1.191.0.
 
         ## Example Usage
 
@@ -798,7 +798,7 @@ class Listener(pulumi.CustomResource):
 
         For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createlistener-nl).
 
-        > **NOTE:** Available in v1.191.0+.
+        > **NOTE:** Available since v1.191.0.
 
         ## Example Usage
 

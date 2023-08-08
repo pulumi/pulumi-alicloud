@@ -132,74 +132,9 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Express Sync Share Attachment resource.
 
-        For information about Cloud Storage Gateway Express Sync Share Attachment and how to use it, see [What is Express Sync Share Attachment](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Express Sync Share Attachment and how to use it, see [What is Express Sync Share Attachment](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/addsharestoexpresssync).
 
-        > **NOTE:** Available in v1.144.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tftest"
-        region = config.get("region")
-        if region is None:
-            region = "cn-shanghai"
-        default_stocks = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name=name,
-            cidr_block="192.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=vpc.id,
-            cidr_block="192.16.0.0/21",
-            zone_id=default_stocks.stocks[0].zone_id,
-            vswitch_name=name)
-        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("defaultStorageBundle", storage_bundle_name=name)
-        default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            release_after_expiration=True,
-            public_network_bandwidth=10,
-            storage_bundle_id=default_storage_bundle.id,
-            location="Cloud",
-            gateway_name=name)
-        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("defaultGatewayCacheDisk",
-            cache_disk_category="cloud_efficiency",
-            gateway_id=default_gateway.id,
-            cache_disk_size_in_gb=50)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=name)
-        default_gateway_file_share = alicloud.cloudstoragegateway.GatewayFileShare("defaultGatewayFileShare",
-            gateway_file_share_name=name,
-            gateway_id=default_gateway.id,
-            local_path=default_gateway_cache_disk.local_file_path,
-            oss_bucket_name=default_bucket.bucket,
-            oss_endpoint=default_bucket.extranet_endpoint,
-            protocol="NFS",
-            remote_sync=False,
-            fe_limit=0,
-            backend_limit=0,
-            cache_mode="Cache",
-            squash="none",
-            lag_period=5)
-        default_express_sync = alicloud.cloudstoragegateway.ExpressSync("defaultExpressSync",
-            bucket_name=default_gateway_file_share.oss_bucket_name,
-            bucket_region=region,
-            description=name,
-            express_sync_name=name)
-        default_express_sync_share_attachment = alicloud.cloudstoragegateway.ExpressSyncShareAttachment("defaultExpressSyncShareAttachment",
-            express_sync_id=default_express_sync.id,
-            gateway_id=default_gateway.id,
-            share_name=default_gateway_file_share.gateway_file_share_name)
-        ```
+        > **NOTE:** Available since v1.144.0.
 
         ## Import
 
@@ -224,74 +159,9 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Express Sync Share Attachment resource.
 
-        For information about Cloud Storage Gateway Express Sync Share Attachment and how to use it, see [What is Express Sync Share Attachment](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Express Sync Share Attachment and how to use it, see [What is Express Sync Share Attachment](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/addsharestoexpresssync).
 
-        > **NOTE:** Available in v1.144.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tftest"
-        region = config.get("region")
-        if region is None:
-            region = "cn-shanghai"
-        default_stocks = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name=name,
-            cidr_block="192.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=vpc.id,
-            cidr_block="192.16.0.0/21",
-            zone_id=default_stocks.stocks[0].zone_id,
-            vswitch_name=name)
-        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("defaultStorageBundle", storage_bundle_name=name)
-        default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            release_after_expiration=True,
-            public_network_bandwidth=10,
-            storage_bundle_id=default_storage_bundle.id,
-            location="Cloud",
-            gateway_name=name)
-        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("defaultGatewayCacheDisk",
-            cache_disk_category="cloud_efficiency",
-            gateway_id=default_gateway.id,
-            cache_disk_size_in_gb=50)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=name)
-        default_gateway_file_share = alicloud.cloudstoragegateway.GatewayFileShare("defaultGatewayFileShare",
-            gateway_file_share_name=name,
-            gateway_id=default_gateway.id,
-            local_path=default_gateway_cache_disk.local_file_path,
-            oss_bucket_name=default_bucket.bucket,
-            oss_endpoint=default_bucket.extranet_endpoint,
-            protocol="NFS",
-            remote_sync=False,
-            fe_limit=0,
-            backend_limit=0,
-            cache_mode="Cache",
-            squash="none",
-            lag_period=5)
-        default_express_sync = alicloud.cloudstoragegateway.ExpressSync("defaultExpressSync",
-            bucket_name=default_gateway_file_share.oss_bucket_name,
-            bucket_region=region,
-            description=name,
-            express_sync_name=name)
-        default_express_sync_share_attachment = alicloud.cloudstoragegateway.ExpressSyncShareAttachment("defaultExpressSyncShareAttachment",
-            express_sync_id=default_express_sync.id,
-            gateway_id=default_gateway.id,
-            share_name=default_gateway_file_share.gateway_file_share_name)
-        ```
+        > **NOTE:** Available since v1.144.0.
 
         ## Import
 

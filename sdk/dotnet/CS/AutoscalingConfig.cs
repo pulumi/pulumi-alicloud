@@ -15,7 +15,8 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** Available since v1.127.0.
     /// 
     /// &gt; **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
-    /// **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+    /// 
+    /// &gt; **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
     /// </summary>
     [AliCloudResourceType("alicloud:cs/autoscalingConfig:AutoscalingConfig")]
     public partial class AutoscalingConfig : global::Pulumi.CustomResource
@@ -33,6 +34,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> CoolDownDuration { get; private set; } = null!;
 
         /// <summary>
+        /// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+        /// </summary>
+        [Output("daemonsetEvictionForNodes")]
+        public Output<bool?> DaemonsetEvictionForNodes { get; private set; } = null!;
+
+        /// <summary>
         /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         /// </summary>
         [Output("expander")]
@@ -45,16 +52,52 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> GpuUtilizationThreshold { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+        /// </summary>
+        [Output("maxGracefulTerminationSec")]
+        public Output<int?> MaxGracefulTerminationSec { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+        /// </summary>
+        [Output("minReplicaCount")]
+        public Output<int?> MinReplicaCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+        /// </summary>
+        [Output("recycleNodeDeletionEnabled")]
+        public Output<bool?> RecycleNodeDeletionEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Specify whether to allow the scale-in of nodes. Default is `true`.
         /// </summary>
         [Output("scaleDownEnabled")]
         public Output<bool?> ScaleDownEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Should CA scale up when there 0 ready nodes. Default is `true`.
+        /// </summary>
+        [Output("scaleUpFromZero")]
+        public Output<bool?> ScaleUpFromZero { get; private set; } = null!;
+
+        /// <summary>
         /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         /// </summary>
         [Output("scanInterval")]
         public Output<string?> ScanInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+        /// </summary>
+        [Output("skipNodesWithLocalStorage")]
+        public Output<bool?> SkipNodesWithLocalStorage { get; private set; } = null!;
+
+        /// <summary>
+        /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+        /// </summary>
+        [Output("skipNodesWithSystemPods")]
+        public Output<bool?> SkipNodesWithSystemPods { get; private set; } = null!;
 
         /// <summary>
         /// The unneeded duration. Default is `10m`.
@@ -127,6 +170,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? CoolDownDuration { get; set; }
 
         /// <summary>
+        /// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+        /// </summary>
+        [Input("daemonsetEvictionForNodes")]
+        public Input<bool>? DaemonsetEvictionForNodes { get; set; }
+
+        /// <summary>
         /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         /// </summary>
         [Input("expander")]
@@ -139,16 +188,52 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? GpuUtilizationThreshold { get; set; }
 
         /// <summary>
+        /// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+        /// </summary>
+        [Input("maxGracefulTerminationSec")]
+        public Input<int>? MaxGracefulTerminationSec { get; set; }
+
+        /// <summary>
+        /// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+        /// </summary>
+        [Input("minReplicaCount")]
+        public Input<int>? MinReplicaCount { get; set; }
+
+        /// <summary>
+        /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+        /// </summary>
+        [Input("recycleNodeDeletionEnabled")]
+        public Input<bool>? RecycleNodeDeletionEnabled { get; set; }
+
+        /// <summary>
         /// Specify whether to allow the scale-in of nodes. Default is `true`.
         /// </summary>
         [Input("scaleDownEnabled")]
         public Input<bool>? ScaleDownEnabled { get; set; }
 
         /// <summary>
+        /// Should CA scale up when there 0 ready nodes. Default is `true`.
+        /// </summary>
+        [Input("scaleUpFromZero")]
+        public Input<bool>? ScaleUpFromZero { get; set; }
+
+        /// <summary>
         /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         /// </summary>
         [Input("scanInterval")]
         public Input<string>? ScanInterval { get; set; }
+
+        /// <summary>
+        /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+        /// </summary>
+        [Input("skipNodesWithLocalStorage")]
+        public Input<bool>? SkipNodesWithLocalStorage { get; set; }
+
+        /// <summary>
+        /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+        /// </summary>
+        [Input("skipNodesWithSystemPods")]
+        public Input<bool>? SkipNodesWithSystemPods { get; set; }
 
         /// <summary>
         /// The unneeded duration. Default is `10m`.
@@ -183,6 +268,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? CoolDownDuration { get; set; }
 
         /// <summary>
+        /// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+        /// </summary>
+        [Input("daemonsetEvictionForNodes")]
+        public Input<bool>? DaemonsetEvictionForNodes { get; set; }
+
+        /// <summary>
         /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         /// </summary>
         [Input("expander")]
@@ -195,16 +286,52 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? GpuUtilizationThreshold { get; set; }
 
         /// <summary>
+        /// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+        /// </summary>
+        [Input("maxGracefulTerminationSec")]
+        public Input<int>? MaxGracefulTerminationSec { get; set; }
+
+        /// <summary>
+        /// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+        /// </summary>
+        [Input("minReplicaCount")]
+        public Input<int>? MinReplicaCount { get; set; }
+
+        /// <summary>
+        /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+        /// </summary>
+        [Input("recycleNodeDeletionEnabled")]
+        public Input<bool>? RecycleNodeDeletionEnabled { get; set; }
+
+        /// <summary>
         /// Specify whether to allow the scale-in of nodes. Default is `true`.
         /// </summary>
         [Input("scaleDownEnabled")]
         public Input<bool>? ScaleDownEnabled { get; set; }
 
         /// <summary>
+        /// Should CA scale up when there 0 ready nodes. Default is `true`.
+        /// </summary>
+        [Input("scaleUpFromZero")]
+        public Input<bool>? ScaleUpFromZero { get; set; }
+
+        /// <summary>
         /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         /// </summary>
         [Input("scanInterval")]
         public Input<string>? ScanInterval { get; set; }
+
+        /// <summary>
+        /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+        /// </summary>
+        [Input("skipNodesWithLocalStorage")]
+        public Input<bool>? SkipNodesWithLocalStorage { get; set; }
+
+        /// <summary>
+        /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+        /// </summary>
+        [Input("skipNodesWithSystemPods")]
+        public Input<bool>? SkipNodesWithSystemPods { get; set; }
 
         /// <summary>
         /// The unneeded duration. Default is `10m`.

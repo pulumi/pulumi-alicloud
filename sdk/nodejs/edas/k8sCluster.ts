@@ -7,18 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides an EDAS K8s cluster resource. For information about EDAS K8s Cluster and how to use it, see[What is EDAS K8s Cluster](https://www.alibabacloud.com/help/en/doc-detail/85108.htm).
  *
- * > **NOTE:** Available in 1.93.0+
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.edas.K8sCluster("default", {csClusterId: "xxxx-xxx-xxx"});
- * ```
+ * > **NOTE:** Available since v1.93.0.
  *
  * ## Import
  *

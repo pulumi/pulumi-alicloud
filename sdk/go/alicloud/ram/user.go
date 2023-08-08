@@ -13,11 +13,15 @@ import (
 
 // Provides a RAM User resource.
 //
+// For information about RAM User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createuser).
+//
 // > **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
 //
-// > **NOTE:** Available since v1.0.0+.
+// > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -49,7 +53,7 @@ import (
 //
 // ## Import
 //
-// RAM user can be imported using the id, e.g.
+// RAM User can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -65,7 +69,7 @@ type User struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Email of the RAM user.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// This parameter is used for resource destroy. Default value: `false`.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
 	Mobile pulumi.StringPtrOutput `pulumi:"mobile"`
@@ -109,7 +113,7 @@ type userState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Email of the RAM user.
 	Email *string `pulumi:"email"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// This parameter is used for resource destroy. Default value: `false`.
 	Force *bool `pulumi:"force"`
 	// Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
 	Mobile *string `pulumi:"mobile"`
@@ -124,7 +128,7 @@ type UserState struct {
 	DisplayName pulumi.StringPtrInput
 	// Email of the RAM user.
 	Email pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// This parameter is used for resource destroy. Default value: `false`.
 	Force pulumi.BoolPtrInput
 	// Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
 	Mobile pulumi.StringPtrInput
@@ -143,7 +147,7 @@ type userArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Email of the RAM user.
 	Email *string `pulumi:"email"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// This parameter is used for resource destroy. Default value: `false`.
 	Force *bool `pulumi:"force"`
 	// Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
 	Mobile *string `pulumi:"mobile"`
@@ -159,7 +163,7 @@ type UserArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Email of the RAM user.
 	Email pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// This parameter is used for resource destroy. Default value: `false`.
 	Force pulumi.BoolPtrInput
 	// Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
 	Mobile pulumi.StringPtrInput
@@ -269,7 +273,7 @@ func (o UserOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-// This parameter is used for resource destroy. Default value is `false`.
+// This parameter is used for resource destroy. Default value: `false`.
 func (o UserOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }

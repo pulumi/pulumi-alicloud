@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an EDAS deploy group resource.
+// Provides an EDAS deploy group resource, see [What is EDAS Deploy Group](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertdeploygroup).
 //
-// > **NOTE:** Available in 1.82.0+
+// > **NOTE:** Available since v1.82.0.
 //
 // ## Example Usage
 //
@@ -25,16 +25,55 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := edas.NewDeployGroup(ctx, "default", &edas.DeployGroupArgs{
-//				AppId:     pulumi.Any(_var.App_id),
-//				GroupName: pulumi.Any(_var.Group_name),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCluster, err := edas.NewCluster(ctx, "defaultCluster", &edas.ClusterArgs{
+//				ClusterName:     pulumi.String(name),
+//				ClusterType:     pulumi.Int(2),
+//				NetworkMode:     pulumi.Int(2),
+//				LogicalRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
+//				VpcId:           defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultApplication, err := edas.NewApplication(ctx, "defaultApplication", &edas.ApplicationArgs{
+//				ApplicationName: pulumi.String(name),
+//				ClusterId:       defaultCluster.ID(),
+//				PackageType:     pulumi.String("JAR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = edas.NewDeployGroup(ctx, "defaultDeployGroup", &edas.DeployGroupArgs{
+//				AppId:     defaultApplication.ID(),
+//				GroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

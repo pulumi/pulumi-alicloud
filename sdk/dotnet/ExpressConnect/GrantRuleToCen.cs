@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// For information about Express Connect Grant Rule To Cen and how to use it, see [What is Grant Rule To Cen](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/grantinstancetocen).
     /// 
-    /// &gt; **NOTE:** Available in v1.196.0+.
+    /// &gt; **NOTE:** Available since v1.196.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,35 +25,48 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var defaultPhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke();
-    /// 
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
-    ///         CenInstanceName = "tf-example",
+    ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("defaultVirtualBorderRouter", new()
+    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     {
+    ///         Max = 2999,
+    ///         Min = 1,
+    ///     });
+    /// 
+    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = defaultPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
-    ///         VlanId = 1,
+    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VirtualBorderRouterName = name,
+    ///         VlanId = vlanId.Id,
     ///         MinRxInterval = 1000,
     ///         MinTxInterval = 1000,
     ///         DetectMultiplier = 10,
     ///     });
     /// 
-    ///     var defaultGrantRuleToCen = new AliCloud.ExpressConnect.GrantRuleToCen("defaultGrantRuleToCen", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
-    ///         CenOwnerId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
-    ///         InstanceId = defaultVirtualBorderRouter.Id,
+    ///         CenInstanceName = name,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var exampleGrantRuleToCen = new AliCloud.ExpressConnect.GrantRuleToCen("exampleGrantRuleToCen", new()
+    ///     {
+    ///         CenId = exampleInstance.Id,
+    ///         CenOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         InstanceId = exampleVirtualBorderRouter.Id,
     ///     });
     /// 
     /// });

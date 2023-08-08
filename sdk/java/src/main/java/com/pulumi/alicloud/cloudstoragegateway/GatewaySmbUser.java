@@ -17,75 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Storage Gateway Gateway SMB User resource.
  * 
- * For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+ * For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaysmbuser).
  * 
- * &gt; **NOTE:** Available in v1.142.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
- * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
- * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
- * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
- * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
- * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUser;
- * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
- *             .build());
- * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .build());
- * 
- *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
- *             .storageBundleName(&#34;example_value&#34;)
- *             .build());
- * 
- *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
- *             .description(&#34;tf-acctestDesalone&#34;)
- *             .gatewayClass(&#34;Standard&#34;)
- *             .type(&#34;File&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .releaseAfterExpiration(false)
- *             .publicNetworkBandwidth(40)
- *             .storageBundleId(example.id())
- *             .location(&#34;Cloud&#34;)
- *             .gatewayName(&#34;example_value&#34;)
- *             .build());
- * 
- *         var defaultGatewaySmbUser = new GatewaySmbUser(&#34;defaultGatewaySmbUser&#34;, GatewaySmbUserArgs.builder()        
- *             .username(&#34;your_username&#34;)
- *             .password(&#34;password&#34;)
- *             .gatewayId(defaultGateway.id())
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.142.0.
  * 
  * ## Import
  * 

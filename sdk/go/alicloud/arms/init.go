@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Prometheus{}
 	case "alicloud:arms/prometheusAlertRule:PrometheusAlertRule":
 		r = &PrometheusAlertRule{}
+	case "alicloud:arms/prometheusMonitoring:PrometheusMonitoring":
+		r = &PrometheusMonitoring{}
 	case "alicloud:arms/remoteWrite:RemoteWrite":
 		r = &RemoteWrite{}
 	default:
@@ -76,6 +78,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"arms/prometheusAlertRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/prometheusMonitoring",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

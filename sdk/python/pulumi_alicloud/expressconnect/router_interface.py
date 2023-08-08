@@ -1097,7 +1097,7 @@ class RouterInterface(pulumi.CustomResource):
 
         For information about Express Connect Router Interface and how to use it, see What is Router Interface.
 
-        > **NOTE:** Available in v1.199.0+.
+        > **NOTE:** Available since v1.199.0.
 
         ## Example Usage
 
@@ -1107,17 +1107,22 @@ class RouterInterface(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=var["name"],
-            cidr_block="10.1.0.0/21")
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_regions = alicloud.get_regions(current=True)
         default_router_interface = alicloud.expressconnect.RouterInterface("defaultRouterInterface",
-            description=var["name"],
-            opposite_region_id="cn-hangzhou",
+            description=name,
+            opposite_region_id=default_regions.regions[0].id,
             router_id=default_network.router_id,
             role="InitiatingSide",
             router_type="VRouter",
             payment_type="PayAsYouGo",
-            router_interface_name=var["name"],
+            router_interface_name=name,
             spec="Mini.2")
         ```
 
@@ -1167,7 +1172,7 @@ class RouterInterface(pulumi.CustomResource):
 
         For information about Express Connect Router Interface and how to use it, see What is Router Interface.
 
-        > **NOTE:** Available in v1.199.0+.
+        > **NOTE:** Available since v1.199.0.
 
         ## Example Usage
 
@@ -1177,17 +1182,22 @@ class RouterInterface(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=var["name"],
-            cidr_block="10.1.0.0/21")
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_regions = alicloud.get_regions(current=True)
         default_router_interface = alicloud.expressconnect.RouterInterface("defaultRouterInterface",
-            description=var["name"],
-            opposite_region_id="cn-hangzhou",
+            description=name,
+            opposite_region_id=default_regions.regions[0].id,
             router_id=default_network.router_id,
             role="InitiatingSide",
             router_type="VRouter",
             payment_type="PayAsYouGo",
-            router_interface_name=var["name"],
+            router_interface_name=name,
             spec="Mini.2")
         ```
 

@@ -314,9 +314,9 @@ class User(pulumi.CustomResource):
         """
         Provides a Cloud SSO User resource.
 
-        For information about Cloud SSO User and how to use it, see [What is User](https://www.alibabacloud.com/help/zh/doc-detail/264683.htm).
+        For information about Cloud SSO User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -348,9 +348,9 @@ class User(pulumi.CustomResource):
         """
         Provides a Cloud SSO User resource.
 
-        For information about Cloud SSO User and how to use it, see [What is User](https://www.alibabacloud.com/help/zh/doc-detail/264683.htm).
+        For information about Cloud SSO User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 

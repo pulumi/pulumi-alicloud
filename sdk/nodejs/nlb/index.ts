@@ -40,6 +40,11 @@ export type Listener = import("./listener").Listener;
 export const Listener: typeof import("./listener").Listener = null as any;
 utilities.lazyLoad(exports, ["Listener"], () => require("./listener"));
 
+export { ListenerAdditionalCertificateAttachmentArgs, ListenerAdditionalCertificateAttachmentState } from "./listenerAdditionalCertificateAttachment";
+export type ListenerAdditionalCertificateAttachment = import("./listenerAdditionalCertificateAttachment").ListenerAdditionalCertificateAttachment;
+export const ListenerAdditionalCertificateAttachment: typeof import("./listenerAdditionalCertificateAttachment").ListenerAdditionalCertificateAttachment = null as any;
+utilities.lazyLoad(exports, ["ListenerAdditionalCertificateAttachment"], () => require("./listenerAdditionalCertificateAttachment"));
+
 export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
 export type LoadBalancer = import("./loadBalancer").LoadBalancer;
 export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
@@ -49,6 +54,11 @@ export { LoadBalancerSecurityGroupAttachmentArgs, LoadBalancerSecurityGroupAttac
 export type LoadBalancerSecurityGroupAttachment = import("./loadBalancerSecurityGroupAttachment").LoadBalancerSecurityGroupAttachment;
 export const LoadBalancerSecurityGroupAttachment: typeof import("./loadBalancerSecurityGroupAttachment").LoadBalancerSecurityGroupAttachment = null as any;
 utilities.lazyLoad(exports, ["LoadBalancerSecurityGroupAttachment"], () => require("./loadBalancerSecurityGroupAttachment"));
+
+export { LoadbalancerCommonBandwidthPackageAttachmentArgs, LoadbalancerCommonBandwidthPackageAttachmentState } from "./loadbalancerCommonBandwidthPackageAttachment";
+export type LoadbalancerCommonBandwidthPackageAttachment = import("./loadbalancerCommonBandwidthPackageAttachment").LoadbalancerCommonBandwidthPackageAttachment;
+export const LoadbalancerCommonBandwidthPackageAttachment: typeof import("./loadbalancerCommonBandwidthPackageAttachment").LoadbalancerCommonBandwidthPackageAttachment = null as any;
+utilities.lazyLoad(exports, ["LoadbalancerCommonBandwidthPackageAttachment"], () => require("./loadbalancerCommonBandwidthPackageAttachment"));
 
 export { SecurityPolicyArgs, SecurityPolicyState } from "./securityPolicy";
 export type SecurityPolicy = import("./securityPolicy").SecurityPolicy;
@@ -72,10 +82,14 @@ const _module = {
         switch (type) {
             case "alicloud:nlb/listener:Listener":
                 return new Listener(name, <any>undefined, { urn })
+            case "alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment":
+                return new ListenerAdditionalCertificateAttachment(name, <any>undefined, { urn })
             case "alicloud:nlb/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment":
                 return new LoadBalancerSecurityGroupAttachment(name, <any>undefined, { urn })
+            case "alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment":
+                return new LoadbalancerCommonBandwidthPackageAttachment(name, <any>undefined, { urn })
             case "alicloud:nlb/securityPolicy:SecurityPolicy":
                 return new SecurityPolicy(name, <any>undefined, { urn })
             case "alicloud:nlb/serverGroup:ServerGroup":
@@ -88,8 +102,10 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "nlb/listener", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nlb/listenerAdditionalCertificateAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/loadBalancerSecurityGroupAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nlb/loadbalancerCommonBandwidthPackageAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/securityPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/serverGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/serverGroupServerAttachment", _module)

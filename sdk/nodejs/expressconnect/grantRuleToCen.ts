@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Express Connect Grant Rule To Cen and how to use it, see [What is Grant Rule To Cen](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/grantinstancetocen).
  *
- * > **NOTE:** Available in v1.196.0+.
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
  *
@@ -18,24 +18,34 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const defaultAccount = alicloud.getAccount({});
- * const defaultPhysicalConnections = alicloud.expressconnect.getPhysicalConnections({});
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "tf-example"});
- * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^preserved-NODELETING",
+ * });
+ * const vlanId = new random.RandomInteger("vlanId", {
+ *     max: 2999,
+ *     min: 1,
+ * });
+ * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.connections?.[0]?.id),
- *     vlanId: 1,
+ *     physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections?.[0]?.id),
+ *     virtualBorderRouterName: name,
+ *     vlanId: vlanId.id,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
  * });
- * const defaultGrantRuleToCen = new alicloud.expressconnect.GrantRuleToCen("defaultGrantRuleToCen", {
- *     cenId: defaultInstance.id,
- *     cenOwnerId: defaultAccount.then(defaultAccount => defaultAccount.id),
- *     instanceId: defaultVirtualBorderRouter.id,
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {cenInstanceName: name});
+ * const default = alicloud.getAccount({});
+ * const exampleGrantRuleToCen = new alicloud.expressconnect.GrantRuleToCen("exampleGrantRuleToCen", {
+ *     cenId: exampleInstance.id,
+ *     cenOwnerId: _default.then(_default => _default.id),
+ *     instanceId: exampleVirtualBorderRouter.id,
  * });
  * ```
  *

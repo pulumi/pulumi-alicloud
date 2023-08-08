@@ -1721,8 +1721,6 @@ export namespace cloudsso {
         encodedMetadataDocument?: pulumi.Input<string>;
         /**
          * SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-         *
-         * > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
          */
         ssoStatus?: pulumi.Input<string>;
     }
@@ -8247,14 +8245,18 @@ export namespace oss {
         noncurrentVersionExpirations?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleNoncurrentVersionExpiration>[]>;
         /**
          * Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
-         *
-         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
          */
         noncurrentVersionTransitions?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleNoncurrentVersionTransition>[]>;
         /**
          * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
          */
         prefix?: pulumi.Input<string>;
+        /**
+         * Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+         *
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
+         */
+        tags?: pulumi.Input<{[key: string]: any}>;
         /**
          * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
          */
@@ -8323,7 +8325,7 @@ export namespace oss {
          */
         returnToStdWhenVisit?: pulumi.Input<boolean>;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
          */
         storageClass: pulumi.Input<string>;
     }
@@ -8349,7 +8351,7 @@ export namespace oss {
          */
         returnToStdWhenVisit?: pulumi.Input<boolean>;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
          */
         storageClass: pulumi.Input<string>;
     }

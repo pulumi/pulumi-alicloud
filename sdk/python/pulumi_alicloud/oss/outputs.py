@@ -188,6 +188,7 @@ class BucketLifecycleRule(dict):
                  noncurrent_version_expirations: Optional[Sequence['outputs.BucketLifecycleRuleNoncurrentVersionExpiration']] = None,
                  noncurrent_version_transitions: Optional[Sequence['outputs.BucketLifecycleRuleNoncurrentVersionTransition']] = None,
                  prefix: Optional[str] = None,
+                 tags: Optional[Mapping[str, Any]] = None,
                  transitions: Optional[Sequence['outputs.BucketLifecycleRuleTransition']] = None):
         """
         :param bool enabled: Specifies lifecycle rule status.
@@ -196,9 +197,10 @@ class BucketLifecycleRule(dict):
         :param str id: Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
         :param Sequence['BucketLifecycleRuleNoncurrentVersionExpirationArgs'] noncurrent_version_expirations: Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
         :param Sequence['BucketLifecycleRuleNoncurrentVersionTransitionArgs'] noncurrent_version_transitions: Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
+        :param str prefix: Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+        :param Mapping[str, Any] tags: Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
                
                `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
-        :param str prefix: Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
         :param Sequence['BucketLifecycleRuleTransitionArgs'] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -214,6 +216,8 @@ class BucketLifecycleRule(dict):
             pulumi.set(__self__, "noncurrent_version_transitions", noncurrent_version_transitions)
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if transitions is not None:
             pulumi.set(__self__, "transitions", transitions)
 
@@ -262,8 +266,6 @@ class BucketLifecycleRule(dict):
     def noncurrent_version_transitions(self) -> Optional[Sequence['outputs.BucketLifecycleRuleNoncurrentVersionTransition']]:
         """
         Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
-
-        `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         """
         return pulumi.get(self, "noncurrent_version_transitions")
 
@@ -274,6 +276,16 @@ class BucketLifecycleRule(dict):
         Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
         """
         return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+
+        `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
@@ -472,7 +484,7 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
         :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
                
                `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
-        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param bool is_access_time: Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
         :param bool return_to_std_when_visit: Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
                `NOTE`: One and only one of "created_before_date" and "days" can be specified in one transition configuration.
@@ -498,7 +510,7 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
         """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         """
         return pulumi.get(self, "storage_class")
 
@@ -552,7 +564,7 @@ class BucketLifecycleRuleTransition(dict):
                  is_access_time: Optional[bool] = None,
                  return_to_std_when_visit: Optional[bool] = None):
         """
-        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
                
@@ -575,7 +587,7 @@ class BucketLifecycleRuleTransition(dict):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
         """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         """
         return pulumi.get(self, "storage_class")
 

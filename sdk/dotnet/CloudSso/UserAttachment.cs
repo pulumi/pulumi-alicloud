@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CloudSso
     /// <summary>
     /// Provides a Cloud SSO User Attachment resource.
     /// 
-    /// For information about Cloud SSO User Attachment and how to use it, see [What is User Attachment](https://www.alibabacloud.com/help/en/doc-detail/264683.htm).
+    /// For information about Cloud SSO User Attachment and how to use it, see [What is User Attachment](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-addusertogroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.141.0+.
+    /// &gt; **NOTE:** Available since v1.141.0.
     /// 
     /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
     /// 

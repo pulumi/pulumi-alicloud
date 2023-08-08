@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,6 +48,21 @@ public final class AutoscalingConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+     * 
+     */
+    @Import(name="daemonsetEvictionForNodes")
+    private @Nullable Output<Boolean> daemonsetEvictionForNodes;
+
+    /**
+     * @return If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> daemonsetEvictionForNodes() {
+        return Optional.ofNullable(this.daemonsetEvictionForNodes);
+    }
+
+    /**
      * The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
      * 
      */
@@ -77,6 +93,51 @@ public final class AutoscalingConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+     * 
+     */
+    @Import(name="maxGracefulTerminationSec")
+    private @Nullable Output<Integer> maxGracefulTerminationSec;
+
+    /**
+     * @return Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+     * 
+     */
+    public Optional<Output<Integer>> maxGracefulTerminationSec() {
+        return Optional.ofNullable(this.maxGracefulTerminationSec);
+    }
+
+    /**
+     * Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+     * 
+     */
+    @Import(name="minReplicaCount")
+    private @Nullable Output<Integer> minReplicaCount;
+
+    /**
+     * @return Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+     * 
+     */
+    public Optional<Output<Integer>> minReplicaCount() {
+        return Optional.ofNullable(this.minReplicaCount);
+    }
+
+    /**
+     * Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+     * 
+     */
+    @Import(name="recycleNodeDeletionEnabled")
+    private @Nullable Output<Boolean> recycleNodeDeletionEnabled;
+
+    /**
+     * @return Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> recycleNodeDeletionEnabled() {
+        return Optional.ofNullable(this.recycleNodeDeletionEnabled);
+    }
+
+    /**
      * Specify whether to allow the scale-in of nodes. Default is `true`.
      * 
      */
@@ -92,6 +153,21 @@ public final class AutoscalingConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Should CA scale up when there 0 ready nodes. Default is `true`.
+     * 
+     */
+    @Import(name="scaleUpFromZero")
+    private @Nullable Output<Boolean> scaleUpFromZero;
+
+    /**
+     * @return Should CA scale up when there 0 ready nodes. Default is `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> scaleUpFromZero() {
+        return Optional.ofNullable(this.scaleUpFromZero);
+    }
+
+    /**
      * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      * 
      */
@@ -104,6 +180,36 @@ public final class AutoscalingConfigArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> scanInterval() {
         return Optional.ofNullable(this.scanInterval);
+    }
+
+    /**
+     * If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+     * 
+     */
+    @Import(name="skipNodesWithLocalStorage")
+    private @Nullable Output<Boolean> skipNodesWithLocalStorage;
+
+    /**
+     * @return If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> skipNodesWithLocalStorage() {
+        return Optional.ofNullable(this.skipNodesWithLocalStorage);
+    }
+
+    /**
+     * If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+     * 
+     */
+    @Import(name="skipNodesWithSystemPods")
+    private @Nullable Output<Boolean> skipNodesWithSystemPods;
+
+    /**
+     * @return If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> skipNodesWithSystemPods() {
+        return Optional.ofNullable(this.skipNodesWithSystemPods);
     }
 
     /**
@@ -141,10 +247,17 @@ public final class AutoscalingConfigArgs extends com.pulumi.resources.ResourceAr
     private AutoscalingConfigArgs(AutoscalingConfigArgs $) {
         this.clusterId = $.clusterId;
         this.coolDownDuration = $.coolDownDuration;
+        this.daemonsetEvictionForNodes = $.daemonsetEvictionForNodes;
         this.expander = $.expander;
         this.gpuUtilizationThreshold = $.gpuUtilizationThreshold;
+        this.maxGracefulTerminationSec = $.maxGracefulTerminationSec;
+        this.minReplicaCount = $.minReplicaCount;
+        this.recycleNodeDeletionEnabled = $.recycleNodeDeletionEnabled;
         this.scaleDownEnabled = $.scaleDownEnabled;
+        this.scaleUpFromZero = $.scaleUpFromZero;
         this.scanInterval = $.scanInterval;
+        this.skipNodesWithLocalStorage = $.skipNodesWithLocalStorage;
+        this.skipNodesWithSystemPods = $.skipNodesWithSystemPods;
         this.unneededDuration = $.unneededDuration;
         this.utilizationThreshold = $.utilizationThreshold;
     }
@@ -210,6 +323,27 @@ public final class AutoscalingConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param daemonsetEvictionForNodes If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder daemonsetEvictionForNodes(@Nullable Output<Boolean> daemonsetEvictionForNodes) {
+            $.daemonsetEvictionForNodes = daemonsetEvictionForNodes;
+            return this;
+        }
+
+        /**
+         * @param daemonsetEvictionForNodes If true DaemonSet pods will be  terminated from nodes. Default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder daemonsetEvictionForNodes(Boolean daemonsetEvictionForNodes) {
+            return daemonsetEvictionForNodes(Output.of(daemonsetEvictionForNodes));
+        }
+
+        /**
          * @param expander The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
          * 
          * @return builder
@@ -252,6 +386,69 @@ public final class AutoscalingConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param maxGracefulTerminationSec Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxGracefulTerminationSec(@Nullable Output<Integer> maxGracefulTerminationSec) {
+            $.maxGracefulTerminationSec = maxGracefulTerminationSec;
+            return this;
+        }
+
+        /**
+         * @param maxGracefulTerminationSec Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxGracefulTerminationSec(Integer maxGracefulTerminationSec) {
+            return maxGracefulTerminationSec(Output.of(maxGracefulTerminationSec));
+        }
+
+        /**
+         * @param minReplicaCount Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minReplicaCount(@Nullable Output<Integer> minReplicaCount) {
+            $.minReplicaCount = minReplicaCount;
+            return this;
+        }
+
+        /**
+         * @param minReplicaCount Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minReplicaCount(Integer minReplicaCount) {
+            return minReplicaCount(Output.of(minReplicaCount));
+        }
+
+        /**
+         * @param recycleNodeDeletionEnabled Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recycleNodeDeletionEnabled(@Nullable Output<Boolean> recycleNodeDeletionEnabled) {
+            $.recycleNodeDeletionEnabled = recycleNodeDeletionEnabled;
+            return this;
+        }
+
+        /**
+         * @param recycleNodeDeletionEnabled Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recycleNodeDeletionEnabled(Boolean recycleNodeDeletionEnabled) {
+            return recycleNodeDeletionEnabled(Output.of(recycleNodeDeletionEnabled));
+        }
+
+        /**
          * @param scaleDownEnabled Specify whether to allow the scale-in of nodes. Default is `true`.
          * 
          * @return builder
@@ -273,6 +470,27 @@ public final class AutoscalingConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param scaleUpFromZero Should CA scale up when there 0 ready nodes. Default is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleUpFromZero(@Nullable Output<Boolean> scaleUpFromZero) {
+            $.scaleUpFromZero = scaleUpFromZero;
+            return this;
+        }
+
+        /**
+         * @param scaleUpFromZero Should CA scale up when there 0 ready nodes. Default is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleUpFromZero(Boolean scaleUpFromZero) {
+            return scaleUpFromZero(Output.of(scaleUpFromZero));
+        }
+
+        /**
          * @param scanInterval The interval at which the cluster is reevaluated for scaling. Default is `30s`.
          * 
          * @return builder
@@ -291,6 +509,48 @@ public final class AutoscalingConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder scanInterval(String scanInterval) {
             return scanInterval(Output.of(scanInterval));
+        }
+
+        /**
+         * @param skipNodesWithLocalStorage If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipNodesWithLocalStorage(@Nullable Output<Boolean> skipNodesWithLocalStorage) {
+            $.skipNodesWithLocalStorage = skipNodesWithLocalStorage;
+            return this;
+        }
+
+        /**
+         * @param skipNodesWithLocalStorage If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipNodesWithLocalStorage(Boolean skipNodesWithLocalStorage) {
+            return skipNodesWithLocalStorage(Output.of(skipNodesWithLocalStorage));
+        }
+
+        /**
+         * @param skipNodesWithSystemPods If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipNodesWithSystemPods(@Nullable Output<Boolean> skipNodesWithSystemPods) {
+            $.skipNodesWithSystemPods = skipNodesWithSystemPods;
+            return this;
+        }
+
+        /**
+         * @param skipNodesWithSystemPods If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipNodesWithSystemPods(Boolean skipNodesWithSystemPods) {
+            return skipNodesWithSystemPods(Output.of(skipNodesWithSystemPods));
         }
 
         /**

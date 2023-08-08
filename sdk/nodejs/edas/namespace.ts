@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about EDAS Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/insertorupdateregion).
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.edas.Namespace("example", {
- *     namespaceLogicalId: "example_value",
- *     namespaceName: "example_value",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultNamespace = new alicloud.edas.Namespace("defaultNamespace", {
+ *     debugEnable: false,
+ *     description: name,
+ *     namespaceLogicalId: defaultRegions.then(defaultRegions => `${defaultRegions.regions?.[0]?.id}:example`),
+ *     namespaceName: name,
  * });
  * ```
  *

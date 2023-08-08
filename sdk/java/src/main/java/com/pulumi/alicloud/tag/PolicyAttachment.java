@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * For information about Tag Policy Attachment and how to use it,
  * see [What is Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/attach-policy).
  * 
- * &gt; **NOTE:** Available in v1.204.0+.
+ * &gt; **NOTE:** Available since v1.204.0.
  * 
  * ## Example Usage
  * 
@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var examplePolicy = new Policy(&#34;examplePolicy&#34;, PolicyArgs.builder()        
- *             .policyName(&#34;testName&#34;)
- *             .policyDesc(&#34;testDesc&#34;)
+ *             .policyName(&#34;tName&#34;)
+ *             .policyDesc(&#34;tDesc&#34;)
  *             .userType(&#34;USER&#34;)
  *             .policyDocument(&#34;&#34;&#34;
  * 		{&#34;tags&#34;:{&#34;CostCenter&#34;:{&#34;tag_value&#34;:{&#34;@@assign&#34;:[&#34;Beijing&#34;,&#34;Shanghai&#34;]},&#34;tag_key&#34;:{&#34;@@assign&#34;:&#34;CostCenter&#34;}}}}

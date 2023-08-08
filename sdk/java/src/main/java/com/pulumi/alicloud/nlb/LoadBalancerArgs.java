@@ -224,14 +224,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
      * 
      */
     @Import(name="zoneMappings", required=true)
     private Output<List<LoadBalancerZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+     * @return Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
      * 
      */
     public Output<List<LoadBalancerZoneMappingArgs>> zoneMappings() {
@@ -557,7 +557,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zone_mappings`.
+         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
          * 
          * @return builder
          * 

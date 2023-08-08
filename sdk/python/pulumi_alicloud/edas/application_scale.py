@@ -179,9 +179,9 @@ class ApplicationScale(pulumi.CustomResource):
                  force_status: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This operation is provided to scale out an EDAS application.
+        This operation is provided to scale out an EDAS application, see [What is EDAS Application Scale](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-scaleoutapplication).
 
-        > **NOTE:** Available since v1.82.0
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -191,11 +191,58 @@ class ApplicationScale(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.edas.ApplicationScale("default",
-            app_id=var["app_id"],
-            deploy_group=var["deploy_group"],
-            ecu_infos=var["ecu_info"],
-            force_status=var["force_status"])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            internet_max_bandwidth_out=10,
+            internet_charge_type="PayByTraffic",
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
+            cluster_id=default_cluster.id,
+            instance_ids=[default_instance.id])
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="WAR")
+        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+            app_id=default_application.id,
+            group_name=name)
+        default_deploy_groups = alicloud.edas.get_deploy_groups_output(app_id=default_deploy_group.app_id)
+        default_application_scale = alicloud.edas.ApplicationScale("defaultApplicationScale",
+            app_id=default_application.id,
+            deploy_group=default_deploy_groups.groups[0].group_id,
+            ecu_infos=[pulumi.Output.all(default_instance_cluster_attachment.ecu_map, default_instance.id).apply(lambda ecu_map, id: ecu_map[id])])
         ```
 
         :param str resource_name: The name of the resource.
@@ -212,9 +259,9 @@ class ApplicationScale(pulumi.CustomResource):
                  args: ApplicationScaleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This operation is provided to scale out an EDAS application.
+        This operation is provided to scale out an EDAS application, see [What is EDAS Application Scale](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-scaleoutapplication).
 
-        > **NOTE:** Available since v1.82.0
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -224,11 +271,58 @@ class ApplicationScale(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.edas.ApplicationScale("default",
-            app_id=var["app_id"],
-            deploy_group=var["deploy_group"],
-            ecu_infos=var["ecu_info"],
-            force_status=var["force_status"])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            internet_max_bandwidth_out=10,
+            internet_charge_type="PayByTraffic",
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
+            cluster_id=default_cluster.id,
+            instance_ids=[default_instance.id])
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="WAR")
+        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+            app_id=default_application.id,
+            group_name=name)
+        default_deploy_groups = alicloud.edas.get_deploy_groups_output(app_id=default_deploy_group.app_id)
+        default_application_scale = alicloud.edas.ApplicationScale("defaultApplicationScale",
+            app_id=default_application.id,
+            deploy_group=default_deploy_groups.groups[0].group_id,
+            ecu_infos=[pulumi.Output.all(default_instance_cluster_attachment.ecu_map, default_instance.id).apply(lambda ecu_map, id: ecu_map[id])])
         ```
 
         :param str resource_name: The name of the resource.

@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Express Connect Virtual Physical Connection and how to use it, see [What is Virtual Physical Connection](https://www.alibabacloud.com/help/en/express-connect/latest/createvirtualphysicalconnection#doc-api-Vpc-CreateVirtualPhysicalConnection).
  * 
- * &gt; **NOTE:** Available in v1.196.0+.
+ * &gt; **NOTE:** Available since v1.196.0.
  * 
  * ## Example Usage
  * 
@@ -34,6 +34,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.expressconnect.VirtualPhysicalConnection;
  * import com.pulumi.alicloud.expressconnect.VirtualPhysicalConnectionArgs;
  * import java.util.List;
@@ -49,18 +52,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var examplePhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex(&#34;^preserved-NODELETING&#34;)
  *             .build());
  * 
- *         var defaultVirtualPhysicalConnection = new VirtualPhysicalConnection(&#34;defaultVirtualPhysicalConnection&#34;, VirtualPhysicalConnectionArgs.builder()        
- *             .virtualPhysicalConnectionName(&#34;amp_resource_test&#34;)
- *             .description(&#34;amp_resource_test&#34;)
+ *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
+ *             .max(2999)
+ *             .min(1)
+ *             .build());
+ * 
+ *         final var default = AlicloudFunctions.getAccount();
+ * 
+ *         var exampleVirtualPhysicalConnection = new VirtualPhysicalConnection(&#34;exampleVirtualPhysicalConnection&#34;, VirtualPhysicalConnectionArgs.builder()        
+ *             .virtualPhysicalConnectionName(name)
+ *             .description(name)
  *             .orderMode(&#34;PayByPhysicalConnectionOwner&#34;)
- *             .parentPhysicalConnectionId(defaultPhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.ids()[0]))
+ *             .parentPhysicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.ids()[0]))
  *             .spec(&#34;50M&#34;)
- *             .vlanId(789)
- *             .vpconnAliUid(1234567890)
+ *             .vlanId(vlanId.id())
+ *             .vpconnAliUid(default_.id())
  *             .build());
  * 
  *     }

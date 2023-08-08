@@ -10,6 +10,11 @@ export const getMetaTags: typeof import("./getMetaTags").getMetaTags = null as a
 export const getMetaTagsOutput: typeof import("./getMetaTags").getMetaTagsOutput = null as any;
 utilities.lazyLoad(exports, ["getMetaTags","getMetaTagsOutput"], () => require("./getMetaTags"));
 
+export { MetaTagArgs, MetaTagState } from "./metaTag";
+export type MetaTag = import("./metaTag").MetaTag;
+export const MetaTag: typeof import("./metaTag").MetaTag = null as any;
+utilities.lazyLoad(exports, ["MetaTag"], () => require("./metaTag"));
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
@@ -25,6 +30,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:tag/metaTag:MetaTag":
+                return new MetaTag(name, <any>undefined, { urn })
             case "alicloud:tag/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "alicloud:tag/policyAttachment:PolicyAttachment":
@@ -34,5 +41,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "tag/metaTag", _module)
 pulumi.runtime.registerResourceModule("alicloud", "tag/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "tag/policyAttachment", _module)

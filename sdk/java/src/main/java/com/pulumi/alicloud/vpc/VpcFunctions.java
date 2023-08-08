@@ -16,6 +16,8 @@ import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
 import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
+import com.pulumi.alicloud.vpc.inputs.GetFlowLogServicePlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
@@ -84,6 +86,7 @@ import com.pulumi.alicloud.vpc.outputs.GetBgpPeersResult;
 import com.pulumi.alicloud.vpc.outputs.GetCommonBandwidthPackagesResult;
 import com.pulumi.alicloud.vpc.outputs.GetDhcpOptionsSetsResult;
 import com.pulumi.alicloud.vpc.outputs.GetEnhancedNatAvailableZonesResult;
+import com.pulumi.alicloud.vpc.outputs.GetFlowLogServiceResult;
 import com.pulumi.alicloud.vpc.outputs.GetForwardEntriesResult;
 import com.pulumi.alicloud.vpc.outputs.GetHavipsResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpsecServersResult;
@@ -1795,6 +1798,264 @@ public final class VpcFunctions {
     }
     public static CompletableFuture<GetEnhancedNatAvailableZonesResult> getEnhancedNatAvailableZonesPlain(GetEnhancedNatAvailableZonesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", TypeShape.of(GetEnhancedNatAvailableZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Vpc Flow Log service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetFlowLogServiceResult> getFlowLogService() {
+        return getFlowLogService(GetFlowLogServiceArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open Vpc Flow Log service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetFlowLogServiceResult> getFlowLogServicePlain() {
+        return getFlowLogServicePlain(GetFlowLogServicePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open Vpc Flow Log service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetFlowLogServiceResult> getFlowLogService(GetFlowLogServiceArgs args) {
+        return getFlowLogService(args, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open Vpc Flow Log service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetFlowLogServiceResult> getFlowLogServicePlain(GetFlowLogServicePlainArgs args) {
+        return getFlowLogServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open Vpc Flow Log service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetFlowLogServiceResult> getFlowLogService(GetFlowLogServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getFlowLogService:getFlowLogService", TypeShape.of(GetFlowLogServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Vpc Flow Log service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetFlowLogServiceResult> getFlowLogServicePlain(GetFlowLogServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getFlowLogService:getFlowLogService", TypeShape.of(GetFlowLogServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
@@ -9975,11 +10236,13 @@ public final class VpcFunctions {
     /**
      * Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/doc-detail/207513.htm).
+     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
      * 
-     * &gt; **NOTE:** Available in v1.141.0+
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -10016,11 +10279,13 @@ public final class VpcFunctions {
     /**
      * Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/doc-detail/207513.htm).
+     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
      * 
-     * &gt; **NOTE:** Available in v1.141.0+
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -10057,11 +10322,13 @@ public final class VpcFunctions {
     /**
      * Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/doc-detail/207513.htm).
+     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
      * 
-     * &gt; **NOTE:** Available in v1.141.0+
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -10098,11 +10365,13 @@ public final class VpcFunctions {
     /**
      * Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/doc-detail/207513.htm).
+     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
      * 
-     * &gt; **NOTE:** Available in v1.141.0+
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -10139,11 +10408,13 @@ public final class VpcFunctions {
     /**
      * Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/doc-detail/207513.htm).
+     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
      * 
-     * &gt; **NOTE:** Available in v1.141.0+
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -10180,11 +10451,13 @@ public final class VpcFunctions {
     /**
      * Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/doc-detail/207513.htm).
+     * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
      * 
-     * &gt; **NOTE:** Available in v1.141.0+
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 

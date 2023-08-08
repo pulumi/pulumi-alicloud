@@ -13,11 +13,13 @@ import (
 
 // Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
 //
-// For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/doc-detail/207513.htm).
+// For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
 //
-// > **NOTE:** Available in v1.141.0+
+// > **NOTE:** Available since v1.141.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -54,9 +56,9 @@ func GetTrafficMirrorService(ctx *pulumi.Context, args *GetTrafficMirrorServiceA
 
 // A collection of arguments for invoking getTrafficMirrorService.
 type GetTrafficMirrorServiceArgs struct {
-	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
 	//
-	// > **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/document_detail/325573.html). The service can not closed once it is opened.
+	// > **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/zh/vpc/support/vpc-terms-of-service). The service can not closed once it is opened.
 	Enable *string `pulumi:"enable"`
 }
 
@@ -84,9 +86,9 @@ func GetTrafficMirrorServiceOutput(ctx *pulumi.Context, args GetTrafficMirrorSer
 
 // A collection of arguments for invoking getTrafficMirrorService.
 type GetTrafficMirrorServiceOutputArgs struct {
-	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
 	//
-	// > **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/document_detail/325573.html). The service can not closed once it is opened.
+	// > **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/zh/vpc/support/vpc-terms-of-service). The service can not closed once it is opened.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 }
 

@@ -84,14 +84,14 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Policy List. See the following `Block permission_policies`.
+     * The Policy List. See `permission_policies` below.
      * 
      */
     @Import(name="permissionPolicies")
     private @Nullable Output<List<AccessConfigurationPermissionPolicyArgs>> permissionPolicies;
 
     /**
-     * @return The Policy List. See the following `Block permission_policies`.
+     * @return The Policy List. See `permission_policies` below.
      * 
      */
     public Optional<Output<List<AccessConfigurationPermissionPolicyArgs>>> permissionPolicies() {
@@ -247,7 +247,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param permissionPolicies The Policy List. See the following `Block permission_policies`.
+         * @param permissionPolicies The Policy List. See `permission_policies` below.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param permissionPolicies The Policy List. See the following `Block permission_policies`.
+         * @param permissionPolicies The Policy List. See `permission_policies` below.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param permissionPolicies The Policy List. See the following `Block permission_policies`.
+         * @param permissionPolicies The Policy List. See `permission_policies` below.
          * 
          * @return builder
          * 

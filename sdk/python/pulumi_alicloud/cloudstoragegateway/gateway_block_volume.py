@@ -558,9 +558,9 @@ class GatewayBlockVolume(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway Block Volume resource.
 
-        For information about Cloud Storage Gateway Gateway Block Volume and how to use it, see [What is Gateway Block Volume](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Gateway Block Volume and how to use it, see [What is Gateway Block Volume](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewayblockvolume).
 
-        > **NOTE:** Available in v1.144.0+.
+        > **NOTE:** Available since v1.144.0.
 
         ## Import
 
@@ -597,9 +597,9 @@ class GatewayBlockVolume(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway Block Volume resource.
 
-        For information about Cloud Storage Gateway Gateway Block Volume and how to use it, see [What is Gateway Block Volume](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Gateway Block Volume and how to use it, see [What is Gateway Block Volume](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewayblockvolume).
 
-        > **NOTE:** Available in v1.144.0+.
+        > **NOTE:** Available since v1.144.0.
 
         ## Import
 

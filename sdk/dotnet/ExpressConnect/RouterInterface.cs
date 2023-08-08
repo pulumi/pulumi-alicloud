@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// For information about Express Connect Router Interface and how to use it, see What is Router Interface.
     /// 
-    /// &gt; **NOTE:** Available in v1.199.0+.
+    /// &gt; **NOTE:** Available since v1.199.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,21 +28,28 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = @var.Name,
-    ///         CidrBlock = "10.1.0.0/21",
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
     ///     });
     /// 
     ///     var defaultRouterInterface = new AliCloud.ExpressConnect.RouterInterface("defaultRouterInterface", new()
     ///     {
-    ///         Description = @var.Name,
-    ///         OppositeRegionId = "cn-hangzhou",
+    ///         Description = name,
+    ///         OppositeRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///         RouterId = defaultNetwork.RouterId,
     ///         Role = "InitiatingSide",
     ///         RouterType = "VRouter",
     ///         PaymentType = "PayAsYouGo",
-    ///         RouterInterfaceName = @var.Name,
+    ///         RouterInterfaceName = name,
     ///         Spec = "Mini.2",
     ///     });
     /// 

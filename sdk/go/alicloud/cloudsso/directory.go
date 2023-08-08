@@ -13,39 +13,11 @@ import (
 
 // Provides a Cloud SSO Directory resource.
 //
-// For information about Cloud SSO Directory and how to use it, see [What is Directory](https://www.alibabacloud.com/help/doc-detail/263624.html).
+// For information about Cloud SSO Directory and how to use it, see [What is Directory](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createdirectory).
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudsso.NewDirectory(ctx, "default", &cloudsso.DirectoryArgs{
-//				DirectoryName: pulumi.String("example-value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
@@ -63,7 +35,9 @@ type Directory struct {
 	DirectoryName pulumi.StringPtrOutput `pulumi:"directoryName"`
 	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus pulumi.StringOutput `pulumi:"mfaAuthenticationStatus"`
-	// The saml identity provider configuration.
+	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
+	//
+	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 	SamlIdentityProviderConfiguration DirectorySamlIdentityProviderConfigurationOutput `pulumi:"samlIdentityProviderConfiguration"`
 	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
 	ScimSynchronizationStatus pulumi.StringOutput `pulumi:"scimSynchronizationStatus"`
@@ -103,7 +77,9 @@ type directoryState struct {
 	DirectoryName *string `pulumi:"directoryName"`
 	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus *string `pulumi:"mfaAuthenticationStatus"`
-	// The saml identity provider configuration.
+	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
+	//
+	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 	SamlIdentityProviderConfiguration *DirectorySamlIdentityProviderConfiguration `pulumi:"samlIdentityProviderConfiguration"`
 	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
 	ScimSynchronizationStatus *string `pulumi:"scimSynchronizationStatus"`
@@ -114,7 +90,9 @@ type DirectoryState struct {
 	DirectoryName pulumi.StringPtrInput
 	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus pulumi.StringPtrInput
-	// The saml identity provider configuration.
+	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
+	//
+	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 	SamlIdentityProviderConfiguration DirectorySamlIdentityProviderConfigurationPtrInput
 	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
 	ScimSynchronizationStatus pulumi.StringPtrInput
@@ -129,7 +107,9 @@ type directoryArgs struct {
 	DirectoryName *string `pulumi:"directoryName"`
 	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus *string `pulumi:"mfaAuthenticationStatus"`
-	// The saml identity provider configuration.
+	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
+	//
+	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 	SamlIdentityProviderConfiguration *DirectorySamlIdentityProviderConfiguration `pulumi:"samlIdentityProviderConfiguration"`
 	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
 	ScimSynchronizationStatus *string `pulumi:"scimSynchronizationStatus"`
@@ -141,7 +121,9 @@ type DirectoryArgs struct {
 	DirectoryName pulumi.StringPtrInput
 	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
 	MfaAuthenticationStatus pulumi.StringPtrInput
-	// The saml identity provider configuration.
+	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
+	//
+	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 	SamlIdentityProviderConfiguration DirectorySamlIdentityProviderConfigurationPtrInput
 	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
 	ScimSynchronizationStatus pulumi.StringPtrInput
@@ -244,7 +226,9 @@ func (o DirectoryOutput) MfaAuthenticationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.MfaAuthenticationStatus }).(pulumi.StringOutput)
 }
 
-// The saml identity provider configuration.
+// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
+//
+// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 func (o DirectoryOutput) SamlIdentityProviderConfiguration() DirectorySamlIdentityProviderConfigurationOutput {
 	return o.ApplyT(func(v *Directory) DirectorySamlIdentityProviderConfigurationOutput {
 		return v.SamlIdentityProviderConfiguration

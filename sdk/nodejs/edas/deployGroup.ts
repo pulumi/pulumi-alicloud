@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an EDAS deploy group resource.
+ * Provides an EDAS deploy group resource, see [What is EDAS Deploy Group](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertdeploygroup).
  *
- * > **NOTE:** Available in 1.82.0+
+ * > **NOTE:** Available since v1.82.0.
  *
  * ## Example Usage
  *
@@ -17,9 +17,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.edas.DeployGroup("default", {
- *     appId: _var.app_id,
- *     groupName: _var.group_name,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultCluster = new alicloud.edas.Cluster("defaultCluster", {
+ *     clusterName: name,
+ *     clusterType: 2,
+ *     networkMode: 2,
+ *     logicalRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultApplication = new alicloud.edas.Application("defaultApplication", {
+ *     applicationName: name,
+ *     clusterId: defaultCluster.id,
+ *     packageType: "JAR",
+ * });
+ * const defaultDeployGroup = new alicloud.edas.DeployGroup("defaultDeployGroup", {
+ *     appId: defaultApplication.id,
+ *     groupName: name,
  * });
  * ```
  *

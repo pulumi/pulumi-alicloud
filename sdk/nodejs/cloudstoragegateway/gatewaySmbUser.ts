@@ -7,43 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Storage Gateway Gateway SMB User resource.
  *
- * For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+ * For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaysmbuser).
  *
- * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- * }));
- * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
- * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
- *     description: "tf-acctestDesalone",
- *     gatewayClass: "Standard",
- *     type: "File",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     releaseAfterExpiration: false,
- *     publicNetworkBandwidth: 40,
- *     storageBundleId: example.id,
- *     location: "Cloud",
- *     gatewayName: "example_value",
- * });
- * const defaultGatewaySmbUser = new alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser", {
- *     username: "your_username",
- *     password: "password",
- *     gatewayId: defaultGateway.id,
- * });
- * ```
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Import
  *

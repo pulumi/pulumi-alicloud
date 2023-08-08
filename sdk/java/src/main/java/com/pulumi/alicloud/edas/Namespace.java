@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about EDAS Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/insertorupdateregion).
  * 
- * &gt; **NOTE:** Available in v1.173.0+.
+ * &gt; **NOTE:** Available since v1.173.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.edas.Namespace;
  * import com.pulumi.alicloud.edas.NamespaceArgs;
  * import java.util.List;
@@ -46,9 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
- *             .namespaceLogicalId(&#34;example_value&#34;)
- *             .namespaceName(&#34;example_value&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *             .debugEnable(false)
+ *             .description(name)
+ *             .namespaceLogicalId(String.format(&#34;%s:example&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id())))
+ *             .namespaceName(name)
  *             .build());
  * 
  *     }

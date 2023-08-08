@@ -114,8 +114,6 @@ class DirectorySamlIdentityProviderConfiguration(dict):
         """
         :param str encoded_metadata_document: Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
         :param str sso_status: SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-               
-               > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
         """
         if encoded_metadata_document is not None:
             pulumi.set(__self__, "encoded_metadata_document", encoded_metadata_document)
@@ -135,8 +133,6 @@ class DirectorySamlIdentityProviderConfiguration(dict):
     def sso_status(self) -> Optional[str]:
         """
         SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-
-        > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
         """
         return pulumi.get(self, "sso_status")
 

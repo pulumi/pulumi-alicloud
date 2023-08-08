@@ -9,22 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud SSO Directory resource.
  *
- * For information about Cloud SSO Directory and how to use it, see [What is Directory](https://www.alibabacloud.com/help/doc-detail/263624.html).
+ * For information about Cloud SSO Directory and how to use it, see [What is Directory](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createdirectory).
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.cloudsso.Directory("default", {directoryName: "example-value"});
- * ```
  *
  * ## Import
  *
@@ -71,7 +60,9 @@ export class Directory extends pulumi.CustomResource {
      */
     public readonly mfaAuthenticationStatus!: pulumi.Output<string>;
     /**
-     * The saml identity provider configuration.
+     * The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
+     *
+     * > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
      */
     public readonly samlIdentityProviderConfiguration!: pulumi.Output<outputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
     /**
@@ -121,7 +112,9 @@ export interface DirectoryState {
      */
     mfaAuthenticationStatus?: pulumi.Input<string>;
     /**
-     * The saml identity provider configuration.
+     * The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
+     *
+     * > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
      */
     samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
     /**
@@ -143,7 +136,9 @@ export interface DirectoryArgs {
      */
     mfaAuthenticationStatus?: pulumi.Input<string>;
     /**
-     * The saml identity provider configuration.
+     * The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
+     *
+     * > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
      */
     samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
     /**

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an EDAS cluster resource.
+ * Provides an EDAS cluster resource, see [What is EDAS Cluster](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertcluster).
  *
- * > **NOTE:** Available in 1.82.0+
+ * > **NOTE:** Available since v1.82.0.
  *
  * ## Example Usage
  *
@@ -17,12 +17,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.edas.Cluster("default", {
- *     clusterName: _var.cluster_name,
- *     clusterType: _var.cluster_type,
- *     networkMode: _var.network_mode,
- *     logicalRegionId: _var.logical_region_id,
- *     vpcId: _var.vpc_id,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultCluster = new alicloud.edas.Cluster("defaultCluster", {
+ *     clusterName: name,
+ *     clusterType: 2,
+ *     networkMode: 2,
+ *     logicalRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     vpcId: defaultNetwork.id,
  * });
  * ```
  *

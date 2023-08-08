@@ -12,69 +12,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// <summary>
     /// Provides a Cloud Storage Gateway Gateway Cache Disk resource.
     /// 
-    /// For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/zh/doc-detail/170294.htm).
+    /// For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
     /// 
-    /// &gt; **NOTE:** Available in v1.144.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleStocks = AliCloud.CloudStorageGateway.GetStocks.Invoke(new()
-    ///     {
-    ///         GatewayClass = "Standard",
-    ///     });
-    /// 
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
-    ///     {
-    ///         VpcName = "example_value",
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
-    ///     {
-    ///         VpcId = vpc.Id,
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = exampleStocks.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId),
-    ///         VswitchName = "example_value",
-    ///     });
-    /// 
-    ///     var exampleStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("exampleStorageBundle", new()
-    ///     {
-    ///         StorageBundleName = "example_value",
-    ///     });
-    /// 
-    ///     var exampleGateway = new AliCloud.CloudStorageGateway.Gateway("exampleGateway", new()
-    ///     {
-    ///         Description = "tf-acctestDesalone",
-    ///         GatewayClass = "Standard",
-    ///         Type = "File",
-    ///         PaymentType = "PayAsYouGo",
-    ///         VswitchId = exampleSwitch.Id,
-    ///         ReleaseAfterExpiration = true,
-    ///         PublicNetworkBandwidth = 10,
-    ///         StorageBundleId = exampleStorageBundle.Id,
-    ///         Location = "Cloud",
-    ///         GatewayName = "example_value",
-    ///     });
-    /// 
-    ///     var exampleGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("exampleGatewayCacheDisk", new()
-    ///     {
-    ///         CacheDiskCategory = "cloud_efficiency",
-    ///         GatewayId = alicloud_cloud_storage_gateway_gateways.Example.Id,
-    ///         CacheDiskSizeInGb = 50,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.144.0.
     /// 
     /// ## Import
     /// 

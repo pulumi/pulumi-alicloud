@@ -18,6 +18,7 @@ from .get_remote_writes import *
 from .integration_exporter import *
 from .prometheus import *
 from .prometheus_alert_rule import *
+from .prometheus_monitoring import *
 from .remote_write import *
 from ._inputs import *
 from . import outputs

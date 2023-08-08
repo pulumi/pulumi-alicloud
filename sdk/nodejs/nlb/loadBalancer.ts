@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about NLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer).
  *
- * > **NOTE:** Available in v1.191.0+.
+ * > **NOTE:** Available since v1.191.0.
  *
  * ## Example Usage
  *
@@ -113,7 +113,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
      */
-    public readonly bandwidthPackageId!: pulumi.Output<string | undefined>;
+    public readonly bandwidthPackageId!: pulumi.Output<string>;
     /**
      * The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
      */
@@ -175,7 +175,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zoneMappings`.
+     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
      */
     public readonly zoneMappings!: pulumi.Output<outputs.nlb.LoadBalancerZoneMapping[]>;
 
@@ -328,7 +328,7 @@ export interface LoadBalancerState {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zoneMappings`.
+     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
      */
     zoneMappings?: pulumi.Input<pulumi.Input<inputs.nlb.LoadBalancerZoneMapping>[]>;
 }
@@ -394,7 +394,7 @@ export interface LoadBalancerArgs {
      */
     vpcId: pulumi.Input<string>;
     /**
-     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See the following `Block zoneMappings`.
+     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
      */
     zoneMappings: pulumi.Input<pulumi.Input<inputs.nlb.LoadBalancerZoneMapping>[]>;
 }

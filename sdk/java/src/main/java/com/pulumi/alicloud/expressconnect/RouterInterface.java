@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Express Connect Router Interface and how to use it, see What is Router Interface.
  * 
- * &gt; **NOTE:** Available in v1.199.0+.
+ * &gt; **NOTE:** Available since v1.199.0.
  * 
  * ## Example Usage
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.expressconnect.RouterInterface;
  * import com.pulumi.alicloud.expressconnect.RouterInterfaceArgs;
  * import java.util.List;
@@ -49,19 +51,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(var_.name())
- *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
  *         var defaultRouterInterface = new RouterInterface(&#34;defaultRouterInterface&#34;, RouterInterfaceArgs.builder()        
- *             .description(var_.name())
- *             .oppositeRegionId(&#34;cn-hangzhou&#34;)
+ *             .description(name)
+ *             .oppositeRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .routerId(defaultNetwork.routerId())
  *             .role(&#34;InitiatingSide&#34;)
  *             .routerType(&#34;VRouter&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .routerInterfaceName(var_.name())
+ *             .routerInterfaceName(name)
  *             .spec(&#34;Mini.2&#34;)
  *             .build());
  * 

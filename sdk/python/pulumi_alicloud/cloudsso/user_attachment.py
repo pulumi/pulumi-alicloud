@@ -132,9 +132,9 @@ class UserAttachment(pulumi.CustomResource):
         """
         Provides a Cloud SSO User Attachment resource.
 
-        For information about Cloud SSO User Attachment and how to use it, see [What is User Attachment](https://www.alibabacloud.com/help/en/doc-detail/264683.htm).
+        For information about Cloud SSO User Attachment and how to use it, see [What is User Attachment](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-addusertogroup).
 
-        > **NOTE:** Available in v1.141.0+.
+        > **NOTE:** Available since v1.141.0.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -161,9 +161,9 @@ class UserAttachment(pulumi.CustomResource):
         """
         Provides a Cloud SSO User Attachment resource.
 
-        For information about Cloud SSO User Attachment and how to use it, see [What is User Attachment](https://www.alibabacloud.com/help/en/doc-detail/264683.htm).
+        For information about Cloud SSO User Attachment and how to use it, see [What is User Attachment](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-addusertogroup).
 
-        > **NOTE:** Available in v1.141.0+.
+        > **NOTE:** Available since v1.141.0.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 

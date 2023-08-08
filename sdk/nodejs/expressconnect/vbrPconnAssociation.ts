@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Express Connect Vbr Pconn Association and how to use it, see [What is Vbr Pconn Association](https://www.alibabacloud.com/help/en/express-connect/latest/associatephysicalconnectiontovirtualborderrouter#doc-api-Vpc-AssociatePhysicalConnectionToVirtualBorderRouter).
  *
- * > **NOTE:** Available in v1.196.0+.
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
  *
@@ -18,29 +18,43 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const nameRegex = alicloud.expressconnect.getPhysicalConnections({
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter", {
+ * const vlanId = new random.RandomInteger("vlanId", {
+ *     max: 2999,
+ *     min: 1,
+ * });
+ * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id),
- *     virtualBorderRouterName: _var.name,
- *     vlanId: 100,
+ *     physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections?.[0]?.id),
+ *     virtualBorderRouterName: name,
+ *     vlanId: vlanId.id,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
+ *     enableIpv6: true,
+ *     localIpv6GatewayIp: "2408:4004:cc:400::1",
+ *     peerIpv6GatewayIp: "2408:4004:cc:400::2",
+ *     peeringIpv6SubnetMask: "2408:4004:cc:400::/56",
  * });
- * const defaultVbrPconnAssociation = new alicloud.expressconnect.VbrPconnAssociation("defaultVbrPconnAssociation", {
+ * const exampleVbrPconnAssociation = new alicloud.expressconnect.VbrPconnAssociation("exampleVbrPconnAssociation", {
  *     peerGatewayIp: "10.0.0.6",
  *     localGatewayIp: "10.0.0.5",
- *     physicalConnectionId: nameRegex.then(nameRegex => nameRegex.connections?.[1]?.id),
- *     vbrId: defaultVirtualBorderRouter.id,
+ *     physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections?.[2]?.id),
+ *     vbrId: exampleVirtualBorderRouter.id,
  *     peeringSubnetMask: "255.255.255.252",
- *     vlanId: 1122,
- *     enableIpv6: false,
+ *     vlanId: vlanId.id.apply(id => id + 2),
+ *     enableIpv6: true,
+ *     localIpv6GatewayIp: "2408:4004:cc::3",
+ *     peerIpv6GatewayIp: "2408:4004:cc::4",
+ *     peeringIpv6SubnetMask: "2408:4004:cc::/56",
  * });
  * ```
  *

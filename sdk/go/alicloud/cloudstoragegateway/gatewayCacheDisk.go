@@ -14,83 +14,9 @@ import (
 
 // Provides a Cloud Storage Gateway Gateway Cache Disk resource.
 //
-// For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/zh/doc-detail/170294.htm).
+// For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
 //
-// > **NOTE:** Available in v1.144.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleStocks, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
-//				GatewayClass: pulumi.StringRef("Standard"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("example_value"),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-//				VpcId:       vpc.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      *pulumi.String(exampleStocks.Stocks[0].ZoneId),
-//				VswitchName: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleStorageBundle, err := cloudstoragegateway.NewStorageBundle(ctx, "exampleStorageBundle", &cloudstoragegateway.StorageBundleArgs{
-//				StorageBundleName: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudstoragegateway.NewGateway(ctx, "exampleGateway", &cloudstoragegateway.GatewayArgs{
-//				Description:            pulumi.String("tf-acctestDesalone"),
-//				GatewayClass:           pulumi.String("Standard"),
-//				Type:                   pulumi.String("File"),
-//				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              exampleSwitch.ID(),
-//				ReleaseAfterExpiration: pulumi.Bool(true),
-//				PublicNetworkBandwidth: pulumi.Int(10),
-//				StorageBundleId:        exampleStorageBundle.ID(),
-//				Location:               pulumi.String("Cloud"),
-//				GatewayName:            pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudstoragegateway.NewGatewayCacheDisk(ctx, "exampleGatewayCacheDisk", &cloudstoragegateway.GatewayCacheDiskArgs{
-//				CacheDiskCategory: pulumi.String("cloud_efficiency"),
-//				GatewayId:         pulumi.Any(alicloud_cloud_storage_gateway_gateways.Example.Id),
-//				CacheDiskSizeInGb: pulumi.Int(50),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.144.0.
 //
 // ## Import
 //

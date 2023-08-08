@@ -62,14 +62,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * This parameter is used for resource destroy. Default value: `false`.
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return This parameter is used for resource destroy. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -199,7 +199,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param force This parameter is used for resource destroy. Default value: `false`.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param force This parameter is used for resource destroy. Default value: `false`.
          * 
          * @return builder
          * 

@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * For information about Tag Policy and how to use it,
  * see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
  *
- * > **NOTE:** Available in v1.203.0+.
+ * > **NOTE:** Available since v1.203.0.
  *
  * ## Import
  *

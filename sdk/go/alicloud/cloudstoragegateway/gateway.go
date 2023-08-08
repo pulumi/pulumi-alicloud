@@ -14,76 +14,9 @@ import (
 
 // Provides a Cloud Storage Gateway: Gateway resource.
 //
-// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
 //
-// > **NOTE:** Available in v1.132.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf_test_foo"),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       vpc.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String("tf-testAccCsgName"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			example, err := cloudstoragegateway.NewStorageBundle(ctx, "example", &cloudstoragegateway.StorageBundleArgs{
-//				StorageBundleName: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
-//				Description:            pulumi.String("tf-acctestDesalone"),
-//				GatewayClass:           pulumi.String("Standard"),
-//				Type:                   pulumi.String("File"),
-//				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              defaultSwitch.ID(),
-//				ReleaseAfterExpiration: pulumi.Bool(false),
-//				PublicNetworkBandwidth: pulumi.Int(40),
-//				StorageBundleId:        example.ID(),
-//				Location:               pulumi.String("Cloud"),
-//				GatewayName:            pulumi.String("tf-acctestGatewayName"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Import
 //

@@ -132,37 +132,9 @@ class GatewaySmbUser(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway SMB User resource.
 
-        For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaysmbuser).
 
-        > **NOTE:** Available in v1.142.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-        default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switches.ids[0],
-            release_after_expiration=False,
-            public_network_bandwidth=40,
-            storage_bundle_id=example.id,
-            location="Cloud",
-            gateway_name="example_value")
-        default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser",
-            username="your_username",
-            password="password",
-            gateway_id=default_gateway.id)
-        ```
+        > **NOTE:** Available since v1.142.0.
 
         ## Import
 
@@ -187,37 +159,9 @@ class GatewaySmbUser(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway SMB User resource.
 
-        For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/doc-detail/53972.htm).
+        For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaysmbuser).
 
-        > **NOTE:** Available in v1.142.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-        default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switches.ids[0],
-            release_after_expiration=False,
-            public_network_bandwidth=40,
-            storage_bundle_id=example.id,
-            location="Cloud",
-            gateway_name="example_value")
-        default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser",
-            username="your_username",
-            password="password",
-            gateway_id=default_gateway.id)
-        ```
+        > **NOTE:** Available since v1.142.0.
 
         ## Import
 

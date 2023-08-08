@@ -132,8 +132,6 @@ type DirectorySamlIdentityProviderConfiguration struct {
 	// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
 	EncodedMetadataDocument *string `pulumi:"encodedMetadataDocument"`
 	// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-	//
-	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 	SsoStatus *string `pulumi:"ssoStatus"`
 }
 
@@ -152,8 +150,6 @@ type DirectorySamlIdentityProviderConfigurationArgs struct {
 	// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
 	EncodedMetadataDocument pulumi.StringPtrInput `pulumi:"encodedMetadataDocument"`
 	// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-	//
-	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 	SsoStatus pulumi.StringPtrInput `pulumi:"ssoStatus"`
 }
 
@@ -240,8 +236,6 @@ func (o DirectorySamlIdentityProviderConfigurationOutput) EncodedMetadataDocumen
 }
 
 // SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-//
-// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 func (o DirectorySamlIdentityProviderConfigurationOutput) SsoStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.SsoStatus }).(pulumi.StringPtrOutput)
 }
@@ -281,8 +275,6 @@ func (o DirectorySamlIdentityProviderConfigurationPtrOutput) EncodedMetadataDocu
 }
 
 // SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-//
-// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
 func (o DirectorySamlIdentityProviderConfigurationPtrOutput) SsoStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *string {
 		if v == nil {

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about VPC Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
  *
  * ## Example Usage
  *
@@ -18,26 +18,35 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^preserved-NODELETING",
+ * });
+ * const vlanId = new random.RandomInteger("vlanId", {
+ *     max: 2999,
+ *     min: 1,
+ * });
  * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections?.[0]?.id),
- *     virtualBorderRouterName: _var.name,
- *     vlanId: 120,
+ *     virtualBorderRouterName: name,
+ *     vlanId: vlanId.id,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
  * });
- * const _default = new alicloud.vpc.BgpGroup("default", {
+ * const exampleBgpGroup = new alicloud.vpc.BgpGroup("exampleBgpGroup", {
  *     authKey: "YourPassword+12345678",
- *     bgpGroupName: "example_value",
- *     description: "example_value",
- *     localAsn: 64512,
+ *     bgpGroupName: name,
+ *     description: name,
  *     peerAsn: 1111,
  *     routerId: exampleVirtualBorderRouter.id,
+ *     isFakeAsn: true,
  * });
  * ```
  *

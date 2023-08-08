@@ -1135,59 +1135,9 @@ class GatewayFileShare(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway File Share resource.
 
-        For information about Cloud Storage Gateway Gateway File Share and how to use it, see [What is Gateway File Share](https://www.alibabacloud.com/help/zh/doc-detail/170298.htm).
+        For information about Cloud Storage Gateway Gateway File Share and how to use it, see [What is Gateway File Share](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewayfileshare).
 
-        > **NOTE:** Available in v1.144.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_stocks = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="example_value",
-            cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_stocks.stocks[0].zone_id,
-            vswitch_name="example_value")
-        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("defaultStorageBundle", storage_bundle_name="example_value")
-        default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            release_after_expiration=True,
-            public_network_bandwidth=10,
-            storage_bundle_id=default_storage_bundle.id,
-            location="Cloud",
-            gateway_name="example_value")
-        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("defaultGatewayCacheDisk",
-            cache_disk_category="cloud_efficiency",
-            gateway_id=default_gateway.id,
-            cache_disk_size_in_gb=50)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket="example_value")
-        default_gateway_file_share = alicloud.cloudstoragegateway.GatewayFileShare("defaultGatewayFileShare",
-            gateway_file_share_name="example_value",
-            gateway_id=default_gateway.id,
-            local_path=default_gateway_cache_disk.local_file_path,
-            oss_bucket_name=default_bucket.bucket,
-            oss_endpoint=default_bucket.extranet_endpoint,
-            protocol="NFS",
-            remote_sync=True,
-            polling_interval=4500,
-            fe_limit=0,
-            backend_limit=0,
-            cache_mode="Cache",
-            squash="none",
-            lag_period=5)
-        ```
+        > **NOTE:** Available since v1.144.0.
 
         ## Import
 
@@ -1242,59 +1192,9 @@ class GatewayFileShare(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway File Share resource.
 
-        For information about Cloud Storage Gateway Gateway File Share and how to use it, see [What is Gateway File Share](https://www.alibabacloud.com/help/zh/doc-detail/170298.htm).
+        For information about Cloud Storage Gateway Gateway File Share and how to use it, see [What is Gateway File Share](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewayfileshare).
 
-        > **NOTE:** Available in v1.144.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_stocks = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="example_value",
-            cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_stocks.stocks[0].zone_id,
-            vswitch_name="example_value")
-        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("defaultStorageBundle", storage_bundle_name="example_value")
-        default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-            description="tf-acctestDesalone",
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            release_after_expiration=True,
-            public_network_bandwidth=10,
-            storage_bundle_id=default_storage_bundle.id,
-            location="Cloud",
-            gateway_name="example_value")
-        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("defaultGatewayCacheDisk",
-            cache_disk_category="cloud_efficiency",
-            gateway_id=default_gateway.id,
-            cache_disk_size_in_gb=50)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket="example_value")
-        default_gateway_file_share = alicloud.cloudstoragegateway.GatewayFileShare("defaultGatewayFileShare",
-            gateway_file_share_name="example_value",
-            gateway_id=default_gateway.id,
-            local_path=default_gateway_cache_disk.local_file_path,
-            oss_bucket_name=default_bucket.bucket,
-            oss_endpoint=default_bucket.extranet_endpoint,
-            protocol="NFS",
-            remote_sync=True,
-            polling_interval=4500,
-            fe_limit=0,
-            backend_limit=0,
-            cache_mode="Cache",
-            squash="none",
-            lag_period=5)
-        ```
+        > **NOTE:** Available since v1.144.0.
 
         ## Import
 
