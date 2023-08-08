@@ -578,6 +578,9 @@
                     }
                 }
             },
+            "alicloud_arms_prometheus_monitoring": {
+                "current": "alicloud:arms/prometheusMonitoring:PrometheusMonitoring"
+            },
             "alicloud_arms_remote_write": {
                 "current": "alicloud:arms/remoteWrite:RemoteWrite"
             },
@@ -4629,6 +4632,9 @@
                     }
                 }
             },
+            "alicloud_nlb_listener_additional_certificate_attachment": {
+                "current": "alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment"
+            },
             "alicloud_nlb_load_balancer": {
                 "current": "alicloud:nlb/loadBalancer:LoadBalancer",
                 "fields": {
@@ -4639,6 +4645,9 @@
             },
             "alicloud_nlb_load_balancer_security_group_attachment": {
                 "current": "alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment"
+            },
+            "alicloud_nlb_loadbalancer_common_bandwidth_package_attachment": {
+                "current": "alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment"
             },
             "alicloud_nlb_security_policy": {
                 "current": "alicloud:nlb/securityPolicy:SecurityPolicy",
@@ -5811,6 +5820,14 @@
             },
             "alicloud_subnet": {
                 "current": "alicloud:vpc/subnet:Subnet"
+            },
+            "alicloud_tag_meta_tag": {
+                "current": "alicloud:tag/metaTag:MetaTag",
+                "fields": {
+                    "values": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_tag_policy": {
                 "current": "alicloud:tag/policy:Policy"
@@ -15688,6 +15705,9 @@
                     }
                 }
             },
+            "alicloud_rds_class_details": {
+                "current": "alicloud:rds/getClassDetails:getClassDetails"
+            },
             "alicloud_rds_collation_time_zones": {
                 "current": "alicloud:rds/getCollationTimeZones:getCollationTimeZones",
                 "fields": {
@@ -17447,6 +17467,9 @@
                     }
                 }
             },
+            "alicloud_vpc_flow_log_service": {
+                "current": "alicloud:vpc/getFlowLogService:getFlowLogService"
+            },
             "alicloud_vpc_flow_logs": {
                 "current": "alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs",
                 "fields": {
@@ -18111,6 +18134,7 @@
             "alicloud:arms/integrationExporter:IntegrationExporter": "alicloud_arms_integration_exporter",
             "alicloud:arms/prometheus:Prometheus": "alicloud_arms_prometheus",
             "alicloud:arms/prometheusAlertRule:PrometheusAlertRule": "alicloud_arms_prometheus_alert_rule",
+            "alicloud:arms/prometheusMonitoring:PrometheusMonitoring": "alicloud_arms_prometheus_monitoring",
             "alicloud:arms/remoteWrite:RemoteWrite": "alicloud_arms_remote_write",
             "alicloud:bastionhost/host:Host": "alicloud_bastionhost_host",
             "alicloud:bastionhost/hostAccount:HostAccount": "alicloud_bastionhost_host_account",
@@ -18567,8 +18591,10 @@
             "alicloud:nas/smbAclAttachment:SmbAclAttachment": "alicloud_nas_smb_acl_attachment",
             "alicloud:nas/snapshot:Snapshot": "alicloud_nas_snapshot",
             "alicloud:nlb/listener:Listener": "alicloud_nlb_listener",
+            "alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment": "alicloud_nlb_listener_additional_certificate_attachment",
             "alicloud:nlb/loadBalancer:LoadBalancer": "alicloud_nlb_load_balancer",
             "alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment": "alicloud_nlb_load_balancer_security_group_attachment",
+            "alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment": "alicloud_nlb_loadbalancer_common_bandwidth_package_attachment",
             "alicloud:nlb/securityPolicy:SecurityPolicy": "alicloud_nlb_security_policy",
             "alicloud:nlb/serverGroup:ServerGroup": "alicloud_nlb_server_group",
             "alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment": "alicloud_nlb_server_group_server_attachment",
@@ -18734,6 +18760,7 @@
             "alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment": "alicloud_slb_server_group_server_attachment",
             "alicloud:slb/tlsCipherPolicy:TlsCipherPolicy": "alicloud_slb_tls_cipher_policy",
             "alicloud:sms/shortUrl:ShortUrl": "alicloud_sms_short_url",
+            "alicloud:tag/metaTag:MetaTag": "alicloud_tag_meta_tag",
             "alicloud:tag/policy:Policy": "alicloud_tag_policy",
             "alicloud:tag/policyAttachment:PolicyAttachment": "alicloud_tag_policy_attachment",
             "alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule": "alicloud_threat_detection_anti_brute_force_rule",
@@ -19352,6 +19379,7 @@
             "alicloud:rdc/getOrganizations:getOrganizations": "alicloud_rdc_organizations",
             "alicloud:rds/getAccounts:getAccounts": "alicloud_rds_accounts",
             "alicloud:rds/getCharacterSetNames:getCharacterSetNames": "alicloud_rds_character_set_names",
+            "alicloud:rds/getClassDetails:getClassDetails": "alicloud_rds_class_details",
             "alicloud:rds/getCollationTimeZones:getCollationTimeZones": "alicloud_rds_collation_time_zones",
             "alicloud:rds/getCrossRegionBackups:getCrossRegionBackups": "alicloud_rds_cross_region_backups",
             "alicloud:rds/getCrossRegions:getCrossRegions": "alicloud_rds_cross_regions",
@@ -19463,6 +19491,7 @@
             "alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages": "alicloud_common_bandwidth_packages",
             "alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets": "alicloud_vpc_dhcp_options_sets",
             "alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones": "alicloud_enhanced_nat_available_zones",
+            "alicloud:vpc/getFlowLogService:getFlowLogService": "alicloud_vpc_flow_log_service",
             "alicloud:vpc/getForwardEntries:getForwardEntries": "alicloud_forward_entries",
             "alicloud:vpc/getHavips:getHavips": "alicloud_havips",
             "alicloud:vpc/getIpsecServers:getIpsecServers": "alicloud_vpn_ipsec_servers",
@@ -20997,6 +21026,11 @@
                 "notifyType": "notify_type",
                 "prometheusAlertRuleId": "prometheus_alert_rule_id",
                 "prometheusAlertRuleName": "prometheus_alert_rule_name"
+            },
+            "alicloud:arms/prometheusMonitoring:PrometheusMonitoring": {
+                "clusterId": "cluster_id",
+                "configYaml": "config_yaml",
+                "monitoringName": "monitoring_name"
             },
             "alicloud:arms/remoteWrite:RemoteWrite": {
                 "clusterId": "cluster_id",
@@ -24619,9 +24653,16 @@
             "alicloud:cs/autoscalingConfig:AutoscalingConfig": {
                 "clusterId": "cluster_id",
                 "coolDownDuration": "cool_down_duration",
+                "daemonsetEvictionForNodes": "daemonset_eviction_for_nodes",
                 "gpuUtilizationThreshold": "gpu_utilization_threshold",
+                "maxGracefulTerminationSec": "max_graceful_termination_sec",
+                "minReplicaCount": "min_replica_count",
+                "recycleNodeDeletionEnabled": "recycle_node_deletion_enabled",
                 "scaleDownEnabled": "scale_down_enabled",
+                "scaleUpFromZero": "scale_up_from_zero",
                 "scanInterval": "scan_interval",
+                "skipNodesWithLocalStorage": "skip_nodes_with_local_storage",
+                "skipNodesWithSystemPods": "skip_nodes_with_system_pods",
                 "unneededDuration": "unneeded_duration",
                 "utilizationThreshold": "utilization_threshold"
             },
@@ -34828,6 +34869,11 @@
                 "serverGroupId": "server_group_id",
                 "startPort": "start_port"
             },
+            "alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment": {
+                "certificateId": "certificate_id",
+                "dryRun": "dry_run",
+                "listenerId": "listener_id"
+            },
             "alicloud:nlb/loadBalancer:LoadBalancer": {
                 "addressIpVersion": "address_ip_version",
                 "addressType": "address_type",
@@ -34851,6 +34897,10 @@
                 "dryRun": "dry_run",
                 "loadBalancerId": "load_balancer_id",
                 "securityGroupId": "security_group_id"
+            },
+            "alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment": {
+                "bandwidthPackageId": "bandwidth_package_id",
+                "loadBalancerId": "load_balancer_id"
             },
             "alicloud:nlb/securityPolicy:SecurityPolicy": {
                 "resourceGroupId": "resource_group_id",
@@ -36622,6 +36672,19 @@
             },
             "alicloud:rds/getCharacterSetNames:getCharacterSetNames": {
                 "outputFile": "output_file"
+            },
+            "alicloud:rds/getClassDetails:getClassDetails": {
+                "classCode": "class_code",
+                "classGroup": "class_group",
+                "commodityCode": "commodity_code",
+                "dbInstanceStorageType": "db_instance_storage_type",
+                "engineVersion": "engine_version",
+                "instructionSetArch": "instruction_set_arch",
+                "maxConnections": "max_connections",
+                "maxIombps": "max_iombps",
+                "maxIops": "max_iops",
+                "memoryClass": "memory_class",
+                "referencePrice": "reference_price"
             },
             "alicloud:rds/getCollationTimeZones:getCollationTimeZones": {
                 "collationTimeZones": "collation_time_zones",
