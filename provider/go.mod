@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-alicloud/provider/v3
 
-go 1.20
+go 1.21
 
 replace (
 	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v0.0.0-20181010200618-458213699411
