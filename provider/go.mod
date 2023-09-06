@@ -11,9 +11,9 @@ replace (
 )
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.209.0
+	github.com/aliyun/terraform-provider-alicloud v1.209.1
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.56.2
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.58.0
 	github.com/pulumi/pulumi/sdk/v3 v3.76.1
 )
 
@@ -75,7 +75,7 @@ require (
 	github.com/aliyun/aliyun-datahub-sdk-go v0.1.5 // indirect
 	github.com/aliyun/aliyun-log-go-sdk v0.1.44-0.20230310032108-e8f9ed9bb3c5 // indirect
 	github.com/aliyun/aliyun-mns-go-sdk v0.0.0-20210305050620-d1b5875bda58 // indirect
-	github.com/aliyun/aliyun-oss-go-sdk v2.2.8+incompatible // indirect
+	github.com/aliyun/aliyun-oss-go-sdk v2.2.9+incompatible // indirect
 	github.com/aliyun/aliyun-tablestore-go-sdk v4.1.3+incompatible // indirect
 	github.com/aliyun/credentials-go v1.3.0 // indirect
 	github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050 // indirect
