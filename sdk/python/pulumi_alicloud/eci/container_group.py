@@ -931,15 +931,30 @@ class ContainerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eci.ContainerGroup("example",
-            container_group_name="tf-eci-gruop",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_container_group = alicloud.eci.ContainerGroup("defaultContainerGroup",
+            container_group_name=name,
             cpu=8,
             memory=16,
             restart_policy="OnFailure",
-            security_group_id=alicloud_security_group["group"]["id"],
-            vswitch_id=data["alicloud_vpcs"]["default"]["vpcs"][0]["vswitch_ids"],
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
             tags={
-                "TF": "create",
+                "Created": "TF",
+                "For": "example",
             },
             containers=[
                 alicloud.eci.ContainerGroupContainerArgs(
@@ -953,7 +968,7 @@ class ContainerGroup(pulumi.CustomResource):
                         "sleep 9999",
                     ],
                     volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
-                        mount_path="/tmp/test",
+                        mount_path="/tmp/example",
                         read_only=False,
                         name="empty1",
                     )],
@@ -962,7 +977,7 @@ class ContainerGroup(pulumi.CustomResource):
                         protocol="TCP",
                     )],
                     environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
-                        key="test",
+                        key="name",
                         value="nginx",
                     )],
                     liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
@@ -1075,15 +1090,30 @@ class ContainerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eci.ContainerGroup("example",
-            container_group_name="tf-eci-gruop",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_container_group = alicloud.eci.ContainerGroup("defaultContainerGroup",
+            container_group_name=name,
             cpu=8,
             memory=16,
             restart_policy="OnFailure",
-            security_group_id=alicloud_security_group["group"]["id"],
-            vswitch_id=data["alicloud_vpcs"]["default"]["vpcs"][0]["vswitch_ids"],
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
             tags={
-                "TF": "create",
+                "Created": "TF",
+                "For": "example",
             },
             containers=[
                 alicloud.eci.ContainerGroupContainerArgs(
@@ -1097,7 +1127,7 @@ class ContainerGroup(pulumi.CustomResource):
                         "sleep 9999",
                     ],
                     volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
-                        mount_path="/tmp/test",
+                        mount_path="/tmp/example",
                         read_only=False,
                         name="empty1",
                     )],
@@ -1106,7 +1136,7 @@ class ContainerGroup(pulumi.CustomResource):
                         protocol="TCP",
                     )],
                     environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
-                        key="test",
+                        key="name",
                         value="nginx",
                     )],
                     liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(

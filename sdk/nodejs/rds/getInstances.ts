@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
  *
+ * > **NOTE:** Available since v1.7.0+
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -156,6 +158,8 @@ export interface GetInstancesResult {
 /**
  * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+ *
+ * > **NOTE:** Available since v1.7.0+
  *
  * ## Example Usage
  *

@@ -38,6 +38,7 @@ __all__ = [
     'GetInstanceEnginesInstanceEngineResult',
     'GetInstanceEnginesInstanceEngineZoneIdResult',
     'GetInstancesInstanceResult',
+    'GetInstancesInstanceHostInstanceInfoResult',
     'GetInstancesInstanceParameterResult',
     'GetModifyParameterLogsLogResult',
     'GetRdsBackupsBackupResult',
@@ -1899,6 +1900,8 @@ class GetInstancesInstanceResult(dict):
                  engine_version: str,
                  expire_time: str,
                  guard_instance_id: str,
+                 ha_mode: str,
+                 host_instance_infos: Sequence['outputs.GetInstancesInstanceHostInstanceInfoResult'],
                  id: str,
                  instance_storage: int,
                  instance_type: str,
@@ -1926,6 +1929,7 @@ class GetInstancesInstanceResult(dict):
                  ssl_enabled: str,
                  ssl_expire_time: str,
                  status: str,
+                 sync_mode: str,
                  temp_instance_id: str,
                  vpc_id: str,
                  vswitch_id: str,
@@ -1943,6 +1947,7 @@ class GetInstancesInstanceResult(dict):
                - custom: a custom certificate
         :param str charge_type: Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
         :param str client_ca_cert: (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        :param str client_ca_cert_expire_time: (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
         :param str client_cert_revocation_list: (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
         :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
         :param str connection_string: (Available in 1.70.3+) RDS database connection string.
@@ -1964,6 +1969,8 @@ class GetInstancesInstanceResult(dict):
         :param str engine_version: Database version.
         :param str expire_time: Expiration time. Pay-As-You-Go instances never expire.
         :param str guard_instance_id: If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
+        :param str ha_mode: (Available since v1.209.1) The high availability mode of the instance.
+        :param Sequence['GetInstancesInstanceHostInstanceInfoArgs'] host_instance_infos: (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
         :param str id: The ID of the RDS instance.
         :param int instance_storage: (Available in 1.70.3+) User-defined DB instance storage space.
         :param str instance_type: Sizing of the RDS instance.
@@ -1982,7 +1989,7 @@ class GetInstancesInstanceResult(dict):
         :param Sequence['GetInstancesInstanceParameterArgs'] parameters: (Available in 1.135.0+) Parameter list.
         :param str port: (Available in 1.70.3+) RDS database connection port.
         :param Sequence[str] readonly_instance_ids: A list of IDs of read-only instances attached to the primary instance.
-        :param str region_id: Region ID the instance belongs to.
+        :param str region_id: The region ID of the instance.
         :param str replication_acl: (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - cert
                - perfer
@@ -2006,6 +2013,7 @@ class GetInstancesInstanceResult(dict):
                - off: disabled
         :param str ssl_expire_time: (Available in 1.124.1+) The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param str status: Status of the instance.
+        :param str sync_mode: (Available since v1.209.1) The data replication mode of the instance.
         :param str temp_instance_id: If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
         :param str vpc_id: Used to retrieve instances belong to specified VPC.
         :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
@@ -2035,6 +2043,8 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "engine_version", engine_version)
         pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "guard_instance_id", guard_instance_id)
+        pulumi.set(__self__, "ha_mode", ha_mode)
+        pulumi.set(__self__, "host_instance_infos", host_instance_infos)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_storage", instance_storage)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -2062,6 +2072,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         pulumi.set(__self__, "ssl_expire_time", ssl_expire_time)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "sync_mode", sync_mode)
         pulumi.set(__self__, "temp_instance_id", temp_instance_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -2117,6 +2128,9 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="clientCaCertExpireTime")
     def client_ca_cert_expire_time(self) -> str:
+        """
+        (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
+        """
         return pulumi.get(self, "client_ca_cert_expire_time")
 
     @property
@@ -2260,6 +2274,22 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "guard_instance_id")
 
     @property
+    @pulumi.getter(name="haMode")
+    def ha_mode(self) -> str:
+        """
+        (Available since v1.209.1) The high availability mode of the instance.
+        """
+        return pulumi.get(self, "ha_mode")
+
+    @property
+    @pulumi.getter(name="hostInstanceInfos")
+    def host_instance_infos(self) -> Sequence['outputs.GetInstancesInstanceHostInstanceInfoResult']:
+        """
+        (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+        """
+        return pulumi.get(self, "host_instance_infos")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -2386,7 +2416,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="regionId")
     def region_id(self) -> str:
         """
-        Region ID the instance belongs to.
+        The region ID of the instance.
         """
         return pulumi.get(self, "region_id")
 
@@ -2491,6 +2521,14 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="syncMode")
+    def sync_mode(self) -> str:
+        """
+        (Available since v1.209.1) The data replication mode of the instance.
+        """
+        return pulumi.get(self, "sync_mode")
+
+    @property
     @pulumi.getter(name="tempInstanceId")
     def temp_instance_id(self) -> str:
         """
@@ -2529,6 +2567,90 @@ class GetInstancesInstanceResult(dict):
         (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         return pulumi.get(self, "zone_id_slave_b")
+
+
+@pulumi.output_type
+class GetInstancesInstanceHostInstanceInfoResult(dict):
+    def __init__(__self__, *,
+                 data_sync_time: str,
+                 log_sync_time: str,
+                 node_id: str,
+                 node_type: str,
+                 region_id: str,
+                 sync_status: str,
+                 zone_id: str):
+        """
+        :param str data_sync_time: The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param str log_sync_time: The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param str node_id: The ID of the instance.
+        :param str node_type: The type of the node.
+        :param str region_id: The region ID of the instance.
+        :param str sync_status: The synchronization status.
+        :param str zone_id: The ID of the zone.
+        """
+        pulumi.set(__self__, "data_sync_time", data_sync_time)
+        pulumi.set(__self__, "log_sync_time", log_sync_time)
+        pulumi.set(__self__, "node_id", node_id)
+        pulumi.set(__self__, "node_type", node_type)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "sync_status", sync_status)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="dataSyncTime")
+    def data_sync_time(self) -> str:
+        """
+        The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "data_sync_time")
+
+    @property
+    @pulumi.getter(name="logSyncTime")
+    def log_sync_time(self) -> str:
+        """
+        The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "log_sync_time")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "node_id")
+
+    @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> str:
+        """
+        The type of the node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID of the instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="syncStatus")
+    def sync_status(self) -> str:
+        """
+        The synchronization status.
+        """
+        return pulumi.get(self, "sync_status")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The ID of the zone.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type

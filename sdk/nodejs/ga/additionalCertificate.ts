@@ -52,7 +52,7 @@ export class AdditionalCertificate extends pulumi.CustomResource {
      */
     public readonly acceleratorId!: pulumi.Output<string>;
     /**
-     * The Certificate ID.
+     * The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
      */
     public readonly certificateId!: pulumi.Output<string>;
     /**
@@ -114,7 +114,7 @@ export interface AdditionalCertificateState {
      */
     acceleratorId?: pulumi.Input<string>;
     /**
-     * The Certificate ID.
+     * The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
      */
     certificateId?: pulumi.Input<string>;
     /**
@@ -136,7 +136,7 @@ export interface AdditionalCertificateArgs {
      */
     acceleratorId: pulumi.Input<string>;
     /**
-     * The Certificate ID.
+     * The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
      */
     certificateId: pulumi.Input<string>;
     /**

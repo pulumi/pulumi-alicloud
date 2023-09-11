@@ -16,7 +16,7 @@ import (
 //
 // For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/AcceptVpcPeerConnection).
 //
-// > **NOTE:** Available in v1.196.0+.
+// > **NOTE:** Available since v1.196.0.
 //
 // ## Example Usage
 //
@@ -36,53 +36,69 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
 //			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			acceptingRegion := "cn-beijing"
 //			if param := cfg.Get("acceptingRegion"); param != "" {
 //				acceptingRegion = param
 //			}
-//			_, err = alicloud.NewProvider(ctx, "local", &alicloud.ProviderArgs{
-//				Region: pulumi.String("hangzhou"),
+//			acceptingAccountAccessKey := "access_key"
+//			if param := cfg.Get("acceptingAccountAccessKey"); param != "" {
+//				acceptingAccountAccessKey = param
+//			}
+//			acceptingAccountSecretKey := "secret_key"
+//			if param := cfg.Get("acceptingAccountSecretKey"); param != "" {
+//				acceptingAccountSecretKey = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "local", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alicloud.NewProvider(ctx, "accepting", &alicloud.ProviderArgs{
-//				Region: pulumi.String(acceptingRegion),
+//				Region:    pulumi.String(acceptingRegion),
+//				AccessKey: pulumi.String(acceptingAccountAccessKey),
+//				SecretKey: pulumi.String(acceptingAccountSecretKey),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			localNetwork, err := vpc.NewNetwork(ctx, "localNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			}, pulumi.Provider(alicloud.Local))
 //			if err != nil {
 //				return err
 //			}
-//			defaultone, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			acceptingNetwork, err := vpc.NewNetwork(ctx, "acceptingNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			}, pulumi.Provider(alicloud.Accepting))
+//			if err != nil {
+//				return err
+//			}
+//			acceptingAccount, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultPeerConnection, err := vpc.NewPeerConnection(ctx, "defaultPeerConnection", &vpc.PeerConnectionArgs{
-//				PeerConnectionName: pulumi.String("example_value"),
-//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
-//				AcceptingAliUid:    *pulumi.String(defaultAccount.Id),
+//				PeerConnectionName: pulumi.String(name),
+//				VpcId:              localNetwork.ID(),
+//				AcceptingAliUid:    *pulumi.String(acceptingAccount.Id),
 //				AcceptingRegionId:  pulumi.String(acceptingRegion),
-//				AcceptingVpcId:     *pulumi.String(defaultone.Ids[0]),
-//				Description:        pulumi.String("example_value"),
+//				AcceptingVpcId:     acceptingNetwork.ID(),
+//				Description:        pulumi.String(name),
 //			}, pulumi.Provider(alicloud.Local))
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewPeerConnectionAccepter(ctx, "defaultPeerConnectionAccepter", &vpc.PeerConnectionAccepterArgs{
 //				InstanceId: defaultPeerConnection.ID(),
-//			})
+//			}, pulumi.Provider(alicloud.Accepting))
 //			if err != nil {
 //				return err
 //			}

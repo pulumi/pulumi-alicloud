@@ -16,7 +16,7 @@ import (
 //
 // > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 //
-// > **NOTE:** Available in 1.183.0+ .
+// > **NOTE:** Available since v1.183.0.
 //
 // ## Example Usage
 //
@@ -29,14 +29,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
-//				Bandwidth:       -1,
 //				BaseBandwidth:   pulumi.Int(20),
+//				Bandwidth:       -1,
 //				IpCount:         pulumi.Int(100),
 //				IpType:          pulumi.String("IPv4"),
 //				NormalBandwidth: pulumi.Int(100),

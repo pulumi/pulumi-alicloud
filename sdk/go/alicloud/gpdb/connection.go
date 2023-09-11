@@ -14,11 +14,97 @@ import (
 
 // Provides a connection resource to allocate an Internet connection string for instance.
 //
-// > **NOTE:**  Available in 1.48.0+
+// > **NOTE:** Available since v1.48.0.
 //
 // > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
 //
 //	To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := gpdb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := gpdb.NewInstance(ctx, "defaultInstance", &gpdb.InstanceArgs{
+//				DbInstanceCategory:  pulumi.String("HighAvailability"),
+//				DbInstanceClass:     pulumi.String("gpdb.group.segsdx1"),
+//				DbInstanceMode:      pulumi.String("StorageElastic"),
+//				Description:         pulumi.String(name),
+//				Engine:              pulumi.String("gpdb"),
+//				EngineVersion:       pulumi.String("6.0"),
+//				ZoneId:              *pulumi.String(defaultZones.Ids[0]),
+//				InstanceNetworkType: pulumi.String("VPC"),
+//				InstanceSpec:        pulumi.String("2C16G"),
+//				MasterNodeNum:       pulumi.Int(1),
+//				PaymentType:         pulumi.String("PayAsYouGo"),
+//				PrivateIpAddress:    pulumi.String("1.1.1.1"),
+//				SegStorageType:      pulumi.String("cloud_essd"),
+//				SegNodeNum:          pulumi.Int(4),
+//				StorageSize:         pulumi.Int(50),
+//				VpcId:               defaultNetwork.ID(),
+//				VswitchId:           defaultSwitch.ID(),
+//				IpWhitelists: gpdb.InstanceIpWhitelistArray{
+//					&gpdb.InstanceIpWhitelistArgs{
+//						SecurityIpList: pulumi.String("127.0.0.1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gpdb.NewConnection(ctx, "defaultConnection", &gpdb.ConnectionArgs{
+//				InstanceId:       defaultInstance.ID(),
+//				ConnectionPrefix: pulumi.String("exampelcon"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

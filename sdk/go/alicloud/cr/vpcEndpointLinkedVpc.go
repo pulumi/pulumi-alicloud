@@ -14,9 +14,9 @@ import (
 
 // Provides a CR Vpc Endpoint Linked Vpc resource.
 //
-// For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/container-registry/latest/api-doc-cr-2018-12-01-api-doc-createinstancevpcendpointlinkedvpc).
+// For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createinstancevpcendpointlinkedvpc).
 //
-// > **NOTE:** Available in v1.199.0+.
+// > **NOTE:** Available since v1.199.0.
 //
 // ## Example Usage
 //
@@ -27,19 +27,60 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cr.NewVpcEndpointLinkedVpc(ctx, "default", &cr.VpcEndpointLinkedVpcArgs{
-//				EnableCreateDnsRecordInPvzt: pulumi.Bool(true),
-//				InstanceId:                  pulumi.String("your_cr_instance_id"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "defaultRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(0),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				InstanceName:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cr.NewVpcEndpointLinkedVpc(ctx, "defaultVpcEndpointLinkedVpc", &cr.VpcEndpointLinkedVpcArgs{
+//				InstanceId:                  defaultRegistryEnterpriseInstance.ID(),
+//				VpcId:                       defaultNetwork.ID(),
+//				VswitchId:                   defaultSwitch.ID(),
 //				ModuleName:                  pulumi.String("Registry"),
-//				VpcId:                       pulumi.String("your_vpc_id"),
-//				VswitchId:                   pulumi.String("your_vswitch_id"),
+//				EnableCreateDnsRecordInPvzt: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

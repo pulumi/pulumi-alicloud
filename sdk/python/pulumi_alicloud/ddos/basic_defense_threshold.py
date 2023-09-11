@@ -298,7 +298,7 @@ class BasicDefenseThreshold(pulumi.CustomResource):
 
         For information about Ddos Basic Antiddos and how to use it, see [What is Defense Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/modifydefensethreshold).
 
-        > **NOTE:** Available in v1.168.0+.
+        > **NOTE:** Available since v1.168.0.
 
         ## Example Usage
 
@@ -308,13 +308,17 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.EipAddress("default",
-            address_name=var["name"],
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            address_name=name,
             isp="BGP",
             internet_charge_type="PayByBandwidth",
             payment_type="PayAsYouGo")
-        example = alicloud.ddos.BasicDefenseThreshold("example",
-            instance_id=default.id,
+        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold",
+            instance_id=default_eip_address.id,
             ddos_type="defense",
             instance_type="eip",
             bps=390,
@@ -350,7 +354,7 @@ class BasicDefenseThreshold(pulumi.CustomResource):
 
         For information about Ddos Basic Antiddos and how to use it, see [What is Defense Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/modifydefensethreshold).
 
-        > **NOTE:** Available in v1.168.0+.
+        > **NOTE:** Available since v1.168.0.
 
         ## Example Usage
 
@@ -360,13 +364,17 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.EipAddress("default",
-            address_name=var["name"],
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            address_name=name,
             isp="BGP",
             internet_charge_type="PayByBandwidth",
             payment_type="PayAsYouGo")
-        example = alicloud.ddos.BasicDefenseThreshold("example",
-            instance_id=default.id,
+        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold",
+            instance_id=default_eip_address.id,
             ddos_type="defense",
             instance_type="eip",
             bps=390,

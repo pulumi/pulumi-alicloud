@@ -375,9 +375,9 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         """
         This resource will help you to manager Container Registry Enterprise Edition sync rules.
 
-        For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/doc-detail/145280.htm)
+        For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
 
-        > **NOTE:** Available in v1.90.0+.
+        > **NOTE:** Available since v1.90.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
@@ -389,15 +389,54 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cs.RegistryEnterpriseSyncRule("default",
-            instance_id="my-source-instance-id",
-            namespace_name="my-source-namespace",
-            repo_name="my-source-repo",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        source_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("sourceRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=f"{name}-source")
+        target_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("targetRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=f"{name}-target")
+        source_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace",
+            instance_id=source_registry_enterprise_instance.id,
+            auto_create=False,
+            default_visibility="PUBLIC")
+        target_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace",
+            instance_id=target_registry_enterprise_instance.id,
+            auto_create=False,
+            default_visibility="PUBLIC")
+        source_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo",
+            instance_id=source_registry_enterprise_instance.id,
+            namespace=source_registry_enterprise_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        target_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("targetRegistryEnterpriseRepo",
+            instance_id=target_registry_enterprise_instance.id,
+            namespace=target_registry_enterprise_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        default_regions = alicloud.get_regions(current=True)
+        default_registry_enterprise_sync_rule = alicloud.cs.RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule",
+            instance_id=source_registry_enterprise_instance.id,
+            namespace_name=source_registry_enterprise_namespace.name,
+            target_region_id=default_regions.regions[0].id,
+            target_instance_id=target_registry_enterprise_instance.id,
+            target_namespace_name=target_registry_enterprise_namespace.name,
             tag_filter=".*",
-            target_instance_id="my-target-instance-id",
-            target_namespace_name="my-target-namespace",
-            target_region_id="cn-hangzhou",
-            target_repo_name="my-target-repo")
+            repo_name=source_registry_enterprise_repo.name,
+            target_repo_name=target_registry_enterprise_repo.name)
         ```
 
         ## Import
@@ -429,9 +468,9 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         """
         This resource will help you to manager Container Registry Enterprise Edition sync rules.
 
-        For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/doc-detail/145280.htm)
+        For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
 
-        > **NOTE:** Available in v1.90.0+.
+        > **NOTE:** Available since v1.90.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
@@ -443,15 +482,54 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cs.RegistryEnterpriseSyncRule("default",
-            instance_id="my-source-instance-id",
-            namespace_name="my-source-namespace",
-            repo_name="my-source-repo",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        source_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("sourceRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=f"{name}-source")
+        target_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("targetRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=f"{name}-target")
+        source_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace",
+            instance_id=source_registry_enterprise_instance.id,
+            auto_create=False,
+            default_visibility="PUBLIC")
+        target_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace",
+            instance_id=target_registry_enterprise_instance.id,
+            auto_create=False,
+            default_visibility="PUBLIC")
+        source_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo",
+            instance_id=source_registry_enterprise_instance.id,
+            namespace=source_registry_enterprise_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        target_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("targetRegistryEnterpriseRepo",
+            instance_id=target_registry_enterprise_instance.id,
+            namespace=target_registry_enterprise_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        default_regions = alicloud.get_regions(current=True)
+        default_registry_enterprise_sync_rule = alicloud.cs.RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule",
+            instance_id=source_registry_enterprise_instance.id,
+            namespace_name=source_registry_enterprise_namespace.name,
+            target_region_id=default_regions.regions[0].id,
+            target_instance_id=target_registry_enterprise_instance.id,
+            target_namespace_name=target_registry_enterprise_namespace.name,
             tag_filter=".*",
-            target_instance_id="my-target-instance-id",
-            target_namespace_name="my-target-namespace",
-            target_region_id="cn-hangzhou",
-            target_repo_name="my-target-repo")
+            repo_name=source_registry_enterprise_repo.name,
+            target_repo_name=target_registry_enterprise_repo.name)
         ```
 
         ## Import

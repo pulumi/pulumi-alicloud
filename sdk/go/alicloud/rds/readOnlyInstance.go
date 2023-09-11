@@ -162,6 +162,12 @@ type ReadOnlyInstance struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction pulumi.StringPtrOutput `pulumi:"direction"`
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -342,6 +348,12 @@ type readOnlyInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction *string `pulumi:"direction"`
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -481,6 +493,12 @@ type ReadOnlyInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrInput
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction pulumi.StringPtrInput
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -622,6 +640,12 @@ type readOnlyInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction *string `pulumi:"direction"`
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -756,6 +780,12 @@ type ReadOnlyInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrInput
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction pulumi.StringPtrInput
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -1014,6 +1044,15 @@ func (o ReadOnlyInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 // - false: no delete protect.
 func (o ReadOnlyInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The instance configuration type. Valid values:
+// - Up
+// - Down
+// - TempUpgrade
+// - Serverless
+func (o ReadOnlyInstanceOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
 // The method to change.  Default value: Immediate. Valid values:

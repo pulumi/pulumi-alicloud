@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Datahub
 {
     /// <summary>
-    /// The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+    /// The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+    /// 
+    /// &gt; **NOTE:** Available since v1.19.0.
     /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
     /// 
-    /// - BLob Topic
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,42 +26,37 @@ namespace Pulumi.AliCloud.Datahub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Datahub.Topic("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var example = new AliCloud.Datahub.Project("example", new()
     ///     {
     ///         Comment = "created by terraform",
-    ///         LifeCycle = 7,
-    ///         ProjectName = "tf_datahub_project",
-    ///         RecordType = "BLOB",
-    ///         ShardCount = 3,
     ///     });
     /// 
-    /// });
-    /// ```
-    /// - Tuple Topic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Datahub.Topic("example", new()
+    ///     var exampleBlob = new AliCloud.Datahub.Topic("exampleBlob", new()
     ///     {
-    ///         Comment = "created by terraform",
+    ///         ProjectName = example.Name,
+    ///         RecordType = "BLOB",
+    ///         ShardCount = 3,
     ///         LifeCycle = 7,
-    ///         ProjectName = "tf_datahub_project",
+    ///         Comment = "created by terraform",
+    ///     });
+    /// 
+    ///     var exampleTuple = new AliCloud.Datahub.Topic("exampleTuple", new()
+    ///     {
+    ///         ProjectName = example.Name,
+    ///         RecordType = "TUPLE",
     ///         RecordSchema = 
     ///         {
     ///             { "bigint_field", "BIGINT" },
-    ///             { "boolean_field", "BOOLEAN" },
-    ///             { "double_field", "DOUBLE" },
-    ///             { "string_field", "STRING" },
     ///             { "timestamp_field", "TIMESTAMP" },
+    ///             { "string_field", "STRING" },
+    ///             { "double_field", "DOUBLE" },
+    ///             { "boolean_field", "BOOLEAN" },
     ///         },
-    ///         RecordType = "TUPLE",
     ///         ShardCount = 3,
+    ///         LifeCycle = 7,
+    ///         Comment = "created by terraform",
     ///     });
     /// 
     /// });

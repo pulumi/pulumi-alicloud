@@ -35,6 +35,177 @@ import * as utilities from "../utilities";
  * });
  * const defaultProject = new alicloud.log.Project("defaultProject", {});
  * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
+ * const slsDefaultToken = `, '";=()[]{}?@&<>/:
+ * 	`;
+ * const example = new alicloud.log.StoreIndex("example", {
+ *     project: defaultProject.name,
+ *     logstore: defaultStore.name,
+ *     fullText: {
+ *         caseSensitive: false,
+ *         token: slsDefaultToken,
+ *     },
+ *     fieldSearches: [
+ *         {
+ *             name: "aggPeriodSeconds",
+ *             enableAnalytics: true,
+ *             type: "long",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "concurrentRequests",
+ *             enableAnalytics: true,
+ *             type: "long",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "cpuPercent",
+ *             enableAnalytics: true,
+ *             type: "double",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "cpuQuotaPercent",
+ *             enableAnalytics: true,
+ *             type: "double",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "functionName",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *             caseSensitive: true,
+ *         },
+ *         {
+ *             name: "hostname",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "instanceID",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "ipAddress",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "memoryLimitMB",
+ *             enableAnalytics: true,
+ *             type: "double",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "memoryUsageMB",
+ *             enableAnalytics: true,
+ *             type: "double",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "memoryUsagePercent",
+ *             enableAnalytics: true,
+ *             type: "double",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "operation",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "qualifier",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *             caseSensitive: true,
+ *         },
+ *         {
+ *             name: "rxBytes",
+ *             enableAnalytics: true,
+ *             type: "long",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "rxTotalBytes",
+ *             enableAnalytics: true,
+ *             type: "long",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "serviceName",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *             caseSensitive: true,
+ *         },
+ *         {
+ *             name: "txBytes",
+ *             enableAnalytics: true,
+ *             type: "long",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "txTotalBytes",
+ *             enableAnalytics: true,
+ *             type: "long",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "versionId",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "events",
+ *             enableAnalytics: true,
+ *             type: "json",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "isColdStart",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "hasFunctionError",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "errorType",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "triggerType",
+ *             enableAnalytics: true,
+ *             type: "text",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "durationMs",
+ *             enableAnalytics: true,
+ *             type: "double",
+ *             token: slsDefaultToken,
+ *         },
+ *         {
+ *             name: "statusCode",
+ *             enableAnalytics: true,
+ *             type: "long",
+ *             token: slsDefaultToken,
+ *         },
+ *     ],
+ * });
  * const defaultRole = new alicloud.ram.Role("defaultRole", {
  *     document: `  {
  *       "Statement": [

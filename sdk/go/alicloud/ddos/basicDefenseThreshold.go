@@ -16,7 +16,7 @@ import (
 //
 // For information about Ddos Basic Antiddos and how to use it, see [What is Defense Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/modifydefensethreshold).
 //
-// > **NOTE:** Available in v1.168.0+.
+// > **NOTE:** Available since v1.168.0.
 //
 // ## Example Usage
 //
@@ -30,13 +30,19 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
-//				AddressName:        pulumi.Any(_var.Name),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				AddressName:        pulumi.String(name),
 //				Isp:                pulumi.String("BGP"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
 //				PaymentType:        pulumi.String("PayAsYouGo"),
@@ -44,8 +50,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ddos.NewBasicDefenseThreshold(ctx, "example", &ddos.BasicDefenseThresholdArgs{
-//				InstanceId:   _default.ID(),
+//			_, err = ddos.NewBasicDefenseThreshold(ctx, "defaultBasicDefenseThreshold", &ddos.BasicDefenseThresholdArgs{
+//				InstanceId:   defaultEipAddress.ID(),
 //				DdosType:     pulumi.String("defense"),
 //				InstanceType: pulumi.String("eip"),
 //				Bps:          pulumi.Int(390),

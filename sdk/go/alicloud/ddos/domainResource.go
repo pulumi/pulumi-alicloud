@@ -14,7 +14,7 @@ import (
 
 // Provides a Anti-DDoS Pro Domain Resource resource.
 //
-// For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/doc-detail/157463.htm).
+// For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createwebrule).
 //
 // > **NOTE:** Available since v1.123.0.
 //
@@ -29,17 +29,43 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ddos.NewDomainResource(ctx, "example", &ddos.DomainResourceArgs{
-//				Domain:   pulumi.String("tftestacc1234.abc"),
-//				HttpsExt: pulumi.String("{\"Http2\":1,\"Http2https\":0，\"Https2http\":0}"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			domain := "tf-example.alibaba.com"
+//			if param := cfg.Get("domain"); param != "" {
+//				domain = param
+//			}
+//			defaultDdosCooInstance, err := ddos.NewDdosCooInstance(ctx, "defaultDdosCooInstance", &ddos.DdosCooInstanceArgs{
+//				Bandwidth:        pulumi.String("30"),
+//				BaseBandwidth:    pulumi.String("30"),
+//				ServiceBandwidth: pulumi.String("100"),
+//				PortCount:        pulumi.String("50"),
+//				DomainCount:      pulumi.String("50"),
+//				Period:           pulumi.Int(1),
+//				ProductType:      pulumi.String("ddoscoo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ddos.NewDomainResource(ctx, "defaultDomainResource", &ddos.DomainResourceArgs{
+//				Domain: pulumi.String(domain),
+//				RsType: pulumi.Int(0),
 //				InstanceIds: pulumi.StringArray{
-//					pulumi.String("ddoscoo-cn-6ja1rl4j****"),
+//					defaultDdosCooInstance.ID(),
 //				},
+//				RealServers: pulumi.StringArray{
+//					pulumi.String("177.167.32.11"),
+//				},
+//				HttpsExt: pulumi.String("{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}"),
 //				ProxyTypes: ddos.DomainResourceProxyTypeArray{
 //					&ddos.DomainResourceProxyTypeArgs{
 //						ProxyPorts: pulumi.IntArray{
@@ -48,10 +74,6 @@ import (
 //						ProxyType: pulumi.String("https"),
 //					},
 //				},
-//				RealServers: pulumi.StringArray{
-//					pulumi.String("177.167.32.11"),
-//				},
-//				RsType: pulumi.Int(0),
 //			})
 //			if err != nil {
 //				return err

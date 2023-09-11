@@ -15,7 +15,82 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
     /// 
-    /// &gt; **NOTE:** Available in v1.43.0+.
+    /// &gt; **NOTE:** Available since v1.43.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var exampleNetworkAcl = new AliCloud.Vpc.NetworkAcl("exampleNetworkAcl", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         NetworkAclName = name,
+    ///         Description = name,
+    ///         IngressAclEntries = new[]
+    ///         {
+    ///             new AliCloud.Vpc.Inputs.NetworkAclIngressAclEntryArgs
+    ///             {
+    ///                 Description = $"{name}-ingress",
+    ///                 NetworkAclEntryName = $"{name}-ingress",
+    ///                 SourceCidrIp = "196.168.2.0/21",
+    ///                 Policy = "accept",
+    ///                 Port = "22/80",
+    ///                 Protocol = "tcp",
+    ///             },
+    ///         },
+    ///         EgressAclEntries = new[]
+    ///         {
+    ///             new AliCloud.Vpc.Inputs.NetworkAclEgressAclEntryArgs
+    ///             {
+    ///                 Description = $"{name}-egress",
+    ///                 NetworkAclEntryName = $"{name}-egress",
+    ///                 DestinationCidrIp = "0.0.0.0/0",
+    ///                 Policy = "accept",
+    ///                 Port = "-1/-1",
+    ///                 Protocol = "all",
+    ///             },
+    ///         },
+    ///         Resources = new[]
+    ///         {
+    ///             new AliCloud.Vpc.Inputs.NetworkAclResourceArgs
+    ///             {
+    ///                 ResourceId = exampleSwitch.Id,
+    ///                 ResourceType = "VSwitch",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -41,13 +116,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Out direction rule information. See the following `Block EgressAclEntries`.
+        /// Out direction rule information. See `egress_acl_entries` below.
         /// </summary>
         [Output("egressAclEntries")]
         public Output<ImmutableArray<Outputs.NetworkAclEgressAclEntry>> EgressAclEntries { get; private set; } = null!;
 
         /// <summary>
-        /// Inward direction rule information. See the following `Block IngressAclEntries`.
+        /// Inward direction rule information. See `ingress_acl_entries` below.
         /// </summary>
         [Output("ingressAclEntries")]
         public Output<ImmutableArray<Outputs.NetworkAclIngressAclEntry>> IngressAclEntries { get; private set; } = null!;
@@ -65,13 +140,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> NetworkAclName { get; private set; } = null!;
 
         /// <summary>
-        /// The associated resource. See the following `Block Resources`.
+        /// The associated resource. See `resources` below.
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.NetworkAclResource>> Resources { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the network ACL.
+        /// The status of the associated resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -146,7 +221,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclEgressAclEntryArgs>? _egressAclEntries;
 
         /// <summary>
-        /// Out direction rule information. See the following `Block EgressAclEntries`.
+        /// Out direction rule information. See `egress_acl_entries` below.
         /// </summary>
         public InputList<Inputs.NetworkAclEgressAclEntryArgs> EgressAclEntries
         {
@@ -158,7 +233,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclIngressAclEntryArgs>? _ingressAclEntries;
 
         /// <summary>
-        /// Inward direction rule information. See the following `Block IngressAclEntries`.
+        /// Inward direction rule information. See `ingress_acl_entries` below.
         /// </summary>
         public InputList<Inputs.NetworkAclIngressAclEntryArgs> IngressAclEntries
         {
@@ -182,7 +257,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclResourceArgs>? _resources;
 
         /// <summary>
-        /// The associated resource. See the following `Block Resources`.
+        /// The associated resource. See `resources` below.
         /// </summary>
         public InputList<Inputs.NetworkAclResourceArgs> Resources
         {
@@ -234,7 +309,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclEgressAclEntryGetArgs>? _egressAclEntries;
 
         /// <summary>
-        /// Out direction rule information. See the following `Block EgressAclEntries`.
+        /// Out direction rule information. See `egress_acl_entries` below.
         /// </summary>
         public InputList<Inputs.NetworkAclEgressAclEntryGetArgs> EgressAclEntries
         {
@@ -246,7 +321,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclIngressAclEntryGetArgs>? _ingressAclEntries;
 
         /// <summary>
-        /// Inward direction rule information. See the following `Block IngressAclEntries`.
+        /// Inward direction rule information. See `ingress_acl_entries` below.
         /// </summary>
         public InputList<Inputs.NetworkAclIngressAclEntryGetArgs> IngressAclEntries
         {
@@ -270,7 +345,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclResourceGetArgs>? _resources;
 
         /// <summary>
-        /// The associated resource. See the following `Block Resources`.
+        /// The associated resource. See `resources` below.
         /// </summary>
         public InputList<Inputs.NetworkAclResourceGetArgs> Resources
         {
@@ -279,7 +354,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The state of the network ACL.
+        /// The status of the associated resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

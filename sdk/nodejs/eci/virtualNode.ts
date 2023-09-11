@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECI Virtual Node and how to use it, see [What is Virtual Node](https://www.alibabacloud.com/help/en/doc-detail/89129.html).
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *
@@ -22,33 +22,43 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testaccvirtualnode";
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.eci.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.zoneIds?.[1],
- * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneIds?.[0]),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     isp: "BGP",
+ *     addressName: name,
+ *     netmode: "public",
+ *     bandwidth: "1",
+ *     securityProtectionTypes: ["AntiDDoS_Enhanced"],
+ *     paymentType: "PayAsYouGo",
+ * });
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultVirtualNode = new alicloud.eci.VirtualNode("defaultVirtualNode", {
  *     securityGroupId: defaultSecurityGroup.id,
  *     virtualNodeName: name,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[1]),
+ *     vswitchId: defaultSwitch.id,
  *     enablePublicNetwork: false,
  *     eipInstanceId: defaultEipAddress.id,
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     kubeConfig: "kube config",
+ *     kubeConfig: "kube_config",
  *     tags: {
  *         Created: "TF",
  *     },
  *     taints: [{
  *         effect: "NoSchedule",
- *         key: "Tf1",
- *         value: "Test1",
+ *         key: "TF",
+ *         value: "example",
  *     }],
  * });
  * ```
@@ -118,7 +128,7 @@ export class VirtualNode extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The taint. See the following `Block taints`.
+     * The taint. See `taints` below.
      */
     public readonly taints!: pulumi.Output<outputs.eci.VirtualNodeTaint[] | undefined>;
     /**
@@ -219,7 +229,7 @@ export interface VirtualNodeState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The taint. See the following `Block taints`.
+     * The taint. See `taints` below.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.eci.VirtualNodeTaint>[]>;
     /**
@@ -265,7 +275,7 @@ export interface VirtualNodeArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The taint. See the following `Block taints`.
+     * The taint. See `taints` below.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.eci.VirtualNodeTaint>[]>;
     /**

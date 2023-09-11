@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/doc-detail/98001.htm).
+ * Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-registeruser).
  *
- * > **NOTE:** Available in 1.90.0+.
+ * > **NOTE:** Available since v1.90.0.
  *
  * ## Example Usage
  *
@@ -15,11 +15,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.dms.EnterpriseUser("example", {
- *     mobile: "1591066xxxx",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexamplename";
+ * const defaultUser = new alicloud.ram.User("defaultUser", {
+ *     displayName: name,
+ *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "example",
+ * });
+ * const defaultEnterpriseUser = new alicloud.dms.EnterpriseUser("defaultEnterpriseUser", {
+ *     uid: defaultUser.id,
+ *     userName: name,
  *     roleNames: ["DBA"],
- *     uid: "uid",
- *     userName: "tf-test",
+ *     mobile: "86-18688888888",
  * });
  * ```
  *

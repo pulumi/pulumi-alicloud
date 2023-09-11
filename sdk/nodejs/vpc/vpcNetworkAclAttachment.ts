@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
  *
- * > **NOTE:** Available in v1.193.0+.
+ * > **NOTE:** Available since v1.193.0.
  *
  * ## Import
  *

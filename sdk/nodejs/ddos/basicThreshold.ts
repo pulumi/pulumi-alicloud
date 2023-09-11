@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Ddos Basic Threshold and how to use it, see [What is Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/describe-ip-ddosthreshold).
  *
- * > **NOTE:** Available in v1.183.0+.
+ * > **NOTE:** Available since v1.183.0.
  *
  * ## Example Usage
  *
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  * });
@@ -27,31 +29,33 @@ import * as utilities from "../utilities";
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
- *     description: "New security group",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- * });
  * const defaultImages = alicloud.ecs.getImages({
  *     owners: "system",
- *     nameRegex: "^centos_8",
- *     mostRecent: true,
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
+ *     description: "New security group",
+ *     vpcId: defaultNetwork.id,
  * });
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     instanceName: _var.name,
- *     hostName: "tf-testAcc",
+ *     instanceName: name,
+ *     hostName: name,
  *     internetMaxBandwidthOut: 10,
  *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
  *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroups: [defaultSecurityGroup.id],
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
  * });
  * const example = new alicloud.ddos.BasicThreshold("example", {
  *     pps: 60000,

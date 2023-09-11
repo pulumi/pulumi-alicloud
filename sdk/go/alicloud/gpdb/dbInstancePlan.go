@@ -14,9 +14,9 @@ import (
 
 // Provides a GPDB DB Instance Plan resource.
 //
-// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/zh/analyticdb-for-postgresql/latest/createdbinstanceplan).
+// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/createdbinstanceplan).
 //
-// > **NOTE:** Available in v1.189.0+.
+// > **NOTE:** Available since v1.189.0.
 //
 // ## Import
 //
@@ -34,7 +34,7 @@ type DbInstancePlan struct {
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
 	// The name of the Plan.
 	DbInstancePlanName pulumi.StringOutput `pulumi:"dbInstancePlanName"`
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs DbInstancePlanPlanConfigArrayOutput `pulumi:"planConfigs"`
 	// The description of the Plan.
 	PlanDesc pulumi.StringOutput `pulumi:"planDesc"`
@@ -101,7 +101,7 @@ type dbInstancePlanState struct {
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The name of the Plan.
 	DbInstancePlanName *string `pulumi:"dbInstancePlanName"`
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs []DbInstancePlanPlanConfig `pulumi:"planConfigs"`
 	// The description of the Plan.
 	PlanDesc *string `pulumi:"planDesc"`
@@ -124,7 +124,7 @@ type DbInstancePlanState struct {
 	DbInstanceId pulumi.StringPtrInput
 	// The name of the Plan.
 	DbInstancePlanName pulumi.StringPtrInput
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs DbInstancePlanPlanConfigArrayInput
 	// The description of the Plan.
 	PlanDesc pulumi.StringPtrInput
@@ -151,7 +151,7 @@ type dbInstancePlanArgs struct {
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The name of the Plan.
 	DbInstancePlanName string `pulumi:"dbInstancePlanName"`
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs []DbInstancePlanPlanConfig `pulumi:"planConfigs"`
 	// The description of the Plan.
 	PlanDesc *string `pulumi:"planDesc"`
@@ -173,7 +173,7 @@ type DbInstancePlanArgs struct {
 	DbInstanceId pulumi.StringInput
 	// The name of the Plan.
 	DbInstancePlanName pulumi.StringInput
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs DbInstancePlanPlanConfigArrayInput
 	// The description of the Plan.
 	PlanDesc pulumi.StringPtrInput
@@ -286,7 +286,7 @@ func (o DbInstancePlanOutput) DbInstancePlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringOutput { return v.DbInstancePlanName }).(pulumi.StringOutput)
 }
 
-// The plan config. See the following `Block planConfig`.
+// The plan config. See `planConfig` below.
 func (o DbInstancePlanOutput) PlanConfigs() DbInstancePlanPlanConfigArrayOutput {
 	return o.ApplyT(func(v *DbInstancePlan) DbInstancePlanPlanConfigArrayOutput { return v.PlanConfigs }).(DbInstancePlanPlanConfigArrayOutput)
 }

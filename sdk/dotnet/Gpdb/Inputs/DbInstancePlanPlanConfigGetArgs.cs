@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
     public sealed class DbInstancePlanPlanConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Pause instance plan config. See the following `Block pause`.
+        /// Pause instance plan config. See `pause` below.
         /// </summary>
         [Input("pause")]
         public Input<Inputs.DbInstancePlanPlanConfigPauseGetArgs>? Pause { get; set; }
 
         /// <summary>
-        /// Resume instance plan config. See the following `Block resume`.
+        /// Resume instance plan config. See `resume` below.
         /// </summary>
         [Input("resume")]
         public Input<Inputs.DbInstancePlanPlanConfigResumeGetArgs>? Resume { get; set; }
 
         /// <summary>
-        /// Scale In instance plan config. See the following `Block scale_in`.
+        /// Scale In instance plan config. See `scale_in` below.
         /// </summary>
         [Input("scaleIn")]
         public Input<Inputs.DbInstancePlanPlanConfigScaleInGetArgs>? ScaleIn { get; set; }
 
         /// <summary>
-        /// Scale out instance plan config. See the following `Block scale_out`.
+        /// Scale out instance plan config. See `scale_out` below.
         /// </summary>
         [Input("scaleOut")]
         public Input<Inputs.DbInstancePlanPlanConfigScaleOutGetArgs>? ScaleOut { get; set; }

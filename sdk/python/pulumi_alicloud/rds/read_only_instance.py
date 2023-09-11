@@ -32,6 +32,7 @@ class ReadOnlyInstanceArgs:
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -93,6 +94,11 @@ class ReadOnlyInstanceArgs:
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
+               - Up
+               - Down
+               - TempUpgrade
+               - Serverless
         :param pulumi.Input[str] effective_time: The method to change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -177,6 +183,8 @@ class ReadOnlyInstanceArgs:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
         if force_restart is not None:
@@ -434,6 +442,22 @@ class ReadOnlyInstanceArgs:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance configuration type. Valid values:
+        - Up
+        - Down
+        - TempUpgrade
+        - Serverless
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
 
     @property
     @pulumi.getter(name="effectiveTime")
@@ -749,6 +773,7 @@ class _ReadOnlyInstanceState:
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -813,6 +838,11 @@ class _ReadOnlyInstanceState:
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
+               - Up
+               - Down
+               - TempUpgrade
+               - Serverless
         :param pulumi.Input[str] effective_time: The method to change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -901,6 +931,8 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
         if engine is not None:
@@ -1134,6 +1166,22 @@ class _ReadOnlyInstanceState:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance configuration type. Valid values:
+        - Up
+        - Down
+        - TempUpgrade
+        - Serverless
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
 
     @property
     @pulumi.getter(name="effectiveTime")
@@ -1522,6 +1570,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
@@ -1640,6 +1689,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
+               - Up
+               - Down
+               - TempUpgrade
+               - Serverless
         :param pulumi.Input[str] effective_time: The method to change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -1789,6 +1843,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
@@ -1836,6 +1891,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
             __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["direction"] = direction
             __props__.__dict__["effective_time"] = effective_time
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
@@ -1896,6 +1952,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            direction: Optional[pulumi.Input[str]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
@@ -1965,6 +2022,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
+               - Up
+               - Down
+               - TempUpgrade
+               - Serverless
         :param pulumi.Input[str] effective_time: The method to change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -2044,6 +2106,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
         __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["direction"] = direction
         __props__.__dict__["effective_time"] = effective_time
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
@@ -2198,6 +2261,18 @@ class ReadOnlyInstance(pulumi.CustomResource):
         - false: no delete protect.
         """
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> pulumi.Output[Optional[str]]:
+        """
+        The instance configuration type. Valid values:
+        - Up
+        - Down
+        - TempUpgrade
+        - Serverless
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter(name="effectiveTime")

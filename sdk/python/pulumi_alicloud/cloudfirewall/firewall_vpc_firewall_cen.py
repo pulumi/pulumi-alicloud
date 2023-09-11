@@ -26,11 +26,11 @@ class FirewallVpcFirewallCenArgs:
         """
         The set of arguments for constructing a FirewallVpcFirewallCen resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input['FirewallVpcFirewallCenLocalVpcArgs'] local_vpc: The details of the VPC.See the following `Block LocalVpc`.
-        :param pulumi.Input[str] status: Firewall switch status
+        :param pulumi.Input['FirewallVpcFirewallCenLocalVpcArgs'] local_vpc: The details of the VPC. See `local_vpc` below.
+        :param pulumi.Input[str] status: Firewall switch status.
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         :param pulumi.Input[str] vpc_region: The ID of the region to which the VPC is created.
-        :param pulumi.Input[str] lang: The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
         :param pulumi.Input[str] member_uid: The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
         """
         pulumi.set(__self__, "cen_id", cen_id)
@@ -59,7 +59,7 @@ class FirewallVpcFirewallCenArgs:
     @pulumi.getter(name="localVpc")
     def local_vpc(self) -> pulumi.Input['FirewallVpcFirewallCenLocalVpcArgs']:
         """
-        The details of the VPC.See the following `Block LocalVpc`.
+        The details of the VPC. See `local_vpc` below.
         """
         return pulumi.get(self, "local_vpc")
 
@@ -71,7 +71,7 @@ class FirewallVpcFirewallCenArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
         """
-        Firewall switch status
+        Firewall switch status.
         """
         return pulumi.get(self, "status")
 
@@ -107,7 +107,7 @@ class FirewallVpcFirewallCenArgs:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        The language type of the requested and received messages. Valid values:
         """
         return pulumi.get(self, "lang")
 
@@ -144,10 +144,10 @@ class _FirewallVpcFirewallCenState:
         Input properties used for looking up and filtering FirewallVpcFirewallCen resources.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] connect_type: Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
-        :param pulumi.Input[str] lang: The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-        :param pulumi.Input['FirewallVpcFirewallCenLocalVpcArgs'] local_vpc: The details of the VPC.See the following `Block LocalVpc`.
+        :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
+        :param pulumi.Input['FirewallVpcFirewallCenLocalVpcArgs'] local_vpc: The details of the VPC. See `local_vpc` below.
         :param pulumi.Input[str] member_uid: The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-        :param pulumi.Input[str] status: Firewall switch status
+        :param pulumi.Input[str] status: Firewall switch status.
         :param pulumi.Input[str] vpc_firewall_id: VPC firewall ID
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         :param pulumi.Input[str] vpc_region: The ID of the region to which the VPC is created.
@@ -199,7 +199,7 @@ class _FirewallVpcFirewallCenState:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        The language type of the requested and received messages. Valid values:
         """
         return pulumi.get(self, "lang")
 
@@ -211,7 +211,7 @@ class _FirewallVpcFirewallCenState:
     @pulumi.getter(name="localVpc")
     def local_vpc(self) -> Optional[pulumi.Input['FirewallVpcFirewallCenLocalVpcArgs']]:
         """
-        The details of the VPC.See the following `Block LocalVpc`.
+        The details of the VPC. See `local_vpc` below.
         """
         return pulumi.get(self, "local_vpc")
 
@@ -235,7 +235,7 @@ class _FirewallVpcFirewallCenState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Firewall switch status
+        Firewall switch status.
         """
         return pulumi.get(self, "status")
 
@@ -298,7 +298,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
 
         For information about Cloud Firewall Vpc Firewall Cen and how to use it, see [What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -315,7 +315,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
             ),
             member_uid="1415189284827022",
             status="open",
-            vpc_firewall_name="tf-test",
+            vpc_firewall_name="tf-vpc-firewall-name",
             vpc_region="ap-south-1")
         ```
 
@@ -330,10 +330,10 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[str] lang: The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallCenLocalVpcArgs']] local_vpc: The details of the VPC.See the following `Block LocalVpc`.
+        :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
+        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallCenLocalVpcArgs']] local_vpc: The details of the VPC. See `local_vpc` below.
         :param pulumi.Input[str] member_uid: The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-        :param pulumi.Input[str] status: Firewall switch status
+        :param pulumi.Input[str] status: Firewall switch status.
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         :param pulumi.Input[str] vpc_region: The ID of the region to which the VPC is created.
         """
@@ -348,7 +348,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
 
         For information about Cloud Firewall Vpc Firewall Cen and how to use it, see [What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -365,7 +365,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
             ),
             member_uid="1415189284827022",
             status="open",
-            vpc_firewall_name="tf-test",
+            vpc_firewall_name="tf-vpc-firewall-name",
             vpc_region="ap-south-1")
         ```
 
@@ -455,10 +455,10 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] connect_type: Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
-        :param pulumi.Input[str] lang: The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallCenLocalVpcArgs']] local_vpc: The details of the VPC.See the following `Block LocalVpc`.
+        :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
+        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallCenLocalVpcArgs']] local_vpc: The details of the VPC. See `local_vpc` below.
         :param pulumi.Input[str] member_uid: The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-        :param pulumi.Input[str] status: Firewall switch status
+        :param pulumi.Input[str] status: Firewall switch status.
         :param pulumi.Input[str] vpc_firewall_id: VPC firewall ID
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         :param pulumi.Input[str] vpc_region: The ID of the region to which the VPC is created.
@@ -496,9 +496,9 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def lang(self) -> pulumi.Output[str]:
+    def lang(self) -> pulumi.Output[Optional[str]]:
         """
-        The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        The language type of the requested and received messages. Valid values:
         """
         return pulumi.get(self, "lang")
 
@@ -506,7 +506,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
     @pulumi.getter(name="localVpc")
     def local_vpc(self) -> pulumi.Output['outputs.FirewallVpcFirewallCenLocalVpc']:
         """
-        The details of the VPC.See the following `Block LocalVpc`.
+        The details of the VPC. See `local_vpc` below.
         """
         return pulumi.get(self, "local_vpc")
 
@@ -522,7 +522,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Firewall switch status
+        Firewall switch status.
         """
         return pulumi.get(self, "status")
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/AcceptVpcPeerConnection).
     /// 
-    /// &gt; **NOTE:** Available in v1.196.0+.
+    /// &gt; **NOTE:** Available since v1.196.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,38 +28,51 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
-    /// 
     ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var acceptingRegion = config.Get("acceptingRegion") ?? "cn-beijing";
+    ///     var acceptingAccountAccessKey = config.Get("acceptingAccountAccessKey") ?? "access_key";
+    ///     var acceptingAccountSecretKey = config.Get("acceptingAccountSecretKey") ?? "secret_key";
     ///     var local = new AliCloud.Provider("local", new()
     ///     {
-    ///         Region = "hangzhou",
+    ///         Region = "cn-hangzhou",
     ///     });
     /// 
     ///     var accepting = new AliCloud.Provider("accepting", new()
     ///     {
     ///         Region = acceptingRegion,
+    ///         AccessKey = acceptingAccountAccessKey,
+    ///         SecretKey = acceptingAccountSecretKey,
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var localNetwork = new AliCloud.Vpc.Network("localNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Local,
     ///     });
     /// 
-    ///     var defaultone = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var acceptingNetwork = new AliCloud.Vpc.Network("acceptingNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Accepting,
     ///     });
+    /// 
+    ///     var acceptingAccount = AliCloud.GetAccount.Invoke();
     /// 
     ///     var defaultPeerConnection = new AliCloud.Vpc.PeerConnection("defaultPeerConnection", new()
     ///     {
-    ///         PeerConnectionName = "example_value",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         AcceptingAliUid = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         PeerConnectionName = name,
+    ///         VpcId = localNetwork.Id,
+    ///         AcceptingAliUid = acceptingAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///         AcceptingRegionId = acceptingRegion,
-    ///         AcceptingVpcId = defaultone.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         Description = "example_value",
+    ///         AcceptingVpcId = acceptingNetwork.Id,
+    ///         Description = name,
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Local,
@@ -68,6 +81,9 @@ namespace Pulumi.AliCloud.Vpc
     ///     var defaultPeerConnectionAccepter = new AliCloud.Vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", new()
     ///     {
     ///         InstanceId = defaultPeerConnection.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Accepting,
     ///     });
     /// 
     /// });

@@ -12,13 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/doc-detail/69319.htm).
+// BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
 //
 // > **NOTE:** The product region only support cn-hangzhou.
 //
 // > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 //
-// > **NOTE:** Available in 1.37.0+ .
+// > **NOTE:** Available since v1.37.0.
 //
 // ## Example Usage
 //
@@ -31,19 +31,25 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ddos.NewDdosCooInstance(ctx, "newInstance", &ddos.DdosCooInstanceArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := ddos.NewDdosCooInstance(ctx, "default", &ddos.DdosCooInstanceArgs{
 //				Bandwidth:        pulumi.String("30"),
 //				BaseBandwidth:    pulumi.String("30"),
+//				ServiceBandwidth: pulumi.String("100"),
+//				PortCount:        pulumi.String("50"),
 //				DomainCount:      pulumi.String("50"),
 //				Period:           pulumi.Int(1),
-//				PortCount:        pulumi.String("50"),
 //				ProductType:      pulumi.String("ddoscoo"),
-//				ServiceBandwidth: pulumi.String("100"),
 //			})
 //			if err != nil {
 //				return err

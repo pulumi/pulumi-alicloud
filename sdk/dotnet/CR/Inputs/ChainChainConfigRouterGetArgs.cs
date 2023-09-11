@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.CR.Inputs
         private InputList<Inputs.ChainChainConfigRouterFromGetArgs>? _froms;
 
         /// <summary>
-        /// Source node.
+        /// Source node. See `from` below.
         /// </summary>
         public InputList<Inputs.ChainChainConfigRouterFromGetArgs> Froms
         {
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.CR.Inputs
         private InputList<Inputs.ChainChainConfigRouterToGetArgs>? _tos;
 
         /// <summary>
-        /// Destination node.
+        /// Destination node. See `to` below.
         /// </summary>
         public InputList<Inputs.ChainChainConfigRouterToGetArgs> Tos
         {

@@ -14,8 +14,6 @@ namespace Pulumi.AliCloud.CR.Inputs
     {
         /// <summary>
         /// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
-        /// 
-        /// &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Sag ClientUser resource. This topic describes how to manage accounts as an administrator. After you configure the network, you can create multiple accounts and distribute them to end users so that clients can access Alibaba Cloud.
  *
- * For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/doc-detail/108326.htm).
+ * For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createsmartaccessgatewayclientuser).
  *
- * > **NOTE:** Available in 1.65.0+
+ * > **NOTE:** Available since v1.65.0.
  *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
@@ -21,13 +21,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const sagId = config.get("sagId") || "sag-9bifkfaz4fg***";
  * const _default = new alicloud.rocketmq.ClientUser("default", {
+ *     sagId: sagId,
  *     bandwidth: 20,
+ *     userMail: "tf-example@abc.com",
+ *     userName: name,
+ *     password: "example1234",
  *     clientIp: "192.1.10.0",
- *     password: "xxxxxxx",
- *     sagId: "sag-xxxxx",
- *     userMail: "tftest-xxxxx@test.com",
- *     userName: "th-username-xxxxx",
  * });
  * ```
  *
@@ -75,7 +78,13 @@ export class ClientUser extends pulumi.CustomResource {
      * The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
      */
     public readonly clientIp!: pulumi.Output<string | undefined>;
+    /**
+     * The password of the KMS Encryption.
+     */
     public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    /**
+     * The context of the KMS Encryption.
+     */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
@@ -152,7 +161,13 @@ export interface ClientUserState {
      * The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
      */
     clientIp?: pulumi.Input<string>;
+    /**
+     * The password of the KMS Encryption.
+     */
     kmsEncryptedPassword?: pulumi.Input<string>;
+    /**
+     * The context of the KMS Encryption.
+     */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
@@ -184,7 +199,13 @@ export interface ClientUserArgs {
      * The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
      */
     clientIp?: pulumi.Input<string>;
+    /**
+     * The password of the KMS Encryption.
+     */
     kmsEncryptedPassword?: pulumi.Input<string>;
+    /**
+     * The context of the KMS Encryption.
+     */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.

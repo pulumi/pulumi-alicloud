@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * This resource will help you to manager Container Registry Enterprise Edition sync rules.
  *
- * For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/doc-detail/145280.htm)
+ * For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
  *
- * > **NOTE:** Available in v1.90.0+.
+ * > **NOTE:** Available since v1.90.0.
  *
  * > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
  *
@@ -21,15 +21,60 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.cs.RegistryEnterpriseSyncRule("default", {
- *     instanceId: "my-source-instance-id",
- *     namespaceName: "my-source-namespace",
- *     repoName: "my-source-repo",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const sourceRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("sourceRegistryEnterpriseInstance", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
+ *     instanceType: "Advanced",
+ *     instanceName: `${name}-source`,
+ * });
+ * const targetRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("targetRegistryEnterpriseInstance", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
+ *     instanceType: "Advanced",
+ *     instanceName: `${name}-target`,
+ * });
+ * const sourceRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", {
+ *     instanceId: sourceRegistryEnterpriseInstance.id,
+ *     autoCreate: false,
+ *     defaultVisibility: "PUBLIC",
+ * });
+ * const targetRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", {
+ *     instanceId: targetRegistryEnterpriseInstance.id,
+ *     autoCreate: false,
+ *     defaultVisibility: "PUBLIC",
+ * });
+ * const sourceRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", {
+ *     instanceId: sourceRegistryEnterpriseInstance.id,
+ *     namespace: sourceRegistryEnterpriseNamespace.name,
+ *     summary: "this is summary of my new repo",
+ *     repoType: "PUBLIC",
+ *     detail: "this is a public repo",
+ * });
+ * const targetRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", {
+ *     instanceId: targetRegistryEnterpriseInstance.id,
+ *     namespace: targetRegistryEnterpriseNamespace.name,
+ *     summary: "this is summary of my new repo",
+ *     repoType: "PUBLIC",
+ *     detail: "this is a public repo",
+ * });
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRegistryEnterpriseSyncRule = new alicloud.cs.RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", {
+ *     instanceId: sourceRegistryEnterpriseInstance.id,
+ *     namespaceName: sourceRegistryEnterpriseNamespace.name,
+ *     targetRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     targetInstanceId: targetRegistryEnterpriseInstance.id,
+ *     targetNamespaceName: targetRegistryEnterpriseNamespace.name,
  *     tagFilter: ".*",
- *     targetInstanceId: "my-target-instance-id",
- *     targetNamespaceName: "my-target-namespace",
- *     targetRegionId: "cn-hangzhou",
- *     targetRepoName: "my-target-repo",
+ *     repoName: sourceRegistryEnterpriseRepo.name,
+ *     targetRepoName: targetRegistryEnterpriseRepo.name,
  * });
  * ```
  *

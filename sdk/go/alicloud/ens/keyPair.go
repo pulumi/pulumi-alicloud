@@ -14,9 +14,9 @@ import (
 
 // Provides a ENS Key Pair resource.
 //
-// For information about ENS Key Pair and how to use it, see [What is Key Pair](https://help.aliyun.com/product/62684.html).
+// For information about ENS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/ens/latest/createkeypair).
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -29,14 +29,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ens"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := ens.NewKeyPair(ctx, "example", &ens.KeyPairArgs{
-//				KeyPairName: pulumi.String("example_value"),
-//				Version:     pulumi.String("example_value"),
+//				KeyPairName: pulumi.String(name),
+//				Version:     pulumi.String("2017-11-10"),
 //			})
 //			if err != nil {
 //				return err

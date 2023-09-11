@@ -16,7 +16,7 @@ import (
 //
 // For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/e-hpc/latest/createcluster).
 //
-// > **NOTE:** Available in v1.173.0+.
+// > **NOTE:** Available since v1.173.0.
 //
 // ## Example Usage
 //
@@ -39,48 +39,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			storageType := "Performance"
-//			if param := cfg.Get("storageType"); param != "" {
-//				storageType = param
-//			}
-//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
-//				StorageType:  pulumi.String(storageType),
-//				ProtocolType: pulumi.String("NFS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultMountTarget, err := nas.NewMountTarget(ctx, "defaultMountTarget", &nas.MountTargetArgs{
-//				FileSystemId:    defaultFileSystem.ID(),
-//				AccessGroupName: pulumi.String("DEFAULT_VPC_GROUP_NAME"),
-//				VswitchId:       *pulumi.String(defaultSwitches.Ids[0]),
-//			})
 //			if err != nil {
 //				return err
 //			}
@@ -91,10 +57,47 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//				StorageType:  pulumi.String("Performance"),
+//				ProtocolType: pulumi.String("NFS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMountTarget, err := nas.NewMountTarget(ctx, "defaultMountTarget", &nas.MountTargetArgs{
+//				FileSystemId:    defaultFileSystem.ID(),
+//				AccessGroupName: pulumi.String("DEFAULT_VPC_GROUP_NAME"),
+//				VswitchId:       defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = ehpc.NewCluster(ctx, "defaultCluster", &ehpc.ClusterArgs{
-//				ClusterName:         pulumi.String("example_value"),
+//				ClusterName:         pulumi.String(name),
 //				DeployMode:          pulumi.String("Simple"),
-//				Description:         pulumi.String("example_description"),
+//				Description:         pulumi.String(name),
 //				HaEnable:            pulumi.Bool(false),
 //				ImageId:             *pulumi.String(defaultImages.Images[0].Id),
 //				ImageOwnerAlias:     pulumi.String("system"),
@@ -110,8 +113,8 @@ import (
 //				OsTag:               pulumi.String("CentOS_7.6_64"),
 //				SchedulerType:       pulumi.String("pbs"),
 //				Password:            pulumi.String("your-password123"),
-//				VswitchId:           *pulumi.String(defaultSwitches.Ids[0]),
-//				VpcId:               *pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:           defaultSwitch.ID(),
+//				VpcId:               defaultNetwork.ID(),
 //				ZoneId:              *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -137,9 +140,9 @@ type Cluster struct {
 
 	// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
-	// The additional volumes. See the following `Block additionalVolumes`.
+	// The additional volumes. See `additionalVolumes` below.
 	AdditionalVolumes ClusterAdditionalVolumeArrayOutput `pulumi:"additionalVolumes"`
-	// The application. See the following `Block application`.
+	// The application. See `application` below.
 	Applications ClusterApplicationArrayOutput `pulumi:"applications"`
 	// Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
@@ -211,7 +214,7 @@ type Cluster struct {
 	// - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
 	// - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
 	Plugin pulumi.StringPtrOutput `pulumi:"plugin"`
-	// The post install script. See the following `Block postInstallScript`.
+	// The post install script. See `postInstallScript` below.
 	PostInstallScripts ClusterPostInstallScriptArrayOutput `pulumi:"postInstallScripts"`
 	// The node of the RAM role.
 	RamNodeTypes pulumi.StringArrayOutput `pulumi:"ramNodeTypes"`
@@ -325,9 +328,9 @@ func GetCluster(ctx *pulumi.Context,
 type clusterState struct {
 	// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
 	AccountType *string `pulumi:"accountType"`
-	// The additional volumes. See the following `Block additionalVolumes`.
+	// The additional volumes. See `additionalVolumes` below.
 	AdditionalVolumes []ClusterAdditionalVolume `pulumi:"additionalVolumes"`
-	// The application. See the following `Block application`.
+	// The application. See `application` below.
 	Applications []ClusterApplication `pulumi:"applications"`
 	// Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -399,7 +402,7 @@ type clusterState struct {
 	// - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
 	// - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
 	Plugin *string `pulumi:"plugin"`
-	// The post install script. See the following `Block postInstallScript`.
+	// The post install script. See `postInstallScript` below.
 	PostInstallScripts []ClusterPostInstallScript `pulumi:"postInstallScripts"`
 	// The node of the RAM role.
 	RamNodeTypes []string `pulumi:"ramNodeTypes"`
@@ -456,9 +459,9 @@ type clusterState struct {
 type ClusterState struct {
 	// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
 	AccountType pulumi.StringPtrInput
-	// The additional volumes. See the following `Block additionalVolumes`.
+	// The additional volumes. See `additionalVolumes` below.
 	AdditionalVolumes ClusterAdditionalVolumeArrayInput
-	// The application. See the following `Block application`.
+	// The application. See `application` below.
 	Applications ClusterApplicationArrayInput
 	// Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
 	AutoRenew pulumi.BoolPtrInput
@@ -530,7 +533,7 @@ type ClusterState struct {
 	// - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
 	// - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
 	Plugin pulumi.StringPtrInput
-	// The post install script. See the following `Block postInstallScript`.
+	// The post install script. See `postInstallScript` below.
 	PostInstallScripts ClusterPostInstallScriptArrayInput
 	// The node of the RAM role.
 	RamNodeTypes pulumi.StringArrayInput
@@ -591,9 +594,9 @@ func (ClusterState) ElementType() reflect.Type {
 type clusterArgs struct {
 	// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
 	AccountType *string `pulumi:"accountType"`
-	// The additional volumes. See the following `Block additionalVolumes`.
+	// The additional volumes. See `additionalVolumes` below.
 	AdditionalVolumes []ClusterAdditionalVolume `pulumi:"additionalVolumes"`
-	// The application. See the following `Block application`.
+	// The application. See `application` below.
 	Applications []ClusterApplication `pulumi:"applications"`
 	// Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -665,7 +668,7 @@ type clusterArgs struct {
 	// - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
 	// - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
 	Plugin *string `pulumi:"plugin"`
-	// The post install script. See the following `Block postInstallScript`.
+	// The post install script. See `postInstallScript` below.
 	PostInstallScripts []ClusterPostInstallScript `pulumi:"postInstallScripts"`
 	// The node of the RAM role.
 	RamNodeTypes []string `pulumi:"ramNodeTypes"`
@@ -721,9 +724,9 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
 	AccountType pulumi.StringPtrInput
-	// The additional volumes. See the following `Block additionalVolumes`.
+	// The additional volumes. See `additionalVolumes` below.
 	AdditionalVolumes ClusterAdditionalVolumeArrayInput
-	// The application. See the following `Block application`.
+	// The application. See `application` below.
 	Applications ClusterApplicationArrayInput
 	// Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
 	AutoRenew pulumi.BoolPtrInput
@@ -795,7 +798,7 @@ type ClusterArgs struct {
 	// - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
 	// - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
 	Plugin pulumi.StringPtrInput
-	// The post install script. See the following `Block postInstallScript`.
+	// The post install script. See `postInstallScript` below.
 	PostInstallScripts ClusterPostInstallScriptArrayInput
 	// The node of the RAM role.
 	RamNodeTypes pulumi.StringArrayInput
@@ -939,12 +942,12 @@ func (o ClusterOutput) AccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
 }
 
-// The additional volumes. See the following `Block additionalVolumes`.
+// The additional volumes. See `additionalVolumes` below.
 func (o ClusterOutput) AdditionalVolumes() ClusterAdditionalVolumeArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAdditionalVolumeArrayOutput { return v.AdditionalVolumes }).(ClusterAdditionalVolumeArrayOutput)
 }
 
-// The application. See the following `Block application`.
+// The application. See `application` below.
 func (o ClusterOutput) Applications() ClusterApplicationArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterApplicationArrayOutput { return v.Applications }).(ClusterApplicationArrayOutput)
 }
@@ -1112,7 +1115,7 @@ func (o ClusterOutput) Plugin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Plugin }).(pulumi.StringPtrOutput)
 }
 
-// The post install script. See the following `Block postInstallScript`.
+// The post install script. See `postInstallScript` below.
 func (o ClusterOutput) PostInstallScripts() ClusterPostInstallScriptArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterPostInstallScriptArrayOutput { return v.PostInstallScripts }).(ClusterPostInstallScriptArrayOutput)
 }

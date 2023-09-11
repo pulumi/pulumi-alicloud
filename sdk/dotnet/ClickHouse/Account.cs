@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ClickHouse
     /// <summary>
     /// Provides a Click House Account resource.
     /// 
-    /// For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/product/clickhouse).
+    /// For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
     /// 
-    /// &gt; **NOTE:** Available in v1.134.0+.
+    /// &gt; **NOTE:** Available since v1.134.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,44 +29,46 @@ namespace Pulumi.AliCloud.ClickHouse
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "testaccountname";
-    ///     var pwd = config.Get("pwd") ?? "Tf-testpwd";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultRegions = AliCloud.ClickHouse.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId),
     ///     });
     /// 
     ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
     ///     {
-    ///         DbClusterVersion = "20.3.10.75",
+    ///         DbClusterVersion = "22.8.5.29",
     ///         Category = "Basic",
     ///         DbClusterClass = "S8",
     ///         DbClusterNetworkType = "vpc",
-    ///         DbClusterDescription = name,
     ///         DbNodeGroupCount = 1,
     ///         PaymentType = "PayAsYouGo",
     ///         DbNodeStorage = "500",
     ///         StorageType = "cloud_essd",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new()
     ///     {
     ///         DbClusterId = defaultDbCluster.Id,
-    ///         AccountDescription = "your_description",
-    ///         AccountName = name,
-    ///         AccountPassword = pwd,
+    ///         AccountDescription = "tf-example-description",
+    ///         AccountName = "examplename",
+    ///         AccountPassword = "Example1234",
     ///     });
     /// 
     /// });

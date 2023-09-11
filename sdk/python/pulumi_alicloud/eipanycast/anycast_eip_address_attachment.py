@@ -320,6 +320,133 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
         > **NOTE:** The following regions support currently while Slb instance support bound.
         [eu-west-1-gb33-a01,cn-hongkong-am4-c04,ap-southeast-os30-a01,us-west-ot7-a01,ap-south-in73-a01,ap-southeast-my88-a01]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.slb.get_zones(available_slb_address_type="vpc")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            address_type="intranet",
+            vswitch_id=default_switch.id,
+            load_balancer_name=name,
+            load_balancer_spec="slb.s1.small",
+            master_zone_id=default_zones.zones[0].id)
+        default_anycast_eip_address = alicloud.eipanycast.AnycastEipAddress("defaultAnycastEipAddress",
+            anycast_eip_address_name=name,
+            service_location="ChineseMainland")
+        default_regions = alicloud.get_regions(current=True)
+        default_anycast_eip_address_attachment = alicloud.eipanycast.AnycastEipAddressAttachment("defaultAnycastEipAddressAttachment",
+            bind_instance_id=default_application_load_balancer.id,
+            bind_instance_type="SlbInstance",
+            bind_instance_region_id=default_regions.regions[0].id,
+            anycast_id=default_anycast_eip_address.id)
+        ```
+
+        Multiple Usage
+
+        > **NOTE:**  Anycast EIP supports binding cloud resource instances in multiple regions. Only one cloud resource instance is supported as the default origin station, and the rest are normal origin stations. When no access point is specified or an access point is added, the access request is forwarded to the default origin by default.  If you are bound for the first time, the Default value of the binding mode is **Default * *. /li> li> If you are not binding for the first time, you can set the binding mode to **Default**, and the new Default origin will take effect. The original Default origin will be changed to a common origin.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        beijing = alicloud.Provider("beijing", region="cn-beijing")
+        hangzhou = alicloud.Provider("hangzhou", region="cn-hangzhou")
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        default_vsw = alicloud.vpc.Switch("defaultVsw",
+            vpc_id=default_vpc.id,
+            cidr_block="192.168.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        defaultu_bs_eci = alicloud.ecs.SecurityGroup("defaultuBsECI", vpc_id=default_vpc.id,
+        opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        default9_k_dl_n7 = alicloud.ecs.Instance("default9KDlN7",
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[defaultu_bs_eci.id],
+            availability_zone=default_vsw.zone_id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_vsw.id,
+            opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        default_xkp_frs = alicloud.eipanycast.AnycastEipAddress("defaultXkpFRs", service_location="ChineseMainland",
+        opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        default_vpc2 = alicloud.vpc.Network("defaultVpc2",
+            vpc_name=f"{name}6",
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        default2_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default2_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default2_instance_types = alicloud.ecs.get_instance_types(availability_zone=default2_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        defaultds_vsw2 = alicloud.vpc.Switch("defaultdsVsw2",
+            vpc_id=default_vpc2.id,
+            cidr_block="192.168.0.0/24",
+            zone_id=default2_zones.zones[1].id,
+            opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        defaultu_bs_eci2 = alicloud.ecs.SecurityGroup("defaultuBsECI2", vpc_id=default_vpc2.id,
+        opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        default_ecs2 = alicloud.ecs.Instance("defaultEcs2",
+            image_id=default2_images.images[0].id,
+            instance_type=default2_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[defaultu_bs_eci2.id],
+            availability_zone=defaultds_vsw2.zone_id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=defaultds_vsw2.id,
+            opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        default_ef_ybjy = alicloud.eipanycast.AnycastEipAddressAttachment("defaultEfYBJY",
+            bind_instance_id=default9_k_dl_n7.network_interface_id,
+            bind_instance_type="NetworkInterface",
+            bind_instance_region_id="cn-beijing",
+            anycast_id=default_xkp_frs.id,
+            association_mode="Default",
+            opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        normal = alicloud.eipanycast.AnycastEipAddressAttachment("normal",
+            bind_instance_id=default_ecs2.network_interface_id,
+            bind_instance_type="NetworkInterface",
+            bind_instance_region_id="cn-hangzhou",
+            anycast_id=default_ef_ybjy.anycast_id,
+            opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        ```
+
         ## Import
 
         Eipanycast Anycast Eip Address Attachment can be imported using the id, e.g.
@@ -357,6 +484,133 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
 
         > **NOTE:** The following regions support currently while Slb instance support bound.
         [eu-west-1-gb33-a01,cn-hongkong-am4-c04,ap-southeast-os30-a01,us-west-ot7-a01,ap-south-in73-a01,ap-southeast-my88-a01]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.slb.get_zones(available_slb_address_type="vpc")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            address_type="intranet",
+            vswitch_id=default_switch.id,
+            load_balancer_name=name,
+            load_balancer_spec="slb.s1.small",
+            master_zone_id=default_zones.zones[0].id)
+        default_anycast_eip_address = alicloud.eipanycast.AnycastEipAddress("defaultAnycastEipAddress",
+            anycast_eip_address_name=name,
+            service_location="ChineseMainland")
+        default_regions = alicloud.get_regions(current=True)
+        default_anycast_eip_address_attachment = alicloud.eipanycast.AnycastEipAddressAttachment("defaultAnycastEipAddressAttachment",
+            bind_instance_id=default_application_load_balancer.id,
+            bind_instance_type="SlbInstance",
+            bind_instance_region_id=default_regions.regions[0].id,
+            anycast_id=default_anycast_eip_address.id)
+        ```
+
+        Multiple Usage
+
+        > **NOTE:**  Anycast EIP supports binding cloud resource instances in multiple regions. Only one cloud resource instance is supported as the default origin station, and the rest are normal origin stations. When no access point is specified or an access point is added, the access request is forwarded to the default origin by default.  If you are bound for the first time, the Default value of the binding mode is **Default * *. /li> li> If you are not binding for the first time, you can set the binding mode to **Default**, and the new Default origin will take effect. The original Default origin will be changed to a common origin.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        beijing = alicloud.Provider("beijing", region="cn-beijing")
+        hangzhou = alicloud.Provider("hangzhou", region="cn-hangzhou")
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        default_vsw = alicloud.vpc.Switch("defaultVsw",
+            vpc_id=default_vpc.id,
+            cidr_block="192.168.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        defaultu_bs_eci = alicloud.ecs.SecurityGroup("defaultuBsECI", vpc_id=default_vpc.id,
+        opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        default9_k_dl_n7 = alicloud.ecs.Instance("default9KDlN7",
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[defaultu_bs_eci.id],
+            availability_zone=default_vsw.zone_id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_vsw.id,
+            opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        default_xkp_frs = alicloud.eipanycast.AnycastEipAddress("defaultXkpFRs", service_location="ChineseMainland",
+        opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        default_vpc2 = alicloud.vpc.Network("defaultVpc2",
+            vpc_name=f"{name}6",
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        default2_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default2_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default2_instance_types = alicloud.ecs.get_instance_types(availability_zone=default2_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        defaultds_vsw2 = alicloud.vpc.Switch("defaultdsVsw2",
+            vpc_id=default_vpc2.id,
+            cidr_block="192.168.0.0/24",
+            zone_id=default2_zones.zones[1].id,
+            opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        defaultu_bs_eci2 = alicloud.ecs.SecurityGroup("defaultuBsECI2", vpc_id=default_vpc2.id,
+        opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        default_ecs2 = alicloud.ecs.Instance("defaultEcs2",
+            image_id=default2_images.images[0].id,
+            instance_type=default2_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[defaultu_bs_eci2.id],
+            availability_zone=defaultds_vsw2.zone_id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=defaultds_vsw2.id,
+            opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        default_ef_ybjy = alicloud.eipanycast.AnycastEipAddressAttachment("defaultEfYBJY",
+            bind_instance_id=default9_k_dl_n7.network_interface_id,
+            bind_instance_type="NetworkInterface",
+            bind_instance_region_id="cn-beijing",
+            anycast_id=default_xkp_frs.id,
+            association_mode="Default",
+            opts=pulumi.ResourceOptions(provider="alicloud.beijing"))
+        normal = alicloud.eipanycast.AnycastEipAddressAttachment("normal",
+            bind_instance_id=default_ecs2.network_interface_id,
+            bind_instance_type="NetworkInterface",
+            bind_instance_region_id="cn-hangzhou",
+            anycast_id=default_ef_ybjy.anycast_id,
+            opts=pulumi.ResourceOptions(provider="alicloud.hangzhou"))
+        ```
 
         ## Import
 

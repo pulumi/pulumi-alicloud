@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CloudConnect
     /// <summary>
     /// Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
     /// 
-    /// For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/doc-detail/94543.htm).
+    /// For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/grantinstancetocbn).
     /// 
-    /// &gt; **NOTE:** Available in 1.63.0+
+    /// &gt; **NOTE:** Available since v1.63.0.
     /// 
     /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
@@ -30,42 +30,57 @@ namespace Pulumi.AliCloud.CloudConnect
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ccnAccount = new AliCloud.Provider("ccnAccount");
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var cenUid = config.GetNumber("cenUid") ?? 123456789;
+    ///     var @default = new AliCloud.Provider("default", new()
+    ///     {
+    ///         Region = "cn-shanghai",
+    ///     });
     /// 
+    ///     // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
     ///     var cenAccount = new AliCloud.Provider("cenAccount", new()
     ///     {
     ///         Region = "cn-hangzhou",
-    ///         AccessKey = "xxxxxx",
-    ///         SecretKey = "xxxxxx",
+    ///         AssumeRole = new AliCloud.Inputs.ProviderAssumeRoleArgs
+    ///         {
+    ///             RoleArn = $"acs:ram::{cenUid}:role/terraform-example-assume-role",
+    ///         },
+    ///     });
+    /// 
+    ///     // Method 2: Use the target cen account's access_key, secret_key
+    ///     // provider "alicloud" {
+    ///     //   region     = "cn-hangzhou"
+    ///     //   access_key = "access_key"
+    ///     //   secret_key = "secret_key"
+    ///     //   alias      = "cen_account"
+    ///     // }
+    ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
+    ///     {
+    ///         Description = name,
+    ///         CidrBlock = "192.168.0.0/24",
+    ///         IsDefault = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Default,
     ///     });
     /// 
     ///     var cen = new AliCloud.Cen.Instance("cen", new()
     ///     {
+    ///         CenInstanceName = name,
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Cen_account,
     ///     });
     /// 
-    ///     var ccn = new AliCloud.CloudConnect.Network("ccn", new()
+    ///     var defaultNetworkGrant = new AliCloud.CloudConnect.NetworkGrant("defaultNetworkGrant", new()
     ///     {
-    ///         IsDefault = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Ccn_account,
-    ///     });
-    /// 
-    ///     var @default = new AliCloud.CloudConnect.NetworkGrant("default", new()
-    ///     {
-    ///         CcnId = ccn.Id,
+    ///         CcnId = defaultNetwork.Id,
     ///         CenId = cen.Id,
-    ///         CenUid = "xxxxxx",
+    ///         CenUid = cenUid,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             ccn,
-    ///             cen,
-    ///         },
+    ///         Provider = alicloud.Default,
     ///     });
     /// 
     /// });

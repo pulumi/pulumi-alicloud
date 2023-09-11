@@ -14,9 +14,9 @@ import (
 
 // Provides a HBR Backup vault resource.
 //
-// For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/doc-detail/62362.htm).
+// For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -60,19 +60,17 @@ type Vault struct {
 
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
 	EncryptType pulumi.StringOutput `pulumi:"encryptType"`
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-	RedundancyType pulumi.StringOutput `pulumi:"redundancyType"`
-	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+	// The status of the Vault.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The name of Vault.
 	VaultName pulumi.StringOutput `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringOutput `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType pulumi.StringOutput `pulumi:"vaultType"`
 }
 
@@ -111,38 +109,34 @@ func GetVault(ctx *pulumi.Context,
 type vaultState struct {
 	// The description of Vault. Defaults to an empty string.
 	Description *string `pulumi:"description"`
-	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
 	EncryptType *string `pulumi:"encryptType"`
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-	RedundancyType *string `pulumi:"redundancyType"`
-	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+	// The status of the Vault.
 	Status *string `pulumi:"status"`
 	// The name of Vault.
 	VaultName *string `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType *string `pulumi:"vaultType"`
 }
 
 type VaultState struct {
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrInput
-	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
 	EncryptType pulumi.StringPtrInput
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId pulumi.StringPtrInput
-	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-	RedundancyType pulumi.StringPtrInput
-	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+	// The status of the Vault.
 	Status pulumi.StringPtrInput
 	// The name of Vault.
 	VaultName pulumi.StringPtrInput
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringPtrInput
-	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType pulumi.StringPtrInput
 }
 
@@ -153,17 +147,15 @@ func (VaultState) ElementType() reflect.Type {
 type vaultArgs struct {
 	// The description of Vault. Defaults to an empty string.
 	Description *string `pulumi:"description"`
-	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
 	EncryptType *string `pulumi:"encryptType"`
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-	RedundancyType *string `pulumi:"redundancyType"`
 	// The name of Vault.
 	VaultName string `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType *string `pulumi:"vaultType"`
 }
 
@@ -171,17 +163,15 @@ type vaultArgs struct {
 type VaultArgs struct {
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrInput
-	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
 	EncryptType pulumi.StringPtrInput
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId pulumi.StringPtrInput
-	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-	RedundancyType pulumi.StringPtrInput
 	// The name of Vault.
 	VaultName pulumi.StringInput
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringPtrInput
-	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType pulumi.StringPtrInput
 }
 
@@ -277,7 +267,7 @@ func (o VaultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
 func (o VaultOutput) EncryptType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.EncryptType }).(pulumi.StringOutput)
 }
@@ -287,12 +277,7 @@ func (o VaultOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-func (o VaultOutput) RedundancyType() pulumi.StringOutput {
-	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.RedundancyType }).(pulumi.StringOutput)
-}
-
-// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+// The status of the Vault.
 func (o VaultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -307,7 +292,7 @@ func (o VaultOutput) VaultStorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.VaultStorageClass }).(pulumi.StringOutput)
 }
 
-// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 func (o VaultOutput) VaultType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.VaultType }).(pulumi.StringOutput)
 }

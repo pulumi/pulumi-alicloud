@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).
+// Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
 //
-// > **NOTE:** Available in 1.86.0+
+// > **NOTE:** Available since v1.86.0.
 //
 // ## Example Usage
 //
@@ -27,13 +27,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := ddos.NewSchedulerRule(ctx, "example", &ddos.SchedulerRuleArgs{
-//				RuleName: pulumi.String("tf-testacc7929727"),
+//				RuleName: pulumi.String(name),
 //				RuleType: pulumi.Int(3),
 //				Rules: ddos.SchedulerRuleRuleArray{
 //					&ddos.SchedulerRuleRuleArgs{
@@ -86,7 +92,7 @@ type SchedulerRule struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType pulumi.IntOutput `pulumi:"ruleType"`
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules SchedulerRuleRuleArrayOutput `pulumi:"rules"`
 }
 
@@ -142,7 +148,7 @@ type schedulerRuleState struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType *int `pulumi:"ruleType"`
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules []SchedulerRuleRule `pulumi:"rules"`
 }
 
@@ -160,7 +166,7 @@ type SchedulerRuleState struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType pulumi.IntPtrInput
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules SchedulerRuleRuleArrayInput
 }
 
@@ -180,7 +186,7 @@ type schedulerRuleArgs struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType int `pulumi:"ruleType"`
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules []SchedulerRuleRule `pulumi:"rules"`
 }
 
@@ -197,7 +203,7 @@ type SchedulerRuleArgs struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType pulumi.IntInput
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules SchedulerRuleRuleArrayInput
 }
 
@@ -316,7 +322,7 @@ func (o SchedulerRuleOutput) RuleType() pulumi.IntOutput {
 	return o.ApplyT(func(v *SchedulerRule) pulumi.IntOutput { return v.RuleType }).(pulumi.IntOutput)
 }
 
-// The information about the scheduling rules. See the following `Block rules`.
+// The information about the scheduling rules. See `rules` below.
 func (o SchedulerRuleOutput) Rules() SchedulerRuleRuleArrayOutput {
 	return o.ApplyT(func(v *SchedulerRule) SchedulerRuleRuleArrayOutput { return v.Rules }).(SchedulerRuleRuleArrayOutput)
 }

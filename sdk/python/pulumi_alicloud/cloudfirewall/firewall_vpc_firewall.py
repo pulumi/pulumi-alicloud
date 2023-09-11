@@ -24,11 +24,11 @@ class FirewallVpcFirewallArgs:
                  member_uid: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FirewallVpcFirewall resource.
-        :param pulumi.Input['FirewallVpcFirewallLocalVpcArgs'] local_vpc: The details of the local VPC. See the following `Block LocalVpc`.
-        :param pulumi.Input['FirewallVpcFirewallPeerVpcArgs'] peer_vpc: The details of the peer VPC. See the following `Block PeerVpc`.
-        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input['FirewallVpcFirewallLocalVpcArgs'] local_vpc: The details of the local VPC. See `local_vpc` below.
+        :param pulumi.Input['FirewallVpcFirewallPeerVpcArgs'] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
+        :param pulumi.Input[str] status: The status of the resource. Valid values:
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
-        :param pulumi.Input[str] lang: The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
         :param pulumi.Input[str] member_uid: The UID of the Alibaba Cloud member account.
         """
         pulumi.set(__self__, "local_vpc", local_vpc)
@@ -44,7 +44,7 @@ class FirewallVpcFirewallArgs:
     @pulumi.getter(name="localVpc")
     def local_vpc(self) -> pulumi.Input['FirewallVpcFirewallLocalVpcArgs']:
         """
-        The details of the local VPC. See the following `Block LocalVpc`.
+        The details of the local VPC. See `local_vpc` below.
         """
         return pulumi.get(self, "local_vpc")
 
@@ -56,7 +56,7 @@ class FirewallVpcFirewallArgs:
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> pulumi.Input['FirewallVpcFirewallPeerVpcArgs']:
         """
-        The details of the peer VPC. See the following `Block PeerVpc`.
+        The details of the peer VPC. See `peer_vpc` below.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -68,7 +68,7 @@ class FirewallVpcFirewallArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
         """
-        The status of the resource
+        The status of the resource. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -92,7 +92,7 @@ class FirewallVpcFirewallArgs:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        The language type of the requested and received messages. Valid values:
         """
         return pulumi.get(self, "lang")
 
@@ -129,13 +129,13 @@ class _FirewallVpcFirewallState:
         """
         Input properties used for looking up and filtering FirewallVpcFirewall resources.
         :param pulumi.Input[int] bandwidth: Bandwidth specifications for high-speed channels. Unit: Mbps.
-        :param pulumi.Input[str] connect_type: The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
-        :param pulumi.Input[str] lang: The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-        :param pulumi.Input['FirewallVpcFirewallLocalVpcArgs'] local_vpc: The details of the local VPC. See the following `Block LocalVpc`.
+        :param pulumi.Input[str] connect_type: The communication type of the VPC firewall.
+        :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
+        :param pulumi.Input['FirewallVpcFirewallLocalVpcArgs'] local_vpc: The details of the local VPC. See `local_vpc` below.
         :param pulumi.Input[str] member_uid: The UID of the Alibaba Cloud member account.
-        :param pulumi.Input['FirewallVpcFirewallPeerVpcArgs'] peer_vpc: The details of the peer VPC. See the following `Block PeerVpc`.
-        :param pulumi.Input[str] region_status: The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
-        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input['FirewallVpcFirewallPeerVpcArgs'] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
+        :param pulumi.Input[str] region_status: The region is open.
+        :param pulumi.Input[str] status: The status of the resource. Valid values:
         :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance.
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         """
@@ -176,7 +176,7 @@ class _FirewallVpcFirewallState:
     @pulumi.getter(name="connectType")
     def connect_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+        The communication type of the VPC firewall.
         """
         return pulumi.get(self, "connect_type")
 
@@ -188,7 +188,7 @@ class _FirewallVpcFirewallState:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        The language type of the requested and received messages. Valid values:
         """
         return pulumi.get(self, "lang")
 
@@ -200,7 +200,7 @@ class _FirewallVpcFirewallState:
     @pulumi.getter(name="localVpc")
     def local_vpc(self) -> Optional[pulumi.Input['FirewallVpcFirewallLocalVpcArgs']]:
         """
-        The details of the local VPC. See the following `Block LocalVpc`.
+        The details of the local VPC. See `local_vpc` below.
         """
         return pulumi.get(self, "local_vpc")
 
@@ -224,7 +224,7 @@ class _FirewallVpcFirewallState:
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> Optional[pulumi.Input['FirewallVpcFirewallPeerVpcArgs']]:
         """
-        The details of the peer VPC. See the following `Block PeerVpc`.
+        The details of the peer VPC. See `peer_vpc` below.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -236,7 +236,7 @@ class _FirewallVpcFirewallState:
     @pulumi.getter(name="regionStatus")
     def region_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+        The region is open.
         """
         return pulumi.get(self, "region_status")
 
@@ -248,7 +248,7 @@ class _FirewallVpcFirewallState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource
+        The status of the resource. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -296,9 +296,46 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         """
         Provides a Cloud Firewall Vpc Firewall resource.
 
-        For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://help.aliyun.com/document_detail/342893.html).
+        For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createvpcfirewallconfigure).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        current = alicloud.get_account()
+        default = alicloud.cloudfirewall.FirewallVpcFirewall("default",
+            vpc_firewall_name="tf-example",
+            member_uid=current.id,
+            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcArgs(
+                vpc_id="vpc-bp1d065m6hzn1xbw8ibfd",
+                region_no="cn-hangzhou",
+                local_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs(
+                    local_route_table_id="vtb-bp1lj0ddg846856chpzrv",
+                    local_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs(
+                        local_next_hop_instance_id="ri-bp1uobww3aputjlwwkyrh",
+                        local_destination_cidr="10.1.0.0/16",
+                    )],
+                )],
+            ),
+            peer_vpc=alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcArgs(
+                vpc_id="vpc-bp1gcmm64o3caox84v0nz",
+                region_no="cn-hangzhou",
+                peer_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs(
+                    peer_route_table_id="vtb-bp1f516f2hh4sok1ig9b5",
+                    peer_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs(
+                        peer_destination_cidr="10.0.0.0/16",
+                        peer_next_hop_instance_id="ri-bp1thhtgf6ydr2or52l3n",
+                    )],
+                )],
+            ),
+            status="open")
+        ```
 
         ## Import
 
@@ -310,11 +347,11 @@ class FirewallVpcFirewall(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] lang: The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallLocalVpcArgs']] local_vpc: The details of the local VPC. See the following `Block LocalVpc`.
+        :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
+        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallLocalVpcArgs']] local_vpc: The details of the local VPC. See `local_vpc` below.
         :param pulumi.Input[str] member_uid: The UID of the Alibaba Cloud member account.
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallPeerVpcArgs']] peer_vpc: The details of the peer VPC. See the following `Block PeerVpc`.
-        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallPeerVpcArgs']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
+        :param pulumi.Input[str] status: The status of the resource. Valid values:
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         """
         ...
@@ -326,9 +363,46 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         """
         Provides a Cloud Firewall Vpc Firewall resource.
 
-        For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://help.aliyun.com/document_detail/342893.html).
+        For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createvpcfirewallconfigure).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        current = alicloud.get_account()
+        default = alicloud.cloudfirewall.FirewallVpcFirewall("default",
+            vpc_firewall_name="tf-example",
+            member_uid=current.id,
+            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcArgs(
+                vpc_id="vpc-bp1d065m6hzn1xbw8ibfd",
+                region_no="cn-hangzhou",
+                local_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs(
+                    local_route_table_id="vtb-bp1lj0ddg846856chpzrv",
+                    local_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs(
+                        local_next_hop_instance_id="ri-bp1uobww3aputjlwwkyrh",
+                        local_destination_cidr="10.1.0.0/16",
+                    )],
+                )],
+            ),
+            peer_vpc=alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcArgs(
+                vpc_id="vpc-bp1gcmm64o3caox84v0nz",
+                region_no="cn-hangzhou",
+                peer_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs(
+                    peer_route_table_id="vtb-bp1f516f2hh4sok1ig9b5",
+                    peer_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs(
+                        peer_destination_cidr="10.0.0.0/16",
+                        peer_next_hop_instance_id="ri-bp1thhtgf6ydr2or52l3n",
+                    )],
+                )],
+            ),
+            status="open")
+        ```
 
         ## Import
 
@@ -414,13 +488,13 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: Bandwidth specifications for high-speed channels. Unit: Mbps.
-        :param pulumi.Input[str] connect_type: The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
-        :param pulumi.Input[str] lang: The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallLocalVpcArgs']] local_vpc: The details of the local VPC. See the following `Block LocalVpc`.
+        :param pulumi.Input[str] connect_type: The communication type of the VPC firewall.
+        :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
+        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallLocalVpcArgs']] local_vpc: The details of the local VPC. See `local_vpc` below.
         :param pulumi.Input[str] member_uid: The UID of the Alibaba Cloud member account.
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallPeerVpcArgs']] peer_vpc: The details of the peer VPC. See the following `Block PeerVpc`.
-        :param pulumi.Input[str] region_status: The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
-        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallPeerVpcArgs']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
+        :param pulumi.Input[str] region_status: The region is open.
+        :param pulumi.Input[str] status: The status of the resource. Valid values:
         :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance.
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         """
@@ -452,15 +526,15 @@ class FirewallVpcFirewall(pulumi.CustomResource):
     @pulumi.getter(name="connectType")
     def connect_type(self) -> pulumi.Output[str]:
         """
-        The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+        The communication type of the VPC firewall.
         """
         return pulumi.get(self, "connect_type")
 
     @property
     @pulumi.getter
-    def lang(self) -> pulumi.Output[str]:
+    def lang(self) -> pulumi.Output[Optional[str]]:
         """
-        The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        The language type of the requested and received messages. Valid values:
         """
         return pulumi.get(self, "lang")
 
@@ -468,7 +542,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
     @pulumi.getter(name="localVpc")
     def local_vpc(self) -> pulumi.Output['outputs.FirewallVpcFirewallLocalVpc']:
         """
-        The details of the local VPC. See the following `Block LocalVpc`.
+        The details of the local VPC. See `local_vpc` below.
         """
         return pulumi.get(self, "local_vpc")
 
@@ -484,7 +558,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> pulumi.Output['outputs.FirewallVpcFirewallPeerVpc']:
         """
-        The details of the peer VPC. See the following `Block PeerVpc`.
+        The details of the peer VPC. See `peer_vpc` below.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -492,7 +566,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
     @pulumi.getter(name="regionStatus")
     def region_status(self) -> pulumi.Output[str]:
         """
-        The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+        The region is open.
         """
         return pulumi.get(self, "region_status")
 
@@ -500,7 +574,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource
+        The status of the resource. Valid values:
         """
         return pulumi.get(self, "status")
 

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain).
  *
- * > **NOTE:** Available in v1.200.0+.
+ * > **NOTE:** Available since v1.200.0.
  *
  * ## Import
  *
@@ -62,11 +62,11 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Configure listening information. See the following `Block Listen`.
+     * Configure listening information. See `listen` below.
      */
     public readonly listen!: pulumi.Output<outputs.wafv3.DomainListen>;
     /**
-     * Configure forwarding information. See the following `Block Redirect`.
+     * Configure forwarding information. See `redirect` below.
      */
     public readonly redirect!: pulumi.Output<outputs.wafv3.DomainRedirect>;
     /**
@@ -142,11 +142,11 @@ export interface DomainState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Configure listening information. See the following `Block Listen`.
+     * Configure listening information. See `listen` below.
      */
     listen?: pulumi.Input<inputs.wafv3.DomainListen>;
     /**
-     * Configure forwarding information. See the following `Block Redirect`.
+     * Configure forwarding information. See `redirect` below.
      */
     redirect?: pulumi.Input<inputs.wafv3.DomainRedirect>;
     /**
@@ -176,11 +176,11 @@ export interface DomainArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Configure listening information. See the following `Block Listen`.
+     * Configure listening information. See `listen` below.
      */
     listen: pulumi.Input<inputs.wafv3.DomainListen>;
     /**
-     * Configure forwarding information. See the following `Block Redirect`.
+     * Configure forwarding information. See `redirect` below.
      */
     redirect: pulumi.Input<inputs.wafv3.DomainRedirect>;
 }

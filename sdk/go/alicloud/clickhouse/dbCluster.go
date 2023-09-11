@@ -14,9 +14,9 @@ import (
 
 // Provides a Click House DBCluster resource.
 //
-// For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/product/clickhouse).
+// For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -30,32 +30,41 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/clickhouse"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
-//			}, nil)
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
-//				DbClusterVersion:     pulumi.String("20.3.10.75"),
+//				DbClusterVersion:     pulumi.String("22.8.5.29"),
 //				Category:             pulumi.String("Basic"),
 //				DbClusterClass:       pulumi.String("S8"),
 //				DbClusterNetworkType: pulumi.String("vpc"),
@@ -63,14 +72,8 @@ import (
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				DbNodeStorage:        pulumi.String("500"),
 //				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            *pulumi.String(defaultSwitches.Ids[0]),
-//				DbClusterAccessWhiteLists: clickhouse.DbClusterDbClusterAccessWhiteListArray{
-//					&clickhouse.DbClusterDbClusterAccessWhiteListArgs{
-//						DbClusterIpArrayAttribute: pulumi.String("test"),
-//						DbClusterIpArrayName:      pulumi.String("test"),
-//						SecurityIpList:            pulumi.String("192.168.0.1"),
-//					},
-//				},
+//				VswitchId:            defaultSwitch.ID(),
+//				VpcId:                defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,9 +98,9 @@ type DbCluster struct {
 
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringOutput `pulumi:"category"`
-	// (Available in 1.196.0+) - The connection string of the cluster.
+	// (Available since v1.196.0) - The connection string of the cluster.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
-	// The db cluster access white list.
+	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
 	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayOutput `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
@@ -123,7 +126,7 @@ type DbCluster struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
-	// (Available in 1.196.0+) The connection port of the cluster.
+	// (Available since v1.196.0) The connection port of the cluster.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -195,9 +198,9 @@ func GetDbCluster(ctx *pulumi.Context,
 type dbClusterState struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category *string `pulumi:"category"`
-	// (Available in 1.196.0+) - The connection string of the cluster.
+	// (Available since v1.196.0) - The connection string of the cluster.
 	ConnectionString *string `pulumi:"connectionString"`
-	// The db cluster access white list.
+	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
 	DbClusterAccessWhiteLists []DbClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
@@ -223,7 +226,7 @@ type dbClusterState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period *string `pulumi:"period"`
-	// (Available in 1.196.0+) The connection port of the cluster.
+	// (Available since v1.196.0) The connection port of the cluster.
 	Port *string `pulumi:"port"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status *string `pulumi:"status"`
@@ -242,9 +245,9 @@ type dbClusterState struct {
 type DbClusterState struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringPtrInput
-	// (Available in 1.196.0+) - The connection string of the cluster.
+	// (Available since v1.196.0) - The connection string of the cluster.
 	ConnectionString pulumi.StringPtrInput
-	// The db cluster access white list.
+	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
 	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayInput
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
@@ -270,7 +273,7 @@ type DbClusterState struct {
 	PaymentType pulumi.StringPtrInput
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrInput
-	// (Available in 1.196.0+) The connection port of the cluster.
+	// (Available since v1.196.0) The connection port of the cluster.
 	Port pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringPtrInput
@@ -293,7 +296,7 @@ func (DbClusterState) ElementType() reflect.Type {
 type dbClusterArgs struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category string `pulumi:"category"`
-	// The db cluster access white list.
+	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
 	DbClusterAccessWhiteLists []DbClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
@@ -337,7 +340,7 @@ type dbClusterArgs struct {
 type DbClusterArgs struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringInput
-	// The db cluster access white list.
+	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
 	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayInput
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
@@ -469,12 +472,12 @@ func (o DbClusterOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
-// (Available in 1.196.0+) - The connection string of the cluster.
+// (Available since v1.196.0) - The connection string of the cluster.
 func (o DbClusterOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
-// The db cluster access white list.
+// The db cluster access white list. See `dbClusterAccessWhiteList` below.
 func (o DbClusterOutput) DbClusterAccessWhiteLists() DbClusterDbClusterAccessWhiteListArrayOutput {
 	return o.ApplyT(func(v *DbCluster) DbClusterDbClusterAccessWhiteListArrayOutput { return v.DbClusterAccessWhiteLists }).(DbClusterDbClusterAccessWhiteListArrayOutput)
 }
@@ -536,7 +539,7 @@ func (o DbClusterOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
 }
 
-// (Available in 1.196.0+) The connection port of the cluster.
+// (Available since v1.196.0) The connection port of the cluster.
 func (o DbClusterOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }

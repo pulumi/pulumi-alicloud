@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Serverless App Engine (SAE) Application resource.
  *
- * For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
+ * For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/sae/latest/createapplication).
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0.
  *
  * ## Example Usage
  *
@@ -18,35 +18,46 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc";
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: "tf_testacc",
- *     cidrBlock: "172.16.0.0/12",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * });
- * const vsw = new alicloud.vpc.Switch("vsw", {
- *     vpcId: vpc.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
- *     namespaceDescription: name,
- *     namespaceId: "cn-hangzhou:tfacctest",
+ *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
  *     namespaceName: name,
+ *     namespaceDescription: name,
+ *     enableMicroRegistration: false,
  * });
  * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
- *     appDescription: "tf-testaccDescription",
- *     appName: "tf-testaccAppName",
+ *     appDescription: name,
+ *     appName: name,
  *     namespaceId: defaultNamespace.id,
- *     imageUrl: "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+ *     imageUrl: defaultRegions.then(defaultRegions => `registry-vpc.${defaultRegions.regions?.[0]?.id}.aliyuncs.com/sae-demo-image/consumer:1.0`),
  *     packageType: "Image",
- *     vpcId: vsw.vpcId,
- *     vswitchId: vsw.id,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vpcId: defaultNetwork.id,
+ *     vswitchId: defaultSwitch.id,
  *     timezone: "Asia/Beijing",
  *     replicas: 5,
  *     cpu: 500,

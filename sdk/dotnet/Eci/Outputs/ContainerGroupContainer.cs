@@ -62,11 +62,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerReadinessProbe> ReadinessProbes;
         /// <summary>
-        /// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+        /// Indicates whether the container passed the readiness probe.
         /// </summary>
         public readonly bool? Ready;
         /// <summary>
-        /// (Available since v1.208.0) The number of times that the container restarted.
+        /// The number of times that the container restarted.
         /// </summary>
         public readonly int? RestartCount;
         /// <summary>

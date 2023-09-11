@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *
@@ -19,13 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: "test",
- *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * });
  * const exampleDhcpOptionsSet = new alicloud.vpc.DhcpOptionsSet("exampleDhcpOptionsSet", {
- *     dhcpOptionsSetName: "example_value",
- *     dhcpOptionsSetDescription: "example_value",
+ *     dhcpOptionsSetName: name,
+ *     dhcpOptionsSetDescription: name,
  *     domainName: "example.com",
  *     domainNameServers: "100.100.2.136",
  * });

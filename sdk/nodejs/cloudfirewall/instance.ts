@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * ## Example Usage
  *
@@ -21,12 +21,11 @@ import * as utilities from "../utilities";
  *
  * const example = new alicloud.cloudfirewall.Instance("example", {
  *     bandWidth: 10,
- *     cfwLog: false,
+ *     cfwLog: true,
  *     cfwLogStorage: 1000,
- *     cfwService: false,
  *     ipNumber: 20,
  *     paymentType: "Subscription",
- *     period: 6,
+ *     period: 1,
  *     spec: "premium_version",
  * });
  * ```
@@ -68,21 +67,25 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * The number of multi account. It will be ignored when `cfwAccount = false`.
+     */
+    public readonly accountNumber!: pulumi.Output<number | undefined>;
+    /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
     public readonly bandWidth!: pulumi.Output<number>;
+    /**
+     * Whether to use multi-account. Valid values: `true`, `false`.
+     */
+    public readonly cfwAccount!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to use log audit. Valid values: `true`, `false`.
      */
     public readonly cfwLog!: pulumi.Output<boolean>;
     /**
-     * The log storage capacity.
+     * The log storage capacity. It will be ignored when `cfwLog = false`.
      */
-    public readonly cfwLogStorage!: pulumi.Output<number>;
-    /**
-     * Whether to use expert service. Valid values: `true`, `false`.
-     */
-    public readonly cfwService!: pulumi.Output<boolean>;
+    public readonly cfwLogStorage!: pulumi.Output<number | undefined>;
     /**
      * The creation time.
      */
@@ -92,7 +95,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
-     * The number of protected VPCs. Valid values between 2 and 500.
+     * The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
      */
     public readonly fwVpcNumber!: pulumi.Output<number | undefined>;
     /**
@@ -108,7 +111,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly logistics!: pulumi.Output<string | undefined>;
     /**
-     * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
@@ -124,15 +127,21 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly releaseTime!: pulumi.Output<string>;
     /**
-     * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+     * Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+     *
+     * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
-    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    public readonly renewPeriod!: pulumi.Output<number>;
     /**
-     * Automatic renewal period unit. Valid values: `Month`,`Year`.
+     * Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
      */
-    public /*out*/ readonly renewalDurationUnit!: pulumi.Output<string>;
+    public readonly renewalDuration!: pulumi.Output<number>;
     /**
-     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+     */
+    public readonly renewalDurationUnit!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to renew an instance automatically or not. Default to "ManualRenewal".
      */
     public readonly renewalStatus!: pulumi.Output<string>;
     /**
@@ -157,10 +166,11 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["accountNumber"] = state ? state.accountNumber : undefined;
             resourceInputs["bandWidth"] = state ? state.bandWidth : undefined;
+            resourceInputs["cfwAccount"] = state ? state.cfwAccount : undefined;
             resourceInputs["cfwLog"] = state ? state.cfwLog : undefined;
             resourceInputs["cfwLogStorage"] = state ? state.cfwLogStorage : undefined;
-            resourceInputs["cfwService"] = state ? state.cfwService : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["endTime"] = state ? state.endTime : undefined;
             resourceInputs["fwVpcNumber"] = state ? state.fwVpcNumber : undefined;
@@ -172,6 +182,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["releaseTime"] = state ? state.releaseTime : undefined;
             resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalDuration"] = state ? state.renewalDuration : undefined;
             resourceInputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
@@ -183,12 +194,6 @@ export class Instance extends pulumi.CustomResource {
             }
             if ((!args || args.cfwLog === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cfwLog'");
-            }
-            if ((!args || args.cfwLogStorage === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cfwLogStorage'");
-            }
-            if ((!args || args.cfwService === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cfwService'");
             }
             if ((!args || args.ipNumber === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipNumber'");
@@ -202,10 +207,11 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.spec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
+            resourceInputs["accountNumber"] = args ? args.accountNumber : undefined;
             resourceInputs["bandWidth"] = args ? args.bandWidth : undefined;
+            resourceInputs["cfwAccount"] = args ? args.cfwAccount : undefined;
             resourceInputs["cfwLog"] = args ? args.cfwLog : undefined;
             resourceInputs["cfwLogStorage"] = args ? args.cfwLogStorage : undefined;
-            resourceInputs["cfwService"] = args ? args.cfwService : undefined;
             resourceInputs["fwVpcNumber"] = args ? args.fwVpcNumber : undefined;
             resourceInputs["instanceCount"] = args ? args.instanceCount : undefined;
             resourceInputs["ipNumber"] = args ? args.ipNumber : undefined;
@@ -214,12 +220,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalDuration"] = args ? args.renewalDuration : undefined;
+            resourceInputs["renewalDurationUnit"] = args ? args.renewalDurationUnit : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["releaseTime"] = undefined /*out*/;
-            resourceInputs["renewalDurationUnit"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -232,21 +239,25 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
+     * The number of multi account. It will be ignored when `cfwAccount = false`.
+     */
+    accountNumber?: pulumi.Input<number>;
+    /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
     bandWidth?: pulumi.Input<number>;
+    /**
+     * Whether to use multi-account. Valid values: `true`, `false`.
+     */
+    cfwAccount?: pulumi.Input<boolean>;
     /**
      * Whether to use log audit. Valid values: `true`, `false`.
      */
     cfwLog?: pulumi.Input<boolean>;
     /**
-     * The log storage capacity.
+     * The log storage capacity. It will be ignored when `cfwLog = false`.
      */
     cfwLogStorage?: pulumi.Input<number>;
-    /**
-     * Whether to use expert service. Valid values: `true`, `false`.
-     */
-    cfwService?: pulumi.Input<boolean>;
     /**
      * The creation time.
      */
@@ -256,7 +267,7 @@ export interface InstanceState {
      */
     endTime?: pulumi.Input<string>;
     /**
-     * The number of protected VPCs. Valid values between 2 and 500.
+     * The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
      */
     fwVpcNumber?: pulumi.Input<number>;
     /**
@@ -272,7 +283,7 @@ export interface InstanceState {
      */
     logistics?: pulumi.Input<string>;
     /**
-     * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
      */
     modifyType?: pulumi.Input<string>;
     /**
@@ -288,15 +299,21 @@ export interface InstanceState {
      */
     releaseTime?: pulumi.Input<string>;
     /**
-     * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+     * Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+     *
+     * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Automatic renewal period unit. Valid values: `Month`,`Year`.
+     * Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     */
+    renewalDuration?: pulumi.Input<number>;
+    /**
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      */
     renewalDurationUnit?: pulumi.Input<string>;
     /**
-     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+     * Whether to renew an instance automatically or not. Default to "ManualRenewal".
      */
     renewalStatus?: pulumi.Input<string>;
     /**
@@ -314,23 +331,27 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
+     * The number of multi account. It will be ignored when `cfwAccount = false`.
+     */
+    accountNumber?: pulumi.Input<number>;
+    /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
     bandWidth: pulumi.Input<number>;
+    /**
+     * Whether to use multi-account. Valid values: `true`, `false`.
+     */
+    cfwAccount?: pulumi.Input<boolean>;
     /**
      * Whether to use log audit. Valid values: `true`, `false`.
      */
     cfwLog: pulumi.Input<boolean>;
     /**
-     * The log storage capacity.
+     * The log storage capacity. It will be ignored when `cfwLog = false`.
      */
-    cfwLogStorage: pulumi.Input<number>;
+    cfwLogStorage?: pulumi.Input<number>;
     /**
-     * Whether to use expert service. Valid values: `true`, `false`.
-     */
-    cfwService: pulumi.Input<boolean>;
-    /**
-     * The number of protected VPCs. Valid values between 2 and 500.
+     * The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
      */
     fwVpcNumber?: pulumi.Input<number>;
     /**
@@ -346,7 +367,7 @@ export interface InstanceArgs {
      */
     logistics?: pulumi.Input<string>;
     /**
-     * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
      */
     modifyType?: pulumi.Input<string>;
     /**
@@ -358,11 +379,21 @@ export interface InstanceArgs {
      */
     period: pulumi.Input<number>;
     /**
-     * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+     * Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+     *
+     * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+     * Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     */
+    renewalDuration?: pulumi.Input<number>;
+    /**
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+     */
+    renewalDurationUnit?: pulumi.Input<string>;
+    /**
+     * Whether to renew an instance automatically or not. Default to "ManualRenewal".
      */
     renewalStatus?: pulumi.Input<string>;
     /**

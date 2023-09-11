@@ -31,71 +31,72 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
-//				MostRecent: pulumi.BoolRef(true),
-//				Owners:     pulumi.StringRef("system"),
+//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			cfg := config.New(ctx, "")
-//			name := "test_havip_attachment"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				VpcId:     fooNetwork.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/21"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooHAVip, err := vpc.NewHAVip(ctx, "fooHAVip", &vpc.HAVipArgs{
-//				VswitchId:   fooSwitch.ID(),
+//			exampleHAVip, err := vpc.NewHAVip(ctx, "exampleHAVip", &vpc.HAVipArgs{
+//				VswitchId:   exampleSwitch.ID(),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			tfTestFoo, err := ecs.NewSecurityGroup(ctx, "tfTestFoo", &ecs.SecurityGroupArgs{
-//				Description: pulumi.String("foo"),
-//				VpcId:       fooNetwork.ID(),
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String(name),
+//				VpcId:       exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooInstance, err := ecs.NewInstance(ctx, "fooInstance", &ecs.InstanceArgs{
-//				AvailabilityZone:        *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchId:               fooSwitch.ID(),
-//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//				AvailabilityZone:        *pulumi.String(_default.Zones[0].Id),
+//				VswitchId:               exampleSwitch.ID(),
+//				ImageId:                 *pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:            *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SecurityGroups: pulumi.StringArray{
-//					tfTestFoo.ID(),
+//					exampleSecurityGroup.ID(),
 //				},
 //				InstanceName: pulumi.String(name),
 //				UserData:     pulumi.String("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf"),
@@ -103,9 +104,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewHAVipAttachment(ctx, "fooHAVipAttachment", &vpc.HAVipAttachmentArgs{
-//				HavipId:    fooHAVip.ID(),
-//				InstanceId: fooInstance.ID(),
+//			_, err = vpc.NewHAVipAttachment(ctx, "exampleHAVipAttachment", &vpc.HAVipAttachmentArgs{
+//				HavipId:    exampleHAVip.ID(),
+//				InstanceId: exampleInstance.ID(),
 //			})
 //			if err != nil {
 //				return err

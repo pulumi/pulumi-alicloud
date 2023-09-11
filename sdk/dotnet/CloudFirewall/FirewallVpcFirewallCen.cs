@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// For information about Cloud Firewall Vpc Firewall Cen and how to use it, see [What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure).
     /// 
-    /// &gt; **NOTE:** Available in v1.194.0+.
+    /// &gt; **NOTE:** Available since v1.194.0.
     /// 
     /// ## Example Usage
     /// 
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///         },
     ///         MemberUid = "1415189284827022",
     ///         Status = "open",
-    ///         VpcFirewallName = "tf-test",
+    ///         VpcFirewallName = "tf-vpc-firewall-name",
     ///         VpcRegion = "ap-south-1",
     ///     });
     /// 
@@ -68,13 +68,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> ConnectType { get; private set; } = null!;
 
         /// <summary>
-        /// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        /// The language type of the requested and received messages. Valid values:
         /// </summary>
         [Output("lang")]
-        public Output<string> Lang { get; private set; } = null!;
+        public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the VPC.See the following `Block LocalVpc`.
+        /// The details of the VPC. See `local_vpc` below.
         /// </summary>
         [Output("localVpc")]
         public Output<Outputs.FirewallVpcFirewallCenLocalVpc> LocalVpc { get; private set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> MemberUid { get; private set; } = null!;
 
         /// <summary>
-        /// Firewall switch status
+        /// Firewall switch status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -162,13 +162,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> CenId { get; set; } = null!;
 
         /// <summary>
-        /// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        /// The language type of the requested and received messages. Valid values:
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The details of the VPC.See the following `Block LocalVpc`.
+        /// The details of the VPC. See `local_vpc` below.
         /// </summary>
         [Input("localVpc", required: true)]
         public Input<Inputs.FirewallVpcFirewallCenLocalVpcArgs> LocalVpc { get; set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// Firewall switch status
+        /// Firewall switch status.
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
@@ -218,13 +218,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? ConnectType { get; set; }
 
         /// <summary>
-        /// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        /// The language type of the requested and received messages. Valid values:
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The details of the VPC.See the following `Block LocalVpc`.
+        /// The details of the VPC. See `local_vpc` below.
         /// </summary>
         [Input("localVpc")]
         public Input<Inputs.FirewallVpcFirewallCenLocalVpcGetArgs>? LocalVpc { get; set; }
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// Firewall switch status
+        /// Firewall switch status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

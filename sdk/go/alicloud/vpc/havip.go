@@ -21,16 +21,45 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewHAVip(ctx, "foo", &vpc.HAVipArgs{
-//				Description: pulumi.String("test_havip"),
-//				VswitchId:   pulumi.String("vsw-fakeid"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewHAVip(ctx, "exampleHAVip", &vpc.HAVipArgs{
+//				VswitchId:   exampleSwitch.ID(),
+//				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -53,26 +82,36 @@ import (
 type HAVip struct {
 	pulumi.CustomResourceState
 
+	// The elastic IP address (EIP) associated with the HAVIP.
 	AssociatedEipAddresses pulumi.StringArrayOutput `pulumi:"associatedEipAddresses"`
-	AssociatedInstanceType pulumi.StringOutput      `pulumi:"associatedInstanceType"`
-	AssociatedInstances    pulumi.StringArrayOutput `pulumi:"associatedInstances"`
-	CreateTime             pulumi.StringOutput      `pulumi:"createTime"`
+	// The type of the instance with which the HAVIP is associated. Valid values:
+	AssociatedInstanceType pulumi.StringOutput `pulumi:"associatedInstanceType"`
+	// The ID of the instance with which the HAVIP is associated.
+	AssociatedInstances pulumi.StringArrayOutput `pulumi:"associatedInstances"`
+	// The time when the HAVIP was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the HaVip instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	HaVipId     pulumi.StringOutput    `pulumi:"haVipId"`
-	HaVipName   pulumi.StringOutput    `pulumi:"haVipName"`
+	// The ID of the HAVIP.
+	HaVipId pulumi.StringOutput `pulumi:"haVipId"`
+	// The name of the HAVIP.
+	HaVipName pulumi.StringOutput `pulumi:"haVipName"`
 	// The name of the HaVip instance.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName pulumi.StringOutput `pulumi:"havipName"`
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
-	IpAddress        pulumi.StringOutput `pulumi:"ipAddress"`
+	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
+	// The ID of the active instance that is associated with the HAVIP.
 	MasterInstanceId pulumi.StringOutput `pulumi:"masterInstanceId"`
-	ResourceGroupId  pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The ID of the resource group to which the HAVIP belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// (Available in v1.120.0+) The status of the HaVip instance.
 	Status pulumi.StringOutput `pulumi:"status"`
-	Tags   pulumi.MapOutput    `pulumi:"tags"`
-	VpcId  pulumi.StringOutput `pulumi:"vpcId"`
+	// The list of tags.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The ID of the VPC to which the HAVIP belongs.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
@@ -110,51 +149,71 @@ func GetHAVip(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HAVip resources.
 type havipState struct {
+	// The elastic IP address (EIP) associated with the HAVIP.
 	AssociatedEipAddresses []string `pulumi:"associatedEipAddresses"`
-	AssociatedInstanceType *string  `pulumi:"associatedInstanceType"`
-	AssociatedInstances    []string `pulumi:"associatedInstances"`
-	CreateTime             *string  `pulumi:"createTime"`
+	// The type of the instance with which the HAVIP is associated. Valid values:
+	AssociatedInstanceType *string `pulumi:"associatedInstanceType"`
+	// The ID of the instance with which the HAVIP is associated.
+	AssociatedInstances []string `pulumi:"associatedInstances"`
+	// The time when the HAVIP was created.
+	CreateTime *string `pulumi:"createTime"`
 	// The description of the HaVip instance.
 	Description *string `pulumi:"description"`
-	HaVipId     *string `pulumi:"haVipId"`
-	HaVipName   *string `pulumi:"haVipName"`
+	// The ID of the HAVIP.
+	HaVipId *string `pulumi:"haVipId"`
+	// The name of the HAVIP.
+	HaVipName *string `pulumi:"haVipName"`
 	// The name of the HaVip instance.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName *string `pulumi:"havipName"`
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
-	IpAddress        *string `pulumi:"ipAddress"`
+	IpAddress *string `pulumi:"ipAddress"`
+	// The ID of the active instance that is associated with the HAVIP.
 	MasterInstanceId *string `pulumi:"masterInstanceId"`
-	ResourceGroupId  *string `pulumi:"resourceGroupId"`
+	// The ID of the resource group to which the HAVIP belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available in v1.120.0+) The status of the HaVip instance.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
-	VpcId  *string                `pulumi:"vpcId"`
+	Status *string `pulumi:"status"`
+	// The list of tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The ID of the VPC to which the HAVIP belongs.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type HAVipState struct {
+	// The elastic IP address (EIP) associated with the HAVIP.
 	AssociatedEipAddresses pulumi.StringArrayInput
+	// The type of the instance with which the HAVIP is associated. Valid values:
 	AssociatedInstanceType pulumi.StringPtrInput
-	AssociatedInstances    pulumi.StringArrayInput
-	CreateTime             pulumi.StringPtrInput
+	// The ID of the instance with which the HAVIP is associated.
+	AssociatedInstances pulumi.StringArrayInput
+	// The time when the HAVIP was created.
+	CreateTime pulumi.StringPtrInput
 	// The description of the HaVip instance.
 	Description pulumi.StringPtrInput
-	HaVipId     pulumi.StringPtrInput
-	HaVipName   pulumi.StringPtrInput
+	// The ID of the HAVIP.
+	HaVipId pulumi.StringPtrInput
+	// The name of the HAVIP.
+	HaVipName pulumi.StringPtrInput
 	// The name of the HaVip instance.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName pulumi.StringPtrInput
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
-	IpAddress        pulumi.StringPtrInput
+	IpAddress pulumi.StringPtrInput
+	// The ID of the active instance that is associated with the HAVIP.
 	MasterInstanceId pulumi.StringPtrInput
-	ResourceGroupId  pulumi.StringPtrInput
+	// The ID of the resource group to which the HAVIP belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// (Available in v1.120.0+) The status of the HaVip instance.
 	Status pulumi.StringPtrInput
-	Tags   pulumi.MapInput
-	VpcId  pulumi.StringPtrInput
+	// The list of tags.
+	Tags pulumi.MapInput
+	// The ID of the VPC to which the HAVIP belongs.
+	VpcId pulumi.StringPtrInput
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId pulumi.StringPtrInput
 }
@@ -166,15 +225,18 @@ func (HAVipState) ElementType() reflect.Type {
 type havipArgs struct {
 	// The description of the HaVip instance.
 	Description *string `pulumi:"description"`
-	HaVipName   *string `pulumi:"haVipName"`
+	// The name of the HAVIP.
+	HaVipName *string `pulumi:"haVipName"`
 	// The name of the HaVip instance.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName *string `pulumi:"havipName"`
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
-	IpAddress       *string                `pulumi:"ipAddress"`
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	IpAddress *string `pulumi:"ipAddress"`
+	// The ID of the resource group to which the HAVIP belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The list of tags.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId string `pulumi:"vswitchId"`
 }
@@ -183,15 +245,18 @@ type havipArgs struct {
 type HAVipArgs struct {
 	// The description of the HaVip instance.
 	Description pulumi.StringPtrInput
-	HaVipName   pulumi.StringPtrInput
+	// The name of the HAVIP.
+	HaVipName pulumi.StringPtrInput
 	// The name of the HaVip instance.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName pulumi.StringPtrInput
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
-	IpAddress       pulumi.StringPtrInput
+	IpAddress pulumi.StringPtrInput
+	// The ID of the resource group to which the HAVIP belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	Tags            pulumi.MapInput
+	// The list of tags.
+	Tags pulumi.MapInput
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId pulumi.StringInput
 }
@@ -283,18 +348,22 @@ func (o HAVipOutput) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
 	return o
 }
 
+// The elastic IP address (EIP) associated with the HAVIP.
 func (o HAVipOutput) AssociatedEipAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringArrayOutput { return v.AssociatedEipAddresses }).(pulumi.StringArrayOutput)
 }
 
+// The type of the instance with which the HAVIP is associated. Valid values:
 func (o HAVipOutput) AssociatedInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.AssociatedInstanceType }).(pulumi.StringOutput)
 }
 
+// The ID of the instance with which the HAVIP is associated.
 func (o HAVipOutput) AssociatedInstances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringArrayOutput { return v.AssociatedInstances }).(pulumi.StringArrayOutput)
 }
 
+// The time when the HAVIP was created.
 func (o HAVipOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -304,10 +373,12 @@ func (o HAVipOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the HAVIP.
 func (o HAVipOutput) HaVipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.HaVipId }).(pulumi.StringOutput)
 }
 
+// The name of the HAVIP.
 func (o HAVipOutput) HaVipName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.HaVipName }).(pulumi.StringOutput)
 }
@@ -324,10 +395,12 @@ func (o HAVipOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// The ID of the active instance that is associated with the HAVIP.
 func (o HAVipOutput) MasterInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.MasterInstanceId }).(pulumi.StringOutput)
 }
 
+// The ID of the resource group to which the HAVIP belongs.
 func (o HAVipOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -337,10 +410,12 @@ func (o HAVipOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// The list of tags.
 func (o HAVipOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
+// The ID of the VPC to which the HAVIP belongs.
 func (o HAVipOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

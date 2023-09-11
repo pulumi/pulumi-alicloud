@@ -181,9 +181,9 @@ class BackupPolicy(pulumi.CustomResource):
         """
         Provides a Click House Backup Policy resource.
 
-        For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/doc-detail/208840.html).
+        For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createbackuppolicy).
 
-        > **NOTE:** Available in v1.147.0+.
+        > **NOTE:** Available since v1.147.0.
 
         > **NOTE:** Only the cloud database ClickHouse cluster version `20.3` supports data backup.
 
@@ -195,23 +195,32 @@ class BackupPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="20.3.10.75",
+            db_cluster_version="22.8.5.29",
             status="Running",
             category="Basic",
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
-            db_cluster_description=var["name"],
             db_node_group_count=1,
             payment_type="PayAsYouGo",
             db_node_storage="500",
             storage_type="cloud_essd",
-            vswitch_id=default_switches.vswitches[0].id)
-        example = alicloud.clickhouse.BackupPolicy("example",
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id)
+        default_backup_policy = alicloud.clickhouse.BackupPolicy("defaultBackupPolicy",
             db_cluster_id=default_db_cluster.id,
             preferred_backup_periods=[
                 "Monday",
@@ -245,9 +254,9 @@ class BackupPolicy(pulumi.CustomResource):
         """
         Provides a Click House Backup Policy resource.
 
-        For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/doc-detail/208840.html).
+        For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createbackuppolicy).
 
-        > **NOTE:** Available in v1.147.0+.
+        > **NOTE:** Available since v1.147.0.
 
         > **NOTE:** Only the cloud database ClickHouse cluster version `20.3` supports data backup.
 
@@ -259,23 +268,32 @@ class BackupPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="20.3.10.75",
+            db_cluster_version="22.8.5.29",
             status="Running",
             category="Basic",
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
-            db_cluster_description=var["name"],
             db_node_group_count=1,
             payment_type="PayAsYouGo",
             db_node_storage="500",
             storage_type="cloud_essd",
-            vswitch_id=default_switches.vswitches[0].id)
-        example = alicloud.clickhouse.BackupPolicy("example",
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id)
+        default_backup_policy = alicloud.clickhouse.BackupPolicy("defaultBackupPolicy",
             db_cluster_id=default_db_cluster.id,
             preferred_backup_periods=[
                 "Monday",

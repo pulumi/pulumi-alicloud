@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Smartag Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createflowlog).
  *
- * > **NOTE:** Available in v1.168.0+.
+ * > **NOTE:** Available since v1.168.0.
  *
  * ## Example Usage
  *
@@ -20,13 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.sag.SmartagFlowLog("example", {
- *     flowLogName: "example_value",
- *     logstoreName: "example_value",
- *     netflowServerIp: "example_value",
- *     netflowServerPort: 1,
- *     outputType: "all",
- *     projectName: "example_value",
- *     slsRegionId: "example_value",
+ *     netflowServerIp: "192.168.0.2",
+ *     netflowServerPort: 9995,
+ *     netflowVersion: "V9",
+ *     outputType: "netflow",
  * });
  * ```
  *

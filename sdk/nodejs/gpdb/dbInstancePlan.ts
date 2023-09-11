@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a GPDB DB Instance Plan resource.
  *
- * For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/zh/analyticdb-for-postgresql/latest/createdbinstanceplan).
+ * For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/createdbinstanceplan).
  *
- * > **NOTE:** Available in v1.189.0+.
+ * > **NOTE:** Available since v1.189.0.
  *
  * ## Import
  *
@@ -58,7 +58,7 @@ export class DbInstancePlan extends pulumi.CustomResource {
      */
     public readonly dbInstancePlanName!: pulumi.Output<string>;
     /**
-     * The plan config. See the following `Block planConfig`.
+     * The plan config. See `planConfig` below.
      */
     public readonly planConfigs!: pulumi.Output<outputs.gpdb.DbInstancePlanPlanConfig[]>;
     /**
@@ -159,7 +159,7 @@ export interface DbInstancePlanState {
      */
     dbInstancePlanName?: pulumi.Input<string>;
     /**
-     * The plan config. See the following `Block planConfig`.
+     * The plan config. See `planConfig` below.
      */
     planConfigs?: pulumi.Input<pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfig>[]>;
     /**
@@ -205,7 +205,7 @@ export interface DbInstancePlanArgs {
      */
     dbInstancePlanName: pulumi.Input<string>;
     /**
-     * The plan config. See the following `Block planConfig`.
+     * The plan config. See `planConfig` below.
      */
     planConfigs: pulumi.Input<pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfig>[]>;
     /**

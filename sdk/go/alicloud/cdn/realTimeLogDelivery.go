@@ -14,9 +14,9 @@ import (
 
 // Provides a CDN Real Time Log Delivery resource.
 //
-// For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/doc-detail/100456.htm).
+// For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -27,18 +27,67 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cdn.NewRealTimeLogDelivery(ctx, "example", &cdn.RealTimeLogDeliveryArgs{
-//				Domain:    pulumi.String("example_value"),
-//				Logstore:  pulumi.String("example_value"),
-//				Project:   pulumi.String("example_value"),
-//				SlsRegion: pulumi.String("cn-hanghzou"),
+//			defaultDomainNew, err := cdn.NewDomainNew(ctx, "defaultDomainNew", &cdn.DomainNewArgs{
+//				Scope:      pulumi.String("overseas"),
+//				DomainName: pulumi.String("mycdndomain.alicloud-provider.cn"),
+//				CdnType:    pulumi.String("web"),
+//				Sources: cdn.DomainNewSourceArray{
+//					&cdn.DomainNewSourceArgs{
+//						Type:     pulumi.String("ipaddr"),
+//						Content:  pulumi.String("1.1.3.1"),
+//						Priority: pulumi.Int(20),
+//						Port:     pulumi.Int(80),
+//						Weight:   pulumi.Int(15),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//				Project:            defaultProject.Name,
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cdn.NewRealTimeLogDelivery(ctx, "defaultRealTimeLogDelivery", &cdn.RealTimeLogDeliveryArgs{
+//				Domain:    defaultDomainNew.DomainName,
+//				Logstore:  defaultProject.Name,
+//				Project:   defaultStore.Name,
+//				SlsRegion: *pulumi.String(defaultRegions.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err

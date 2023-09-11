@@ -14,9 +14,9 @@ import (
 
 // Provides a ApsaraDB for MyBase Dedicated Host Group resource.
 //
-// For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/doc-detail/141455.htm).
+// For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostgroup).
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -30,27 +30,33 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf_test_foo"),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cddc.NewDedicatedHostGroup(ctx, "default", &cddc.DedicatedHostGroupArgs{
-//				Engine:                 pulumi.String("MongoDB"),
-//				VpcId:                  vpc.ID(),
+//			_, err = cddc.NewDedicatedHostGroup(ctx, "defaultDedicatedHostGroup", &cddc.DedicatedHostGroupArgs{
+//				Engine:                 pulumi.String("MySQL"),
+//				VpcId:                  defaultNetwork.ID(),
 //				CpuAllocationRatio:     pulumi.Int(101),
 //				MemAllocationRatio:     pulumi.Int(50),
 //				DiskAllocationRatio:    pulumi.Int(200),
 //				AllocationPolicy:       pulumi.String("Evenly"),
 //				HostReplacePolicy:      pulumi.String("Manual"),
-//				DedicatedHostGroupDesc: pulumi.String("tf-testaccDesc"),
+//				DedicatedHostGroupDesc: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

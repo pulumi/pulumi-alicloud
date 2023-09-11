@@ -100,9 +100,9 @@ class NetworkAttachment(pulumi.CustomResource):
         """
         Provides a Cloud Connect Network Attachment resource. This topic describes how to associate a Smart Access Gateway (SAG) instance with a network instance. You must associate an SAG instance with a network instance if you want to connect the SAG to Alibaba Cloud. You can connect an SAG to Alibaba Cloud through a leased line, the Internet, or the active and standby links.
 
-        For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/doc-detail/124230.htm).
+        For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/bindsmartaccessgateway).
 
-        > **NOTE:** Available in 1.64.0+
+        > **NOTE:** Available since v1.64.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -114,11 +114,20 @@ class NetworkAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        ccn = alicloud.cloudconnect.Network("ccn", is_default=True)
-        default = alicloud.cloudconnect.NetworkAttachment("default",
-            ccn_id=ccn.id,
-            sag_id="sag-xxxxx",
-            opts=pulumi.ResourceOptions(depends_on=[ccn]))
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkf***"
+        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+            description=name,
+            cidr_block="192.168.0.0/24",
+            is_default=True)
+        default_network_attachment = alicloud.cloudconnect.NetworkAttachment("defaultNetworkAttachment",
+            ccn_id=default_network.id,
+            sag_id=sag_id)
         ```
 
         ## Import
@@ -143,9 +152,9 @@ class NetworkAttachment(pulumi.CustomResource):
         """
         Provides a Cloud Connect Network Attachment resource. This topic describes how to associate a Smart Access Gateway (SAG) instance with a network instance. You must associate an SAG instance with a network instance if you want to connect the SAG to Alibaba Cloud. You can connect an SAG to Alibaba Cloud through a leased line, the Internet, or the active and standby links.
 
-        For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/doc-detail/124230.htm).
+        For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/bindsmartaccessgateway).
 
-        > **NOTE:** Available in 1.64.0+
+        > **NOTE:** Available since v1.64.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -157,11 +166,20 @@ class NetworkAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        ccn = alicloud.cloudconnect.Network("ccn", is_default=True)
-        default = alicloud.cloudconnect.NetworkAttachment("default",
-            ccn_id=ccn.id,
-            sag_id="sag-xxxxx",
-            opts=pulumi.ResourceOptions(depends_on=[ccn]))
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkf***"
+        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+            description=name,
+            cidr_block="192.168.0.0/24",
+            is_default=True)
+        default_network_attachment = alicloud.cloudconnect.NetworkAttachment("defaultNetworkAttachment",
+            ccn_id=default_network.id,
+            sag_id=sag_id)
         ```
 
         ## Import

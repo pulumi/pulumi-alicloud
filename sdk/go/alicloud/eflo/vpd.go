@@ -14,9 +14,9 @@ import (
 
 // Provides a Eflo Vpd resource.
 //
-// For information about Eflo Vpd and how to use it, see [What is Vpd](https://help.aliyun.com/document_detail/604976.html).
+// For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
 //
-// > **NOTE:** Available in v1.201.0+.
+// > **NOTE:** Available since v1.201.0.
 //
 // ## Example Usage
 //
@@ -28,15 +28,27 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eflo"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eflo.NewVpd(ctx, "default", &eflo.VpdArgs{
-//				Cidr:    pulumi.String("10.0.0.0/8"),
-//				VpdName: pulumi.String("RMC-Terraform-Test"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eflo.NewVpd(ctx, "defaultVpd", &eflo.VpdArgs{
+//				Cidr:            pulumi.String("10.0.0.0/8"),
+//				VpdName:         pulumi.String(name),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -59,13 +71,13 @@ import (
 type Vpd struct {
 	pulumi.CustomResourceState
 
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
 	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Modification time
 	GmtModified pulumi.StringOutput `pulumi:"gmtModified"`
-	// The Resource group id
+	// The Resource group id.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The Vpd status.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -109,13 +121,13 @@ func GetVpd(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vpd resources.
 type vpdState struct {
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr *string `pulumi:"cidr"`
 	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
 	// Modification time
 	GmtModified *string `pulumi:"gmtModified"`
-	// The Resource group id
+	// The Resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Vpd status.
 	Status *string `pulumi:"status"`
@@ -124,13 +136,13 @@ type vpdState struct {
 }
 
 type VpdState struct {
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr pulumi.StringPtrInput
 	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
 	// Modification time
 	GmtModified pulumi.StringPtrInput
-	// The Resource group id
+	// The Resource group id.
 	ResourceGroupId pulumi.StringPtrInput
 	// The Vpd status.
 	Status pulumi.StringPtrInput
@@ -143,9 +155,9 @@ func (VpdState) ElementType() reflect.Type {
 }
 
 type vpdArgs struct {
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr string `pulumi:"cidr"`
-	// The Resource group id
+	// The Resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Name of the VPD.
 	VpdName string `pulumi:"vpdName"`
@@ -153,9 +165,9 @@ type vpdArgs struct {
 
 // The set of arguments for constructing a Vpd resource.
 type VpdArgs struct {
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr pulumi.StringInput
-	// The Resource group id
+	// The Resource group id.
 	ResourceGroupId pulumi.StringPtrInput
 	// The Name of the VPD.
 	VpdName pulumi.StringInput
@@ -248,7 +260,7 @@ func (o VpdOutput) ToVpdOutputWithContext(ctx context.Context) VpdOutput {
 	return o
 }
 
-// CIDR network segment
+// CIDR network segment.
 func (o VpdOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpd) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
 }
@@ -263,7 +275,7 @@ func (o VpdOutput) GmtModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpd) pulumi.StringOutput { return v.GmtModified }).(pulumi.StringOutput)
 }
 
-// The Resource group id
+// The Resource group id.
 func (o VpdOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vpd) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }

@@ -14,9 +14,9 @@ import (
 
 // Provides a Click House Account resource.
 //
-// For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/product/clickhouse).
+// For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -37,13 +37,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "testaccountname"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
-//			}
-//			pwd := "Tf-testpwd"
-//			if param := cfg.Get("pwd"); param != "" {
-//				pwd = param
 //			}
 //			defaultRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
@@ -51,39 +47,42 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
-//			}, nil)
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
-//				DbClusterVersion:     pulumi.String("20.3.10.75"),
+//				DbClusterVersion:     pulumi.String("22.8.5.29"),
 //				Category:             pulumi.String("Basic"),
 //				DbClusterClass:       pulumi.String("S8"),
 //				DbClusterNetworkType: pulumi.String("vpc"),
-//				DbClusterDescription: pulumi.String(name),
 //				DbNodeGroupCount:     pulumi.Int(1),
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				DbNodeStorage:        pulumi.String("500"),
 //				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            *pulumi.String(defaultSwitches.Vswitches[0].Id),
+//				VswitchId:            defaultSwitch.ID(),
+//				VpcId:                defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = clickhouse.NewAccount(ctx, "defaultAccount", &clickhouse.AccountArgs{
 //				DbClusterId:        defaultDbCluster.ID(),
-//				AccountDescription: pulumi.String("your_description"),
-//				AccountName:        pulumi.String(name),
-//				AccountPassword:    pulumi.String(pwd),
+//				AccountDescription: pulumi.String("tf-example-description"),
+//				AccountName:        pulumi.String("examplename"),
+//				AccountPassword:    pulumi.String("Example1234"),
 //			})
 //			if err != nil {
 //				return err

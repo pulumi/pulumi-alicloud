@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Rds
         /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
+        /// &gt; **NOTE:** Available since v1.7.0+
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -53,6 +55,8 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// 
+        /// &gt; **NOTE:** Available since v1.7.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage

@@ -12,45 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource will help you to manager Container Registry Enterprise Edition instances.
-//
-// For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
-//
-// > **NOTE:** Available in v1.124.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cr.NewRegistryEnterpriseInstance(ctx, "my-instance", &cr.RegistryEnterpriseInstanceArgs{
-//				InstanceName:  pulumi.String("test"),
-//				InstanceType:  pulumi.String("Advanced"),
-//				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
-//				RenewPeriod:   pulumi.Int(1),
-//				RenewalStatus: pulumi.String("AutoRenewal"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Container Registry Enterprise Edition instance can be imported using the `id`, e.g.

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Sae
     /// <summary>
     /// Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
     /// 
-    /// For information about Serverless App Engine (SAE) Load Balancer Internet Attachment and how to use it, see [alicloud.sae.LoadBalancerInternet](https://help.aliyun.com/document_detail/126360.html).
+    /// For information about Serverless App Engine (SAE) Load Balancer Internet Attachment and how to use it, see [alicloud.sae.LoadBalancerInternet](https://www.alibabacloud.com/help/en/sae/latest/bindslb).
     /// 
-    /// &gt; **NOTE:** Available in v1.164.0+.
+    /// &gt; **NOTE:** Available since v1.164.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,22 +25,98 @@ namespace Pulumi.AliCloud.Sae
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Sae.LoadBalancerInternet("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         AppId = "your_application_id",
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+    ///     {
+    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var result = values.Item2;
+    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
+    ///         }),
+    ///         NamespaceName = name,
+    ///         NamespaceDescription = name,
+    ///         EnableMicroRegistration = false,
+    ///     });
+    /// 
+    ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
+    ///     {
+    ///         AppDescription = name,
+    ///         AppName = name,
+    ///         NamespaceId = defaultNamespace.Id,
+    ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+    ///         PackageType = "Image",
+    ///         Jdk = "Open JDK 8",
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Timezone = "Asia/Beijing",
+    ///         Replicas = 5,
+    ///         Cpu = 500,
+    ///         Memory = 2048,
+    ///     });
+    /// 
+    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
+    ///     {
+    ///         LoadBalancerName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         LoadBalancerSpec = "slb.s2.small",
+    ///         AddressType = "internet",
+    ///     });
+    /// 
+    ///     var defaultLoadBalancerInternet = new AliCloud.Sae.LoadBalancerInternet("defaultLoadBalancerInternet", new()
+    ///     {
+    ///         AppId = defaultApplication.Id,
+    ///         InternetSlbId = defaultApplicationLoadBalancer.Id,
     ///         Internets = new[]
     ///         {
     ///             new AliCloud.Sae.Inputs.LoadBalancerInternetInternetArgs
     ///             {
-    ///                 Port = 80,
     ///                 Protocol = "TCP",
+    ///                 Port = 80,
     ///                 TargetPort = 8080,
     ///             },
     ///         },
-    ///         InternetSlbId = "your_internet_slb_id",
     ///     });
     /// 
     /// });
@@ -76,7 +152,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> InternetSlbId { get; private set; } = null!;
 
         /// <summary>
-        /// The bound private network SLB. See the following `Block internet`.
+        /// The bound private network SLB. See `internet` below.
         /// </summary>
         [Output("internets")]
         public Output<ImmutableArray<Outputs.LoadBalancerInternetInternet>> Internets { get; private set; } = null!;
@@ -143,7 +219,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.LoadBalancerInternetInternetArgs>? _internets;
 
         /// <summary>
-        /// The bound private network SLB. See the following `Block internet`.
+        /// The bound private network SLB. See `internet` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerInternetInternetArgs> Internets
         {
@@ -181,7 +257,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.LoadBalancerInternetInternetGetArgs>? _internets;
 
         /// <summary>
-        /// The bound private network SLB. See the following `Block internet`.
+        /// The bound private network SLB. See `internet` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerInternetInternetGetArgs> Internets
         {

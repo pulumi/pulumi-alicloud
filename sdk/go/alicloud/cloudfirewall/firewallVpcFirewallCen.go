@@ -16,7 +16,7 @@ import (
 //
 // For information about Cloud Firewall Vpc Firewall Cen and how to use it, see [What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure).
 //
-// > **NOTE:** Available in v1.194.0+.
+// > **NOTE:** Available since v1.194.0.
 //
 // ## Example Usage
 //
@@ -41,7 +41,7 @@ import (
 //				},
 //				MemberUid:       pulumi.String("1415189284827022"),
 //				Status:          pulumi.String("open"),
-//				VpcFirewallName: pulumi.String("tf-test"),
+//				VpcFirewallName: pulumi.String("tf-vpc-firewall-name"),
 //				VpcRegion:       pulumi.String("ap-south-1"),
 //			})
 //			if err != nil {
@@ -69,13 +69,13 @@ type FirewallVpcFirewallCen struct {
 	CenId pulumi.StringOutput `pulumi:"cenId"`
 	// Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
 	ConnectType pulumi.StringOutput `pulumi:"connectType"`
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-	Lang pulumi.StringOutput `pulumi:"lang"`
-	// The details of the VPC.See the following `Block LocalVpc`.
+	// The language type of the requested and received messages. Valid values:
+	Lang pulumi.StringPtrOutput `pulumi:"lang"`
+	// The details of the VPC. See `localVpc` below.
 	LocalVpc FirewallVpcFirewallCenLocalVpcOutput `pulumi:"localVpc"`
 	// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
 	MemberUid pulumi.StringPtrOutput `pulumi:"memberUid"`
-	// Firewall switch status
+	// Firewall switch status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// VPC firewall ID
 	VpcFirewallId pulumi.StringOutput `pulumi:"vpcFirewallId"`
@@ -134,13 +134,13 @@ type firewallVpcFirewallCenState struct {
 	CenId *string `pulumi:"cenId"`
 	// Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
 	ConnectType *string `pulumi:"connectType"`
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+	// The language type of the requested and received messages. Valid values:
 	Lang *string `pulumi:"lang"`
-	// The details of the VPC.See the following `Block LocalVpc`.
+	// The details of the VPC. See `localVpc` below.
 	LocalVpc *FirewallVpcFirewallCenLocalVpc `pulumi:"localVpc"`
 	// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
 	MemberUid *string `pulumi:"memberUid"`
-	// Firewall switch status
+	// Firewall switch status.
 	Status *string `pulumi:"status"`
 	// VPC firewall ID
 	VpcFirewallId *string `pulumi:"vpcFirewallId"`
@@ -155,13 +155,13 @@ type FirewallVpcFirewallCenState struct {
 	CenId pulumi.StringPtrInput
 	// Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
 	ConnectType pulumi.StringPtrInput
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+	// The language type of the requested and received messages. Valid values:
 	Lang pulumi.StringPtrInput
-	// The details of the VPC.See the following `Block LocalVpc`.
+	// The details of the VPC. See `localVpc` below.
 	LocalVpc FirewallVpcFirewallCenLocalVpcPtrInput
 	// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
 	MemberUid pulumi.StringPtrInput
-	// Firewall switch status
+	// Firewall switch status.
 	Status pulumi.StringPtrInput
 	// VPC firewall ID
 	VpcFirewallId pulumi.StringPtrInput
@@ -178,13 +178,13 @@ func (FirewallVpcFirewallCenState) ElementType() reflect.Type {
 type firewallVpcFirewallCenArgs struct {
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+	// The language type of the requested and received messages. Valid values:
 	Lang *string `pulumi:"lang"`
-	// The details of the VPC.See the following `Block LocalVpc`.
+	// The details of the VPC. See `localVpc` below.
 	LocalVpc FirewallVpcFirewallCenLocalVpc `pulumi:"localVpc"`
 	// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
 	MemberUid *string `pulumi:"memberUid"`
-	// Firewall switch status
+	// Firewall switch status.
 	Status string `pulumi:"status"`
 	// The name of the VPC firewall instance.
 	VpcFirewallName string `pulumi:"vpcFirewallName"`
@@ -196,13 +196,13 @@ type firewallVpcFirewallCenArgs struct {
 type FirewallVpcFirewallCenArgs struct {
 	// The ID of the CEN instance.
 	CenId pulumi.StringInput
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+	// The language type of the requested and received messages. Valid values:
 	Lang pulumi.StringPtrInput
-	// The details of the VPC.See the following `Block LocalVpc`.
+	// The details of the VPC. See `localVpc` below.
 	LocalVpc FirewallVpcFirewallCenLocalVpcInput
 	// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
 	MemberUid pulumi.StringPtrInput
-	// Firewall switch status
+	// Firewall switch status.
 	Status pulumi.StringInput
 	// The name of the VPC firewall instance.
 	VpcFirewallName pulumi.StringInput
@@ -307,12 +307,12 @@ func (o FirewallVpcFirewallCenOutput) ConnectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallCen) pulumi.StringOutput { return v.ConnectType }).(pulumi.StringOutput)
 }
 
-// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-func (o FirewallVpcFirewallCenOutput) Lang() pulumi.StringOutput {
-	return o.ApplyT(func(v *FirewallVpcFirewallCen) pulumi.StringOutput { return v.Lang }).(pulumi.StringOutput)
+// The language type of the requested and received messages. Valid values:
+func (o FirewallVpcFirewallCenOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCen) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// The details of the VPC.See the following `Block LocalVpc`.
+// The details of the VPC. See `localVpc` below.
 func (o FirewallVpcFirewallCenOutput) LocalVpc() FirewallVpcFirewallCenLocalVpcOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallCen) FirewallVpcFirewallCenLocalVpcOutput { return v.LocalVpc }).(FirewallVpcFirewallCenLocalVpcOutput)
 }
@@ -322,7 +322,7 @@ func (o FirewallVpcFirewallCenOutput) MemberUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallCen) pulumi.StringPtrOutput { return v.MemberUid }).(pulumi.StringPtrOutput)
 }
 
-// Firewall switch status
+// Firewall switch status.
 func (o FirewallVpcFirewallCenOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallCen) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -38,7 +38,7 @@ class DbInstanceArgs:
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
-        :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         :param pulumi.Input[str] vpc_id: ID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
@@ -161,7 +161,7 @@ class DbInstanceArgs:
     @pulumi.getter(name="dbInstanceIpArrays")
     def db_instance_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]:
         """
-        IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         """
         return pulumi.get(self, "db_instance_ip_arrays")
 
@@ -229,7 +229,7 @@ class _DbInstanceState:
         :param pulumi.Input[str] connection_string: (Available in 1.196.0+)  The connection string of the instance.
         :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
-        :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         :param pulumi.Input[str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
         :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
@@ -313,7 +313,7 @@ class _DbInstanceState:
     @pulumi.getter(name="dbInstanceIpArrays")
     def db_instance_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]:
         """
-        IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         """
         return pulumi.get(self, "db_instance_ip_arrays")
 
@@ -475,9 +475,9 @@ class DbInstance(pulumi.CustomResource):
         """
         Provides a Graph Database Db Instance resource.
 
-        For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://help.aliyun.com/document_detail/102865.html).
+        For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://www.alibabacloud.com/help/en/graph-compute/latest/placeholder).
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -487,15 +487,19 @@ class DbInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.graphdatabase.DbInstance("example",
-            db_instance_category="HA",
-            db_instance_description="example_value",
-            db_instance_network_type="vpc",
-            db_instance_storage_type="cloud_ssd",
             db_node_class="gdb.r.2xlarge",
-            db_node_storage="example_value",
+            db_instance_network_type="vpc",
             db_version="1.0",
-            payment_type="PayAsYouGo")
+            db_instance_category="HA",
+            db_instance_storage_type="cloud_ssd",
+            db_node_storage=50,
+            payment_type="PayAsYouGo",
+            db_instance_description=name)
         ```
 
         ## Import
@@ -510,7 +514,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         :param pulumi.Input[str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
         :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
@@ -530,9 +534,9 @@ class DbInstance(pulumi.CustomResource):
         """
         Provides a Graph Database Db Instance resource.
 
-        For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://help.aliyun.com/document_detail/102865.html).
+        For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://www.alibabacloud.com/help/en/graph-compute/latest/placeholder).
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
 
@@ -542,15 +546,19 @@ class DbInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.graphdatabase.DbInstance("example",
-            db_instance_category="HA",
-            db_instance_description="example_value",
-            db_instance_network_type="vpc",
-            db_instance_storage_type="cloud_ssd",
             db_node_class="gdb.r.2xlarge",
-            db_node_storage="example_value",
+            db_instance_network_type="vpc",
             db_version="1.0",
-            payment_type="PayAsYouGo")
+            db_instance_category="HA",
+            db_instance_storage_type="cloud_ssd",
+            db_node_storage=50,
+            payment_type="PayAsYouGo",
+            db_instance_description=name)
         ```
 
         ## Import
@@ -661,7 +669,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] connection_string: (Available in 1.196.0+)  The connection string of the instance.
         :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         :param pulumi.Input[str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
         :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
@@ -723,7 +731,7 @@ class DbInstance(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceIpArrays")
     def db_instance_ip_arrays(self) -> pulumi.Output[Sequence['outputs.DbInstanceDbInstanceIpArray']]:
         """
-        IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         """
         return pulumi.get(self, "db_instance_ip_arrays")
 

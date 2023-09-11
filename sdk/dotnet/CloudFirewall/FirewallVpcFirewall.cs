@@ -12,9 +12,73 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// <summary>
     /// Provides a Cloud Firewall Vpc Firewall resource.
     /// 
-    /// For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://help.aliyun.com/document_detail/342893.html).
+    /// For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createvpcfirewallconfigure).
     /// 
-    /// &gt; **NOTE:** Available in v1.194.0+.
+    /// &gt; **NOTE:** Available since v1.194.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var @default = new AliCloud.CloudFirewall.FirewallVpcFirewall("default", new()
+    ///     {
+    ///         VpcFirewallName = "tf-example",
+    ///         MemberUid = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         LocalVpc = new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallLocalVpcArgs
+    ///         {
+    ///             VpcId = "vpc-bp1d065m6hzn1xbw8ibfd",
+    ///             RegionNo = "cn-hangzhou",
+    ///             LocalVpcCidrTableLists = new[]
+    ///             {
+    ///                 new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs
+    ///                 {
+    ///                     LocalRouteTableId = "vtb-bp1lj0ddg846856chpzrv",
+    ///                     LocalRouteEntryLists = new[]
+    ///                     {
+    ///                         new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs
+    ///                         {
+    ///                             LocalNextHopInstanceId = "ri-bp1uobww3aputjlwwkyrh",
+    ///                             LocalDestinationCidr = "10.1.0.0/16",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         PeerVpc = new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallPeerVpcArgs
+    ///         {
+    ///             VpcId = "vpc-bp1gcmm64o3caox84v0nz",
+    ///             RegionNo = "cn-hangzhou",
+    ///             PeerVpcCidrTableLists = new[]
+    ///             {
+    ///                 new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs
+    ///                 {
+    ///                     PeerRouteTableId = "vtb-bp1f516f2hh4sok1ig9b5",
+    ///                     PeerRouteEntryLists = new[]
+    ///                     {
+    ///                         new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs
+    ///                         {
+    ///                             PeerDestinationCidr = "10.0.0.0/16",
+    ///                             PeerNextHopInstanceId = "ri-bp1thhtgf6ydr2or52l3n",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Status = "open",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -34,19 +98,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+        /// The communication type of the VPC firewall.
         /// </summary>
         [Output("connectType")]
         public Output<string> ConnectType { get; private set; } = null!;
 
         /// <summary>
-        /// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        /// The language type of the requested and received messages. Valid values:
         /// </summary>
         [Output("lang")]
-        public Output<string> Lang { get; private set; } = null!;
+        public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the local VPC. See the following `Block LocalVpc`.
+        /// The details of the local VPC. See `local_vpc` below.
         /// </summary>
         [Output("localVpc")]
         public Output<Outputs.FirewallVpcFirewallLocalVpc> LocalVpc { get; private set; } = null!;
@@ -58,19 +122,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> MemberUid { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the peer VPC. See the following `Block PeerVpc`.
+        /// The details of the peer VPC. See `peer_vpc` below.
         /// </summary>
         [Output("peerVpc")]
         public Output<Outputs.FirewallVpcFirewallPeerVpc> PeerVpc { get; private set; } = null!;
 
         /// <summary>
-        /// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+        /// The region is open.
         /// </summary>
         [Output("regionStatus")]
         public Output<string> RegionStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource. Valid values:
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -134,13 +198,13 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class FirewallVpcFirewallArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        /// The language type of the requested and received messages. Valid values:
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The details of the local VPC. See the following `Block LocalVpc`.
+        /// The details of the local VPC. See `local_vpc` below.
         /// </summary>
         [Input("localVpc", required: true)]
         public Input<Inputs.FirewallVpcFirewallLocalVpcArgs> LocalVpc { get; set; } = null!;
@@ -152,13 +216,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// The details of the peer VPC. See the following `Block PeerVpc`.
+        /// The details of the peer VPC. See `peer_vpc` below.
         /// </summary>
         [Input("peerVpc", required: true)]
         public Input<Inputs.FirewallVpcFirewallPeerVpcArgs> PeerVpc { get; set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource. Valid values:
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
@@ -184,19 +248,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+        /// The communication type of the VPC firewall.
         /// </summary>
         [Input("connectType")]
         public Input<string>? ConnectType { get; set; }
 
         /// <summary>
-        /// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+        /// The language type of the requested and received messages. Valid values:
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The details of the local VPC. See the following `Block LocalVpc`.
+        /// The details of the local VPC. See `local_vpc` below.
         /// </summary>
         [Input("localVpc")]
         public Input<Inputs.FirewallVpcFirewallLocalVpcGetArgs>? LocalVpc { get; set; }
@@ -208,19 +272,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// The details of the peer VPC. See the following `Block PeerVpc`.
+        /// The details of the peer VPC. See `peer_vpc` below.
         /// </summary>
         [Input("peerVpc")]
         public Input<Inputs.FirewallVpcFirewallPeerVpcGetArgs>? PeerVpc { get; set; }
 
         /// <summary>
-        /// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+        /// The region is open.
         /// </summary>
         [Input("regionStatus")]
         public Input<string>? RegionStatus { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

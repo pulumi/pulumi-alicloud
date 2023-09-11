@@ -28,7 +28,7 @@ class SchedulerRuleArgs:
                `2`: tiered protection.
                `3`: globalization acceleration.
                `6`: Cloud product interaction.
-        :param pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]] rules: The information about the scheduling rules. See the following `Block rules`.
+        :param pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]] rules: The information about the scheduling rules. See `rules` below.
         :param pulumi.Input[str] param: The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
         """
@@ -71,7 +71,7 @@ class SchedulerRuleArgs:
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]:
         """
-        The information about the scheduling rules. See the following `Block rules`.
+        The information about the scheduling rules. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
@@ -123,7 +123,7 @@ class _SchedulerRuleState:
                `2`: tiered protection.
                `3`: globalization acceleration.
                `6`: Cloud product interaction.
-        :param pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]] rules: The information about the scheduling rules. See the following `Block rules`.
+        :param pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]] rules: The information about the scheduling rules. See `rules` below.
         """
         if cname is not None:
             pulumi.set(__self__, "cname", cname)
@@ -205,7 +205,7 @@ class _SchedulerRuleState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]]:
         """
-        The information about the scheduling rules. See the following `Block rules`.
+        The information about the scheduling rules. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
@@ -226,9 +226,9 @@ class SchedulerRule(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).
+        Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
 
-        > **NOTE:** Available in 1.86.0+
+        > **NOTE:** Available since v1.86.0.
 
         ## Example Usage
 
@@ -238,8 +238,12 @@ class SchedulerRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.ddos.SchedulerRule("example",
-            rule_name="tf-testacc7929727",
+            rule_name=name,
             rule_type=3,
             rules=[
                 alicloud.ddos.SchedulerRuleRuleArgs(
@@ -276,7 +280,7 @@ class SchedulerRule(pulumi.CustomResource):
                `2`: tiered protection.
                `3`: globalization acceleration.
                `6`: Cloud product interaction.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The information about the scheduling rules. See the following `Block rules`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The information about the scheduling rules. See `rules` below.
         """
         ...
     @overload
@@ -285,9 +289,9 @@ class SchedulerRule(pulumi.CustomResource):
                  args: SchedulerRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).
+        Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
 
-        > **NOTE:** Available in 1.86.0+
+        > **NOTE:** Available since v1.86.0.
 
         ## Example Usage
 
@@ -297,8 +301,12 @@ class SchedulerRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.ddos.SchedulerRule("example",
-            rule_name="tf-testacc7929727",
+            rule_name=name,
             rule_type=3,
             rules=[
                 alicloud.ddos.SchedulerRuleRuleArgs(
@@ -398,7 +406,7 @@ class SchedulerRule(pulumi.CustomResource):
                `2`: tiered protection.
                `3`: globalization acceleration.
                `6`: Cloud product interaction.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The information about the scheduling rules. See the following `Block rules`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The information about the scheduling rules. See `rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -459,7 +467,7 @@ class SchedulerRule(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.SchedulerRuleRule']]:
         """
-        The information about the scheduling rules. See the following `Block rules`.
+        The information about the scheduling rules. See `rules` below.
         """
         return pulumi.get(self, "rules")
 

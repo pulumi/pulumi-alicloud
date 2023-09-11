@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * This resource will help you to manager Container Registry Enterprise Edition repositories.
  *
- * For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/doc-detail/145291.htm)
+ * For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
  *
- * > **NOTE:** Available in v1.86.0+.
+ * > **NOTE:** Available since v1.86.0.
  *
  * > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
  *
@@ -21,14 +21,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const my_namespace = new alicloud.cs.RegistryEnterpriseNamespace("my-namespace", {
- *     instanceId: "cri-xxx",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const exampleRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
+ *     instanceType: "Advanced",
+ *     instanceName: name,
+ * });
+ * const exampleRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", {
+ *     instanceId: exampleRegistryEnterpriseInstance.id,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
- * const my_repo = new alicloud.cs.RegistryEnterpriseRepo("my-repo", {
- *     instanceId: my_namespace.instanceId,
- *     namespace: my_namespace.name,
+ * const exampleRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo", {
+ *     instanceId: exampleRegistryEnterpriseInstance.id,
+ *     namespace: exampleRegistryEnterpriseNamespace.name,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
  *     detail: "this is a public repo",

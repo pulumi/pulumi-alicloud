@@ -9,9 +9,47 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Firewall Vpc Firewall resource.
  *
- * For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://help.aliyun.com/document_detail/342893.html).
+ * For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createvpcfirewallconfigure).
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const current = alicloud.getAccount({});
+ * const _default = new alicloud.cloudfirewall.FirewallVpcFirewall("default", {
+ *     vpcFirewallName: "tf-example",
+ *     memberUid: current.then(current => current.id),
+ *     localVpc: {
+ *         vpcId: "vpc-bp1d065m6hzn1xbw8ibfd",
+ *         regionNo: "cn-hangzhou",
+ *         localVpcCidrTableLists: [{
+ *             localRouteTableId: "vtb-bp1lj0ddg846856chpzrv",
+ *             localRouteEntryLists: [{
+ *                 localNextHopInstanceId: "ri-bp1uobww3aputjlwwkyrh",
+ *                 localDestinationCidr: "10.1.0.0/16",
+ *             }],
+ *         }],
+ *     },
+ *     peerVpc: {
+ *         vpcId: "vpc-bp1gcmm64o3caox84v0nz",
+ *         regionNo: "cn-hangzhou",
+ *         peerVpcCidrTableLists: [{
+ *             peerRouteTableId: "vtb-bp1f516f2hh4sok1ig9b5",
+ *             peerRouteEntryLists: [{
+ *                 peerDestinationCidr: "10.0.0.0/16",
+ *                 peerNextHopInstanceId: "ri-bp1thhtgf6ydr2or52l3n",
+ *             }],
+ *         }],
+ *     },
+ *     status: "open",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -54,15 +92,15 @@ export class FirewallVpcFirewall extends pulumi.CustomResource {
      */
     public /*out*/ readonly bandwidth!: pulumi.Output<number>;
     /**
-     * The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+     * The communication type of the VPC firewall.
      */
     public /*out*/ readonly connectType!: pulumi.Output<string>;
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      */
-    public readonly lang!: pulumi.Output<string>;
+    public readonly lang!: pulumi.Output<string | undefined>;
     /**
-     * The details of the local VPC. See the following `Block LocalVpc`.
+     * The details of the local VPC. See `localVpc` below.
      */
     public readonly localVpc!: pulumi.Output<outputs.cloudfirewall.FirewallVpcFirewallLocalVpc>;
     /**
@@ -70,15 +108,15 @@ export class FirewallVpcFirewall extends pulumi.CustomResource {
      */
     public readonly memberUid!: pulumi.Output<string | undefined>;
     /**
-     * The details of the peer VPC. See the following `Block PeerVpc`.
+     * The details of the peer VPC. See `peerVpc` below.
      */
     public readonly peerVpc!: pulumi.Output<outputs.cloudfirewall.FirewallVpcFirewallPeerVpc>;
     /**
-     * The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+     * The region is open.
      */
     public /*out*/ readonly regionStatus!: pulumi.Output<string>;
     /**
-     * The status of the resource
+     * The status of the resource. Valid values:
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -152,15 +190,15 @@ export interface FirewallVpcFirewallState {
      */
     bandwidth?: pulumi.Input<number>;
     /**
-     * The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+     * The communication type of the VPC firewall.
      */
     connectType?: pulumi.Input<string>;
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      */
     lang?: pulumi.Input<string>;
     /**
-     * The details of the local VPC. See the following `Block LocalVpc`.
+     * The details of the local VPC. See `localVpc` below.
      */
     localVpc?: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallLocalVpc>;
     /**
@@ -168,15 +206,15 @@ export interface FirewallVpcFirewallState {
      */
     memberUid?: pulumi.Input<string>;
     /**
-     * The details of the peer VPC. See the following `Block PeerVpc`.
+     * The details of the peer VPC. See `peerVpc` below.
      */
     peerVpc?: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallPeerVpc>;
     /**
-     * The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+     * The region is open.
      */
     regionStatus?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * The status of the resource. Valid values:
      */
     status?: pulumi.Input<string>;
     /**
@@ -194,11 +232,11 @@ export interface FirewallVpcFirewallState {
  */
 export interface FirewallVpcFirewallArgs {
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      */
     lang?: pulumi.Input<string>;
     /**
-     * The details of the local VPC. See the following `Block LocalVpc`.
+     * The details of the local VPC. See `localVpc` below.
      */
     localVpc: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallLocalVpc>;
     /**
@@ -206,11 +244,11 @@ export interface FirewallVpcFirewallArgs {
      */
     memberUid?: pulumi.Input<string>;
     /**
-     * The details of the peer VPC. See the following `Block PeerVpc`.
+     * The details of the peer VPC. See `peerVpc` below.
      */
     peerVpc: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallPeerVpc>;
     /**
-     * The status of the resource
+     * The status of the resource. Valid values:
      */
     status: pulumi.Input<string>;
     /**

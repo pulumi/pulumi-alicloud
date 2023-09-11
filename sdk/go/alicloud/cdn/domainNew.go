@@ -14,9 +14,9 @@ import (
 
 // Provides a CDN Domain resource. CDN domain name.
 //
-// For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
+// For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
 //
-// > **NOTE:** Available in v1.34.0+.
+// > **NOTE:** Available since v1.34.0.
 //
 // ## Example Usage
 //
@@ -36,13 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
+//			domainName := "mycdndomain.alicloud-provider.cn"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
 //			}
 //			_, err := cdn.NewDomainNew(ctx, "default", &cdn.DomainNewArgs{
-//				Scope:      pulumi.String("domestic"),
-//				DomainName: pulumi.String(name),
+//				Scope:      pulumi.String("overseas"),
+//				DomainName: pulumi.String(domainName),
 //				CdnType:    pulumi.String("web"),
 //				Sources: cdn.DomainNewSourceArray{
 //					&cdn.DomainNewSourceArgs{
@@ -77,7 +77,7 @@ type DomainNew struct {
 
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType pulumi.StringOutput `pulumi:"cdnType"`
-	// Certificate configuration. See the following `Block CertificateConfig`.
+	// Certificate configuration. See `certificateConfig` below.
 	CertificateConfig DomainNewCertificateConfigOutput `pulumi:"certificateConfig"`
 	// Health test URL.
 	CheckUrl pulumi.StringPtrOutput `pulumi:"checkUrl"`
@@ -93,7 +93,7 @@ type DomainNew struct {
 	// - **global**: global.
 	//   The default value is **domestic**.
 	Scope pulumi.StringOutput `pulumi:"scope"`
-	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+	// The source address list of the accelerated domain. Defaults to null. See `sources` below.
 	Sources DomainNewSourceArrayOutput `pulumi:"sources"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -142,7 +142,7 @@ func GetDomainNew(ctx *pulumi.Context,
 type domainNewState struct {
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType *string `pulumi:"cdnType"`
-	// Certificate configuration. See the following `Block CertificateConfig`.
+	// Certificate configuration. See `certificateConfig` below.
 	CertificateConfig *DomainNewCertificateConfig `pulumi:"certificateConfig"`
 	// Health test URL.
 	CheckUrl *string `pulumi:"checkUrl"`
@@ -158,7 +158,7 @@ type domainNewState struct {
 	// - **global**: global.
 	//   The default value is **domestic**.
 	Scope *string `pulumi:"scope"`
-	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+	// The source address list of the accelerated domain. Defaults to null. See `sources` below.
 	Sources []DomainNewSource `pulumi:"sources"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -169,7 +169,7 @@ type domainNewState struct {
 type DomainNewState struct {
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType pulumi.StringPtrInput
-	// Certificate configuration. See the following `Block CertificateConfig`.
+	// Certificate configuration. See `certificateConfig` below.
 	CertificateConfig DomainNewCertificateConfigPtrInput
 	// Health test URL.
 	CheckUrl pulumi.StringPtrInput
@@ -185,7 +185,7 @@ type DomainNewState struct {
 	// - **global**: global.
 	//   The default value is **domestic**.
 	Scope pulumi.StringPtrInput
-	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+	// The source address list of the accelerated domain. Defaults to null. See `sources` below.
 	Sources DomainNewSourceArrayInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
@@ -200,7 +200,7 @@ func (DomainNewState) ElementType() reflect.Type {
 type domainNewArgs struct {
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType string `pulumi:"cdnType"`
-	// Certificate configuration. See the following `Block CertificateConfig`.
+	// Certificate configuration. See `certificateConfig` below.
 	CertificateConfig *DomainNewCertificateConfig `pulumi:"certificateConfig"`
 	// Health test URL.
 	CheckUrl *string `pulumi:"checkUrl"`
@@ -214,7 +214,7 @@ type domainNewArgs struct {
 	// - **global**: global.
 	//   The default value is **domestic**.
 	Scope *string `pulumi:"scope"`
-	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+	// The source address list of the accelerated domain. Defaults to null. See `sources` below.
 	Sources []DomainNewSource `pulumi:"sources"`
 	// The tag of the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -224,7 +224,7 @@ type domainNewArgs struct {
 type DomainNewArgs struct {
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType pulumi.StringInput
-	// Certificate configuration. See the following `Block CertificateConfig`.
+	// Certificate configuration. See `certificateConfig` below.
 	CertificateConfig DomainNewCertificateConfigPtrInput
 	// Health test URL.
 	CheckUrl pulumi.StringPtrInput
@@ -238,7 +238,7 @@ type DomainNewArgs struct {
 	// - **global**: global.
 	//   The default value is **domestic**.
 	Scope pulumi.StringPtrInput
-	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+	// The source address list of the accelerated domain. Defaults to null. See `sources` below.
 	Sources DomainNewSourceArrayInput
 	// The tag of the resource.
 	Tags pulumi.MapInput
@@ -336,7 +336,7 @@ func (o DomainNewOutput) CdnType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNew) pulumi.StringOutput { return v.CdnType }).(pulumi.StringOutput)
 }
 
-// Certificate configuration. See the following `Block CertificateConfig`.
+// Certificate configuration. See `certificateConfig` below.
 func (o DomainNewOutput) CertificateConfig() DomainNewCertificateConfigOutput {
 	return o.ApplyT(func(v *DomainNew) DomainNewCertificateConfigOutput { return v.CertificateConfig }).(DomainNewCertificateConfigOutput)
 }
@@ -370,7 +370,7 @@ func (o DomainNewOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNew) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
 }
 
-// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+// The source address list of the accelerated domain. Defaults to null. See `sources` below.
 func (o DomainNewOutput) Sources() DomainNewSourceArrayOutput {
 	return o.ApplyT(func(v *DomainNew) DomainNewSourceArrayOutput { return v.Sources }).(DomainNewSourceArrayOutput)
 }

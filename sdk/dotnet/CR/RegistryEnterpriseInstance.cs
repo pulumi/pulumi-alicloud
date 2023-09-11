@@ -10,37 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR
 {
     /// <summary>
-    /// This resource will help you to manager Container Registry Enterprise Edition instances.
-    /// 
-    /// For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
-    /// 
-    /// &gt; **NOTE:** Available in v1.124.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_instance = new AliCloud.CR.RegistryEnterpriseInstance("my-instance", new()
-    ///     {
-    ///         InstanceName = "test",
-    ///         InstanceType = "Advanced",
-    ///         PaymentType = "Subscription",
-    ///         Period = 1,
-    ///         RenewPeriod = 1,
-    ///         RenewalStatus = "AutoRenewal",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Container Registry Enterprise Edition instance can be imported using the `id`, e.g.

@@ -22,72 +22,73 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var exampleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
     ///         MemorySize = 2,
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         NameRegex = "^ubuntu_18.*64",
-    ///         MostRecent = true,
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "test_havip_attachment";
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
     ///     {
-    ///         VpcId = fooNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var fooHAVip = new AliCloud.Vpc.HAVip("fooHAVip", new()
+    ///     var exampleHAVip = new AliCloud.Vpc.HAVip("exampleHAVip", new()
     ///     {
-    ///         VswitchId = fooSwitch.Id,
+    ///         VswitchId = exampleSwitch.Id,
     ///         Description = name,
     ///     });
     /// 
-    ///     var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
     ///     {
-    ///         Description = "foo",
-    ///         VpcId = fooNetwork.Id,
+    ///         Description = name,
+    ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new()
+    ///     var exampleInstance = new AliCloud.Ecs.Instance("exampleInstance", new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchId = fooSwitch.Id,
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         VswitchId = exampleSwitch.Id,
+    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SystemDiskCategory = "cloud_efficiency",
     ///         InternetChargeType = "PayByTraffic",
     ///         InternetMaxBandwidthOut = 5,
     ///         SecurityGroups = new[]
     ///         {
-    ///             tfTestFoo.Id,
+    ///             exampleSecurityGroup.Id,
     ///         },
     ///         InstanceName = name,
     ///         UserData = "echo 'net.ipv4.ip_forward=1'&gt;&gt; /etc/sysctl.conf",
     ///     });
     /// 
-    ///     var fooHAVipAttachment = new AliCloud.Vpc.HAVipAttachment("fooHAVipAttachment", new()
+    ///     var exampleHAVipAttachment = new AliCloud.Vpc.HAVipAttachment("exampleHAVipAttachment", new()
     ///     {
-    ///         HavipId = fooHAVip.Id,
-    ///         InstanceId = fooInstance.Id,
+    ///         HavipId = exampleHAVip.Id,
+    ///         InstanceId = exampleInstance.Id,
     ///     });
     /// 
     /// });

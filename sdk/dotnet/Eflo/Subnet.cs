@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eflo
     /// <summary>
     /// Provides a Eflo Subnet resource.
     /// 
-    /// For information about Eflo Subnet and how to use it, see [What is Subnet](https://help.aliyun.com/document_detail/604977.html).
+    /// For information about Eflo Subnet and how to use it, see [What is Subnet](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
     /// 
-    /// &gt; **NOTE:** Available in v1.204.0+.
+    /// &gt; **NOTE:** Available since v1.204.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Eflo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke();
     /// 
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
@@ -35,13 +37,13 @@ namespace Pulumi.AliCloud.Eflo
     ///     var defaultVpd = new AliCloud.Eflo.Vpd("defaultVpd", new()
     ///     {
     ///         Cidr = "10.0.0.0/8",
-    ///         VpdName = @var.Name,
+    ///         VpdName = name,
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///     });
     /// 
     ///     var defaultSubnet = new AliCloud.Eflo.Subnet("defaultSubnet", new()
     ///     {
-    ///         SubnetName = @var.Name,
+    ///         SubnetName = name,
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         Cidr = "10.0.0.0/16",
     ///         VpdId = defaultVpd.Id,
@@ -62,7 +64,7 @@ namespace Pulumi.AliCloud.Eflo
     public partial class Subnet : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// CIDR network segment
+        /// CIDR network segment.
         /// </summary>
         [Output("cidr")]
         public Output<string> Cidr { get; private set; } = null!;
@@ -125,7 +127,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> VpdId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID  of the resource
+        /// The zone ID  of the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -177,7 +179,7 @@ namespace Pulumi.AliCloud.Eflo
     public sealed class SubnetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CIDR network segment
+        /// CIDR network segment.
         /// </summary>
         [Input("cidr", required: true)]
         public Input<string> Cidr { get; set; } = null!;
@@ -204,7 +206,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string> VpdId { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID  of the resource
+        /// The zone ID  of the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -218,7 +220,7 @@ namespace Pulumi.AliCloud.Eflo
     public sealed class SubnetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CIDR network segment
+        /// CIDR network segment.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
@@ -281,7 +283,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? VpdId { get; set; }
 
         /// <summary>
-        /// The zone ID  of the resource
+        /// The zone ID  of the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

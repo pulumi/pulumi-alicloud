@@ -202,7 +202,7 @@ class Namespace(pulumi.CustomResource):
 
         For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -211,11 +211,21 @@ class Namespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         example = alicloud.sae.Namespace("example",
-            namespace_description="your_description",
-            namespace_id="cn-hangzhou:yourname",
-            namespace_name="example_value")
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_name=name,
+            namespace_description=name,
+            enable_micro_registration=False)
         ```
 
         ## Import
@@ -245,7 +255,7 @@ class Namespace(pulumi.CustomResource):
 
         For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -254,11 +264,21 @@ class Namespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         example = alicloud.sae.Namespace("example",
-            namespace_description="your_description",
-            namespace_id="cn-hangzhou:yourname",
-            namespace_name="example_value")
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_name=name,
+            namespace_description=name,
+            enable_micro_registration=False)
         ```
 
         ## Import

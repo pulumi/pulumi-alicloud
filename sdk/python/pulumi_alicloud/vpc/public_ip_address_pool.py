@@ -295,7 +295,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
 
-        > **NOTE:** Available in v1.186.0+.
+        > **NOTE:** Available since v1.186.0.
 
         ## Example Usage
 
@@ -305,17 +305,16 @@ class PublicIpAddressPool(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-test-acc-publicaddresspool-383",
-            resource_group_name="tf-test-acc-publicaddresspool-855")
-        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-publicaddresspool-change-368",
-            resource_group_name="tf-testacc-publicaddresspool-change-499")
-        default = alicloud.vpc.PublicIpAddressPool("default",
-            description="rdk-test",
-            public_ip_address_pool_name="rdk-test",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
+            description=name,
+            public_ip_address_pool_name=name,
             isp="BGP",
-            resource_group_id=default_rg.id)
+            resource_group_id=default_resource_groups.ids[0])
         ```
 
         ## Import
@@ -345,7 +344,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
 
-        > **NOTE:** Available in v1.186.0+.
+        > **NOTE:** Available since v1.186.0.
 
         ## Example Usage
 
@@ -355,17 +354,16 @@ class PublicIpAddressPool(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-test-acc-publicaddresspool-383",
-            resource_group_name="tf-test-acc-publicaddresspool-855")
-        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-publicaddresspool-change-368",
-            resource_group_name="tf-testacc-publicaddresspool-change-499")
-        default = alicloud.vpc.PublicIpAddressPool("default",
-            description="rdk-test",
-            public_ip_address_pool_name="rdk-test",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
+            description=name,
+            public_ip_address_pool_name=name,
             isp="BGP",
-            resource_group_id=default_rg.id)
+            resource_group_id=default_resource_groups.ids[0])
         ```
 
         ## Import

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// <summary>
     /// Provides a Cloud Firewall Address Book resource.
     /// 
-    /// For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describeaddressbook).
+    /// For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-addaddressbook).
     /// 
-    /// &gt; **NOTE:** Available in v1.178.0+.
+    /// &gt; **NOTE:** Available since v1.178.0.
     /// 
     /// ## Example Usage
     /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A list of ECS tags. See the following `Block ecs_tags`.
+        /// A list of ECS tags. See `ecs_tags` below.
         /// </summary>
         [Output("ecsTags")]
         public Output<ImmutableArray<Outputs.AddressBookEcsTag>> EcsTags { get; private set; } = null!;
@@ -90,24 +90,22 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Address Book. Valid values:  `ip`, `tag`.
+        /// The type of the Address Book. Valid values: `ip`, `tag`.
         /// </summary>
         [Output("groupType")]
         public Output<string> GroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `en`, `zh`.
+        /// The language of the content within the request and response. Valid values: `zh`, `en`.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The logical relation among the ECS tags that to be matched. Valid values:
-        /// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-        /// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        /// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         /// </summary>
         [Output("tagRelation")]
-        public Output<string?> TagRelation { get; private set; } = null!;
+        public Output<string> TagRelation { get; private set; } = null!;
 
 
         /// <summary>
@@ -183,7 +181,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         private InputList<Inputs.AddressBookEcsTagArgs>? _ecsTags;
 
         /// <summary>
-        /// A list of ECS tags. See the following `Block ecs_tags`.
+        /// A list of ECS tags. See `ecs_tags` below.
         /// </summary>
         public InputList<Inputs.AddressBookEcsTagArgs> EcsTags
         {
@@ -198,21 +196,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the Address Book. Valid values:  `ip`, `tag`.
+        /// The type of the Address Book. Valid values: `ip`, `tag`.
         /// </summary>
         [Input("groupType", required: true)]
         public Input<string> GroupType { get; set; } = null!;
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `en`, `zh`.
+        /// The language of the content within the request and response. Valid values: `zh`, `en`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The logical relation among the ECS tags that to be matched. Valid values:
-        /// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-        /// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        /// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         /// </summary>
         [Input("tagRelation")]
         public Input<string>? TagRelation { get; set; }
@@ -253,7 +249,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         private InputList<Inputs.AddressBookEcsTagGetArgs>? _ecsTags;
 
         /// <summary>
-        /// A list of ECS tags. See the following `Block ecs_tags`.
+        /// A list of ECS tags. See `ecs_tags` below.
         /// </summary>
         public InputList<Inputs.AddressBookEcsTagGetArgs> EcsTags
         {
@@ -268,21 +264,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// The type of the Address Book. Valid values:  `ip`, `tag`.
+        /// The type of the Address Book. Valid values: `ip`, `tag`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// The language of the content within the request and response. Valid values: `en`, `zh`.
+        /// The language of the content within the request and response. Valid values: `zh`, `en`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The logical relation among the ECS tags that to be matched. Valid values:
-        /// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-        /// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        /// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         /// </summary>
         [Input("tagRelation")]
         public Input<string>? TagRelation { get; set; }

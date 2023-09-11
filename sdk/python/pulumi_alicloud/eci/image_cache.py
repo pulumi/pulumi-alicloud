@@ -34,7 +34,7 @@ class ImageCacheArgs:
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
         :param pulumi.Input[str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         :param pulumi.Input[int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
-        :param pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]] image_registry_credentials: The Image Registry parameters about the image to be cached.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]] image_registry_credentials: The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         :param pulumi.Input[str] zone_id: The zone id to cache image.
@@ -132,7 +132,7 @@ class ImageCacheArgs:
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]:
         """
-        The Image Registry parameters about the image to be cached.
+        The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 
@@ -198,7 +198,7 @@ class _ImageCacheState:
         :param pulumi.Input[str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         :param pulumi.Input[str] image_cache_name: The name of the image cache.
         :param pulumi.Input[int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
-        :param pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]] image_registry_credentials: The Image Registry parameters about the image to be cached.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]] image_registry_credentials: The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: The images to be cached. The image name must be versioned.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
@@ -284,7 +284,7 @@ class _ImageCacheState:
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]:
         """
-        The Image Registry parameters about the image to be cached.
+        The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 
@@ -396,7 +396,7 @@ class ImageCache(pulumi.CustomResource):
         """
         An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
 
-        > **NOTE:** Available in v1.89.0+.
+        > **NOTE:** Available since v1.89.0.
 
         > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
 
@@ -408,12 +408,34 @@ class ImageCache(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eci.ImageCache("example",
-            eip_instance_id="eip-uf60c7cqb2pcrkgxhxxxx",
-            image_cache_name="tf-test",
-            images=["registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest"],
-            security_group_id="sg-2zeef68b66fxxxx",
-            vswitch_id="vsw-2zef9k7ng82xxxx")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            isp="BGP",
+            address_name=name,
+            netmode="public",
+            bandwidth="1",
+            security_protection_types=["AntiDDoS_Enhanced"],
+            payment_type="PayAsYouGo")
+        default_regions = alicloud.get_regions(current=True)
+        default_image_cache = alicloud.eci.ImageCache("defaultImageCache",
+            image_cache_name=name,
+            images=[f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
+            eip_instance_id=default_eip_address.id)
         ```
 
         ## Import
@@ -429,7 +451,7 @@ class ImageCache(pulumi.CustomResource):
         :param pulumi.Input[str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         :param pulumi.Input[str] image_cache_name: The name of the image cache.
         :param pulumi.Input[int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]] image_registry_credentials: The Image Registry parameters about the image to be cached.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]] image_registry_credentials: The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: The images to be cached. The image name must be versioned.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
@@ -446,7 +468,7 @@ class ImageCache(pulumi.CustomResource):
         """
         An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
 
-        > **NOTE:** Available in v1.89.0+.
+        > **NOTE:** Available since v1.89.0.
 
         > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
 
@@ -458,12 +480,34 @@ class ImageCache(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eci.ImageCache("example",
-            eip_instance_id="eip-uf60c7cqb2pcrkgxhxxxx",
-            image_cache_name="tf-test",
-            images=["registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest"],
-            security_group_id="sg-2zeef68b66fxxxx",
-            vswitch_id="vsw-2zef9k7ng82xxxx")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            isp="BGP",
+            address_name=name,
+            netmode="public",
+            bandwidth="1",
+            security_protection_types=["AntiDDoS_Enhanced"],
+            payment_type="PayAsYouGo")
+        default_regions = alicloud.get_regions(current=True)
+        default_image_cache = alicloud.eci.ImageCache("defaultImageCache",
+            image_cache_name=name,
+            images=[f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
+            eip_instance_id=default_eip_address.id)
         ```
 
         ## Import
@@ -561,7 +605,7 @@ class ImageCache(pulumi.CustomResource):
         :param pulumi.Input[str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         :param pulumi.Input[str] image_cache_name: The name of the image cache.
         :param pulumi.Input[int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]] image_registry_credentials: The Image Registry parameters about the image to be cached.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageCacheImageRegistryCredentialArgs']]]] image_registry_credentials: The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: The images to be cached. The image name must be versioned.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
@@ -624,7 +668,7 @@ class ImageCache(pulumi.CustomResource):
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> pulumi.Output[Optional[Sequence['outputs.ImageCacheImageRegistryCredential']]]:
         """
-        The Image Registry parameters about the image to be cached.
+        The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 

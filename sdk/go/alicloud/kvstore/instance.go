@@ -49,7 +49,15 @@ type Instance struct {
 	Config pulumi.MapOutput `pulumi:"config"`
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
-	// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+	// Indicates whether the address is a private endpoint.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
@@ -158,14 +166,6 @@ type Instance struct {
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrOutput `pulumi:"srcdbInstanceId"`
@@ -249,7 +249,15 @@ type instanceState struct {
 	Config map[string]interface{} `pulumi:"config"`
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain *string `pulumi:"connectionDomain"`
-	// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+	// Indicates whether the address is a private endpoint.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString *string `pulumi:"connectionString"`
@@ -358,14 +366,6 @@ type instanceState struct {
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps []string `pulumi:"securityIps"`
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	ShardCount *int `pulumi:"shardCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
@@ -413,7 +413,15 @@ type InstanceState struct {
 	Config pulumi.MapInput
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringPtrInput
-	// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+	// Indicates whether the address is a private endpoint.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringPtrInput
@@ -522,14 +530,6 @@ type InstanceState struct {
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps pulumi.StringArrayInput
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	ShardCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
@@ -678,14 +678,6 @@ type instanceArgs struct {
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps []string `pulumi:"securityIps"`
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	ShardCount *int `pulumi:"shardCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
@@ -829,14 +821,6 @@ type InstanceArgs struct {
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps pulumi.StringArrayInput
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	ShardCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
@@ -1004,7 +988,15 @@ func (o InstanceOutput) ConnectionDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionDomain }).(pulumi.StringOutput)
 }
 
-// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+// Indicates whether the address is a private endpoint.
+//
+// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+//
+// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+//
+// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+//
+// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 //
 // Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
@@ -1248,14 +1240,6 @@ func (o InstanceOutput) SecurityIps() pulumi.StringArrayOutput {
 }
 
 // The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-//
-// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-//
-// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-//
-// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-//
-// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 func (o InstanceOutput) ShardCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ShardCount }).(pulumi.IntOutput)
 }

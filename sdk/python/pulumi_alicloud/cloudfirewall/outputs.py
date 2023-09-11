@@ -167,6 +167,7 @@ class FirewallVpcFirewallCenLocalVpc(dict):
         :param str attachment_name: The connection name of the network instance.
         :param Sequence[str] defend_cidr_lists: The list of network segments protected by the VPC firewall.
         :param Sequence['FirewallVpcFirewallCenLocalVpcEniListArgs'] eni_lists: List of elastic network cards.
+        :param str manual_vswitch_id: The ID of the vSwitch specified when the routing mode is manual mode.
         :param str network_instance_name: The name of the network instance.
         :param str network_instance_type: The type of the network instance. Value: **VPC * *.
         :param str owner_id: The UID of the Alibaba Cloud account to which the VPC belongs.
@@ -256,6 +257,9 @@ class FirewallVpcFirewallCenLocalVpc(dict):
     @property
     @pulumi.getter(name="manualVswitchId")
     def manual_vswitch_id(self) -> Optional[str]:
+        """
+        The ID of the vSwitch specified when the routing mode is manual mode.
+        """
         return pulumi.get(self, "manual_vswitch_id")
 
     @property
@@ -537,13 +541,13 @@ class FirewallVpcFirewallLocalVpc(dict):
                  router_interface_id: Optional[str] = None,
                  vpc_name: Optional[str] = None):
         """
-        :param Sequence['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs'] local_vpc_cidr_table_lists: The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+        :param Sequence['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs'] local_vpc_cidr_table_lists: The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
         :param str region_no: The region ID of the local VPC.
         :param str vpc_id: The ID of the local VPC instance.
-        :param str eni_id: The ID of the instance of the Eni in the local VPC.
-        :param str eni_private_ip_address: The private IP address of the elastic network card in the local VPC.
-        :param str router_interface_id: The ID of the router interface in the local VPC.
-        :param str vpc_name: The instance name of the local VPC.
+        :param str eni_id: The ID of the instance of the ENI in the peer VPC.
+        :param str eni_private_ip_address: The private IP address of the elastic network card in the peer VPC.
+        :param str router_interface_id: The ID of the router interface in the peer VPC.
+        :param str vpc_name: The instance name of the peer VPC.
         """
         pulumi.set(__self__, "local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
         pulumi.set(__self__, "region_no", region_no)
@@ -561,7 +565,7 @@ class FirewallVpcFirewallLocalVpc(dict):
     @pulumi.getter(name="localVpcCidrTableLists")
     def local_vpc_cidr_table_lists(self) -> Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableList']:
         """
-        The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+        The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
         """
         return pulumi.get(self, "local_vpc_cidr_table_lists")
 
@@ -585,7 +589,7 @@ class FirewallVpcFirewallLocalVpc(dict):
     @pulumi.getter(name="eniId")
     def eni_id(self) -> Optional[str]:
         """
-        The ID of the instance of the Eni in the local VPC.
+        The ID of the instance of the ENI in the peer VPC.
         """
         return pulumi.get(self, "eni_id")
 
@@ -593,7 +597,7 @@ class FirewallVpcFirewallLocalVpc(dict):
     @pulumi.getter(name="eniPrivateIpAddress")
     def eni_private_ip_address(self) -> Optional[str]:
         """
-        The private IP address of the elastic network card in the local VPC.
+        The private IP address of the elastic network card in the peer VPC.
         """
         return pulumi.get(self, "eni_private_ip_address")
 
@@ -601,7 +605,7 @@ class FirewallVpcFirewallLocalVpc(dict):
     @pulumi.getter(name="routerInterfaceId")
     def router_interface_id(self) -> Optional[str]:
         """
-        The ID of the router interface in the local VPC.
+        The ID of the router interface in the peer VPC.
         """
         return pulumi.get(self, "router_interface_id")
 
@@ -609,7 +613,7 @@ class FirewallVpcFirewallLocalVpc(dict):
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> Optional[str]:
         """
-        The instance name of the local VPC.
+        The instance name of the peer VPC.
         """
         return pulumi.get(self, "vpc_name")
 
@@ -639,7 +643,7 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList(dict):
                  local_route_entry_lists: Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList'],
                  local_route_table_id: str):
         """
-        :param Sequence['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs'] local_route_entry_lists: The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+        :param Sequence['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs'] local_route_entry_lists: The list of route entries of the local VPC. See `local_route_entry_list` below.
         :param str local_route_table_id: The ID of the route table of the local VPC.
         """
         pulumi.set(__self__, "local_route_entry_lists", local_route_entry_lists)
@@ -649,7 +653,7 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList(dict):
     @pulumi.getter(name="localRouteEntryLists")
     def local_route_entry_lists(self) -> Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList']:
         """
-        The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+        The list of route entries of the local VPC. See `local_route_entry_list` below.
         """
         return pulumi.get(self, "local_route_entry_lists")
 
@@ -750,13 +754,13 @@ class FirewallVpcFirewallPeerVpc(dict):
                  router_interface_id: Optional[str] = None,
                  vpc_name: Optional[str] = None):
         """
-        :param Sequence['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs'] peer_vpc_cidr_table_lists: The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
-        :param str region_no: The region ID of the local VPC.
-        :param str vpc_id: The ID of the local VPC instance.
-        :param str eni_id: The ID of the instance of the Eni in the local VPC.
-        :param str eni_private_ip_address: The private IP address of the elastic network card in the local VPC.
-        :param str router_interface_id: The ID of the router interface in the local VPC.
-        :param str vpc_name: The instance name of the local VPC.
+        :param Sequence['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs'] peer_vpc_cidr_table_lists: The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+        :param str region_no: The region ID of the peer VPC.
+        :param str vpc_id: The ID of the peer VPC instance.
+        :param str eni_id: The ID of the instance of the ENI in the peer VPC.
+        :param str eni_private_ip_address: The private IP address of the elastic network card in the peer VPC.
+        :param str router_interface_id: The ID of the router interface in the peer VPC.
+        :param str vpc_name: The instance name of the peer VPC.
         """
         pulumi.set(__self__, "peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
         pulumi.set(__self__, "region_no", region_no)
@@ -774,7 +778,7 @@ class FirewallVpcFirewallPeerVpc(dict):
     @pulumi.getter(name="peerVpcCidrTableLists")
     def peer_vpc_cidr_table_lists(self) -> Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableList']:
         """
-        The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+        The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
         """
         return pulumi.get(self, "peer_vpc_cidr_table_lists")
 
@@ -782,7 +786,7 @@ class FirewallVpcFirewallPeerVpc(dict):
     @pulumi.getter(name="regionNo")
     def region_no(self) -> str:
         """
-        The region ID of the local VPC.
+        The region ID of the peer VPC.
         """
         return pulumi.get(self, "region_no")
 
@@ -790,7 +794,7 @@ class FirewallVpcFirewallPeerVpc(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
         """
-        The ID of the local VPC instance.
+        The ID of the peer VPC instance.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -798,7 +802,7 @@ class FirewallVpcFirewallPeerVpc(dict):
     @pulumi.getter(name="eniId")
     def eni_id(self) -> Optional[str]:
         """
-        The ID of the instance of the Eni in the local VPC.
+        The ID of the instance of the ENI in the peer VPC.
         """
         return pulumi.get(self, "eni_id")
 
@@ -806,7 +810,7 @@ class FirewallVpcFirewallPeerVpc(dict):
     @pulumi.getter(name="eniPrivateIpAddress")
     def eni_private_ip_address(self) -> Optional[str]:
         """
-        The private IP address of the elastic network card in the local VPC.
+        The private IP address of the elastic network card in the peer VPC.
         """
         return pulumi.get(self, "eni_private_ip_address")
 
@@ -814,7 +818,7 @@ class FirewallVpcFirewallPeerVpc(dict):
     @pulumi.getter(name="routerInterfaceId")
     def router_interface_id(self) -> Optional[str]:
         """
-        The ID of the router interface in the local VPC.
+        The ID of the router interface in the peer VPC.
         """
         return pulumi.get(self, "router_interface_id")
 
@@ -822,7 +826,7 @@ class FirewallVpcFirewallPeerVpc(dict):
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> Optional[str]:
         """
-        The instance name of the local VPC.
+        The instance name of the peer VPC.
         """
         return pulumi.get(self, "vpc_name")
 
@@ -852,7 +856,7 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList(dict):
                  peer_route_entry_lists: Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList'],
                  peer_route_table_id: str):
         """
-        :param Sequence['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs'] peer_route_entry_lists: Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+        :param Sequence['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs'] peer_route_entry_lists: Peer VPC route entry list information. See `peer_route_entry_list` below.
         :param str peer_route_table_id: The ID of the route table of the peer VPC.
         """
         pulumi.set(__self__, "peer_route_entry_lists", peer_route_entry_lists)
@@ -862,7 +866,7 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList(dict):
     @pulumi.getter(name="peerRouteEntryLists")
     def peer_route_entry_lists(self) -> Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList']:
         """
-        Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+        Peer VPC route entry list information. See `peer_route_entry_list` below.
         """
         return pulumi.get(self, "peer_route_entry_lists")
 

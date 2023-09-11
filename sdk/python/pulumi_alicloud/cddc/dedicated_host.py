@@ -502,49 +502,6 @@ class DedicatedHost(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a ApsaraDB for MyBase Dedicated Host resource.
-
-        For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/doc-detail/210864.html).
-
-        > **NOTE:** Available in v1.147.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_zones = alicloud.cddc.get_zones()
-        default_host_ecs_level_infos = alicloud.cddc.get_host_ecs_level_infos(db_type="mysql",
-            zone_id=default_zones.ids[0],
-            storage_type="cloud_essd")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
-            engine="MySQL",
-            vpc_id=default_networks.ids[0],
-            cpu_allocation_ratio=101,
-            mem_allocation_ratio=50,
-            disk_allocation_ratio=200,
-            allocation_policy="Evenly",
-            host_replace_policy="Manual",
-            dedicated_host_group_desc="example_value")
-        default_dedicated_host = alicloud.cddc.DedicatedHost("defaultDedicatedHost",
-            host_name="example_value",
-            dedicated_host_group_id=default_dedicated_host_group.id,
-            host_class=default_host_ecs_level_infos.infos[0].res_class_code,
-            zone_id=default_zones.ids[0],
-            vswitch_id=default_switches.ids[0],
-            payment_type="Subscription",
-            tags={
-                "Created": "TF",
-                "For": "CDDC_DEDICATED",
-            })
-        ```
-
         ## Import
 
         ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.
@@ -579,49 +536,6 @@ class DedicatedHost(pulumi.CustomResource):
                  args: DedicatedHostArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ApsaraDB for MyBase Dedicated Host resource.
-
-        For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/doc-detail/210864.html).
-
-        > **NOTE:** Available in v1.147.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_zones = alicloud.cddc.get_zones()
-        default_host_ecs_level_infos = alicloud.cddc.get_host_ecs_level_infos(db_type="mysql",
-            zone_id=default_zones.ids[0],
-            storage_type="cloud_essd")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
-            engine="MySQL",
-            vpc_id=default_networks.ids[0],
-            cpu_allocation_ratio=101,
-            mem_allocation_ratio=50,
-            disk_allocation_ratio=200,
-            allocation_policy="Evenly",
-            host_replace_policy="Manual",
-            dedicated_host_group_desc="example_value")
-        default_dedicated_host = alicloud.cddc.DedicatedHost("defaultDedicatedHost",
-            host_name="example_value",
-            dedicated_host_group_id=default_dedicated_host_group.id,
-            host_class=default_host_ecs_level_infos.infos[0].res_class_code,
-            zone_id=default_zones.ids[0],
-            vswitch_id=default_switches.ids[0],
-            payment_type="Subscription",
-            tags={
-                "Created": "TF",
-                "For": "CDDC_DEDICATED",
-            })
-        ```
-
         ## Import
 
         ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.

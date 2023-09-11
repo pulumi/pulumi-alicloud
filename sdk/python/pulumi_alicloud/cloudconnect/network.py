@@ -167,9 +167,9 @@ class Network(pulumi.CustomResource):
         """
         Provides a cloud connect network resource. Cloud Connect Network (CCN) is another important component of Smart Access Gateway. It is a device access matrix composed of Alibaba Cloud distributed access gateways. You can add multiple Smart Access Gateway (SAG) devices to a CCN instance and then attach the CCN instance to a Cloud Enterprise Network (CEN) instance to connect the local branches to the Alibaba Cloud.
 
-        For information about cloud connect network and how to use it, see [What is Cloud Connect Network](https://www.alibabacloud.com/help/doc-detail/93667.htm).
+        For information about cloud connect network and how to use it, see [What is Cloud Connect Network](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createcloudconnectnetwork).
 
-        > **NOTE:** Available in 1.59.0+
+        > **NOTE:** Available since v1.59.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -181,9 +181,13 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.cloudconnect.Network("default",
+            description=name,
             cidr_block="192.168.0.0/24",
-            description="tf-testAccCloudConnectNetworkDescription",
             is_default=True)
         ```
 
@@ -211,9 +215,9 @@ class Network(pulumi.CustomResource):
         """
         Provides a cloud connect network resource. Cloud Connect Network (CCN) is another important component of Smart Access Gateway. It is a device access matrix composed of Alibaba Cloud distributed access gateways. You can add multiple Smart Access Gateway (SAG) devices to a CCN instance and then attach the CCN instance to a Cloud Enterprise Network (CEN) instance to connect the local branches to the Alibaba Cloud.
 
-        For information about cloud connect network and how to use it, see [What is Cloud Connect Network](https://www.alibabacloud.com/help/doc-detail/93667.htm).
+        For information about cloud connect network and how to use it, see [What is Cloud Connect Network](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createcloudconnectnetwork).
 
-        > **NOTE:** Available in 1.59.0+
+        > **NOTE:** Available since v1.59.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -225,9 +229,13 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.cloudconnect.Network("default",
+            description=name,
             cidr_block="192.168.0.0/24",
-            description="tf-testAccCloudConnectNetworkDescription",
             is_default=True)
         ```
 

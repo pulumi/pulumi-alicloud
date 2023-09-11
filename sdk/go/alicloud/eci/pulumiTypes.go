@@ -162,9 +162,9 @@ type ContainerGroupContainer struct {
 	Ports []ContainerGroupContainerPort `pulumi:"ports"`
 	// The health check of the container. See `readinessProbe` below.
 	ReadinessProbes []ContainerGroupContainerReadinessProbe `pulumi:"readinessProbes"`
-	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	// Indicates whether the container passed the readiness probe.
 	Ready *bool `pulumi:"ready"`
-	// (Available since v1.208.0) The number of times that the container restarted.
+	// The number of times that the container restarted.
 	RestartCount *int `pulumi:"restartCount"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts []ContainerGroupContainerVolumeMount `pulumi:"volumeMounts"`
@@ -208,9 +208,9 @@ type ContainerGroupContainerArgs struct {
 	Ports ContainerGroupContainerPortArrayInput `pulumi:"ports"`
 	// The health check of the container. See `readinessProbe` below.
 	ReadinessProbes ContainerGroupContainerReadinessProbeArrayInput `pulumi:"readinessProbes"`
-	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	// Indicates whether the container passed the readiness probe.
 	Ready pulumi.BoolPtrInput `pulumi:"ready"`
-	// (Available since v1.208.0) The number of times that the container restarted.
+	// The number of times that the container restarted.
 	RestartCount pulumi.IntPtrInput `pulumi:"restartCount"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts ContainerGroupContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
@@ -329,12 +329,12 @@ func (o ContainerGroupContainerOutput) ReadinessProbes() ContainerGroupContainer
 	return o.ApplyT(func(v ContainerGroupContainer) []ContainerGroupContainerReadinessProbe { return v.ReadinessProbes }).(ContainerGroupContainerReadinessProbeArrayOutput)
 }
 
-// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+// Indicates whether the container passed the readiness probe.
 func (o ContainerGroupContainerOutput) Ready() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *bool { return v.Ready }).(pulumi.BoolPtrOutput)
 }
 
-// (Available since v1.208.0) The number of times that the container restarted.
+// The number of times that the container restarted.
 func (o ContainerGroupContainerOutput) RestartCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *int { return v.RestartCount }).(pulumi.IntPtrOutput)
 }
@@ -2412,9 +2412,9 @@ type ContainerGroupInitContainer struct {
 	Name *string `pulumi:"name"`
 	// The structure of port. See `ports` below.
 	Ports []ContainerGroupInitContainerPort `pulumi:"ports"`
-	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	// Indicates whether the container passed the readiness probe.
 	Ready *bool `pulumi:"ready"`
-	// (Available since v1.208.0) The number of times that the container restarted.
+	// The number of times that the container restarted.
 	RestartCount *int `pulumi:"restartCount"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts []ContainerGroupInitContainerVolumeMount `pulumi:"volumeMounts"`
@@ -2454,9 +2454,9 @@ type ContainerGroupInitContainerArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The structure of port. See `ports` below.
 	Ports ContainerGroupInitContainerPortArrayInput `pulumi:"ports"`
-	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	// Indicates whether the container passed the readiness probe.
 	Ready pulumi.BoolPtrInput `pulumi:"ready"`
-	// (Available since v1.208.0) The number of times that the container restarted.
+	// The number of times that the container restarted.
 	RestartCount pulumi.IntPtrInput `pulumi:"restartCount"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts ContainerGroupInitContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
@@ -2567,12 +2567,12 @@ func (o ContainerGroupInitContainerOutput) Ports() ContainerGroupInitContainerPo
 	return o.ApplyT(func(v ContainerGroupInitContainer) []ContainerGroupInitContainerPort { return v.Ports }).(ContainerGroupInitContainerPortArrayOutput)
 }
 
-// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+// Indicates whether the container passed the readiness probe.
 func (o ContainerGroupInitContainerOutput) Ready() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *bool { return v.Ready }).(pulumi.BoolPtrOutput)
 }
 
-// (Available since v1.208.0) The number of times that the container restarted.
+// The number of times that the container restarted.
 func (o ContainerGroupInitContainerOutput) RestartCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *int { return v.RestartCount }).(pulumi.IntPtrOutput)
 }

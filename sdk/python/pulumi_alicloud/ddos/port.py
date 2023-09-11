@@ -197,9 +197,9 @@ class Port(pulumi.CustomResource):
         """
         Provides a Anti-DDoS Pro Port resource.
 
-        For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/doc-detail/157482.htm).
+        For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
 
-        > **NOTE:** Available in v1.123.0+.
+        > **NOTE:** Available since v1.123.0.
 
         ## Example Usage
 
@@ -209,15 +209,22 @@ class Port(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_ddos_coo_instance = alicloud.ddos.DdosCooInstance("exampleDdosCooInstance",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
             bandwidth="30",
             base_bandwidth="30",
             service_bandwidth="100",
             port_count="50",
-            domain_count="50")
-        example_port = alicloud.ddos.Port("examplePort",
-            instance_id=example_ddos_coo_instance.id,
+            domain_count="50",
+            period=1,
+            product_type="ddoscoo")
+        default_port = alicloud.ddos.Port("defaultPort",
+            instance_id=default_ddos_coo_instance.id,
             frontend_port="7001",
+            backend_port="7002",
             frontend_protocol="tcp",
             real_servers=[
                 "1.1.1.1",
@@ -250,9 +257,9 @@ class Port(pulumi.CustomResource):
         """
         Provides a Anti-DDoS Pro Port resource.
 
-        For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/doc-detail/157482.htm).
+        For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
 
-        > **NOTE:** Available in v1.123.0+.
+        > **NOTE:** Available since v1.123.0.
 
         ## Example Usage
 
@@ -262,15 +269,22 @@ class Port(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_ddos_coo_instance = alicloud.ddos.DdosCooInstance("exampleDdosCooInstance",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
             bandwidth="30",
             base_bandwidth="30",
             service_bandwidth="100",
             port_count="50",
-            domain_count="50")
-        example_port = alicloud.ddos.Port("examplePort",
-            instance_id=example_ddos_coo_instance.id,
+            domain_count="50",
+            period=1,
+            product_type="ddoscoo")
+        default_port = alicloud.ddos.Port("defaultPort",
+            instance_id=default_ddos_coo_instance.id,
             frontend_port="7001",
+            backend_port="7002",
             frontend_protocol="tcp",
             real_servers=[
                 "1.1.1.1",

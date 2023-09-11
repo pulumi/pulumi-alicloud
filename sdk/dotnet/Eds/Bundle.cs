@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Eds
         /// The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         /// </summary>
         [Output("rootDiskPerformanceLevel")]
-        public Output<string?> RootDiskPerformanceLevel { get; private set; } = null!;
+        public Output<string> RootDiskPerformanceLevel { get; private set; } = null!;
 
         /// <summary>
         /// The root disk size gib.
@@ -119,10 +119,10 @@ namespace Pulumi.AliCloud.Eds
         /// The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         /// </summary>
         [Output("userDiskPerformanceLevel")]
-        public Output<string?> UserDiskPerformanceLevel { get; private set; } = null!;
+        public Output<string> UserDiskPerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        /// The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
         /// - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
         /// - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         /// </summary>
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<int>? _userDiskSizeGibs;
 
         /// <summary>
-        /// The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        /// The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
         /// - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
         /// - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         /// </summary>
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<int>? _userDiskSizeGibs;
 
         /// <summary>
-        /// The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        /// The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
         /// - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
         /// - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         /// </summary>

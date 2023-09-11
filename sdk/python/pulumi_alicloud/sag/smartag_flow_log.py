@@ -433,7 +433,7 @@ class SmartagFlowLog(pulumi.CustomResource):
 
         For information about Smartag Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createflowlog).
 
-        > **NOTE:** Available in v1.168.0+.
+        > **NOTE:** Available since v1.168.0.
 
         ## Example Usage
 
@@ -444,13 +444,10 @@ class SmartagFlowLog(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.sag.SmartagFlowLog("example",
-            flow_log_name="example_value",
-            logstore_name="example_value",
-            netflow_server_ip="example_value",
-            netflow_server_port=1,
-            output_type="all",
-            project_name="example_value",
-            sls_region_id="example_value")
+            netflow_server_ip="192.168.0.2",
+            netflow_server_port=9995,
+            netflow_version="V9",
+            output_type="netflow")
         ```
 
         ## Import
@@ -487,7 +484,7 @@ class SmartagFlowLog(pulumi.CustomResource):
 
         For information about Smartag Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createflowlog).
 
-        > **NOTE:** Available in v1.168.0+.
+        > **NOTE:** Available since v1.168.0.
 
         ## Example Usage
 
@@ -498,13 +495,10 @@ class SmartagFlowLog(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.sag.SmartagFlowLog("example",
-            flow_log_name="example_value",
-            logstore_name="example_value",
-            netflow_server_ip="example_value",
-            netflow_server_port=1,
-            output_type="all",
-            project_name="example_value",
-            sls_region_id="example_value")
+            netflow_server_ip="192.168.0.2",
+            netflow_server_port=9995,
+            netflow_version="V9",
+            output_type="netflow")
         ```
 
         ## Import

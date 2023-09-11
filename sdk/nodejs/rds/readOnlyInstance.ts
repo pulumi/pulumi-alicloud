@@ -168,6 +168,14 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     */
+    public readonly direction!: pulumi.Output<string | undefined>;
+    /**
      * The method to change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -339,6 +347,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
             resourceInputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
             resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
@@ -393,6 +402,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
             resourceInputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
             resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["forceRestart"] = args ? args.forceRestart : undefined;
@@ -505,6 +515,14 @@ export interface ReadOnlyInstanceState {
      * - false: no delete protect.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The method to change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
@@ -725,6 +743,14 @@ export interface ReadOnlyInstanceArgs {
      * - false: no delete protect.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The method to change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.

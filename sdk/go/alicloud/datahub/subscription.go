@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+// The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+//
+// > **NOTE:** Available since v1.19.0.
 //
 // ## Example Usage
 //
@@ -25,15 +27,37 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datahub.NewSubscription(ctx, "example", &datahub.SubscriptionArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleProject, err := datahub.NewProject(ctx, "exampleProject", &datahub.ProjectArgs{
+//				Comment: pulumi.String("created by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTopic, err := datahub.NewTopic(ctx, "exampleTopic", &datahub.TopicArgs{
+//				ProjectName: exampleProject.Name,
+//				RecordType:  pulumi.String("BLOB"),
+//				ShardCount:  pulumi.Int(3),
+//				LifeCycle:   pulumi.Int(7),
 //				Comment:     pulumi.String("created by terraform"),
-//				ProjectName: pulumi.String("tf_datahub_project"),
-//				TopicName:   pulumi.String("tf_datahub_topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datahub.NewSubscription(ctx, "exampleSubscription", &datahub.SubscriptionArgs{
+//				ProjectName: exampleProject.Name,
+//				TopicName:   exampleTopic.Name,
+//				Comment:     pulumi.String("created by terraform"),
 //			})
 //			if err != nil {
 //				return err

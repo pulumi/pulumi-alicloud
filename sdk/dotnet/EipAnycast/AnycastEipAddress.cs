@@ -29,11 +29,11 @@ namespace Pulumi.AliCloud.EipAnycast
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = new AliCloud.EipAnycast.AnycastEipAddress("default", new()
     ///     {
     ///         AnycastEipAddressName = name,
-    ///         Description = "test_1",
+    ///         Description = name,
     ///         Bandwidth = 200,
     ///         ServiceLocation = "international",
     ///         InternetChargeType = "PayByTraffic",

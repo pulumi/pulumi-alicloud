@@ -166,9 +166,9 @@ class ChartNamespace(pulumi.CustomResource):
         """
         Provides a CR Chart Namespace resource.
 
-        For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/doc-detail/145313.htm).
+        For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartnamespace).
 
-        > **NOTE:** Available in v1.149.0+.
+        > **NOTE:** Available since v1.149.0.
 
         ## Example Usage
 
@@ -178,14 +178,20 @@ class ChartNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example-name"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
             payment_type="Subscription",
             period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name="name")
-        default_chart_namespace = alicloud.cr.ChartNamespace("defaultChartNamespace",
-            instance_id=default_registry_enterprise_instance.id,
-            namespace_name="name")
+            instance_name=name)
+        example_chart_namespace = alicloud.cr.ChartNamespace("exampleChartNamespace",
+            instance_id=example_registry_enterprise_instance.id,
+            namespace_name=name)
         ```
 
         ## Import
@@ -212,9 +218,9 @@ class ChartNamespace(pulumi.CustomResource):
         """
         Provides a CR Chart Namespace resource.
 
-        For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/doc-detail/145313.htm).
+        For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartnamespace).
 
-        > **NOTE:** Available in v1.149.0+.
+        > **NOTE:** Available since v1.149.0.
 
         ## Example Usage
 
@@ -224,14 +230,20 @@ class ChartNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example-name"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
             payment_type="Subscription",
             period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name="name")
-        default_chart_namespace = alicloud.cr.ChartNamespace("defaultChartNamespace",
-            instance_id=default_registry_enterprise_instance.id,
-            namespace_name="name")
+            instance_name=name)
+        example_chart_namespace = alicloud.cr.ChartNamespace("exampleChartNamespace",
+            instance_id=example_registry_enterprise_instance.id,
+            namespace_name=name)
         ```
 
         ## Import

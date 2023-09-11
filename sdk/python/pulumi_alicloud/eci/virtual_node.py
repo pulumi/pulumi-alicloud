@@ -35,7 +35,7 @@ class VirtualNodeArgs:
         :param pulumi.Input[bool] enable_public_network: Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
         :param pulumi.Input[str] resource_group_id: The resource group ID.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]] taints: The taint. See the following `Block taints`.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]] taints: The taint. See `taints` below.
         :param pulumi.Input[str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[str] zone_id: The Zone.
         """
@@ -145,7 +145,7 @@ class VirtualNodeArgs:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]:
         """
-        The taint. See the following `Block taints`.
+        The taint. See `taints` below.
         """
         return pulumi.get(self, "taints")
 
@@ -201,7 +201,7 @@ class _VirtualNodeState:
         :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[str] status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]] taints: The taint. See the following `Block taints`.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]] taints: The taint. See `taints` below.
         :param pulumi.Input[str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The Zone.
@@ -317,7 +317,7 @@ class _VirtualNodeState:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]:
         """
-        The taint. See the following `Block taints`.
+        The taint. See `taints` below.
         """
         return pulumi.get(self, "taints")
 
@@ -383,7 +383,7 @@ class VirtualNode(pulumi.CustomResource):
 
         For information about ECI Virtual Node and how to use it, see [What is Virtual Node](https://www.alibabacloud.com/help/en/doc-detail/89129.html).
 
-        > **NOTE:** Available in v1.145.0+.
+        > **NOTE:** Available since v1.145.0.
 
         ## Example Usage
 
@@ -396,29 +396,40 @@ class VirtualNode(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testaccvirtualnode"
+            name = "tf-example"
         default_zones = alicloud.eci.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].zone_ids[1])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            isp="BGP",
+            address_name=name,
+            netmode="public",
+            bandwidth="1",
+            security_protection_types=["AntiDDoS_Enhanced"],
+            payment_type="PayAsYouGo")
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_virtual_node = alicloud.eci.VirtualNode("defaultVirtualNode",
             security_group_id=default_security_group.id,
             virtual_node_name=name,
-            vswitch_id=default_switches.ids[1],
+            vswitch_id=default_switch.id,
             enable_public_network=False,
             eip_instance_id=default_eip_address.id,
             resource_group_id=default_resource_groups.groups[0].id,
-            kube_config="kube config",
+            kube_config="kube_config",
             tags={
                 "Created": "TF",
             },
             taints=[alicloud.eci.VirtualNodeTaintArgs(
                 effect="NoSchedule",
-                key="Tf1",
-                value="Test1",
+                key="TF",
+                value="example",
             )])
         ```
 
@@ -438,7 +449,7 @@ class VirtualNode(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The resource group ID.
         :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualNodeTaintArgs']]]] taints: The taint. See the following `Block taints`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualNodeTaintArgs']]]] taints: The taint. See `taints` below.
         :param pulumi.Input[str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The Zone.
@@ -454,7 +465,7 @@ class VirtualNode(pulumi.CustomResource):
 
         For information about ECI Virtual Node and how to use it, see [What is Virtual Node](https://www.alibabacloud.com/help/en/doc-detail/89129.html).
 
-        > **NOTE:** Available in v1.145.0+.
+        > **NOTE:** Available since v1.145.0.
 
         ## Example Usage
 
@@ -467,29 +478,40 @@ class VirtualNode(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testaccvirtualnode"
+            name = "tf-example"
         default_zones = alicloud.eci.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].zone_ids[1])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            isp="BGP",
+            address_name=name,
+            netmode="public",
+            bandwidth="1",
+            security_protection_types=["AntiDDoS_Enhanced"],
+            payment_type="PayAsYouGo")
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_virtual_node = alicloud.eci.VirtualNode("defaultVirtualNode",
             security_group_id=default_security_group.id,
             virtual_node_name=name,
-            vswitch_id=default_switches.ids[1],
+            vswitch_id=default_switch.id,
             enable_public_network=False,
             eip_instance_id=default_eip_address.id,
             resource_group_id=default_resource_groups.groups[0].id,
-            kube_config="kube config",
+            kube_config="kube_config",
             tags={
                 "Created": "TF",
             },
             taints=[alicloud.eci.VirtualNodeTaintArgs(
                 effect="NoSchedule",
-                key="Tf1",
-                value="Test1",
+                key="TF",
+                value="example",
             )])
         ```
 
@@ -587,7 +609,7 @@ class VirtualNode(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[str] status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualNodeTaintArgs']]]] taints: The taint. See the following `Block taints`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualNodeTaintArgs']]]] taints: The taint. See `taints` below.
         :param pulumi.Input[str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The Zone.
@@ -669,7 +691,7 @@ class VirtualNode(pulumi.CustomResource):
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualNodeTaint']]]:
         """
-        The taint. See the following `Block taints`.
+        The taint. See `taints` below.
         """
         return pulumi.get(self, "taints")
 

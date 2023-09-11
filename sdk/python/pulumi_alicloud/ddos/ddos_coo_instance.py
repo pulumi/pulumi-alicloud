@@ -305,13 +305,13 @@ class DdosCooInstance(pulumi.CustomResource):
                  service_bandwidth: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/doc-detail/69319.htm).
+        BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
 
         > **NOTE:** The product region only support cn-hangzhou.
 
         > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 
-        > **NOTE:** Available in 1.37.0+ .
+        > **NOTE:** Available since v1.37.0.
 
         ## Example Usage
 
@@ -321,14 +321,18 @@ class DdosCooInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        new_instance = alicloud.ddos.DdosCooInstance("newInstance",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.ddos.DdosCooInstance("default",
             bandwidth="30",
             base_bandwidth="30",
+            service_bandwidth="100",
+            port_count="50",
             domain_count="50",
             period=1,
-            port_count="50",
-            product_type="ddoscoo",
-            service_bandwidth="100")
+            product_type="ddoscoo")
         ```
 
         ## Import
@@ -360,13 +364,13 @@ class DdosCooInstance(pulumi.CustomResource):
                  args: DdosCooInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/doc-detail/69319.htm).
+        BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
 
         > **NOTE:** The product region only support cn-hangzhou.
 
         > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 
-        > **NOTE:** Available in 1.37.0+ .
+        > **NOTE:** Available since v1.37.0.
 
         ## Example Usage
 
@@ -376,14 +380,18 @@ class DdosCooInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        new_instance = alicloud.ddos.DdosCooInstance("newInstance",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.ddos.DdosCooInstance("default",
             bandwidth="30",
             base_bandwidth="30",
+            service_bandwidth="100",
+            port_count="50",
             domain_count="50",
             period=1,
-            port_count="50",
-            product_type="ddoscoo",
-            service_bandwidth="100")
+            product_type="ddoscoo")
         ```
 
         ## Import

@@ -9,9 +9,156 @@ import * as utilities from "../utilities";
 /**
  * Provides a CR Chain resource.
  *
- * For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357808.html).
+ * For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchain).
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
+ *     instanceType: "Advanced",
+ *     instanceName: name,
+ * });
+ * const defaultRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", {
+ *     instanceId: defaultRegistryEnterpriseInstance.id,
+ *     autoCreate: false,
+ *     defaultVisibility: "PUBLIC",
+ * });
+ * const defaultRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", {
+ *     instanceId: defaultRegistryEnterpriseInstance.id,
+ *     namespace: defaultRegistryEnterpriseNamespace.name,
+ *     summary: "this is summary of my new repo",
+ *     repoType: "PUBLIC",
+ *     detail: "this is a public repo",
+ * });
+ * const defaultChain = new alicloud.cr.Chain("defaultChain", {
+ *     chainName: name,
+ *     description: name,
+ *     instanceId: defaultRegistryEnterpriseNamespace.instanceId,
+ *     repoName: defaultRegistryEnterpriseRepo.name,
+ *     repoNamespaceName: defaultRegistryEnterpriseNamespace.name,
+ *     chainConfigs: [{
+ *         routers: [
+ *             {
+ *                 froms: [{
+ *                     nodeName: "DOCKER_IMAGE_BUILD",
+ *                 }],
+ *                 tos: [{
+ *                     nodeName: "DOCKER_IMAGE_PUSH",
+ *                 }],
+ *             },
+ *             {
+ *                 froms: [{
+ *                     nodeName: "DOCKER_IMAGE_PUSH",
+ *                 }],
+ *                 tos: [{
+ *                     nodeName: "VULNERABILITY_SCANNING",
+ *                 }],
+ *             },
+ *             {
+ *                 froms: [{
+ *                     nodeName: "VULNERABILITY_SCANNING",
+ *                 }],
+ *                 tos: [{
+ *                     nodeName: "ACTIVATE_REPLICATION",
+ *                 }],
+ *             },
+ *             {
+ *                 froms: [{
+ *                     nodeName: "ACTIVATE_REPLICATION",
+ *                 }],
+ *                 tos: [{
+ *                     nodeName: "TRIGGER",
+ *                 }],
+ *             },
+ *             {
+ *                 froms: [{
+ *                     nodeName: "VULNERABILITY_SCANNING",
+ *                 }],
+ *                 tos: [{
+ *                     nodeName: "SNAPSHOT",
+ *                 }],
+ *             },
+ *             {
+ *                 froms: [{
+ *                     nodeName: "SNAPSHOT",
+ *                 }],
+ *                 tos: [{
+ *                     nodeName: "TRIGGER_SNAPSHOT",
+ *                 }],
+ *             },
+ *         ],
+ *         nodes: [
+ *             {
+ *                 enable: true,
+ *                 nodeName: "DOCKER_IMAGE_BUILD",
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *             },
+ *             {
+ *                 enable: true,
+ *                 nodeName: "DOCKER_IMAGE_PUSH",
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *             },
+ *             {
+ *                 enable: true,
+ *                 nodeName: "VULNERABILITY_SCANNING",
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{
+ *                         issueLevel: "MEDIUM",
+ *                         issueCount: "1",
+ *                         action: "BLOCK_DELETE_TAG",
+ *                         logic: "AND",
+ *                     }],
+ *                 }],
+ *             },
+ *             {
+ *                 enable: true,
+ *                 nodeName: "ACTIVATE_REPLICATION",
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *             },
+ *             {
+ *                 enable: true,
+ *                 nodeName: "TRIGGER",
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *             },
+ *             {
+ *                 enable: false,
+ *                 nodeName: "SNAPSHOT",
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *             },
+ *             {
+ *                 enable: false,
+ *                 nodeName: "TRIGGER_SNAPSHOT",
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -50,7 +197,7 @@ export class Chain extends pulumi.CustomResource {
     }
 
     /**
-     * The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+     * The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      */
     public readonly chainConfigs!: pulumi.Output<outputs.cr.ChainChainConfig[] | undefined>;
     /**
@@ -124,7 +271,7 @@ export class Chain extends pulumi.CustomResource {
  */
 export interface ChainState {
     /**
-     * The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+     * The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      */
     chainConfigs?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfig>[]>;
     /**
@@ -158,7 +305,7 @@ export interface ChainState {
  */
 export interface ChainArgs {
     /**
-     * The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+     * The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      */
     chainConfigs?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfig>[]>;
     /**

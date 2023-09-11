@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource will help you to manager Container Registry repositories.
+// This resource will help you to manager Container Registry repositories, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository).
 //
-// > **NOTE:** Available in v1.35.0+.
+// > **NOTE:** Available since v1.35.0.
 //
 // > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 //
@@ -29,20 +29,26 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cr.NewNamespace(ctx, "my-namespace", &cr.NamespaceArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleNamespace, err := cr.NewNamespace(ctx, "exampleNamespace", &cr.NamespaceArgs{
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cr.NewRepo(ctx, "my-repo", &cr.RepoArgs{
-//				Namespace: my_namespace.Name,
+//			_, err = cr.NewRepo(ctx, "exampleRepo", &cr.RepoArgs{
+//				Namespace: exampleNamespace.Name,
 //				Summary:   pulumi.String("this is summary of my new repo"),
 //				RepoType:  pulumi.String("PUBLIC"),
 //				Detail:    pulumi.String("this is a public repo"),

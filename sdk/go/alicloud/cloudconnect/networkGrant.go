@@ -14,9 +14,9 @@ import (
 
 // Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
 //
-// For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/doc-detail/94543.htm).
+// For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/grantinstancetocbn).
 //
-// > **NOTE:** Available in 1.63.0+
+// > **NOTE:** Available since v1.63.0.
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
@@ -29,45 +29,61 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alicloud.NewProvider(ctx, "ccnAccount", nil)
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
-//			_, err = alicloud.NewProvider(ctx, "cenAccount", &alicloud.ProviderArgs{
-//				Region:    pulumi.String("cn-hangzhou"),
-//				AccessKey: pulumi.String("xxxxxx"),
-//				SecretKey: pulumi.String("xxxxxx"),
+//			cenUid := float64(123456789)
+//			if param := cfg.GetFloat64("cenUid"); param != 0 {
+//				cenUid = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "default", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-shanghai"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Cen_account))
+//			_, err = alicloud.NewProvider(ctx, "cenAccount", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
+//				AssumeRole: &alicloud.ProviderAssumeRoleArgs{
+//					RoleArn: pulumi.String(fmt.Sprintf("acs:ram::%v:role/terraform-example-assume-role", cenUid)),
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
-//				IsDefault: pulumi.Bool(true),
-//			}, pulumi.Provider(alicloud.Ccn_account))
+//			defaultNetwork, err := cloudconnect.NewNetwork(ctx, "defaultNetwork", &cloudconnect.NetworkArgs{
+//				Description: pulumi.String(name),
+//				CidrBlock:   pulumi.String("192.168.0.0/24"),
+//				IsDefault:   pulumi.Bool(true),
+//			}, pulumi.Provider(alicloud.Default))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
-//				CcnId:  ccn.ID(),
+//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Cen_account))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudconnect.NewNetworkGrant(ctx, "defaultNetworkGrant", &cloudconnect.NetworkGrantArgs{
+//				CcnId:  defaultNetwork.ID(),
 //				CenId:  cen.ID(),
-//				CenUid: pulumi.String("xxxxxx"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				ccn,
-//				cen,
-//			}))
+//				CenUid: pulumi.Float64(cenUid),
+//			}, pulumi.Provider(alicloud.Default))
 //			if err != nil {
 //				return err
 //			}

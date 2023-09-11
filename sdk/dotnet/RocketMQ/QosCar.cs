@@ -13,9 +13,9 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Provides a Sag qos car resource.
     /// You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
     /// 
-    /// For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/doc-detail/140065.htm).
+    /// For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
     /// 
-    /// &gt; **NOTE:** Available in 1.60.0+
+    /// &gt; **NOTE:** Available since v1.60.0.
     /// 
     /// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
@@ -31,12 +31,14 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var defaultQos = new AliCloud.RocketMQ.Qos("defaultQos");
     /// 
     ///     var defaultQosCar = new AliCloud.RocketMQ.QosCar("defaultQosCar", new()
     ///     {
     ///         QosId = defaultQos.Id,
-    ///         Description = "tf-testSagQosCarDescription",
+    ///         Description = name,
     ///         Priority = 1,
     ///         LimitType = "Absolute",
     ///         MinBandwidthAbs = 10,

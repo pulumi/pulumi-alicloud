@@ -14,9 +14,9 @@ import (
 
 // This resource will help you to manager Container Registry Enterprise Edition namespaces.
 //
-// For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/doc-detail/145483.htm)
+// For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
 //
-// > **NOTE:** Available in v1.86.0+.
+// > **NOTE:** Available since v1.86.0.
 //
 // > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 //
@@ -29,17 +29,35 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewRegistryEnterpriseNamespace(ctx, "my-namespace", &cs.RegistryEnterpriseNamespaceArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example-name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "exampleRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(0),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				InstanceName:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cs.NewRegistryEnterpriseNamespace(ctx, "exampleRegistryEnterpriseNamespace", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        exampleRegistryEnterpriseInstance.ID(),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
-//				InstanceId:        pulumi.String("cri-xxx"),
 //			})
 //			if err != nil {
 //				return err

@@ -49,6 +49,208 @@ namespace Pulumi.AliCloud.FC
     ///         Project = defaultProject.Name,
     ///     });
     /// 
+    ///     var slsDefaultToken = @", '"";=()[]{}?@&amp;&lt;&gt;/:
+    /// 	";
+    /// 
+    ///     var example = new AliCloud.Log.StoreIndex("example", new()
+    ///     {
+    ///         Project = defaultProject.Name,
+    ///         Logstore = defaultStore.Name,
+    ///         FullText = new AliCloud.Log.Inputs.StoreIndexFullTextArgs
+    ///         {
+    ///             CaseSensitive = false,
+    ///             Token = slsDefaultToken,
+    ///         },
+    ///         FieldSearches = new[]
+    ///         {
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "aggPeriodSeconds",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "long",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "concurrentRequests",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "long",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "cpuPercent",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "double",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "cpuQuotaPercent",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "double",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "functionName",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///                 CaseSensitive = true,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "hostname",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "instanceID",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "ipAddress",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "memoryLimitMB",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "double",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "memoryUsageMB",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "double",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "memoryUsagePercent",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "double",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "operation",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "qualifier",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///                 CaseSensitive = true,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "rxBytes",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "long",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "rxTotalBytes",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "long",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "serviceName",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///                 CaseSensitive = true,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "txBytes",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "long",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "txTotalBytes",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "long",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "versionId",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "events",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "json",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "isColdStart",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "hasFunctionError",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "errorType",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "triggerType",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "text",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "durationMs",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "double",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
+    ///             {
+    ///                 Name = "statusCode",
+    ///                 EnableAnalytics = true,
+    ///                 Type = "long",
+    ///                 Token = slsDefaultToken,
+    ///             },
+    ///         },
+    ///     });
+    /// 
     ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
     ///     {
     ///         Document = @"  {

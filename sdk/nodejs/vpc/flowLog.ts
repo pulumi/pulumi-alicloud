@@ -9,45 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
  *
- * > **NOTE:** Available in v1.117.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc-example";
- * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
- *     resourceGroupName: name,
- *     displayName: "tf-testAcc-rg78",
- * });
- * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
- *     vpcName: `${name}1`,
- *     cidrBlock: "10.0.0.0/8",
- * });
- * const modifyRG = new alicloud.resourcemanager.ResourceGroup("modifyRG", {
- *     displayName: "tf-testAcc-rg405",
- *     resourceGroupName: `${name}2`,
- * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {});
- * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
- * const defaultFlowLog = new alicloud.vpc.FlowLog("defaultFlowLog", {
- *     flowLogName: name,
- *     logStoreName: defaultStore.name,
- *     description: "tf-testAcc-flowlog",
- *     trafficPaths: ["all"],
- *     projectName: defaultProject.name,
- *     resourceType: "VPC",
- *     resourceGroupId: defaultRg.id,
- *     resourceId: defaultVpc.id,
- *     aggregationInterval: "1",
- *     trafficType: "All",
- * });
- * ```
+ * > **NOTE:** Available since v1.117.0.
  *
  * ## Import
  *

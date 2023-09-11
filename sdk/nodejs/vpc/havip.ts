@@ -13,9 +13,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = new alicloud.vpc.HAVip("foo", {
- *     description: "test_havip",
- *     vswitchId: "vsw-fakeid",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const exampleHAVip = new alicloud.vpc.HAVip("exampleHAVip", {
+ *     vswitchId: exampleSwitch.id,
+ *     description: name,
  * });
  * ```
  *
@@ -55,15 +70,33 @@ export class HAVip extends pulumi.CustomResource {
         return obj['__pulumiType'] === HAVip.__pulumiType;
     }
 
+    /**
+     * The elastic IP address (EIP) associated with the HAVIP.
+     */
     public /*out*/ readonly associatedEipAddresses!: pulumi.Output<string[]>;
+    /**
+     * The type of the instance with which the HAVIP is associated. Valid values:
+     */
     public /*out*/ readonly associatedInstanceType!: pulumi.Output<string>;
+    /**
+     * The ID of the instance with which the HAVIP is associated.
+     */
     public /*out*/ readonly associatedInstances!: pulumi.Output<string[]>;
+    /**
+     * The time when the HAVIP was created.
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The description of the HaVip instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the HAVIP.
+     */
     public /*out*/ readonly haVipId!: pulumi.Output<string>;
+    /**
+     * The name of the HAVIP.
+     */
     public readonly haVipName!: pulumi.Output<string>;
     /**
      * The name of the HaVip instance.
@@ -75,13 +108,25 @@ export class HAVip extends pulumi.CustomResource {
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
     public readonly ipAddress!: pulumi.Output<string>;
+    /**
+     * The ID of the active instance that is associated with the HAVIP.
+     */
     public /*out*/ readonly masterInstanceId!: pulumi.Output<string>;
+    /**
+     * The ID of the resource group to which the HAVIP belongs.
+     */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * (Available in v1.120.0+) The status of the HaVip instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The list of tags.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The ID of the VPC to which the HAVIP belongs.
+     */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
@@ -146,15 +191,33 @@ export class HAVip extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HAVip resources.
  */
 export interface HAVipState {
+    /**
+     * The elastic IP address (EIP) associated with the HAVIP.
+     */
     associatedEipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The type of the instance with which the HAVIP is associated. Valid values:
+     */
     associatedInstanceType?: pulumi.Input<string>;
+    /**
+     * The ID of the instance with which the HAVIP is associated.
+     */
     associatedInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The time when the HAVIP was created.
+     */
     createTime?: pulumi.Input<string>;
     /**
      * The description of the HaVip instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The ID of the HAVIP.
+     */
     haVipId?: pulumi.Input<string>;
+    /**
+     * The name of the HAVIP.
+     */
     haVipName?: pulumi.Input<string>;
     /**
      * The name of the HaVip instance.
@@ -166,13 +229,25 @@ export interface HAVipState {
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the active instance that is associated with the HAVIP.
+     */
     masterInstanceId?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group to which the HAVIP belongs.
+     */
     resourceGroupId?: pulumi.Input<string>;
     /**
      * (Available in v1.120.0+) The status of the HaVip instance.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The list of tags.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The ID of the VPC to which the HAVIP belongs.
+     */
     vpcId?: pulumi.Input<string>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
@@ -188,6 +263,9 @@ export interface HAVipArgs {
      * The description of the HaVip instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the HAVIP.
+     */
     haVipName?: pulumi.Input<string>;
     /**
      * The name of the HaVip instance.
@@ -199,7 +277,13 @@ export interface HAVipArgs {
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group to which the HAVIP belongs.
+     */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The list of tags.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.

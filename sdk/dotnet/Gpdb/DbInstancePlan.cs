@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Gpdb
     /// <summary>
     /// Provides a GPDB DB Instance Plan resource.
     /// 
-    /// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/zh/analyticdb-for-postgresql/latest/createdbinstanceplan).
+    /// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/createdbinstanceplan).
     /// 
-    /// &gt; **NOTE:** Available in v1.189.0+.
+    /// &gt; **NOTE:** Available since v1.189.0.
     /// 
     /// ## Import
     /// 
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> DbInstancePlanName { get; private set; } = null!;
 
         /// <summary>
-        /// The plan config. See the following `Block plan_config`.
+        /// The plan config. See `plan_config` below.
         /// </summary>
         [Output("planConfigs")]
         public Output<ImmutableArray<Outputs.DbInstancePlanPlanConfig>> PlanConfigs { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.DbInstancePlanPlanConfigArgs>? _planConfigs;
 
         /// <summary>
-        /// The plan config. See the following `Block plan_config`.
+        /// The plan config. See `plan_config` below.
         /// </summary>
         public InputList<Inputs.DbInstancePlanPlanConfigArgs> PlanConfigs
         {
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.DbInstancePlanPlanConfigGetArgs>? _planConfigs;
 
         /// <summary>
-        /// The plan config. See the following `Block plan_config`.
+        /// The plan config. See `plan_config` below.
         /// </summary>
         public InputList<Inputs.DbInstancePlanPlanConfigGetArgs> PlanConfigs
         {

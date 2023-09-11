@@ -21,10 +21,10 @@ class SubnetArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Subnet resource.
-        :param pulumi.Input[str] cidr: CIDR network segment
+        :param pulumi.Input[str] cidr: CIDR network segment.
         :param pulumi.Input[str] subnet_name: The Subnet name.
         :param pulumi.Input[str] vpd_id: The Eflo VPD ID.
-        :param pulumi.Input[str] zone_id: The zone ID  of the resource
+        :param pulumi.Input[str] zone_id: The zone ID  of the resource.
         :param pulumi.Input[str] type: Eflo subnet usage type. optional value:
                - General type is not filled in
                - OOB:OOB type
@@ -41,7 +41,7 @@ class SubnetArgs:
     @pulumi.getter
     def cidr(self) -> pulumi.Input[str]:
         """
-        CIDR network segment
+        CIDR network segment.
         """
         return pulumi.get(self, "cidr")
 
@@ -77,7 +77,7 @@ class SubnetArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone ID  of the resource
+        The zone ID  of the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -117,7 +117,7 @@ class _SubnetState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
-        :param pulumi.Input[str] cidr: CIDR network segment
+        :param pulumi.Input[str] cidr: CIDR network segment.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] gmt_modified: Modification time.
         :param pulumi.Input[str] message: Error message.
@@ -130,7 +130,7 @@ class _SubnetState:
                - OOB:OOB type
                - LB: LB type
         :param pulumi.Input[str] vpd_id: The Eflo VPD ID.
-        :param pulumi.Input[str] zone_id: The zone ID  of the resource
+        :param pulumi.Input[str] zone_id: The zone ID  of the resource.
         """
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
@@ -159,7 +159,7 @@ class _SubnetState:
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        CIDR network segment
+        CIDR network segment.
         """
         return pulumi.get(self, "cidr")
 
@@ -282,7 +282,7 @@ class _SubnetState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID  of the resource
+        The zone ID  of the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -305,9 +305,9 @@ class Subnet(pulumi.CustomResource):
         """
         Provides a Eflo Subnet resource.
 
-        For information about Eflo Subnet and how to use it, see [What is Subnet](https://help.aliyun.com/document_detail/604977.html).
+        For information about Eflo Subnet and how to use it, see [What is Subnet](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
 
-        > **NOTE:** Available in v1.204.0+.
+        > **NOTE:** Available since v1.204.0.
 
         ## Example Usage
 
@@ -317,14 +317,18 @@ class Subnet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_zones = alicloud.get_zones()
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_vpd = alicloud.eflo.Vpd("defaultVpd",
             cidr="10.0.0.0/8",
-            vpd_name=var["name"],
+            vpd_name=name,
             resource_group_id=default_resource_groups.groups[0].id)
         default_subnet = alicloud.eflo.Subnet("defaultSubnet",
-            subnet_name=var["name"],
+            subnet_name=name,
             zone_id=default_zones.zones[0].id,
             cidr="10.0.0.0/16",
             vpd_id=default_vpd.id)
@@ -340,14 +344,14 @@ class Subnet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr: CIDR network segment
+        :param pulumi.Input[str] cidr: CIDR network segment.
         :param pulumi.Input[str] subnet_name: The Subnet name.
         :param pulumi.Input[str] type: Eflo subnet usage type. optional value:
                - General type is not filled in
                - OOB:OOB type
                - LB: LB type
         :param pulumi.Input[str] vpd_id: The Eflo VPD ID.
-        :param pulumi.Input[str] zone_id: The zone ID  of the resource
+        :param pulumi.Input[str] zone_id: The zone ID  of the resource.
         """
         ...
     @overload
@@ -358,9 +362,9 @@ class Subnet(pulumi.CustomResource):
         """
         Provides a Eflo Subnet resource.
 
-        For information about Eflo Subnet and how to use it, see [What is Subnet](https://help.aliyun.com/document_detail/604977.html).
+        For information about Eflo Subnet and how to use it, see [What is Subnet](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
 
-        > **NOTE:** Available in v1.204.0+.
+        > **NOTE:** Available since v1.204.0.
 
         ## Example Usage
 
@@ -370,14 +374,18 @@ class Subnet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_zones = alicloud.get_zones()
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_vpd = alicloud.eflo.Vpd("defaultVpd",
             cidr="10.0.0.0/8",
-            vpd_name=var["name"],
+            vpd_name=name,
             resource_group_id=default_resource_groups.groups[0].id)
         default_subnet = alicloud.eflo.Subnet("defaultSubnet",
-            subnet_name=var["name"],
+            subnet_name=name,
             zone_id=default_zones.zones[0].id,
             cidr="10.0.0.0/16",
             vpd_id=default_vpd.id)
@@ -467,7 +475,7 @@ class Subnet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr: CIDR network segment
+        :param pulumi.Input[str] cidr: CIDR network segment.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] gmt_modified: Modification time.
         :param pulumi.Input[str] message: Error message.
@@ -480,7 +488,7 @@ class Subnet(pulumi.CustomResource):
                - OOB:OOB type
                - LB: LB type
         :param pulumi.Input[str] vpd_id: The Eflo VPD ID.
-        :param pulumi.Input[str] zone_id: The zone ID  of the resource
+        :param pulumi.Input[str] zone_id: The zone ID  of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -503,7 +511,7 @@ class Subnet(pulumi.CustomResource):
     @pulumi.getter
     def cidr(self) -> pulumi.Output[str]:
         """
-        CIDR network segment
+        CIDR network segment.
         """
         return pulumi.get(self, "cidr")
 
@@ -586,7 +594,7 @@ class Subnet(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone ID  of the resource
+        The zone ID  of the resource.
         """
         return pulumi.get(self, "zone_id")
 

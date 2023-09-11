@@ -14,9 +14,9 @@ import (
 
 // Provides a Anti-DDoS Pro Port resource.
 //
-// For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/doc-detail/157482.htm).
+// For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
 //
-// > **NOTE:** Available in v1.123.0+.
+// > **NOTE:** Available since v1.123.0.
 //
 // ## Example Usage
 //
@@ -29,24 +29,33 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleDdosCooInstance, err := ddos.NewDdosCooInstance(ctx, "exampleDdosCooInstance", &ddos.DdosCooInstanceArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultDdosCooInstance, err := ddos.NewDdosCooInstance(ctx, "defaultDdosCooInstance", &ddos.DdosCooInstanceArgs{
 //				Bandwidth:        pulumi.String("30"),
 //				BaseBandwidth:    pulumi.String("30"),
 //				ServiceBandwidth: pulumi.String("100"),
 //				PortCount:        pulumi.String("50"),
 //				DomainCount:      pulumi.String("50"),
+//				Period:           pulumi.Int(1),
+//				ProductType:      pulumi.String("ddoscoo"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ddos.NewPort(ctx, "examplePort", &ddos.PortArgs{
-//				InstanceId:       exampleDdosCooInstance.ID(),
+//			_, err = ddos.NewPort(ctx, "defaultPort", &ddos.PortArgs{
+//				InstanceId:       defaultDdosCooInstance.ID(),
 //				FrontendPort:     pulumi.String("7001"),
+//				BackendPort:      pulumi.String("7002"),
 //				FrontendProtocol: pulumi.String("tcp"),
 //				RealServers: pulumi.StringArray{
 //					pulumi.String("1.1.1.1"),

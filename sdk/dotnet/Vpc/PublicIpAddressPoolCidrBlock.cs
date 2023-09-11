@@ -30,12 +30,18 @@ namespace Pulumi.AliCloud.Vpc
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
     ///     var defaultPublicIpAddressPool = new AliCloud.Vpc.PublicIpAddressPool("defaultPublicIpAddressPool", new()
     ///     {
-    ///         PublicIpAddressPoolName = name,
     ///         Description = name,
+    ///         PublicIpAddressPoolName = name,
     ///         Isp = "BGP",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultPublicIpAddressPoolCidrBlock = new AliCloud.Vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock", new()

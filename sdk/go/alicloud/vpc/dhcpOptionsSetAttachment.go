@@ -16,7 +16,7 @@ import (
 //
 // For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0.
 //
 // ## Example Usage
 //
@@ -29,21 +29,27 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("test"),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleDhcpOptionsSet, err := vpc.NewDhcpOptionsSet(ctx, "exampleDhcpOptionsSet", &vpc.DhcpOptionsSetArgs{
-//				DhcpOptionsSetName:        pulumi.String("example_value"),
-//				DhcpOptionsSetDescription: pulumi.String("example_value"),
+//				DhcpOptionsSetName:        pulumi.String(name),
+//				DhcpOptionsSetDescription: pulumi.String(name),
 //				DomainName:                pulumi.String("example.com"),
 //				DomainNameServers:         pulumi.String("100.100.2.136"),
 //			})

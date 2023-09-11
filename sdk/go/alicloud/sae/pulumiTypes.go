@@ -14,15 +14,15 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ApplicationScalingRuleScalingRuleMetric struct {
-	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Maximum number of instances applied.
 	MaxReplicas *int `pulumi:"maxReplicas"`
-	// Indicator rule configuration. See the following `Block metrics`.
+	// Indicator rule configuration. See `metrics` below.
 	Metrics []ApplicationScalingRuleScalingRuleMetricMetric `pulumi:"metrics"`
-	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Minimum number of instances applied.
 	MinReplicas *int `pulumi:"minReplicas"`
-	// Apply shrink rules. See the following `Block scaleDownRules`.
+	// Apply shrink rules. See `scaleDownRules` below.
 	ScaleDownRules *ApplicationScalingRuleScalingRuleMetricScaleDownRules `pulumi:"scaleDownRules"`
-	// Apply expansion rules. See the following `Block scaleUpRules`.
+	// Apply expansion rules. See `scaleUpRules` below.
 	ScaleUpRules *ApplicationScalingRuleScalingRuleMetricScaleUpRules `pulumi:"scaleUpRules"`
 }
 
@@ -38,15 +38,15 @@ type ApplicationScalingRuleScalingRuleMetricInput interface {
 }
 
 type ApplicationScalingRuleScalingRuleMetricArgs struct {
-	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Maximum number of instances applied.
 	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
-	// Indicator rule configuration. See the following `Block metrics`.
+	// Indicator rule configuration. See `metrics` below.
 	Metrics ApplicationScalingRuleScalingRuleMetricMetricArrayInput `pulumi:"metrics"`
-	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Minimum number of instances applied.
 	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
-	// Apply shrink rules. See the following `Block scaleDownRules`.
+	// Apply shrink rules. See `scaleDownRules` below.
 	ScaleDownRules ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput `pulumi:"scaleDownRules"`
-	// Apply expansion rules. See the following `Block scaleUpRules`.
+	// Apply expansion rules. See `scaleUpRules` below.
 	ScaleUpRules ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput `pulumi:"scaleUpRules"`
 }
 
@@ -127,31 +127,31 @@ func (o ApplicationScalingRuleScalingRuleMetricOutput) ToApplicationScalingRuleS
 	}).(ApplicationScalingRuleScalingRuleMetricPtrOutput)
 }
 
-// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+// Maximum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
 }
 
-// Indicator rule configuration. See the following `Block metrics`.
+// Indicator rule configuration. See `metrics` below.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) Metrics() ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) []ApplicationScalingRuleScalingRuleMetricMetric {
 		return v.Metrics
 	}).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
 }
 
-// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+// Minimum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) MinReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
 }
 
-// Apply shrink rules. See the following `Block scaleDownRules`.
+// Apply shrink rules. See `scaleDownRules` below.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) ScaleDownRules() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleDownRules {
 		return v.ScaleDownRules
 	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
 }
 
-// Apply expansion rules. See the following `Block scaleUpRules`.
+// Apply expansion rules. See `scaleUpRules` below.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) ScaleUpRules() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleUpRules {
 		return v.ScaleUpRules
@@ -182,7 +182,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Elem() ApplicationScal
 	}).(ApplicationScalingRuleScalingRuleMetricOutput)
 }
 
-// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+// Maximum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *int {
 		if v == nil {
@@ -192,7 +192,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MaxReplicas() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Indicator rule configuration. See the following `Block metrics`.
+// Indicator rule configuration. See `metrics` below.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Metrics() ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) []ApplicationScalingRuleScalingRuleMetricMetric {
 		if v == nil {
@@ -202,7 +202,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Metrics() ApplicationS
 	}).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
 }
 
-// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+// Minimum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MinReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *int {
 		if v == nil {
@@ -212,7 +212,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MinReplicas() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Apply shrink rules. See the following `Block scaleDownRules`.
+// Apply shrink rules. See `scaleDownRules` below.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleDownRules() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleDownRules {
 		if v == nil {
@@ -222,7 +222,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleDownRules() Appli
 	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
 }
 
-// Apply expansion rules. See the following `Block scaleUpRules`.
+// Apply expansion rules. See `scaleUpRules` below.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleUpRules() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleUpRules {
 		if v == nil {
@@ -763,7 +763,7 @@ type ApplicationScalingRuleScalingRuleTimer struct {
 	EndDate *string `pulumi:"endDate"`
 	// The period in which a timed elastic scaling strategy is executed.
 	Period *string `pulumi:"period"`
-	// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+	// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
 	Schedules []ApplicationScalingRuleScalingRuleTimerSchedule `pulumi:"schedules"`
 }
 
@@ -785,7 +785,7 @@ type ApplicationScalingRuleScalingRuleTimerArgs struct {
 	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
 	// The period in which a timed elastic scaling strategy is executed.
 	Period pulumi.StringPtrInput `pulumi:"period"`
-	// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+	// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
 	Schedules ApplicationScalingRuleScalingRuleTimerScheduleArrayInput `pulumi:"schedules"`
 }
 
@@ -881,7 +881,7 @@ func (o ApplicationScalingRuleScalingRuleTimerOutput) Period() pulumi.StringPtrO
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimer) *string { return v.Period }).(pulumi.StringPtrOutput)
 }
 
-// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
 func (o ApplicationScalingRuleScalingRuleTimerOutput) Schedules() ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimer) []ApplicationScalingRuleScalingRuleTimerSchedule {
 		return v.Schedules
@@ -942,7 +942,7 @@ func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Period() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
 func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Schedules() ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleTimer) []ApplicationScalingRuleScalingRuleTimerSchedule {
 		if v == nil {
@@ -1081,7 +1081,7 @@ type GreyTagRouteDubboRule struct {
 	Condition *string `pulumi:"condition"`
 	// The service group.
 	Group *string `pulumi:"group"`
-	// A list of conditions items. The details see Block `dubboRulesItems`.
+	// A list of conditions items. See `items` below.
 	Items []GreyTagRouteDubboRuleItem `pulumi:"items"`
 	// The method name
 	MethodName *string `pulumi:"methodName"`
@@ -1107,7 +1107,7 @@ type GreyTagRouteDubboRuleArgs struct {
 	Condition pulumi.StringPtrInput `pulumi:"condition"`
 	// The service group.
 	Group pulumi.StringPtrInput `pulumi:"group"`
-	// A list of conditions items. The details see Block `dubboRulesItems`.
+	// A list of conditions items. See `items` below.
 	Items GreyTagRouteDubboRuleItemArrayInput `pulumi:"items"`
 	// The method name
 	MethodName pulumi.StringPtrInput `pulumi:"methodName"`
@@ -1178,7 +1178,7 @@ func (o GreyTagRouteDubboRuleOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRule) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// A list of conditions items. The details see Block `dubboRulesItems`.
+// A list of conditions items. See `items` below.
 func (o GreyTagRouteDubboRuleOutput) Items() GreyTagRouteDubboRuleItemArrayOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRule) []GreyTagRouteDubboRuleItem { return v.Items }).(GreyTagRouteDubboRuleItemArrayOutput)
 }
@@ -1225,7 +1225,7 @@ type GreyTagRouteDubboRuleItem struct {
 	Expr *string `pulumi:"expr"`
 	// The parameter number.
 	Index *int `pulumi:"index"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 	Operator *string `pulumi:"operator"`
 	// The value of the parameter.
 	Value *string `pulumi:"value"`
@@ -1249,7 +1249,7 @@ type GreyTagRouteDubboRuleItemArgs struct {
 	Expr pulumi.StringPtrInput `pulumi:"expr"`
 	// The parameter number.
 	Index pulumi.IntPtrInput `pulumi:"index"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The value of the parameter.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -1321,7 +1321,7 @@ func (o GreyTagRouteDubboRuleItemOutput) Index() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *int { return v.Index }).(pulumi.IntPtrOutput)
 }
 
-// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 func (o GreyTagRouteDubboRuleItemOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -1354,7 +1354,7 @@ func (o GreyTagRouteDubboRuleItemArrayOutput) Index(i pulumi.IntInput) GreyTagRo
 type GreyTagRouteScRule struct {
 	// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
 	Condition *string `pulumi:"condition"`
-	// A list of conditions items. The details see Block `scRulesItems`.
+	// A list of conditions items.See `items` below.
 	Items []GreyTagRouteScRuleItem `pulumi:"items"`
 	// The path corresponding to the grayscale rule.
 	Path *string `pulumi:"path"`
@@ -1374,7 +1374,7 @@ type GreyTagRouteScRuleInput interface {
 type GreyTagRouteScRuleArgs struct {
 	// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
 	Condition pulumi.StringPtrInput `pulumi:"condition"`
-	// A list of conditions items. The details see Block `scRulesItems`.
+	// A list of conditions items.See `items` below.
 	Items GreyTagRouteScRuleItemArrayInput `pulumi:"items"`
 	// The path corresponding to the grayscale rule.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -1436,7 +1436,7 @@ func (o GreyTagRouteScRuleOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
-// A list of conditions items. The details see Block `scRulesItems`.
+// A list of conditions items.See `items` below.
 func (o GreyTagRouteScRuleOutput) Items() GreyTagRouteScRuleItemArrayOutput {
 	return o.ApplyT(func(v GreyTagRouteScRule) []GreyTagRouteScRuleItem { return v.Items }).(GreyTagRouteScRuleItemArrayOutput)
 }
@@ -1471,7 +1471,7 @@ type GreyTagRouteScRuleItem struct {
 	Cond *string `pulumi:"cond"`
 	// The name of the parameter.
 	Name *string `pulumi:"name"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 	Operator *string `pulumi:"operator"`
 	// The compare types. Valid values: `param`, `cookie`, `header`.
 	Type *string `pulumi:"type"`
@@ -1495,7 +1495,7 @@ type GreyTagRouteScRuleItemArgs struct {
 	Cond pulumi.StringPtrInput `pulumi:"cond"`
 	// The name of the parameter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The compare types. Valid values: `param`, `cookie`, `header`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -1564,7 +1564,7 @@ func (o GreyTagRouteScRuleItemOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 func (o GreyTagRouteScRuleItemOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }

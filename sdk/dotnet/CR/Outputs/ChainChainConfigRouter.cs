@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.CR.Outputs
     public sealed class ChainChainConfigRouter
     {
         /// <summary>
-        /// Source node.
+        /// Source node. See `from` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ChainChainConfigRouterFrom> Froms;
         /// <summary>
-        /// Destination node.
+        /// Destination node. See `to` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ChainChainConfigRouterTo> Tos;
 

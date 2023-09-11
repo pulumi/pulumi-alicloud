@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Datahub
 {
     /// <summary>
-    /// The project is the basic unit of resource management in Datahub Service and is used to isolate and control resources. It contains a set of Topics. You can manage the datahub sources of an application by using projects. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+    /// The project is the basic unit of resource management in Datahub Service and is used to isolate and control resources. It contains a set of Topics. You can manage the datahub sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+    /// 
+    /// &gt; **NOTE:** Available since v1.19.0.
     /// 
     /// &gt; **NOTE:** Currently Datahub service only can be supported in the regions: cn-beijing, cn-hangzhou, cn-shanghai, cn-shenzhen,  ap-southeast-1.
     /// 
@@ -26,6 +28,8 @@ namespace Pulumi.AliCloud.Datahub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var example = new AliCloud.Datahub.Project("example", new()
     ///     {
     ///         Comment = "created by terraform",

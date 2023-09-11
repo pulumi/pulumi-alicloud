@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
     /// 
-    /// &gt; **NOTE:** Available in 1.66.0+
+    /// &gt; **NOTE:** Available since v1.66.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,43 +29,56 @@ namespace Pulumi.AliCloud.KVStore
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "KVStore";
-    ///     var name = config.Get("name") ?? "kvstoreinstancevpc";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.KVStore.GetZones.Invoke();
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Status = "OK",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         CidrBlock = "172.16.0.0/16",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new()
     ///     {
-    ///         InstanceClass = "redis.master.small.default",
-    ///         InstanceName = name,
+    ///         DbInstanceName = name,
     ///         VswitchId = defaultSwitch.Id,
-    ///         PrivateIp = "172.16.0.10",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceClass = "redis.master.large.default",
+    ///         InstanceType = "Redis",
+    ///         EngineVersion = "5.0",
     ///         SecurityIps = new[]
     ///         {
-    ///             "10.0.0.1",
+    ///             "10.23.12.24",
     ///         },
-    ///         InstanceType = "Redis",
-    ///         EngineVersion = "4.0",
+    ///         Config = 
+    ///         {
+    ///             { "appendonly", "yes" },
+    ///             { "lazyfree-lazy-eviction", "yes" },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
     ///     });
     /// 
-    ///     var example = new AliCloud.KVStore.Account("example", new()
+    ///     var defaultAccount = new AliCloud.KVStore.Account("defaultAccount", new()
     ///     {
-    ///         AccountName = "tftestnormal",
+    ///         AccountName = "tfexamplename",
     ///         AccountPassword = "YourPassword_123",
     ///         InstanceId = defaultInstance.Id,
     ///     });

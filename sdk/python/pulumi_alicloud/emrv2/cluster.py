@@ -35,16 +35,16 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
-        :param pulumi.Input['ClusterSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type.
+        :param pulumi.Input['ClusterSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "applications", applications)
@@ -110,7 +110,7 @@ class ClusterArgs:
     @pulumi.getter(name="nodeAttributes")
     def node_attributes(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]:
         """
-        The node attributes of ecs instances which the emr-cluster belongs.
+        The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
         """
         return pulumi.get(self, "node_attributes")
 
@@ -122,7 +122,7 @@ class ClusterArgs:
     @pulumi.getter(name="nodeGroups")
     def node_groups(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]:
         """
-        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         """
         return pulumi.get(self, "node_groups")
 
@@ -146,7 +146,7 @@ class ClusterArgs:
     @pulumi.getter(name="applicationConfigs")
     def application_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]:
         """
-        The application configurations of EMR cluster.
+        The application configurations of EMR cluster. See `application_configs` below.
         """
         return pulumi.get(self, "application_configs")
 
@@ -158,7 +158,7 @@ class ClusterArgs:
     @pulumi.getter(name="bootstrapScripts")
     def bootstrap_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]:
         """
-        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
         """
         return pulumi.get(self, "bootstrap_scripts")
 
@@ -218,7 +218,7 @@ class ClusterArgs:
     @pulumi.getter(name="subscriptionConfig")
     def subscription_config(self) -> Optional[pulumi.Input['ClusterSubscriptionConfigArgs']]:
         """
-        The detail configuration of subscription payment type.
+        The detail configuration of subscription payment type. See `subscription_config` below.
         """
         return pulumi.get(self, "subscription_config")
 
@@ -258,19 +258,19 @@ class _ClusterState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
-        :param pulumi.Input['ClusterSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type.
+        :param pulumi.Input['ClusterSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if application_configs is not None:
@@ -306,7 +306,7 @@ class _ClusterState:
     @pulumi.getter(name="applicationConfigs")
     def application_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]:
         """
-        The application configurations of EMR cluster.
+        The application configurations of EMR cluster. See `application_configs` below.
         """
         return pulumi.get(self, "application_configs")
 
@@ -330,7 +330,7 @@ class _ClusterState:
     @pulumi.getter(name="bootstrapScripts")
     def bootstrap_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]:
         """
-        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
         """
         return pulumi.get(self, "bootstrap_scripts")
 
@@ -378,7 +378,7 @@ class _ClusterState:
     @pulumi.getter(name="nodeAttributes")
     def node_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]]:
         """
-        The node attributes of ecs instances which the emr-cluster belongs.
+        The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
         """
         return pulumi.get(self, "node_attributes")
 
@@ -390,7 +390,7 @@ class _ClusterState:
     @pulumi.getter(name="nodeGroups")
     def node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]:
         """
-        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         """
         return pulumi.get(self, "node_groups")
 
@@ -450,7 +450,7 @@ class _ClusterState:
     @pulumi.getter(name="subscriptionConfig")
     def subscription_config(self) -> Optional[pulumi.Input['ClusterSubscriptionConfigArgs']]:
         """
-        The detail configuration of subscription payment type.
+        The detail configuration of subscription payment type. See `subscription_config` below.
         """
         return pulumi.get(self, "subscription_config")
 
@@ -496,7 +496,7 @@ class Cluster(pulumi.CustomResource):
 
         For information about EMR New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/28068.htm).
 
-        > **NOTE:** Available in v1.199.0+.
+        > **NOTE:** Available since v1.199.0.
 
         ## Example Usage
 
@@ -506,17 +506,21 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="TF-VPC",
+            vpc_name=name,
             cidr_block="172.16.0.0/12")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
             zone_id=default_zones.zones[0].id,
-            vswitch_name="TF_VSwitch")
-        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name="terraform-kp")
+            vswitch_name=name)
+        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_role = alicloud.ram.Role("defaultRole",
             document=\"\"\"    {
@@ -535,13 +539,13 @@ class Cluster(pulumi.CustomResource):
                 "Version": "1"
             }
         \"\"\",
-            description="this is a role test.",
+            description="this is a role example.",
             force=True)
         default_cluster = alicloud.emrv2.Cluster("defaultCluster",
             payment_type="PayAsYouGo",
             cluster_type="DATALAKE",
             release_version="EMR-5.10.0",
-            cluster_name="terraform-emr-cluster-v2",
+            cluster_name=name,
             deploy_mode="NORMAL",
             security_mode="NORMAL",
             applications=[
@@ -631,19 +635,19 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]] application_configs: The application configurations of EMR cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
-        :param pulumi.Input[pulumi.InputType['ClusterSubscriptionConfigArgs']] subscription_config: The detail configuration of subscription payment type.
+        :param pulumi.Input[pulumi.InputType['ClusterSubscriptionConfigArgs']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -657,7 +661,7 @@ class Cluster(pulumi.CustomResource):
 
         For information about EMR New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/28068.htm).
 
-        > **NOTE:** Available in v1.199.0+.
+        > **NOTE:** Available since v1.199.0.
 
         ## Example Usage
 
@@ -667,17 +671,21 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="TF-VPC",
+            vpc_name=name,
             cidr_block="172.16.0.0/12")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
             zone_id=default_zones.zones[0].id,
-            vswitch_name="TF_VSwitch")
-        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name="terraform-kp")
+            vswitch_name=name)
+        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_role = alicloud.ram.Role("defaultRole",
             document=\"\"\"    {
@@ -696,13 +704,13 @@ class Cluster(pulumi.CustomResource):
                 "Version": "1"
             }
         \"\"\",
-            description="this is a role test.",
+            description="this is a role example.",
             force=True)
         default_cluster = alicloud.emrv2.Cluster("defaultCluster",
             payment_type="PayAsYouGo",
             cluster_type="DATALAKE",
             release_version="EMR-5.10.0",
-            cluster_name="terraform-emr-cluster-v2",
+            cluster_name=name,
             deploy_mode="NORMAL",
             security_mode="NORMAL",
             applications=[
@@ -885,19 +893,19 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]] application_configs: The application configurations of EMR cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
-        :param pulumi.Input[pulumi.InputType['ClusterSubscriptionConfigArgs']] subscription_config: The detail configuration of subscription payment type.
+        :param pulumi.Input[pulumi.InputType['ClusterSubscriptionConfigArgs']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -924,7 +932,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="applicationConfigs")
     def application_configs(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterApplicationConfig']]]:
         """
-        The application configurations of EMR cluster.
+        The application configurations of EMR cluster. See `application_configs` below.
         """
         return pulumi.get(self, "application_configs")
 
@@ -940,7 +948,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="bootstrapScripts")
     def bootstrap_scripts(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterBootstrapScript']]]:
         """
-        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
         """
         return pulumi.get(self, "bootstrap_scripts")
 
@@ -972,7 +980,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="nodeAttributes")
     def node_attributes(self) -> pulumi.Output[Sequence['outputs.ClusterNodeAttribute']]:
         """
-        The node attributes of ecs instances which the emr-cluster belongs.
+        The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
         """
         return pulumi.get(self, "node_attributes")
 
@@ -980,7 +988,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="nodeGroups")
     def node_groups(self) -> pulumi.Output[Sequence['outputs.ClusterNodeGroup']]:
         """
-        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         """
         return pulumi.get(self, "node_groups")
 
@@ -1020,7 +1028,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="subscriptionConfig")
     def subscription_config(self) -> pulumi.Output[Optional['outputs.ClusterSubscriptionConfig']]:
         """
-        The detail configuration of subscription payment type.
+        The detail configuration of subscription payment type. See `subscription_config` below.
         """
         return pulumi.get(self, "subscription_config")
 

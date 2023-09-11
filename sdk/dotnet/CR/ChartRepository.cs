@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CR
     /// <summary>
     /// Provides a CR Chart Repository resource.
     /// 
-    /// For information about CR Chart Repository and how to use it, see [What is Chart Repository](https://www.alibabacloud.com/help/doc-detail/145318.htm).
+    /// For information about CR Chart Repository and how to use it, see [What is Chart Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartrepository).
     /// 
-    /// &gt; **NOTE:** Available in v1.149.0+.
+    /// &gt; **NOTE:** Available since v1.149.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,25 +28,29 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
     ///         InstanceType = "Advanced",
-    ///         InstanceName = "name",
+    ///         InstanceName = name,
     ///     });
     /// 
-    ///     var defaultChartNamespace = new AliCloud.CR.ChartNamespace("defaultChartNamespace", new()
+    ///     var exampleChartNamespace = new AliCloud.CR.ChartNamespace("exampleChartNamespace", new()
     ///     {
-    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
-    ///         NamespaceName = "name",
+    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
+    ///         NamespaceName = name,
     ///     });
     /// 
-    ///     var defaultChartRepository = new AliCloud.CR.ChartRepository("defaultChartRepository", new()
+    ///     var exampleChartRepository = new AliCloud.CR.ChartRepository("exampleChartRepository", new()
     ///     {
-    ///         RepoNamespaceName = defaultChartNamespace.NamespaceName,
-    ///         InstanceId = local.Instance,
-    ///         RepoName = "repo_name",
+    ///         RepoNamespaceName = exampleChartNamespace.NamespaceName,
+    ///         InstanceId = exampleChartNamespace.InstanceId,
+    ///         RepoName = name,
     ///     });
     /// 
     /// });

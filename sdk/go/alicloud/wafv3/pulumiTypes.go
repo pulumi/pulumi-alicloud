@@ -492,7 +492,13 @@ type DomainRedirect struct {
 	Loadbalance string `pulumi:"loadbalance"`
 	// Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
 	ReadTimeout *int `pulumi:"readTimeout"`
-	// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is `[{" k ":"_key_"," v ":"_value_"}]`. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.See the following `Block RequestHeaders`.
+	// The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
+	// It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
+	// and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+	// when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
+	// to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
+	// custom header field already exists in the request, the system will overwrite the value of the custom field in the
+	// request with the set traffic tag value. See `requestHeaders` below.
 	RequestHeaders []DomainRedirectRequestHeader `pulumi:"requestHeaders"`
 	// Back to Source Retry. default: true, retry 3 times by default.
 	Retry *bool `pulumi:"retry"`
@@ -540,7 +546,13 @@ type DomainRedirectArgs struct {
 	Loadbalance pulumi.StringInput `pulumi:"loadbalance"`
 	// Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
 	ReadTimeout pulumi.IntPtrInput `pulumi:"readTimeout"`
-	// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is `[{" k ":"_key_"," v ":"_value_"}]`. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.See the following `Block RequestHeaders`.
+	// The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
+	// It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
+	// and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+	// when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
+	// to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
+	// custom header field already exists in the request, the system will overwrite the value of the custom field in the
+	// request with the set traffic tag value. See `requestHeaders` below.
 	RequestHeaders DomainRedirectRequestHeaderArrayInput `pulumi:"requestHeaders"`
 	// Back to Source Retry. default: true, retry 3 times by default.
 	Retry pulumi.BoolPtrInput `pulumi:"retry"`
@@ -677,7 +689,13 @@ func (o DomainRedirectOutput) ReadTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *int { return v.ReadTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is `[{" k ":"_key_"," v ":"_value_"}]`. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.See the following `Block RequestHeaders`.
+// The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
+// It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
+// and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+// when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
+// to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
+// custom header field already exists in the request, the system will overwrite the value of the custom field in the
+// request with the set traffic tag value. See `requestHeaders` below.
 func (o DomainRedirectOutput) RequestHeaders() DomainRedirectRequestHeaderArrayOutput {
 	return o.ApplyT(func(v DomainRedirect) []DomainRedirectRequestHeader { return v.RequestHeaders }).(DomainRedirectRequestHeaderArrayOutput)
 }
@@ -814,7 +832,13 @@ func (o DomainRedirectPtrOutput) ReadTimeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is `[{" k ":"_key_"," v ":"_value_"}]`. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.See the following `Block RequestHeaders`.
+// The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
+// It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
+// and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+// when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
+// to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
+// custom header field already exists in the request, the system will overwrite the value of the custom field in the
+// request with the set traffic tag value. See `requestHeaders` below.
 func (o DomainRedirectPtrOutput) RequestHeaders() DomainRedirectRequestHeaderArrayOutput {
 	return o.ApplyT(func(v *DomainRedirect) []DomainRedirectRequestHeader {
 		if v == nil {

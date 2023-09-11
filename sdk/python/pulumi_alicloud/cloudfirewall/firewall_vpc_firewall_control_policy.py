@@ -35,7 +35,7 @@ class FirewallVpcFirewallControlPolicyArgs:
         :param pulumi.Input[str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
         :param pulumi.Input[str] description: Access control over VPC firewalls description of the strategy information.
-        :param pulumi.Input[str] destination: The destination address in the access control policy. Valid values: 
+        :param pulumi.Input[str] destination: The destination address in the access control policy. Valid values:
                - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
                - If `destination_type` is set to `group`, the value of `destination` must be an address book.
                - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
@@ -44,7 +44,7 @@ class FirewallVpcFirewallControlPolicyArgs:
         :param pulumi.Input[str] proto: The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
         :param pulumi.Input[str] source: Access control over VPC firewalls strategy in the source address.
         :param pulumi.Input[str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`.
-        :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance. Value:
+        :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance. Valid values:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         :param pulumi.Input[str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
@@ -52,9 +52,7 @@ class FirewallVpcFirewallControlPolicyArgs:
         :param pulumi.Input[str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
         :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[str] member_uid: The UID of the member account of the current Alibaba cloud account.
-        :param pulumi.Input[bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-               - **true**: Enable access control policies
-               - **false**: does not enable access control policies.
+        :param pulumi.Input[bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         """
         pulumi.set(__self__, "acl_action", acl_action)
         pulumi.set(__self__, "application_name", application_name)
@@ -119,7 +117,7 @@ class FirewallVpcFirewallControlPolicyArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
         """
-        The destination address in the access control policy. Valid values: 
+        The destination address in the access control policy. Valid values:
         - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
         - If `destination_type` is set to `group`, the value of `destination` must be an address book.
         - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
@@ -194,7 +192,7 @@ class FirewallVpcFirewallControlPolicyArgs:
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> pulumi.Input[str]:
         """
-        The ID of the VPC firewall instance. Value:
+        The ID of the VPC firewall instance. Valid values:
         - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
         - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         """
@@ -268,9 +266,7 @@ class FirewallVpcFirewallControlPolicyArgs:
     @pulumi.getter
     def release(self) -> Optional[pulumi.Input[bool]]:
         """
-        The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        - **true**: Enable access control policies
-        - **false**: does not enable access control policies.
+        The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         """
         return pulumi.get(self, "release")
 
@@ -317,28 +313,24 @@ class _FirewallVpcFirewallControlPolicyState:
         :param pulumi.Input[str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_port_group_ports: Port Address Book port list.
         :param pulumi.Input[str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
-        :param pulumi.Input[str] destination: The destination address in the access control policy. Valid values: 
+        :param pulumi.Input[str] destination: The destination address in the access control policy. Valid values:
                - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
                - If `destination_type` is set to `group`, the value of `destination` must be an address book.
                - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_group_cidrs: Destination address book defined in the address list.
-        :param pulumi.Input[str] destination_group_type: The destination address book type in the access control policy. Value:
-               - **ip**:IP address book, which contains one or more ip address segments.
-               - **domain**: domain address book, which contains one or more domain addresses.
+        :param pulumi.Input[str] destination_group_type: The destination address book type in the access control policy.
         :param pulumi.Input[str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
         :param pulumi.Input[int] hit_times: Control strategy of hits per second.
         :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[str] member_uid: The UID of the member account of the current Alibaba cloud account.
         :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         :param pulumi.Input[str] proto: The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
-        :param pulumi.Input[bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-               - **true**: Enable access control policies
-               - **false**: does not enable access control policies.
+        :param pulumi.Input[bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         :param pulumi.Input[str] source: Access control over VPC firewalls strategy in the source address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_group_cidrs: SOURCE address of the address list.
-        :param pulumi.Input[str] source_group_type: The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+        :param pulumi.Input[str] source_group_type: The source address type in the access control policy.
         :param pulumi.Input[str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`.
-        :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance. Value:
+        :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance. Valid values:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         """
@@ -503,7 +495,7 @@ class _FirewallVpcFirewallControlPolicyState:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination address in the access control policy. Valid values: 
+        The destination address in the access control policy. Valid values:
         - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
         - If `destination_type` is set to `group`, the value of `destination` must be an address book.
         - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
@@ -530,9 +522,7 @@ class _FirewallVpcFirewallControlPolicyState:
     @pulumi.getter(name="destinationGroupType")
     def destination_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination address book type in the access control policy. Value:
-        - **ip**:IP address book, which contains one or more ip address segments.
-        - **domain**: domain address book, which contains one or more domain addresses.
+        The destination address book type in the access control policy.
         """
         return pulumi.get(self, "destination_group_type")
 
@@ -616,9 +606,7 @@ class _FirewallVpcFirewallControlPolicyState:
     @pulumi.getter
     def release(self) -> Optional[pulumi.Input[bool]]:
         """
-        The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        - **true**: Enable access control policies
-        - **false**: does not enable access control policies.
+        The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         """
         return pulumi.get(self, "release")
 
@@ -654,7 +642,7 @@ class _FirewallVpcFirewallControlPolicyState:
     @pulumi.getter(name="sourceGroupType")
     def source_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+        The source address type in the access control policy.
         """
         return pulumi.get(self, "source_group_type")
 
@@ -678,7 +666,7 @@ class _FirewallVpcFirewallControlPolicyState:
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC firewall instance. Value:
+        The ID of the VPC firewall instance. Valid values:
         - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
         - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         """
@@ -716,7 +704,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
         For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -768,7 +756,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
         :param pulumi.Input[str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
         :param pulumi.Input[str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
-        :param pulumi.Input[str] destination: The destination address in the access control policy. Valid values: 
+        :param pulumi.Input[str] destination: The destination address in the access control policy. Valid values:
                - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
                - If `destination_type` is set to `group`, the value of `destination` must be an address book.
                - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
@@ -777,12 +765,10 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] member_uid: The UID of the member account of the current Alibaba cloud account.
         :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         :param pulumi.Input[str] proto: The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
-        :param pulumi.Input[bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-               - **true**: Enable access control policies
-               - **false**: does not enable access control policies.
+        :param pulumi.Input[bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         :param pulumi.Input[str] source: Access control over VPC firewalls strategy in the source address.
         :param pulumi.Input[str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`.
-        :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance. Value:
+        :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance. Valid values:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         """
@@ -797,7 +783,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
         For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -975,28 +961,24 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_port_group_ports: Port Address Book port list.
         :param pulumi.Input[str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
-        :param pulumi.Input[str] destination: The destination address in the access control policy. Valid values: 
+        :param pulumi.Input[str] destination: The destination address in the access control policy. Valid values:
                - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
                - If `destination_type` is set to `group`, the value of `destination` must be an address book.
                - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_group_cidrs: Destination address book defined in the address list.
-        :param pulumi.Input[str] destination_group_type: The destination address book type in the access control policy. Value:
-               - **ip**:IP address book, which contains one or more ip address segments.
-               - **domain**: domain address book, which contains one or more domain addresses.
+        :param pulumi.Input[str] destination_group_type: The destination address book type in the access control policy.
         :param pulumi.Input[str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
         :param pulumi.Input[int] hit_times: Control strategy of hits per second.
         :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[str] member_uid: The UID of the member account of the current Alibaba cloud account.
         :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         :param pulumi.Input[str] proto: The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
-        :param pulumi.Input[bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-               - **true**: Enable access control policies
-               - **false**: does not enable access control policies.
+        :param pulumi.Input[bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         :param pulumi.Input[str] source: Access control over VPC firewalls strategy in the source address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_group_cidrs: SOURCE address of the address list.
-        :param pulumi.Input[str] source_group_type: The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+        :param pulumi.Input[str] source_group_type: The source address type in the access control policy.
         :param pulumi.Input[str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`.
-        :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance. Value:
+        :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance. Valid values:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         """
@@ -1072,7 +1054,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destPort")
-    def dest_port(self) -> pulumi.Output[Optional[str]]:
+    def dest_port(self) -> pulumi.Output[str]:
         """
         The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
         """
@@ -1096,7 +1078,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destPortType")
-    def dest_port_type(self) -> pulumi.Output[Optional[str]]:
+    def dest_port_type(self) -> pulumi.Output[str]:
         """
         The type of the destination port in the access control policy. Valid values: `port`, `group`.
         """
@@ -1106,7 +1088,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
     @pulumi.getter
     def destination(self) -> pulumi.Output[str]:
         """
-        The destination address in the access control policy. Valid values: 
+        The destination address in the access control policy. Valid values:
         - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
         - If `destination_type` is set to `group`, the value of `destination` must be an address book.
         - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
@@ -1125,9 +1107,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="destinationGroupType")
     def destination_group_type(self) -> pulumi.Output[str]:
         """
-        The destination address book type in the access control policy. Value:
-        - **ip**:IP address book, which contains one or more ip address segments.
-        - **domain**: domain address book, which contains one or more domain addresses.
+        The destination address book type in the access control policy.
         """
         return pulumi.get(self, "destination_group_type")
 
@@ -1183,9 +1163,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
     @pulumi.getter
     def release(self) -> pulumi.Output[bool]:
         """
-        The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        - **true**: Enable access control policies
-        - **false**: does not enable access control policies.
+        The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         """
         return pulumi.get(self, "release")
 
@@ -1209,7 +1187,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="sourceGroupType")
     def source_group_type(self) -> pulumi.Output[str]:
         """
-        The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+        The source address type in the access control policy.
         """
         return pulumi.get(self, "source_group_type")
 
@@ -1225,7 +1203,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> pulumi.Output[str]:
         """
-        The ID of the VPC firewall instance. Value:
+        The ID of the VPC firewall instance. Valid values:
         - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
         - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         """

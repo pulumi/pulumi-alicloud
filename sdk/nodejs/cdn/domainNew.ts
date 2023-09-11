@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CDN Domain resource. CDN domain name.
  *
- * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
+ * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
  *
- * > **NOTE:** Available in v1.34.0+.
+ * > **NOTE:** Available since v1.34.0.
  *
  * ## Example Usage
  *
@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
+ * const domainName = config.get("domainName") || "mycdndomain.alicloud-provider.cn";
  * const _default = new alicloud.cdn.DomainNew("default", {
- *     scope: "domestic",
- *     domainName: name,
+ *     scope: "overseas",
+ *     domainName: domainName,
  *     cdnType: "web",
  *     sources: [{
  *         type: "ipaddr",
@@ -78,7 +78,7 @@ export class DomainNew extends pulumi.CustomResource {
      */
     public readonly cdnType!: pulumi.Output<string>;
     /**
-     * Certificate configuration. See the following `Block CertificateConfig`.
+     * Certificate configuration. See `certificateConfig` below.
      */
     public readonly certificateConfig!: pulumi.Output<outputs.cdn.DomainNewCertificateConfig>;
     /**
@@ -106,7 +106,7 @@ export class DomainNew extends pulumi.CustomResource {
      */
     public readonly scope!: pulumi.Output<string>;
     /**
-     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+     * The source address list of the accelerated domain. Defaults to null. See `sources` below.
      */
     public readonly sources!: pulumi.Output<outputs.cdn.DomainNewSource[]>;
     /**
@@ -177,7 +177,7 @@ export interface DomainNewState {
      */
     cdnType?: pulumi.Input<string>;
     /**
-     * Certificate configuration. See the following `Block CertificateConfig`.
+     * Certificate configuration. See `certificateConfig` below.
      */
     certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
     /**
@@ -205,7 +205,7 @@ export interface DomainNewState {
      */
     scope?: pulumi.Input<string>;
     /**
-     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+     * The source address list of the accelerated domain. Defaults to null. See `sources` below.
      */
     sources?: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**
@@ -227,7 +227,7 @@ export interface DomainNewArgs {
      */
     cdnType: pulumi.Input<string>;
     /**
-     * Certificate configuration. See the following `Block CertificateConfig`.
+     * Certificate configuration. See `certificateConfig` below.
      */
     certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
     /**
@@ -251,7 +251,7 @@ export interface DomainNewArgs {
      */
     scope?: pulumi.Input<string>;
     /**
-     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+     * The source address list of the accelerated domain. Defaults to null. See `sources` below.
      */
     sources: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**

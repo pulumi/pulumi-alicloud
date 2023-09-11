@@ -14,13 +14,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type DbInstancePlanPlanConfig struct {
-	// Pause instance plan config. See the following `Block pause`.
+	// Pause instance plan config. See `pause` below.
 	Pause *DbInstancePlanPlanConfigPause `pulumi:"pause"`
-	// Resume instance plan config. See the following `Block resume`.
+	// Resume instance plan config. See `resume` below.
 	Resume *DbInstancePlanPlanConfigResume `pulumi:"resume"`
-	// Scale In instance plan config. See the following `Block scaleIn`.
+	// Scale In instance plan config. See `scaleIn` below.
 	ScaleIn *DbInstancePlanPlanConfigScaleIn `pulumi:"scaleIn"`
-	// Scale out instance plan config. See the following `Block scaleOut`.
+	// Scale out instance plan config. See `scaleOut` below.
 	ScaleOut *DbInstancePlanPlanConfigScaleOut `pulumi:"scaleOut"`
 }
 
@@ -36,13 +36,13 @@ type DbInstancePlanPlanConfigInput interface {
 }
 
 type DbInstancePlanPlanConfigArgs struct {
-	// Pause instance plan config. See the following `Block pause`.
+	// Pause instance plan config. See `pause` below.
 	Pause DbInstancePlanPlanConfigPausePtrInput `pulumi:"pause"`
-	// Resume instance plan config. See the following `Block resume`.
+	// Resume instance plan config. See `resume` below.
 	Resume DbInstancePlanPlanConfigResumePtrInput `pulumi:"resume"`
-	// Scale In instance plan config. See the following `Block scaleIn`.
+	// Scale In instance plan config. See `scaleIn` below.
 	ScaleIn DbInstancePlanPlanConfigScaleInPtrInput `pulumi:"scaleIn"`
-	// Scale out instance plan config. See the following `Block scaleOut`.
+	// Scale out instance plan config. See `scaleOut` below.
 	ScaleOut DbInstancePlanPlanConfigScaleOutPtrInput `pulumi:"scaleOut"`
 }
 
@@ -97,22 +97,22 @@ func (o DbInstancePlanPlanConfigOutput) ToDbInstancePlanPlanConfigOutputWithCont
 	return o
 }
 
-// Pause instance plan config. See the following `Block pause`.
+// Pause instance plan config. See `pause` below.
 func (o DbInstancePlanPlanConfigOutput) Pause() DbInstancePlanPlanConfigPausePtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigPause { return v.Pause }).(DbInstancePlanPlanConfigPausePtrOutput)
 }
 
-// Resume instance plan config. See the following `Block resume`.
+// Resume instance plan config. See `resume` below.
 func (o DbInstancePlanPlanConfigOutput) Resume() DbInstancePlanPlanConfigResumePtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigResume { return v.Resume }).(DbInstancePlanPlanConfigResumePtrOutput)
 }
 
-// Scale In instance plan config. See the following `Block scaleIn`.
+// Scale In instance plan config. See `scaleIn` below.
 func (o DbInstancePlanPlanConfigOutput) ScaleIn() DbInstancePlanPlanConfigScaleInPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleIn { return v.ScaleIn }).(DbInstancePlanPlanConfigScaleInPtrOutput)
 }
 
-// Scale out instance plan config. See the following `Block scaleOut`.
+// Scale out instance plan config. See `scaleOut` below.
 func (o DbInstancePlanPlanConfigOutput) ScaleOut() DbInstancePlanPlanConfigScaleOutPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleOut { return v.ScaleOut }).(DbInstancePlanPlanConfigScaleOutPtrOutput)
 }

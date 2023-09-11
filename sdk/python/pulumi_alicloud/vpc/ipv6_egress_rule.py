@@ -217,7 +217,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
 
         For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -231,21 +231,52 @@ class Ipv6EgressRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            system_disk_category="cloud_efficiency",
+            cpu_core_count=4,
+            minimum_eni_ipv6_address_quantity=1)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
-            enable_ipv6=True)
-        example_ipv6_gateway = alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway",
+            enable_ipv6=True,
+            cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name,
+            ipv6_cidr_block_mask=64)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            ipv6_address_count=1,
+            instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            image_id=default_images.images[0].id,
+            instance_name=name,
+            vswitch_id=default_switch.id,
+            internet_max_bandwidth_out=10,
+            security_groups=[default_security_group.id])
+        default_ipv6_gateway = alicloud.vpc.Ipv6Gateway("defaultIpv6Gateway",
             ipv6_gateway_name=name,
             vpc_id=default_network.id)
-        default_instances = alicloud.ecs.get_instances(name_regex="ecs_with_ipv6_address",
-            status="Running")
-        default_ipv6_addresses = alicloud.vpc.get_ipv6_addresses(associated_instance_id=default_instances.instances[0].id,
+        default_ipv6_addresses = alicloud.vpc.get_ipv6_addresses_output(associated_instance_id=default_instance.id,
             status="Available")
-        example_ipv6_egress_rule = alicloud.vpc.Ipv6EgressRule("exampleIpv6EgressRule",
-            instance_id=default_ipv6_addresses.ids[0],
-            ipv6_egress_rule_name="example_value",
-            description="example_value",
-            ipv6_gateway_id=example_ipv6_gateway.id,
+        default_ipv6_internet_bandwidth = alicloud.vpc.Ipv6InternetBandwidth("defaultIpv6InternetBandwidth",
+            ipv6_address_id=default_ipv6_addresses.addresses[0].id,
+            ipv6_gateway_id=default_ipv6_gateway.ipv6_gateway_id,
+            internet_charge_type="PayByBandwidth",
+            bandwidth=20)
+        default_ipv6_egress_rule = alicloud.vpc.Ipv6EgressRule("defaultIpv6EgressRule",
+            instance_id=default_ipv6_internet_bandwidth.ipv6_address_id,
+            ipv6_egress_rule_name=name,
+            description=name,
+            ipv6_gateway_id=default_ipv6_internet_bandwidth.ipv6_gateway_id,
             instance_type="Ipv6Address")
         ```
 
@@ -276,7 +307,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
 
         For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -290,21 +321,52 @@ class Ipv6EgressRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            system_disk_category="cloud_efficiency",
+            cpu_core_count=4,
+            minimum_eni_ipv6_address_quantity=1)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
-            enable_ipv6=True)
-        example_ipv6_gateway = alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway",
+            enable_ipv6=True,
+            cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name,
+            ipv6_cidr_block_mask=64)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            ipv6_address_count=1,
+            instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            image_id=default_images.images[0].id,
+            instance_name=name,
+            vswitch_id=default_switch.id,
+            internet_max_bandwidth_out=10,
+            security_groups=[default_security_group.id])
+        default_ipv6_gateway = alicloud.vpc.Ipv6Gateway("defaultIpv6Gateway",
             ipv6_gateway_name=name,
             vpc_id=default_network.id)
-        default_instances = alicloud.ecs.get_instances(name_regex="ecs_with_ipv6_address",
-            status="Running")
-        default_ipv6_addresses = alicloud.vpc.get_ipv6_addresses(associated_instance_id=default_instances.instances[0].id,
+        default_ipv6_addresses = alicloud.vpc.get_ipv6_addresses_output(associated_instance_id=default_instance.id,
             status="Available")
-        example_ipv6_egress_rule = alicloud.vpc.Ipv6EgressRule("exampleIpv6EgressRule",
-            instance_id=default_ipv6_addresses.ids[0],
-            ipv6_egress_rule_name="example_value",
-            description="example_value",
-            ipv6_gateway_id=example_ipv6_gateway.id,
+        default_ipv6_internet_bandwidth = alicloud.vpc.Ipv6InternetBandwidth("defaultIpv6InternetBandwidth",
+            ipv6_address_id=default_ipv6_addresses.addresses[0].id,
+            ipv6_gateway_id=default_ipv6_gateway.ipv6_gateway_id,
+            internet_charge_type="PayByBandwidth",
+            bandwidth=20)
+        default_ipv6_egress_rule = alicloud.vpc.Ipv6EgressRule("defaultIpv6EgressRule",
+            instance_id=default_ipv6_internet_bandwidth.ipv6_address_id,
+            ipv6_egress_rule_name=name,
+            description=name,
+            ipv6_gateway_id=default_ipv6_internet_bandwidth.ipv6_gateway_id,
             instance_type="Ipv6Address")
         ```
 

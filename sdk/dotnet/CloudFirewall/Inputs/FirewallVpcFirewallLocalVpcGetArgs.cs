@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
     public sealed class FirewallVpcFirewallLocalVpcGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the instance of the Eni in the local VPC.
+        /// The ID of the instance of the ENI in the peer VPC.
         /// </summary>
         [Input("eniId")]
         public Input<string>? EniId { get; set; }
 
         /// <summary>
-        /// The private IP address of the elastic network card in the local VPC.
+        /// The private IP address of the elastic network card in the peer VPC.
         /// </summary>
         [Input("eniPrivateIpAddress")]
         public Input<string>? EniPrivateIpAddress { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
         private InputList<Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListGetArgs>? _localVpcCidrTableLists;
 
         /// <summary>
-        /// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+        /// The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
         /// </summary>
         public InputList<Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListGetArgs> LocalVpcCidrTableLists
         {
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
         public Input<string> RegionNo { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the router interface in the local VPC.
+        /// The ID of the router interface in the peer VPC.
         /// </summary>
         [Input("routerInterfaceId")]
         public Input<string>? RouterInterfaceId { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The instance name of the local VPC.
+        /// The instance name of the peer VPC.
         /// </summary>
         [Input("vpcName")]
         public Input<string>? VpcName { get; set; }

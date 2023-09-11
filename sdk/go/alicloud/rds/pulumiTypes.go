@@ -3522,7 +3522,8 @@ type GetInstancesInstance struct {
 	// Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
 	ChargeType string `pulumi:"chargeType"`
 	// (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
-	ClientCaCert           string `pulumi:"clientCaCert"`
+	ClientCaCert string `pulumi:"clientCaCert"`
+	// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
 	ClientCaCertExpireTime string `pulumi:"clientCaCertExpireTime"`
 	// (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
 	ClientCertRevocationList string `pulumi:"clientCertRevocationList"`
@@ -3562,6 +3563,10 @@ type GetInstancesInstance struct {
 	ExpireTime string `pulumi:"expireTime"`
 	// If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
 	GuardInstanceId string `pulumi:"guardInstanceId"`
+	// (Available since v1.209.1) The high availability mode of the instance.
+	HaMode string `pulumi:"haMode"`
+	// (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+	HostInstanceInfos []GetInstancesInstanceHostInstanceInfo `pulumi:"hostInstanceInfos"`
 	// The ID of the RDS instance.
 	Id string `pulumi:"id"`
 	// (Available in 1.70.3+) User-defined DB instance storage space.
@@ -3595,7 +3600,7 @@ type GetInstancesInstance struct {
 	Port string `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
 	ReadonlyInstanceIds []string `pulumi:"readonlyInstanceIds"`
-	// Region ID the instance belongs to.
+	// The region ID of the instance.
 	RegionId string `pulumi:"regionId"`
 	// (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
 	// - cert
@@ -3631,6 +3636,8 @@ type GetInstancesInstance struct {
 	SslExpireTime string `pulumi:"sslExpireTime"`
 	// Status of the instance.
 	Status string `pulumi:"status"`
+	// (Available since v1.209.1) The data replication mode of the instance.
+	SyncMode string `pulumi:"syncMode"`
 	// If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
 	TempInstanceId string `pulumi:"tempInstanceId"`
 	// Used to retrieve instances belong to specified VPC.
@@ -3670,7 +3677,8 @@ type GetInstancesInstanceArgs struct {
 	// Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
 	// (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
-	ClientCaCert           pulumi.StringInput `pulumi:"clientCaCert"`
+	ClientCaCert pulumi.StringInput `pulumi:"clientCaCert"`
+	// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
 	ClientCaCertExpireTime pulumi.StringInput `pulumi:"clientCaCertExpireTime"`
 	// (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
 	ClientCertRevocationList pulumi.StringInput `pulumi:"clientCertRevocationList"`
@@ -3710,6 +3718,10 @@ type GetInstancesInstanceArgs struct {
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
 	GuardInstanceId pulumi.StringInput `pulumi:"guardInstanceId"`
+	// (Available since v1.209.1) The high availability mode of the instance.
+	HaMode pulumi.StringInput `pulumi:"haMode"`
+	// (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+	HostInstanceInfos GetInstancesInstanceHostInstanceInfoArrayInput `pulumi:"hostInstanceInfos"`
 	// The ID of the RDS instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// (Available in 1.70.3+) User-defined DB instance storage space.
@@ -3743,7 +3755,7 @@ type GetInstancesInstanceArgs struct {
 	Port pulumi.StringInput `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
 	ReadonlyInstanceIds pulumi.StringArrayInput `pulumi:"readonlyInstanceIds"`
-	// Region ID the instance belongs to.
+	// The region ID of the instance.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
 	// - cert
@@ -3779,6 +3791,8 @@ type GetInstancesInstanceArgs struct {
 	SslExpireTime pulumi.StringInput `pulumi:"sslExpireTime"`
 	// Status of the instance.
 	Status pulumi.StringInput `pulumi:"status"`
+	// (Available since v1.209.1) The data replication mode of the instance.
+	SyncMode pulumi.StringInput `pulumi:"syncMode"`
 	// If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
 	TempInstanceId pulumi.StringInput `pulumi:"tempInstanceId"`
 	// Used to retrieve instances belong to specified VPC.
@@ -3873,6 +3887,7 @@ func (o GetInstancesInstanceOutput) ClientCaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ClientCaCert }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
 func (o GetInstancesInstanceOutput) ClientCaCertExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ClientCaCertExpireTime }).(pulumi.StringOutput)
 }
@@ -3966,6 +3981,16 @@ func (o GetInstancesInstanceOutput) GuardInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.GuardInstanceId }).(pulumi.StringOutput)
 }
 
+// (Available since v1.209.1) The high availability mode of the instance.
+func (o GetInstancesInstanceOutput) HaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.HaMode }).(pulumi.StringOutput)
+}
+
+// (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+func (o GetInstancesInstanceOutput) HostInstanceInfos() GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceHostInstanceInfo { return v.HostInstanceInfos }).(GetInstancesInstanceHostInstanceInfoArrayOutput)
+}
+
 // The ID of the RDS instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
@@ -4044,7 +4069,7 @@ func (o GetInstancesInstanceOutput) ReadonlyInstanceIds() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.ReadonlyInstanceIds }).(pulumi.StringArrayOutput)
 }
 
-// Region ID the instance belongs to.
+// The region ID of the instance.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -4116,6 +4141,11 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// (Available since v1.209.1) The data replication mode of the instance.
+func (o GetInstancesInstanceOutput) SyncMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SyncMode }).(pulumi.StringOutput)
+}
+
 // If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
 func (o GetInstancesInstanceOutput) TempInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.TempInstanceId }).(pulumi.StringOutput)
@@ -4159,6 +4189,157 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
+}
+
+type GetInstancesInstanceHostInstanceInfo struct {
+	// The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	DataSyncTime string `pulumi:"dataSyncTime"`
+	// The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	LogSyncTime string `pulumi:"logSyncTime"`
+	// The ID of the instance.
+	NodeId string `pulumi:"nodeId"`
+	// The type of the node.
+	NodeType string `pulumi:"nodeType"`
+	// The region ID of the instance.
+	RegionId string `pulumi:"regionId"`
+	// The synchronization status.
+	SyncStatus string `pulumi:"syncStatus"`
+	// The ID of the zone.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetInstancesInstanceHostInstanceInfoInput is an input type that accepts GetInstancesInstanceHostInstanceInfoArgs and GetInstancesInstanceHostInstanceInfoOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceHostInstanceInfoInput` via:
+//
+//	GetInstancesInstanceHostInstanceInfoArgs{...}
+type GetInstancesInstanceHostInstanceInfoInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceHostInstanceInfoOutput() GetInstancesInstanceHostInstanceInfoOutput
+	ToGetInstancesInstanceHostInstanceInfoOutputWithContext(context.Context) GetInstancesInstanceHostInstanceInfoOutput
+}
+
+type GetInstancesInstanceHostInstanceInfoArgs struct {
+	// The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	DataSyncTime pulumi.StringInput `pulumi:"dataSyncTime"`
+	// The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	LogSyncTime pulumi.StringInput `pulumi:"logSyncTime"`
+	// The ID of the instance.
+	NodeId pulumi.StringInput `pulumi:"nodeId"`
+	// The type of the node.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+	// The region ID of the instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The synchronization status.
+	SyncStatus pulumi.StringInput `pulumi:"syncStatus"`
+	// The ID of the zone.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetInstancesInstanceHostInstanceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceHostInstanceInfo)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArgs) ToGetInstancesInstanceHostInstanceInfoOutput() GetInstancesInstanceHostInstanceInfoOutput {
+	return i.ToGetInstancesInstanceHostInstanceInfoOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArgs) ToGetInstancesInstanceHostInstanceInfoOutputWithContext(ctx context.Context) GetInstancesInstanceHostInstanceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceHostInstanceInfoOutput)
+}
+
+// GetInstancesInstanceHostInstanceInfoArrayInput is an input type that accepts GetInstancesInstanceHostInstanceInfoArray and GetInstancesInstanceHostInstanceInfoArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceHostInstanceInfoArrayInput` via:
+//
+//	GetInstancesInstanceHostInstanceInfoArray{ GetInstancesInstanceHostInstanceInfoArgs{...} }
+type GetInstancesInstanceHostInstanceInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceHostInstanceInfoArrayOutput() GetInstancesInstanceHostInstanceInfoArrayOutput
+	ToGetInstancesInstanceHostInstanceInfoArrayOutputWithContext(context.Context) GetInstancesInstanceHostInstanceInfoArrayOutput
+}
+
+type GetInstancesInstanceHostInstanceInfoArray []GetInstancesInstanceHostInstanceInfoInput
+
+func (GetInstancesInstanceHostInstanceInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceHostInstanceInfo)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArray) ToGetInstancesInstanceHostInstanceInfoArrayOutput() GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return i.ToGetInstancesInstanceHostInstanceInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArray) ToGetInstancesInstanceHostInstanceInfoArrayOutputWithContext(ctx context.Context) GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceHostInstanceInfoArrayOutput)
+}
+
+type GetInstancesInstanceHostInstanceInfoOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceHostInstanceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceHostInstanceInfo)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceHostInstanceInfoOutput) ToGetInstancesInstanceHostInstanceInfoOutput() GetInstancesInstanceHostInstanceInfoOutput {
+	return o
+}
+
+func (o GetInstancesInstanceHostInstanceInfoOutput) ToGetInstancesInstanceHostInstanceInfoOutputWithContext(ctx context.Context) GetInstancesInstanceHostInstanceInfoOutput {
+	return o
+}
+
+// The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetInstancesInstanceHostInstanceInfoOutput) DataSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.DataSyncTime }).(pulumi.StringOutput)
+}
+
+// The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetInstancesInstanceHostInstanceInfoOutput) LogSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.LogSyncTime }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetInstancesInstanceHostInstanceInfoOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.NodeId }).(pulumi.StringOutput)
+}
+
+// The type of the node.
+func (o GetInstancesInstanceHostInstanceInfoOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// The region ID of the instance.
+func (o GetInstancesInstanceHostInstanceInfoOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The synchronization status.
+func (o GetInstancesInstanceHostInstanceInfoOutput) SyncStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.SyncStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the zone.
+func (o GetInstancesInstanceHostInstanceInfoOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceHostInstanceInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceHostInstanceInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceHostInstanceInfo)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceHostInstanceInfoArrayOutput) ToGetInstancesInstanceHostInstanceInfoArrayOutput() GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceHostInstanceInfoArrayOutput) ToGetInstancesInstanceHostInstanceInfoArrayOutputWithContext(ctx context.Context) GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceHostInstanceInfoArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceHostInstanceInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceHostInstanceInfo {
+		return vs[0].([]GetInstancesInstanceHostInstanceInfo)[vs[1].(int)]
+	}).(GetInstancesInstanceHostInstanceInfoOutput)
 }
 
 type GetInstancesInstanceParameter struct {
@@ -5332,6 +5513,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnginesInstanceEngineZoneIdArrayInput)(nil)).Elem(), GetInstanceEnginesInstanceEngineZoneIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceHostInstanceInfoInput)(nil)).Elem(), GetInstancesInstanceHostInstanceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceHostInstanceInfoArrayInput)(nil)).Elem(), GetInstancesInstanceHostInstanceInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceParameterInput)(nil)).Elem(), GetInstancesInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceParameterArrayInput)(nil)).Elem(), GetInstancesInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetModifyParameterLogsLogInput)(nil)).Elem(), GetModifyParameterLogsLogArgs{})
@@ -5399,6 +5582,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceEnginesInstanceEngineZoneIdArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceHostInstanceInfoOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceHostInstanceInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceParameterOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetModifyParameterLogsLogOutput{})

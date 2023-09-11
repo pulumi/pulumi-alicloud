@@ -28,21 +28,56 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eci.NewContainerGroup(ctx, "example", &eci.ContainerGroupArgs{
-//				ContainerGroupName: pulumi.String("tf-eci-gruop"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := eci.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneIds[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eci.NewContainerGroup(ctx, "defaultContainerGroup", &eci.ContainerGroupArgs{
+//				ContainerGroupName: pulumi.String(name),
 //				Cpu:                pulumi.Float64(8),
 //				Memory:             pulumi.Float64(16),
 //				RestartPolicy:      pulumi.String("OnFailure"),
-//				SecurityGroupId:    pulumi.Any(alicloud_security_group.Group.Id),
-//				VswitchId:          pulumi.Any(data.Alicloud_vpcs.Default.Vpcs[0].Vswitch_ids[0]),
+//				SecurityGroupId:    defaultSecurityGroup.ID(),
+//				VswitchId:          defaultSwitch.ID(),
 //				Tags: pulumi.AnyMap{
-//					"TF": pulumi.Any("create"),
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
 //				},
 //				Containers: eci.ContainerGroupContainerArray{
 //					&eci.ContainerGroupContainerArgs{
@@ -57,7 +92,7 @@ import (
 //						},
 //						VolumeMounts: eci.ContainerGroupContainerVolumeMountArray{
 //							&eci.ContainerGroupContainerVolumeMountArgs{
-//								MountPath: pulumi.String("/tmp/test"),
+//								MountPath: pulumi.String("/tmp/example"),
 //								ReadOnly:  pulumi.Bool(false),
 //								Name:      pulumi.String("empty1"),
 //							},
@@ -70,7 +105,7 @@ import (
 //						},
 //						EnvironmentVars: eci.ContainerGroupContainerEnvironmentVarArray{
 //							&eci.ContainerGroupContainerEnvironmentVarArgs{
-//								Key:   pulumi.String("test"),
+//								Key:   pulumi.String("name"),
 //								Value: pulumi.String("nginx"),
 //							},
 //						},

@@ -14,9 +14,239 @@ import (
 
 // Provides a CR Chain resource.
 //
-// For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357808.html).
+// For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchain).
 //
-// > **NOTE:** Available in v1.161.0+.
+// > **NOTE:** Available since v1.161.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "defaultRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(0),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				InstanceName:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "defaultRegistryEnterpriseNamespace", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        defaultRegistryEnterpriseInstance.ID(),
+//				AutoCreate:        pulumi.Bool(false),
+//				DefaultVisibility: pulumi.String("PUBLIC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "defaultRegistryEnterpriseRepo", &cs.RegistryEnterpriseRepoArgs{
+//				InstanceId: defaultRegistryEnterpriseInstance.ID(),
+//				Namespace:  defaultRegistryEnterpriseNamespace.Name,
+//				Summary:    pulumi.String("this is summary of my new repo"),
+//				RepoType:   pulumi.String("PUBLIC"),
+//				Detail:     pulumi.String("this is a public repo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cr.NewChain(ctx, "defaultChain", &cr.ChainArgs{
+//				ChainName:         pulumi.String(name),
+//				Description:       pulumi.String(name),
+//				InstanceId:        defaultRegistryEnterpriseNamespace.InstanceId,
+//				RepoName:          defaultRegistryEnterpriseRepo.Name,
+//				RepoNamespaceName: defaultRegistryEnterpriseNamespace.Name,
+//				ChainConfigs: cr.ChainChainConfigArray{
+//					&cr.ChainChainConfigArgs{
+//						Routers: cr.ChainChainConfigRouterArray{
+//							&cr.ChainChainConfigRouterArgs{
+//								Froms: cr.ChainChainConfigRouterFromArray{
+//									&cr.ChainChainConfigRouterFromArgs{
+//										NodeName: pulumi.String("DOCKER_IMAGE_BUILD"),
+//									},
+//								},
+//								Tos: cr.ChainChainConfigRouterToArray{
+//									&cr.ChainChainConfigRouterToArgs{
+//										NodeName: pulumi.String("DOCKER_IMAGE_PUSH"),
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigRouterArgs{
+//								Froms: cr.ChainChainConfigRouterFromArray{
+//									&cr.ChainChainConfigRouterFromArgs{
+//										NodeName: pulumi.String("DOCKER_IMAGE_PUSH"),
+//									},
+//								},
+//								Tos: cr.ChainChainConfigRouterToArray{
+//									&cr.ChainChainConfigRouterToArgs{
+//										NodeName: pulumi.String("VULNERABILITY_SCANNING"),
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigRouterArgs{
+//								Froms: cr.ChainChainConfigRouterFromArray{
+//									&cr.ChainChainConfigRouterFromArgs{
+//										NodeName: pulumi.String("VULNERABILITY_SCANNING"),
+//									},
+//								},
+//								Tos: cr.ChainChainConfigRouterToArray{
+//									&cr.ChainChainConfigRouterToArgs{
+//										NodeName: pulumi.String("ACTIVATE_REPLICATION"),
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigRouterArgs{
+//								Froms: cr.ChainChainConfigRouterFromArray{
+//									&cr.ChainChainConfigRouterFromArgs{
+//										NodeName: pulumi.String("ACTIVATE_REPLICATION"),
+//									},
+//								},
+//								Tos: cr.ChainChainConfigRouterToArray{
+//									&cr.ChainChainConfigRouterToArgs{
+//										NodeName: pulumi.String("TRIGGER"),
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigRouterArgs{
+//								Froms: cr.ChainChainConfigRouterFromArray{
+//									&cr.ChainChainConfigRouterFromArgs{
+//										NodeName: pulumi.String("VULNERABILITY_SCANNING"),
+//									},
+//								},
+//								Tos: cr.ChainChainConfigRouterToArray{
+//									&cr.ChainChainConfigRouterToArgs{
+//										NodeName: pulumi.String("SNAPSHOT"),
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigRouterArgs{
+//								Froms: cr.ChainChainConfigRouterFromArray{
+//									&cr.ChainChainConfigRouterFromArgs{
+//										NodeName: pulumi.String("SNAPSHOT"),
+//									},
+//								},
+//								Tos: cr.ChainChainConfigRouterToArray{
+//									&cr.ChainChainConfigRouterToArgs{
+//										NodeName: pulumi.String("TRIGGER_SNAPSHOT"),
+//									},
+//								},
+//							},
+//						},
+//						Nodes: cr.ChainChainConfigNodeArray{
+//							&cr.ChainChainConfigNodeArgs{
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("DOCKER_IMAGE_BUILD"),
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("DOCKER_IMAGE_PUSH"),
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("VULNERABILITY_SCANNING"),
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											&cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs{
+//												IssueLevel: pulumi.String("MEDIUM"),
+//												IssueCount: pulumi.String("1"),
+//												Action:     pulumi.String("BLOCK_DELETE_TAG"),
+//												Logic:      pulumi.String("AND"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("ACTIVATE_REPLICATION"),
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("TRIGGER"),
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								Enable:   pulumi.Bool(false),
+//								NodeName: pulumi.String("SNAPSHOT"),
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								Enable:   pulumi.Bool(false),
+//								NodeName: pulumi.String("TRIGGER_SNAPSHOT"),
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -30,7 +260,7 @@ import (
 type Chain struct {
 	pulumi.CustomResourceState
 
-	// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+	// The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
 	ChainConfigs ChainChainConfigArrayOutput `pulumi:"chainConfigs"`
 	// Delivery chain ID.
 	ChainId pulumi.StringOutput `pulumi:"chainId"`
@@ -82,7 +312,7 @@ func GetChain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Chain resources.
 type chainState struct {
-	// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+	// The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
 	ChainConfigs []ChainChainConfig `pulumi:"chainConfigs"`
 	// Delivery chain ID.
 	ChainId *string `pulumi:"chainId"`
@@ -99,7 +329,7 @@ type chainState struct {
 }
 
 type ChainState struct {
-	// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+	// The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
 	ChainConfigs ChainChainConfigArrayInput
 	// Delivery chain ID.
 	ChainId pulumi.StringPtrInput
@@ -120,7 +350,7 @@ func (ChainState) ElementType() reflect.Type {
 }
 
 type chainArgs struct {
-	// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+	// The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
 	ChainConfigs []ChainChainConfig `pulumi:"chainConfigs"`
 	// The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
 	ChainName string `pulumi:"chainName"`
@@ -136,7 +366,7 @@ type chainArgs struct {
 
 // The set of arguments for constructing a Chain resource.
 type ChainArgs struct {
-	// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+	// The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
 	ChainConfigs ChainChainConfigArrayInput
 	// The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
 	ChainName pulumi.StringInput
@@ -237,7 +467,7 @@ func (o ChainOutput) ToChainOutputWithContext(ctx context.Context) ChainOutput {
 	return o
 }
 
-// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+// The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
 func (o ChainOutput) ChainConfigs() ChainChainConfigArrayOutput {
 	return o.ApplyT(func(v *Chain) ChainChainConfigArrayOutput { return v.ChainConfigs }).(ChainChainConfigArrayOutput)
 }

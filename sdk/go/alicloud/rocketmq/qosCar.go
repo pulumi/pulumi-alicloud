@@ -15,9 +15,9 @@ import (
 // Provides a Sag qos car resource.
 // You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
 //
-// For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/doc-detail/140065.htm).
+// For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
 //
-// > **NOTE:** Available in 1.60.0+
+// > **NOTE:** Available since v1.60.0.
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
@@ -32,18 +32,24 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultQos, err := rocketmq.NewQos(ctx, "defaultQos", nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = rocketmq.NewQosCar(ctx, "defaultQosCar", &rocketmq.QosCarArgs{
 //				QosId:               defaultQos.ID(),
-//				Description:         pulumi.String("tf-testSagQosCarDescription"),
+//				Description:         pulumi.String(name),
 //				Priority:            pulumi.Int(1),
 //				LimitType:           pulumi.String("Absolute"),
 //				MinBandwidthAbs:     pulumi.Int(10),

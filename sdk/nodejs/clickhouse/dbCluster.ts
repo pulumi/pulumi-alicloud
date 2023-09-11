@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Click House DBCluster resource.
  *
- * For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/product/clickhouse).
+ * For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -21,18 +21,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultRegions = alicloud.clickhouse.getRegions({
  *     current: true,
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultRegions]).then(([defaultNetworks, defaultRegions]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId,
- * }));
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId),
+ * });
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
- *     dbClusterVersion: "20.3.10.75",
+ *     dbClusterVersion: "22.8.5.29",
  *     category: "Basic",
  *     dbClusterClass: "S8",
  *     dbClusterNetworkType: "vpc",
@@ -40,12 +45,8 @@ import * as utilities from "../utilities";
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     dbClusterAccessWhiteLists: [{
- *         dbClusterIpArrayAttribute: "test",
- *         dbClusterIpArrayName: "test",
- *         securityIpList: "192.168.0.1",
- *     }],
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
  * });
  * ```
  *
@@ -90,11 +91,11 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly category!: pulumi.Output<string>;
     /**
-     * (Available in 1.196.0+) - The connection string of the cluster.
+     * (Available since v1.196.0) - The connection string of the cluster.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
-     * The db cluster access white list.
+     * The db cluster access white list. See `dbClusterAccessWhiteList` below.
      */
     public readonly dbClusterAccessWhiteLists!: pulumi.Output<outputs.clickhouse.DbClusterDbClusterAccessWhiteList[] | undefined>;
     /**
@@ -144,7 +145,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
-     * (Available in 1.196.0+) The connection port of the cluster.
+     * (Available since v1.196.0) The connection port of the cluster.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
@@ -268,11 +269,11 @@ export interface DbClusterState {
      */
     category?: pulumi.Input<string>;
     /**
-     * (Available in 1.196.0+) - The connection string of the cluster.
+     * (Available since v1.196.0) - The connection string of the cluster.
      */
     connectionString?: pulumi.Input<string>;
     /**
-     * The db cluster access white list.
+     * The db cluster access white list. See `dbClusterAccessWhiteList` below.
      */
     dbClusterAccessWhiteLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterDbClusterAccessWhiteList>[]>;
     /**
@@ -322,7 +323,7 @@ export interface DbClusterState {
      */
     period?: pulumi.Input<string>;
     /**
-     * (Available in 1.196.0+) The connection port of the cluster.
+     * (Available since v1.196.0) The connection port of the cluster.
      */
     port?: pulumi.Input<string>;
     /**
@@ -360,7 +361,7 @@ export interface DbClusterArgs {
      */
     category: pulumi.Input<string>;
     /**
-     * The db cluster access white list.
+     * The db cluster access white list. See `dbClusterAccessWhiteList` below.
      */
     dbClusterAccessWhiteLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterDbClusterAccessWhiteList>[]>;
     /**

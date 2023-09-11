@@ -14,9 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ChainChainConfig struct {
-	// Each node in the delivery chain.
+	// Each node in the delivery chain. See `nodes` below.
+	//
+	// > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
 	Nodes []ChainChainConfigNode `pulumi:"nodes"`
-	// Execution sequence relationship between delivery chain nodes.
+	// Execution sequence relationship between delivery chain nodes. See `routers` below.
 	Routers []ChainChainConfigRouter `pulumi:"routers"`
 }
 
@@ -32,9 +34,11 @@ type ChainChainConfigInput interface {
 }
 
 type ChainChainConfigArgs struct {
-	// Each node in the delivery chain.
+	// Each node in the delivery chain. See `nodes` below.
+	//
+	// > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
 	Nodes ChainChainConfigNodeArrayInput `pulumi:"nodes"`
-	// Execution sequence relationship between delivery chain nodes.
+	// Execution sequence relationship between delivery chain nodes. See `routers` below.
 	Routers ChainChainConfigRouterArrayInput `pulumi:"routers"`
 }
 
@@ -89,12 +93,14 @@ func (o ChainChainConfigOutput) ToChainChainConfigOutputWithContext(ctx context.
 	return o
 }
 
-// Each node in the delivery chain.
+// Each node in the delivery chain. See `nodes` below.
+//
+// > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
 func (o ChainChainConfigOutput) Nodes() ChainChainConfigNodeArrayOutput {
 	return o.ApplyT(func(v ChainChainConfig) []ChainChainConfigNode { return v.Nodes }).(ChainChainConfigNodeArrayOutput)
 }
 
-// Execution sequence relationship between delivery chain nodes.
+// Execution sequence relationship between delivery chain nodes. See `routers` below.
 func (o ChainChainConfigOutput) Routers() ChainChainConfigRouterArrayOutput {
 	return o.ApplyT(func(v ChainChainConfig) []ChainChainConfigRouter { return v.Routers }).(ChainChainConfigRouterArrayOutput)
 }
@@ -122,9 +128,9 @@ func (o ChainChainConfigArrayOutput) Index(i pulumi.IntInput) ChainChainConfigOu
 type ChainChainConfigNode struct {
 	// Whether to enable the delivery chain node. Valid values: `true`, `false`.
 	Enable *bool `pulumi:"enable"`
-	// The configuration of delivery chain node.
+	// The configuration of delivery chain node. See `nodeConfig` below.
 	NodeConfigs []ChainChainConfigNodeNodeConfig `pulumi:"nodeConfigs"`
-	// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+	// The name of delivery chain node.
 	NodeName *string `pulumi:"nodeName"`
 }
 
@@ -142,9 +148,9 @@ type ChainChainConfigNodeInput interface {
 type ChainChainConfigNodeArgs struct {
 	// Whether to enable the delivery chain node. Valid values: `true`, `false`.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// The configuration of delivery chain node.
+	// The configuration of delivery chain node. See `nodeConfig` below.
 	NodeConfigs ChainChainConfigNodeNodeConfigArrayInput `pulumi:"nodeConfigs"`
-	// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+	// The name of delivery chain node.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 }
 
@@ -204,12 +210,12 @@ func (o ChainChainConfigNodeOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ChainChainConfigNode) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of delivery chain node.
+// The configuration of delivery chain node. See `nodeConfig` below.
 func (o ChainChainConfigNodeOutput) NodeConfigs() ChainChainConfigNodeNodeConfigArrayOutput {
 	return o.ApplyT(func(v ChainChainConfigNode) []ChainChainConfigNodeNodeConfig { return v.NodeConfigs }).(ChainChainConfigNodeNodeConfigArrayOutput)
 }
 
-// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+// The name of delivery chain node.
 func (o ChainChainConfigNodeOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ChainChainConfigNode) *string { return v.NodeName }).(pulumi.StringPtrOutput)
 }
@@ -235,7 +241,7 @@ func (o ChainChainConfigNodeArrayOutput) Index(i pulumi.IntInput) ChainChainConf
 }
 
 type ChainChainConfigNodeNodeConfig struct {
-	// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+	// Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
 	DenyPolicies []ChainChainConfigNodeNodeConfigDenyPolicy `pulumi:"denyPolicies"`
 }
 
@@ -251,7 +257,7 @@ type ChainChainConfigNodeNodeConfigInput interface {
 }
 
 type ChainChainConfigNodeNodeConfigArgs struct {
-	// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+	// Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
 	DenyPolicies ChainChainConfigNodeNodeConfigDenyPolicyArrayInput `pulumi:"denyPolicies"`
 }
 
@@ -306,7 +312,7 @@ func (o ChainChainConfigNodeNodeConfigOutput) ToChainChainConfigNodeNodeConfigOu
 	return o
 }
 
-// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+// Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
 func (o ChainChainConfigNodeNodeConfigOutput) DenyPolicies() ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
 	return o.ApplyT(func(v ChainChainConfigNodeNodeConfig) []ChainChainConfigNodeNodeConfigDenyPolicy {
 		return v.DenyPolicies
@@ -335,8 +341,6 @@ func (o ChainChainConfigNodeNodeConfigArrayOutput) Index(i pulumi.IntInput) Chai
 
 type ChainChainConfigNodeNodeConfigDenyPolicy struct {
 	// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
-	//
-	// > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
 	Action *string `pulumi:"action"`
 	// The count of scanning vulnerabilities that triggers blocking.
 	IssueCount *string `pulumi:"issueCount"`
@@ -359,8 +363,6 @@ type ChainChainConfigNodeNodeConfigDenyPolicyInput interface {
 
 type ChainChainConfigNodeNodeConfigDenyPolicyArgs struct {
 	// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
-	//
-	// > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// The count of scanning vulnerabilities that triggers blocking.
 	IssueCount pulumi.StringPtrInput `pulumi:"issueCount"`
@@ -422,8 +424,6 @@ func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) ToChainChainConfigNodeNo
 }
 
 // The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
-//
-// > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
 func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ChainChainConfigNodeNodeConfigDenyPolicy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -464,9 +464,9 @@ func (o ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) Index(i pulumi.IntI
 }
 
 type ChainChainConfigRouter struct {
-	// Source node.
+	// Source node. See `from` below.
 	Froms []ChainChainConfigRouterFrom `pulumi:"froms"`
-	// Destination node.
+	// Destination node. See `to` below.
 	Tos []ChainChainConfigRouterTo `pulumi:"tos"`
 }
 
@@ -482,9 +482,9 @@ type ChainChainConfigRouterInput interface {
 }
 
 type ChainChainConfigRouterArgs struct {
-	// Source node.
+	// Source node. See `from` below.
 	Froms ChainChainConfigRouterFromArrayInput `pulumi:"froms"`
-	// Destination node.
+	// Destination node. See `to` below.
 	Tos ChainChainConfigRouterToArrayInput `pulumi:"tos"`
 }
 
@@ -539,12 +539,12 @@ func (o ChainChainConfigRouterOutput) ToChainChainConfigRouterOutputWithContext(
 	return o
 }
 
-// Source node.
+// Source node. See `from` below.
 func (o ChainChainConfigRouterOutput) Froms() ChainChainConfigRouterFromArrayOutput {
 	return o.ApplyT(func(v ChainChainConfigRouter) []ChainChainConfigRouterFrom { return v.Froms }).(ChainChainConfigRouterFromArrayOutput)
 }
 
-// Destination node.
+// Destination node. See `to` below.
 func (o ChainChainConfigRouterOutput) Tos() ChainChainConfigRouterToArrayOutput {
 	return o.ApplyT(func(v ChainChainConfigRouter) []ChainChainConfigRouterTo { return v.Tos }).(ChainChainConfigRouterToArrayOutput)
 }

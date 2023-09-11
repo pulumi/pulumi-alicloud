@@ -16,7 +16,7 @@ import (
 //
 // For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
 //
-// > **NOTE:** Available in v1.180.0+.
+// > **NOTE:** Available since v1.180.0.
 //
 // ## Example Usage
 //
@@ -31,27 +31,40 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
-//				AddressName: pulumi.Any(_var.Name),
+//			instance, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
+//				BaseBandwidth:   pulumi.Int(20),
+//				Bandwidth:       -1,
+//				IpCount:         pulumi.Int(100),
+//				IpType:          pulumi.String("IPv4"),
+//				NormalBandwidth: pulumi.Int(100),
+//				Type:            pulumi.String("Enterprise"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultDdosBgpInstances, err := ddos.GetDdosBgpInstances(ctx, nil, nil)
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				AddressName: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ddos.NewBgpIp(ctx, "defaultBgpIp", &ddos.BgpIpArgs{
-//				InstanceId:      *pulumi.String(defaultDdosBgpInstances.Ids[0]),
+//				InstanceId:      instance.ID(),
 //				Ip:              defaultEipAddress.IpAddress,
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //			})

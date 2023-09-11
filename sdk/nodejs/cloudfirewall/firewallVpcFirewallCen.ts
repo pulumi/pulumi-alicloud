@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Firewall Vpc Firewall Cen and how to use it, see [What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure).
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     },
  *     memberUid: "1415189284827022",
  *     status: "open",
- *     vpcFirewallName: "tf-test",
+ *     vpcFirewallName: "tf-vpc-firewall-name",
  *     vpcRegion: "ap-south-1",
  * });
  * ```
@@ -78,11 +78,11 @@ export class FirewallVpcFirewallCen extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectType!: pulumi.Output<string>;
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      */
-    public readonly lang!: pulumi.Output<string>;
+    public readonly lang!: pulumi.Output<string | undefined>;
     /**
-     * The details of the VPC.See the following `Block LocalVpc`.
+     * The details of the VPC. See `localVpc` below.
      */
     public readonly localVpc!: pulumi.Output<outputs.cloudfirewall.FirewallVpcFirewallCenLocalVpc>;
     /**
@@ -90,7 +90,7 @@ export class FirewallVpcFirewallCen extends pulumi.CustomResource {
      */
     public readonly memberUid!: pulumi.Output<string | undefined>;
     /**
-     * Firewall switch status
+     * Firewall switch status.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -173,11 +173,11 @@ export interface FirewallVpcFirewallCenState {
      */
     connectType?: pulumi.Input<string>;
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      */
     lang?: pulumi.Input<string>;
     /**
-     * The details of the VPC.See the following `Block LocalVpc`.
+     * The details of the VPC. See `localVpc` below.
      */
     localVpc?: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallCenLocalVpc>;
     /**
@@ -185,7 +185,7 @@ export interface FirewallVpcFirewallCenState {
      */
     memberUid?: pulumi.Input<string>;
     /**
-     * Firewall switch status
+     * Firewall switch status.
      */
     status?: pulumi.Input<string>;
     /**
@@ -211,11 +211,11 @@ export interface FirewallVpcFirewallCenArgs {
      */
     cenId: pulumi.Input<string>;
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      */
     lang?: pulumi.Input<string>;
     /**
-     * The details of the VPC.See the following `Block LocalVpc`.
+     * The details of the VPC. See `localVpc` below.
      */
     localVpc: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallCenLocalVpc>;
     /**
@@ -223,7 +223,7 @@ export interface FirewallVpcFirewallCenArgs {
      */
     memberUid?: pulumi.Input<string>;
     /**
-     * Firewall switch status
+     * Firewall switch status.
      */
     status: pulumi.Input<string>;
     /**

@@ -12,9 +12,139 @@ namespace Pulumi.AliCloud.Sae
     /// <summary>
     /// Provides a Serverless App Engine (SAE) GreyTagRoute resource.
     /// 
-    /// For information about Serverless App Engine (SAE) GreyTagRoute and how to use it, see [What is GreyTagRoute](https://help.aliyun.com/document_detail/97792.html).
+    /// For information about Serverless App Engine (SAE) GreyTagRoute and how to use it, see [What is GreyTagRoute](https://www.alibabacloud.com/help/en/sae/latest/create-grey-tag-route).
     /// 
-    /// &gt; **NOTE:** Available in v1.160.0+.
+    /// &gt; **NOTE:** Available since v1.160.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+    ///     {
+    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var result = values.Item2;
+    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
+    ///         }),
+    ///         NamespaceName = name,
+    ///         NamespaceDescription = name,
+    ///         EnableMicroRegistration = false,
+    ///     });
+    /// 
+    ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
+    ///     {
+    ///         AppDescription = name,
+    ///         AppName = name,
+    ///         NamespaceId = defaultNamespace.Id,
+    ///         ImageUrl = $"registry-vpc.{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}.aliyuncs.com/sae-demo-image/consumer:1.0",
+    ///         PackageType = "Image",
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Timezone = "Asia/Beijing",
+    ///         Replicas = 5,
+    ///         Cpu = 500,
+    ///         Memory = 2048,
+    ///     });
+    /// 
+    ///     var defaultGreyTagRoute = new AliCloud.Sae.GreyTagRoute("defaultGreyTagRoute", new()
+    ///     {
+    ///         GreyTagRouteName = name,
+    ///         Description = name,
+    ///         AppId = defaultApplication.Id,
+    ///         ScRules = new[]
+    ///         {
+    ///             new AliCloud.Sae.Inputs.GreyTagRouteScRuleArgs
+    ///             {
+    ///                 Items = new[]
+    ///                 {
+    ///                     new AliCloud.Sae.Inputs.GreyTagRouteScRuleItemArgs
+    ///                     {
+    ///                         Type = "param",
+    ///                         Name = "tfexample",
+    ///                         Operator = "rawvalue",
+    ///                         Value = "example",
+    ///                         Cond = "==",
+    ///                     },
+    ///                 },
+    ///                 Path = "/tf/example",
+    ///                 Condition = "AND",
+    ///             },
+    ///         },
+    ///         DubboRules = new[]
+    ///         {
+    ///             new AliCloud.Sae.Inputs.GreyTagRouteDubboRuleArgs
+    ///             {
+    ///                 Items = new[]
+    ///                 {
+    ///                     new AliCloud.Sae.Inputs.GreyTagRouteDubboRuleItemArgs
+    ///                     {
+    ///                         Cond = "==",
+    ///                         Expr = ".key1",
+    ///                         Index = 1,
+    ///                         Operator = "rawvalue",
+    ///                         Value = "value1",
+    ///                     },
+    ///                 },
+    ///                 Condition = "OR",
+    ///                 Group = "DUBBO",
+    ///                 MethodName = "example",
+    ///                 ServiceName = "com.example.service",
+    ///                 Version = "1.0.0",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -40,7 +170,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+        /// The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
         /// </summary>
         [Output("dubboRules")]
         public Output<ImmutableArray<Outputs.GreyTagRouteDubboRule>> DubboRules { get; private set; } = null!;
@@ -52,7 +182,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string> GreyTagRouteName { get; private set; } = null!;
 
         /// <summary>
-        /// The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+        /// The grayscale rule created for SpringCloud Application. See `sc_rules` below.
         /// </summary>
         [Output("scRules")]
         public Output<ImmutableArray<Outputs.GreyTagRouteScRule>> ScRules { get; private set; } = null!;
@@ -119,7 +249,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.GreyTagRouteDubboRuleArgs>? _dubboRules;
 
         /// <summary>
-        /// The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+        /// The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteDubboRuleArgs> DubboRules
         {
@@ -137,7 +267,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.GreyTagRouteScRuleArgs>? _scRules;
 
         /// <summary>
-        /// The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+        /// The grayscale rule created for SpringCloud Application. See `sc_rules` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteScRuleArgs> ScRules
         {
@@ -169,7 +299,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.GreyTagRouteDubboRuleGetArgs>? _dubboRules;
 
         /// <summary>
-        /// The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+        /// The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteDubboRuleGetArgs> DubboRules
         {
@@ -187,7 +317,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.GreyTagRouteScRuleGetArgs>? _scRules;
 
         /// <summary>
-        /// The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+        /// The grayscale rule created for SpringCloud Application. See `sc_rules` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteScRuleGetArgs> ScRules
         {

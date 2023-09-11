@@ -324,44 +324,42 @@ class Topic(pulumi.CustomResource):
                  shard_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+        The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+
+        > **NOTE:** Available since v1.19.0.
 
         ## Example Usage
 
         Basic Usage
 
-        - BLob Topic
-
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.datahub.Topic("example",
-            comment="created by terraform",
-            life_cycle=7,
-            project_name="tf_datahub_project",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.datahub.Project("example", comment="created by terraform")
+        example_blob = alicloud.datahub.Topic("exampleBlob",
+            project_name=example.name,
             record_type="BLOB",
-            shard_count=3)
-        ```
-        - Tuple Topic
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.datahub.Topic("example",
-            comment="created by terraform",
+            shard_count=3,
             life_cycle=7,
-            project_name="tf_datahub_project",
+            comment="created by terraform")
+        example_tuple = alicloud.datahub.Topic("exampleTuple",
+            project_name=example.name,
+            record_type="TUPLE",
             record_schema={
                 "bigint_field": "BIGINT",
-                "boolean_field": "BOOLEAN",
-                "double_field": "DOUBLE",
-                "string_field": "STRING",
                 "timestamp_field": "TIMESTAMP",
+                "string_field": "STRING",
+                "double_field": "DOUBLE",
+                "boolean_field": "BOOLEAN",
             },
-            record_type="TUPLE",
-            shard_count=3)
+            shard_count=3,
+            life_cycle=7,
+            comment="created by terraform")
         ```
 
         ## Import
@@ -396,44 +394,42 @@ class Topic(pulumi.CustomResource):
                  args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+        The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+
+        > **NOTE:** Available since v1.19.0.
 
         ## Example Usage
 
         Basic Usage
 
-        - BLob Topic
-
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.datahub.Topic("example",
-            comment="created by terraform",
-            life_cycle=7,
-            project_name="tf_datahub_project",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.datahub.Project("example", comment="created by terraform")
+        example_blob = alicloud.datahub.Topic("exampleBlob",
+            project_name=example.name,
             record_type="BLOB",
-            shard_count=3)
-        ```
-        - Tuple Topic
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.datahub.Topic("example",
-            comment="created by terraform",
+            shard_count=3,
             life_cycle=7,
-            project_name="tf_datahub_project",
+            comment="created by terraform")
+        example_tuple = alicloud.datahub.Topic("exampleTuple",
+            project_name=example.name,
+            record_type="TUPLE",
             record_schema={
                 "bigint_field": "BIGINT",
-                "boolean_field": "BOOLEAN",
-                "double_field": "DOUBLE",
-                "string_field": "STRING",
                 "timestamp_field": "TIMESTAMP",
+                "string_field": "STRING",
+                "double_field": "DOUBLE",
+                "boolean_field": "BOOLEAN",
             },
-            record_type="TUPLE",
-            shard_count=3)
+            shard_count=3,
+            life_cycle=7,
+            comment="created by terraform")
         ```
 
         ## Import

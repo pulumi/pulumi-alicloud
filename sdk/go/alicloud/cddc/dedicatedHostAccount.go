@@ -14,11 +14,106 @@ import (
 
 // Provides a ApsaraDB for MyBase Dedicated Host Account resource.
 //
-// For information about ApsaraDB for MyBase Dedicated Host Account and how to use it, see [What is Dedicated Host Account](https://www.alibabacloud.com/help/en/doc-detail/196877.html).
+// For information about ApsaraDB for MyBase Dedicated Host Account and how to use it, see [What is Dedicated Host Account](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostaccount).
 //
-// > **NOTE:** Available in v1.148.0+.
+// > **NOTE:** Available since v1.148.0.
 //
 // > **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := cddc.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDedicatedHostGroup, err := cddc.NewDedicatedHostGroup(ctx, "defaultDedicatedHostGroup", &cddc.DedicatedHostGroupArgs{
+//				Engine:                 pulumi.String("MySQL"),
+//				VpcId:                  defaultNetwork.ID(),
+//				CpuAllocationRatio:     pulumi.Int(101),
+//				MemAllocationRatio:     pulumi.Int(50),
+//				DiskAllocationRatio:    pulumi.Int(200),
+//				AllocationPolicy:       pulumi.String("Evenly"),
+//				HostReplacePolicy:      pulumi.String("Manual"),
+//				DedicatedHostGroupDesc: pulumi.String(name),
+//				OpenPermission:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHostEcsLevelInfos, err := cddc.GetHostEcsLevelInfos(ctx, &cddc.GetHostEcsLevelInfosArgs{
+//				DbType:      "mysql",
+//				ZoneId:      defaultZones.Ids[0],
+//				StorageType: "cloud_essd",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultDedicatedHost, err := cddc.NewDedicatedHost(ctx, "defaultDedicatedHost", &cddc.DedicatedHostArgs{
+//				HostName:             pulumi.String(name),
+//				DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
+//				HostClass:            *pulumi.String(defaultHostEcsLevelInfos.Infos[0].ResClassCode),
+//				ZoneId:               *pulumi.String(defaultZones.Ids[0]),
+//				VswitchId:            defaultSwitch.ID(),
+//				PaymentType:          pulumi.String("Subscription"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("CDDC_DEDICATED"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cddc.NewDedicatedHostAccount(ctx, "defaultDedicatedHostAccount", &cddc.DedicatedHostAccountArgs{
+//				AccountName:     pulumi.String(name),
+//				AccountPassword: pulumi.String("Password1234"),
+//				DedicatedHostId: defaultDedicatedHost.DedicatedHostId,
+//				AccountType:     pulumi.String("Normal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

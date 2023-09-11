@@ -16,7 +16,7 @@ import (
 //
 // For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -27,17 +27,43 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sae.NewNamespace(ctx, "example", &sae.NamespaceArgs{
-//				NamespaceDescription: pulumi.String("your_description"),
-//				NamespaceId:          pulumi.String("cn-hangzhou:yourname"),
-//				NamespaceName:        pulumi.String("example_value"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sae.NewNamespace(ctx, "example", &sae.NamespaceArgs{
+//				NamespaceId: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v:example%v", defaultRegions.Regions[0].Id, result), nil
+//				}).(pulumi.StringOutput),
+//				NamespaceName:           pulumi.String(name),
+//				NamespaceDescription:    pulumi.String(name),
+//				EnableMicroRegistration: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

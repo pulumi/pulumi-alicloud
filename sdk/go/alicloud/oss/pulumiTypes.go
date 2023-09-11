@@ -290,17 +290,19 @@ type BucketLifecycleRule struct {
 	Enabled bool `pulumi:"enabled"`
 	// Specifies a period in the object's expire. See `expiration` below.
 	Expirations []BucketLifecycleRuleExpiration `pulumi:"expirations"`
+	// Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+	//
+	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
+	Filter *BucketLifecycleRuleFilter `pulumi:"filter"`
 	// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 	Id *string `pulumi:"id"`
 	// Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
 	NoncurrentVersionExpirations []BucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpirations"`
 	// Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
 	NoncurrentVersionTransitions []BucketLifecycleRuleNoncurrentVersionTransition `pulumi:"noncurrentVersionTransitions"`
-	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+	// The prefix in the names of the objects to which the lifecycle rule does not apply.
 	Prefix *string `pulumi:"prefix"`
 	// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-	//
-	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
 	Transitions []BucketLifecycleRuleTransition `pulumi:"transitions"`
@@ -324,17 +326,19 @@ type BucketLifecycleRuleArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Specifies a period in the object's expire. See `expiration` below.
 	Expirations BucketLifecycleRuleExpirationArrayInput `pulumi:"expirations"`
+	// Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+	//
+	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
+	Filter BucketLifecycleRuleFilterPtrInput `pulumi:"filter"`
 	// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Specifies when noncurrent object versions expire. See `noncurrentVersionExpiration` below.
 	NoncurrentVersionExpirations BucketLifecycleRuleNoncurrentVersionExpirationArrayInput `pulumi:"noncurrentVersionExpirations"`
 	// Specifies when noncurrent object versions transitions. See `noncurrentVersionTransition` below.
 	NoncurrentVersionTransitions BucketLifecycleRuleNoncurrentVersionTransitionArrayInput `pulumi:"noncurrentVersionTransitions"`
-	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+	// The prefix in the names of the objects to which the lifecycle rule does not apply.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-	//
-	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
 	Transitions BucketLifecycleRuleTransitionArrayInput `pulumi:"transitions"`
@@ -406,6 +410,13 @@ func (o BucketLifecycleRuleOutput) Expirations() BucketLifecycleRuleExpirationAr
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleExpiration { return v.Expirations }).(BucketLifecycleRuleExpirationArrayOutput)
 }
 
+// Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+//
+// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
+func (o BucketLifecycleRuleOutput) Filter() BucketLifecycleRuleFilterPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRule) *BucketLifecycleRuleFilter { return v.Filter }).(BucketLifecycleRuleFilterPtrOutput)
+}
+
 // Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 func (o BucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -425,14 +436,12 @@ func (o BucketLifecycleRuleOutput) NoncurrentVersionTransitions() BucketLifecycl
 	}).(BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput)
 }
 
-// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+// The prefix in the names of the objects to which the lifecycle rule does not apply.
 func (o BucketLifecycleRuleOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
 // Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-//
-// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 func (o BucketLifecycleRuleOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
@@ -708,6 +717,493 @@ func (o BucketLifecycleRuleExpirationArrayOutput) Index(i pulumi.IntInput) Bucke
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketLifecycleRuleExpiration {
 		return vs[0].([]BucketLifecycleRuleExpiration)[vs[1].(int)]
 	}).(BucketLifecycleRuleExpirationOutput)
+}
+
+type BucketLifecycleRuleFilter struct {
+	// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+	Not *BucketLifecycleRuleFilterNot `pulumi:"not"`
+	// Minimum object size (in bytes) to which the rule applies.
+	ObjectSizeGreaterThan *int `pulumi:"objectSizeGreaterThan"`
+	// Maximum object size (in bytes) to which the rule applies.
+	ObjectSizeLessThan *int `pulumi:"objectSizeLessThan"`
+}
+
+// BucketLifecycleRuleFilterInput is an input type that accepts BucketLifecycleRuleFilterArgs and BucketLifecycleRuleFilterOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleFilterInput` via:
+//
+//	BucketLifecycleRuleFilterArgs{...}
+type BucketLifecycleRuleFilterInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleFilterOutput() BucketLifecycleRuleFilterOutput
+	ToBucketLifecycleRuleFilterOutputWithContext(context.Context) BucketLifecycleRuleFilterOutput
+}
+
+type BucketLifecycleRuleFilterArgs struct {
+	// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+	Not BucketLifecycleRuleFilterNotPtrInput `pulumi:"not"`
+	// Minimum object size (in bytes) to which the rule applies.
+	ObjectSizeGreaterThan pulumi.IntPtrInput `pulumi:"objectSizeGreaterThan"`
+	// Maximum object size (in bytes) to which the rule applies.
+	ObjectSizeLessThan pulumi.IntPtrInput `pulumi:"objectSizeLessThan"`
+}
+
+func (BucketLifecycleRuleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleFilter)(nil)).Elem()
+}
+
+func (i BucketLifecycleRuleFilterArgs) ToBucketLifecycleRuleFilterOutput() BucketLifecycleRuleFilterOutput {
+	return i.ToBucketLifecycleRuleFilterOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleFilterArgs) ToBucketLifecycleRuleFilterOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleFilterOutput)
+}
+
+func (i BucketLifecycleRuleFilterArgs) ToBucketLifecycleRuleFilterPtrOutput() BucketLifecycleRuleFilterPtrOutput {
+	return i.ToBucketLifecycleRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleFilterArgs) ToBucketLifecycleRuleFilterPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleFilterOutput).ToBucketLifecycleRuleFilterPtrOutputWithContext(ctx)
+}
+
+// BucketLifecycleRuleFilterPtrInput is an input type that accepts BucketLifecycleRuleFilterArgs, BucketLifecycleRuleFilterPtr and BucketLifecycleRuleFilterPtrOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleFilterPtrInput` via:
+//
+//	        BucketLifecycleRuleFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketLifecycleRuleFilterPtrInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleFilterPtrOutput() BucketLifecycleRuleFilterPtrOutput
+	ToBucketLifecycleRuleFilterPtrOutputWithContext(context.Context) BucketLifecycleRuleFilterPtrOutput
+}
+
+type bucketLifecycleRuleFilterPtrType BucketLifecycleRuleFilterArgs
+
+func BucketLifecycleRuleFilterPtr(v *BucketLifecycleRuleFilterArgs) BucketLifecycleRuleFilterPtrInput {
+	return (*bucketLifecycleRuleFilterPtrType)(v)
+}
+
+func (*bucketLifecycleRuleFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketLifecycleRuleFilter)(nil)).Elem()
+}
+
+func (i *bucketLifecycleRuleFilterPtrType) ToBucketLifecycleRuleFilterPtrOutput() BucketLifecycleRuleFilterPtrOutput {
+	return i.ToBucketLifecycleRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketLifecycleRuleFilterPtrType) ToBucketLifecycleRuleFilterPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleFilterPtrOutput)
+}
+
+type BucketLifecycleRuleFilterOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleFilter)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleFilterOutput) ToBucketLifecycleRuleFilterOutput() BucketLifecycleRuleFilterOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterOutput) ToBucketLifecycleRuleFilterOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterOutput) ToBucketLifecycleRuleFilterPtrOutput() BucketLifecycleRuleFilterPtrOutput {
+	return o.ToBucketLifecycleRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (o BucketLifecycleRuleFilterOutput) ToBucketLifecycleRuleFilterPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLifecycleRuleFilter) *BucketLifecycleRuleFilter {
+		return &v
+	}).(BucketLifecycleRuleFilterPtrOutput)
+}
+
+// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+func (o BucketLifecycleRuleFilterOutput) Not() BucketLifecycleRuleFilterNotPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleFilter) *BucketLifecycleRuleFilterNot { return v.Not }).(BucketLifecycleRuleFilterNotPtrOutput)
+}
+
+// Minimum object size (in bytes) to which the rule applies.
+func (o BucketLifecycleRuleFilterOutput) ObjectSizeGreaterThan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleFilter) *int { return v.ObjectSizeGreaterThan }).(pulumi.IntPtrOutput)
+}
+
+// Maximum object size (in bytes) to which the rule applies.
+func (o BucketLifecycleRuleFilterOutput) ObjectSizeLessThan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleFilter) *int { return v.ObjectSizeLessThan }).(pulumi.IntPtrOutput)
+}
+
+type BucketLifecycleRuleFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketLifecycleRuleFilter)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleFilterPtrOutput) ToBucketLifecycleRuleFilterPtrOutput() BucketLifecycleRuleFilterPtrOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterPtrOutput) ToBucketLifecycleRuleFilterPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterPtrOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterPtrOutput) Elem() BucketLifecycleRuleFilterOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilter) BucketLifecycleRuleFilter {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLifecycleRuleFilter
+		return ret
+	}).(BucketLifecycleRuleFilterOutput)
+}
+
+// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+func (o BucketLifecycleRuleFilterPtrOutput) Not() BucketLifecycleRuleFilterNotPtrOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilter) *BucketLifecycleRuleFilterNot {
+		if v == nil {
+			return nil
+		}
+		return v.Not
+	}).(BucketLifecycleRuleFilterNotPtrOutput)
+}
+
+// Minimum object size (in bytes) to which the rule applies.
+func (o BucketLifecycleRuleFilterPtrOutput) ObjectSizeGreaterThan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectSizeGreaterThan
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum object size (in bytes) to which the rule applies.
+func (o BucketLifecycleRuleFilterPtrOutput) ObjectSizeLessThan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectSizeLessThan
+	}).(pulumi.IntPtrOutput)
+}
+
+type BucketLifecycleRuleFilterNot struct {
+	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+	Prefix *string `pulumi:"prefix"`
+	// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+	Tag *BucketLifecycleRuleFilterNotTag `pulumi:"tag"`
+}
+
+// BucketLifecycleRuleFilterNotInput is an input type that accepts BucketLifecycleRuleFilterNotArgs and BucketLifecycleRuleFilterNotOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleFilterNotInput` via:
+//
+//	BucketLifecycleRuleFilterNotArgs{...}
+type BucketLifecycleRuleFilterNotInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleFilterNotOutput() BucketLifecycleRuleFilterNotOutput
+	ToBucketLifecycleRuleFilterNotOutputWithContext(context.Context) BucketLifecycleRuleFilterNotOutput
+}
+
+type BucketLifecycleRuleFilterNotArgs struct {
+	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+	Tag BucketLifecycleRuleFilterNotTagPtrInput `pulumi:"tag"`
+}
+
+func (BucketLifecycleRuleFilterNotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleFilterNot)(nil)).Elem()
+}
+
+func (i BucketLifecycleRuleFilterNotArgs) ToBucketLifecycleRuleFilterNotOutput() BucketLifecycleRuleFilterNotOutput {
+	return i.ToBucketLifecycleRuleFilterNotOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleFilterNotArgs) ToBucketLifecycleRuleFilterNotOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleFilterNotOutput)
+}
+
+func (i BucketLifecycleRuleFilterNotArgs) ToBucketLifecycleRuleFilterNotPtrOutput() BucketLifecycleRuleFilterNotPtrOutput {
+	return i.ToBucketLifecycleRuleFilterNotPtrOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleFilterNotArgs) ToBucketLifecycleRuleFilterNotPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleFilterNotOutput).ToBucketLifecycleRuleFilterNotPtrOutputWithContext(ctx)
+}
+
+// BucketLifecycleRuleFilterNotPtrInput is an input type that accepts BucketLifecycleRuleFilterNotArgs, BucketLifecycleRuleFilterNotPtr and BucketLifecycleRuleFilterNotPtrOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleFilterNotPtrInput` via:
+//
+//	        BucketLifecycleRuleFilterNotArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketLifecycleRuleFilterNotPtrInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleFilterNotPtrOutput() BucketLifecycleRuleFilterNotPtrOutput
+	ToBucketLifecycleRuleFilterNotPtrOutputWithContext(context.Context) BucketLifecycleRuleFilterNotPtrOutput
+}
+
+type bucketLifecycleRuleFilterNotPtrType BucketLifecycleRuleFilterNotArgs
+
+func BucketLifecycleRuleFilterNotPtr(v *BucketLifecycleRuleFilterNotArgs) BucketLifecycleRuleFilterNotPtrInput {
+	return (*bucketLifecycleRuleFilterNotPtrType)(v)
+}
+
+func (*bucketLifecycleRuleFilterNotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketLifecycleRuleFilterNot)(nil)).Elem()
+}
+
+func (i *bucketLifecycleRuleFilterNotPtrType) ToBucketLifecycleRuleFilterNotPtrOutput() BucketLifecycleRuleFilterNotPtrOutput {
+	return i.ToBucketLifecycleRuleFilterNotPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketLifecycleRuleFilterNotPtrType) ToBucketLifecycleRuleFilterNotPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleFilterNotPtrOutput)
+}
+
+type BucketLifecycleRuleFilterNotOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleFilterNotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleFilterNot)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleFilterNotOutput) ToBucketLifecycleRuleFilterNotOutput() BucketLifecycleRuleFilterNotOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterNotOutput) ToBucketLifecycleRuleFilterNotOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterNotOutput) ToBucketLifecycleRuleFilterNotPtrOutput() BucketLifecycleRuleFilterNotPtrOutput {
+	return o.ToBucketLifecycleRuleFilterNotPtrOutputWithContext(context.Background())
+}
+
+func (o BucketLifecycleRuleFilterNotOutput) ToBucketLifecycleRuleFilterNotPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLifecycleRuleFilterNot) *BucketLifecycleRuleFilterNot {
+		return &v
+	}).(BucketLifecycleRuleFilterNotPtrOutput)
+}
+
+// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+func (o BucketLifecycleRuleFilterNotOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleFilterNot) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+func (o BucketLifecycleRuleFilterNotOutput) Tag() BucketLifecycleRuleFilterNotTagPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleFilterNot) *BucketLifecycleRuleFilterNotTag { return v.Tag }).(BucketLifecycleRuleFilterNotTagPtrOutput)
+}
+
+type BucketLifecycleRuleFilterNotPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleFilterNotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketLifecycleRuleFilterNot)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleFilterNotPtrOutput) ToBucketLifecycleRuleFilterNotPtrOutput() BucketLifecycleRuleFilterNotPtrOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterNotPtrOutput) ToBucketLifecycleRuleFilterNotPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotPtrOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterNotPtrOutput) Elem() BucketLifecycleRuleFilterNotOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilterNot) BucketLifecycleRuleFilterNot {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLifecycleRuleFilterNot
+		return ret
+	}).(BucketLifecycleRuleFilterNotOutput)
+}
+
+// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+func (o BucketLifecycleRuleFilterNotPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilterNot) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+func (o BucketLifecycleRuleFilterNotPtrOutput) Tag() BucketLifecycleRuleFilterNotTagPtrOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilterNot) *BucketLifecycleRuleFilterNotTag {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(BucketLifecycleRuleFilterNotTagPtrOutput)
+}
+
+type BucketLifecycleRuleFilterNotTag struct {
+	// The key of the tag that is specified for the objects.
+	Key string `pulumi:"key"`
+	// The value of the tag that is specified for the objects.
+	Value string `pulumi:"value"`
+}
+
+// BucketLifecycleRuleFilterNotTagInput is an input type that accepts BucketLifecycleRuleFilterNotTagArgs and BucketLifecycleRuleFilterNotTagOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleFilterNotTagInput` via:
+//
+//	BucketLifecycleRuleFilterNotTagArgs{...}
+type BucketLifecycleRuleFilterNotTagInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleFilterNotTagOutput() BucketLifecycleRuleFilterNotTagOutput
+	ToBucketLifecycleRuleFilterNotTagOutputWithContext(context.Context) BucketLifecycleRuleFilterNotTagOutput
+}
+
+type BucketLifecycleRuleFilterNotTagArgs struct {
+	// The key of the tag that is specified for the objects.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the tag that is specified for the objects.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (BucketLifecycleRuleFilterNotTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleFilterNotTag)(nil)).Elem()
+}
+
+func (i BucketLifecycleRuleFilterNotTagArgs) ToBucketLifecycleRuleFilterNotTagOutput() BucketLifecycleRuleFilterNotTagOutput {
+	return i.ToBucketLifecycleRuleFilterNotTagOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleFilterNotTagArgs) ToBucketLifecycleRuleFilterNotTagOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleFilterNotTagOutput)
+}
+
+func (i BucketLifecycleRuleFilterNotTagArgs) ToBucketLifecycleRuleFilterNotTagPtrOutput() BucketLifecycleRuleFilterNotTagPtrOutput {
+	return i.ToBucketLifecycleRuleFilterNotTagPtrOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleFilterNotTagArgs) ToBucketLifecycleRuleFilterNotTagPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleFilterNotTagOutput).ToBucketLifecycleRuleFilterNotTagPtrOutputWithContext(ctx)
+}
+
+// BucketLifecycleRuleFilterNotTagPtrInput is an input type that accepts BucketLifecycleRuleFilterNotTagArgs, BucketLifecycleRuleFilterNotTagPtr and BucketLifecycleRuleFilterNotTagPtrOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleFilterNotTagPtrInput` via:
+//
+//	        BucketLifecycleRuleFilterNotTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketLifecycleRuleFilterNotTagPtrInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleFilterNotTagPtrOutput() BucketLifecycleRuleFilterNotTagPtrOutput
+	ToBucketLifecycleRuleFilterNotTagPtrOutputWithContext(context.Context) BucketLifecycleRuleFilterNotTagPtrOutput
+}
+
+type bucketLifecycleRuleFilterNotTagPtrType BucketLifecycleRuleFilterNotTagArgs
+
+func BucketLifecycleRuleFilterNotTagPtr(v *BucketLifecycleRuleFilterNotTagArgs) BucketLifecycleRuleFilterNotTagPtrInput {
+	return (*bucketLifecycleRuleFilterNotTagPtrType)(v)
+}
+
+func (*bucketLifecycleRuleFilterNotTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketLifecycleRuleFilterNotTag)(nil)).Elem()
+}
+
+func (i *bucketLifecycleRuleFilterNotTagPtrType) ToBucketLifecycleRuleFilterNotTagPtrOutput() BucketLifecycleRuleFilterNotTagPtrOutput {
+	return i.ToBucketLifecycleRuleFilterNotTagPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketLifecycleRuleFilterNotTagPtrType) ToBucketLifecycleRuleFilterNotTagPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleFilterNotTagPtrOutput)
+}
+
+type BucketLifecycleRuleFilterNotTagOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleFilterNotTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleFilterNotTag)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleFilterNotTagOutput) ToBucketLifecycleRuleFilterNotTagOutput() BucketLifecycleRuleFilterNotTagOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterNotTagOutput) ToBucketLifecycleRuleFilterNotTagOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotTagOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterNotTagOutput) ToBucketLifecycleRuleFilterNotTagPtrOutput() BucketLifecycleRuleFilterNotTagPtrOutput {
+	return o.ToBucketLifecycleRuleFilterNotTagPtrOutputWithContext(context.Background())
+}
+
+func (o BucketLifecycleRuleFilterNotTagOutput) ToBucketLifecycleRuleFilterNotTagPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLifecycleRuleFilterNotTag) *BucketLifecycleRuleFilterNotTag {
+		return &v
+	}).(BucketLifecycleRuleFilterNotTagPtrOutput)
+}
+
+// The key of the tag that is specified for the objects.
+func (o BucketLifecycleRuleFilterNotTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleFilterNotTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the tag that is specified for the objects.
+func (o BucketLifecycleRuleFilterNotTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleFilterNotTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type BucketLifecycleRuleFilterNotTagPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleFilterNotTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketLifecycleRuleFilterNotTag)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleFilterNotTagPtrOutput) ToBucketLifecycleRuleFilterNotTagPtrOutput() BucketLifecycleRuleFilterNotTagPtrOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterNotTagPtrOutput) ToBucketLifecycleRuleFilterNotTagPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleFilterNotTagPtrOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleFilterNotTagPtrOutput) Elem() BucketLifecycleRuleFilterNotTagOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilterNotTag) BucketLifecycleRuleFilterNotTag {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLifecycleRuleFilterNotTag
+		return ret
+	}).(BucketLifecycleRuleFilterNotTagOutput)
+}
+
+// The key of the tag that is specified for the objects.
+func (o BucketLifecycleRuleFilterNotTagPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilterNotTag) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the tag that is specified for the objects.
+func (o BucketLifecycleRuleFilterNotTagPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleFilterNotTag) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpiration struct {
@@ -4740,6 +5236,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleAbortMultipartUploadArrayInput)(nil)).Elem(), BucketLifecycleRuleAbortMultipartUploadArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleExpirationInput)(nil)).Elem(), BucketLifecycleRuleExpirationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleExpirationArrayInput)(nil)).Elem(), BucketLifecycleRuleExpirationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleFilterInput)(nil)).Elem(), BucketLifecycleRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleFilterPtrInput)(nil)).Elem(), BucketLifecycleRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleFilterNotInput)(nil)).Elem(), BucketLifecycleRuleFilterNotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleFilterNotPtrInput)(nil)).Elem(), BucketLifecycleRuleFilterNotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleFilterNotTagInput)(nil)).Elem(), BucketLifecycleRuleFilterNotTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleFilterNotTagPtrInput)(nil)).Elem(), BucketLifecycleRuleFilterNotTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionExpirationInput)(nil)).Elem(), BucketLifecycleRuleNoncurrentVersionExpirationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionExpirationArrayInput)(nil)).Elem(), BucketLifecycleRuleNoncurrentVersionExpirationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionTransitionInput)(nil)).Elem(), BucketLifecycleRuleNoncurrentVersionTransitionArgs{})
@@ -4804,6 +5306,12 @@ func init() {
 	pulumi.RegisterOutputType(BucketLifecycleRuleAbortMultipartUploadArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleExpirationOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleExpirationArrayOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleFilterOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleFilterPtrOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleFilterNotOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleFilterNotPtrOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleFilterNotTagOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleFilterNotTagPtrOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleNoncurrentVersionExpirationOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleNoncurrentVersionTransitionOutput{})

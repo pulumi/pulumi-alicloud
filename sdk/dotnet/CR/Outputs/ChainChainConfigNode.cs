@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.CR.Outputs
         /// </summary>
         public readonly bool? Enable;
         /// <summary>
-        /// The configuration of delivery chain node.
+        /// The configuration of delivery chain node. See `node_config` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ChainChainConfigNodeNodeConfig> NodeConfigs;
         /// <summary>
-        /// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        /// The name of delivery chain node.
         /// </summary>
         public readonly string? NodeName;
 

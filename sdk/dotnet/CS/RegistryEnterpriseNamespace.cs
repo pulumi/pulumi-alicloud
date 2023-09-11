@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CS
     /// <summary>
     /// This resource will help you to manager Container Registry Enterprise Edition namespaces.
     /// 
-    /// For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/doc-detail/145483.htm)
+    /// For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
     /// 
-    /// &gt; **NOTE:** Available in v1.86.0+.
+    /// &gt; **NOTE:** Available since v1.86.0.
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
     /// 
@@ -30,11 +30,23 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_namespace = new AliCloud.CS.RegistryEnterpriseNamespace("my-namespace", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example-name";
+    ///     var exampleRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", new()
     ///     {
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var exampleRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", new()
+    ///     {
+    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
-    ///         InstanceId = "cri-xxx",
     ///     });
     /// 
     /// });

@@ -12,7 +12,57 @@ import * as utilities from "../utilities";
  *
  * For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
  *
- * > **NOTE:** Available in v1.43.0+.
+ * > **NOTE:** Available since v1.43.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const exampleNetworkAcl = new alicloud.vpc.NetworkAcl("exampleNetworkAcl", {
+ *     vpcId: exampleNetwork.id,
+ *     networkAclName: name,
+ *     description: name,
+ *     ingressAclEntries: [{
+ *         description: `${name}-ingress`,
+ *         networkAclEntryName: `${name}-ingress`,
+ *         sourceCidrIp: "196.168.2.0/21",
+ *         policy: "accept",
+ *         port: "22/80",
+ *         protocol: "tcp",
+ *     }],
+ *     egressAclEntries: [{
+ *         description: `${name}-egress`,
+ *         networkAclEntryName: `${name}-egress`,
+ *         destinationCidrIp: "0.0.0.0/0",
+ *         policy: "accept",
+ *         port: "-1/-1",
+ *         protocol: "all",
+ *     }],
+ *     resources: [{
+ *         resourceId: exampleSwitch.id,
+ *         resourceType: "VSwitch",
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -59,11 +109,11 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Out direction rule information. See the following `Block EgressAclEntries`.
+     * Out direction rule information. See `egressAclEntries` below.
      */
     public readonly egressAclEntries!: pulumi.Output<outputs.vpc.NetworkAclEgressAclEntry[]>;
     /**
-     * Inward direction rule information. See the following `Block IngressAclEntries`.
+     * Inward direction rule information. See `ingressAclEntries` below.
      */
     public readonly ingressAclEntries!: pulumi.Output<outputs.vpc.NetworkAclIngressAclEntry[]>;
     /**
@@ -77,11 +127,11 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     public readonly networkAclName!: pulumi.Output<string>;
     /**
-     * The associated resource. See the following `Block Resources`.
+     * The associated resource. See `resources` below.
      */
     public readonly resources!: pulumi.Output<outputs.vpc.NetworkAclResource[]>;
     /**
-     * The state of the network ACL.
+     * The status of the associated resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -152,11 +202,11 @@ export interface NetworkAclState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Out direction rule information. See the following `Block EgressAclEntries`.
+     * Out direction rule information. See `egressAclEntries` below.
      */
     egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[]>;
     /**
-     * Inward direction rule information. See the following `Block IngressAclEntries`.
+     * Inward direction rule information. See `ingressAclEntries` below.
      */
     ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
     /**
@@ -170,11 +220,11 @@ export interface NetworkAclState {
      */
     networkAclName?: pulumi.Input<string>;
     /**
-     * The associated resource. See the following `Block Resources`.
+     * The associated resource. See `resources` below.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
     /**
-     * The state of the network ACL.
+     * The status of the associated resource.
      */
     status?: pulumi.Input<string>;
     /**
@@ -198,11 +248,11 @@ export interface NetworkAclArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Out direction rule information. See the following `Block EgressAclEntries`.
+     * Out direction rule information. See `egressAclEntries` below.
      */
     egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[]>;
     /**
-     * Inward direction rule information. See the following `Block IngressAclEntries`.
+     * Inward direction rule information. See `ingressAclEntries` below.
      */
     ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
     /**
@@ -216,7 +266,7 @@ export interface NetworkAclArgs {
      */
     networkAclName?: pulumi.Input<string>;
     /**
-     * The associated resource. See the following `Block Resources`.
+     * The associated resource. See `resources` below.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
     /**

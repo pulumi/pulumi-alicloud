@@ -200,8 +200,8 @@ class ContainerGroupContainer(dict):
         :param float memory: The amount of memory resources allocated to the container. Default value: `0`.
         :param Sequence['ContainerGroupContainerPortArgs'] ports: The structure of port. See `ports` below.
         :param Sequence['ContainerGroupContainerReadinessProbeArgs'] readiness_probes: The health check of the container. See `readiness_probe` below.
-        :param bool ready: (Available since v1.208.0) Indicates whether the container passed the readiness probe.
-        :param int restart_count: (Available since v1.208.0) The number of times that the container restarted.
+        :param bool ready: Indicates whether the container passed the readiness probe.
+        :param int restart_count: The number of times that the container restarted.
         :param Sequence['ContainerGroupContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts. See `volume_mounts` below.
         :param str working_dir: The working directory of the container.
         """
@@ -336,7 +336,7 @@ class ContainerGroupContainer(dict):
     @pulumi.getter
     def ready(self) -> Optional[bool]:
         """
-        (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+        Indicates whether the container passed the readiness probe.
         """
         return pulumi.get(self, "ready")
 
@@ -344,7 +344,7 @@ class ContainerGroupContainer(dict):
     @pulumi.getter(name="restartCount")
     def restart_count(self) -> Optional[int]:
         """
-        (Available since v1.208.0) The number of times that the container restarted.
+        The number of times that the container restarted.
         """
         return pulumi.get(self, "restart_count")
 
@@ -1197,8 +1197,8 @@ class ContainerGroupInitContainer(dict):
         :param float memory: The amount of memory resources allocated to the container. Default value: `0`.
         :param str name: The name of the mounted volume.
         :param Sequence['ContainerGroupInitContainerPortArgs'] ports: The structure of port. See `ports` below.
-        :param bool ready: (Available since v1.208.0) Indicates whether the container passed the readiness probe.
-        :param int restart_count: (Available since v1.208.0) The number of times that the container restarted.
+        :param bool ready: Indicates whether the container passed the readiness probe.
+        :param int restart_count: The number of times that the container restarted.
         :param Sequence['ContainerGroupInitContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts. See `volume_mounts` below.
         :param str working_dir: The working directory of the container.
         """
@@ -1315,7 +1315,7 @@ class ContainerGroupInitContainer(dict):
     @pulumi.getter
     def ready(self) -> Optional[bool]:
         """
-        (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+        Indicates whether the container passed the readiness probe.
         """
         return pulumi.get(self, "ready")
 
@@ -1323,7 +1323,7 @@ class ContainerGroupInitContainer(dict):
     @pulumi.getter(name="restartCount")
     def restart_count(self) -> Optional[int]:
         """
-        (Available since v1.208.0) The number of times that the container restarted.
+        The number of times that the container restarted.
         """
         return pulumi.get(self, "restart_count")
 

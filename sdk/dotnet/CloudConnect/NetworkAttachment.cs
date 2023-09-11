@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CloudConnect
     /// <summary>
     /// Provides a Cloud Connect Network Attachment resource. This topic describes how to associate a Smart Access Gateway (SAG) instance with a network instance. You must associate an SAG instance with a network instance if you want to connect the SAG to Alibaba Cloud. You can connect an SAG to Alibaba Cloud through a leased line, the Internet, or the active and standby links.
     /// 
-    /// For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/doc-detail/124230.htm).
+    /// For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/bindsmartaccessgateway).
     /// 
-    /// &gt; **NOTE:** Available in 1.64.0+
+    /// &gt; **NOTE:** Available since v1.64.0.
     /// 
     /// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
@@ -30,21 +30,20 @@ namespace Pulumi.AliCloud.CloudConnect
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ccn = new AliCloud.CloudConnect.Network("ccn", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var sagId = config.Get("sagId") ?? "sag-9bifkf***";
+    ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
     ///     {
+    ///         Description = name,
+    ///         CidrBlock = "192.168.0.0/24",
     ///         IsDefault = true,
     ///     });
     /// 
-    ///     var @default = new AliCloud.CloudConnect.NetworkAttachment("default", new()
+    ///     var defaultNetworkAttachment = new AliCloud.CloudConnect.NetworkAttachment("defaultNetworkAttachment", new()
     ///     {
-    ///         CcnId = ccn.Id,
-    ///         SagId = "sag-xxxxx",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             ccn,
-    ///         },
+    ///         CcnId = defaultNetwork.Id,
+    ///         SagId = sagId,
     ///     });
     /// 
     /// });

@@ -16,7 +16,7 @@ import (
 //
 // For information about Smartag Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createflowlog).
 //
-// > **NOTE:** Available in v1.168.0+.
+// > **NOTE:** Available since v1.168.0.
 //
 // ## Example Usage
 //
@@ -35,13 +35,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sag.NewSmartagFlowLog(ctx, "example", &sag.SmartagFlowLogArgs{
-//				FlowLogName:       pulumi.String("example_value"),
-//				LogstoreName:      pulumi.String("example_value"),
-//				NetflowServerIp:   pulumi.String("example_value"),
-//				NetflowServerPort: pulumi.Int(1),
-//				OutputType:        pulumi.String("all"),
-//				ProjectName:       pulumi.String("example_value"),
-//				SlsRegionId:       pulumi.String("example_value"),
+//				NetflowServerIp:   pulumi.String("192.168.0.2"),
+//				NetflowServerPort: pulumi.Int(9995),
+//				NetflowVersion:    pulumi.String("V9"),
+//				OutputType:        pulumi.String("netflow"),
 //			})
 //			if err != nil {
 //				return err

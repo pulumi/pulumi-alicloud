@@ -35,11 +35,11 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
                  scale_down_rules: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']] = None,
                  scale_up_rules: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']] = None):
         """
-        :param pulumi.Input[int] max_replicas: Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]] metrics: Indicator rule configuration. See the following `Block metrics`.
-        :param pulumi.Input[int] min_replicas: Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
-        :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs'] scale_down_rules: Apply shrink rules. See the following `Block scale_down_rules`.
-        :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs'] scale_up_rules: Apply expansion rules. See the following `Block scale_up_rules`.
+        :param pulumi.Input[int] max_replicas: Maximum number of instances applied.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]] metrics: Indicator rule configuration. See `metrics` below.
+        :param pulumi.Input[int] min_replicas: Minimum number of instances applied.
+        :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs'] scale_down_rules: Apply shrink rules. See `scale_down_rules` below.
+        :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs'] scale_up_rules: Apply expansion rules. See `scale_up_rules` below.
         """
         if max_replicas is not None:
             pulumi.set(__self__, "max_replicas", max_replicas)
@@ -56,7 +56,7 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
     @pulumi.getter(name="maxReplicas")
     def max_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        Maximum number of instances applied.
         """
         return pulumi.get(self, "max_replicas")
 
@@ -68,7 +68,7 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
     @pulumi.getter
     def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]]]:
         """
-        Indicator rule configuration. See the following `Block metrics`.
+        Indicator rule configuration. See `metrics` below.
         """
         return pulumi.get(self, "metrics")
 
@@ -80,7 +80,7 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
     @pulumi.getter(name="minReplicas")
     def min_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        Minimum number of instances applied.
         """
         return pulumi.get(self, "min_replicas")
 
@@ -92,7 +92,7 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
     @pulumi.getter(name="scaleDownRules")
     def scale_down_rules(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']]:
         """
-        Apply shrink rules. See the following `Block scale_down_rules`.
+        Apply shrink rules. See `scale_down_rules` below.
         """
         return pulumi.get(self, "scale_down_rules")
 
@@ -104,7 +104,7 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
     @pulumi.getter(name="scaleUpRules")
     def scale_up_rules(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']]:
         """
-        Apply expansion rules. See the following `Block scale_up_rules`.
+        Apply expansion rules. See `scale_up_rules` below.
         """
         return pulumi.get(self, "scale_up_rules")
 
@@ -357,7 +357,7 @@ class ApplicationScalingRuleScalingRuleTimerArgs:
         :param pulumi.Input[str] begin_date: The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
         :param pulumi.Input[str] end_date: The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
         :param pulumi.Input[str] period: The period in which a timed elastic scaling strategy is executed.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]] schedules: Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]] schedules: Resilient Scaling Strategy Trigger Timing. See `schedules` below.
         """
         if begin_date is not None:
             pulumi.set(__self__, "begin_date", begin_date)
@@ -408,7 +408,7 @@ class ApplicationScalingRuleScalingRuleTimerArgs:
     @pulumi.getter
     def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]]:
         """
-        Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+        Resilient Scaling Strategy Trigger Timing. See `schedules` below.
         """
         return pulumi.get(self, "schedules")
 
@@ -500,7 +500,7 @@ class GreyTagRouteDubboRuleArgs:
         """
         :param pulumi.Input[str] condition: The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
         :param pulumi.Input[str] group: The service group.
-        :param pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]] items: A list of conditions items. The details see Block `dubbo_rules_items`.
+        :param pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]] items: A list of conditions items. See `items` below.
         :param pulumi.Input[str] method_name: The method name
         :param pulumi.Input[str] service_name: The service name.
         :param pulumi.Input[str] version: The service version.
@@ -546,7 +546,7 @@ class GreyTagRouteDubboRuleArgs:
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]]]:
         """
-        A list of conditions items. The details see Block `dubbo_rules_items`.
+        A list of conditions items. See `items` below.
         """
         return pulumi.get(self, "items")
 
@@ -603,7 +603,7 @@ class GreyTagRouteDubboRuleItemArgs:
         :param pulumi.Input[str] cond: The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
         :param pulumi.Input[str] expr: The parameter value gets the expression.
         :param pulumi.Input[int] index: The parameter number.
-        :param pulumi.Input[str] operator: The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        :param pulumi.Input[str] operator: The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
         :param pulumi.Input[str] value: The value of the parameter.
         """
         if cond is not None:
@@ -657,7 +657,7 @@ class GreyTagRouteDubboRuleItemArgs:
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
         """
-        The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
         """
         return pulumi.get(self, "operator")
 
@@ -686,7 +686,7 @@ class GreyTagRouteScRuleArgs:
                  path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] condition: The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
-        :param pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]] items: A list of conditions items. The details see Block `sc_rules_items`.
+        :param pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]] items: A list of conditions items.See `items` below.
         :param pulumi.Input[str] path: The path corresponding to the grayscale rule.
         """
         if condition is not None:
@@ -712,7 +712,7 @@ class GreyTagRouteScRuleArgs:
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]]:
         """
-        A list of conditions items. The details see Block `sc_rules_items`.
+        A list of conditions items.See `items` below.
         """
         return pulumi.get(self, "items")
 
@@ -744,7 +744,7 @@ class GreyTagRouteScRuleItemArgs:
         """
         :param pulumi.Input[str] cond: The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
         :param pulumi.Input[str] name: The name of the parameter.
-        :param pulumi.Input[str] operator: The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        :param pulumi.Input[str] operator: The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
         :param pulumi.Input[str] type: The compare types. Valid values: `param`, `cookie`, `header`.
         :param pulumi.Input[str] value: The value of the parameter.
         """
@@ -787,7 +787,7 @@ class GreyTagRouteScRuleItemArgs:
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
         """
-        The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
         """
         return pulumi.get(self, "operator")
 

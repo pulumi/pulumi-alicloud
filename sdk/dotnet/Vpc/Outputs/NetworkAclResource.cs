@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string ResourceType;
         /// <summary>
-        /// The state of the network ACL.
+        /// The status of the associated resource.
         /// </summary>
         public readonly string? Status;
 

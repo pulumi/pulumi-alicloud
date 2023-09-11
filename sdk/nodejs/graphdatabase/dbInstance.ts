@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Graph Database Db Instance resource.
  *
- * For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://help.aliyun.com/document_detail/102865.html).
+ * For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://www.alibabacloud.com/help/en/graph-compute/latest/placeholder).
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -21,15 +21,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const example = new alicloud.graphdatabase.DbInstance("example", {
- *     dbInstanceCategory: "HA",
- *     dbInstanceDescription: "example_value",
- *     dbInstanceNetworkType: "vpc",
- *     dbInstanceStorageType: "cloud_ssd",
  *     dbNodeClass: "gdb.r.2xlarge",
- *     dbNodeStorage: "example_value",
+ *     dbInstanceNetworkType: "vpc",
  *     dbVersion: "1.0",
+ *     dbInstanceCategory: "HA",
+ *     dbInstanceStorageType: "cloud_ssd",
+ *     dbNodeStorage: 50,
  *     paymentType: "PayAsYouGo",
+ *     dbInstanceDescription: name,
  * });
  * ```
  *
@@ -82,7 +84,7 @@ export class DbInstance extends pulumi.CustomResource {
      */
     public readonly dbInstanceDescription!: pulumi.Output<string | undefined>;
     /**
-     * IP ADDRESS whitelist for the instance group list. See the following `Block dbInstanceIpArray`.
+     * IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      */
     public readonly dbInstanceIpArrays!: pulumi.Output<outputs.graphdatabase.DbInstanceDbInstanceIpArray[]>;
     /**
@@ -219,7 +221,7 @@ export interface DbInstanceState {
      */
     dbInstanceDescription?: pulumi.Input<string>;
     /**
-     * IP ADDRESS whitelist for the instance group list. See the following `Block dbInstanceIpArray`.
+     * IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      */
     dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[]>;
     /**
@@ -281,7 +283,7 @@ export interface DbInstanceArgs {
      */
     dbInstanceDescription?: pulumi.Input<string>;
     /**
-     * IP ADDRESS whitelist for the instance group list. See the following `Block dbInstanceIpArray`.
+     * IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      */
     dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[]>;
     /**

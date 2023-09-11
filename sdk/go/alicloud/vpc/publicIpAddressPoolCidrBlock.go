@@ -28,6 +28,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -37,14 +38,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			defaultPublicIpAddressPool, err := vpc.NewPublicIpAddressPool(ctx, "defaultPublicIpAddressPool", &vpc.PublicIpAddressPoolArgs{
-//				PublicIpAddressPoolName: pulumi.String(name),
 //				Description:             pulumi.String(name),
+//				PublicIpAddressPoolName: pulumi.String(name),
 //				Isp:                     pulumi.String("BGP"),
+//				ResourceGroupId:         *pulumi.String(defaultResourceGroups.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

@@ -375,50 +375,64 @@ class Ingress(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example_value"
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
-            specification="slb.s2.small",
-            vswitch_id=data["alicloud_vswitches"]["default"]["ids"])
-        namespace_id = config.get("namespaceId")
-        if namespace_id is None:
-            namespace_id = "cn-hangzhou:yourname"
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=namespace_id,
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
             namespace_name=name,
-            namespace_description=name)
+            namespace_description=name,
+            enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
-            app_description="your_app_description",
-            app_name="your_app_name",
-            namespace_id="your_namespace_id",
-            package_url="your_package_url",
-            package_type="your_package_url",
-            jdk="jdk_specifications",
-            vswitch_id=data["alicloud_vswitches"]["default"]["ids"],
-            replicas="your_replicas",
-            cpu="cpu_specifications",
-            memory="memory_specifications")
-        default_ingress = alicloud.sae.Ingress("defaultIngress",
-            slb_id=default_load_balancer.id,
+            app_description=name,
+            app_name=name,
             namespace_id=default_namespace.id,
-            listener_port="your_listener_port",
+            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
+            package_type="Image",
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            timezone="Asia/Beijing",
+            replicas=5,
+            cpu=500,
+            memory=2048)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s2.small",
+            address_type="intranet")
+        default_ingress = alicloud.sae.Ingress("defaultIngress",
+            slb_id=default_application_load_balancer.id,
+            namespace_id=default_namespace.id,
+            listener_port=80,
             rules=[alicloud.sae.IngressRuleArgs(
                 app_id=default_application.id,
-                container_port="your_container_port",
-                domain="your_domain",
-                app_name="your_name",
-                path="your_path",
-            )])
+                container_port=443,
+                domain="www.alicloud.com",
+                app_name=default_application.app_name,
+                path="/",
+            )],
+            default_rule=alicloud.sae.IngressDefaultRuleArgs(
+                app_id=default_application.id,
+                container_port=443,
+            ))
         ```
 
         ## Import
@@ -462,50 +476,64 @@ class Ingress(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example_value"
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
-            specification="slb.s2.small",
-            vswitch_id=data["alicloud_vswitches"]["default"]["ids"])
-        namespace_id = config.get("namespaceId")
-        if namespace_id is None:
-            namespace_id = "cn-hangzhou:yourname"
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=namespace_id,
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
             namespace_name=name,
-            namespace_description=name)
+            namespace_description=name,
+            enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
-            app_description="your_app_description",
-            app_name="your_app_name",
-            namespace_id="your_namespace_id",
-            package_url="your_package_url",
-            package_type="your_package_url",
-            jdk="jdk_specifications",
-            vswitch_id=data["alicloud_vswitches"]["default"]["ids"],
-            replicas="your_replicas",
-            cpu="cpu_specifications",
-            memory="memory_specifications")
-        default_ingress = alicloud.sae.Ingress("defaultIngress",
-            slb_id=default_load_balancer.id,
+            app_description=name,
+            app_name=name,
             namespace_id=default_namespace.id,
-            listener_port="your_listener_port",
+            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
+            package_type="Image",
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            timezone="Asia/Beijing",
+            replicas=5,
+            cpu=500,
+            memory=2048)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s2.small",
+            address_type="intranet")
+        default_ingress = alicloud.sae.Ingress("defaultIngress",
+            slb_id=default_application_load_balancer.id,
+            namespace_id=default_namespace.id,
+            listener_port=80,
             rules=[alicloud.sae.IngressRuleArgs(
                 app_id=default_application.id,
-                container_port="your_container_port",
-                domain="your_domain",
-                app_name="your_name",
-                path="your_path",
-            )])
+                container_port=443,
+                domain="www.alicloud.com",
+                app_name=default_application.app_name,
+                path="/",
+            )],
+            default_rule=alicloud.sae.IngressDefaultRuleArgs(
+                app_id=default_application.id,
+                container_port=443,
+            ))
         ```
 
         ## Import

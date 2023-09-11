@@ -16,7 +16,7 @@ import (
 //
 // For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain).
 //
-// > **NOTE:** Available in v1.200.0+.
+// > **NOTE:** Available since v1.200.0.
 //
 // ## Import
 //
@@ -36,9 +36,9 @@ type Domain struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// WAF instance ID
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen DomainListenOutput `pulumi:"listen"`
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirectOutput `pulumi:"redirect"`
 	// The ID of the resource group.
 	ResourceManagerResourceGroupId pulumi.StringOutput `pulumi:"resourceManagerResourceGroupId"`
@@ -94,9 +94,9 @@ type domainState struct {
 	Domain *string `pulumi:"domain"`
 	// WAF instance ID
 	InstanceId *string `pulumi:"instanceId"`
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen *DomainListen `pulumi:"listen"`
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect *DomainRedirect `pulumi:"redirect"`
 	// The ID of the resource group.
 	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
@@ -111,9 +111,9 @@ type DomainState struct {
 	Domain pulumi.StringPtrInput
 	// WAF instance ID
 	InstanceId pulumi.StringPtrInput
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen DomainListenPtrInput
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirectPtrInput
 	// The ID of the resource group.
 	ResourceManagerResourceGroupId pulumi.StringPtrInput
@@ -132,9 +132,9 @@ type domainArgs struct {
 	Domain string `pulumi:"domain"`
 	// WAF instance ID
 	InstanceId string `pulumi:"instanceId"`
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen DomainListen `pulumi:"listen"`
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirect `pulumi:"redirect"`
 }
 
@@ -146,9 +146,9 @@ type DomainArgs struct {
 	Domain pulumi.StringInput
 	// WAF instance ID
 	InstanceId pulumi.StringInput
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen DomainListenInput
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirectInput
 }
 
@@ -254,12 +254,12 @@ func (o DomainOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Configure listening information. See the following `Block Listen`.
+// Configure listening information. See `listen` below.
 func (o DomainOutput) Listen() DomainListenOutput {
 	return o.ApplyT(func(v *Domain) DomainListenOutput { return v.Listen }).(DomainListenOutput)
 }
 
-// Configure forwarding information. See the following `Block Redirect`.
+// Configure forwarding information. See `redirect` below.
 func (o DomainOutput) Redirect() DomainRedirectOutput {
 	return o.ApplyT(func(v *Domain) DomainRedirectOutput { return v.Redirect }).(DomainRedirectOutput)
 }

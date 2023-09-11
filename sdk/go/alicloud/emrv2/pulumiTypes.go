@@ -178,7 +178,7 @@ type ClusterBootstrapScript struct {
 	ExecutionFailStrategy string `pulumi:"executionFailStrategy"`
 	// The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
 	ExecutionMoment string `pulumi:"executionMoment"`
-	// The bootstrap scripts execution target.
+	// The bootstrap scripts execution target. See `nodeSelector` below.
 	NodeSelector ClusterBootstrapScriptNodeSelector `pulumi:"nodeSelector"`
 	// The bootstrap scripts priority.
 	Priority *int `pulumi:"priority"`
@@ -206,7 +206,7 @@ type ClusterBootstrapScriptArgs struct {
 	ExecutionFailStrategy pulumi.StringInput `pulumi:"executionFailStrategy"`
 	// The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
 	ExecutionMoment pulumi.StringInput `pulumi:"executionMoment"`
-	// The bootstrap scripts execution target.
+	// The bootstrap scripts execution target. See `nodeSelector` below.
 	NodeSelector ClusterBootstrapScriptNodeSelectorInput `pulumi:"nodeSelector"`
 	// The bootstrap scripts priority.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
@@ -279,7 +279,7 @@ func (o ClusterBootstrapScriptOutput) ExecutionMoment() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterBootstrapScript) string { return v.ExecutionMoment }).(pulumi.StringOutput)
 }
 
-// The bootstrap scripts execution target.
+// The bootstrap scripts execution target. See `nodeSelector` below.
 func (o ClusterBootstrapScriptOutput) NodeSelector() ClusterBootstrapScriptNodeSelectorOutput {
 	return o.ApplyT(func(v ClusterBootstrapScript) ClusterBootstrapScriptNodeSelector { return v.NodeSelector }).(ClusterBootstrapScriptNodeSelectorOutput)
 }
@@ -566,9 +566,9 @@ func (o ClusterNodeAttributeArrayOutput) Index(i pulumi.IntInput) ClusterNodeAtt
 type ClusterNodeGroup struct {
 	// Additional security Group IDS for Cluster, you can also specify this key for each node group.
 	AdditionalSecurityGroupIds []string `pulumi:"additionalSecurityGroupIds"`
-	// The detail cost optimized configuration of emr cluster.
+	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
 	CostOptimizedConfig *ClusterNodeGroupCostOptimizedConfig `pulumi:"costOptimizedConfig"`
-	// Host Ecs data disks information in this node group.
+	// Host Ecs data disks information in this node group. See `dataDisks` below.
 	DataDisks []ClusterNodeGroupDataDisk `pulumi:"dataDisks"`
 	// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
@@ -576,19 +576,19 @@ type ClusterNodeGroup struct {
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Host Ecs number in this node group.
 	NodeCount int `pulumi:"nodeCount"`
-	// The configuration effected which node group name of emr cluster.
+	// The node group name of emr cluster.
 	NodeGroupName string `pulumi:"nodeGroupName"`
 	// The node group type of emr cluster, supported value: MASTER, CORE or TASK.
 	NodeGroupType string `pulumi:"nodeGroupType"`
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType *string `pulumi:"paymentType"`
-	// The spot bid prices of a PayAsYouGo instance.
+	// The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
 	SpotBidPrices []ClusterNodeGroupSpotBidPrice `pulumi:"spotBidPrices"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
-	// The detail configuration of subscription payment type.
+	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig *ClusterNodeGroupSubscriptionConfig `pulumi:"subscriptionConfig"`
-	// Host Ecs system disk information in this node group.
+	// Host Ecs system disk information in this node group. See `systemDisk` below.
 	SystemDisk ClusterNodeGroupSystemDisk `pulumi:"systemDisk"`
 	// Global vSwitch ids, you can also specify it in node group.
 	VswitchIds []string `pulumi:"vswitchIds"`
@@ -610,9 +610,9 @@ type ClusterNodeGroupInput interface {
 type ClusterNodeGroupArgs struct {
 	// Additional security Group IDS for Cluster, you can also specify this key for each node group.
 	AdditionalSecurityGroupIds pulumi.StringArrayInput `pulumi:"additionalSecurityGroupIds"`
-	// The detail cost optimized configuration of emr cluster.
+	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
 	CostOptimizedConfig ClusterNodeGroupCostOptimizedConfigPtrInput `pulumi:"costOptimizedConfig"`
-	// Host Ecs data disks information in this node group.
+	// Host Ecs data disks information in this node group. See `dataDisks` below.
 	DataDisks ClusterNodeGroupDataDiskArrayInput `pulumi:"dataDisks"`
 	// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
 	GracefulShutdown pulumi.BoolPtrInput `pulumi:"gracefulShutdown"`
@@ -620,19 +620,19 @@ type ClusterNodeGroupArgs struct {
 	InstanceTypes pulumi.StringArrayInput `pulumi:"instanceTypes"`
 	// Host Ecs number in this node group.
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
-	// The configuration effected which node group name of emr cluster.
+	// The node group name of emr cluster.
 	NodeGroupName pulumi.StringInput `pulumi:"nodeGroupName"`
 	// The node group type of emr cluster, supported value: MASTER, CORE or TASK.
 	NodeGroupType pulumi.StringInput `pulumi:"nodeGroupType"`
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
-	// The spot bid prices of a PayAsYouGo instance.
+	// The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
 	SpotBidPrices ClusterNodeGroupSpotBidPriceArrayInput `pulumi:"spotBidPrices"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput `pulumi:"spotInstanceRemedy"`
-	// The detail configuration of subscription payment type.
+	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig ClusterNodeGroupSubscriptionConfigPtrInput `pulumi:"subscriptionConfig"`
-	// Host Ecs system disk information in this node group.
+	// Host Ecs system disk information in this node group. See `systemDisk` below.
 	SystemDisk ClusterNodeGroupSystemDiskInput `pulumi:"systemDisk"`
 	// Global vSwitch ids, you can also specify it in node group.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
@@ -696,12 +696,12 @@ func (o ClusterNodeGroupOutput) AdditionalSecurityGroupIds() pulumi.StringArrayO
 	return o.ApplyT(func(v ClusterNodeGroup) []string { return v.AdditionalSecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The detail cost optimized configuration of emr cluster.
+// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
 func (o ClusterNodeGroupOutput) CostOptimizedConfig() ClusterNodeGroupCostOptimizedConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupCostOptimizedConfig { return v.CostOptimizedConfig }).(ClusterNodeGroupCostOptimizedConfigPtrOutput)
 }
 
-// Host Ecs data disks information in this node group.
+// Host Ecs data disks information in this node group. See `dataDisks` below.
 func (o ClusterNodeGroupOutput) DataDisks() ClusterNodeGroupDataDiskArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) []ClusterNodeGroupDataDisk { return v.DataDisks }).(ClusterNodeGroupDataDiskArrayOutput)
 }
@@ -721,7 +721,7 @@ func (o ClusterNodeGroupOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
-// The configuration effected which node group name of emr cluster.
+// The node group name of emr cluster.
 func (o ClusterNodeGroupOutput) NodeGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) string { return v.NodeGroupName }).(pulumi.StringOutput)
 }
@@ -736,7 +736,7 @@ func (o ClusterNodeGroupOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
-// The spot bid prices of a PayAsYouGo instance.
+// The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
 func (o ClusterNodeGroupOutput) SpotBidPrices() ClusterNodeGroupSpotBidPriceArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) []ClusterNodeGroupSpotBidPrice { return v.SpotBidPrices }).(ClusterNodeGroupSpotBidPriceArrayOutput)
 }
@@ -746,12 +746,12 @@ func (o ClusterNodeGroupOutput) SpotInstanceRemedy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *bool { return v.SpotInstanceRemedy }).(pulumi.BoolPtrOutput)
 }
 
-// The detail configuration of subscription payment type.
+// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 func (o ClusterNodeGroupOutput) SubscriptionConfig() ClusterNodeGroupSubscriptionConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupSubscriptionConfig { return v.SubscriptionConfig }).(ClusterNodeGroupSubscriptionConfigPtrOutput)
 }
 
-// Host Ecs system disk information in this node group.
+// Host Ecs system disk information in this node group. See `systemDisk` below.
 func (o ClusterNodeGroupOutput) SystemDisk() ClusterNodeGroupSystemDiskOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) ClusterNodeGroupSystemDisk { return v.SystemDisk }).(ClusterNodeGroupSystemDiskOutput)
 }

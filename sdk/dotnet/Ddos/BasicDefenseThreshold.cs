@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// For information about Ddos Basic Antiddos and how to use it, see [What is Defense Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/modifydefensethreshold).
     /// 
-    /// &gt; **NOTE:** Available in v1.168.0+.
+    /// &gt; **NOTE:** Available since v1.168.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,17 +28,19 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ecs.EipAddress("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
     ///     {
-    ///         AddressName = @var.Name,
+    ///         AddressName = name,
     ///         Isp = "BGP",
     ///         InternetChargeType = "PayByBandwidth",
     ///         PaymentType = "PayAsYouGo",
     ///     });
     /// 
-    ///     var example = new AliCloud.Ddos.BasicDefenseThreshold("example", new()
+    ///     var defaultBasicDefenseThreshold = new AliCloud.Ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold", new()
     ///     {
-    ///         InstanceId = @default.Id,
+    ///         InstanceId = defaultEipAddress.Id,
     ///         DdosType = "defense",
     ///         InstanceType = "eip",
     ///         Bps = 390,

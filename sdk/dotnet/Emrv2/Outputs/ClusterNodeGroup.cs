@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AdditionalSecurityGroupIds;
         /// <summary>
-        /// The detail cost optimized configuration of emr cluster.
+        /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
         /// </summary>
         public readonly Outputs.ClusterNodeGroupCostOptimizedConfig? CostOptimizedConfig;
         /// <summary>
-        /// Host Ecs data disks information in this node group.
+        /// Host Ecs data disks information in this node group. See `data_disks` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupDataDisk> DataDisks;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly int NodeCount;
         /// <summary>
-        /// The configuration effected which node group name of emr cluster.
+        /// The node group name of emr cluster.
         /// </summary>
         public readonly string NodeGroupName;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string? PaymentType;
         /// <summary>
-        /// The spot bid prices of a PayAsYouGo instance.
+        /// The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupSpotBidPrice> SpotBidPrices;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly bool? SpotInstanceRemedy;
         /// <summary>
-        /// The detail configuration of subscription payment type.
+        /// The detail configuration of subscription payment type. See `subscription_config` below.
         /// </summary>
         public readonly Outputs.ClusterNodeGroupSubscriptionConfig? SubscriptionConfig;
         /// <summary>
-        /// Host Ecs system disk information in this node group.
+        /// Host Ecs system disk information in this node group. See `system_disk` below.
         /// </summary>
         public readonly Outputs.ClusterNodeGroupSystemDisk SystemDisk;
         /// <summary>

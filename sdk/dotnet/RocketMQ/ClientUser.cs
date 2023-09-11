@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.RocketMQ
     /// <summary>
     /// Provides a Sag ClientUser resource. This topic describes how to manage accounts as an administrator. After you configure the network, you can create multiple accounts and distribute them to end users so that clients can access Alibaba Cloud.
     /// 
-    /// For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/doc-detail/108326.htm).
+    /// For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createsmartaccessgatewayclientuser).
     /// 
-    /// &gt; **NOTE:** Available in 1.65.0+
+    /// &gt; **NOTE:** Available since v1.65.0.
     /// 
     /// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
@@ -30,14 +30,17 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var sagId = config.Get("sagId") ?? "sag-9bifkfaz4fg***";
     ///     var @default = new AliCloud.RocketMQ.ClientUser("default", new()
     ///     {
+    ///         SagId = sagId,
     ///         Bandwidth = 20,
+    ///         UserMail = "tf-example@abc.com",
+    ///         UserName = name,
+    ///         Password = "example1234",
     ///         ClientIp = "192.1.10.0",
-    ///         Password = "xxxxxxx",
-    ///         SagId = "sag-xxxxx",
-    ///         UserMail = "tftest-xxxxx@test.com",
-    ///         UserName = "th-username-xxxxx",
     ///     });
     /// 
     /// });
@@ -66,9 +69,15 @@ namespace Pulumi.AliCloud.RocketMQ
         [Output("clientIp")]
         public Output<string?> ClientIp { get; private set; } = null!;
 
+        /// <summary>
+        /// The password of the KMS Encryption.
+        /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
+        /// <summary>
+        /// The context of the KMS Encryption.
+        /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
 
@@ -154,11 +163,18 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("clientIp")]
         public Input<string>? ClientIp { get; set; }
 
+        /// <summary>
+        /// The password of the KMS Encryption.
+        /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
         private InputMap<object>? _kmsEncryptionContext;
+
+        /// <summary>
+        /// The context of the KMS Encryption.
+        /// </summary>
         public InputMap<object> KmsEncryptionContext
         {
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
@@ -209,11 +225,18 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("clientIp")]
         public Input<string>? ClientIp { get; set; }
 
+        /// <summary>
+        /// The password of the KMS Encryption.
+        /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
         private InputMap<object>? _kmsEncryptionContext;
+
+        /// <summary>
+        /// The context of the KMS Encryption.
+        /// </summary>
         public InputMap<object> KmsEncryptionContext
         {
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());

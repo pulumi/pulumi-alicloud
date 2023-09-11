@@ -14,9 +14,9 @@ import (
 
 // Provides a Serverless App Engine (SAE) Config Map resource.
 //
-// For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://help.aliyun.com/document_detail/97792.html).
+// For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://www.alibabacloud.com/help/en/sae/latest/create-configmap).
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -28,8 +28,11 @@ import (
 // import (
 //
 //	"encoding/json"
+//	"fmt"
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -38,14 +41,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			configMapName := "examplename"
-//			if param := cfg.Get("configMapName"); param != "" {
-//				configMapName = param
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
-//			exampleNamespace, err := sae.NewNamespace(ctx, "exampleNamespace", &sae.NamespaceArgs{
-//				NamespaceId:          pulumi.String("cn-hangzhou:yourname"),
-//				NamespaceName:        pulumi.String("example_value"),
-//				NamespaceDescription: pulumi.String("your_description"),
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
+//				NamespaceId: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v:example%v", defaultRegions.Regions[0].Id, result), nil
+//				}).(pulumi.StringOutput),
+//				NamespaceName:           pulumi.String(name),
+//				NamespaceDescription:    pulumi.String(name),
+//				EnableMicroRegistration: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -58,9 +77,9 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = sae.NewConfigMap(ctx, "exampleConfigMap", &sae.ConfigMapArgs{
+//			_, err = sae.NewConfigMap(ctx, "defaultConfigMap", &sae.ConfigMapArgs{
 //				Data:        pulumi.String(json0),
-//				NamespaceId: exampleNamespace.NamespaceId,
+//				NamespaceId: defaultNamespace.NamespaceId,
 //			})
 //			if err != nil {
 //				return err

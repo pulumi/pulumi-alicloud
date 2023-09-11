@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -18,11 +18,22 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const example = new alicloud.sae.Namespace("example", {
- *     namespaceDescription: "your_description",
- *     namespaceId: "cn-hangzhou:yourname",
- *     namespaceName: "example_value",
+ *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
+ *     namespaceName: name,
+ *     namespaceDescription: name,
+ *     enableMicroRegistration: false,
  * });
  * ```
  *

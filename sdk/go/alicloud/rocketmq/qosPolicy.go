@@ -15,52 +15,11 @@ import (
 // Provides a Sag qos policy resource.
 // You need to create a QoS policy to set priorities, rate limits, and quintuple rules for different messages.
 //
-// For information about Sag Qos Policy and how to use it, see [What is Qos Policy](https://www.alibabacloud.com/help/doc-detail/140065.htm).
+// For information about Sag Qos Policy and how to use it, see [What is Qos Policy](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqospolicy).
 //
-// > **NOTE:** Available in 1.60.0+
+// > **NOTE:** Available since v1.60.0.
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultQos, err := rocketmq.NewQos(ctx, "defaultQos", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = rocketmq.NewQosPolicy(ctx, "defaultQosPolicy", &rocketmq.QosPolicyArgs{
-//				QosId:           defaultQos.ID(),
-//				Description:     pulumi.String("tf-testSagQosPolicyDescription"),
-//				Priority:        pulumi.Int(1),
-//				IpProtocol:      pulumi.String("ALL"),
-//				SourceCidr:      pulumi.String("192.168.0.0/24"),
-//				SourcePortRange: pulumi.String("-1/-1"),
-//				DestCidr:        pulumi.String("10.10.0.0/24"),
-//				DestPortRange:   pulumi.String("-1/-1"),
-//				StartTime:       pulumi.String("2019-10-25T16:41:33+0800"),
-//				EndTime:         pulumi.String("2019-10-26T16:41:33+0800"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

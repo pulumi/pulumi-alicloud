@@ -39,6 +39,7 @@ class InstanceArgs:
                  db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
@@ -189,6 +190,11 @@ class InstanceArgs:
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
+               - Up
+               - Down
+               - TempUpgrade
+               - Serverless
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -283,7 +289,7 @@ class InstanceArgs:
                
                
                > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -350,6 +356,8 @@ class InstanceArgs:
             pulumi.set(__self__, "db_time_zone", db_time_zone)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
         if encryption_key is not None:
@@ -805,6 +813,22 @@ class InstanceArgs:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance configuration type. Valid values:
+        - Up
+        - Down
+        - TempUpgrade
+        - Serverless
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
 
     @property
     @pulumi.getter(name="effectiveTime")
@@ -1336,7 +1360,7 @@ class InstanceArgs:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         """
         return pulumi.get(self, "tde_status")
 
@@ -1484,6 +1508,7 @@ class _InstanceState:
                  db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -1612,6 +1637,11 @@ class _InstanceState:
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
+               - Up
+               - Down
+               - TempUpgrade
+               - Serverless
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -1739,7 +1769,7 @@ class _InstanceState:
                
                
                > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -1808,6 +1838,8 @@ class _InstanceState:
             pulumi.set(__self__, "db_time_zone", db_time_zone)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
         if encryption_key is not None:
@@ -2236,6 +2268,22 @@ class _InstanceState:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance configuration type. Valid values:
+        - Up
+        - Down
+        - TempUpgrade
+        - Serverless
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
 
     @property
     @pulumi.getter(name="effectiveTime")
@@ -2866,7 +2914,7 @@ class _InstanceState:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         """
         return pulumi.get(self, "tde_status")
 
@@ -3013,6 +3061,7 @@ class Instance(pulumi.CustomResource):
                  db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -3146,6 +3195,11 @@ class Instance(pulumi.CustomResource):
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
+               - Up
+               - Down
+               - TempUpgrade
+               - Serverless
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -3271,7 +3325,7 @@ class Instance(pulumi.CustomResource):
                
                
                > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -3345,6 +3399,7 @@ class Instance(pulumi.CustomResource):
                  db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -3425,6 +3480,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["db_is_ignore_case"] = db_is_ignore_case
             __props__.__dict__["db_time_zone"] = db_time_zone
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["direction"] = direction
             __props__.__dict__["effective_time"] = effective_time
             __props__.__dict__["encryption_key"] = encryption_key
             if engine is None and not opts.urn:
@@ -3528,6 +3584,7 @@ class Instance(pulumi.CustomResource):
             db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
             db_time_zone: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            direction: Optional[pulumi.Input[str]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
             encryption_key: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
@@ -3661,6 +3718,11 @@ class Instance(pulumi.CustomResource):
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
+               - Up
+               - Down
+               - TempUpgrade
+               - Serverless
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -3788,7 +3850,7 @@ class Instance(pulumi.CustomResource):
                
                
                > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -3839,6 +3901,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["db_is_ignore_case"] = db_is_ignore_case
         __props__.__dict__["db_time_zone"] = db_time_zone
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["direction"] = direction
         __props__.__dict__["effective_time"] = effective_time
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["engine"] = engine
@@ -4120,6 +4183,18 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> pulumi.Output[Optional[str]]:
+        """
+        The instance configuration type. Valid values:
+        - Up
+        - Down
+        - TempUpgrade
+        - Serverless
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter(name="effectiveTime")
@@ -4568,9 +4643,9 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tdeStatus")
-    def tde_status(self) -> pulumi.Output[Optional[str]]:
+    def tde_status(self) -> pulumi.Output[str]:
         """
-        The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         """
         return pulumi.get(self, "tde_status")
 

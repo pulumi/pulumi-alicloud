@@ -20,52 +20,72 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "example_value";
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
- *     specification: "slb.s2.small",
- *     vswitchId: data.alicloud_vswitches["default"].ids[0],
- * });
- * const namespaceId = config.get("namespaceId") || "cn-hangzhou:yourname";
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
- *     namespaceId: namespaceId,
+ *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
  *     namespaceName: name,
  *     namespaceDescription: name,
+ *     enableMicroRegistration: false,
  * });
  * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
- *     appDescription: "your_app_description",
- *     appName: "your_app_name",
- *     namespaceId: "your_namespace_id",
- *     packageUrl: "your_package_url",
- *     packageType: "your_package_url",
- *     jdk: "jdk_specifications",
- *     vswitchId: data.alicloud_vswitches["default"].ids[0],
- *     replicas: "your_replicas",
- *     cpu: "cpu_specifications",
- *     memory: "memory_specifications",
+ *     appDescription: name,
+ *     appName: name,
+ *     namespaceId: defaultNamespace.id,
+ *     imageUrl: defaultRegions.then(defaultRegions => `registry-vpc.${defaultRegions.regions?.[0]?.id}.aliyuncs.com/sae-demo-image/consumer:1.0`),
+ *     packageType: "Image",
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vpcId: defaultNetwork.id,
+ *     vswitchId: defaultSwitch.id,
+ *     timezone: "Asia/Beijing",
+ *     replicas: 5,
+ *     cpu: 500,
+ *     memory: 2048,
+ * });
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     loadBalancerSpec: "slb.s2.small",
+ *     addressType: "intranet",
  * });
  * const defaultIngress = new alicloud.sae.Ingress("defaultIngress", {
- *     slbId: defaultLoadBalancer.id,
+ *     slbId: defaultApplicationLoadBalancer.id,
  *     namespaceId: defaultNamespace.id,
- *     listenerPort: "your_listener_port",
+ *     listenerPort: 80,
  *     rules: [{
  *         appId: defaultApplication.id,
- *         containerPort: "your_container_port",
- *         domain: "your_domain",
- *         appName: "your_name",
- *         path: "your_path",
+ *         containerPort: 443,
+ *         domain: "www.alicloud.com",
+ *         appName: defaultApplication.appName,
+ *         path: "/",
  *     }],
+ *     defaultRule: {
+ *         appId: defaultApplication.id,
+ *         containerPort: 443,
+ *     },
  * });
  * ```
  *

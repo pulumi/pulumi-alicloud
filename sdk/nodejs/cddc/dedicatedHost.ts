@@ -5,57 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ApsaraDB for MyBase Dedicated Host resource.
- *
- * For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/doc-detail/210864.html).
- *
- * > **NOTE:** Available in v1.147.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultZones = alicloud.cddc.getZones({});
- * const defaultHostEcsLevelInfos = defaultZones.then(defaultZones => alicloud.cddc.getHostEcsLevelInfos({
- *     dbType: "mysql",
- *     zoneId: defaultZones.ids?.[0],
- *     storageType: "cloud_essd",
- * }));
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
- * }));
- * const defaultDedicatedHostGroup = new alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup", {
- *     engine: "MySQL",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     cpuAllocationRatio: 101,
- *     memAllocationRatio: 50,
- *     diskAllocationRatio: 200,
- *     allocationPolicy: "Evenly",
- *     hostReplacePolicy: "Manual",
- *     dedicatedHostGroupDesc: "example_value",
- * });
- * const defaultDedicatedHost = new alicloud.cddc.DedicatedHost("defaultDedicatedHost", {
- *     hostName: "example_value",
- *     dedicatedHostGroupId: defaultDedicatedHostGroup.id,
- *     hostClass: defaultHostEcsLevelInfos.then(defaultHostEcsLevelInfos => defaultHostEcsLevelInfos.infos?.[0]?.resClassCode),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     paymentType: "Subscription",
- *     tags: {
- *         Created: "TF",
- *         For: "CDDC_DEDICATED",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.

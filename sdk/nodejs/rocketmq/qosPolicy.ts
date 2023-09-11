@@ -8,34 +8,11 @@ import * as utilities from "../utilities";
  * Provides a Sag qos policy resource.
  * You need to create a QoS policy to set priorities, rate limits, and quintuple rules for different messages.
  *
- * For information about Sag Qos Policy and how to use it, see [What is Qos Policy](https://www.alibabacloud.com/help/doc-detail/140065.htm).
+ * For information about Sag Qos Policy and how to use it, see [What is Qos Policy](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqospolicy).
  *
- * > **NOTE:** Available in 1.60.0+
+ * > **NOTE:** Available since v1.60.0.
  *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultQos = new alicloud.rocketmq.Qos("defaultQos", {});
- * const defaultQosPolicy = new alicloud.rocketmq.QosPolicy("defaultQosPolicy", {
- *     qosId: defaultQos.id,
- *     description: "tf-testSagQosPolicyDescription",
- *     priority: 1,
- *     ipProtocol: "ALL",
- *     sourceCidr: "192.168.0.0/24",
- *     sourcePortRange: "-1/-1",
- *     destCidr: "10.10.0.0/24",
- *     destPortRange: "-1/-1",
- *     startTime: "2019-10-25T16:41:33+0800",
- *     endTime: "2019-10-26T16:41:33+0800",
- * });
- * ```
  *
  * ## Import
  *

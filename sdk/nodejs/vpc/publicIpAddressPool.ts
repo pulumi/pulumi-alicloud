@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
  *
- * > **NOTE:** Available in v1.186.0+.
+ * > **NOTE:** Available since v1.186.0.
  *
  * ## Example Usage
  *
@@ -19,19 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
- *     displayName: "tf-test-acc-publicaddresspool-383",
- *     resourceGroupName: "tf-test-acc-publicaddresspool-855",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
  * });
- * const changeRg = new alicloud.resourcemanager.ResourceGroup("changeRg", {
- *     displayName: "tf-testacc-publicaddresspool-change-368",
- *     resourceGroupName: "tf-testacc-publicaddresspool-change-499",
- * });
- * const _default = new alicloud.vpc.PublicIpAddressPool("default", {
- *     description: "rdk-test",
- *     publicIpAddressPoolName: "rdk-test",
+ * const defaultPublicIpAddressPool = new alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool", {
+ *     description: name,
+ *     publicIpAddressPoolName: name,
  *     isp: "BGP",
- *     resourceGroupId: defaultRg.id,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  * });
  * ```
  *

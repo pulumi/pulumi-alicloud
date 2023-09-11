@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Sae
     /// <summary>
     /// Provides a Serverless App Engine (SAE) Config Map resource.
     /// 
-    /// For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://help.aliyun.com/document_detail/97792.html).
+    /// For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://www.alibabacloud.com/help/en/sae/latest/create-configmap).
     /// 
-    /// &gt; **NOTE:** Available in v1.130.0+.
+    /// &gt; **NOTE:** Available since v1.130.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,26 +26,44 @@ namespace Pulumi.AliCloud.Sae
     /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var configMapName = config.Get("configMapName") ?? "examplename";
-    ///     var exampleNamespace = new AliCloud.Sae.Namespace("exampleNamespace", new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         NamespaceId = "cn-hangzhou:yourname",
-    ///         NamespaceName = "example_value",
-    ///         NamespaceDescription = "your_description",
+    ///         Current = true,
     ///     });
     /// 
-    ///     var exampleConfigMap = new AliCloud.Sae.ConfigMap("exampleConfigMap", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+    ///     {
+    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var result = values.Item2;
+    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
+    ///         }),
+    ///         NamespaceName = name,
+    ///         NamespaceDescription = name,
+    ///         EnableMicroRegistration = false,
+    ///     });
+    /// 
+    ///     var defaultConfigMap = new AliCloud.Sae.ConfigMap("defaultConfigMap", new()
     ///     {
     ///         Data = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["env.home"] = "/root",
     ///             ["env.shell"] = "/bin/sh",
     ///         }),
-    ///         NamespaceId = exampleNamespace.NamespaceId,
+    ///         NamespaceId = defaultNamespace.NamespaceId,
     ///     });
     /// 
     /// });

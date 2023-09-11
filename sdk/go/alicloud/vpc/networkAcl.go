@@ -17,7 +17,94 @@ import (
 //
 // For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
 //
-// > **NOTE:** Available in v1.43.0+.
+// > **NOTE:** Available since v1.43.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNetworkAcl(ctx, "exampleNetworkAcl", &vpc.NetworkAclArgs{
+//				VpcId:          exampleNetwork.ID(),
+//				NetworkAclName: pulumi.String(name),
+//				Description:    pulumi.String(name),
+//				IngressAclEntries: vpc.NetworkAclIngressAclEntryArray{
+//					&vpc.NetworkAclIngressAclEntryArgs{
+//						Description:         pulumi.String(fmt.Sprintf("%v-ingress", name)),
+//						NetworkAclEntryName: pulumi.String(fmt.Sprintf("%v-ingress", name)),
+//						SourceCidrIp:        pulumi.String("196.168.2.0/21"),
+//						Policy:              pulumi.String("accept"),
+//						Port:                pulumi.String("22/80"),
+//						Protocol:            pulumi.String("tcp"),
+//					},
+//				},
+//				EgressAclEntries: vpc.NetworkAclEgressAclEntryArray{
+//					&vpc.NetworkAclEgressAclEntryArgs{
+//						Description:         pulumi.String(fmt.Sprintf("%v-egress", name)),
+//						NetworkAclEntryName: pulumi.String(fmt.Sprintf("%v-egress", name)),
+//						DestinationCidrIp:   pulumi.String("0.0.0.0/0"),
+//						Policy:              pulumi.String("accept"),
+//						Port:                pulumi.String("-1/-1"),
+//						Protocol:            pulumi.String("all"),
+//					},
+//				},
+//				Resources: vpc.NetworkAclResourceArray{
+//					&vpc.NetworkAclResourceArgs{
+//						ResourceId:   exampleSwitch.ID(),
+//						ResourceType: pulumi.String("VSwitch"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -35,9 +122,9 @@ type NetworkAcl struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Out direction rule information. See the following `Block EgressAclEntries`.
+	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries NetworkAclEgressAclEntryArrayOutput `pulumi:"egressAclEntries"`
-	// Inward direction rule information. See the following `Block IngressAclEntries`.
+	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries NetworkAclIngressAclEntryArrayOutput `pulumi:"ingressAclEntries"`
 	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
@@ -45,9 +132,9 @@ type NetworkAcl struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName pulumi.StringOutput `pulumi:"networkAclName"`
-	// The associated resource. See the following `Block Resources`.
+	// The associated resource. See `resources` below.
 	Resources NetworkAclResourceArrayOutput `pulumi:"resources"`
-	// The state of the network ACL.
+	// The status of the associated resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of this resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -94,9 +181,9 @@ type networkAclState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// Out direction rule information. See the following `Block EgressAclEntries`.
+	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
-	// Inward direction rule information. See the following `Block IngressAclEntries`.
+	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
 	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
@@ -104,9 +191,9 @@ type networkAclState struct {
 	Name *string `pulumi:"name"`
 	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName *string `pulumi:"networkAclName"`
-	// The associated resource. See the following `Block Resources`.
+	// The associated resource. See `resources` below.
 	Resources []NetworkAclResource `pulumi:"resources"`
-	// The state of the network ACL.
+	// The status of the associated resource.
 	Status *string `pulumi:"status"`
 	// The tags of this resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -121,9 +208,9 @@ type NetworkAclState struct {
 	CreateTime pulumi.StringPtrInput
 	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput
-	// Out direction rule information. See the following `Block EgressAclEntries`.
+	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
-	// Inward direction rule information. See the following `Block IngressAclEntries`.
+	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries NetworkAclIngressAclEntryArrayInput
 	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
@@ -131,9 +218,9 @@ type NetworkAclState struct {
 	Name pulumi.StringPtrInput
 	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName pulumi.StringPtrInput
-	// The associated resource. See the following `Block Resources`.
+	// The associated resource. See `resources` below.
 	Resources NetworkAclResourceArrayInput
-	// The state of the network ACL.
+	// The status of the associated resource.
 	Status pulumi.StringPtrInput
 	// The tags of this resource.
 	Tags pulumi.MapInput
@@ -150,9 +237,9 @@ func (NetworkAclState) ElementType() reflect.Type {
 type networkAclArgs struct {
 	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// Out direction rule information. See the following `Block EgressAclEntries`.
+	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
-	// Inward direction rule information. See the following `Block IngressAclEntries`.
+	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
 	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
@@ -160,7 +247,7 @@ type networkAclArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName *string `pulumi:"networkAclName"`
-	// The associated resource. See the following `Block Resources`.
+	// The associated resource. See `resources` below.
 	Resources []NetworkAclResource `pulumi:"resources"`
 	// The tags of this resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -174,9 +261,9 @@ type networkAclArgs struct {
 type NetworkAclArgs struct {
 	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput
-	// Out direction rule information. See the following `Block EgressAclEntries`.
+	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
-	// Inward direction rule information. See the following `Block IngressAclEntries`.
+	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries NetworkAclIngressAclEntryArrayInput
 	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
@@ -184,7 +271,7 @@ type NetworkAclArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName pulumi.StringPtrInput
-	// The associated resource. See the following `Block Resources`.
+	// The associated resource. See `resources` below.
 	Resources NetworkAclResourceArrayInput
 	// The tags of this resource.
 	Tags pulumi.MapInput
@@ -291,12 +378,12 @@ func (o NetworkAclOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Out direction rule information. See the following `Block EgressAclEntries`.
+// Out direction rule information. See `egressAclEntries` below.
 func (o NetworkAclOutput) EgressAclEntries() NetworkAclEgressAclEntryArrayOutput {
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclEgressAclEntryArrayOutput { return v.EgressAclEntries }).(NetworkAclEgressAclEntryArrayOutput)
 }
 
-// Inward direction rule information. See the following `Block IngressAclEntries`.
+// Inward direction rule information. See `ingressAclEntries` below.
 func (o NetworkAclOutput) IngressAclEntries() NetworkAclIngressAclEntryArrayOutput {
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclIngressAclEntryArrayOutput { return v.IngressAclEntries }).(NetworkAclIngressAclEntryArrayOutput)
 }
@@ -313,12 +400,12 @@ func (o NetworkAclOutput) NetworkAclName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.NetworkAclName }).(pulumi.StringOutput)
 }
 
-// The associated resource. See the following `Block Resources`.
+// The associated resource. See `resources` below.
 func (o NetworkAclOutput) Resources() NetworkAclResourceArrayOutput {
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclResourceArrayOutput { return v.Resources }).(NetworkAclResourceArrayOutput)
 }
 
-// The state of the network ACL.
+// The status of the associated resource.
 func (o NetworkAclOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae
     /// 
     /// For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
     /// 
-    /// &gt; **NOTE:** Available in v1.129.0+.
+    /// &gt; **NOTE:** Available since v1.129.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,14 +25,34 @@ namespace Pulumi.AliCloud.Sae
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var example = new AliCloud.Sae.Namespace("example", new()
     ///     {
-    ///         NamespaceDescription = "your_description",
-    ///         NamespaceId = "cn-hangzhou:yourname",
-    ///         NamespaceName = "example_value",
+    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var result = values.Item2;
+    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
+    ///         }),
+    ///         NamespaceName = name,
+    ///         NamespaceDescription = name,
+    ///         EnableMicroRegistration = false,
     ///     });
     /// 
     /// });

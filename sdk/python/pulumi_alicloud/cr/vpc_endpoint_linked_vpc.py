@@ -213,9 +213,9 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         """
         Provides a CR Vpc Endpoint Linked Vpc resource.
 
-        For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/container-registry/latest/api-doc-cr-2018-12-01-api-doc-createinstancevpcendpointlinkedvpc).
+        For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createinstancevpcendpointlinkedvpc).
 
-        > **NOTE:** Available in v1.199.0+.
+        > **NOTE:** Available since v1.199.0.
 
         ## Example Usage
 
@@ -225,12 +225,32 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cr.VpcEndpointLinkedVpc("default",
-            enable_create_dns_record_in_pvzt=True,
-            instance_id="your_cr_instance_id",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc",
+            instance_id=default_registry_enterprise_instance.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
             module_name="Registry",
-            vpc_id="your_vpc_id",
-            vswitch_id="your_vswitch_id")
+            enable_create_dns_record_in_pvzt=True)
         ```
 
         ## Import
@@ -258,9 +278,9 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         """
         Provides a CR Vpc Endpoint Linked Vpc resource.
 
-        For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/container-registry/latest/api-doc-cr-2018-12-01-api-doc-createinstancevpcendpointlinkedvpc).
+        For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createinstancevpcendpointlinkedvpc).
 
-        > **NOTE:** Available in v1.199.0+.
+        > **NOTE:** Available since v1.199.0.
 
         ## Example Usage
 
@@ -270,12 +290,32 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cr.VpcEndpointLinkedVpc("default",
-            enable_create_dns_record_in_pvzt=True,
-            instance_id="your_cr_instance_id",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc",
+            instance_id=default_registry_enterprise_instance.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
             module_name="Registry",
-            vpc_id="your_vpc_id",
-            vswitch_id="your_vswitch_id")
+            enable_create_dns_record_in_pvzt=True)
         ```
 
         ## Import

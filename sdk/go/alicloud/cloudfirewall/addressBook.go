@@ -14,9 +14,9 @@ import (
 
 // Provides a Cloud Firewall Address Book resource.
 //
-// For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describeaddressbook).
+// For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-addaddressbook).
 //
-// > **NOTE:** Available in v1.178.0+.
+// > **NOTE:** Available since v1.178.0.
 //
 // ## Example Usage
 //
@@ -74,18 +74,16 @@ type AddressBook struct {
 	AutoAddTagEcs pulumi.IntPtrOutput `pulumi:"autoAddTagEcs"`
 	// The description of the Address Book.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// A list of ECS tags. See the following `Block ecsTags`.
+	// A list of ECS tags. See `ecsTags` below.
 	EcsTags AddressBookEcsTagArrayOutput `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	// The type of the Address Book. Valid values:  `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `tag`.
 	GroupType pulumi.StringOutput `pulumi:"groupType"`
-	// The language of the content within the request and response. Valid values: `en`, `zh`.
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
-	// The logical relation among the ECS tags that to be matched. Valid values:
-	// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-	// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
-	TagRelation pulumi.StringPtrOutput `pulumi:"tagRelation"`
+	// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
+	TagRelation pulumi.StringOutput `pulumi:"tagRelation"`
 }
 
 // NewAddressBook registers a new resource with the given unique name, arguments, and options.
@@ -133,17 +131,15 @@ type addressBookState struct {
 	AutoAddTagEcs *int `pulumi:"autoAddTagEcs"`
 	// The description of the Address Book.
 	Description *string `pulumi:"description"`
-	// A list of ECS tags. See the following `Block ecsTags`.
+	// A list of ECS tags. See `ecsTags` below.
 	EcsTags []AddressBookEcsTag `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName *string `pulumi:"groupName"`
-	// The type of the Address Book. Valid values:  `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `tag`.
 	GroupType *string `pulumi:"groupType"`
-	// The language of the content within the request and response. Valid values: `en`, `zh`.
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang *string `pulumi:"lang"`
-	// The logical relation among the ECS tags that to be matched. Valid values:
-	// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-	// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+	// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
 	TagRelation *string `pulumi:"tagRelation"`
 }
 
@@ -154,17 +150,15 @@ type AddressBookState struct {
 	AutoAddTagEcs pulumi.IntPtrInput
 	// The description of the Address Book.
 	Description pulumi.StringPtrInput
-	// A list of ECS tags. See the following `Block ecsTags`.
+	// A list of ECS tags. See `ecsTags` below.
 	EcsTags AddressBookEcsTagArrayInput
 	// The name of the Address Book.
 	GroupName pulumi.StringPtrInput
-	// The type of the Address Book. Valid values:  `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `tag`.
 	GroupType pulumi.StringPtrInput
-	// The language of the content within the request and response. Valid values: `en`, `zh`.
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrInput
-	// The logical relation among the ECS tags that to be matched. Valid values:
-	// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-	// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+	// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
 	TagRelation pulumi.StringPtrInput
 }
 
@@ -179,17 +173,15 @@ type addressBookArgs struct {
 	AutoAddTagEcs *int `pulumi:"autoAddTagEcs"`
 	// The description of the Address Book.
 	Description string `pulumi:"description"`
-	// A list of ECS tags. See the following `Block ecsTags`.
+	// A list of ECS tags. See `ecsTags` below.
 	EcsTags []AddressBookEcsTag `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName string `pulumi:"groupName"`
-	// The type of the Address Book. Valid values:  `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `tag`.
 	GroupType string `pulumi:"groupType"`
-	// The language of the content within the request and response. Valid values: `en`, `zh`.
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang *string `pulumi:"lang"`
-	// The logical relation among the ECS tags that to be matched. Valid values:
-	// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-	// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+	// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
 	TagRelation *string `pulumi:"tagRelation"`
 }
 
@@ -201,17 +193,15 @@ type AddressBookArgs struct {
 	AutoAddTagEcs pulumi.IntPtrInput
 	// The description of the Address Book.
 	Description pulumi.StringInput
-	// A list of ECS tags. See the following `Block ecsTags`.
+	// A list of ECS tags. See `ecsTags` below.
 	EcsTags AddressBookEcsTagArrayInput
 	// The name of the Address Book.
 	GroupName pulumi.StringInput
-	// The type of the Address Book. Valid values:  `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `tag`.
 	GroupType pulumi.StringInput
-	// The language of the content within the request and response. Valid values: `en`, `zh`.
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrInput
-	// The logical relation among the ECS tags that to be matched. Valid values:
-	// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-	// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+	// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
 	TagRelation pulumi.StringPtrInput
 }
 
@@ -317,7 +307,7 @@ func (o AddressBookOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressBook) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// A list of ECS tags. See the following `Block ecsTags`.
+// A list of ECS tags. See `ecsTags` below.
 func (o AddressBookOutput) EcsTags() AddressBookEcsTagArrayOutput {
 	return o.ApplyT(func(v *AddressBook) AddressBookEcsTagArrayOutput { return v.EcsTags }).(AddressBookEcsTagArrayOutput)
 }
@@ -327,21 +317,19 @@ func (o AddressBookOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressBook) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The type of the Address Book. Valid values:  `ip`, `tag`.
+// The type of the Address Book. Valid values: `ip`, `tag`.
 func (o AddressBookOutput) GroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressBook) pulumi.StringOutput { return v.GroupType }).(pulumi.StringOutput)
 }
 
-// The language of the content within the request and response. Valid values: `en`, `zh`.
+// The language of the content within the request and response. Valid values: `zh`, `en`.
 func (o AddressBookOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddressBook) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// The logical relation among the ECS tags that to be matched. Valid values:
-// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
-func (o AddressBookOutput) TagRelation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddressBook) pulumi.StringPtrOutput { return v.TagRelation }).(pulumi.StringPtrOutput)
+// The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
+func (o AddressBookOutput) TagRelation() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressBook) pulumi.StringOutput { return v.TagRelation }).(pulumi.StringOutput)
 }
 
 type AddressBookArrayOutput struct{ *pulumi.OutputState }

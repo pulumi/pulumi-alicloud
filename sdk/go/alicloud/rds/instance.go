@@ -118,6 +118,12 @@ type Instance struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction pulumi.StringPtrOutput `pulumi:"direction"`
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -291,8 +297,8 @@ type Instance struct {
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType pulumi.StringOutput `pulumi:"tcpConnectionType"`
-	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
-	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
+	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+	TdeStatus pulumi.StringOutput `pulumi:"tdeStatus"`
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
 	// - false: not to upgrade
@@ -463,6 +469,12 @@ type instanceState struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction *string `pulumi:"direction"`
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -636,7 +648,7 @@ type instanceState struct {
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType *string `pulumi:"tcpConnectionType"`
-	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
@@ -767,6 +779,12 @@ type InstanceState struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction pulumi.StringPtrInput
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -940,7 +958,7 @@ type InstanceState struct {
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType pulumi.StringPtrInput
-	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
@@ -1069,6 +1087,12 @@ type instanceArgs struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction *string `pulumi:"direction"`
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -1238,7 +1262,7 @@ type instanceArgs struct {
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType *string `pulumi:"tcpConnectionType"`
-	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
@@ -1364,6 +1388,12 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction pulumi.StringPtrInput
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -1533,7 +1563,7 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType pulumi.StringPtrInput
-	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
@@ -1814,6 +1844,15 @@ func (o InstanceOutput) DbTimeZone() pulumi.StringOutput {
 // > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The instance configuration type. Valid values:
+// - Up
+// - Down
+// - TempUpgrade
+// - Serverless
+func (o InstanceOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
 // The method to update the engine version and change.  Default value: Immediate. Valid values:
@@ -2124,9 +2163,9 @@ func (o InstanceOutput) TcpConnectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TcpConnectionType }).(pulumi.StringOutput)
 }
 
-// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
-func (o InstanceOutput) TdeStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.TdeStatus }).(pulumi.StringPtrOutput)
+// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+func (o InstanceOutput) TdeStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TdeStatus }).(pulumi.StringOutput)
 }
 
 // Whether to upgrade a minor version of the kernel. Valid values:

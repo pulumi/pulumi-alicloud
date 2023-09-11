@@ -56,6 +56,179 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			slsDefaultToken := ", '\";=()[]{}?@&<>/:\n	"
+//			_, err = log.NewStoreIndex(ctx, "example", &log.StoreIndexArgs{
+//				Project:  defaultProject.Name,
+//				Logstore: defaultStore.Name,
+//				FullText: &log.StoreIndexFullTextArgs{
+//					CaseSensitive: pulumi.Bool(false),
+//					Token:         pulumi.String(slsDefaultToken),
+//				},
+//				FieldSearches: log.StoreIndexFieldSearchArray{
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("aggPeriodSeconds"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("long"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("concurrentRequests"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("long"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("cpuPercent"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("double"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("cpuQuotaPercent"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("double"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("functionName"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//						CaseSensitive:   pulumi.Bool(true),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("hostname"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("instanceID"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("ipAddress"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("memoryLimitMB"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("double"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("memoryUsageMB"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("double"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("memoryUsagePercent"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("double"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("operation"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("qualifier"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//						CaseSensitive:   pulumi.Bool(true),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("rxBytes"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("long"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("rxTotalBytes"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("long"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("serviceName"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//						CaseSensitive:   pulumi.Bool(true),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("txBytes"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("long"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("txTotalBytes"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("long"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("versionId"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("events"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("json"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("isColdStart"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("hasFunctionError"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("errorType"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("triggerType"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("durationMs"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("double"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("statusCode"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("long"),
+//						Token:           pulumi.String(slsDefaultToken),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
 //				Document: pulumi.String(`  {
 //	      "Statement": [

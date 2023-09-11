@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Eci
     /// <summary>
     /// An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.89.0+.
+    /// &gt; **NOTE:** Available since v1.89.0.
     /// 
     /// &gt; **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
     /// 
@@ -28,16 +28,57 @@ namespace Pulumi.AliCloud.Eci
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Eci.ImageCache("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Eci.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         EipInstanceId = "eip-uf60c7cqb2pcrkgxhxxxx",
-    ///         ImageCacheName = "tf-test",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.1.0.0/16",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0]),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     {
+    ///         Isp = "BGP",
+    ///         AddressName = name,
+    ///         Netmode = "public",
+    ///         Bandwidth = "1",
+    ///         SecurityProtectionTypes = new[]
+    ///         {
+    ///             "AntiDDoS_Enhanced",
+    ///         },
+    ///         PaymentType = "PayAsYouGo",
+    ///     });
+    /// 
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultImageCache = new AliCloud.Eci.ImageCache("defaultImageCache", new()
+    ///     {
+    ///         ImageCacheName = name,
     ///         Images = new[]
     ///         {
-    ///             "registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest",
+    ///             $"registry-vpc.{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}.aliyuncs.com/eci_open/nginx:alpine",
     ///         },
-    ///         SecurityGroupId = "sg-2zeef68b66fxxxx",
-    ///         VswitchId = "vsw-2zef9k7ng82xxxx",
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         EipInstanceId = defaultEipAddress.Id,
     ///     });
     /// 
     /// });
@@ -79,7 +120,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<int?> ImageCacheSize { get; private set; } = null!;
 
         /// <summary>
-        /// The Image Registry parameters about the image to be cached.
+        /// The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         /// </summary>
         [Output("imageRegistryCredentials")]
         public Output<ImmutableArray<Outputs.ImageCacheImageRegistryCredential>> ImageRegistryCredentials { get; private set; } = null!;
@@ -194,7 +235,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ImageCacheImageRegistryCredentialArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The Image Registry parameters about the image to be cached.
+        /// The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         /// </summary>
         public InputList<Inputs.ImageCacheImageRegistryCredentialArgs> ImageRegistryCredentials
         {
@@ -280,7 +321,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.ImageCacheImageRegistryCredentialGetArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The Image Registry parameters about the image to be cached.
+        /// The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         /// </summary>
         public InputList<Inputs.ImageCacheImageRegistryCredentialGetArgs> ImageRegistryCredentials
         {

@@ -14,9 +14,74 @@ import (
 
 // Provides a Cloud Firewall Vpc Firewall resource.
 //
-// For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://help.aliyun.com/document_detail/342893.html).
+// For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createvpcfirewallconfigure).
 //
-// > **NOTE:** Available in v1.194.0+.
+// > **NOTE:** Available since v1.194.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewFirewallVpcFirewall(ctx, "default", &cloudfirewall.FirewallVpcFirewallArgs{
+//				VpcFirewallName: pulumi.String("tf-example"),
+//				MemberUid:       *pulumi.String(current.Id),
+//				LocalVpc: &cloudfirewall.FirewallVpcFirewallLocalVpcArgs{
+//					VpcId:    pulumi.String("vpc-bp1d065m6hzn1xbw8ibfd"),
+//					RegionNo: pulumi.String("cn-hangzhou"),
+//					LocalVpcCidrTableLists: cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray{
+//						&cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs{
+//							LocalRouteTableId: pulumi.String("vtb-bp1lj0ddg846856chpzrv"),
+//							LocalRouteEntryLists: cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray{
+//								&cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs{
+//									LocalNextHopInstanceId: pulumi.String("ri-bp1uobww3aputjlwwkyrh"),
+//									LocalDestinationCidr:   pulumi.String("10.1.0.0/16"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				PeerVpc: &cloudfirewall.FirewallVpcFirewallPeerVpcArgs{
+//					VpcId:    pulumi.String("vpc-bp1gcmm64o3caox84v0nz"),
+//					RegionNo: pulumi.String("cn-hangzhou"),
+//					PeerVpcCidrTableLists: cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray{
+//						&cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs{
+//							PeerRouteTableId: pulumi.String("vtb-bp1f516f2hh4sok1ig9b5"),
+//							PeerRouteEntryLists: cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray{
+//								&cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{
+//									PeerDestinationCidr:   pulumi.String("10.0.0.0/16"),
+//									PeerNextHopInstanceId: pulumi.String("ri-bp1thhtgf6ydr2or52l3n"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Status: pulumi.String("open"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -32,19 +97,19 @@ type FirewallVpcFirewall struct {
 
 	// Bandwidth specifications for high-speed channels. Unit: Mbps.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
-	// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+	// The communication type of the VPC firewall.
 	ConnectType pulumi.StringOutput `pulumi:"connectType"`
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-	Lang pulumi.StringOutput `pulumi:"lang"`
-	// The details of the local VPC. See the following `Block LocalVpc`.
+	// The language type of the requested and received messages. Valid values:
+	Lang pulumi.StringPtrOutput `pulumi:"lang"`
+	// The details of the local VPC. See `localVpc` below.
 	LocalVpc FirewallVpcFirewallLocalVpcOutput `pulumi:"localVpc"`
 	// The UID of the Alibaba Cloud member account.
 	MemberUid pulumi.StringPtrOutput `pulumi:"memberUid"`
-	// The details of the peer VPC. See the following `Block PeerVpc`.
+	// The details of the peer VPC. See `peerVpc` below.
 	PeerVpc FirewallVpcFirewallPeerVpcOutput `pulumi:"peerVpc"`
-	// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+	// The region is open.
 	RegionStatus pulumi.StringOutput `pulumi:"regionStatus"`
-	// The status of the resource
+	// The status of the resource. Valid values:
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the VPC firewall instance.
 	VpcFirewallId pulumi.StringOutput `pulumi:"vpcFirewallId"`
@@ -96,19 +161,19 @@ func GetFirewallVpcFirewall(ctx *pulumi.Context,
 type firewallVpcFirewallState struct {
 	// Bandwidth specifications for high-speed channels. Unit: Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+	// The communication type of the VPC firewall.
 	ConnectType *string `pulumi:"connectType"`
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+	// The language type of the requested and received messages. Valid values:
 	Lang *string `pulumi:"lang"`
-	// The details of the local VPC. See the following `Block LocalVpc`.
+	// The details of the local VPC. See `localVpc` below.
 	LocalVpc *FirewallVpcFirewallLocalVpc `pulumi:"localVpc"`
 	// The UID of the Alibaba Cloud member account.
 	MemberUid *string `pulumi:"memberUid"`
-	// The details of the peer VPC. See the following `Block PeerVpc`.
+	// The details of the peer VPC. See `peerVpc` below.
 	PeerVpc *FirewallVpcFirewallPeerVpc `pulumi:"peerVpc"`
-	// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+	// The region is open.
 	RegionStatus *string `pulumi:"regionStatus"`
-	// The status of the resource
+	// The status of the resource. Valid values:
 	Status *string `pulumi:"status"`
 	// The ID of the VPC firewall instance.
 	VpcFirewallId *string `pulumi:"vpcFirewallId"`
@@ -119,19 +184,19 @@ type firewallVpcFirewallState struct {
 type FirewallVpcFirewallState struct {
 	// Bandwidth specifications for high-speed channels. Unit: Mbps.
 	Bandwidth pulumi.IntPtrInput
-	// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+	// The communication type of the VPC firewall.
 	ConnectType pulumi.StringPtrInput
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+	// The language type of the requested and received messages. Valid values:
 	Lang pulumi.StringPtrInput
-	// The details of the local VPC. See the following `Block LocalVpc`.
+	// The details of the local VPC. See `localVpc` below.
 	LocalVpc FirewallVpcFirewallLocalVpcPtrInput
 	// The UID of the Alibaba Cloud member account.
 	MemberUid pulumi.StringPtrInput
-	// The details of the peer VPC. See the following `Block PeerVpc`.
+	// The details of the peer VPC. See `peerVpc` below.
 	PeerVpc FirewallVpcFirewallPeerVpcPtrInput
-	// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+	// The region is open.
 	RegionStatus pulumi.StringPtrInput
-	// The status of the resource
+	// The status of the resource. Valid values:
 	Status pulumi.StringPtrInput
 	// The ID of the VPC firewall instance.
 	VpcFirewallId pulumi.StringPtrInput
@@ -144,15 +209,15 @@ func (FirewallVpcFirewallState) ElementType() reflect.Type {
 }
 
 type firewallVpcFirewallArgs struct {
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+	// The language type of the requested and received messages. Valid values:
 	Lang *string `pulumi:"lang"`
-	// The details of the local VPC. See the following `Block LocalVpc`.
+	// The details of the local VPC. See `localVpc` below.
 	LocalVpc FirewallVpcFirewallLocalVpc `pulumi:"localVpc"`
 	// The UID of the Alibaba Cloud member account.
 	MemberUid *string `pulumi:"memberUid"`
-	// The details of the peer VPC. See the following `Block PeerVpc`.
+	// The details of the peer VPC. See `peerVpc` below.
 	PeerVpc FirewallVpcFirewallPeerVpc `pulumi:"peerVpc"`
-	// The status of the resource
+	// The status of the resource. Valid values:
 	Status string `pulumi:"status"`
 	// The name of the VPC firewall instance.
 	VpcFirewallName string `pulumi:"vpcFirewallName"`
@@ -160,15 +225,15 @@ type firewallVpcFirewallArgs struct {
 
 // The set of arguments for constructing a FirewallVpcFirewall resource.
 type FirewallVpcFirewallArgs struct {
-	// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+	// The language type of the requested and received messages. Valid values:
 	Lang pulumi.StringPtrInput
-	// The details of the local VPC. See the following `Block LocalVpc`.
+	// The details of the local VPC. See `localVpc` below.
 	LocalVpc FirewallVpcFirewallLocalVpcInput
 	// The UID of the Alibaba Cloud member account.
 	MemberUid pulumi.StringPtrInput
-	// The details of the peer VPC. See the following `Block PeerVpc`.
+	// The details of the peer VPC. See `peerVpc` below.
 	PeerVpc FirewallVpcFirewallPeerVpcInput
-	// The status of the resource
+	// The status of the resource. Valid values:
 	Status pulumi.StringInput
 	// The name of the VPC firewall instance.
 	VpcFirewallName pulumi.StringInput
@@ -266,17 +331,17 @@ func (o FirewallVpcFirewallOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewall) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+// The communication type of the VPC firewall.
 func (o FirewallVpcFirewallOutput) ConnectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewall) pulumi.StringOutput { return v.ConnectType }).(pulumi.StringOutput)
 }
 
-// The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
-func (o FirewallVpcFirewallOutput) Lang() pulumi.StringOutput {
-	return o.ApplyT(func(v *FirewallVpcFirewall) pulumi.StringOutput { return v.Lang }).(pulumi.StringOutput)
+// The language type of the requested and received messages. Valid values:
+func (o FirewallVpcFirewallOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewall) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// The details of the local VPC. See the following `Block LocalVpc`.
+// The details of the local VPC. See `localVpc` below.
 func (o FirewallVpcFirewallOutput) LocalVpc() FirewallVpcFirewallLocalVpcOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewall) FirewallVpcFirewallLocalVpcOutput { return v.LocalVpc }).(FirewallVpcFirewallLocalVpcOutput)
 }
@@ -286,17 +351,17 @@ func (o FirewallVpcFirewallOutput) MemberUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewall) pulumi.StringPtrOutput { return v.MemberUid }).(pulumi.StringPtrOutput)
 }
 
-// The details of the peer VPC. See the following `Block PeerVpc`.
+// The details of the peer VPC. See `peerVpc` below.
 func (o FirewallVpcFirewallOutput) PeerVpc() FirewallVpcFirewallPeerVpcOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewall) FirewallVpcFirewallPeerVpcOutput { return v.PeerVpc }).(FirewallVpcFirewallPeerVpcOutput)
 }
 
-// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+// The region is open.
 func (o FirewallVpcFirewallOutput) RegionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewall) pulumi.StringOutput { return v.RegionStatus }).(pulumi.StringOutput)
 }
 
-// The status of the resource
+// The status of the resource. Valid values:
 func (o FirewallVpcFirewallOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewall) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

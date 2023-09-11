@@ -16,7 +16,7 @@ import (
 //
 // For information about ECI Virtual Node and how to use it, see [What is Virtual Node](https://www.alibabacloud.com/help/en/doc-detail/89129.html).
 //
-// > **NOTE:** Available in v1.145.0+.
+// > **NOTE:** Available since v1.145.0.
 //
 // ## Example Usage
 //
@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testaccvirtualnode"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -47,27 +47,37 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].ZoneIds[1]),
-//			}, nil)
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneIds[0]),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				Isp:         pulumi.String("BGP"),
 //				AddressName: pulumi.String(name),
+//				Netmode:     pulumi.String("public"),
+//				Bandwidth:   pulumi.String("1"),
+//				SecurityProtectionTypes: pulumi.StringArray{
+//					pulumi.String("AntiDDoS_Enhanced"),
+//				},
+//				PaymentType: pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,19 +89,19 @@ import (
 //			_, err = eci.NewVirtualNode(ctx, "defaultVirtualNode", &eci.VirtualNodeArgs{
 //				SecurityGroupId:     defaultSecurityGroup.ID(),
 //				VirtualNodeName:     pulumi.String(name),
-//				VswitchId:           *pulumi.String(defaultSwitches.Ids[1]),
+//				VswitchId:           defaultSwitch.ID(),
 //				EnablePublicNetwork: pulumi.Bool(false),
 //				EipInstanceId:       defaultEipAddress.ID(),
 //				ResourceGroupId:     *pulumi.String(defaultResourceGroups.Groups[0].Id),
-//				KubeConfig:          pulumi.String("kube config"),
+//				KubeConfig:          pulumi.String("kube_config"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
 //				},
 //				Taints: eci.VirtualNodeTaintArray{
 //					&eci.VirtualNodeTaintArgs{
 //						Effect: pulumi.String("NoSchedule"),
-//						Key:    pulumi.String("Tf1"),
-//						Value:  pulumi.String("Test1"),
+//						Key:    pulumi.String("TF"),
+//						Value:  pulumi.String("example"),
 //					},
 //				},
 //			})
@@ -130,7 +140,7 @@ type VirtualNode struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The taint. See the following `Block taints`.
+	// The taint. See `taints` below.
 	Taints VirtualNodeTaintArrayOutput `pulumi:"taints"`
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
 	VirtualNodeName pulumi.StringPtrOutput `pulumi:"virtualNodeName"`
@@ -193,7 +203,7 @@ type virtualNodeState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The taint. See the following `Block taints`.
+	// The taint. See `taints` below.
 	Taints []VirtualNodeTaint `pulumi:"taints"`
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
 	VirtualNodeName *string `pulumi:"virtualNodeName"`
@@ -218,7 +228,7 @@ type VirtualNodeState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The taint. See the following `Block taints`.
+	// The taint. See `taints` below.
 	Taints VirtualNodeTaintArrayInput
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
 	VirtualNodeName pulumi.StringPtrInput
@@ -245,7 +255,7 @@ type virtualNodeArgs struct {
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The taint. See the following `Block taints`.
+	// The taint. See `taints` below.
 	Taints []VirtualNodeTaint `pulumi:"taints"`
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
 	VirtualNodeName *string `pulumi:"virtualNodeName"`
@@ -269,7 +279,7 @@ type VirtualNodeArgs struct {
 	SecurityGroupId pulumi.StringInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The taint. See the following `Block taints`.
+	// The taint. See `taints` below.
 	Taints VirtualNodeTaintArrayInput
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
 	VirtualNodeName pulumi.StringPtrInput
@@ -401,7 +411,7 @@ func (o VirtualNodeOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *VirtualNode) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The taint. See the following `Block taints`.
+// The taint. See `taints` below.
 func (o VirtualNodeOutput) Taints() VirtualNodeTaintArrayOutput {
 	return o.ApplyT(func(v *VirtualNode) VirtualNodeTaintArrayOutput { return v.Taints }).(VirtualNodeTaintArrayOutput)
 }

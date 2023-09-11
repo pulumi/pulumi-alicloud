@@ -18,18 +18,16 @@ class VaultArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
-                 redundancy_type: Optional[pulumi.Input[str]] = None,
                  vault_storage_class: Optional[pulumi.Input[str]] = None,
                  vault_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Vault resource.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
-        :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
-        :param pulumi.Input[str] redundancy_type: The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
-        :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
         pulumi.set(__self__, "vault_name", vault_name)
         if description is not None:
@@ -38,8 +36,6 @@ class VaultArgs:
             pulumi.set(__self__, "encrypt_type", encrypt_type)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
-        if redundancy_type is not None:
-            pulumi.set(__self__, "redundancy_type", redundancy_type)
         if vault_storage_class is not None:
             pulumi.set(__self__, "vault_storage_class", vault_storage_class)
         if vault_type is not None:
@@ -73,7 +69,7 @@ class VaultArgs:
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -94,18 +90,6 @@ class VaultArgs:
         pulumi.set(self, "kms_key_id", value)
 
     @property
-    @pulumi.getter(name="redundancyType")
-    def redundancy_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        """
-        return pulumi.get(self, "redundancy_type")
-
-    @redundancy_type.setter
-    def redundancy_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "redundancy_type", value)
-
-    @property
     @pulumi.getter(name="vaultStorageClass")
     def vault_storage_class(self) -> Optional[pulumi.Input[str]]:
         """
@@ -121,7 +105,7 @@ class VaultArgs:
     @pulumi.getter(name="vaultType")
     def vault_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
         return pulumi.get(self, "vault_type")
 
@@ -136,7 +120,6 @@ class _VaultState:
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
-                 redundancy_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vault_name: Optional[pulumi.Input[str]] = None,
                  vault_storage_class: Optional[pulumi.Input[str]] = None,
@@ -144,13 +127,12 @@ class _VaultState:
         """
         Input properties used for looking up and filtering Vault resources.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
-        :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
-        :param pulumi.Input[str] redundancy_type: The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        :param pulumi.Input[str] status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        :param pulumi.Input[str] status: The status of the Vault.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
-        :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -158,8 +140,6 @@ class _VaultState:
             pulumi.set(__self__, "encrypt_type", encrypt_type)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
-        if redundancy_type is not None:
-            pulumi.set(__self__, "redundancy_type", redundancy_type)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if vault_name is not None:
@@ -185,7 +165,7 @@ class _VaultState:
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -206,22 +186,10 @@ class _VaultState:
         pulumi.set(self, "kms_key_id", value)
 
     @property
-    @pulumi.getter(name="redundancyType")
-    def redundancy_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        """
-        return pulumi.get(self, "redundancy_type")
-
-    @redundancy_type.setter
-    def redundancy_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "redundancy_type", value)
-
-    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        The status of the Vault.
         """
         return pulumi.get(self, "status")
 
@@ -257,7 +225,7 @@ class _VaultState:
     @pulumi.getter(name="vaultType")
     def vault_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
         return pulumi.get(self, "vault_type")
 
@@ -274,7 +242,6 @@ class Vault(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
-                 redundancy_type: Optional[pulumi.Input[str]] = None,
                  vault_name: Optional[pulumi.Input[str]] = None,
                  vault_storage_class: Optional[pulumi.Input[str]] = None,
                  vault_type: Optional[pulumi.Input[str]] = None,
@@ -282,9 +249,9 @@ class Vault(pulumi.CustomResource):
         """
         Provides a HBR Backup vault resource.
 
-        For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/doc-detail/62362.htm).
+        For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -308,12 +275,11 @@ class Vault(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
-        :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
-        :param pulumi.Input[str] redundancy_type: The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
-        :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
         ...
     @overload
@@ -324,9 +290,9 @@ class Vault(pulumi.CustomResource):
         """
         Provides a HBR Backup vault resource.
 
-        For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/doc-detail/62362.htm).
+        For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -365,7 +331,6 @@ class Vault(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
-                 redundancy_type: Optional[pulumi.Input[str]] = None,
                  vault_name: Optional[pulumi.Input[str]] = None,
                  vault_storage_class: Optional[pulumi.Input[str]] = None,
                  vault_type: Optional[pulumi.Input[str]] = None,
@@ -381,7 +346,6 @@ class Vault(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypt_type"] = encrypt_type
             __props__.__dict__["kms_key_id"] = kms_key_id
-            __props__.__dict__["redundancy_type"] = redundancy_type
             if vault_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_name'")
             __props__.__dict__["vault_name"] = vault_name
@@ -401,7 +365,6 @@ class Vault(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             encrypt_type: Optional[pulumi.Input[str]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
-            redundancy_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vault_name: Optional[pulumi.Input[str]] = None,
             vault_storage_class: Optional[pulumi.Input[str]] = None,
@@ -414,13 +377,12 @@ class Vault(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
-        :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
-        :param pulumi.Input[str] redundancy_type: The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        :param pulumi.Input[str] status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        :param pulumi.Input[str] status: The status of the Vault.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
-        :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -429,7 +391,6 @@ class Vault(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["encrypt_type"] = encrypt_type
         __props__.__dict__["kms_key_id"] = kms_key_id
-        __props__.__dict__["redundancy_type"] = redundancy_type
         __props__.__dict__["status"] = status
         __props__.__dict__["vault_name"] = vault_name
         __props__.__dict__["vault_storage_class"] = vault_storage_class
@@ -448,7 +409,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> pulumi.Output[str]:
         """
-        Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -461,18 +422,10 @@ class Vault(pulumi.CustomResource):
         return pulumi.get(self, "kms_key_id")
 
     @property
-    @pulumi.getter(name="redundancyType")
-    def redundancy_type(self) -> pulumi.Output[str]:
-        """
-        The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        """
-        return pulumi.get(self, "redundancy_type")
-
-    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        The status of the Vault.
         """
         return pulumi.get(self, "status")
 
@@ -496,7 +449,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="vaultType")
     def vault_type(self) -> pulumi.Output[str]:
         """
-        The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
         return pulumi.get(self, "vault_type")
 

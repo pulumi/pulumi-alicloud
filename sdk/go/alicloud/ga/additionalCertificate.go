@@ -32,7 +32,7 @@ type AdditionalCertificate struct {
 
 	// The ID of the GA instance.
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain pulumi.StringOutput `pulumi:"domain"`
@@ -84,7 +84,7 @@ func GetAdditionalCertificate(ctx *pulumi.Context,
 type additionalCertificateState struct {
 	// The ID of the GA instance.
 	AcceleratorId *string `pulumi:"acceleratorId"`
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId *string `pulumi:"certificateId"`
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain *string `pulumi:"domain"`
@@ -95,7 +95,7 @@ type additionalCertificateState struct {
 type AdditionalCertificateState struct {
 	// The ID of the GA instance.
 	AcceleratorId pulumi.StringPtrInput
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId pulumi.StringPtrInput
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain pulumi.StringPtrInput
@@ -110,7 +110,7 @@ func (AdditionalCertificateState) ElementType() reflect.Type {
 type additionalCertificateArgs struct {
 	// The ID of the GA instance.
 	AcceleratorId string `pulumi:"acceleratorId"`
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId string `pulumi:"certificateId"`
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain string `pulumi:"domain"`
@@ -122,7 +122,7 @@ type additionalCertificateArgs struct {
 type AdditionalCertificateArgs struct {
 	// The ID of the GA instance.
 	AcceleratorId pulumi.StringInput
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId pulumi.StringInput
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain pulumi.StringInput
@@ -222,7 +222,7 @@ func (o AdditionalCertificateOutput) AcceleratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdditionalCertificate) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
 }
 
-// The Certificate ID.
+// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 func (o AdditionalCertificateOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdditionalCertificate) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
 }

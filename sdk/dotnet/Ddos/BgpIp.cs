@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
     /// 
-    /// &gt; **NOTE:** Available in v1.180.0+.
+    /// &gt; **NOTE:** Available since v1.180.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,18 +28,28 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
+    ///     {
+    ///         BaseBandwidth = 20,
+    ///         Bandwidth = -1,
+    ///         IpCount = 100,
+    ///         IpType = "IPv4",
+    ///         NormalBandwidth = 100,
+    ///         Type = "Enterprise",
+    ///     });
     /// 
     ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
     ///     {
-    ///         AddressName = @var.Name,
+    ///         AddressName = name,
     ///     });
-    /// 
-    ///     var defaultDdosBgpInstances = AliCloud.Ddos.GetDdosBgpInstances.Invoke();
     /// 
     ///     var defaultBgpIp = new AliCloud.Ddos.BgpIp("defaultBgpIp", new()
     ///     {
-    ///         InstanceId = defaultDdosBgpInstances.Apply(getDdosBgpInstancesResult =&gt; getDdosBgpInstancesResult.Ids[0]),
+    ///         InstanceId = instance.Id,
     ///         Ip = defaultEipAddress.IpAddress,
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///     });

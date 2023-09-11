@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/doc-detail/98001.htm).
+// Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-registeruser).
 //
-// > **NOTE:** Available in 1.90.0+.
+// > **NOTE:** Available since v1.90.0.
 //
 // ## Example Usage
 //
@@ -24,19 +24,35 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dms.NewEnterpriseUser(ctx, "example", &dms.EnterpriseUserArgs{
-//				Mobile: pulumi.String("1591066xxxx"),
+//			cfg := config.New(ctx, "")
+//			name := "tfexamplename"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultUser, err := ram.NewUser(ctx, "defaultUser", &ram.UserArgs{
+//				DisplayName: pulumi.String(name),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dms.NewEnterpriseUser(ctx, "defaultEnterpriseUser", &dms.EnterpriseUserArgs{
+//				Uid:      defaultUser.ID(),
+//				UserName: pulumi.String(name),
 //				RoleNames: pulumi.StringArray{
 //					pulumi.String("DBA"),
 //				},
-//				Uid:      pulumi.String("uid"),
-//				UserName: pulumi.String("tf-test"),
+//				Mobile: pulumi.String("86-18688888888"),
 //			})
 //			if err != nil {
 //				return err

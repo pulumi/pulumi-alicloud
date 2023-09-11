@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.139.0+.
+    /// &gt; **NOTE:** Available since v1.139.0.
     /// 
     /// ## Example Usage
     /// 
@@ -31,12 +31,11 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///     var example = new AliCloud.CloudFirewall.Instance("example", new()
     ///     {
     ///         BandWidth = 10,
-    ///         CfwLog = false,
+    ///         CfwLog = true,
     ///         CfwLogStorage = 1000,
-    ///         CfwService = false,
     ///         IpNumber = 20,
     ///         PaymentType = "Subscription",
-    ///         Period = 6,
+    ///         Period = 1,
     ///         Spec = "premium_version",
     ///     });
     /// 
@@ -55,10 +54,22 @@ namespace Pulumi.AliCloud.CloudFirewall
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The number of multi account. It will be ignored when `cfw_account = false`.
+        /// </summary>
+        [Output("accountNumber")]
+        public Output<int?> AccountNumber { get; private set; } = null!;
+
+        /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         /// </summary>
         [Output("bandWidth")]
         public Output<int> BandWidth { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to use multi-account. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("cfwAccount")]
+        public Output<bool?> CfwAccount { get; private set; } = null!;
 
         /// <summary>
         /// Whether to use log audit. Valid values: `true`, `false`.
@@ -67,16 +78,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<bool> CfwLog { get; private set; } = null!;
 
         /// <summary>
-        /// The log storage capacity.
+        /// The log storage capacity. It will be ignored when `cfw_log = false`.
         /// </summary>
         [Output("cfwLogStorage")]
-        public Output<int> CfwLogStorage { get; private set; } = null!;
-
-        /// <summary>
-        /// Whether to use expert service. Valid values: `true`, `false`.
-        /// </summary>
-        [Output("cfwService")]
-        public Output<bool> CfwService { get; private set; } = null!;
+        public Output<int?> CfwLogStorage { get; private set; } = null!;
 
         /// <summary>
         /// The creation time.
@@ -91,7 +96,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The number of protected VPCs. Valid values between 2 and 500.
+        /// The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         /// </summary>
         [Output("fwVpcNumber")]
         public Output<int?> FwVpcNumber { get; private set; } = null!;
@@ -115,7 +120,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> Logistics { get; private set; } = null!;
 
         /// <summary>
-        /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        /// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
@@ -139,19 +144,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> ReleaseTime { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        /// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         /// </summary>
         [Output("renewPeriod")]
-        public Output<int?> RenewPeriod { get; private set; } = null!;
+        public Output<int> RenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period unit. Valid values: `Month`,`Year`.
+        /// Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// </summary>
+        [Output("renewalDuration")]
+        public Output<int> RenewalDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         /// </summary>
         [Output("renewalDurationUnit")]
-        public Output<string> RenewalDurationUnit { get; private set; } = null!;
+        public Output<string?> RenewalDurationUnit { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
@@ -215,10 +226,22 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The number of multi account. It will be ignored when `cfw_account = false`.
+        /// </summary>
+        [Input("accountNumber")]
+        public Input<int>? AccountNumber { get; set; }
+
+        /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         /// </summary>
         [Input("bandWidth", required: true)]
         public Input<int> BandWidth { get; set; } = null!;
+
+        /// <summary>
+        /// Whether to use multi-account. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("cfwAccount")]
+        public Input<bool>? CfwAccount { get; set; }
 
         /// <summary>
         /// Whether to use log audit. Valid values: `true`, `false`.
@@ -227,19 +250,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<bool> CfwLog { get; set; } = null!;
 
         /// <summary>
-        /// The log storage capacity.
+        /// The log storage capacity. It will be ignored when `cfw_log = false`.
         /// </summary>
-        [Input("cfwLogStorage", required: true)]
-        public Input<int> CfwLogStorage { get; set; } = null!;
+        [Input("cfwLogStorage")]
+        public Input<int>? CfwLogStorage { get; set; }
 
         /// <summary>
-        /// Whether to use expert service. Valid values: `true`, `false`.
-        /// </summary>
-        [Input("cfwService", required: true)]
-        public Input<bool> CfwService { get; set; } = null!;
-
-        /// <summary>
-        /// The number of protected VPCs. Valid values between 2 and 500.
+        /// The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         /// </summary>
         [Input("fwVpcNumber")]
         public Input<int>? FwVpcNumber { get; set; }
@@ -263,7 +280,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Logistics { get; set; }
 
         /// <summary>
-        /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        /// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -281,13 +298,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int> Period { get; set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        /// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        /// Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// </summary>
+        [Input("renewalDuration")]
+        public Input<int>? RenewalDuration { get; set; }
+
+        /// <summary>
+        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        /// </summary>
+        [Input("renewalDurationUnit")]
+        public Input<string>? RenewalDurationUnit { get; set; }
+
+        /// <summary>
+        /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -307,10 +336,22 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The number of multi account. It will be ignored when `cfw_account = false`.
+        /// </summary>
+        [Input("accountNumber")]
+        public Input<int>? AccountNumber { get; set; }
+
+        /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         /// </summary>
         [Input("bandWidth")]
         public Input<int>? BandWidth { get; set; }
+
+        /// <summary>
+        /// Whether to use multi-account. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("cfwAccount")]
+        public Input<bool>? CfwAccount { get; set; }
 
         /// <summary>
         /// Whether to use log audit. Valid values: `true`, `false`.
@@ -319,16 +360,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<bool>? CfwLog { get; set; }
 
         /// <summary>
-        /// The log storage capacity.
+        /// The log storage capacity. It will be ignored when `cfw_log = false`.
         /// </summary>
         [Input("cfwLogStorage")]
         public Input<int>? CfwLogStorage { get; set; }
-
-        /// <summary>
-        /// Whether to use expert service. Valid values: `true`, `false`.
-        /// </summary>
-        [Input("cfwService")]
-        public Input<bool>? CfwService { get; set; }
 
         /// <summary>
         /// The creation time.
@@ -343,7 +378,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The number of protected VPCs. Valid values between 2 and 500.
+        /// The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         /// </summary>
         [Input("fwVpcNumber")]
         public Input<int>? FwVpcNumber { get; set; }
@@ -367,7 +402,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Logistics { get; set; }
 
         /// <summary>
-        /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        /// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -391,19 +426,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? ReleaseTime { get; set; }
 
         /// <summary>
-        /// Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        /// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Automatic renewal period unit. Valid values: `Month`,`Year`.
+        /// Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// </summary>
+        [Input("renewalDuration")]
+        public Input<int>? RenewalDuration { get; set; }
+
+        /// <summary>
+        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         /// </summary>
         [Input("renewalDurationUnit")]
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }

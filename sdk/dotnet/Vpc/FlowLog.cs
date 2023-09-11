@@ -14,66 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
     /// 
-    /// &gt; **NOTE:** Available in v1.117.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testacc-example";
-    ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
-    ///     {
-    ///         ResourceGroupName = name,
-    ///         DisplayName = "tf-testAcc-rg78",
-    ///     });
-    /// 
-    ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
-    ///     {
-    ///         VpcName = $"{name}1",
-    ///         CidrBlock = "10.0.0.0/8",
-    ///     });
-    /// 
-    ///     var modifyRG = new AliCloud.ResourceManager.ResourceGroup("modifyRG", new()
-    ///     {
-    ///         DisplayName = "tf-testAcc-rg405",
-    ///         ResourceGroupName = $"{name}2",
-    ///     });
-    /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
-    /// 
-    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
-    ///     {
-    ///         Project = defaultProject.Name,
-    ///     });
-    /// 
-    ///     var defaultFlowLog = new AliCloud.Vpc.FlowLog("defaultFlowLog", new()
-    ///     {
-    ///         FlowLogName = name,
-    ///         LogStoreName = defaultStore.Name,
-    ///         Description = "tf-testAcc-flowlog",
-    ///         TrafficPaths = new[]
-    ///         {
-    ///             "all",
-    ///         },
-    ///         ProjectName = defaultProject.Name,
-    ///         ResourceType = "VPC",
-    ///         ResourceGroupId = defaultRg.Id,
-    ///         ResourceId = defaultVpc.Id,
-    ///         AggregationInterval = "1",
-    ///         TrafficType = "All",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.117.0.
     /// 
     /// ## Import
     /// 

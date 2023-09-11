@@ -14,11 +14,13 @@ namespace Pulumi.AliCloud.CR.Outputs
     public sealed class ChainChainConfig
     {
         /// <summary>
-        /// Each node in the delivery chain.
+        /// Each node in the delivery chain. See `nodes` below.
+        /// 
+        /// &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.ChainChainConfigNode> Nodes;
         /// <summary>
-        /// Execution sequence relationship between delivery chain nodes.
+        /// Execution sequence relationship between delivery chain nodes. See `routers` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ChainChainConfigRouter> Routers;
 

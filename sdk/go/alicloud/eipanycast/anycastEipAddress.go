@@ -36,13 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			_, err := eipanycast.NewAnycastEipAddress(ctx, "default", &eipanycast.AnycastEipAddressArgs{
 //				AnycastEipAddressName: pulumi.String(name),
-//				Description:           pulumi.String("test_1"),
+//				Description:           pulumi.String(name),
 //				Bandwidth:             pulumi.Int(200),
 //				ServiceLocation:       pulumi.String("international"),
 //				InternetChargeType:    pulumi.String("PayByTraffic"),

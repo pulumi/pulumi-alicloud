@@ -12,14 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+// The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+//
+// > **NOTE:** Available since v1.19.0.
 //
 // ## Example Usage
 //
 // # Basic Usage
 //
-// - BLob Topic
-//
 // ```go
 // package main
 //
@@ -27,53 +27,46 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
-//				Comment:     pulumi.String("created by terraform"),
-//				LifeCycle:   pulumi.Int(7),
-//				ProjectName: pulumi.String("tf_datahub_project"),
-//				RecordType:  pulumi.String("BLOB"),
-//				ShardCount:  pulumi.Int(3),
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			example, err := datahub.NewProject(ctx, "example", &datahub.ProjectArgs{
+//				Comment: pulumi.String("created by terraform"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// - Tuple Topic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
-//				Comment:     pulumi.String("created by terraform"),
+//			_, err = datahub.NewTopic(ctx, "exampleBlob", &datahub.TopicArgs{
+//				ProjectName: example.Name,
+//				RecordType:  pulumi.String("BLOB"),
+//				ShardCount:  pulumi.Int(3),
 //				LifeCycle:   pulumi.Int(7),
-//				ProjectName: pulumi.String("tf_datahub_project"),
+//				Comment:     pulumi.String("created by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datahub.NewTopic(ctx, "exampleTuple", &datahub.TopicArgs{
+//				ProjectName: example.Name,
+//				RecordType:  pulumi.String("TUPLE"),
 //				RecordSchema: pulumi.AnyMap{
 //					"bigint_field":    pulumi.Any("BIGINT"),
-//					"boolean_field":   pulumi.Any("BOOLEAN"),
-//					"double_field":    pulumi.Any("DOUBLE"),
-//					"string_field":    pulumi.Any("STRING"),
 //					"timestamp_field": pulumi.Any("TIMESTAMP"),
+//					"string_field":    pulumi.Any("STRING"),
+//					"double_field":    pulumi.Any("DOUBLE"),
+//					"boolean_field":   pulumi.Any("BOOLEAN"),
 //				},
-//				RecordType: pulumi.String("TUPLE"),
 //				ShardCount: pulumi.Int(3),
+//				LifeCycle:  pulumi.Int(7),
+//				Comment:    pulumi.String("created by terraform"),
 //			})
 //			if err != nil {
 //				return err

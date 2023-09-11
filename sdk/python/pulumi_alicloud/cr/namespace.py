@@ -131,9 +131,9 @@ class Namespace(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manager Container Registry namespaces.
+        This resource will help you to manager Container Registry namespaces, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace).
 
-        > **NOTE:** Available in v1.34.0+.
+        > **NOTE:** Available since v1.34.0.
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
@@ -145,7 +145,11 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_namespace = alicloud.cr.Namespace("my-namespace",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.cr.Namespace("example",
             auto_create=False,
             default_visibility="PUBLIC")
         ```
@@ -171,9 +175,9 @@ class Namespace(pulumi.CustomResource):
                  args: NamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manager Container Registry namespaces.
+        This resource will help you to manager Container Registry namespaces, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace).
 
-        > **NOTE:** Available in v1.34.0+.
+        > **NOTE:** Available since v1.34.0.
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
@@ -185,7 +189,11 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_namespace = alicloud.cr.Namespace("my-namespace",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.cr.Namespace("example",
             auto_create=False,
             default_visibility="PUBLIC")
         ```

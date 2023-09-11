@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     public sealed class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList
     {
         /// <summary>
-        /// Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+        /// Peer VPC route entry list information. See `peer_route_entry_list` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> PeerRouteEntryLists;
         /// <summary>

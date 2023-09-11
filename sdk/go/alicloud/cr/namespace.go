@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource will help you to manager Container Registry namespaces.
+// This resource will help you to manager Container Registry namespaces, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace).
 //
-// > **NOTE:** Available in v1.34.0+.
+// > **NOTE:** Available since v1.34.0.
 //
 // > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 //
@@ -29,12 +29,18 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cr.NewNamespace(ctx, "my-namespace", &cr.NamespaceArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cr.NewNamespace(ctx, "example", &cr.NamespaceArgs{
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})

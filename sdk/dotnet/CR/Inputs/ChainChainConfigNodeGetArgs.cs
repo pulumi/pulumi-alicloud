@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CR.Inputs
         private InputList<Inputs.ChainChainConfigNodeNodeConfigGetArgs>? _nodeConfigs;
 
         /// <summary>
-        /// The configuration of delivery chain node.
+        /// The configuration of delivery chain node. See `node_config` below.
         /// </summary>
         public InputList<Inputs.ChainChainConfigNodeNodeConfigGetArgs> NodeConfigs
         {
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CR.Inputs
         }
 
         /// <summary>
-        /// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        /// The name of delivery chain node.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }

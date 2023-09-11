@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
     /// 
-    /// &gt; **NOTE:** Available in v1.186.0+.
+    /// &gt; **NOTE:** Available since v1.186.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,24 +28,19 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         DisplayName = "tf-test-acc-publicaddresspool-383",
-    ///         ResourceGroupName = "tf-test-acc-publicaddresspool-855",
+    ///         Status = "OK",
     ///     });
     /// 
-    ///     var changeRg = new AliCloud.ResourceManager.ResourceGroup("changeRg", new()
+    ///     var defaultPublicIpAddressPool = new AliCloud.Vpc.PublicIpAddressPool("defaultPublicIpAddressPool", new()
     ///     {
-    ///         DisplayName = "tf-testacc-publicaddresspool-change-368",
-    ///         ResourceGroupName = "tf-testacc-publicaddresspool-change-499",
-    ///     });
-    /// 
-    ///     var @default = new AliCloud.Vpc.PublicIpAddressPool("default", new()
-    ///     {
-    ///         Description = "rdk-test",
-    ///         PublicIpAddressPoolName = "rdk-test",
+    ///         Description = name,
+    ///         PublicIpAddressPoolName = name,
     ///         Isp = "BGP",
-    ///         ResourceGroupId = defaultRg.Id,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///     });
     /// 
     /// });

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eflo
     /// <summary>
     /// Provides a Eflo Vpd resource.
     /// 
-    /// For information about Eflo Vpd and how to use it, see [What is Vpd](https://help.aliyun.com/document_detail/604976.html).
+    /// For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
     /// 
-    /// &gt; **NOTE:** Available in v1.201.0+.
+    /// &gt; **NOTE:** Available since v1.201.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,15 @@ namespace Pulumi.AliCloud.Eflo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Eflo.Vpd("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultVpd = new AliCloud.Eflo.Vpd("defaultVpd", new()
     ///     {
     ///         Cidr = "10.0.0.0/8",
-    ///         VpdName = "RMC-Terraform-Test",
+    ///         VpdName = name,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///     });
     /// 
     /// });
@@ -49,7 +54,7 @@ namespace Pulumi.AliCloud.Eflo
     public partial class Vpd : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// CIDR network segment
+        /// CIDR network segment.
         /// </summary>
         [Output("cidr")]
         public Output<string> Cidr { get; private set; } = null!;
@@ -67,7 +72,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> GmtModified { get; private set; } = null!;
 
         /// <summary>
-        /// The Resource group id
+        /// The Resource group id.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
@@ -131,13 +136,13 @@ namespace Pulumi.AliCloud.Eflo
     public sealed class VpdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CIDR network segment
+        /// CIDR network segment.
         /// </summary>
         [Input("cidr", required: true)]
         public Input<string> Cidr { get; set; } = null!;
 
         /// <summary>
-        /// The Resource group id
+        /// The Resource group id.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -157,7 +162,7 @@ namespace Pulumi.AliCloud.Eflo
     public sealed class VpdState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CIDR network segment
+        /// CIDR network segment.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
@@ -175,7 +180,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? GmtModified { get; set; }
 
         /// <summary>
-        /// The Resource group id
+        /// The Resource group id.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

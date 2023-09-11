@@ -14,9 +14,9 @@ import (
 
 // Provides a Sag SnatEntry resource. This topic describes how to add a SNAT entry to enable the SNAT function. The SNAT function can hide internal IP addresses and resolve private IP address conflicts. With this function, on-premises sites can access internal IP addresses, but cannot be accessed by internal IP addresses. If you do not add a SNAT entry, on-premises sites can access each other only when all related IP addresses do not conflict.
 //
-// For information about Sag SnatEntry and how to use it, see [What is Sag SnatEntry](https://www.alibabacloud.com/help/doc-detail/124231.htm).
+// For information about Sag SnatEntry and how to use it, see [What is Sag SnatEntry](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/addsnatentry).
 //
-// > **NOTE:** Available in 1.61.0+
+// > **NOTE:** Available since v1.61.0.
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
@@ -31,14 +31,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			sagId := "sag-9bifk***"
+//			if param := cfg.Get("sagId"); param != "" {
+//				sagId = param
+//			}
 //			_, err := rocketmq.NewSnatEntry(ctx, "default", &rocketmq.SnatEntryArgs{
+//				SagId:     pulumi.String(sagId),
 //				CidrBlock: pulumi.String("192.168.7.0/24"),
-//				SagId:     pulumi.String("sag-3rb1t3iagy3w0zgwy9"),
 //				SnatIp:    pulumi.String("192.0.0.2"),
 //			})
 //			if err != nil {

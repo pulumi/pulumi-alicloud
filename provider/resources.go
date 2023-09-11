@@ -2497,6 +2497,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_monitor_group_instances",
 			"alicloud_dataworks_service",
 		},
+		SkipExamples: func(args tfbridge.SkipExamplesArgs) bool {
+			return args.Token == "alicloud:fc/service:Service" || args.Token == "alicloud:fc/v2Function:V2Function"
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/e-hpc/latest/createcluster).
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0.
  *
  * ## Example Usage
  *
@@ -21,38 +21,41 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
- * }));
- * const config = new pulumi.Config();
- * const storageType = config.get("storageType") || "Performance";
- * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
- *     storageType: storageType,
- *     protocolType: "NFS",
- * });
- * const defaultMountTarget = new alicloud.nas.MountTarget("defaultMountTarget", {
- *     fileSystemId: defaultFileSystem.id,
- *     accessGroupName: "DEFAULT_VPC_GROUP_NAME",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  * });
  * const defaultImages = alicloud.ecs.getImages({
  *     nameRegex: "^centos_7_6_x64*",
  *     owners: "system",
  * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
+ *     storageType: "Performance",
+ *     protocolType: "NFS",
+ * });
+ * const defaultMountTarget = new alicloud.nas.MountTarget("defaultMountTarget", {
+ *     fileSystemId: defaultFileSystem.id,
+ *     accessGroupName: "DEFAULT_VPC_GROUP_NAME",
+ *     vswitchId: defaultSwitch.id,
+ * });
  * const defaultCluster = new alicloud.ehpc.Cluster("defaultCluster", {
- *     clusterName: "example_value",
+ *     clusterName: name,
  *     deployMode: "Simple",
- *     description: "example_description",
+ *     description: name,
  *     haEnable: false,
  *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
  *     imageOwnerAlias: "system",
@@ -68,8 +71,8 @@ import * as utilities from "../utilities";
  *     osTag: "CentOS_7.6_64",
  *     schedulerType: "pbs",
  *     password: "your-password123",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * ```
@@ -115,11 +118,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly accountType!: pulumi.Output<string>;
     /**
-     * The additional volumes. See the following `Block additionalVolumes`.
+     * The additional volumes. See `additionalVolumes` below.
      */
     public readonly additionalVolumes!: pulumi.Output<outputs.ehpc.ClusterAdditionalVolume[] | undefined>;
     /**
-     * The application. See the following `Block application`.
+     * The application. See `application` below.
      */
     public readonly applications!: pulumi.Output<outputs.ehpc.ClusterApplication[]>;
     /**
@@ -255,7 +258,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly plugin!: pulumi.Output<string | undefined>;
     /**
-     * The post install script. See the following `Block postInstallScript`.
+     * The post install script. See `postInstallScript` below.
      */
     public readonly postInstallScripts!: pulumi.Output<outputs.ehpc.ClusterPostInstallScript[] | undefined>;
     /**
@@ -528,11 +531,11 @@ export interface ClusterState {
      */
     accountType?: pulumi.Input<string>;
     /**
-     * The additional volumes. See the following `Block additionalVolumes`.
+     * The additional volumes. See `additionalVolumes` below.
      */
     additionalVolumes?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterAdditionalVolume>[]>;
     /**
-     * The application. See the following `Block application`.
+     * The application. See `application` below.
      */
     applications?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterApplication>[]>;
     /**
@@ -668,7 +671,7 @@ export interface ClusterState {
      */
     plugin?: pulumi.Input<string>;
     /**
-     * The post install script. See the following `Block postInstallScript`.
+     * The post install script. See `postInstallScript` below.
      */
     postInstallScripts?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterPostInstallScript>[]>;
     /**
@@ -780,11 +783,11 @@ export interface ClusterArgs {
      */
     accountType?: pulumi.Input<string>;
     /**
-     * The additional volumes. See the following `Block additionalVolumes`.
+     * The additional volumes. See `additionalVolumes` below.
      */
     additionalVolumes?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterAdditionalVolume>[]>;
     /**
-     * The application. See the following `Block application`.
+     * The application. See `application` below.
      */
     applications?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterApplication>[]>;
     /**
@@ -920,7 +923,7 @@ export interface ClusterArgs {
      */
     plugin?: pulumi.Input<string>;
     /**
-     * The post install script. See the following `Block postInstallScript`.
+     * The post install script. See `postInstallScript` below.
      */
     postInstallScripts?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterPostInstallScript>[]>;
     /**

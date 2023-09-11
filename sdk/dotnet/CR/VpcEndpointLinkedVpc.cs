@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CR
     /// <summary>
     /// Provides a CR Vpc Endpoint Linked Vpc resource.
     /// 
-    /// For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/container-registry/latest/api-doc-cr-2018-12-01-api-doc-createinstancevpcendpointlinkedvpc).
+    /// For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createinstancevpcendpointlinkedvpc).
     /// 
-    /// &gt; **NOTE:** Available in v1.199.0+.
+    /// &gt; **NOTE:** Available since v1.199.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,13 +28,44 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.CR.VpcEndpointLinkedVpc("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         EnableCreateDnsRecordInPvzt = true,
-    ///         InstanceId = "your_cr_instance_id",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var defaultVpcEndpointLinkedVpc = new AliCloud.CR.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", new()
+    ///     {
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
     ///         ModuleName = "Registry",
-    ///         VpcId = "your_vpc_id",
-    ///         VswitchId = "your_vswitch_id",
+    ///         EnableCreateDnsRecordInPvzt = true,
     ///     });
     /// 
     /// });

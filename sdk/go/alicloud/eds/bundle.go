@@ -100,11 +100,11 @@ type Bundle struct {
 	// The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
 	Language pulumi.StringPtrOutput `pulumi:"language"`
 	// The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-	RootDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"rootDiskPerformanceLevel"`
+	RootDiskPerformanceLevel pulumi.StringOutput `pulumi:"rootDiskPerformanceLevel"`
 	// The root disk size gib.
 	RootDiskSizeGib pulumi.IntOutput `pulumi:"rootDiskSizeGib"`
 	// The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-	UserDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"userDiskPerformanceLevel"`
+	UserDiskPerformanceLevel pulumi.StringOutput `pulumi:"userDiskPerformanceLevel"`
 	// The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
 	// - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
 	// - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
@@ -362,8 +362,8 @@ func (o BundleOutput) Language() pulumi.StringPtrOutput {
 }
 
 // The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-func (o BundleOutput) RootDiskPerformanceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Bundle) pulumi.StringPtrOutput { return v.RootDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+func (o BundleOutput) RootDiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringOutput { return v.RootDiskPerformanceLevel }).(pulumi.StringOutput)
 }
 
 // The root disk size gib.
@@ -372,8 +372,8 @@ func (o BundleOutput) RootDiskSizeGib() pulumi.IntOutput {
 }
 
 // The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-func (o BundleOutput) UserDiskPerformanceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Bundle) pulumi.StringPtrOutput { return v.UserDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+func (o BundleOutput) UserDiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringOutput { return v.UserDiskPerformanceLevel }).(pulumi.StringOutput)
 }
 
 // The size of the data disk. Currently, only one data disk can be set. Unit: GiB.

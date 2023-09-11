@@ -16,7 +16,7 @@ import (
 //
 // For information about EMR New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/28068.htm).
 //
-// > **NOTE:** Available in v1.199.0+.
+// > **NOTE:** Available since v1.199.0.
 //
 // ## Example Usage
 //
@@ -34,14 +34,18 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-//				Status: pulumi.StringRef("OK"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -52,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("TF-VPC"),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -62,13 +66,13 @@ import (
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String("TF_VSwitch"),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "defaultEcsKeyPair", &ecs.EcsKeyPairArgs{
-//				KeyPairName: pulumi.String("terraform-kp"),
+//				KeyPairName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -98,7 +102,7 @@ import (
 //
 // `),
 //
-//				Description: pulumi.String("this is a role test."),
+//				Description: pulumi.String("this is a role example."),
 //				Force:       pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -108,7 +112,7 @@ import (
 //				PaymentType:    pulumi.String("PayAsYouGo"),
 //				ClusterType:    pulumi.String("DATALAKE"),
 //				ReleaseVersion: pulumi.String("EMR-5.10.0"),
-//				ClusterName:    pulumi.String("terraform-emr-cluster-v2"),
+//				ClusterName:    pulumi.String(name),
 //				DeployMode:     pulumi.String("NORMAL"),
 //				SecurityMode:   pulumi.String("NORMAL"),
 //				Applications: pulumi.StringArray{
@@ -222,11 +226,11 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// The application configurations of EMR cluster.
+	// The application configurations of EMR cluster. See `applicationConfigs` below.
 	ApplicationConfigs ClusterApplicationConfigArrayOutput `pulumi:"applicationConfigs"`
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications pulumi.StringArrayOutput `pulumi:"applications"`
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
 	BootstrapScripts ClusterBootstrapScriptArrayOutput `pulumi:"bootstrapScripts"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
@@ -234,9 +238,9 @@ type Cluster struct {
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode pulumi.StringOutput `pulumi:"deployMode"`
-	// The node attributes of ecs instances which the emr-cluster belongs.
+	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes ClusterNodeAttributeArrayOutput `pulumi:"nodeAttributes"`
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
 	NodeGroups ClusterNodeGroupArrayOutput `pulumi:"nodeGroups"`
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -246,7 +250,7 @@ type Cluster struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
 	SecurityMode pulumi.StringOutput `pulumi:"securityMode"`
-	// The detail configuration of subscription payment type.
+	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig ClusterSubscriptionConfigPtrOutput `pulumi:"subscriptionConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -300,11 +304,11 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// The application configurations of EMR cluster.
+	// The application configurations of EMR cluster. See `applicationConfigs` below.
 	ApplicationConfigs []ClusterApplicationConfig `pulumi:"applicationConfigs"`
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications []string `pulumi:"applications"`
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
 	BootstrapScripts []ClusterBootstrapScript `pulumi:"bootstrapScripts"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName *string `pulumi:"clusterName"`
@@ -312,9 +316,9 @@ type clusterState struct {
 	ClusterType *string `pulumi:"clusterType"`
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode *string `pulumi:"deployMode"`
-	// The node attributes of ecs instances which the emr-cluster belongs.
+	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes []ClusterNodeAttribute `pulumi:"nodeAttributes"`
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
 	NodeGroups []ClusterNodeGroup `pulumi:"nodeGroups"`
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType *string `pulumi:"paymentType"`
@@ -324,18 +328,18 @@ type clusterState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
 	SecurityMode *string `pulumi:"securityMode"`
-	// The detail configuration of subscription payment type.
+	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig *ClusterSubscriptionConfig `pulumi:"subscriptionConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type ClusterState struct {
-	// The application configurations of EMR cluster.
+	// The application configurations of EMR cluster. See `applicationConfigs` below.
 	ApplicationConfigs ClusterApplicationConfigArrayInput
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications pulumi.StringArrayInput
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
 	BootstrapScripts ClusterBootstrapScriptArrayInput
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName pulumi.StringPtrInput
@@ -343,9 +347,9 @@ type ClusterState struct {
 	ClusterType pulumi.StringPtrInput
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode pulumi.StringPtrInput
-	// The node attributes of ecs instances which the emr-cluster belongs.
+	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes ClusterNodeAttributeArrayInput
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
 	NodeGroups ClusterNodeGroupArrayInput
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType pulumi.StringPtrInput
@@ -355,7 +359,7 @@ type ClusterState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
 	SecurityMode pulumi.StringPtrInput
-	// The detail configuration of subscription payment type.
+	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig ClusterSubscriptionConfigPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -366,11 +370,11 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// The application configurations of EMR cluster.
+	// The application configurations of EMR cluster. See `applicationConfigs` below.
 	ApplicationConfigs []ClusterApplicationConfig `pulumi:"applicationConfigs"`
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications []string `pulumi:"applications"`
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
 	BootstrapScripts []ClusterBootstrapScript `pulumi:"bootstrapScripts"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName string `pulumi:"clusterName"`
@@ -378,9 +382,9 @@ type clusterArgs struct {
 	ClusterType string `pulumi:"clusterType"`
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode *string `pulumi:"deployMode"`
-	// The node attributes of ecs instances which the emr-cluster belongs.
+	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes []ClusterNodeAttribute `pulumi:"nodeAttributes"`
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
 	NodeGroups []ClusterNodeGroup `pulumi:"nodeGroups"`
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType *string `pulumi:"paymentType"`
@@ -390,7 +394,7 @@ type clusterArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
 	SecurityMode *string `pulumi:"securityMode"`
-	// The detail configuration of subscription payment type.
+	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig *ClusterSubscriptionConfig `pulumi:"subscriptionConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -398,11 +402,11 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// The application configurations of EMR cluster.
+	// The application configurations of EMR cluster. See `applicationConfigs` below.
 	ApplicationConfigs ClusterApplicationConfigArrayInput
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications pulumi.StringArrayInput
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
 	BootstrapScripts ClusterBootstrapScriptArrayInput
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName pulumi.StringInput
@@ -410,9 +414,9 @@ type ClusterArgs struct {
 	ClusterType pulumi.StringInput
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode pulumi.StringPtrInput
-	// The node attributes of ecs instances which the emr-cluster belongs.
+	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes ClusterNodeAttributeArrayInput
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
 	NodeGroups ClusterNodeGroupArrayInput
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType pulumi.StringPtrInput
@@ -422,7 +426,7 @@ type ClusterArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
 	SecurityMode pulumi.StringPtrInput
-	// The detail configuration of subscription payment type.
+	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig ClusterSubscriptionConfigPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -515,7 +519,7 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// The application configurations of EMR cluster.
+// The application configurations of EMR cluster. See `applicationConfigs` below.
 func (o ClusterOutput) ApplicationConfigs() ClusterApplicationConfigArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterApplicationConfigArrayOutput { return v.ApplicationConfigs }).(ClusterApplicationConfigArrayOutput)
 }
@@ -525,7 +529,7 @@ func (o ClusterOutput) Applications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.Applications }).(pulumi.StringArrayOutput)
 }
 
-// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
 func (o ClusterOutput) BootstrapScripts() ClusterBootstrapScriptArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterBootstrapScriptArrayOutput { return v.BootstrapScripts }).(ClusterBootstrapScriptArrayOutput)
 }
@@ -545,12 +549,12 @@ func (o ClusterOutput) DeployMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DeployMode }).(pulumi.StringOutput)
 }
 
-// The node attributes of ecs instances which the emr-cluster belongs.
+// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 func (o ClusterOutput) NodeAttributes() ClusterNodeAttributeArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodeAttributeArrayOutput { return v.NodeAttributes }).(ClusterNodeAttributeArrayOutput)
 }
 
-// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
 func (o ClusterOutput) NodeGroups() ClusterNodeGroupArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodeGroupArrayOutput { return v.NodeGroups }).(ClusterNodeGroupArrayOutput)
 }
@@ -575,7 +579,7 @@ func (o ClusterOutput) SecurityMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SecurityMode }).(pulumi.StringOutput)
 }
 
-// The detail configuration of subscription payment type.
+// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 func (o ClusterOutput) SubscriptionConfig() ClusterSubscriptionConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterSubscriptionConfigPtrOutput { return v.SubscriptionConfig }).(ClusterSubscriptionConfigPtrOutput)
 }

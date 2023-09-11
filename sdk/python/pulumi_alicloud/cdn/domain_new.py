@@ -28,8 +28,8 @@ class DomainNewArgs:
         The set of arguments for constructing a DomainNew resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]] sources: The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
-        :param pulumi.Input['DomainNewCertificateConfigArgs'] certificate_config: Certificate configuration. See the following `Block CertificateConfig`.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
+        :param pulumi.Input['DomainNewCertificateConfigArgs'] certificate_config: Certificate configuration. See `certificate_config` below.
         :param pulumi.Input[str] check_url: Health test URL.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
@@ -81,7 +81,7 @@ class DomainNewArgs:
     @pulumi.getter
     def sources(self) -> pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]:
         """
-        The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+        The source address list of the accelerated domain. Defaults to null. See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -93,7 +93,7 @@ class DomainNewArgs:
     @pulumi.getter(name="certificateConfig")
     def certificate_config(self) -> Optional[pulumi.Input['DomainNewCertificateConfigArgs']]:
         """
-        Certificate configuration. See the following `Block CertificateConfig`.
+        Certificate configuration. See `certificate_config` below.
         """
         return pulumi.get(self, "certificate_config")
 
@@ -170,7 +170,7 @@ class _DomainNewState:
         """
         Input properties used for looking up and filtering DomainNew resources.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
-        :param pulumi.Input['DomainNewCertificateConfigArgs'] certificate_config: Certificate configuration. See the following `Block CertificateConfig`.
+        :param pulumi.Input['DomainNewCertificateConfigArgs'] certificate_config: Certificate configuration. See `certificate_config` below.
         :param pulumi.Input[str] check_url: Health test URL.
         :param pulumi.Input[str] cname: The CNAME domain name corresponding to the accelerated domain name.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -180,7 +180,7 @@ class _DomainNewState:
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
                The default value is **domestic**.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]] sources: The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
@@ -221,7 +221,7 @@ class _DomainNewState:
     @pulumi.getter(name="certificateConfig")
     def certificate_config(self) -> Optional[pulumi.Input['DomainNewCertificateConfigArgs']]:
         """
-        Certificate configuration. See the following `Block CertificateConfig`.
+        Certificate configuration. See `certificate_config` below.
         """
         return pulumi.get(self, "certificate_config")
 
@@ -297,7 +297,7 @@ class _DomainNewState:
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]]:
         """
-        The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+        The source address list of the accelerated domain. Defaults to null. See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -347,9 +347,9 @@ class DomainNew(pulumi.CustomResource):
         """
         Provides a CDN Domain resource. CDN domain name.
 
-        For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
+        For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
 
-        > **NOTE:** Available in v1.34.0+.
+        > **NOTE:** Available since v1.34.0.
 
         ## Example Usage
 
@@ -360,12 +360,12 @@ class DomainNew(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "mycdndomain.alicloud-provider.cn"
         default = alicloud.cdn.DomainNew("default",
-            scope="domestic",
-            domain_name=name,
+            scope="overseas",
+            domain_name=domain_name,
             cdn_type="web",
             sources=[alicloud.cdn.DomainNewSourceArgs(
                 type="ipaddr",
@@ -387,7 +387,7 @@ class DomainNew(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
-        :param pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']] certificate_config: Certificate configuration. See the following `Block CertificateConfig`.
+        :param pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']] certificate_config: Certificate configuration. See `certificate_config` below.
         :param pulumi.Input[str] check_url: Health test URL.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -396,7 +396,7 @@ class DomainNew(pulumi.CustomResource):
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
                The default value is **domestic**.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         ...
@@ -408,9 +408,9 @@ class DomainNew(pulumi.CustomResource):
         """
         Provides a CDN Domain resource. CDN domain name.
 
-        For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
+        For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
 
-        > **NOTE:** Available in v1.34.0+.
+        > **NOTE:** Available since v1.34.0.
 
         ## Example Usage
 
@@ -421,12 +421,12 @@ class DomainNew(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "mycdndomain.alicloud-provider.cn"
         default = alicloud.cdn.DomainNew("default",
-            scope="domestic",
-            domain_name=name,
+            scope="overseas",
+            domain_name=domain_name,
             cdn_type="web",
             sources=[alicloud.cdn.DomainNewSourceArgs(
                 type="ipaddr",
@@ -521,7 +521,7 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
-        :param pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']] certificate_config: Certificate configuration. See the following `Block CertificateConfig`.
+        :param pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']] certificate_config: Certificate configuration. See `certificate_config` below.
         :param pulumi.Input[str] check_url: Health test URL.
         :param pulumi.Input[str] cname: The CNAME domain name corresponding to the accelerated domain name.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -531,7 +531,7 @@ class DomainNew(pulumi.CustomResource):
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
                The default value is **domestic**.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
@@ -563,7 +563,7 @@ class DomainNew(pulumi.CustomResource):
     @pulumi.getter(name="certificateConfig")
     def certificate_config(self) -> pulumi.Output['outputs.DomainNewCertificateConfig']:
         """
-        Certificate configuration. See the following `Block CertificateConfig`.
+        Certificate configuration. See `certificate_config` below.
         """
         return pulumi.get(self, "certificate_config")
 
@@ -615,7 +615,7 @@ class DomainNew(pulumi.CustomResource):
     @pulumi.getter
     def sources(self) -> pulumi.Output[Sequence['outputs.DomainNewSource']]:
         """
-        The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+        The source address list of the accelerated domain. Defaults to null. See `sources` below.
         """
         return pulumi.get(self, "sources")
 

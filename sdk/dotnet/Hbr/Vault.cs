@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Hbr
     /// <summary>
     /// Provides a HBR Backup vault resource.
     /// 
-    /// For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/doc-detail/62362.htm).
+    /// For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
     /// 
-    /// &gt; **NOTE:** Available in v1.129.0+.
+    /// &gt; **NOTE:** Available since v1.129.0.
     /// 
     /// ## Example Usage
     /// 
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         /// </summary>
         [Output("encryptType")]
         public Output<string> EncryptType { get; private set; } = null!;
@@ -66,13 +66,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        /// </summary>
-        [Output("redundancyType")]
-        public Output<string> RedundancyType { get; private set; } = null!;
-
-        /// <summary>
-        /// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        /// The status of the Vault.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -90,7 +84,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> VaultStorageClass { get; private set; } = null!;
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         /// </summary>
         [Output("vaultType")]
         public Output<string> VaultType { get; private set; } = null!;
@@ -148,7 +142,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         /// </summary>
         [Input("encryptType")]
         public Input<string>? EncryptType { get; set; }
@@ -158,12 +152,6 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
-
-        /// <summary>
-        /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        /// </summary>
-        [Input("redundancyType")]
-        public Input<string>? RedundancyType { get; set; }
 
         /// <summary>
         /// The name of Vault.
@@ -178,7 +166,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? VaultStorageClass { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }
@@ -198,7 +186,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         /// </summary>
         [Input("encryptType")]
         public Input<string>? EncryptType { get; set; }
@@ -210,13 +198,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        /// </summary>
-        [Input("redundancyType")]
-        public Input<string>? RedundancyType { get; set; }
-
-        /// <summary>
-        /// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        /// The status of the Vault.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -234,7 +216,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? VaultStorageClass { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }
